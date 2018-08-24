@@ -1,0 +1,44 @@
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-heading
+        span = t('.withdraw', sn: @euro.sn)
+      .panel-body
+        = description_for :withdraw do
+          = item_for @euro, :id
+          = item_for @euro, :created_at
+          = item_for @euro, :aasm_state_text
+          hr.split
+          = item_for @euro.member, :name do
+            span.fa.fa-copy data-clipboard-text='#{@euro.member.name}' = @euro.member.name
+          = item_for @euro, :fund_extra do
+            span.fa.fa-copy data-clipboard-text='#{@euro.fund_extra}' = @euro.fund_extra
+          = item_for @euro, :fund_uid do
+            span.fa.fa-copy data-clipboard-text='#{@euro.fund_uid}' = @euro.fund_uid
+          = item_for @euro, :fund_iban do
+            span.fa.fa-copy data-clipboard-text='#{@euro.fund_iban}' = @euro.fund_iban
+          = item_for @euro, :fund_code do
+            span.fa.fa-copy data-clipboard-text='#{@euro.fund_code}' = @euro.fund_code
+          = item_for @euro, :fund_account_name do
+            span.fa.fa-copy data-clipboard-text='#{@euro.fund_account_name}' = @euro.fund_account_name
+          = item_for @euro, :amount do
+            span.fa.fa-copy data-clipboard-text='#{@euro.amount}' = @euro.amount
+          hr.split
+          hr.split
+          = item_for @euro, :remark do
+            span.fa.fa-copy data-clipboard-text='#{@euro.remark}' = @euro.remark
+          hr.split
+          ul.list-inline.pull-right
+            - if @euro.may_reject?
+              li
+                = link_to t('.reject'), url_for([:admin, @euro]), class: 'btn btn-danger', method: 'DELETE', confirm: t('.reject_confirm')
+            - if @euro.may_process?
+              li
+                = link_to t('.process'), url_for([:admin, @euro]), class: 'btn btn-primary', method: 'PATCH'
+            - if @euro.may_succeed?
+              li
+                = link_to t('.succeed'), url_for([:admin, @euro]), class: 'btn btn-success', method: 'PATCH', confirm: t('.succeed_confirm')
+
+  .col-xs-12
+    = render partial: 'shared/admin/member', locals: {member: @euro.member}
+    = render partial: 'shared/admin/account', locals: {account: @euro.account}

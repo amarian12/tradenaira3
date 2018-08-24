@@ -1,23 +1,21 @@
-.container
+= metamagic title: "Sign In"
+.col-xs-24.sign_in
   - if content_for?(:before)
     = yield(:before)
-  .panel.panel-default
-    .panel-heading
-      h2.panel-title = guide_panel_title
+  .panel-default
+    /*.panel-heading
+      h2.panel-title = guide_panel_title*/
     .panel-body
       .row
-        #guide.col-xs-8
-          - if content_for?(:guide_title)
-            = yield(:guide_title)
-          - else
-            h3 = guide_title
+        #guide.col-xs-24
           p.text-ignore = guide_intro
-          - if content_for?(:guide)
-            = yield(:guide)
-        #content.col-xs-16
+        #content.col-xs-24
           = render 'shared/flash'
           = yield
+          - if content_for?(:guide)
+    		= yield(:guide)
       - if content_for?(:secondary)
         = yield(:secondary)
   - if content_for?(:after)
     = yield(:after)
+  

@@ -1,10 +1,21 @@
 namespace :admin do
   get '/', to: 'dashboard#index', as: :dashboard
+  get '/members', to: 'members#index'
+  post '/complete', to: 'id_documents#complete' 
+  post '/uncomplete', to: 'id_documents#uncomplete' 
+  post '/complete', to: 'members#complete' 
+  post '/uncomplete', to: 'members#uncomplete' 
 
   resources :documents
-  resources :id_documents,     only: [:index, :show, :update]
+  resources :id_documents,     only: [:index, :show, :update] do
+    member do
+      post :complete
+      post :uncomplete
+    end
+  end
   resource  :currency_deposit, only: [:new, :create]
   resources :proofs
+  resource  :sliders, only: [:edit, :update]
   resources :tickets, only: [:index, :show] do
     member do
       patch :close
@@ -12,10 +23,13 @@ namespace :admin do
     resources :comments, only: [:create]
   end
 
-  resources :members, only: [:index, :show] do
+  resources :members, only: [:index, :show, :update, :edit] do
     member do
       post :active
       post :toggle
+      post :withdraw
+      post :complete
+      post :uncomplete
     end
 
     resources :two_factors, only: [:destroy]

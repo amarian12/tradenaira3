@@ -1,0 +1,51 @@
+<h3 ng-bind="'fund_sources.manage_bank_account' | t"></h3>
+<h5 ng-bind="'fund_sources.manage_bank_account_desc' | t"></h5>
+<div class="usdbank">
+  <div class="col-xs-24 sub_usdbank">
+      <label class="col-sm-5 col-xs-6">Bank Name</label>
+      <label class="col-sm-5 col-xs-6">Account No</label>
+      <label class="col-sm-4 col-xs-2">Acc Name</label>
+      <label class="col-sm-4 col-xs-2">IBAN</label>
+      <label class="col-sm-3 col-xs-2">Code</label>
+      <label class="text-center col-sm-3 col-xs-6" ng-bind="'fund_sources.default' | t"></label>
+  </div>
+  <div class="col-xs-24">
+    <div ng-repeat="fs in fund_sources()" class="sub_usdbank col-xs-24">
+      <label class="col-sm-5 col-xs-6" ng-bind=" fs.extra "></label>
+      <label class="col-sm-5 col-xs-6" ng-bind="fs.uid"></label>
+      <label class="col-sm-4 col-xs-2" ng-bind="fs.account_name"></label>
+      <label class="col-sm-4 col-xs-3" ng-bind="fs.iban"></label>
+      <label class="col-sm-3 col-xs-2" ng-bind="fs.code"></label>
+      <div class="col-sm-3 col-xs-5">
+	      <label class="col-xs-12 text-center">
+	        <input type="radio" value="fs" ng-checked="fs == defaultFundSource()" ng-click="makeDefault(fs)">
+	      </label>
+	      <label class="col-xs-12">
+	        <a href="javascript:;" ng-click="remove(fs)"><i class="fa fa-trash-o">&nbsp;</i></a>
+	      </label>
+      </div>
+    </div>
+    <div class="col-xs-24" style="margin-top: 10px;">
+      <label class="col-sm-10 col-xs-24">
+      	<input type="text" ng-model="extra" class="form-control" placeholder="Bank Name eg:Barclays bank">
+      </label>
+      <label class="col-sm-8 col-xs-24">
+        <input type="text" ng-model="account_name" class="form-control" placeholder="Account Name">
+      </label>
+      <label class="col-sm-6 col-xs-24">
+      	<input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="code" class="form-control" placeholder="Sort Code">
+      </label>
+      <div class="col-xs-24 nopad">
+      <label class="col-sm-10 col-xs-24">
+        <input class="string form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Account Number" ng-model="uid" ng-init="uid = ''" />
+      </label>
+      <label class="col-sm-10 col-xs-24">
+      	<input type="text" ng-model="iban" class="form-control" placeholder="IBAN Name">
+      </label>
+      <label class="col-sm-4 col-xs-24">
+        <button class="form-control" type="submit" ng-click="addusd()" ng-bind="'fund_sources.add' | t"></button>
+      </label>
+      </div>
+    </div>
+  </div>
+</div>

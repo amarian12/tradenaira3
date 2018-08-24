@@ -55,7 +55,11 @@ class Currency < ActiveYamlBase
   end
 
   def blockchain_url(txid)
-    raise unless coin?
+    #raise unless coin?
+    if blockchain.nil?
+      # edited by dinesh100ni
+      return "xxxxx"
+    end
     blockchain.gsub('#{txid}', txid.to_s)
   end
 

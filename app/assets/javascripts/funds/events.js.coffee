@@ -42,7 +42,8 @@ $(window).load ->
     $('#flash-content').html(data.message)
     setTimeout(->
       $('.flash-messages').hide(1000)
-    , 10000)
+    , 50000)
+   
 
   # init the two factor auth
   $.subscribe 'two_factor_init', (event, data) ->

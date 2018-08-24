@@ -1,0 +1,33 @@
+<div class="container">
+<div class="col-md-10 col-sm-12 col-xs-24 newsform">
+<%= form_for [:admin, @slider], url: admin_sliders_path do |f| %>
+	<label class="col-md-12 col-sm-12 col-xs-12">US Dollar Parallel rates</label>
+    <label class="col-md-12 col-sm-12 col-xs-12"><%= f.text_area :usdtxt %></label>
+    <label class="col-md-12 col-sm-12 col-xs-12">GB Pounds Parallel rates</label>
+    <label class="col-md-12 col-sm-12 col-xs-12"><%= f.text_area :poundtxt %></label>
+    <label class="col-md-12 col-sm-12 col-xs-12">Euro Parallel rate</label>
+    <label class="col-md-12 col-sm-12 col-xs-12"><%= f.text_area :eurotxt %></label>
+    <label class="col-xs-24 newssubmit"><%= f.submit class:"btn btn-primary" %></label>
+<% end %>
+</div>
+</div>
+<style>
+.newsform {
+    float: none;
+    margin: 0 auto;
+}
+.newssubmit
+{
+	text-align:center;
+	margin:30px 0px 0px;
+}
+.newsform textarea
+{
+	width:100%;
+	height:110px;
+}
+.newsform .btn-primary
+{
+	width:auto;
+}
+</style>

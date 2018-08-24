@@ -1,0 +1,36 @@
+.row
+  .col-xs-8
+    .panel.panel-primary
+      .panel-heading
+        span = t('.deposit')
+      .panel-body
+        = description_for :member do
+          = item_for @naira, :sn
+          = item_for @naira.member, :name
+          = item_for @naira, :amount
+          = item_for @naira, :created_at
+          hr.split
+          = item_for @naira, :fund_extra, ngnbank_code_to_name(@naira.fund_extra)
+          = item_for @naira, :fund_uid
+          = item_for @naira, :aasm_state_text
+
+  .col-xs-8
+    .panel class='panel-primary'
+      .panel-heading
+        span = t('.target_deposit')
+      .panel-body
+        = form_for [:admin, @naira] do |f|
+          dl.dl-horizontal.dl-member
+            = item_for @naira, :sn
+            = item_for @naira, :amount
+            = item_for @naira, :done_at
+            - if @naira.may_submit? or @naira.may_accept?
+              dt = t('.txid')
+              dd = f.text_field :txid, class: 'col-xs-24'
+              hr.split
+              = f.submit t('.accept'), class: 'btn btn-primary pull-right', confirm: t('.confirm')
+            - else
+              = item_for @naira, :txid
+
+  .col-xs-8
+    = render partial: 'shared/admin/member', locals: {member: @naira.member}

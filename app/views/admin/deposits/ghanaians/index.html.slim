@@ -1,0 +1,7 @@
+.panel.panel-primary
+  .panel-heading = t('.oneday')
+  //= @oneday_ghanaians.inspect
+  = render partial: 'table', locals: {ghanaian: @oneday_ghanaians}
+.panel.panel-success
+  .panel-heading = t('.available')
+  = render partial: 'table', locals: {ghanaian: @available_ghanaians}

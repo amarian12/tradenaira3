@@ -1,0 +1,132 @@
+- id: usdngn
+  code: 1
+  #name: USD/NGN      # default name
+  base_unit: usd
+  quote_unit: ngn
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: ngn, fixed: 2}
+  ask: {fee: 0.0050, currency: usd, fixed: 4}
+  sort_order: 1
+  #visible: false     # default to true  
+- id: gbpngn
+  code: 2
+  #name: GBP/NGN      # default name
+  base_unit: gbp
+  quote_unit: ngn
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: ngn, fixed: 2}
+  ask: {fee: 0.0050, currency: gbp, fixed: 4}
+  sort_order: 1
+
+- id: ghsngn
+  code: 3
+  #name: GBP/NGN      # default nameGHS/NGN
+  base_unit: ghs
+  quote_unit: ngn
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: ngn, fixed: 2}
+  ask: {fee: 0.0050, currency: ghs, fixed: 4}
+  sort_order: 1
+  #visible: false     # default to true 
+- id: usdghs
+  code: 4
+  #name: GBP/NGN      # default nameUSD/GHS
+  base_unit: usd
+  quote_unit: ghs
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: ghs, fixed: 2}
+  ask: {fee: 0.0050, currency: usd, fixed: 4}
+  sort_order: 1  
+  #visible: false     # default to true .
+# - id: eurngn
+#   code: 3
+  #name: EUR/NGN      # default name
+  # base_unit: eur
+  # quote_unit: ngn
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  # bid: {fee: 0.0050, currency: ngn, fixed: 2}
+  # ask: {fee: 0.0050, currency: eur, fixed: 4}
+  # sort_order: 1
+  #visible: false     # default to true   
+# - id: cnyngn
+#   code: 4
+  #name: CNY/NGN      # default name
+  # base_unit: cny
+  # quote_unit: ngn
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  # bid: {fee: 0.0050, currency: ngn, fixed: 2}
+  # ask: {fee: 0.0050, currency: cny, fixed: 4}
+  # sort_order: 1
+  #visible: false     # default to true
+- id: btcngn
+  code: 5
+  #name: BTC/NGN      # default name
+  base_unit: btc
+  quote_unit: ngn
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: btc, fixed: 2}
+  ask: {fee: 0.0050, currency: ngn, fixed: 4}
+  sort_order: 1
+  #visible: false     # default to true
+- id: btcusd
+  code: 6
+  #name: BTC/USD      # default name
+  base_unit: btc
+  quote_unit: usd
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: btc, fixed: 2}
+  ask: {fee: 0.0050, currency: usd, fixed: 4}
+  sort_order: 1
+  #visible: false     # default to true
+- id: btcgbp
+  code: 7
+  #name: BTC/GBP      # default name
+  base_unit: btc
+  quote_unit: gbp
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: btc, fixed: 2}
+  ask: {fee: 0.0050, currency: gbp, fixed: 4}
+  sort_order: 1
+  #visible: false     # default to true
+# - id: btceur
+#   code: 8
+#   #name: BTC/EUR      # default name
+#   base_unit: btc
+#   quote_unit: eur
+#   #price_group_fixed: 1 # aggregate price levels in orderbook
+#   bid: {fee: 0.0050, currency: btc, fixed: 2}
+#   ask: {fee: 0.0050, currency: eur, fixed: 4}
+#   sort_order: 1
+#   #visible: false     # default to true
+# - id: btccny
+#   code: 9
+#   #name: BTC/CNY      # default name
+#   base_unit: btc
+#   quote_unit: cny
+#   #price_group_fixed: 1 # aggregate price levels in orderbook
+#   bid: {fee: 0.0050, currency: btc, fixed: 2}
+#   ask: {fee: 0.0050, currency: cny, fixed: 4}
+#   sort_order: 1
+#   #visible: false     # default to true
+
+  #visible: false     # default to true 
+- id: gbpghs
+  code: 8
+  #name: GBP/NGN      # default nameGBP/GHS
+  base_unit: gbp
+  quote_unit: ghs
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: ghs, fixed: 2}
+  ask: {fee: 0.0050, currency: gbp, fixed: 4}
+  sort_order: 1
+  #visible: false     # default to true 
+- id: btcghs
+  code: 9
+  #name: GBP/NGN      # default nameBTC/GHS
+  base_unit: btc
+  quote_unit: ghs
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: btc, fixed: 2}
+  ask: {fee: 0.0050, currency: ghs, fixed: 4}
+  sort_order: 1
+  #visible: false     # default to true 

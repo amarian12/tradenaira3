@@ -2,7 +2,8 @@
   .panel-heading
     span = t('.member_info')
     = link_to 'View', url_for([:admin, member]), class: 'pull-right', target: '_blank'
-  .panel-body
+    = link_to t("Edit"), edit_admin_member_path, class: 'pull-right editmember', target: '_blank'
+  .panel-body.panel
     = description_for :member do
       = item_for member, :name
       = item_for member, :email
@@ -13,6 +14,16 @@
           span = '-'
       = item_for member, :activated
       = item_for member, :created_at
+      = item_for member, :notes do
+        - if member.notes
+          - raw span = member.notes
+        - else
+          span = '-'
+      = item_for member, :notes_created do
+      	- if member.notes
+          span = member.updated_at
+        - else
+          span = '-'
 
       = item_for member, :actions do
         = link_to 'Activate Email', active_admin_member_path(member), method: :post, confirm: 'Activate ?', class: 'btn btn-danger btn-xs'
@@ -30,3 +41,161 @@
           = link_to t('.deactive'), admin_member_two_factor_path(member, member.app_two_factor), method: :delete, confirm: t('.are_you_sure'), class: 'btn btn-danger btn-xs'
         - else
           span = t('.inactive')
+          
+- if "#{request.path[7,7]}" == "members"
+ .panel.panel-info.notescon
+  .panel-heading
+	span = t('.Notes')
+  .panel-body
+        = simple_form_for [:admin,@member] do |f|
+         = f.input :notes, input_html: {value: ''}
+         = hidden_field_tag 'selected', @member.notes
+         = f.button :wrapped, t('actions.submit')
+ .panel.panel-info.notescon
+  .panel-heading
+        span = t('.Send mail')
+        a.template data-toggle="modal" data-target="#myModal" = t('.View Templates')
+  .panel-body
+        = simple_form_for [:admin,@member] do |f|
+         = f.input :subject, input_html: {value: ''}
+         = hidden_field_tag 'selectedsubject', @member.subject
+         div.form-group.string.optional.member_contents
+          div.col-xs-8.text-right
+           label.string.optional.control-label Contents
+          div.col-xs-14
+           = f.text_area :contents, :value => ""
+           = hidden_field_tag 'selectedcontent', @member.contents
+         = f.input :sendmail, input_html: {value: ''}, :label => "Sendmail To"
+         = f.input :sendmailcc, input_html: {value: ''}, :label => "Sendmail Cc"
+         = hidden_field_tag 'selectedmail', @member.sendmail
+         div.form-submit.col-xs-22
+           = f.submit 'Send mail', class: 'btn btn-default btn-lg pull-right btn'
+           = f.submit 'Save as Template', class: 'btn btn-default btn-lg pull-right btn'
+
+div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        div class="modal-dialog modal-lg"
+                div class="modal-content col-xs-24"
+                        button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding:5px;"
+                                span aria-hidden="true" &times;
+                        div.col-md-8.col-sm-8.col-xs-24.subjects  
+                          p Subjects
+                          ul.allsubjectul
+                        div.col-md-11.col-sm-11.col-xs-24.subjects  
+                          p Contents
+                          ul.allcontentul
+scss:
+ textarea
+ {
+	width:100%; 
+ }
+ .editmember
+  {
+  	cursor:pointer;
+  	margin-right:5px;
+  }
+  .allmailsul 
+  {
+    display:none;
+    background: white none repeat scroll 0 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    max-height: 78px;
+    overflow: auto;
+  }
+  .allmails 
+  {
+    list-style-type: none;
+    padding: 3px;
+    cursor:pointer;
+  }
+  .mycc 
+  {
+    cursor: pointer;
+    float: left;
+    margin: 7px 5px;
+  }
+  .template
+  {
+    float:right;
+    cursor:pointer;
+  }
+  .subjects ul 
+  {
+    padding: 0;
+  }
+  .subjects li 
+  {
+    color: black;
+    cursor: pointer;
+    float: none;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: normal;
+    list-style-type: none;
+    margin-bottom: 5px;
+    opacity: 1;
+    text-shadow: none;
+  }
+  .subjects 
+  {
+    padding: 15px;
+  }
+  .subjects p
+  {
+    font-weight:bold;
+    font-size:16px;
+  }
+  #member_sendmail, #member_subject
+  {
+    height: 34px;
+    overflow: hidden;
+    resize: none;
+  }
+
+javascript:
+	var input = $("#selectedmail").val();
+	var inputs = $("#selectedsubject").val();
+	var inputc = $("#selectedcontent").val();
+	$(".member_sendmail  .col-xs-14").addClass("addmail");
+	$(".addmail").append('<ul class="allmailsul"></ul>');
+	$('.member_sendmail .col-xs-14').after('<span class = mycc> Cc </span>')
+	$('.member_sendmailcc').hide();
+	$('.mycc').click(function()
+	{
+		$('.member_sendmailcc').toggle(500);
+	})
+        var w =  input.toString().split("<br />");
+        for (var i = 0; i <= w.length - 1; i++)
+        {
+                $(".allmailsul").append('<li class="allmails">' + w[i] + '</li>');
+        }
+	var wc =  inputc.toString().split("<br />");
+        for (var i = 0; i <= wc.length - 1; i++)
+        {
+                $(".allcontentul").append('<li class="allcontents">' + wc[i] + '</li>');
+        }
+        var ws =  inputs.toString().split("<br />");
+        for (var i = 0; i <= ws.length - 1; i++)
+        {
+                $(".allsubjectul").append('<li class="allsubjects close" data-dismiss="modal" aria-label="Close"  data_sub ="' +  ws[i] + '"   data_con = "' +  wc[i]  + '" >' + ws[i] + '</li>');
+        }
+	$('#member_sendmail').focus(function(){
+	$('.allmailsul').fadeIn(100);
+	}).focusout(function(){
+        $('.allmailsul').fadeOut(100);
+        });
+	$(".allmails").click(function()
+	{
+		var em = $(this).text();
+		$("#member_sendmail").val(em);
+	})
+	$(".allsubjects").click(function()
+	{
+		var sc = $(this).attr("data_sub");
+		var co = $(this).attr("data_con");
+		$("#member_subject").val(sc);
+		$("#member_contents").val(co);
+		
+	})

@@ -1,0 +1,99 @@
+	<div class="about_page">
+	<div class="col-xs-24 map_image">
+		<div class="col-xs-24">
+		<p class="about_head">WELCOME TO<br><span>MONEY</span><div class="withborder">WITHOUT BORDERS</div></p>	
+		</div>
+		<div class="container" style="padding:20px 0 0;">	
+			<div class="col-md-24 col-sm-24 col-xs-24 box_padding">
+				<div class="box_white">
+					<h6>About TradeNAIRA</h6>
+					<p>TradeNAIRA is a trading names of EMEA Trade Limited (UK). EMEA Trade provides FinTech cross-border payment solutions for exotic Global currencies. We offer the fastest, most-advanced, cost efficient and transparent peer-to-peer matching engine for corporate and mid-high value currency transactions. Our platforms are built to handle high volumes of transactions 24/7 around the clock. Our clients are amongst the most well-known brands in the world and rely on us to support their global trade, investment, commerce and remittance operations. We aim to bring positive disruption to redundant, restrictive and outdated banking models by using technology to allow real-market participants to dictate their own terms and pricing.</p>
+	<!--				<p>EMEA Trade is regulated by the FCA in the UK for the provision of payment services. As a regulated entity, we operate in compliance with relevant legislative and regulatory regimes. We also assist our clients and other counterparties to meet their regulatory obligations, by fostering a partnership approach to compliance, developed through shared understanding of the end-to-end payments process, associated risks and effective mitigations.</p>
+-->				</div> 
+			</div>
+			<!--<div class="col-sm-11 col-sm-offset-2">
+				<div class="col-xs-24 box_padding">
+					<div class="box_white col-xs-24 customer">
+						<h6>Customer Stories</h6>
+						<div class="col-md-24"><div class="col-md-8 text-center"><%= image_tag("ahmed.png") %></div><div class="col-md-16"><p class="name">Ahmed, International Student</p><p class="descript">I came to London to study for my MSc at Imperial College and needed to pay for my university tuition fees, living expenses and rent using my savings from back home. I found out about this website where I could find someone willing to take my Naira in exchange for Pounds all online and very transparent. I decided to give it a go and have never turned back since. I feel like I can always find the best rates and move my money quickly and safely.</p></div></div>
+					</div>
+				</div>
+				
+				<div class="col-xs-24 box_padding">
+									<div class="box_white col-xs-24 customer">
+										<h6>Board of Directors</h6>
+										<p>The revolution is made of people. Incredibly satisfied people, in fact. Find out why they love <span>SellNAIRA</span></p>
+										<div class="col-md-24"><div class="col-md-8 text-center"><%= image_tag("alexandra.png") %></div><div class="col-md-16"><p class="name">Alexandra Thiebaut</p><p class="descript">Chairman, Lives in London, sends money back to France</p></div></div>
+									</div>
+								</div>
+			</div>-->
+			<div class="col-xs-24 fouder_head">CUSTOMER STORIES</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="fouder">
+			<div class="col-xs-24 nopad">
+				<div class="col-sm-12 col-xs-24 padding-TB-20 pad-R" style="">
+					<p class="name col-xs-24 nopad">Yinka <span>Technology Business Owner</span></p>
+					<div class="col-xs-24 nopad">
+						<div class="col-md-8 col-md-push-16 col-xs-24"><%= image_tag("yinka.png") %></div>
+						<div class="col-md-16 col-md-pull-8 col-xs-24 nopad detail">I truly believe that there are many investment opportunities here in Nigeria and if you wanted to setup a business anywhere in the world, there is nowhere that has the potential that Nigeria has today! But, in order for me to perform well or compete internationally I need to pay for the best advice and technology often in foreign currencies. www.tradenaira.com makes this cheap and easy for me. It is reliable, so I can continue to concentrate on growing my business knowing that my currency worries are behind me.</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-xs-24 padding-TB-20 pad-L" style="">
+					<p class="name col-xs-24 nopad">Darryl <span>International business owner</span></p>
+					<div class="col-xs-24 nopad">
+						<div class="col-md-8 col-md-push-16 col-xs-24"><%= image_tag("darryl.png") %></div>
+						<div class="col-md-16 col-md-pull-8 col-xs-24 nopad detail">We do business all over the world, we develop sustainable housing and our technology and experience mean that we have been able to bring real change to the communities in which we operate. Using www.tradenaira.com has allowed us to successfully remit funds back to our HQ in Belgium with little fuss or hassle and has meant that we could see Nigeria as a viable place to grow our business. I truly believe that the change we create will add true and lasting value to the local population and we can successfully train those locally to continue the great work that we do.</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-24 nopad">
+				<div class="col-sm-12 col-xs-24 padding-TB-20 pad-R" style="">
+					<p class="name col-xs-24 nopad">Chibueze <span>Foreign Property Owner</span></p>
+					<div class="col-xs-24 nopad">
+						<div class="col-md-8 col-md-push-16 col-xs-24"><%= image_tag("chibueze.png") %></div>
+						<div class="col-md-16 col-md-pull-8 col-xs-24 nopad detail">I have a property portfolio with about 15 houses in south-west London. I am currently residing in Lagos where I have brought the experience and knowledge I have gained from 22 years in the construction industry in the UK. So far I have started developing some industrial sites on the outskirts on Lagos, but have had to refinance my properties in the UK to get the money to complete the projects. I eventually need to pay back my debts in the UK as I have built a valuable reputation with the banks there. www.tradenaira.com has made this seem less daunting and more of a smooth process.</div>						
+					</div>
+				</div>
+				<div class="col-sm-12 col-xs-24 padding-TB-20 pad-L" style="">
+					<p class="name col-xs-24 nopad">Angues <span>Foreign Investor</span></p>
+					<div class="col-xs-24 nopad">
+						<div class="col-md-8 col-md-push-16 col-xs-24"><%= image_tag("angues.png") %></div>
+						<div class="col-md-16 col-md-pull-8 col-xs-24 nopad detail">I am an investor based in Hong Kong looking to invest in manufacturing companies and property developments in Lagos. I have used the www.tradenaira.com platform to facilitate all of my trade inflows into Nigeria as they offer me the best rates and the clearest and most transparent pricing. The customer service is absolutely fantastic and the insight is second to none.</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 col-md-offset-6 col-sm-24 col-xs-24 padding-TB-20">
+					<p class="name col-xs-24 nopad">Ahmed <span>International Student</span></p>
+					<div class="col-xs-24 nopad">
+						<div class="col-md-8 col-md-push-16 col-sm-7 col-sm-push-16 col-xs-24"><%= image_tag("ahmed.png") %></div>
+						<div class="col-md-16 col-md-pull-8 col-sm-16 col-sm-pull-7 col-xs-24 nopad detail">I came to London to study for my MSc at Imperial College and needed to pay for my university tuition fees, living expenses and rent using my savings from back home. I found out about this website where I could find someone willing to take my Naira in exchange for Pounds all online and very transparent. I decided to give it a go and have never turned back since. I feel like I can always find the best rates and move my money quickly and safely.</div>
+					</div>
+			</div>
+		</div>	
+		<!--
+		<div class="investor col-xs-24">
+					<div class="col-xs-24 fouder_head" style="padding:0 0 20px;">INVESTORS</div>			
+					<div class="col-xs-24 text-center"><%= image_tag("pantera.png", class:"pantera") %></div>
+				</div>
+				<div class="col-xs-24 fouder_head" style="padding:0 0 20px;">OFFICES</div>		
+				<div class="col-xs-24">
+					<div class="col-sm-8 col-xs-24 text-center">
+						<div class="location">UNITED KINGDOM</div>
+						<div class="companyname">Bitstamp Ltd.</div>
+						<div class="address">5 New Street Square<br />London EC4A 3TW<br />United Kingdom</div>
+					</div>
+					<div class="col-sm-8 col-xs-24 text-center">
+						<div class="location">LUXEMBOURG</div>
+						<div class="companyname">Bitstamp Europe S.A.</div>
+						<div class="address">10 rue Antoine Jans<br />L-1820 Luxembourg<br />Luxembourg</div>
+					</div>
+					<div class="col-sm-8 col-xs-24 text-center">
+						<div class="location">UNITED STATES</div>
+						<div class="companyname">Bitstamp USA Inc.</div>
+						<div class="address">2930 Magnolia Street<br />Berkeley, CA 94705<br />United States</div>
+					</div>
+		</div>-->
+	</div>
+	</div>

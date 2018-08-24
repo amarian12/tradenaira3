@@ -1,3 +1,4 @@
+@import 'vars/bootstrap';
 /* auto header dropdown menu active
 ------------------------------------------------------ */
 header {
@@ -8,9 +9,6 @@ header {
       visibility: hidden;
       margin-top: -1px;
   }
-
-  .navbar-brand { width: $brand-width; }
-
   .dropdown-menu li:hover .sub-menu {
       visibility: visible;
   }

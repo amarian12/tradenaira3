@@ -1,4 +1,7 @@
 en:
+  blogo:
+    admin: 
+      meta_description: "Meta descriptions"
   activerecord:
     models:
       api_tokens: API Token
@@ -138,6 +141,7 @@ en:
         id_document_verified?: "Id Document Verified?"
         two_factor_activated?: "Tow Factor Activated?"
         phone_number: Phone Number
+        notes_created: Notes Created
       two_factor/sms:
         country: Country
         phone_number: Phone Number
@@ -253,6 +257,17 @@ en:
           attributes:
             otp:
               invalid: Wrong Password!Please re-enter.
+        withdraws/ghanaian:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        two_factor:
+          attributes:
+            otp:
+              invalid: Wrong Password!Please re-enter.
+                    
         application:
           attributes:
             redirect_uri:
@@ -296,6 +311,11 @@ en:
       doge: DOGE
       pts: PTS
       ltc: LTC
+      ngn: NGN
+      usd: USD
+      eur: EUR
+      gbp: GBP
+      ghs: GHS
   currency:
     satoshi:
       key: BTC
@@ -322,6 +342,31 @@ en:
       code: PTS
       name: Protoshare
       format: '0,0.0000'
+    Naira:
+      key: NGN
+      code: NGN
+      name: Naigirean 
+      format: '0,0.00'
+    Ghanaian:
+      key: GHS
+      code: GHS
+      name: Ghanaian 
+      format: '0,0.00'  
+    Dollar:
+      key: USD
+      code: USD
+      name: Dollar 
+      format: '0,0.00'
+    Euro:
+      key: EUR
+      code: EUR
+      name: Euro 
+      format: '0,0.00'
+    Pound:
+      key: GBP
+      code: GBP
+      name: Pound 
+      format: '0,0.00'
   datagrid:
     empty: no data found
     filters:
@@ -455,7 +500,7 @@ en:
   deposit_channel:
     bank:
       key: Bank transfer
-      title: Bank transfer
+      title: Yuan Deposits(Pending)
       intro: Bank transfer deposits, recommend for large recharge
       latency: 10 minutes
       transfer: Manual
@@ -463,8 +508,43 @@ en:
     satoshi:
       key: Block Chain
       title: Bitcoin Deposits
-      intro: Deposit bitcoin from your own wallet address to Peatio account
+      intro: Deposit bitcoin from your own wallet address to Tradenaira account
       latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+    naira:
+      key: Naira transfer
+      title: Naira Deposits(Pending)
+      intro: Deposit Naira from your own wallet address to Tradenaira account
+      latency: 10 minutes
+      transfer: Manual
+      go: Deposit
+    ghanaian:
+      key: Ghanaian transfer
+      title: Ghanaian Deposits(Pending)
+      intro: Ghanaian cedi from your own wallet address to Tradenaira account
+      latency: 10 minutes
+      transfer: Manual
+      go: Deposit  
+    dollar:
+      key: Dollar transfer
+      title: Dollar Deposits(Pending)
+      intro: Deposit Dollar from your own wallet address to Tradenaira account
+      latency: 10 minutes
+      transfer: Manual
+      go: Deposit
+    euro:
+      key: Euro transfer
+      title: Euro Deposits(Pending)
+      intro: Deposit Euro from your own wallet address to Tradenaira account
+      latency: 10 minutes
+      transfer: Manual
+      go: Deposit
+    pound:
+      key: Pound transfer
+      title: Pound Deposits(Pending)
+      intro: Deposit Pound from your own wallet address to Tradenaira account
+      latency: 10 minutes
       transfer: Manual
       go: Deposit
   deposits/bank:
@@ -621,7 +701,7 @@ en:
       view_open_tickets: View open tickets
     account_versions:
       index:
-        description: Every transaction and every penny of income in Peatio are well
+        description: Every transaction and every penny of income in Tradenaira are well
           documented and exhaustive.
     api_tokens:
       user_tokens:
@@ -670,18 +750,32 @@ en:
         liability-proof: Proof of Liabilities
         btc-assets: BTC Assets
         cny-assets: CNY Assets
+        ngn-assets: NGN Assets
+        usd-assets: USD Assets
+        eur-assets: EUR Assets
+        gbp-assets: GBP Assets
+        ghs-assets: GHS Assets
       liability_tabs:
         verify-btc: Verify My BTC Assets
         verify-cny: Verify My CNY Assets
+        verify-ngn: Verify My NGN Assets
+        verify-usd: Verify My USD Assets
+        verify-eur: Verify My EUR Assets
+        verify-gbp: Verify My GBP Assets
+        verify-ghs: Verify My GHS Assets
         btc-assets-total: 'Total BTC assets of exchange: '
         cny-assets-total: 'Total CNY assets of exchange: '
+        ngn-assets-total: 'Total NGN assets of exchange: '
+        usd-assets-total: 'Total USD assets of exchange: '
+        eur-assets-total: 'Total EUR assets of exchange: '
+        gbp-assets-total: 'Total GBP assets of exchange: '
+        ghs-assets-total: 'Total GHS assets of exchange: '
       liability_proof:
         title: Proof of Liabilities
         intro: As an exchange, our liabilities refer to the sum of money (in both
           crypto currencies and fiat currencies) that our users trust us with. On
           this page, we present you our liabilities. We also provide you a way to
           verify that your account balance is indeed part of our liabilities.
-        how-to-verify: How to verify an exchange is solvent?
         how-to-verify-uri: https://peatio.com/documents/liability_proof
       liability_data:
         liability-proof-generating: Proof of Liability generation in process, please
@@ -703,15 +797,83 @@ en:
         description: " <p>For supervision, you can inquiry the balance of our deposit
           account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
           Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
+      ngn_assets:
+        title: NGN Assets
+        intro: All of exchange's NGN assets are listed here.
+        total: Total NGN Assets
+        description: " <p>For supervision, you can inquiry the balance of our deposit
+          account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
+          Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
+      usd_assets:
+        title: USD Assets
+        intro: All of exchange's USD assets are listed here.
+        total: Total USD Assets
+        description: " <p>For supervision, you can inquiry the balance of our deposit
+          account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
+          Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
+      eur_assets:
+        title: EUR Assets
+        intro: All of exchange's EUR assets are listed here.
+        total: Total EUR Assets
+        description: " <p>For supervision, you can inquiry the balance of our deposit
+          account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
+          Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
+      gbp_assets:
+        title: GBP Assets
+        intro: All of exchange's GBP assets are listed here.
+        total: Total GBP Assets
+        description: " <p>For supervision, you can inquiry the balance of our deposit
+          account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
+          Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
+
+      ghs_assets:
+        title: GHS Assets
+        intro: All of exchange's GHS assets are listed here.
+        total: Total GHS Assets
+        description: " <p>For supervision, you can inquiry the balance of our deposit
+          account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
+          Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"    
+
+
+
       partial_tree:
         success: 'Success! Verification data generated at: %{timestamp}'
     funds:
       show:
         account_history: Account History
         cny_format: '0.00'
+        ngn_format: '0.00'
+        usd_format: '0.00'
+        eur_format: '0.00'
+        gbp_format: '0.00'
+        ghs_format: '0.00'
         btc_format: '0.00000000'
         reason:
           cny:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          ngn:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          usd:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          eur:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          gbp:
             strike_add: Plus
             strike_sub: Sub
             deposit: Deposit
@@ -723,12 +885,18 @@ en:
             deposit: Deposit
             withdraw: Withdraw
             fix: Fix
+          ghs:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix  
         ref:
           system: System
           default: Default
     id_documents:
       edit:
-        state: State
+        state: Account Status
         state_unverified: UNVERIFIED
         state_verifying: VERIFYING
         state_verified: VERIFIED
@@ -766,6 +934,11 @@ en:
         all_html: "<i class='fa fa-check'></i><span>All Markets</span>"
         cny_html: "<i class='fa fa-check'></i><span>CNY Markets</span>"
         btc_html: "<i class='fa fa-check'></i><span>BTC Markets</span>"
+        ngn_html: "<i class='fa fa-check'></i><span>NGN Markets</span>"
+        usd_html: "<i class='fa fa-check'></i><span>USD Markets</span>"
+        eur_html: "<i class='fa fa-check'></i><span>EUR Markets</span>"
+        gbp_html: "<i class='fa fa-check'></i><span>GBP Markets</span>"
+        ghs_html: "<i class='fa fa-check'></i><span>GHS Markets</span>"
         price: Price
         change: "24h %"
       range_switch:
@@ -880,7 +1053,7 @@ en:
       success: Settings updated successfully.
       failure: Invalid passcode. Please try again.
       index:
-        safety_instruction: In order to protect your bitcoins and personal information, we strongly suggest that you use Two-Factor Authentication.
+        safety_instruction: In order to protect your account and personal information, we strongly suggest that you use Two-Factor Authentication.
         reset_password: Rest your Password
         reauthenticate: Authentication
         activated: An  email has been sent to your mailbox, please check it for verification
@@ -917,6 +1090,7 @@ en:
           description: Help keep the bad guys out of your account by using both your
             password and your phone
           go: Submit
+          rego: Resubmit
           verified: Verified
         asset_passwords:
           title: Asset password
@@ -956,6 +1130,11 @@ en:
         available: Available
         title: "%{icon} %{c} Account"
         cny_format: '0.00'
+        ngn_format: '0.00'
+        usd_format: '0.00'
+        eur_format: '0.00'
+        gbp_format: '0.00'
+        ghs_format: '0.00'
         btc_format: '0.00000000'
         total: Total
   guides:
@@ -963,7 +1142,7 @@ en:
       settings:
         panel: Settings
         index:
-          intro: Admin and revise your profile.
+          intro: My Profile
       api_tokens:
         panel: API Tokens
         index:
@@ -1016,16 +1195,13 @@ en:
       panel: Login
       new:
         title: Login my account
-        intro: Login Peatio now for you to exchange.
       failure:
         title: Login my account
-        intro: Login Peatio now for you to exchange.
+        intro: Login Tradenaira now for you to exchange.
     identities:
       panel: Create Account
       new:
         title: Create My Account
-        intro: This will be your only ID on Peatio which is necessary for your exchange
-          , deposit and withdrawal . please fill it out carefully.
       edit:
         panel: My Account
         title: Reset Password
@@ -1037,12 +1213,12 @@ en:
         bank:
           amount: Minimum amount 100
       session:
-        email: E-mail Address
-        password: Password
+        email: Email Address
+        password: Atleast 6 characters include uppercase letters and numbers
       identity:
-        email: Example：xiaobai@example.com
-        password: Please set your login password
-        password_confirmation: Confirm your password
+        email: Example：email@gmail.com
+        password: Password
+        password_confirmation: Password Confirmation
         edit:
           password: Please set your account password!
       document:
@@ -1117,14 +1293,14 @@ en:
         address: Address
         category: Category
       session:
-        email: Sign In E-mail
-        password: Sign In Password
+        email: E-mail
+        password: Password
         captcha: Captcha
       identity:
-        email: Sign In E-mail
+        email: E-mail
         old_password: Original password
         password: New Password
-        password_confirmation: Confirm new password
+        password_confirmation: Confirm New Password
       reset_password:
         password: New Password
       ticket:
@@ -1157,12 +1333,80 @@ en:
           confirm: Confirm recharge?
         update:
           blank_txid: TxID can't be blank
+      nairas:
+        index:
+          oneday: Requests in the last 24 hours
+          available: All Pending Requests
+        show:
+          alert: Recharge cannot be located.
+          notice: The recharge have been successful.
+          deposit: Deposit Request
+          accept: Accept
+          target_deposit: Wire Transfer
+          confirm: Confirm recharge?
+          cancel: Cancel
+        update:
+          blank_txid: TxID can't be blank
+      dollars:
+        index:
+          oneday: Requests in the last 24 hours
+          available: All Pending Requests
+        show:
+          alert: Recharge cannot be located.
+          notice: The recharge have been successful.
+          deposit: Deposit Request
+          accept: Accept
+          target_deposit: Wire Transfer
+          confirm: Confirm recharge?
+        update:
+          blank_txid: TxID can't be blank
+      euros:
+        index:
+          oneday: Requests in the last 24 hours
+          available: All Pending Requests
+        show:
+          alert: Recharge cannot be located.
+          notice: The recharge have been successful.
+          deposit: Deposit Request
+          accept: Accept
+          target_deposit: Wire Transfer
+          confirm: Confirm recharge?
+        update:
+          blank_txid: TxID can't be blank
+      pounds:
+        index:
+          oneday: Requests in the last 24 hours
+          available: All Pending Requests
+        show:
+          alert: Recharge cannot be located.
+          notice: The recharge have been successful.
+          deposit: Deposit Request
+          accept: Accept
+          target_deposit: Wire Transfer
+          confirm: Confirm recharge?
+        update:
+          blank_txid: TxID can't be blank
       satoshis:
         update:
           notice: The deposit was successful.
         index:
           accept: Accept
           accept_confirm: Confirm deposit?
+      ghanaian:
+        index:
+          oneday: Requests in the last 24 hours
+          available: All Pending Requests
+        show:
+          alert: Recharge cannot be located.
+          notice: The recharge have been successful.
+          deposit: Deposit Request
+          accept: Accept
+          target_deposit: Wire Transfer
+          confirm: Confirm recharge?
+          cancel: Cancel
+        update:
+          blank_txid: TxID can't be blank
+              
     tickets:
       view: View
       close: Close Ticket
@@ -1183,6 +1427,16 @@ en:
         actions_title: Action
         accounts_title: Account Information
         account_versions_title: Records
+      update:
+        notes: Notes can't be blank
+        sendmail: Email can't be blank
+        subject: Subject can't be blank
+        contents: Contents can't be blank
+    id_documents:
+      index:
+        search: Search
+        email: Email
+        name: Name
     dashboard:
       index:
         accounts_title: Account Summary
@@ -1236,6 +1490,58 @@ en:
           reject_confirm: Confirm Reject?
           withdraw: Withdraw
           empty: No Data
+      pounds:
+        index:
+          one: Pending withdrawal Orders
+          all: Twenty-four hours Orders
+          empty: No Data
+        show:
+          process: Process
+          succeed: Succeed
+          reject: Reject
+          succeed_confirm: Confirm Process?
+          reject_confirm: Confirm Reject?
+          withdraw: Withdraw
+          empty: No Data  
+      euros:
+        index:
+          one: Pending withdrawal Orders
+          all: Twenty-four hours Orders
+          empty: No Data
+        show:
+          process: Process
+          succeed: Succeed
+          reject: Reject
+          succeed_confirm: Confirm Process?
+          reject_confirm: Confirm Reject?
+          withdraw: Withdraw
+          empty: No Data
+      nairas:
+        index:
+          one: Pending withdrawal Orders
+          all: Twenty-four hours Orders
+          empty: No Data
+        show:
+          process: Process
+          succeed: Succeed
+          reject: Reject
+          succeed_confirm: Confirm Process?
+          reject_confirm: Confirm Reject?
+          withdraw: Withdraw
+          empty: No Data
+      dollars:
+        index:
+          one: Pending withdrawal Orders
+          all: Twenty-four hours Orders
+          empty: No Data
+        show:
+          process: Process
+          succeed: Succeed
+          reject: Reject
+          succeed_confirm: Confirm Process?
+          reject_confirm: Confirm Reject?
+          withdraw: Withdraw
+          empty: No Data
       satoshis:
         index:
           one: Pending withdrawals
@@ -1248,6 +1554,19 @@ en:
           succeed_confirm: Process withdrawal?
           reject_confirm: Reject withdrawal?
           withdraw: Withdrawals
+      ghanaian:
+        index:
+          one: Pending withdrawal Orders
+          all: Twenty-four hours Orders
+          empty: No Data
+        show:
+          process: Process
+          succeed: Succeed
+          reject: Reject
+          succeed_confirm: Confirm Process?
+          reject_confirm: Confirm Reject?
+          withdraw: Withdraw
+          empty: No Data    
   deposits/satoshi:
     aasm_state:
       submitted: Submitted
@@ -1261,7 +1580,7 @@ en:
       trade: Submit and cancel orders
     authorizations:
       new:
-        title: Peatio Application Authorization
+        title: Tradenaira Application Authorization
         authorize_html: Authorize <strong class='text-info'>%{name}</strong> to use
           your account?
         scopes: 'This application will be able to:'
@@ -1350,6 +1669,11 @@ en:
     currency:
       cny: CNY
       btc: BTC
+      ngn: NGN
+      usd: USD
+      eur: EUR
+      gbp: GBP
+      ghs: GHS
     order:
       state:
         done: DONE
@@ -1386,6 +1710,7 @@ en:
       id_bill_type:
         bank_statement: Bank Statement
         tax_bill: Tax Bill
+        utility_bill: Utility Bill
   views:
     pagination:
       first: "&laquo; First"
@@ -1396,41 +1721,41 @@ en:
 
   mailer:
     dear_user: Dear user,
-    signature: Thanks,<br/>The Peatio Team
+    signature: Thanks,<br/>The Tradenaira Team
     please_contact: If it's not you, please <a href='mailto:%{contact_mail}'>contact us</a> ASAP.
     footer: This is an automatically generated email, please do not reply, if you have any question, please <a href="mailto:%{contact_mail}">contact us</a>.
   comment_mailer:
     admin_notification:
-      subject: "[PEATIO] User reply a ticket"
+      subject: "[Tradenaira] User reply a ticket"
       notification_content: User %{email} reply a ticket, please follow the link below to see the detail
     user_notification:
-      subject: "[PEATIO] Your ticket got a new reply"
+      subject: "[Tradenaira] Your ticket got a new reply"
       notification_content: 'Your ticket got a new reply, please follow the link below to see the detail:'
   deposit_mailer:
     accepted:
-      subject: "[Peatio] Your deposit has been credited into your account"
+      subject: "[Tradenaira] Your deposit has been credited into your account"
       content: Your %{currency} deposit has been credited into your account.
   member_mailer:
     notify_signin:
-      subject: "[PEATIO] You have just signed in"
+      subject: "[Tradenaira] You have just signed in"
       just_signed_in: You have just signed in.
     google_auth_activated:
-      subject: "[PEATIO] Google authenticator activated"
+      subject: "[Tradenaira] Google authenticator activated"
       google_auth_activated: You have activated google authenticator successfully
     google_auth_deactivated:
-      subject: "[PEATIO] Google authenticator deactivated"
+      subject: "[Tradenaira] Google authenticator deactivated"
       google_auth_deactivated: You have deactivated google authenticator successfully
     sms_auth_activated:
-      subject: "[PEATIO] SMS authenticator activated"
+      subject: "[Tradenaira] SMS authenticator activated"
       sms_auth_activated: You have activated SMS authenticator successfully
     sms_auth_deactivated:
-      subject: "[PEATIO] SMS authenticator deactivated"
+      subject: "[Tradenaira] SMS authenticator deactivated"
       sms_auth_deactivated: You have deactivated SMS authenticator successfully
     reset_password_done:
-      subject: "[PEATIO] Your password changed"
+      subject: "[Tradenaira] Your password changed"
       successful: Your password has been changed successfully.
     phone_number_verified:
-      subject: "[PEATIO] Your phone number verified"
+      subject: "[Tradenaira] Your phone number verified"
       verified: 'Your phone number verified: %{phone_number}'
   system_mailer:
     daily_stats:
@@ -1443,39 +1768,86 @@ en:
       trades_change_total: Trades Changes Total
   ticket_mailer:
     admin_notification:
-      subject: "[PEATIO] User created a new ticket"
+      subject: "[Tradenaira] User created a new ticket"
       admin_notification_content: User %{email} created a new ticket, please follow the link below to see the detail
     author_notification:
-      subject: "[PEATIO] Thank you for submit ticket"
+      subject: "[Tradenaira] Thank you for submit ticket"
       thanks_for_submit_ticket: Thank you for submit ticket to us, we will get back to you as soon as possible.
   token_mailer:
     activation:
-      subject: "[Peatio] Account Activation"
-      click_to_verify: 'Thank you for signing up on Peatio, please follow this link to verify your Email:'
+      subject: "[Tradenaira] Account Activation"
+      click_to_verify: 'Thank you for signing up on Tradenaira, please follow this link to verify your Email:'
       unable_to_click: Copy and open the link in your browser if you are unable to click and visit it.
       link_expire: The link expires in 30 minutes.
     reset_password:
-      subject: "[Peatio] Please Reset Your Password"
+      subject: "[Tradenaira] Please Reset Your Password"
       hi: Hi,
       follow_the_link: 'Please follow this link to reset your password within 30 minutes:'
+    sendadmin:
+      subject: "[Tradenaira] New User Sign up"
+      content: A new user has signed up on tradenaira
   withdraw_mailer:
     submitted:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Tradenaira] Your withdraw state update"
       content: The request of your %{currency} withdrawal has been successfully submitted, We will process it as soon as possible. Please be patient with us. Contact us if you have any questions.
     processing:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Tradenaira] Your withdraw state update"
       content: The request of your %{currency} withdrawal is in process. Please be patient with us. Contact us if you have any questions.
     done:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Tradenaira] Your withdraw state update"
       content: The request of your %{currency} withdrawal is complete. Please check it out. Contact us if you have any questions.
     withdraw_state:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Tradenaira] Your withdraw state update"
       your_state: 'Your withdrawal state: '
+
+  iddocument_mailer:
+    unverified:
+      subject: "[Tradenaira] Your account verification state update"
+      content: Unfortunately, your account has not been approved as we were unable to verify your identity.Please log on to your TradeNAIRA account and submit a copy of valid government ID (Such as a Driver's License, Passport or National ID card) and a proof of address (Such as a utility bill, bank statement or local tax bill.) Once we have received and confirmed this information we will approve and activate your account. We look forward to having you as a member.
+    verified:
+      subject: "[Tradenaira] Your account verification state update"
+      content: Congratulations, we have verified your documents and your TradeNAIRA account has been approved. If you have verified you phone number already, you can now log on and have full access to our platform. You will be able to bid to buy and sell Naira online.
+
 
   'true': true
   'false': false
   view_on_github: View on Github
   slogan: An open-source crypto-currency exchange for world.
+  overseas: Overseas Workers
+  buynaira: TRADE NAIRA IS PERFECT FOR
+  expats: Expats
+  business: Business
+  students: International Students
+  foeignproperty: Foreign Property Owners
+  load: Load
+  trad: Trade
+  send: Send
+  loaddes: Load your account with the amount in NGN, GBP, USD, EUR or Bitcoin that you want to exchange. You can do this with a simple bank transfer.
+  tradedes: Once your account is credited you will be able to exchange any of our other operating currencies at a price you choose on the Trading Floor.
+  senddes: After you have made your exchange, you can transfer the exchanged funds to any account of your choice in your name worldwide.
+  latestnews: Latest News & Press Releases
+  topicnews: How TradeNAIRA works?
+  recentblog: Recent Blog Posts
+  topicrecentblog: The Pound hits a seven-year high against the Euro - but you're still getting short changed
+  daterecentblog: Jul 28, 2015
+  recentblogdes: As British schools break up for the summer, UK holidaymakers preparing to jet off to sunnier climates in Europe would have been delighted to see that they will be getting more for their money when they go abroad this year.
+  amazontopic: Earn Amazon vouchers with Midpoint's customer referral program!
+  amazondate: Aug 05, 2015
+  amazondes: At Midpoint we recognise how valuable a personal recommendation is, which is why we'd like to thank you when you recommend our award-winning service.
+  british: As British schools break up for the summer, UK holidaymakers preparing to jet off to sunnier climates in Europe would have been delighted to see that they will be getting more for their money when they go abroad this year.
+  britishdate: Jan 20, 2015
+  britishdes: The financial papers are full of Foreign Exchange (FX) news in the wake of the announcement by the Swiss National Bank (SNB) last Thursday (15 January) that resulted in a shock appreciation of the Swiss franc.
+  greathead: Great Customer Service
+  greatdesc: We have a fully functional online query handling system to assist you in using our online trading platform.
+  fasthead: Fast & Simple 
+  fastdesc: Registration is quick and easy and the trading platform is very easy to use. You will be making high quality trades in no time.
+  safehead: Safe and Secure
+  safedesc: Two-factor authentication (email or authenticator apps) is required for all withdrawals and API usage. Our entire site requires SSL.
+  markethead: Marketplace
+  marketdesc: We are the largest and most transparent market place for Nigerian Naira and other West African exotic Currencies. 
+  goodcompyhead: You are in a good company!
+  goodcompydesc: While we’d love to take all the credit, it’s really all down to our global community of members that keep our exchange vibrant. Join the conversation on
+  joinus: Join us Today
   tags:
     vip: VIP
     hero: Hero Member
@@ -1489,9 +1861,9 @@ en:
   gon:
     ask: Ask
     bid: Bid
-    brand: Peatio Exchange
+    brand: Tradenaira Exchange
     notification:
-      title: Peatio Exchange
+      title: Tradenaira Exchange
       enabled: Notification enabled.
       new_trade: "%{kind} order#%{id} executed at %{price} %{quote_unit} for %{volume} %{base_unit}。"
   back: Back
@@ -1508,7 +1880,7 @@ en:
       short: "%m-%d %H:%M"
       default: "%m/%d/%Y %H:%M"
   sms:
-    verification_code: 'Your phone number verification code is: %{code}.'
+    verification_code: 'Your TradeNAIRA phone number verification code is: %{code}.'
     password_changed: Hi %{email}, you password has been changed successfully.
     deposit_done: Hi %{email}, the request of your deposit is complete.
     withdraw_done: Hi %{email}, the request of your withdrawal is complete.
@@ -1516,15 +1888,22 @@ en:
     home: Home
     dashboard: Dashboard
     admin: Admin Panel
-    market: Trade
+    market: The Trading Floor
     settings: Profile
-    signin: Sign In
+    Signin: Sign In
+    signin: Login
+    login: LOGIN
     signout: Exit
     signup: Sign Up
+    openaccount: OPEN AN ACCOUNT
+    trade: Trade Services
+    learn: Discover Nigeria
+    sendmoney: Send Money
+    language: EN
     login_via_weibo: Login via Weibo
     funds: Funds
     getstart: Get Start
-    assets: Solvency
+    assets: Exchange's Assets
     history: History
     order_history: Order History
     trade_history: Trade History
@@ -1536,6 +1915,8 @@ en:
     total: Total
     deposit: Deposit
     withdraw: Withdraw
+    viewmore: View More >>
+    news: News
   admin_header:
     deposits: Deposits
     withdraws: Withdraws
@@ -1698,9 +2079,9 @@ en:
     application:
       close: Close
     meta:
-      page_title: Peatio - The Opensource Cryptocurrency Exchange
-      page_description: Peatio - The Opensource Cryptocurrency Exchange
-      page_keywords: Peatio,Opensource,Exchange,Cryptocurrency
+      page_title: TradeNAIRA - Buy or Sell Naira – A Transparent Nigerian Naira Exchange
+      page_description: TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars or Euros at best Exchange Rates. Send money to Nigeria with the best rates for USD, EUR and GBP swapped for NGN.
+      page_keywords: Tradenaira,Opensource,Exchange,Cryptocurrency
   members:
     edit:
       name: Please fill out the application.
@@ -1778,13 +2159,13 @@ en:
       hints:
         app: Google Authenticator will re-generate a new password every thirty seconds,
           please input timely.
-        sms: We'll send a text message to you phone with verify code.
+        sms: SMS Verification - click "Send code" and you will receive a unique 6 digit code to your registered phone number. Input code to confirm withdrawal.
   verify:
     google_auths:
       edit:
         submit: Disable
         warning: 'Tip: If you have lost your Two-Factor Authentication by some reason
-          and can''t login your Peatio account, please contact our online customer
+          and can''t login your TradeNAIRA account, please contact our online customer
           service.'
       show:
         step-1: Step 1
@@ -1833,7 +2214,7 @@ en:
   withdraw_channel:
     bank:
       key: Bank Transfer
-      title: Bank Transfer
+      title: Yuan Withdrawals(Pending)
       intro: Bank transfer deposits, Recommend for large recharge
       latency: 30 minutes
       transfer: Manual
@@ -1845,6 +2226,44 @@ en:
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
+    naira:
+      key: Naira Transfer
+      title: Naira Withdrawals(Pending)
+      intro: Naira transfer deposits, Recommend for large recharge
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    dollar:
+      key: Dollar Transfer
+      title: Dollar Withdrawals(Pending)
+      intro: Dollar transfer deposits, Recommend for large recharge
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    euro:
+      key: Euro Transfer
+      title: Euro Withdrawals(Pending)
+      intro: Euro transfer deposits, Recommend for large recharge
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    pound:
+      key: Pound Transfer
+      title: Pound Withdrawals(Pending)
+      intro: Pound transfer deposits, Recommend for large recharge
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+
+    ghanaian:
+      key: Ghanaian Transfer
+      title: Ghanaian Withdrawals(Pending)
+      intro: Ghanaian transfer deposits, Recommend for large recharge
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw  
+      
+
   withdraws:
     invalid_address: is not valid. You can not withdraw to this address.
   withdraws/bank:

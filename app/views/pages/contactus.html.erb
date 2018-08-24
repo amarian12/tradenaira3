@@ -1,0 +1,41 @@
+<%= metamagic title: "Contact Us" %>
+<div class="static">
+	<div class="container contactus" style="min-height: 500px;"> 
+		<% if current_user %>	
+		<iframe id="iframe-id" width="100%" src="/tickets/new"/>
+		</iframe>
+		<% end %>   
+		<h2 style="margin-bottom: 20px">Contact Us</h2>
+		<!-- <h4>Company</h4>
+		<p>EMEA Trade Ltd</p>
+		<div class="col-sm-12 col-xs-24">
+			<h4>Address</h4>
+			<p>16, Ingestre place <br>Soho <br>London <br>W1F 0JJ. </p>
+		</div>
+		<div class="col-sm-12 col-xs-24">
+		<h4>Service Hotline</h4>
+		<p>+44 (0)203 318 0855 - UK</p>
+		<h4>Customer Service</h4>
+		<p>+44 (0)203 318 0855 - UK </p>
+		</div> -->
+		<div class="col-xs-24"><p>For business cooperation, please email to <a href="mailto:support@tradenaira.com">s​upport@tradenaira.com​</a> or dial +44 (0)203 540 8187.</p></div>
+	</div>
+</div>
+<style>
+	iframe
+	{
+		border:0;
+	}
+</style>
+<script>
+	$(document).ready(function()
+	{
+		$('iframe').load(function() {
+	    $(this).contents().find("footer, header").css("display","none");
+	    var h = $(this).contents().find("#wrap").height();
+	    $(this).height(h);
+	    $(this).contents().find(".panel-body").css({"padding":"0","overflow":"hidden"});
+	    $(this).contents().find(".panel-body .col-xs-24 .col-xs-20 > a").addClass("btn btn-primary");
+	});
+	})
+</script>

@@ -220,7 +220,38 @@ class Withdraw < ActiveRecord::Base
     end
 
     self.sum ||= 0.0
-    self.fee ||= 0.0
+
+    #getfee = "select trader from id_documents where id = #{self.member_id}"
+
+    @getfee =  IdDocument.where(:id => self.member_id).pluck(:trader)
+    @getfeeq =  @getfee.to_json.html_safe
+   
+    if @getfeeq != '["nofees"]'
+
+      if self.currency == 'ngn'
+        if self.sum >= 3500000
+      self.fee ||= 1.5/100 * sum
+        else
+        self.fee ||= 2.5/100 * sum
+        end
+      elsif self.currency == 'usd'
+        if self.sum >= 10000
+        self.fee ||= 1.5/100 * sum
+        else
+        self.fee ||= 2.5/100 * sum
+        end
+      elsif self.currency == 'eur'
+        if self.sum >= 7500
+        self.fee ||= 1.5/100 * sum
+        else
+        self.fee ||= 2.5/100 * sum
+        end
+    else
+        self.fee ||= 2.5/100 * sum
+      end
+    else
+        self.fee ||= 0.0
+    end
     self.amount = sum - fee
   end
 

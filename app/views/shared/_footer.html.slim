@@ -1,22 +1,50 @@
-footer
+meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+footer.col-xs-24.sanc
   .container
     .row.text-center
-      p
-        | Maintained by the
-        a<> target='_blank' href='https://github.com/orgs/peatio/people' core team
-        | with the help of
-        a< target='_blank' href='https://github.com/peatio/peatio/graphs/contributors' our contributors
-        | .
-      p
-        | Code licensed under
-        a< target='_blank' href='http://peatio.mit-license.org/' MIT
-        | , documentation under
-        a< target='_blank' href='http://creativecommons.org/licenses/by/3.0/' CC BY 3.0
-        | .
-      p: ul.list-inline
-        li: span Currently v#{Peatio::VERSION}
-        li: a target='_blank' href='https://github.com/peatio/peatio' GitHub
-        li: a target='_blank' href='https://github.com/peatio/peatio/tree/master/doc' Documents
-        li: a target='_blank' href='https://github.com/peatio/peatio/wiki/About' About
-        li: a target='_blank' href='https://github.com/peatio/peatio/issues?state=open' Issues
-        li: a target='_blank' href='https://github.com/peatio/peatio/releases' Releases
+    	ul.footer.col-xs-24
+	        //li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#' News
+	        li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/termsofuse' Terms of Use
+	        li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/fee' Fee Schedule
+	        li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/amlpolicy' AML Policy
+	        li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/about' About Trade Naira
+	        li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/riskwarning' Risk Warning
+	        li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/privacy' Privacy Policy
+	        li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/cookie' Cookies
+	        li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/send-money-to-nigeria' = t("header.sendmoney")
+			li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/request-money' Request Money
+			li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}pages/faq' FAQs
+			li.col-md-6.col-sm-8.col-xs-12.full-width: a href='#{root_path}blog' Blog
+	    .copyright
+	      .important#hai
+	    	p
+	    		| IMPORTANT: Use of this website is subject to the website 
+	    		a href='#{root_path}pages/termsofuse' Terms and Conditions. 
+	    		| Use of the Services of www.tradenaira.com is subject to the Client Agreement. Nothing on this website constitutes or should be construed as financial advice. This information has been prepared for distribution over the internet and without taking into account the investment objectives, financial situation and particular needs of any particular person. TradeNAIRA makes no recommendations as to the merits of any financial product referred to in this website, emails or its related websites.
+	    	
+	    	p
+	    		| DISCLAIMER: TradeNAIRA makes no warranty, express or implied, concerning the suitability, completeness, quality or exactness of the information and models provided in this web site. 
+	    		a href='#{root_path}pages/riskwarning' Read full disclaimer.
+			p	    		
+	    		| TradeNAIRA provides market matching services to individual clients and business customers. TradeNAIRA does not sell FX or act as a Bureau de Change, it is purely a trade facilitator for individual clients and business customers to trade their excess currency directly with one another.
+	    	p
+	    		| Use our free estimated currency calculators, estimated exchange rate charts, economic calendars, in-depth currency news and updates and benefit from competitive exchange rates and outstanding customer service.
+	    	//p
+	    		//| EMEA Trade Limited is authorised by the Financial Conduct Authority (FRN: 521566) for the provision of payment services. 
+	    	
+	      p
+	    	| Read our 
+	    	a href='#{root_path}pages/amlpolicy' Money Laundering Statement
+	    		
+javascript:
+	root = document.location.origin;
+	url  = window.location.href;
+	gethome = root + "/"
+	if (gethome == url)
+	{
+		jQuery(".important").show();
+	}
+	else
+	{
+		document.getElementById("hai").style.display = "none";
+	}

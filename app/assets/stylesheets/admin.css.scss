@@ -94,3 +94,32 @@ span.detail-section {
     }
   }
 }
+
+.highlight
+{
+  color:red !important;
+}
+.depnew {
+    display:none;
+    background: #38a6cb none repeat scroll 0 0;
+    border-radius:2px;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 1px 3px;
+    position: absolute;
+    right: -10px;
+    top: 1px;
+    z-index: 1;
+}
+.withnew {
+    display:none;
+    background: #38a6cb none repeat scroll 0 0;
+    border-radius:2px;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 1px 3px;
+    position: absolute;
+    right: -10px;
+    top: 1px;
+    z-index: 1;
+}

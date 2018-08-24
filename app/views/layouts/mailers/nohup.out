@@ -1,0 +1,681 @@
+[2016-02-12 01:57:54] INFO  WEBrick 1.3.1
+[2016-02-12 01:57:54] INFO  ruby 2.2.1 (2015-02-26) [x86_64-linux]
+[2016-02-12 01:57:54] INFO  WEBrick::HTTPServer#start: pid=10622 port=3000
+=> Booting WEBrick
+=> Rails 4.0.12 application starting in production on http://0.0.0.0:3000
+=> Run `rails server -h` for more startup options
+=> Ctrl-C to shutdown server
+I, [2016-02-12T01:57:58.683867 #10622]  INFO -- : Started GET "/signup" for 182.74.205.161 at 2016-02-12 01:57:58 -0500
+I, [2016-02-12T01:57:58.889297 #10622]  INFO -- : Processing by IdentitiesController#new as HTML
+I, [2016-02-12T01:57:59.064708 #10622]  INFO -- :   Rendered identities/new.html.slim within layouts/application (115.5ms)
+I, [2016-02-12T01:57:59.096789 #10622]  INFO -- :   Rendered shared/_html5.html.slim (5.4ms)
+I, [2016-02-12T01:57:59.107171 #10622]  INFO -- :   Rendered shared/_meta.html.slim (8.4ms)
+I, [2016-02-12T01:57:59.121847 #10622]  INFO -- :   Rendered shared/_alert.html.slim (12.5ms)
+I, [2016-02-12T01:57:59.156300 #10622]  INFO -- :   Rendered shared/_header.html.slim (33.0ms)
+I, [2016-02-12T01:57:59.181424 #10622]  INFO -- :   Rendered shared/_flash.slim (12.9ms)
+I, [2016-02-12T01:57:59.181898 #10622]  INFO -- :   Rendered shared/_frame.html.slim (24.1ms)
+I, [2016-02-12T01:57:59.209258 #10622]  INFO -- :   Rendered shared/_footer.html.slim (26.0ms)
+I, [2016-02-12T01:57:59.210207 #10622]  INFO -- : Completed 200 OK in 320ms (Views: 270.5ms | ActiveRecord: 7.4ms)
+I, [2016-02-12T01:58:23.609168 #10622]  INFO -- : Started POST "/auth/identity/register" for 182.74.205.161 at 2016-02-12 01:58:23 -0500
+I, [2016-02-12T01:58:23.884638 #10622]  INFO -- : Processing by IdentitiesController#new as HTML
+I, [2016-02-12T01:58:23.884943 #10622]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"xjE8BxylKAu9KzV0or3Ba1tV6ia8x3PQBKq9K8FwTIU=", "email"=>"msk@cogzidel.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "commit"=>"Sign Up"}
+I, [2016-02-12T01:58:23.929520 #10622]  INFO -- :   Rendered identities/new.html.slim within layouts/application (20.8ms)
+I, [2016-02-12T01:58:23.941453 #10622]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T01:58:23.943253 #10622]  INFO -- :   Rendered shared/_meta.html.slim (1.3ms)
+I, [2016-02-12T01:58:23.944735 #10622]  INFO -- :   Rendered shared/_alert.html.slim (0.6ms)
+I, [2016-02-12T01:58:23.956929 #10622]  INFO -- :   Rendered shared/_header.html.slim (11.7ms)
+I, [2016-02-12T01:58:23.958411 #10622]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T01:58:23.958820 #10622]  INFO -- :   Rendered shared/_frame.html.slim (1.4ms)
+I, [2016-02-12T01:58:23.960536 #10622]  INFO -- :   Rendered shared/_footer.html.slim (1.2ms)
+I, [2016-02-12T01:58:23.961139 #10622]  INFO -- : Completed 200 OK in 76ms (Views: 53.0ms | ActiveRecord: 0.8ms)
+I, [2016-02-12T01:59:02.975730 #10622]  INFO -- : Started POST "/auth/identity/register" for 182.74.205.161 at 2016-02-12 01:59:02 -0500
+I, [2016-02-12T01:59:03.223733 #10622]  INFO -- : Processing by SessionsController#create as HTML
+I, [2016-02-12T01:59:03.224527 #10622]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"xjE8BxylKAu9KzV0or3Ba1tV6ia8x3PQBKq9K8FwTIU=", "email"=>"prasanan@cogzidel.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "commit"=>"Sign Up", "provider"=>"identity"}
+I, [2016-02-12T01:59:03.833309 #10622]  INFO -- : Redirected to http://www.tradenaira.com/settings?
+I, [2016-02-12T01:59:03.834332 #10622]  INFO -- : Completed 302 Found in 609ms (ActiveRecord: 64.7ms)
+I, [2016-02-12T01:59:04.399020 #10622]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 01:59:04 -0500
+I, [2016-02-12T01:59:04.412903 #10622]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T01:59:04.645087 #10622]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (188.6ms)
+I, [2016-02-12T01:59:04.662396 #10622]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T01:59:04.664597 #10622]  INFO -- :   Rendered shared/_meta.html.slim (1.6ms)
+I, [2016-02-12T01:59:04.666648 #10622]  INFO -- :   Rendered shared/_alert.html.slim (0.8ms)
+I, [2016-02-12T01:59:04.702993 #10622]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (34.3ms)
+I, [2016-02-12T01:59:04.708294 #10622]  INFO -- :   Rendered shared/_header.html.slim (41.2ms)
+I, [2016-02-12T01:59:04.709932 #10622]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T01:59:04.710375 #10622]  INFO -- :   Rendered shared/_frame.html.slim (1.4ms)
+I, [2016-02-12T01:59:04.712204 #10622]  INFO -- :   Rendered shared/_footer.html.slim (1.4ms)
+I, [2016-02-12T01:59:04.713259 #10622]  INFO -- : Completed 200 OK in 300ms (Views: 244.4ms | ActiveRecord: 22.3ms)
+I, [2016-02-12T02:09:46.306781 #10622]  INFO -- : Started GET "/signout" for 182.74.205.161 at 2016-02-12 02:09:46 -0500
+I, [2016-02-12T02:09:46.337034 #10622]  INFO -- : Processing by SessionsController#destroy as HTML
+I, [2016-02-12T02:09:46.485046 #10622]  INFO -- : Redirected to http://www.tradenaira.com/
+I, [2016-02-12T02:09:46.485790 #10622]  INFO -- : Completed 302 Found in 148ms (ActiveRecord: 0.7ms)
+I, [2016-02-12T02:09:47.177854 #10622]  INFO -- : Started GET "/" for 182.74.205.161 at 2016-02-12 02:09:47 -0500
+I, [2016-02-12T02:09:47.195643 #10622]  INFO -- : Processing by WelcomeController#index as HTML
+I, [2016-02-12T02:09:47.381893 #10622]  INFO -- :   Rendered welcome/index.html.slim within layouts/landing (163.0ms)
+I, [2016-02-12T02:09:47.414019 #10622]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T02:09:47.416226 #10622]  INFO -- :   Rendered shared/_meta.html.slim (1.3ms)
+I, [2016-02-12T02:09:47.418206 #10622]  INFO -- :   Rendered shared/_alert.html.slim (0.4ms)
+I, [2016-02-12T02:09:47.420147 #10622]  INFO -- :   Rendered shared/_footer.html.slim (1.5ms)
+I, [2016-02-12T02:09:47.420688 #10622]  INFO -- : Completed 200 OK in 225ms (Views: 204.8ms | ActiveRecord: 1.1ms)
+I, [2016-02-12T02:09:47.957081 #10622]  INFO -- : Started GET "/assets/tradeniara.js?body=1" for 182.74.205.161 at 2016-02-12 02:09:47 -0500
+I, [2016-02-12T02:09:47.988717 #10622]  INFO -- : Started GET "/assets/component_data/global.js.coffee?body=1" for 182.74.205.161 at 2016-02-12 02:09:47 -0500
+I, [2016-02-12T02:09:47.995321 #10622]  INFO -- : Started GET "/assets/market.js?body=1" for 182.74.205.161 at 2016-02-12 02:09:47 -0500
+I, [2016-02-12T02:09:48.155291 #10622]  INFO -- : Started GET "/assets/header.js?body=1" for 182.74.205.161 at 2016-02-12 02:09:48 -0500
+F, [2016-02-12T02:09:48.181492 #10622] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/header.js"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T02:09:48.184829 #10622]  INFO -- : Started GET "/assets/jquery.session.js?body=1" for 182.74.205.161 at 2016-02-12 02:09:48 -0500
+I, [2016-02-12T02:09:48.193326 #10622]  INFO -- : Started GET "/assets/liveprice.css?body=1" for 182.74.205.161 at 2016-02-12 02:09:48 -0500
+I, [2016-02-12T02:09:49.212824 #10622]  INFO -- : Started GET "/assets/goodcompany.png" for 182.74.205.161 at 2016-02-12 02:09:49 -0500
+I, [2016-02-12T02:09:49.224859 #10622]  INFO -- : Started GET "/assets/banner_image.png" for 182.74.205.161 at 2016-02-12 02:09:49 -0500
+I, [2016-02-12T02:09:49.232325 #10622]  INFO -- : Started GET "/assets/serviceimage.png" for 182.74.205.161 at 2016-02-12 02:09:49 -0500
+I, [2016-02-12T02:09:50.342821 #10622]  INFO -- : Started GET "/signin" for 182.74.205.161 at 2016-02-12 02:09:50 -0500
+I, [2016-02-12T02:09:50.347364 #10622]  INFO -- : Processing by SessionsController#new as HTML
+I, [2016-02-12T02:09:50.425848 #10622]  INFO -- :   Rendered sessions/new.html.slim within layouts/application (26.6ms)
+I, [2016-02-12T02:09:50.437633 #10622]  INFO -- :   Rendered shared/_html5.html.slim (0.6ms)
+I, [2016-02-12T02:09:50.439024 #10622]  INFO -- :   Rendered shared/_meta.html.slim (1.0ms)
+I, [2016-02-12T02:09:50.440548 #10622]  INFO -- :   Rendered shared/_alert.html.slim (0.4ms)
+I, [2016-02-12T02:09:50.453250 #10622]  INFO -- :   Rendered shared/_header.html.slim (12.3ms)
+I, [2016-02-12T02:09:50.454454 #10622]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T02:09:50.454757 #10622]  INFO -- :   Rendered shared/_frame.html.slim (1.1ms)
+I, [2016-02-12T02:09:50.456570 #10622]  INFO -- :   Rendered shared/_footer.html.slim (1.0ms)
+[2016-02-12 02:16:15] FATAL SignalException: SIGTERM
+	/root/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:174:in `select'
+	/root/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:174:in `block in start'
+	/root/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:32:in `start'
+	/root/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:162:in `start'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:14:in `run'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/rack-1.5.2/lib/rack/server.rb:264:in `start'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/railties-4.0.12/lib/rails/commands/server.rb:84:in `start'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/railties-4.0.12/lib/rails/commands.rb:76:in `block in <top (required)>'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/railties-4.0.12/lib/rails/commands.rb:71:in `tap'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/railties-4.0.12/lib/rails/commands.rb:71:in `<top (required)>'
+	bin/rails:4:in `require'
+	bin/rails:4:in `<main>'
+[2016-02-12 02:16:15] INFO  going to shutdown ...
+[2016-02-12 02:16:15] INFO  WEBrick::HTTPServer#start done.
+I, [2016-02-12T02:09:50.457390 #10622]  INFO -- : Completed 200 OK in 110ms (Views: 62.8ms | ActiveRecord: 7.3ms)
+I, [2016-02-12T02:10:00.698188 #10622]  INFO -- : Started POST "/auth/identity/callback" for 182.74.205.161 at 2016-02-12 02:10:00 -0500
+I, [2016-02-12T02:10:00.702387 #10622]  INFO -- : (identity) Callback phase initiated.
+I, [2016-02-12T02:10:00.910983 #10622]  INFO -- : Processing by SessionsController#create as HTML
+I, [2016-02-12T02:10:00.911420 #10622]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"C3+3D6/MZVQqes69cMS9mbazcFUF8kv/lGWtwAabKb4=", "auth_key"=>"msk@cogzidel.com", "password"=>"[FILTERED]", "commit"=>"Sign In", "provider"=>"identity"}
+I, [2016-02-12T02:10:01.058935 #10622]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T02:10:01.060078 #10622]  INFO -- : Completed 302 Found in 148ms (ActiveRecord: 20.0ms)
+I, [2016-02-12T02:10:01.629606 #10622]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 02:10:01 -0500
+I, [2016-02-12T02:10:01.644874 #10622]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T02:10:01.705867 #10622]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (30.5ms)
+I, [2016-02-12T02:10:01.718582 #10622]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T02:10:01.720439 #10622]  INFO -- :   Rendered shared/_meta.html.slim (1.4ms)
+I, [2016-02-12T02:10:01.722229 #10622]  INFO -- :   Rendered shared/_alert.html.slim (0.9ms)
+I, [2016-02-12T02:10:01.730045 #10622]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (6.7ms)
+I, [2016-02-12T02:10:01.734692 #10622]  INFO -- :   Rendered shared/_header.html.slim (12.1ms)
+I, [2016-02-12T02:10:01.736005 #10622]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T02:10:01.736320 #10622]  INFO -- :   Rendered shared/_frame.html.slim (1.2ms)
+I, [2016-02-12T02:10:01.737632 #10622]  INFO -- :   Rendered shared/_footer.html.slim (0.8ms)
+I, [2016-02-12T02:10:01.738167 #10622]  INFO -- : Completed 200 OK in 93ms (Views: 59.1ms | ActiveRecord: 7.3ms)
+Exiting
+[2016-02-12 02:16:39] INFO  WEBrick 1.3.1
+[2016-02-12 02:16:39] INFO  ruby 2.2.1 (2015-02-26) [x86_64-linux]
+[2016-02-12 02:16:39] INFO  WEBrick::HTTPServer#start: pid=18537 port=3000
+=> Booting WEBrick
+=> Rails 4.0.12 application starting in production on http://0.0.0.0:3000
+=> Run `rails server -h` for more startup options
+=> Ctrl-C to shutdown server
+I, [2016-02-12T02:19:19.024261 #18537]  INFO -- : Started GET "/" for 66.249.75.11 at 2016-02-12 02:19:19 -0500
+I, [2016-02-12T02:19:19.276864 #18537]  INFO -- : Processing by WelcomeController#index as HTML
+I, [2016-02-12T02:19:19.579664 #18537]  INFO -- :   Rendered welcome/index.html.slim within layouts/landing (239.4ms)
+I, [2016-02-12T02:19:19.606698 #18537]  INFO -- :   Rendered shared/_html5.html.slim (4.9ms)
+I, [2016-02-12T02:19:19.616095 #18537]  INFO -- :   Rendered shared/_meta.html.slim (8.1ms)
+I, [2016-02-12T02:19:19.630294 #18537]  INFO -- :   Rendered shared/_alert.html.slim (11.0ms)
+I, [2016-02-12T02:19:19.657901 #18537]  INFO -- :   Rendered shared/_footer.html.slim (26.2ms)
+I, [2016-02-12T02:19:19.658924 #18537]  INFO -- : Completed 200 OK in 382ms (Views: 323.9ms | ActiveRecord: 4.7ms)
+I, [2016-02-12T02:19:40.191520 #18537]  INFO -- : Started GET "/signout" for 182.74.205.161 at 2016-02-12 02:19:40 -0500
+I, [2016-02-12T02:19:40.213087 #18537]  INFO -- : Processing by SessionsController#destroy as HTML
+I, [2016-02-12T02:19:40.406598 #18537]  INFO -- : Redirected to http://www.tradenaira.com/
+I, [2016-02-12T02:19:40.408001 #18537]  INFO -- : Completed 302 Found in 194ms (ActiveRecord: 6.4ms)
+I, [2016-02-12T02:19:40.964430 #18537]  INFO -- : Started GET "/" for 182.74.205.161 at 2016-02-12 02:19:40 -0500
+I, [2016-02-12T02:19:40.977483 #18537]  INFO -- : Processing by WelcomeController#index as HTML
+I, [2016-02-12T02:19:41.021912 #18537]  INFO -- :   Rendered welcome/index.html.slim within layouts/landing (21.2ms)
+I, [2016-02-12T02:19:41.033499 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T02:19:41.035414 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.5ms)
+I, [2016-02-12T02:19:41.037265 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.8ms)
+I, [2016-02-12T02:19:41.038967 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.1ms)
+I, [2016-02-12T02:19:41.039529 #18537]  INFO -- : Completed 200 OK in 62ms (Views: 39.7ms | ActiveRecord: 0.5ms)
+I, [2016-02-12T02:19:41.442168 #18537]  INFO -- : Started GET "/assets/liveprice.css?body=1" for 182.74.205.161 at 2016-02-12 02:19:41 -0500
+I, [2016-02-12T02:19:41.467722 #18537]  INFO -- : Started GET "/assets/component_data/global.js.coffee?body=1" for 182.74.205.161 at 2016-02-12 02:19:41 -0500
+I, [2016-02-12T02:19:41.474052 #18537]  INFO -- : Started GET "/assets/jquery.session.js?body=1" for 182.74.205.161 at 2016-02-12 02:19:41 -0500
+I, [2016-02-12T02:19:41.480230 #18537]  INFO -- : Started GET "/assets/tradeniara.js?body=1" for 182.74.205.161 at 2016-02-12 02:19:41 -0500
+I, [2016-02-12T02:19:41.485449 #18537]  INFO -- : Started GET "/assets/market.js?body=1" for 182.74.205.161 at 2016-02-12 02:19:41 -0500
+I, [2016-02-12T02:19:41.626585 #18537]  INFO -- : Started GET "/assets/header.js?body=1" for 182.74.205.161 at 2016-02-12 02:19:41 -0500
+F, [2016-02-12T02:19:41.645962 #18537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/header.js"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T02:19:42.217629 #18537]  INFO -- : Started GET "/assets/banner_image.png" for 182.74.205.161 at 2016-02-12 02:19:42 -0500
+I, [2016-02-12T02:19:42.231736 #18537]  INFO -- : Started GET "/assets/goodcompany.png" for 182.74.205.161 at 2016-02-12 02:19:42 -0500
+I, [2016-02-12T02:19:42.236991 #18537]  INFO -- : Started GET "/assets/serviceimage.png" for 182.74.205.161 at 2016-02-12 02:19:42 -0500
+I, [2016-02-12T02:22:26.143171 #18537]  INFO -- : Started GET "/signin" for 182.74.205.161 at 2016-02-12 02:22:26 -0500
+I, [2016-02-12T02:22:26.166899 #18537]  INFO -- : Processing by SessionsController#new as HTML
+I, [2016-02-12T02:22:26.297681 #18537]  INFO -- :   Rendered sessions/new.html.slim within layouts/application (71.5ms)
+I, [2016-02-12T02:22:26.323645 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T02:22:26.325856 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.6ms)
+I, [2016-02-12T02:22:26.327912 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.8ms)
+I, [2016-02-12T02:22:26.363081 #18537]  INFO -- :   Rendered shared/_header.html.slim (33.5ms)
+I, [2016-02-12T02:22:26.395311 #18537]  INFO -- :   Rendered shared/_flash.slim (17.1ms)
+I, [2016-02-12T02:22:26.396134 #18537]  INFO -- :   Rendered shared/_frame.html.slim (31.0ms)
+I, [2016-02-12T02:22:26.398546 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.6ms)
+I, [2016-02-12T02:22:26.399510 #18537]  INFO -- : Completed 200 OK in 232ms (Views: 180.5ms | ActiveRecord: 8.0ms)
+I, [2016-02-12T02:22:40.833721 #18537]  INFO -- : Started POST "/auth/identity/callback" for 182.74.205.161 at 2016-02-12 02:22:40 -0500
+I, [2016-02-12T02:22:40.835394 #18537]  INFO -- : (identity) Callback phase initiated.
+I, [2016-02-12T02:22:41.037867 #18537]  INFO -- : Processing by SessionsController#create as HTML
+I, [2016-02-12T02:22:41.038275 #18537]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"J6c6cRMCZzOaWr+e+sZ89JuT3X0uepoAwXUdLH1AZpY=", "auth_key"=>"msk@cogzidel.com", "password"=>"[FILTERED]", "commit"=>"Sign In", "provider"=>"identity"}
+I, [2016-02-12T02:22:41.174911 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T02:22:41.175883 #18537]  INFO -- : Completed 302 Found in 137ms (ActiveRecord: 13.8ms)
+I, [2016-02-12T02:22:43.619582 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 02:22:43 -0500
+I, [2016-02-12T02:22:43.632199 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T02:22:43.863979 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (195.4ms)
+I, [2016-02-12T02:22:43.878233 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T02:22:43.880495 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.8ms)
+I, [2016-02-12T02:22:43.882563 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.8ms)
+I, [2016-02-12T02:22:43.919212 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (34.3ms)
+I, [2016-02-12T02:22:43.925172 #18537]  INFO -- :   Rendered shared/_header.html.slim (42.1ms)
+I, [2016-02-12T02:22:43.926786 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T02:22:43.927224 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.5ms)
+I, [2016-02-12T02:22:43.928819 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.2ms)
+I, [2016-02-12T02:22:43.929741 #18537]  INFO -- : Completed 200 OK in 297ms (Views: 247.7ms | ActiveRecord: 21.1ms)
+I, [2016-02-12T02:24:11.026215 #18537]  INFO -- : Started GET "/signout" for 182.74.205.161 at 2016-02-12 02:24:11 -0500
+I, [2016-02-12T02:24:11.037163 #18537]  INFO -- : Processing by SessionsController#destroy as HTML
+I, [2016-02-12T02:24:11.134090 #18537]  INFO -- : Redirected to http://www.tradenaira.com/
+I, [2016-02-12T02:24:11.135042 #18537]  INFO -- : Completed 302 Found in 97ms (ActiveRecord: 0.9ms)
+I, [2016-02-12T02:24:13.593917 #18537]  INFO -- : Started GET "/" for 182.74.205.161 at 2016-02-12 02:24:13 -0500
+I, [2016-02-12T02:24:13.598388 #18537]  INFO -- : Processing by WelcomeController#index as HTML
+I, [2016-02-12T02:24:13.648853 #18537]  INFO -- :   Rendered welcome/index.html.slim within layouts/landing (25.4ms)
+I, [2016-02-12T02:24:13.663459 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.5ms)
+I, [2016-02-12T02:24:13.666072 #18537]  INFO -- :   Rendered shared/_meta.html.slim (2.0ms)
+I, [2016-02-12T02:24:13.668651 #18537]  INFO -- :   Rendered shared/_alert.html.slim (1.4ms)
+I, [2016-02-12T02:24:13.671134 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.6ms)
+I, [2016-02-12T02:24:13.671880 #18537]  INFO -- : Completed 200 OK in 73ms (Views: 50.9ms | ActiveRecord: 0.7ms)
+I, [2016-02-12T02:24:14.952295 #18537]  INFO -- : Started GET "/assets/tradeniara.js?body=1" for 182.74.205.161 at 2016-02-12 02:24:14 -0500
+I, [2016-02-12T02:24:14.979180 #18537]  INFO -- : Started GET "/assets/liveprice.css?body=1" for 182.74.205.161 at 2016-02-12 02:24:14 -0500
+I, [2016-02-12T02:24:14.982876 #18537]  INFO -- : Started GET "/assets/market.js?body=1" for 182.74.205.161 at 2016-02-12 02:24:14 -0500
+I, [2016-02-12T02:24:14.986032 #18537]  INFO -- : Started GET "/assets/component_data/global.js.coffee?body=1" for 182.74.205.161 at 2016-02-12 02:24:14 -0500
+I, [2016-02-12T02:24:14.989577 #18537]  INFO -- : Started GET "/assets/jquery.session.js?body=1" for 182.74.205.161 at 2016-02-12 02:24:14 -0500
+I, [2016-02-12T02:24:15.090475 #18537]  INFO -- : Started GET "/assets/header.js?body=1" for 182.74.205.161 at 2016-02-12 02:24:15 -0500
+F, [2016-02-12T02:24:15.105418 #18537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/header.js"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T02:24:17.529579 #18537]  INFO -- : Started GET "/assets/banner_image.png" for 182.74.205.161 at 2016-02-12 02:24:17 -0500
+I, [2016-02-12T02:24:22.901074 #18537]  INFO -- : Started GET "/signin" for 182.74.205.161 at 2016-02-12 02:24:22 -0500
+I, [2016-02-12T02:24:22.902911 #18537]  INFO -- : Processing by SessionsController#new as HTML
+I, [2016-02-12T02:24:22.925224 #18537]  INFO -- :   Rendered sessions/new.html.slim within layouts/application (9.8ms)
+I, [2016-02-12T02:24:22.930746 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.2ms)
+I, [2016-02-12T02:24:22.931715 #18537]  INFO -- :   Rendered shared/_meta.html.slim (0.8ms)
+I, [2016-02-12T02:24:22.932515 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.3ms)
+I, [2016-02-12T02:24:22.938831 #18537]  INFO -- :   Rendered shared/_header.html.slim (6.1ms)
+I, [2016-02-12T02:24:22.939661 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T02:24:22.939881 #18537]  INFO -- :   Rendered shared/_frame.html.slim (0.8ms)
+I, [2016-02-12T02:24:22.940658 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.5ms)
+I, [2016-02-12T02:24:22.940987 #18537]  INFO -- : Completed 200 OK in 38ms (Views: 25.9ms | ActiveRecord: 0.5ms)
+I, [2016-02-12T02:26:20.251281 #18537]  INFO -- : Started POST "/auth/identity/callback" for 182.74.205.161 at 2016-02-12 02:26:20 -0500
+I, [2016-02-12T02:26:20.255473 #18537]  INFO -- : (identity) Callback phase initiated.
+I, [2016-02-12T02:26:20.468486 #18537]  INFO -- : Processing by SessionsController#create as HTML
+I, [2016-02-12T02:26:20.468836 #18537]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"BqBedHoEqs8lrYALxr4lfMfOgroxTBKJTRX7FcrtDGY=", "auth_key"=>"msk@cogzidel.com", "password"=>"[FILTERED]", "commit"=>"Sign In", "provider"=>"identity"}
+I, [2016-02-12T02:26:20.540918 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T02:26:20.541897 #18537]  INFO -- : Completed 302 Found in 73ms (ActiveRecord: 7.6ms)
+I, [2016-02-12T02:26:22.487071 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 02:26:22 -0500
+I, [2016-02-12T02:26:22.512300 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T02:26:22.581720 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (34.3ms)
+I, [2016-02-12T02:26:22.601981 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.8ms)
+I, [2016-02-12T02:26:22.605789 #18537]  INFO -- :   Rendered shared/_meta.html.slim (2.9ms)
+I, [2016-02-12T02:26:22.609128 #18537]  INFO -- :   Rendered shared/_alert.html.slim (1.7ms)
+I, [2016-02-12T02:26:22.621292 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (10.1ms)
+I, [2016-02-12T02:26:22.628421 #18537]  INFO -- :   Rendered shared/_header.html.slim (18.3ms)
+I, [2016-02-12T02:26:22.630518 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T02:26:22.630985 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.7ms)
+I, [2016-02-12T02:26:22.632636 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.3ms)
+I, [2016-02-12T02:26:22.633414 #18537]  INFO -- : Completed 200 OK in 121ms (Views: 86.0ms | ActiveRecord: 3.7ms)
+I, [2016-02-12T02:26:43.719330 #18537]  INFO -- : Started GET "/mails" for 182.74.205.161 at 2016-02-12 02:26:43 -0500
+F, [2016-02-12T02:26:43.724722 #18537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/mails"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T02:26:56.248129 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 02:26:56 -0500
+I, [2016-02-12T02:26:56.251528 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T02:26:56.310020 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (21.8ms)
+I, [2016-02-12T02:26:56.323366 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T02:26:56.325351 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.3ms)
+I, [2016-02-12T02:26:56.326611 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T02:26:56.333698 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (6.1ms)
+I, [2016-02-12T02:26:56.338932 #18537]  INFO -- :   Rendered shared/_header.html.slim (11.8ms)
+I, [2016-02-12T02:26:56.340460 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T02:26:56.340855 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.4ms)
+I, [2016-02-12T02:26:56.342353 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.1ms)
+I, [2016-02-12T02:26:56.343249 #18537]  INFO -- : Completed 200 OK in 91ms (Views: 53.6ms | ActiveRecord: 5.3ms)
+I, [2016-02-12T02:26:59.843715 #18537]  INFO -- : Started GET "/funds" for 182.74.205.161 at 2016-02-12 02:26:59 -0500
+I, [2016-02-12T02:26:59.915421 #18537]  INFO -- : Processing by Private::FundsController#index as HTML
+I, [2016-02-12T02:26:59.944970 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T02:26:59.945391 #18537]  INFO -- : Filter chain halted as :auth_verified! rendered or redirected
+I, [2016-02-12T02:26:59.945719 #18537]  INFO -- : Completed 302 Found in 30ms (ActiveRecord: 1.0ms)
+I, [2016-02-12T02:27:00.706707 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 02:27:00 -0500
+I, [2016-02-12T02:27:00.710963 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T02:27:00.761999 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (22.3ms)
+I, [2016-02-12T02:27:00.775799 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T02:27:00.777810 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.5ms)
+I, [2016-02-12T02:27:00.779059 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T02:27:00.785769 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (5.9ms)
+I, [2016-02-12T02:27:00.790619 #18537]  INFO -- :   Rendered shared/_header.html.slim (11.1ms)
+I, [2016-02-12T02:27:00.792035 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T02:27:00.792397 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.2ms)
+I, [2016-02-12T02:27:00.793763 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.9ms)
+I, [2016-02-12T02:27:00.794360 #18537]  INFO -- : Completed 200 OK in 83ms (Views: 53.0ms | ActiveRecord: 3.0ms)
+I, [2016-02-12T02:30:27.371529 #18537]  INFO -- : Started GET "/mails" for 182.74.205.161 at 2016-02-12 02:30:27 -0500
+F, [2016-02-12T02:30:27.377752 #18537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/mails"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T02:30:33.188745 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 02:30:33 -0500
+I, [2016-02-12T02:30:33.193028 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T02:30:33.235940 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (18.4ms)
+I, [2016-02-12T02:30:33.248435 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.2ms)
+I, [2016-02-12T02:30:33.249793 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.0ms)
+I, [2016-02-12T02:30:33.251284 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.8ms)
+I, [2016-02-12T02:30:33.256584 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (4.5ms)
+I, [2016-02-12T02:30:33.261816 #18537]  INFO -- :   Rendered shared/_header.html.slim (10.2ms)
+I, [2016-02-12T02:30:33.263103 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T02:30:33.263328 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.2ms)
+I, [2016-02-12T02:30:33.264539 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.9ms)
+I, [2016-02-12T02:30:33.264988 #18537]  INFO -- : Completed 200 OK in 72ms (Views: 47.4ms | ActiveRecord: 1.9ms)
+I, [2016-02-12T03:16:06.523035 #18537]  INFO -- : Started GET "/" for 41.190.2.50 at 2016-02-12 03:16:06 -0500
+I, [2016-02-12T03:16:06.535967 #18537]  INFO -- : Processing by WelcomeController#index as HTML
+I, [2016-02-12T03:16:06.610651 #18537]  INFO -- :   Rendered welcome/index.html.slim within layouts/landing (23.0ms)
+I, [2016-02-12T03:16:06.625588 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.6ms)
+I, [2016-02-12T03:16:06.627559 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.5ms)
+I, [2016-02-12T03:16:06.630557 #18537]  INFO -- :   Rendered shared/_alert.html.slim (1.4ms)
+I, [2016-02-12T03:16:06.632228 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.2ms)
+I, [2016-02-12T03:16:06.633120 #18537]  INFO -- : Completed 200 OK in 97ms (Views: 47.6ms | ActiveRecord: 5.0ms)
+I, [2016-02-12T03:16:08.795791 #18537]  INFO -- : Started GET "/assets/liveprice.css?body=1" for 41.190.2.50 at 2016-02-12 03:16:08 -0500
+I, [2016-02-12T03:16:08.806702 #18537]  INFO -- : Started GET "/assets/tradeniara.js?body=1" for 41.190.2.50 at 2016-02-12 03:16:08 -0500
+I, [2016-02-12T03:16:08.817332 #18537]  INFO -- : Started GET "/assets/header.js?body=1" for 41.190.2.50 at 2016-02-12 03:16:08 -0500
+F, [2016-02-12T03:16:08.844983 #18537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/header.js"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T03:16:10.126759 #18537]  INFO -- : Started GET "/assets/market.js?body=1" for 41.190.2.50 at 2016-02-12 03:16:10 -0500
+I, [2016-02-12T03:16:10.164637 #18537]  INFO -- : Started GET "/assets/jquery.session.js?body=1" for 41.190.2.50 at 2016-02-12 03:16:10 -0500
+I, [2016-02-12T03:16:11.428893 #18537]  INFO -- : Started GET "/assets/component_data/global.js.coffee?body=1" for 41.190.2.50 at 2016-02-12 03:16:11 -0500
+I, [2016-02-12T03:16:16.385489 #18537]  INFO -- : Started GET "/assets/header.js?body=1" for 41.190.2.50 at 2016-02-12 03:16:16 -0500
+F, [2016-02-12T03:16:16.409082 #18537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/header.js"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T03:16:17.337906 #18537]  INFO -- : Started GET "/assets/SourceSansProRegular.woff2" for 41.190.2.50 at 2016-02-12 03:16:17 -0500
+I, [2016-02-12T03:16:17.377005 #18537]  INFO -- : Started GET "/assets/MicrosoftSansSerif.woff" for 41.190.2.50 at 2016-02-12 03:16:17 -0500
+I, [2016-02-12T03:16:18.061360 #18537]  INFO -- : Started GET "/assets/banner_image.png" for 41.190.2.50 at 2016-02-12 03:16:18 -0500
+I, [2016-02-12T03:16:18.112182 #18537]  INFO -- : Started GET "/assets/serviceimage.png" for 41.190.2.50 at 2016-02-12 03:16:18 -0500
+I, [2016-02-12T03:16:18.949344 #18537]  INFO -- : Started GET "/assets/goodcompany.png" for 41.190.2.50 at 2016-02-12 03:16:18 -0500
+I, [2016-02-12T03:17:02.776289 #18537]  INFO -- : Started GET "/signup" for 41.190.2.50 at 2016-02-12 03:17:02 -0500
+I, [2016-02-12T03:17:02.799794 #18537]  INFO -- : Processing by IdentitiesController#new as HTML
+I, [2016-02-12T03:17:02.883042 #18537]  INFO -- :   Rendered identities/new.html.slim within layouts/application (46.0ms)
+I, [2016-02-12T03:17:02.897095 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T03:17:02.899789 #18537]  INFO -- :   Rendered shared/_meta.html.slim (2.2ms)
+I, [2016-02-12T03:17:02.901095 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.4ms)
+I, [2016-02-12T03:17:02.914992 #18537]  INFO -- :   Rendered shared/_header.html.slim (13.5ms)
+I, [2016-02-12T03:17:02.916972 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:17:02.917279 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.9ms)
+I, [2016-02-12T03:17:02.918996 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.4ms)
+I, [2016-02-12T03:17:02.919532 #18537]  INFO -- : Completed 200 OK in 119ms (Views: 87.8ms | ActiveRecord: 0.8ms)
+I, [2016-02-12T03:17:04.147147 #18537]  INFO -- : Started GET "/assets/helvetica-normal.woff" for 41.190.2.50 at 2016-02-12 03:17:04 -0500
+I, [2016-02-12T03:17:04.160458 #18537]  INFO -- : Started GET "/assets/helvetica-condensed-light.woff" for 41.190.2.50 at 2016-02-12 03:17:04 -0500
+I, [2016-02-12T03:17:48.697120 #18537]  INFO -- : Started POST "/auth/identity/register" for 41.190.2.50 at 2016-02-12 03:17:48 -0500
+I, [2016-02-12T03:17:48.931927 #18537]  INFO -- : Processing by SessionsController#create as HTML
+I, [2016-02-12T03:17:48.932206 #18537]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"x2g53qeQgRY36JKdCXxwv7CAqA+oNx04vzasBsimx/w=", "email"=>"delaw26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "commit"=>"Sign Up", "provider"=>"identity"}
+I, [2016-02-12T03:17:49.405473 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:17:49.406016 #18537]  INFO -- : Completed 302 Found in 473ms (ActiveRecord: 51.8ms)
+I, [2016-02-12T03:17:50.255686 #18537]  INFO -- : Started GET "/settings" for 41.190.2.50 at 2016-02-12 03:17:50 -0500
+I, [2016-02-12T03:17:50.258724 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:17:50.362898 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (69.9ms)
+I, [2016-02-12T03:17:50.376186 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:17:50.377959 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.4ms)
+I, [2016-02-12T03:17:50.379167 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T03:17:50.385572 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (5.4ms)
+I, [2016-02-12T03:17:50.389915 #18537]  INFO -- :   Rendered shared/_header.html.slim (10.2ms)
+I, [2016-02-12T03:17:50.391163 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T03:17:50.391491 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.1ms)
+I, [2016-02-12T03:17:50.392813 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.0ms)
+I, [2016-02-12T03:17:50.393425 #18537]  INFO -- : Completed 200 OK in 134ms (Views: 79.5ms | ActiveRecord: 25.6ms)
+I, [2016-02-12T03:18:18.650468 #18537]  INFO -- : Started GET "/id_document/edit" for 41.190.2.50 at 2016-02-12 03:18:18 -0500
+I, [2016-02-12T03:18:18.663500 #18537]  INFO -- : Processing by Private::IdDocumentsController#edit as HTML
+I, [2016-02-12T03:18:18.913747 #18537]  INFO -- :   Rendered private/id_documents/edit.html.slim within layouts/application (215.9ms)
+I, [2016-02-12T03:18:18.925938 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T03:18:18.928231 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.6ms)
+I, [2016-02-12T03:18:18.929635 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T03:18:18.942501 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (11.9ms)
+I, [2016-02-12T03:18:18.946787 #18537]  INFO -- :   Rendered shared/_header.html.slim (16.7ms)
+I, [2016-02-12T03:18:18.948217 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:18:18.948634 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.3ms)
+I, [2016-02-12T03:18:18.949854 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.9ms)
+I, [2016-02-12T03:18:18.950554 #18537]  INFO -- : Completed 200 OK in 287ms (Views: 253.1ms | ActiveRecord: 6.0ms)
+I, [2016-02-12T03:19:00.957184 #18537]  INFO -- : Started GET "/funds" for 41.190.2.50 at 2016-02-12 03:19:00 -0500
+I, [2016-02-12T03:19:00.991131 #18537]  INFO -- : Processing by Private::FundsController#index as HTML
+I, [2016-02-12T03:19:01.028540 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:19:01.028982 #18537]  INFO -- : Filter chain halted as :auth_activated! rendered or redirected
+I, [2016-02-12T03:19:01.029370 #18537]  INFO -- : Completed 302 Found in 38ms (ActiveRecord: 0.7ms)
+I, [2016-02-12T03:19:01.784960 #18537]  INFO -- : Started GET "/settings" for 41.190.2.50 at 2016-02-12 03:19:01 -0500
+I, [2016-02-12T03:19:01.788427 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:19:01.847920 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (29.4ms)
+I, [2016-02-12T03:19:01.865914 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:19:01.868506 #18537]  INFO -- :   Rendered shared/_meta.html.slim (2.2ms)
+I, [2016-02-12T03:19:01.870769 #18537]  INFO -- :   Rendered shared/_alert.html.slim (1.0ms)
+I, [2016-02-12T03:19:01.880453 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (8.2ms)
+I, [2016-02-12T03:19:01.886028 #18537]  INFO -- :   Rendered shared/_header.html.slim (14.7ms)
+I, [2016-02-12T03:19:01.887950 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T03:19:01.888461 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.8ms)
+I, [2016-02-12T03:19:01.890486 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.5ms)
+I, [2016-02-12T03:19:01.891214 #18537]  INFO -- : Completed 200 OK in 102ms (Views: 71.9ms | ActiveRecord: 3.8ms)
+I, [2016-02-12T03:20:25.706024 #18537]  INFO -- : Started GET "/activations/e62ff7058bedda95738d530abec3e6c4/edit" for 41.190.2.50 at 2016-02-12 03:20:25 -0500
+I, [2016-02-12T03:20:25.714815 #18537]  INFO -- : Processing by ActivationsController#edit as HTML
+I, [2016-02-12T03:20:25.714944 #18537]  INFO -- :   Parameters: {"id"=>"e62ff7058bedda95738d530abec3e6c4"}
+I, [2016-02-12T03:20:25.786727 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:20:25.787476 #18537]  INFO -- : Completed 302 Found in 72ms (ActiveRecord: 14.0ms)
+I, [2016-02-12T03:20:26.570716 #18537]  INFO -- : Started GET "/settings" for 41.190.2.50 at 2016-02-12 03:20:26 -0500
+I, [2016-02-12T03:20:26.574591 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:20:26.625642 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (23.6ms)
+I, [2016-02-12T03:20:26.640108 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:20:26.642060 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.4ms)
+I, [2016-02-12T03:20:26.643440 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T03:20:26.650368 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (5.9ms)
+I, [2016-02-12T03:20:26.655433 #18537]  INFO -- :   Rendered shared/_header.html.slim (11.6ms)
+I, [2016-02-12T03:20:26.657181 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T03:20:26.657600 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.5ms)
+I, [2016-02-12T03:20:26.659313 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.2ms)
+I, [2016-02-12T03:20:26.660024 #18537]  INFO -- : Completed 200 OK in 85ms (Views: 56.2ms | ActiveRecord: 3.8ms)
+I, [2016-02-12T03:20:41.807092 #18537]  INFO -- : Started GET "/verify/sms_auth" for 41.190.2.50 at 2016-02-12 03:20:41 -0500
+I, [2016-02-12T03:20:41.828670 #18537]  INFO -- : Processing by Verify::SmsAuthsController#show as HTML
+I, [2016-02-12T03:20:41.980604 #18537]  INFO -- :   Rendered verify/sms_auths/show.html.slim within layouts/application (103.1ms)
+I, [2016-02-12T03:20:42.028868 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T03:20:42.030386 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.1ms)
+I, [2016-02-12T03:20:42.031700 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T03:20:42.037703 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (5.1ms)
+I, [2016-02-12T03:20:42.041681 #18537]  INFO -- :   Rendered shared/_header.html.slim (9.5ms)
+I, [2016-02-12T03:20:42.042896 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:20:42.043223 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.1ms)
+I, [2016-02-12T03:20:42.044535 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.0ms)
+I, [2016-02-12T03:20:42.045112 #18537]  INFO -- : Completed 200 OK in 216ms (Views: 174.2ms | ActiveRecord: 1.7ms)
+I, [2016-02-12T03:30:05.511316 #18537]  INFO -- : Started PATCH "/verify/sms_auth" for 41.190.2.50 at 2016-02-12 03:30:05 -0500
+I, [2016-02-12T03:30:05.544236 #18537]  INFO -- : Processing by Verify::SmsAuthsController#update as JS
+I, [2016-02-12T03:30:05.544647 #18537]  INFO -- :   Parameters: {"utf8"=>"✓", "sms_auth"=>{"country"=>"NG", "phone_number"=>"07041980927", "otp"=>""}, "commit"=>"send_code"}
+I, [2016-02-12T03:30:05.698160 #18537]  INFO -- :   Rendered text template (0.3ms)
+I, [2016-02-12T03:30:05.699096 #18537]  INFO -- : Completed 200 OK in 154ms (Views: 3.6ms | ActiveRecord: 15.7ms)
+I, [2016-02-12T03:31:03.395356 #18537]  INFO -- : Started GET "/" for 182.74.205.161 at 2016-02-12 03:31:03 -0500
+I, [2016-02-12T03:31:03.400765 #18537]  INFO -- : Processing by WelcomeController#index as HTML
+I, [2016-02-12T03:31:03.440103 #18537]  INFO -- :   Rendered welcome/index.html.slim within layouts/landing (17.7ms)
+I, [2016-02-12T03:31:03.449531 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:31:03.450985 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.1ms)
+I, [2016-02-12T03:31:03.453193 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.8ms)
+I, [2016-02-12T03:31:03.454432 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.8ms)
+I, [2016-02-12T03:31:03.454940 #18537]  INFO -- : Completed 200 OK in 54ms (Views: 33.6ms | ActiveRecord: 1.2ms)
+I, [2016-02-12T03:31:03.457945 #18537]  INFO -- : Started GET "/history/orders" for 41.190.2.50 at 2016-02-12 03:31:03 -0500
+I, [2016-02-12T03:31:03.471564 #18537]  INFO -- : Processing by Private::HistoryController#orders as HTML
+I, [2016-02-12T03:31:03.531565 #18537]  INFO -- :   Rendered private/history/_tabs.html.slim (4.9ms)
+I, [2016-02-12T03:31:03.537647 #18537]  INFO -- :   Rendered private/history/_order.html.slim (0.0ms)
+I, [2016-02-12T03:31:03.545661 #18537]  INFO -- :   Rendered private/history/orders.html.slim within layouts/application (33.6ms)
+I, [2016-02-12T03:31:03.552470 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.2ms)
+I, [2016-02-12T03:31:03.553510 #18537]  INFO -- :   Rendered shared/_meta.html.slim (0.8ms)
+I, [2016-02-12T03:31:03.554267 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.3ms)
+I, [2016-02-12T03:31:03.558477 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (3.7ms)
+I, [2016-02-12T03:31:03.561079 #18537]  INFO -- :   Rendered shared/_header.html.slim (6.6ms)
+I, [2016-02-12T03:31:03.561823 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.5ms)
+I, [2016-02-12T03:31:03.562192 #18537]  INFO -- : Completed 200 OK in 90ms (Views: 52.7ms | ActiveRecord: 5.6ms)
+I, [2016-02-12T03:31:04.207382 #18537]  INFO -- : Started GET "/assets/liveprice.css?body=1" for 182.74.205.161 at 2016-02-12 03:31:04 -0500
+I, [2016-02-12T03:31:04.337791 #18537]  INFO -- : Started GET "/assets/tradeniara.js?body=1" for 182.74.205.161 at 2016-02-12 03:31:04 -0500
+I, [2016-02-12T03:31:04.345213 #18537]  INFO -- : Started GET "/assets/header.js?body=1" for 182.74.205.161 at 2016-02-12 03:31:04 -0500
+F, [2016-02-12T03:31:04.362721 #18537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/header.js"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T03:31:04.686506 #18537]  INFO -- : Started GET "/assets/market.js?body=1" for 182.74.205.161 at 2016-02-12 03:31:04 -0500
+I, [2016-02-12T03:31:04.813986 #18537]  INFO -- : Started GET "/assets/jquery.session.js?body=1" for 182.74.205.161 at 2016-02-12 03:31:04 -0500
+I, [2016-02-12T03:31:05.014216 #18537]  INFO -- : Started GET "/assets/component_data/global.js.coffee?body=1" for 182.74.205.161 at 2016-02-12 03:31:05 -0500
+I, [2016-02-12T03:31:05.785151 #18537]  INFO -- : Started GET "/assets/banner_image.png" for 182.74.205.161 at 2016-02-12 03:31:05 -0500
+I, [2016-02-12T03:31:05.788989 #18537]  INFO -- : Started GET "/assets/MicrosoftSansSerif.woff" for 182.74.205.161 at 2016-02-12 03:31:05 -0500
+I, [2016-02-12T03:31:05.795638 #18537]  INFO -- : Started GET "/assets/goodcompany.png" for 182.74.205.161 at 2016-02-12 03:31:05 -0500
+I, [2016-02-12T03:31:05.797683 #18537]  INFO -- : Started GET "/assets/serviceimage.png" for 182.74.205.161 at 2016-02-12 03:31:05 -0500
+I, [2016-02-12T03:31:22.378853 #18537]  INFO -- : Started GET "/funds" for 41.190.2.50 at 2016-02-12 03:31:22 -0500
+I, [2016-02-12T03:31:22.382484 #18537]  INFO -- : Processing by Private::FundsController#index as HTML
+I, [2016-02-12T03:31:22.411018 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:31:22.411281 #18537]  INFO -- : Filter chain halted as :auth_verified! rendered or redirected
+I, [2016-02-12T03:31:22.411594 #18537]  INFO -- : Completed 302 Found in 29ms (ActiveRecord: 1.1ms)
+I, [2016-02-12T03:31:23.113367 #18537]  INFO -- : Started GET "/settings" for 41.190.2.50 at 2016-02-12 03:31:23 -0500
+I, [2016-02-12T03:31:23.118149 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:31:23.181496 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (29.9ms)
+I, [2016-02-12T03:31:23.196075 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:31:23.197818 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.3ms)
+I, [2016-02-12T03:31:23.199048 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.4ms)
+I, [2016-02-12T03:31:23.205393 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (5.3ms)
+I, [2016-02-12T03:31:23.210149 #18537]  INFO -- :   Rendered shared/_header.html.slim (10.7ms)
+I, [2016-02-12T03:31:23.211601 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T03:31:23.212038 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.4ms)
+I, [2016-02-12T03:31:23.213566 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.1ms)
+I, [2016-02-12T03:31:23.214225 #18537]  INFO -- : Completed 200 OK in 96ms (Views: 61.6ms | ActiveRecord: 3.8ms)
+I, [2016-02-12T03:31:35.696543 #18537]  INFO -- : Started GET "/verify/google_auth" for 41.190.2.50 at 2016-02-12 03:31:35 -0500
+I, [2016-02-12T03:31:35.710785 #18537]  INFO -- : Processing by Verify::GoogleAuthsController#show as HTML
+I, [2016-02-12T03:31:35.809120 #18537]  INFO -- :   Rendered verify/google_auths/show.html.slim within layouts/application (61.9ms)
+I, [2016-02-12T03:31:35.824093 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:31:35.825889 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.3ms)
+I, [2016-02-12T03:31:35.827317 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T03:31:35.835058 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (6.8ms)
+I, [2016-02-12T03:31:35.839683 #18537]  INFO -- :   Rendered shared/_header.html.slim (11.9ms)
+I, [2016-02-12T03:31:35.842056 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:31:35.842434 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.4ms)
+I, [2016-02-12T03:31:35.843907 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.0ms)
+I, [2016-02-12T03:31:35.844607 #18537]  INFO -- : Completed 200 OK in 133ms (Views: 102.1ms | ActiveRecord: 3.4ms)
+I, [2016-02-12T03:31:57.060800 #18537]  INFO -- : Started GET "/funds" for 41.190.2.50 at 2016-02-12 03:31:57 -0500
+I, [2016-02-12T03:31:57.066473 #18537]  INFO -- : Processing by Private::FundsController#index as HTML
+I, [2016-02-12T03:31:57.089821 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:31:57.090047 #18537]  INFO -- : Filter chain halted as :auth_verified! rendered or redirected
+I, [2016-02-12T03:31:57.090302 #18537]  INFO -- : Completed 302 Found in 24ms (ActiveRecord: 0.7ms)
+I, [2016-02-12T03:31:57.872662 #18537]  INFO -- : Started GET "/settings" for 41.190.2.50 at 2016-02-12 03:31:57 -0500
+I, [2016-02-12T03:31:57.874614 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:31:57.902811 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (13.6ms)
+I, [2016-02-12T03:31:57.911678 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.2ms)
+I, [2016-02-12T03:31:57.913093 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.0ms)
+I, [2016-02-12T03:31:57.914144 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T03:31:57.918640 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (4.0ms)
+I, [2016-02-12T03:31:57.925413 #18537]  INFO -- :   Rendered shared/_header.html.slim (11.0ms)
+I, [2016-02-12T03:31:57.926492 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:31:57.926734 #18537]  INFO -- :   Rendered shared/_frame.html.slim (0.8ms)
+I, [2016-02-12T03:31:57.927670 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.7ms)
+I, [2016-02-12T03:31:57.928275 #18537]  INFO -- : Completed 200 OK in 53ms (Views: 38.8ms | ActiveRecord: 1.8ms)
+I, [2016-02-12T03:33:29.178410 #18537]  INFO -- : Started GET "/funds" for 41.190.2.50 at 2016-02-12 03:33:29 -0500
+I, [2016-02-12T03:33:29.183548 #18537]  INFO -- : Processing by Private::FundsController#index as HTML
+I, [2016-02-12T03:33:29.231393 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:33:29.232034 #18537]  INFO -- : Filter chain halted as :auth_verified! rendered or redirected
+I, [2016-02-12T03:33:29.232648 #18537]  INFO -- : Completed 302 Found in 49ms (ActiveRecord: 1.9ms)
+I, [2016-02-12T03:33:30.323781 #18537]  INFO -- : Started GET "/settings" for 41.190.2.50 at 2016-02-12 03:33:30 -0500
+I, [2016-02-12T03:33:30.327195 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:33:30.447460 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (24.8ms)
+I, [2016-02-12T03:33:30.459600 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T03:33:30.461116 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.1ms)
+I, [2016-02-12T03:33:30.462138 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.4ms)
+I, [2016-02-12T03:33:30.468150 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (5.2ms)
+I, [2016-02-12T03:33:30.472203 #18537]  INFO -- :   Rendered shared/_header.html.slim (9.7ms)
+I, [2016-02-12T03:33:30.473344 #18537]  INFO -- :   Rendered shared/_flash.slim (0.1ms)
+I, [2016-02-12T03:33:30.473765 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.1ms)
+I, [2016-02-12T03:33:30.474961 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.8ms)
+I, [2016-02-12T03:33:30.475514 #18537]  INFO -- : Completed 200 OK in 148ms (Views: 110.1ms | ActiveRecord: 5.7ms)
+I, [2016-02-12T03:33:34.111905 #18537]  INFO -- : Started GET "/funds" for 41.190.2.50 at 2016-02-12 03:33:34 -0500
+I, [2016-02-12T03:33:34.116411 #18537]  INFO -- : Processing by Private::FundsController#index as HTML
+I, [2016-02-12T03:33:34.144604 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:33:34.144875 #18537]  INFO -- : Filter chain halted as :auth_verified! rendered or redirected
+I, [2016-02-12T03:33:34.145233 #18537]  INFO -- : Completed 302 Found in 29ms (ActiveRecord: 1.0ms)
+I, [2016-02-12T03:33:35.071572 #18537]  INFO -- : Started GET "/settings" for 41.190.2.50 at 2016-02-12 03:33:35 -0500
+I, [2016-02-12T03:33:35.073240 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:33:35.102568 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (11.0ms)
+I, [2016-02-12T03:33:35.112241 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.2ms)
+I, [2016-02-12T03:33:35.113204 #18537]  INFO -- :   Rendered shared/_meta.html.slim (0.7ms)
+I, [2016-02-12T03:33:35.113832 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.3ms)
+I, [2016-02-12T03:33:35.117345 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (3.0ms)
+I, [2016-02-12T03:33:35.119678 #18537]  INFO -- :   Rendered shared/_header.html.slim (5.6ms)
+I, [2016-02-12T03:33:35.120332 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:33:35.120520 #18537]  INFO -- :   Rendered shared/_frame.html.slim (0.6ms)
+I, [2016-02-12T03:33:35.121205 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.5ms)
+I, [2016-02-12T03:33:35.121503 #18537]  INFO -- : Completed 200 OK in 48ms (Views: 29.1ms | ActiveRecord: 3.1ms)
+I, [2016-02-12T03:33:43.520912 #18537]  INFO -- : Started GET "/id_document/edit" for 41.190.2.50 at 2016-02-12 03:33:43 -0500
+I, [2016-02-12T03:33:43.538006 #18537]  INFO -- : Processing by Private::IdDocumentsController#edit as HTML
+I, [2016-02-12T03:33:43.705691 #18537]  INFO -- :   Rendered private/id_documents/edit.html.slim within layouts/application (135.8ms)
+I, [2016-02-12T03:33:43.720112 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T03:33:43.722133 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.5ms)
+I, [2016-02-12T03:33:43.723706 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.8ms)
+I, [2016-02-12T03:33:43.730514 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (6.0ms)
+I, [2016-02-12T03:33:43.734584 #18537]  INFO -- :   Rendered shared/_header.html.slim (10.4ms)
+I, [2016-02-12T03:33:43.735951 #18537]  INFO -- :   Rendered shared/_flash.slim (0.1ms)
+I, [2016-02-12T03:33:43.736304 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.3ms)
+I, [2016-02-12T03:33:43.737723 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.9ms)
+I, [2016-02-12T03:33:43.738473 #18537]  INFO -- : Completed 200 OK in 200ms (Views: 168.6ms | ActiveRecord: 2.0ms)
+I, [2016-02-12T03:35:12.299094 #18537]  INFO -- : Started PATCH "/id_document" for 41.190.2.50 at 2016-02-12 03:35:12 -0500
+I, [2016-02-12T03:35:12.305499 #18537]  INFO -- : Processing by Private::IdDocumentsController#update as HTML
+I, [2016-02-12T03:35:12.305685 #18537]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"wAlRgh5MqjAYVZs3bPDUWmS9vYJNTX9emFz3/C8n4QQ=", "id_document"=>{"name"=>"LAWRENCE WARIEBI P.", "birth_date(3i)"=>"24", "birth_date(2i)"=>"2", "birth_date(1i)"=>"1985", "address"=>"NO. 5, ALHAJI TAIWO STREET, HOPE ESTATE, AJAH, LAGOS NIGERIA", "city"=>"LAGOS", "country"=>"NG", "zipcode"=>"+2345", "id_document_type"=>"", "id_document_number"=>"", "id_bill_type"=>""}, "commit"=>"Update ID Document"}
+I, [2016-02-12T03:35:12.421195 #18537]  INFO -- :   Rendered private/id_documents/edit.html.slim within layouts/application (79.3ms)
+I, [2016-02-12T03:35:12.428604 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.2ms)
+I, [2016-02-12T03:35:12.429762 #18537]  INFO -- :   Rendered shared/_meta.html.slim (0.9ms)
+I, [2016-02-12T03:35:12.430603 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T03:35:12.434786 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (3.7ms)
+I, [2016-02-12T03:35:12.437150 #18537]  INFO -- :   Rendered shared/_header.html.slim (6.3ms)
+I, [2016-02-12T03:35:12.437919 #18537]  INFO -- :   Rendered shared/_flash.slim (0.1ms)
+I, [2016-02-12T03:35:12.438101 #18537]  INFO -- :   Rendered shared/_frame.html.slim (0.7ms)
+I, [2016-02-12T03:35:12.438798 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.5ms)
+I, [2016-02-12T03:35:12.439147 #18537]  INFO -- : Completed 200 OK in 133ms (Views: 97.8ms | ActiveRecord: 2.9ms)
+I, [2016-02-12T03:45:28.446699 #18537]  INFO -- : Started GET "/signin" for 182.74.205.161 at 2016-02-12 03:45:28 -0500
+I, [2016-02-12T03:45:28.459009 #18537]  INFO -- : Processing by SessionsController#new as HTML
+I, [2016-02-12T03:45:28.516522 #18537]  INFO -- :   Rendered sessions/new.html.slim within layouts/application (18.6ms)
+I, [2016-02-12T03:45:28.531701 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:45:28.533786 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.5ms)
+I, [2016-02-12T03:45:28.535895 #18537]  INFO -- :   Rendered shared/_alert.html.slim (1.0ms)
+I, [2016-02-12T03:45:28.547686 #18537]  INFO -- :   Rendered shared/_header.html.slim (11.3ms)
+I, [2016-02-12T03:45:28.549336 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T03:45:28.549717 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.5ms)
+I, [2016-02-12T03:45:28.551273 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.1ms)
+I, [2016-02-12T03:45:28.552141 #18537]  INFO -- : Completed 200 OK in 93ms (Views: 56.2ms | ActiveRecord: 1.0ms)
+I, [2016-02-12T03:45:45.066792 #18537]  INFO -- : Started POST "/auth/identity/callback" for 182.74.205.161 at 2016-02-12 03:45:45 -0500
+I, [2016-02-12T03:45:45.070816 #18537]  INFO -- : (identity) Callback phase initiated.
+I, [2016-02-12T03:45:45.280952 #18537]  INFO -- : Processing by SessionsController#create as HTML
+I, [2016-02-12T03:45:45.281275 #18537]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"gPEFgmdj6N/6iIBVbokdlBQxD6X3pwAvRaRfws3ZsVU=", "auth_key"=>"msk@cogzidel.com", "password"=>"[FILTERED]", "commit"=>"Sign In", "provider"=>"identity"}
+I, [2016-02-12T03:45:45.336725 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:45:45.338153 #18537]  INFO -- : Completed 302 Found in 56ms (ActiveRecord: 8.2ms)
+I, [2016-02-12T03:45:46.142792 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 03:45:46 -0500
+I, [2016-02-12T03:45:46.146566 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:45:46.204779 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (28.3ms)
+I, [2016-02-12T03:45:46.218295 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:45:46.220459 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.7ms)
+I, [2016-02-12T03:45:46.221922 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.4ms)
+I, [2016-02-12T03:45:46.229312 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (6.4ms)
+I, [2016-02-12T03:45:46.234481 #18537]  INFO -- :   Rendered shared/_header.html.slim (12.1ms)
+I, [2016-02-12T03:45:46.236021 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:45:46.236497 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.6ms)
+I, [2016-02-12T03:45:46.237854 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.0ms)
+I, [2016-02-12T03:45:46.238525 #18537]  INFO -- : Completed 200 OK in 92ms (Views: 59.3ms | ActiveRecord: 5.9ms)
+I, [2016-02-12T03:51:25.566587 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 03:51:25 -0500
+I, [2016-02-12T03:51:25.579071 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:51:25.666599 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (29.8ms)
+I, [2016-02-12T03:51:25.688942 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.6ms)
+I, [2016-02-12T03:51:25.691151 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.7ms)
+I, [2016-02-12T03:51:25.693380 #18537]  INFO -- :   Rendered shared/_alert.html.slim (1.1ms)
+I, [2016-02-12T03:51:25.767892 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (73.0ms)
+I, [2016-02-12T03:51:25.772877 #18537]  INFO -- :   Rendered shared/_header.html.slim (78.8ms)
+I, [2016-02-12T03:51:25.774460 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:51:25.774803 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.5ms)
+I, [2016-02-12T03:51:25.776322 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.1ms)
+I, [2016-02-12T03:51:25.776969 #18537]  INFO -- : Completed 200 OK in 198ms (Views: 140.0ms | ActiveRecord: 5.7ms)
+I, [2016-02-12T03:51:29.958225 #18537]  INFO -- : Started GET "/signout" for 182.74.205.161 at 2016-02-12 03:51:29 -0500
+I, [2016-02-12T03:51:29.962425 #18537]  INFO -- : Processing by SessionsController#destroy as HTML
+I, [2016-02-12T03:51:30.045476 #18537]  INFO -- : Redirected to http://www.tradenaira.com/
+I, [2016-02-12T03:51:30.046060 #18537]  INFO -- : Completed 302 Found in 83ms (ActiveRecord: 0.8ms)
+[2016-02-12 03:53:25] FATAL SignalException: SIGTERM
+	/root/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:174:in `select'
+	/root/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:174:in `block in start'
+	/root/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:32:in `start'
+	/root/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:162:in `start'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:14:in `run'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/rack-1.5.2/lib/rack/server.rb:264:in `start'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/railties-4.0.12/lib/rails/commands/server.rb:84:in `start'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/railties-4.0.12/lib/rails/commands.rb:76:in `block in <top (required)>'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/railties-4.0.12/lib/rails/commands.rb:71:in `tap'
+	/root/peatio/current/vendor/bundle/ruby/2.2.0/gems/railties-4.0.12/lib/rails/commands.rb:71:in `<top (required)>'
+	bin/rails:4:in `require'
+	bin/rails:4:in `<main>'
+[2016-02-12 03:53:25] INFO  going to shutdown ...
+[2016-02-12 03:53:25] INFO  WEBrick::HTTPServer#start done.
+I, [2016-02-12T03:51:32.322383 #18537]  INFO -- : Started GET "/" for 182.74.205.161 at 2016-02-12 03:51:32 -0500
+I, [2016-02-12T03:51:32.326093 #18537]  INFO -- : Processing by WelcomeController#index as HTML
+I, [2016-02-12T03:51:32.369103 #18537]  INFO -- :   Rendered welcome/index.html.slim within layouts/landing (21.3ms)
+I, [2016-02-12T03:51:32.381404 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:51:32.383167 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.3ms)
+I, [2016-02-12T03:51:32.384719 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.4ms)
+I, [2016-02-12T03:51:32.386477 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.3ms)
+I, [2016-02-12T03:51:32.387166 #18537]  INFO -- : Completed 200 OK in 61ms (Views: 39.5ms | ActiveRecord: 0.8ms)
+I, [2016-02-12T03:51:33.100218 #18537]  INFO -- : Started GET "/assets/tradeniara.js?body=1" for 182.74.205.161 at 2016-02-12 03:51:33 -0500
+I, [2016-02-12T03:51:33.112735 #18537]  INFO -- : Started GET "/assets/liveprice.css?body=1" for 182.74.205.161 at 2016-02-12 03:51:33 -0500
+I, [2016-02-12T03:51:33.116992 #18537]  INFO -- : Started GET "/assets/header.js?body=1" for 182.74.205.161 at 2016-02-12 03:51:33 -0500
+F, [2016-02-12T03:51:33.133908 #18537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/header.js"):
+  lib/middleware/security.rb:11:in `call'
+
+
+I, [2016-02-12T03:51:33.368021 #18537]  INFO -- : Started GET "/assets/market.js?body=1" for 182.74.205.161 at 2016-02-12 03:51:33 -0500
+I, [2016-02-12T03:51:33.523633 #18537]  INFO -- : Started GET "/assets/jquery.session.js?body=1" for 182.74.205.161 at 2016-02-12 03:51:33 -0500
+I, [2016-02-12T03:51:33.534027 #18537]  INFO -- : Started GET "/assets/component_data/global.js.coffee?body=1" for 182.74.205.161 at 2016-02-12 03:51:33 -0500
+I, [2016-02-12T03:51:34.171562 #18537]  INFO -- : Started GET "/assets/goodcompany.png" for 182.74.205.161 at 2016-02-12 03:51:34 -0500
+I, [2016-02-12T03:51:34.175638 #18537]  INFO -- : Started GET "/assets/banner_image.png" for 182.74.205.161 at 2016-02-12 03:51:34 -0500
+I, [2016-02-12T03:51:34.182725 #18537]  INFO -- : Started GET "/assets/serviceimage.png" for 182.74.205.161 at 2016-02-12 03:51:34 -0500
+I, [2016-02-12T03:52:05.489942 #18537]  INFO -- : Started GET "/signin" for 182.74.205.161 at 2016-02-12 03:52:05 -0500
+I, [2016-02-12T03:52:05.495235 #18537]  INFO -- : Processing by SessionsController#new as HTML
+I, [2016-02-12T03:52:05.530503 #18537]  INFO -- :   Rendered sessions/new.html.slim within layouts/application (8.3ms)
+I, [2016-02-12T03:52:05.538067 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T03:52:05.539146 #18537]  INFO -- :   Rendered shared/_meta.html.slim (0.9ms)
+I, [2016-02-12T03:52:05.540179 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.6ms)
+I, [2016-02-12T03:52:05.547239 #18537]  INFO -- :   Rendered shared/_header.html.slim (6.8ms)
+I, [2016-02-12T03:52:05.548363 #18537]  INFO -- :   Rendered shared/_flash.slim (0.2ms)
+I, [2016-02-12T03:52:05.548596 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.0ms)
+I, [2016-02-12T03:52:05.549404 #18537]  INFO -- :   Rendered shared/_footer.html.slim (0.5ms)
+I, [2016-02-12T03:52:05.549820 #18537]  INFO -- : Completed 200 OK in 54ms (Views: 28.6ms | ActiveRecord: 2.3ms)
+I, [2016-02-12T03:52:17.762384 #18537]  INFO -- : Started POST "/auth/identity/callback" for 182.74.205.161 at 2016-02-12 03:52:17 -0500
+I, [2016-02-12T03:52:17.764265 #18537]  INFO -- : (identity) Callback phase initiated.
+I, [2016-02-12T03:52:17.964688 #18537]  INFO -- : Processing by SessionsController#create as HTML
+I, [2016-02-12T03:52:17.965134 #18537]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"6BK/2PpFWUdeLM1VcGMUmx02axrtoDqfKXZ27WLIXRg=", "auth_key"=>"msk@cogzidel.com", "password"=>"[FILTERED]", "commit"=>"Sign In", "provider"=>"identity"}
+I, [2016-02-12T03:52:18.025334 #18537]  INFO -- : Redirected to http://www.tradenaira.com/settings
+I, [2016-02-12T03:52:18.026074 #18537]  INFO -- : Completed 302 Found in 60ms (ActiveRecord: 5.3ms)
+I, [2016-02-12T03:52:18.585453 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 03:52:18 -0500
+I, [2016-02-12T03:52:18.588930 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:52:18.635937 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (21.9ms)
+I, [2016-02-12T03:52:18.650202 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.4ms)
+I, [2016-02-12T03:52:18.651937 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.4ms)
+I, [2016-02-12T03:52:18.653239 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.6ms)
+I, [2016-02-12T03:52:18.662310 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (8.2ms)
+I, [2016-02-12T03:52:18.673240 #18537]  INFO -- :   Rendered shared/_header.html.slim (19.6ms)
+I, [2016-02-12T03:52:18.675472 #18537]  INFO -- :   Rendered shared/_flash.slim (0.3ms)
+I, [2016-02-12T03:52:18.676049 #18537]  INFO -- :   Rendered shared/_frame.html.slim (2.0ms)
+I, [2016-02-12T03:52:18.678460 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.9ms)
+I, [2016-02-12T03:52:18.679417 #18537]  INFO -- : Completed 200 OK in 90ms (Views: 64.1ms | ActiveRecord: 3.0ms)
+I, [2016-02-12T03:52:43.467399 #18537]  INFO -- : Started GET "/settings" for 182.74.205.161 at 2016-02-12 03:52:43 -0500
+I, [2016-02-12T03:52:43.470748 #18537]  INFO -- : Processing by Private::SettingsController#index as HTML
+I, [2016-02-12T03:52:43.516564 #18537]  INFO -- :   Rendered private/settings/index.html.slim within layouts/application (19.8ms)
+I, [2016-02-12T03:52:43.529404 #18537]  INFO -- :   Rendered shared/_html5.html.slim (0.3ms)
+I, [2016-02-12T03:52:43.530950 #18537]  INFO -- :   Rendered shared/_meta.html.slim (1.2ms)
+I, [2016-02-12T03:52:43.532202 #18537]  INFO -- :   Rendered shared/_alert.html.slim (0.5ms)
+I, [2016-02-12T03:52:43.538119 #18537]  INFO -- :   Rendered shared/_header_profile_setting.html.slim (5.1ms)
+I, [2016-02-12T03:52:43.543131 #18537]  INFO -- :   Rendered shared/_header.html.slim (10.5ms)
+I, [2016-02-12T03:52:43.544412 #18537]  INFO -- :   Rendered shared/_flash.slim (0.1ms)
+I, [2016-02-12T03:52:43.544781 #18537]  INFO -- :   Rendered shared/_frame.html.slim (1.2ms)
+I, [2016-02-12T03:52:43.546408 #18537]  INFO -- :   Rendered shared/_footer.html.slim (1.1ms)
+I, [2016-02-12T03:52:43.547167 #18537]  INFO -- : Completed 200 OK in 76ms (Views: 48.7ms | ActiveRecord: 2.7ms)
+Exiting

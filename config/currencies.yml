@@ -1,0 +1,96 @@
+- id: 1
+  key: Naira
+  code: ngn
+  symbol: "₦"
+  coin: false
+  precision: 2
+  assets:
+    accounts:
+      -
+        bank: '招商银行'
+        address: '6225 0885 6022 3501'
+        password: '111111'
+        tel: '95555'
+
+- id: 2
+  key: satoshi
+  code: btc
+  symbol: "฿"
+  coin: true
+  quick_withdraw_max: 0
+  rpc: http://username:password@127.0.0.1:18332
+  blockchain: https://blockchain.info/tx/#{txid}
+  address_url: https://blockchain.info/address/#{address}
+  assets:
+    accounts:
+      -
+        address: 1HjfnJpQmANtuW7yr1ggeDfyfe1kDK7rm3           
+
+- id: 3
+  key: Dollar
+  code: usd
+  symbol: "$"
+  coin: false
+  precision: 2
+  assets:
+    accounts:
+      -
+        bank: '招商银行'
+        address: '6225 0885 6022 3501'
+        password: '111111'
+        tel: '95555'
+- id: 4
+  key: Euro
+  code: eur
+  symbol: "€"
+  coin: false
+  precision: 2
+  assets:
+    accounts:
+      -
+        bank: '招商银行'
+        address: '6225 0885 6022 3501'
+        password: '111111'
+        tel: '95555'
+- id: 5
+  key: Pound
+  code: gbp
+  symbol: "£"
+  coin: false
+  precision: 2
+  assets:
+    accounts:
+      -
+        bank: '招商银行'
+        address: '6225 0885 6022 3501'
+        password: '111111'
+        tel: '95555'   
+- id: 6
+  key: Ghanaian
+  code: ghs
+  symbol: "₵"
+  coin: false
+  precision: 2
+  assets:
+    accounts:
+      -
+        bank: '招商银行'
+        address: '6225 0885 6022 3501'
+        password: '111111'
+        tel: '95555'         
+
+- id: 7
+  key: renminbi
+  code: cny
+  symbol: "¥"
+  coin: false
+  precision: 2
+  assets:
+    accounts:
+      -
+        bank: '招商银行'
+        address: '6225 0885 6022 3501'
+        password: '111111'
+        tel: '95555'
+
+       

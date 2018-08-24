@@ -32,6 +32,11 @@ class MemberMailer < BaseMailer
 
   def set_mail(member_id)
     @member = Member.find member_id
+    @membername = IdDocument.find @member.id
+    @closename = @membername.name
+    if @closename.blank?
+       @closename = 'user'
+	end
     mail to: @member.email
   end
 end

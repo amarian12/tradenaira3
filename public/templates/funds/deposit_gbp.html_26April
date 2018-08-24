@@ -1,0 +1,343 @@
+<!--
+<h2 class="panel-title">{{"funds.deposit_gbp.title" | t}}</h2>
+<div class="help-block">
+  {{ "funds.deposit_gbp.desc" | t }}
+  <ul>
+    <li>{{ "funds.deposit_gbp.desc_item_1" | t }}</li>
+    <li>{{ "funds.deposit_gbp.desc_item_2" | t }} </li>
+    <li>{{ "funds.deposit_gbp.desc_item_3" | t }}</li>
+  </ul>
+  <span class="text-danger">{{ "funds.deposit_gbp.attention" | t }}</span>
+</div>-->
+<div class="contentsfirst">
+<p class="allcontents">Please make a transfer to our account details below. Use the identification code in your user history below as a reference to make it easier for us to locate your payment.</p>
+</div>
+<div class="text-center startdepreq">
+        <div type="button" class="strtdep adddepbtn">Start deposit request</div>
+</div>
+<div class="firststep">
+<div class="col-md-8 col-sm-8 col-xs-12 fststep">
+	<div class="howit_count selectstep"> 1 </div>
+	<div class="howit_bdr howit_bdrryt hidden-xs"> </div>
+</div>
+<div class="col-md-8 col-sm-8 col-xs-12 sndstep">
+	<div class="howit_bdr howit_bdrleft hidden-xs"></div>
+	<div class="howit_count"> 2 </div>
+	<div class="howit_bdr howit_bdrryt hidden-xs"></div>
+</div>
+<div class="col-md-8 col-sm-8 col-xs-12 trdstep">
+	<div class="howit_bdr howit_bdrleft hidden-xs"></div>
+	<div class="howit_count"> 3 </div>
+</div>
+</div>
+<div class="col-xs-24 fundsdesign nopadding">
+
+<form id="gbp_deposit" name="deposit_form" class="form form-horizontal transfer-form" ng-controller="DepositsController as depositsCtrl" ng-submit="deposit_form.$valid && depositsCtrl.createDeposit(currency)" novalidate>
+
+  <table class="table">
+    <!--
+    <tr>
+          <td rowspan="3" class="v-col">{{ "funds.deposit_gbp.from" | t }}</td>
+          <td><label class="optional control-label">{{ "funds.deposit_gbp.deposit_name" | t }}</label><p class="form-control-static">{{name}}</p></td>
+          <td rowspan="3" class="v-col">{{ "funds.deposit_gbp.to" | t }}</td>
+          <td>
+              <span class="col-sm-14 col-xs-24"><label class="optional control-label">Account Name</label><p class="form-control-static">EMEA TRADE LIMITED</p></span>
+              <span class="col-sm-10 col-xs-24"><label class="optional control-label">BANK</label><p class="form-control-static">HSBC – London</p></span>
+          </td>
+        </tr>-->
+    
+    <tr  class="accountrow firststep">
+      <td>
+        <label class="select required control-label" for="deposit_fund_source" style="font-size: 15px;margin-bottom: 10px;">{{"funds.deposit_gbp.deposit_account" | t}} (<a href="#" ng-click="openFundSourceManagerPanelusd()">{{ "funds.deposit_gbp.manage" | t }}</a>)</label>
+		<select id="fund_source" class="select required form-control" name="fund_source"  ng-init="depositsCtrl.deposit.fund_source=depositsCtrl.deposit.fund_source||fund_sources[0].id"
+          ng-model="depositsCtrl.deposit.fund_source"
+          ng-options="fs.id as fs.labelusd for fs in fund_sources | filter:{currency:currency}"
+          required>
+          <option value="" ng-if="false"></option>
+        </select>
+        <label class="bankerror" style="display: none;color: red;">Please input the bank account details of where the funds will be coming from before you proceed to the next step.</label>
+      </td>
+      <!--<td><span class="col-xs-24"><label class="optional control-label">IBAN</label><p class="form-control-static">GB54 MIDL 4005 3084 5619 10</p></span></td>-->
+    </tr>
+    <tr class="accountrow firststep">
+    	<td class="text-center">
+		<button type="button" class="nextamount bckfirst">Back</button>
+    		<button type="button" class="nextdiv nextamount">Next</button>
+    	</td>
+    </tr>
+    <tr class="last-row depamount">
+      <td><label class="optional control-label">{{ "funds.deposit_gbp.amount" | t}}</label><input class="form-control" id="deposit_sum" name="deposit[sum]" placeholder="{{'funds.deposit_gbp.min_amount' | t}}" type="number" min="100" ng-model="depositsCtrl.deposit.amount" required><label class="minerror" style="display: none;color: red;">Please enter the minimum amount</label></td>
+      <!--
+      <td class="row">
+              <span class="col-sm-8 col-xs-24"><label class="optional control-label">BIC</label><p class="form-control-static">MIDLGB22</p></span>
+              <span class="col-sm-10 col-xs-24"><label class="optional control-label">Account number</label><p class="form-control-static">84561910</p></span>
+              <span class="col-sm-6 col-xs-24"><label class="optional control-label">Sort Code</label><p class="form-control-static">40-05-30</p></span>
+            </td>-->
+      
+    </tr>
+    
+    <tr class="accountrow depamount">
+    	<td class="text-center">
+    		<button type="button" class="nextamount backacc">Back</button>
+    		<button type="button" class="nextamount test">Next</button>
+    	</td>
+    </tr>
+    
+  </table>
+
+  <div class="form-group depsubmit">
+    <div class="form-submit">
+      <input class="nextamount depositsum" data-loading-text="Creating..." name="commit" ng-click="depositsCtrl.deposit.fund_source=depositsCtrl.deposit.fund_source||fund_sources[0].id" type="submit" value="{{'submit' | t}}" style="display: block;margin: 0 auto 10px;" >
+      <input class="nextamount backamount" type="button" value="Back" style="display: block;margin: 0 auto 10px;" />
+    </div>
+    
+  </div>
+    <a href="#" class="tradedet" data-toggle="modal" data-target="#myModal">TradeNAIRA deposit account</a>
+</form>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content" style="overflow: hidden;">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true"> &times;</span>
+			</button>
+			<div class="col-xs-24 accdetails">
+		    	<div class="col-xs-24"><label class="optional control-label col-md-12 col-sm-12 col-xs-24">Account Name</label><p class="form-control-static col-md-12 col-sm-12 col-xs-24"> EMEA TRADE LIMITED</p></div>
+              	<div class="col-xs-24"><label class="optional control-label col-md-12 col-sm-12 col-xs-24">BANK</label><p class="form-control-static col-md-12 col-sm-12 col-xs-24">HSBC – London</p></div>
+		    	<div class="col-xs-24"><label class="optional control-label col-md-12 col-sm-12 col-xs-24">IBAN</label><p class="form-control-static col-md-12 col-sm-12 col-xs-24">GB54 MIDL 4005 3084 5619 10</p></div>
+		    	<div class="col-xs-24"><label class="optional control-label col-md-12 col-sm-12 col-xs-24">BIC</label><p class="form-control-static col-md-12 col-sm-12 col-xs-24">MIDLGB22</p></div>
+		    	<div class="col-xs-24"><label class="optional control-label col-md-12 col-sm-12 col-xs-24">Account number</label><p class="form-control-static col-md-12 col-sm-12 col-xs-24">84561910</p></div>
+		    	<div class="col-xs-24"><label class="optional control-label col-md-12 col-sm-12 col-xs-24">Sort Code</label><p class="form-control-static col-md-12 col-sm-12 col-xs-24">40-05-30</p></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+<h2 class="panel-title">{{ "funds.deposit_history.title" | t }}</h2>
+<table class="table res_tabledep" ng-controller="DepositHistoryController as dhCtrl">
+  <thead>
+  <tr>
+    <th>{{ "funds.deposit_history.identification" | t }}</th>
+    <th>{{ "funds.deposit_history.time" | t }}</th>
+    <th>{{ "funds.deposit_history.from" | t }}</th>
+    <th>{{ "funds.deposit_history.amount" | t }}</th>
+    <th>{{ "funds.deposit_history.state_and_action" | t }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="deposit_item" ng-class="{ 'new-row':dhCtrl.newRecord(deposit) }" ng-repeat="deposit in dhCtrl.deposits | orderBy:predicate">
+    <td><span class="outlined-label">{{deposit.id}}</span></td>
+    <td>{{deposit.created_at | date:'yyyy-MM-dd HH:mm' }}</td>
+    <td>{{deposit.fund_extra}} @ {{deposit.fund_uid}}</td>
+    <td>{{deposit.amount}}</td>
+    <td>{{"funds.deposit_history." + deposit.aasm_state | t}}
+      <span ng-if="dhCtrl.canCancel(deposit.aasm_state)">/
+        <a ng-click="dhCtrl.cancelDeposit(deposit); $event.preventDefault()" href="#" class="cancel_link">{{ "funds.deposit_history.cancel" | t }}</a>
+      </span>
+    </td>
+  </tr>
+  <tr ng-show="dhCtrl.canCancel(deposit.aasm_state)"><td colspan="6"><span class="help-block text-center">{{ "funds.deposit_history.no_data" | t }}</span></td></tr>
+  </tbody>
+</table>
+
+<script>
+	$(document).ready(function()
+	{
+		//$(".fundsdesign").hide();
+		$(".depamount").hide();
+		$(".depsubmit").hide();
+                $(".firststep").hide();
+		$("#deposit_sum").keyup(function()
+		{
+			if (parseInt(this.value) < this.min)
+			{
+				$(".minerror").show();
+				$(".test").removeClass("nextsubdiv");
+			}
+			else
+			{
+				$(".minerror").hide();
+				$(".test").addClass("nextsubdiv");
+			}
+		})
+		$(".depositsum").click(function()
+		{
+                        $(".startdepreq").show(300);
+                        $(".depsubmit").hide(300);
+                        $(".firststep").hide(300);
+			$(".contentsfirst").show(300);
+                        $(".trdstep div").css("background" , "#e9bc1b");
+                        $(".fststep > div").css("background" , "#38a6cb");
+		})
+                $(".strtdep").click(function()
+                {
+                        $(".firststep").show(300);
+                        $(".startdepreq").hide(300);
+			$(".contentsfirst").hide(300);
+                })
+                
+                $(".bckfirst").click(function()
+                {
+                        $(".firststep").hide(300);
+                        $(".startdepreq").show(300);
+			$(".contentsfirst").show(300);
+                })
+
+		/*
+		$(".adddepbtn").click(function()
+				{
+					$(".fundsdesign").show(300);
+					$(".adddep").hide(300);
+					$(".sndstep > div").css("background" , "#38a6cb");
+					$(".howit_count").removeClass("selectstep");
+				})*/
+		
+		$(".nextdiv").click(function()
+		{
+                        var length = $('#fund_source > option').length;
+                        if (length == 0)
+                        {
+                                $(".bankerror").show();
+                        }
+                        else
+                        {
+			$(".accountrow").hide(300);
+			$(".depamount").show(300);
+			$(".depsubmit").hide(300);
+			$(".sndstep > div").css("background" , "#38a6cb");
+			$(".fststep > div").css("background" , "#e9bc1b");
+			}
+		})
+		$(".backacc").click(function()
+		{
+			$(".accountrow").show(300);
+			$(".accountrow").show(300);
+			$(".depamount").hide(300);
+			$(".fststep > div").css("background" , "#38a6cb");
+			$(".sndstep > div").css("background" , "#e9bc1b");
+			
+		})
+		$(".backamount").click(function()
+		{
+			$(".depamount").show(300);
+			$(".depsubmit").hide(300);
+			$(".sndstep > div").css("background" , "#38a6cb");
+			$(".trdstep > div").css("background" , "#e9bc1b");
+		})
+		$( document ).on( "click", ".nextsubdiv", function() {
+                        var min = $("#deposit_sum").val();
+                        //alert(min);
+                        if (min == '')
+                        {
+                                $(".minerror").show();
+                                event.preventDefault();
+                        }
+                        else
+                        {
+			$(".depamount").hide(300);
+			$(".depsubmit").show(300);
+			$(".sndstep > div").css("background" , "#e9bc1b");
+			$(".trdstep > div").css("background" , "#38a6cb");
+			}
+		})
+		
+	})
+</script>
+<style>
+	@media only screen and (max-width: 760px)  
+	{
+	.res_tabledep td:nth-of-type(1):before { content: "Identification Code"; }
+	.res_tabledep td:nth-of-type(2):before { content: "Time" ; }
+	.res_tabledep td:nth-of-type(3):before { content: "From" ; }
+	.res_tabledep td:nth-of-type(4):before { content: "Amount" ; }
+	.res_tabledep td:nth-of-type(5):before { content: "State/Action" ; }
+	
+	.fststep, .sndstep, .trdstep
+	{
+		display:none;
+	}
+	}
+	.adddepbtn
+	{
+    background: #38a6cb;
+    font-size: 17px;
+    color: white;
+    border: 0;
+    padding: 8px 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    margin: 0 auto;
+    text-align: center;
+    left: 0;
+    right: 0;
+    max-width: 200px;
+    cursor:pointer;
+	}
+	table, td
+	{
+		border:0 !important;
+	}
+	.nextamount
+	{
+    background-color: #38a6cb;
+    color: white;
+    border: 0;
+    padding: 7px 15px;
+    font-size: 16px !important;
+	}
+	.howit_count {
+    background: #e9bc1b;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 27px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+.howit_bdr {
+    position: absolute;
+    width: 46%;
+    top: 50%;
+    height: 5px;
+    background: #e9bc1b;
+    z-index: 0;
+}
+.howit_bdrleft {
+    left: 0;
+}
+.howit_bdrryt {
+    right: 0;
+}
+.selectstep
+{
+	background-color: #38a6cb;
+}
+.selectstep + .howit_bdr
+{
+	background-color: #38a6cb;
+}
+.tradedet, .tradedet:hover, .tradedet:focus
+{
+	color:#38a6cb;
+	font-size:16px;
+	outline: none;
+}
+.startdepreq
+{
+    min-height:300px;
+    position:relative;
+}
+.allcontents
+{
+    font-size: 15px;
+    color: #135369;
+    line-height: 26px;
+}
+
+</style>
+

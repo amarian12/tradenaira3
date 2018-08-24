@@ -1,0 +1,38 @@
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-heading
+        span = t('.withdraw', sn: @ghanaian.sn)
+      .panel-body
+        = description_for :withdraw do
+          = item_for @ghanaian, :id
+          = item_for @ghanaian, :created_at
+          = item_for @ghanaian, :aasm_state_text
+          hr.split
+          = item_for @ghanaian.member, :name do
+            span.fa.fa-copy data-clipboard-text='#{@ghanaian.member.name}' = @ghanaian.member.name
+          = item_for @ghanaian, :fund_extra do
+            span.fa.fa-copy data-clipboard-text='#{ngnbank_code_to_name @ghanaian.fund_extra}' = ngnbank_code_to_name @ghanaian.fund_extra
+          = item_for @ghanaian, :fund_uid do
+            span.fa.fa-copy data-clipboard-text='#{@ghanaian.fund_uid}' = @ghanaian.fund_uid
+          = item_for @ghanaian, :amount do
+            span.fa.fa-copy data-clipboard-text='#{@ghanaian.amount}' = @ghanaian.amount
+          hr.split
+          hr.split
+          = item_for @ghanaian, :remark do
+            span.fa.fa-copy data-clipboard-text='#{@ghanaian.remark}' = @ghanaian.remark
+          hr.split
+          ul.list-inline.pull-right
+            - if @ghanaian.may_reject?
+              li
+                = link_to t('.reject'), url_for([:admin, @ghanaian]), class: 'btn btn-danger', method: 'DELETE', confirm: t('.reject_confirm')
+            - if @ghanaian.may_process?
+              li
+                = link_to t('.process'), url_for([:admin, @ghanaian]), class: 'btn btn-primary', method: 'PATCH'
+            - if @ghanaian.may_succeed?
+              li
+                = link_to t('.succeed'), url_for([:admin, @ghanaian]), class: 'btn btn-success', method: 'PATCH', confirm: t('.succeed_confirm')
+
+  .col-xs-12
+    = render partial: 'shared/admin/member', locals: {member: @ghanaian.member}
+    = render partial: 'shared/admin/account', locals: {account: @ghanaian.account}

@@ -1,23 +1,835 @@
-header.text-center
-  .ribbon
-    a href="https://github.com/peatio/peatio" View on GitHub
-  .container
-    a href='http://github.com/peatio/peatio'
-      img src='#{image_path 'logo.png'}' width='336px'
-    section
-      - Rails.configuration.i18n.available_locales.each do |locale|
-        h3 = t(:slogan, locale: locale)
-    #getstart.row
-      - unless current_user
-        .col-xs-4.col-xs-offset-8
-          a href="#{signin_path}" class="btn btn-primary btn-lg btn-block" role="button" = t("header.signin")
-        - if ENV['WEIBO_AUTH'] == "true"
-          .col-xs-4
-            a href="/auth/weibo" class="btn btn-primary btn-lg btn-block" role="button" = t("header.login_via_weibo")
-        .col-xs-4
-          a href="#{signup_path}" class="btn btn-primary btn-lg btn-block" role="button" = t("header.signup")
-      - else
-        .col-xs-6.col-xs-offset-9.text-center
-          a href="#{market_path(current_market)}" class="btn btn-primary btn-lg btn-block" role="button" = t("header.getstart")
-          a href="#{funds_path}" class="btn btn-primary btn-lg btn-block" role="button" = t("header.funds")
-          a href="#{settings_path}" class="btn btn-primary btn-lg btn-block" role="button" = t("header.settings")
+= metamagic title: "Buy or Sell Naira – Transparent Nigerian Naira Exchange Rates"
+meta http-equiv="content-type" content="text/html; charset=UTF-8"
+link rel="stylesheet" href="/assets/liveprice.css?body=1"
+link rel="stylesheet" href="/assets/style2.css?body=1"
+script type="text/javascript" src="/assets/tradeniara.js?body=1"
+script type="text/javascript" src="/assets/header.js?body=1"
+script type="text/javascript" src="/assets/market.js?body=1"
+script type="text/javascript" src="/assets/jquery.session.js?body=1"
+script type="text/javascript" src="/assets/component_data/global.js.coffee?body=1"
+
+header.text-center.sanc.homepage
+  .col-xs-24 style="padding:0px;"
+  	-if @countslide.size > 0
+     .news_sub.allslide style="padding:0px;overflow:hidden;"
+       marquee behavior="scroll" scrollamount="3" direction="left" width="100%"
+	   #myCarousel1.carousel.slide.col-xs-24.nopad data-ride="carousel"
+	    .carousel-inner.slidecontent role="listbox"
+             - @countslide.each do |count|
+                      li.item.newsdate.firstslide.slideli  =  count.try(:usdtxt)
+                      li.item.newsdate.secondslide.slideli =  count.try(:poundtxt)
+                      li.item.newsdate.thirdslide.slideli  =  count.try(:eurotxt)
+  .container 	
+    .navbar-header
+    	button.navbar-toggle.collapsed data-toggle="collapse" type="button" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
+        	span.icon-bar
+        	span.icon-bar
+        	span.icon-bar
+	    a href='#{root_path}' class="logo"
+	      img class="home_logo" src='#{image_path 'transprant_logo.png'}'
+	.collapse.navbar-collapse#bs-example-navbar-collapse-1
+	     ul.nav.navbar-nav.navbar-right.home_head.tophead
+	     	= render partial: 'shared/header_account_balance' if current_user && controller_name == 'markets'
+		    = render partial: 'shared/header_profile_setting' if current_user
+		    = top_nav_link(t('header.signin'), signin_path, 'sign-in') unless current_user
+		    /*a href="#{signin_path}" class="header_menu" role="button" = t("header.signin") unless current_user*/
+	  		/*li: a href="#{root_path}" class="header_men" role="button" 
+	  		 		i.fa.fa-language.margin_right
+	  		 		= t("header.language")*/
+			li: a href="#{root_path}pages/contactus" class="header_menu header_help" role="button"
+		    		i.fa.fa-phone-square.margin_right 
+		    		= t("footer.contact")
+		    li: a href="#{root_path}pages/learn" class="header_menu header_help" role="button"
+		    		i.fa.fa-book.margin_right 
+		    		= t("header.learn")
+			.home_signup		    		
+		    	= top_nav_link(t("header.signup"), signup_path, '') unless current_user
+section.sanc.wholeban
+	#myCarousel.carousel.slide.col-xs-24.nopad.home_banner data-ride="carousel"
+	  .carousel-inner.container.banner_image role="listbox"
+	    .item.active
+	      h3
+	      	| THE EVOLUTION OF NIGERIAN FX
+	      p
+		  	| Peer-to-peer currency matching platform offering mid-market rates via our dynamic matching technology
+		  
+		.item
+	      h3
+	      	| FOREIGN EXCHANGE AT UNBEATABLE RATES
+	      p
+		  	| Low cost, safe and easy way to trade & exchange Nigerian Naira.
+	    .item
+	      h3
+	      	| TRANSPARENT P2P CURRENCY EXCHANGE PLATFORM
+	      p
+	      	| Fast, transparent, secure and up to 30 times cheaper than banks and bureaux de changes
+	    .item
+	      h3
+	      	| QUICK & SECURE
+	      p
+	      	| Most transfers completed in less than 6 Hours!
+	  .linktrade.col-md-4.col-sm-6.col-xs-10
+	   	a href="/markets/usdngn" class="linktradeadd" target="_blank" Trading Floor  
+	
+
+
+	div.col-xs-24.flagimg
+	   .container
+		  .ng-scope id="market_list" ng-controller="MarketsCtrl" style="overflow:hidden;"
+		        
+				h3.sub_head
+					| NAIRA EXCHANGE RATE - REAL TIME PRICES ON PLATFORM	
+				h1.vishid
+					| Better than Naira Black Market rates on Abokifx the best way to send money to Nigeria	  	
+                ul class="nav nav-pills col-md-23 col-md-offset-1 col-sm-12 col-sm-offset-8 col-xs-22 col-xs-offset-2" role="tablist"
+                    li id="li1" class="" ng-class="{true:'active'}[market==='usdngn']"
+                    	a href="javascript:void(0)" data-link="/markets/usdngn" datas="usdngn" head="USD" class="gbpngn lnk" USD/NGN
+                    	iframe id="frameExternal" style="display:none;"
+                    li id="li2" class="" ng-class="{true:'active'}[market==='gbpngn']"
+                    	a href="javascript:void(0)" data-link="/markets/gbpngn" datas="gbpngn" head="GBP" class="gbpngn lnk" GBP/NGN
+                      
+                    
+                    li id="li5" class="" ng-class="{true:'active'}[market==='btcngn']"
+                    	a href="javascript:void(0)" data-link="/markets/btcngn" datas="btcngn" head="BTC" class="gbpngn lnk" BTC/NGN
+                    li id="li6" class="" ng-class="{true:'active'}[market==='btcusd']"
+                      a href="javascript:void(0)" data-link="/markets/btcusd" datas="btcusd" head="BTC" class="gbpngn lnk" BTC/USD
+                    li id="li7" class="" ng-class="{true:'active'}[market==='btcgbp']"
+                      a href="javascript:void(0)" data-link="/markets/btcgbp" datas="btcgbp" head="BTC" class="gbpngn lnk" BTC/GBP
+                    li id="li8" class="" ng-class="{true:'active'}[market==='ghsngn']"
+                      a href="javascript:void(0)" data-link="/markets/ghsngn" datas="ghsngn" head="GHS" class="gbpngn lnk" GHS/NGN
+                    li id="li9" class="" ng-class="{true:'active'}[market==='usdghs']"
+                      a href="javascript:void(0)" data-link="/markets/usdghs" datas="usdghs" head="GHS" class="gbpngn lnk" USD/GHS
+                    li id="li10" class="" ng-class="{true:'active'}[market==='gbpghs']"
+                      a href="javascript:void(0)" data-link="/markets/gbpghs" datas="gbpghs" head="GHS" class="gbpngn lnk" GBP/GHS
+                    li id="li11" class="" ng-class="{true:'active'}[market==='btcghs']"
+                      a href="javascript:void(0)" data-link="/markets/btcghs" datas="btcghs" head="GHS" class="gbpngn lnk" BTC/GHS
+
+                .live-ticker.home-trad-list.ng-scope.col-md-24.col-sm-24.col-xs-24 ng-controller="TickerCtrl"
+                	
+                    ul#ticker-usdngn  ng-show="market==='usdngn'"
+                        li#ticker-usdngn-1 class="ng-binding col-md-4 col-sm-12 col-xs-24" 
+                        	= t("last_price")
+                            .fot_siz.last
+                              | ₦ 
+                              span.price class="last-usdngn-live-ticker"
+                		li#ticker-usdngn-2 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                        	= t("bid_ask")
+                            .fot_siz
+                                span class="buy-color bid last-usdngn-bid" 
+                                  |₦&nbsp
+                                  span.price   
+                                |&nbsp/&nbsp
+                                span class="sell-color ask last-usdngn-ask"
+                                  |₦&nbsp
+                                  span.price 
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                        	= t("range")
+                            p 
+                            	| ₦&nbsp
+                               	span.low#low_usdngn
+                                |&nbsp-&nbsp₦&nbsp
+                                span.high#high_usdngn
+                        li class="last ng-binding col-md-6 col-sm-12 col-xs-24"
+                            = t("volume")
+                            p 
+                            	span.vol class="vol-cnyltc last_volume"
+                    ul#ticker-gbpngn class="ng-hide" ng-show="market==='gbpngn'"
+                        li#ticker class="ng-binding col-md-4 col-sm-12 col-xs-24" 
+                        	= t("last_price")
+                            p 
+                            	| ₦
+                                span class="last-gbpngn-live-ticker"
+                        li#ticker-gbpngn-1 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                        	= t("bid_ask")
+                            p
+                                span class="buy-color bid"₦ 
+                                span id="buy_btcltc" class="last-gbpngn-bid"
+                                |&nbsp / &nbsp
+                                span class="sell-color ask" ₦ 
+                                span id="sell_cnyltc" class="last-gbpngn-ask"                        
+                        li#ticker-gbpngn-2 class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                        	= t("range")
+                            p 
+                            	| ₦
+                                span id="low_gbpngn"
+                                |&nbsp-&nbsp₦
+                                span id="high_gbpngn"                            
+                        li#ticker-gbpngn-3 class="last ng-binding col-md-6 col-sm-12 col-xs-24"
+                        	= t("volume")
+                            p 
+                            	| 
+                            	span class="vol-cnyltc last_volume"
+                    ul#ticker-eurngn class="ng-hide" ng-show="market==='eurngn'"
+                        li class="ng-binding col-md-4 col-sm-12 col-xs-24"
+                        	= t("last_price")
+                            p 
+                            	| ₦
+                                span class="last-eurngn-live-ticker"
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                        	= t("bid_ask")
+                            p
+                               	span class="buy-color" ₦ 
+                               	span id="buy_btcltc" class="last-eurngn-bid"
+                                |&nbsp/&nbsp
+                               	span class="sell-color" ₦ 
+                               	span id="sell_btcltc" class="last-eurngn-ask"
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                        	= t("range")
+                            p 
+                            	| ₦
+                               	span id="low_eurngn" 
+                                |&nbsp-&nbsp₦
+                               	span id="high_eurngn"
+                        li class="last ng-binding col-md-6 col-sm-12 col-xs-24" 
+                        	= t("volume")
+                            p
+                            	| 
+                            	span class="vol-btcltc last_volume"
+                    ul#ticker-cnyngn class="ng-hide" ng-show="market==='cnyngn'"
+                        li class="ng-binding col-md-4 col-sm-12 col-xs-24"
+                        	= t("last_price")
+                            p 
+                            	| ₦
+                                span class="last-cnyngn-live-ticker"
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                        	= t("bid_ask")
+                            p
+                               	span class="buy-color" ₦ 
+                               	span id="buy_ltcbtc" class="last-cnyngn-bid"
+                                |&nbsp/&nbsp
+                               	span class="sell-color" ₦ 
+                               	span id="sell_ltcbtc" class="last-cnyngn-ask"
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                        	= t("range")
+                            p 
+                            	| ₦
+                               	span id="low_cnyngn" 
+                                |&nbsp-&nbsp₦
+                               	span id="high_cnyngn"
+                        li class="last ng-binding col-md-6 col-sm-12 col-xs-24" 
+                        	= t("volume")
+                            p
+                            	| 
+                            	span class="vol-ltcbtc last_volume"
+
+                    ul#ticker-btcngn class="ng-hide" ng-show="market==='btcngn'"
+                        li class="ng-binding col-md-4 col-sm-12 col-xs-24"
+                        	= t("last_price")
+                            p 
+                            	| ₦
+                                span class="last-btcngn-live-ticker"
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                        	= t("bid_ask")
+                            p
+                               	span class="buy-color" ₦ 
+                               	span id="btcngn" class="last-btcngn-bid"
+                                |&nbsp/&nbsp
+                               	span class="sell-color" ₦ 
+                               	span id="sell_btcngn" class="last-btcngn-ask"
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                        	= t("range")
+                            p 
+                            	| ₦
+                               	span id="low_btcngn" 
+                                |&nbsp;-&nbsp;₦
+                               	span id="high_btcngn"
+                        li class="last ng-binding col-md-6 col-sm-12 col-xs-24" 
+                        	= t("volume")
+                            p
+                            	| 
+                            	span class="vol-btcngn last_volume"
+
+                    ul#ticker-btcusd class="ng-hide"  ng-show="market==='btcusd'"
+                      li#ticker-btcusd-1 class="ng-binding col-md-4 col-sm-12 col-xs-24" 
+                        = t("last_price")
+                        .fot_siz.last
+                          | $ 
+                          span.price class="last-btcusd-live-ticker"
+                      li#ticker-btcusd-2 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                        = t("bid_ask")
+                        .fot_siz
+                          span class="buy-color bid last-btcusd-bid" 
+                            |&dollar;&nbsp;
+                            span.price   
+                          |&nbsp;/&nbsp;
+                          span class="sell-color ask last-btcusd-ask"
+                            |&dollar;&nbsp;
+                            span.price 
+                      li class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                        = t("range")
+                        p 
+                          | &dollar;&nbsp;
+                          span.low#low_btcusd
+                          |&nbsp;-&nbsp;&dollar;&nbsp;
+                          span.high#high_btcusd
+                      li class="last ng-binding col-md-6 col-sm-12 col-xs-24"
+                          = t("volume")
+                          p 
+                            span.vol class="vol-cnyltc last_volume" 
+
+                    ul#ticker-btcgbp class="ng-hide" ng-show="market==='btcgbp'"
+                        li class="ng-binding col-md-4 col-sm-12 col-xs-24"
+                          = t("last_price")
+                          p 
+                            | £
+                            span class="last-btcgbp-live-ticker"
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                          = t("bid_ask")
+                          p
+                            span class="buy-color" £
+                            span id="btcgbp" class="last-btcgbp-bid"
+                            |&nbsp/&nbsp
+                            span class="sell-color" £
+                            span id="sell_btcgbp" class="last-btcgbp-ask"
+                        li class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                          = t("range")
+                          p 
+                            | £
+                            span id="low_btcgbp" 
+                            |&nbsp-&nbsp£
+                            span id="high_btcgbp"
+                        li class="last ng-binding col-md-6 col-sm-12 col-xs-24" 
+                          = t("volume")
+                          p
+                            | 
+                            span class="vol-btcgbp last_volume"
+
+                    ul#ticker-ghsngn class="ng-hide" ng-show="market==='ghsngn'"
+                        li#ticker class="ng-binding col-md-4 col-sm-12 col-xs-24" 
+                          = t("last_price")
+                          p 
+                            | ₦
+                            span class="last-ghsngn-live-ticker"
+                        li#ticker-ghsngn-1 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                          = t("bid_ask")
+                          p
+                            span class="buy-color bid"₦ 
+                            span id="buy_ghsngn" class="last-ghsngn-bid"
+                            |&nbsp / &nbsp
+                            span class="sell-color ask" ₦ 
+                            span id="sell_ghsngn" class="last-ghsngn-ask"                        
+                        li#ticker-ghsngn-2 class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                          = t("range")
+                          p 
+                            | ₦
+                            span id="low_ghsngn"
+                            |&nbsp-&nbsp₦
+                            span id="high_ghsngn"                            
+                        li#ticker-ghsngn-2 class="last ng-binding col-md-6 col-sm-12 col-xs-24"
+                          = t("volume")
+                          p 
+                            | 
+                            span class="vol-ghsngn last_volume"
+                    ul#ticker-usdghs class="ng-hide" ng-show="market==='usdghs'"
+                        li#ticker class="ng-binding col-md-4 col-sm-12 col-xs-24" 
+                          = t("last_price")
+                          p 
+                            | ₵
+                            span class="last-usdghs-live-ticker"
+                        li#ticker-usdghs-1 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                          = t("bid_ask")
+                          p
+                            span class="buy-color bid"₵ 
+                            span id="buy_btcltc" class="last-usdghs-bid"
+                            |&nbsp / &nbsp
+                            span class="sell-color ask"₵ 
+                            span id="sell_cnyltc" class="last-usdghs-ask"                        
+                        li#ticker-usdghs-2 class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                          = t("range")
+                          p 
+                            | ₵
+                            span id="low_usdghs"
+                            |&nbsp-&nbsp₵
+                            span id="high_usdghs"                            
+                        li#ticker-usdghs-3 class="last ng-binding col-md-6 col-sm-12 col-xs-24"
+                          = t("volume")
+                          p 
+                            | 
+                            span class="vol-cnyltc last_volume"
+                    ul#ticker-gbpghs class="ng-hide" ng-show="market==='gbpghs'"
+                        li#ticker class="ng-binding col-md-4 col-sm-12 col-xs-24" 
+                          = t("last_price")
+                          p 
+                            | ₵
+                            span class="last-gbpghs-live-ticker"
+                        li#ticker-gbpghs-1 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                          = t("bid_ask")
+                          p
+                            span class="buy-color bid"₵ 
+                            span id="buy_btcltc" class="last-gbpghs-bid"
+                            |&nbsp / &nbsp
+                            span class="sell-color ask"₵
+                            span id="sell_cnyltc" class="last-gbpghs-ask"                        
+                        li#ticker-gbpghs-2 class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                          = t("range")
+                          p 
+                            | ₵
+                            span id="low_gbpghs"
+                            |&nbsp-&nbsp₵
+                            span id="high_gbpghs"                            
+                        li#ticker-gbpghs-3 class="last ng-binding col-md-6 col-sm-12 col-xs-24"
+                          = t("volume")
+                          p 
+                            | 
+                            span class="vol-cnyltc last_volume"
+                    ul#ticker-btcghs class="ng-hide" ng-show="market==='btcghs'"
+                        li#ticker-btcghs-1 class="ng-binding col-md-4 col-sm-12 col-xs-24" 
+                          = t("last_price")
+                          p 
+                            | ₵
+                            span class="last-btcghs-live-ticker"
+                        li#ticker-btcghs-2 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
+                          = t("bid_ask")
+                          p
+                            span class="buy-color bid"₵ 
+                            span id="buy_btcghs" class="last-btcghs-bid"
+                            |&nbsp / &nbsp
+                            span class="sell-color ask" ₵ 
+                            span id="sell_btcghs" class="last-btcghs-ask"                        
+                        li#ticker-btcghs-3 class="ng-binding col-md-7 col-sm-12 col-xs-24"
+                          = t("range")
+                          p 
+                            | ₵
+                            span id="low_btcghs"
+                            |&nbsp-&nbsp₵
+                            span id="high_btcghs"                            
+                        li#ticker-btcghs-4 class="last ng-binding col-md-6 col-sm-12 col-xs-24"
+                          = t("volume")
+                          p 
+                            | 
+                            span class="vol-btcghs last_volume"
+
+.container.sanc
+  .news
+    .col-md-24.col-xs-24
+      .newsheading 
+        
+        .thumbline.col-md-4.col-sm-6.col-xs-10
+           a.thumb data-toggle="modal" data-target="#myModal"
+             img src='/tradeTHumb.png' 
+        h3.sub_head  
+          | HOW TRADE NAIRA WORKS?
+        h5.sub_content
+          | Banks, bureau de changes and other providers often add a markup to
+          b  their
+          |  exchange rate while advertising low fees. This means you always end up paying huge hidden charges. They hide
+          b  their 
+          |  massive fees in their exchange rates so you do not have any option but to accept
+          b  their
+          |  “market” rate.
+
+        h5.sub_content
+          | At TradeNAIRA, we believe you have the right to choose
+          b  your
+          |  exchange rate. We have built a market place where our users determine what rates they are willing to exchange for.
+          b  We do not set any rates
+          | , but give you the choice to market a rate for your currency in a vibrant and diverse, online market place by trading with users from
+          b  all over the world
+          | . Our state of the art trading floor makes sure that your exchanges are safe and secure and that the market place is fully transparent by documenting all historic prices and trades that have ever taken place. We are Transparent, Efficient and Safe!
+
+			
+div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	div class="modal-dialog modal-lg"
+		div class="modal-content"
+			button type="button" class="close" data-dismiss="modal" aria-label="Close"
+				span aria-hidden="true" &times;
+			iframe src="https://www.youtube.com/embed/fwlqPkPV98k" class="quickvideo"
+
+section.loadswapspend.sanc
+	.container.nopad
+		.loadswap.col-md-8.col-sm-8.col-xs-24
+	          img src='#{image_path 'load.png'}'
+	          h5 = t(:load, locale: locale)
+	          h6 = t(:loaddes, locale: locale)
+	    .loadswap.col-md-8.col-sm-8.col-xs-24
+	          img src='#{image_path 'swap.png'}'
+	          h5 = t(:trad, locale: locale)
+	          h6 = t(:tradedes, locale: locale)
+	    .loadswap.col-md-8.col-sm-8.col-xs-24
+	          img src='#{image_path 'spend.png'}'
+	          h5 = t(:send, locale: locale)
+	          h6 = t(:senddes, locale: locale)
+
+
+
+
+.service_bgimg.sanc
+	.service_bgcolor
+		.container.servicepadding1
+			.col-xs-24.col-md-12
+				.col-xs-24.servicepadding
+					img.col-xs-6.col-sm-3.col-md-5 src='#{image_path 'great.png'}'
+					h3.col-xs-18.col-sm-21.col-md-19 = t(:greathead, locale: locale)
+					h4.col-xs-18.col-sm-21.col-md-19 = t(:greatdesc, locale: locale)
+				.col-xs-24.servicepadding
+					img.col-xs-6.col-sm-3.col-md-5 src='#{image_path 'fast.png'}'
+					h3.col-xs-18.col-sm-21.col-md-19 = t(:fasthead, locale: locale)
+					h4.col-xs-18.col-sm-21.col-md-19 = t(:fastdesc, locale: locale)				
+			.col-xs-24.col-md-12
+				.col-xs-24.servicepadding
+					img.col-xs-6.col-sm-3.col-md-5 src='#{image_path 'safe.png'}'
+					h3.col-xs-18.col-sm-21.col-md-19 = t(:safehead, locale: locale)
+					h4.col-xs-18.col-sm-21.col-md-19 = t(:safedesc, locale: locale)
+				.col-xs-24.servicepadding
+					img.col-xs-6.col-sm-3.col-md-5 src='#{image_path 'market.png'}'
+					h3.col-xs-18.col-sm-21.col-md-19 = t(:markethead, locale: locale)
+					h4.col-xs-18.col-sm-21.col-md-19 = t(:marketdesc, locale: locale)
+.goodcompy_bgimg.col-xs-24.sanc
+	.col-md-12.col-md-offset-10.col-sm-18.col-sm-offset-6.maincompany
+		h3.col-xs-24 = t(:goodcompyhead, locale: locale)
+		h4.col-xs-24 = t(:goodcompydesc, locale: locale)
+		a href="https://www.facebook.com/tradenaira" target = "_blank"
+			i.fa.fa-facebook.facebook_icon
+		a href="https://twitter.com/tradenairacom" class="twitterlink" target = "_blank"
+			i.fa.fa-twitter.twitter_icon.facebook_icon
+		a href="https://www.linkedin.com/company/tradenaira" target = "_blank"
+			i.fa.fa-linkedin.linkedin_icon.facebook_icon	
+		a href="blog/feed" style = "padding: 0 55px;" target = "_blank"
+		    i.fa.fa-rss.linkedin_icon.facebook_icon	
+		.col-xs-21.col-sm-21.joinus
+			h3 = t(:joinus, locale: locale)
+			- unless current_user
+				a href="#{signup_path}" class="sign_up" role="button" = t("header.signup") 
+			input type='hidden' id='current_page'
+			input type='hidden' id='show_per_page'    
+scss:
+  a.gbpngn.lnk:hover 
+  {
+    background-color: #1aa9cc !important;
+    color: white !important
+  }
+  a.gbpngn:focus, a.gbpngn.active 
+  {
+    background-color: #1aa9cc !important;
+    color: white !important
+  }
+  #welcome-index .homepage 
+  {
+    background-color: #38a6cb;
+    height: 100px !important;
+  }
+	.news_sub img
+	{
+		width:100%;
+		height:250px;
+		object-fit:cover;
+	}
+	.details
+	{
+		padding-top:10px;
+	}
+	.newssum
+	{
+		font-size:16px !important;
+	}
+	.newsdate
+	{
+		font-size:16px;
+	}
+	.news_sub
+	{
+		padding:4px 8px;
+	        background: #F0F0F0;
+		margin: 5px 0px;
+	}
+	.currencyhome .news_sub
+	{
+		float:right;
+	}
+	.newstit
+	{
+		font-size: 20px !important;
+	    line-height: 26px !important;
+	    margin: 0 !important;
+	}
+	.currencyhome
+	{
+		position: absolute;
+	    bottom: 0px;
+	    right:0;
+	}
+	.linktrade
+	{
+		z-index:1;
+	}
+  
+	.cursum
+	{
+		font-size:17px;
+		color:#38a6cb;
+		line-height:normal;
+		margin:0;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		overflow: hidden;
+	}
+	.banner_image
+	{
+		max-width:none;
+		text-shadow:0 0px 0 #ccc,0 0px 0 #c9c9c9,0 0px 0 #bbb,0 0px 0 #b9b9b9,0 0px 0 #aaa,0 0px 7px rgba(0,0,0,0.1),0 0 5px rgba(0,0,0,0.1),0 0px 3px rgba(0,0,0,0.3),0 3px 5px rgba(0,0,0,0.2),0 5px 10px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.2),0 20px 20px rgba(0,0,0,0.15);
+	}
+	.vishid
+	{
+		display:none;
+	}
+	.Wtopmenu2 a
+	{
+		font-size:15px !important;
+		font-family: "SourceSansProRegular";
+	}
+	.slidecontent
+	{
+		padding:4px 0px;
+		margin:0;
+	}
+	.slideli
+	{
+		display:inline;
+		margin:0 5px;
+	}
+	.slideli::before
+	{
+		
+		color:#38A6CB;
+		margin:0 5px;
+	}
+	.feedtitle a
+	{
+		color:#38a6cb;
+	}
+	@media only screen and (max-width:640px)
+	{
+	.currencyhome
+	{
+		display:none;
+	}
+	.banner_image h3
+	{
+		font-size: 20px !important;
+	}
+	}
+	.feedtitle
+	{
+		font-size:15px;
+		line-height:25px;
+		padding:10px;
+		background:#efefef;
+	}
+	ins.adsbygoogle
+	{
+		display:none !important;
+	}
+	.page_link
+	{
+    background-color: #ddd;
+    padding: 4px 8px;
+    line-height: 35px	
+	}
+	.active_page, .page_link:focus
+	{
+		background-color: #38a6cb;
+    	color: white !important;
+    	text-decoration:none;
+	}
+	#page_navigation a
+	{
+		margin-right: 5px;
+	}
+	#page_navigation a:last-child
+	{
+		margin-right: 0px;
+	}
+	.addfeed, .addfeed:hover
+	{
+	    background: #38a6cb;
+	    border:0;
+	    font-size: 15px;
+	}
+	.home_banner
+	{
+		background: url(/assets/banner_image.jpeg);
+		background-size: cover;
+		height:600px;
+	}
+	#morenews > a {
+    	font-size: 17px;
+   		margin: 17px 0px 0;
+    	display: inline-block;
+	}
+	.feedcon
+	{
+		display:none;
+	}
+	.feedcon:nth-child(-n+8){
+    display:block !important;
+	}
+	@media only screen and (min-width:1200px)
+	{
+	#welcome-index .goodcompy_bgimg {
+		background-position: initial;
+		background-size: cover;
+	}
+	}
+	
+javascript:
+	var divs = $(".allnews > div");
+	var usdArray = #{raw @usdarray.as_json};
+    var poundArray = #{raw @poundarray.as_json};
+    var euroArray = #{raw @euroarray.as_json};
+	if (usdArray == '' && poundArray == '' && euroArray == '')
+    {
+		$(".allslide").hide();
+        $(".wholeban").css({'margin-top':'80px'});
+    }
+    else
+        $(".wholeban").css({'margin-top':'120px'});
+	if (usdArray == '')
+		$(".firstslide").remove();
+	if (poundArray == '')
+		$(".secondslide").remove();
+	if (euroArray == '')
+		$(".thirdslide").remove();
+	$(".slidecontent li:first-child").addClass("active");
+	for(var i = 0; i < divs.length; i+=3) 
+	{
+ 	 divs.slice(i, i+3).wrapAll("<div class='new col-xs-24 no_padding'></div>");
+	}
+	var s = #{@countslide.count};
+	if (s > 0)
+	   $(".slidecontent").show();
+	else
+	   $(".slidecontent").hide();  
+	
+	var count = $(".details").children().length;
+    //how much items per page to show
+
+    var show_per_page = 2;
+    if (show_per_page <= 5)
+    {
+       //$("#page_navigation").hide();
+    }
+    //getting the amount of elements inside content div
+
+    var number_of_items = $('.details').children().size();
+
+    //calculate the number of pages we are going to have
+
+    var number_of_pages = Math.ceil(number_of_items/show_per_page);
+
+    //set the value of our hidden input fields
+
+    $('#current_page').val(0);
+
+    $('#show_per_page').val(show_per_page);
+
+ 
+
+    var navigation_html = '<a class="previous_link" href="javascript:previous();">Prev</a>';
+
+    var current_link = 0;
+
+    while(number_of_pages > current_link){
+
+        navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';
+
+        current_link++;
+
+    }
+
+    navigation_html += '<a class="next_link" href="javascript:next();">Next</a>';
+
+ 
+
+    $('#page_navigation').html(navigation_html);
+
+ 
+
+    //add active_page class to the first page link
+
+    $('#page_navigation .page_link:first').addClass('active_page');
+
+ 
+
+    //hide all the elements inside content div
+
+    $('.details').children().css('display', 'none');
+
+ 
+
+    //and show the first n (show_per_page) elements
+
+    $('.details').children().slice(0, show_per_page).css({'display': 'block'});
+    
+    
+    function previous(){
+
+    new_page = parseInt($('#current_page').val()) - 1;
+
+    //if there is an item before the current active link run the function
+
+    if($('.active_page').prev('.page_link').length==true){
+
+        go_to_page(new_page);
+
+    }
+
+	}
+
+
+	function next(){
+
+    new_page = parseInt($('#current_page').val()) + 1;
+
+    //if there is an item after the current active link run the function
+
+    if($('.active_page').next('.page_link').length==true){
+
+        go_to_page(new_page);
+
+    }
+
+ 
+
+	}
+
+	function go_to_page(page_num){
+
+    //get the number of items shown per page
+
+    var show_per_page = parseInt($('#show_per_page').val());
+
+ 
+
+    //get the element number where to start the slice from
+
+    start_from = page_num * show_per_page;
+
+ 
+
+    //get the element number where to end the slice
+
+    end_on = start_from + show_per_page;
+
+ 
+
+    //hide all children elements of content div, get specific items and show them
+
+    $('.details').children().css('display', 'none').slice(start_from, end_on).css({'display': 'block'});
+
+    /*get the page link that has longdesc attribute of the current page and add active_page class to it
+
+    and remove that class from previously active page link*/
+
+    $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');
+
+ 
+    //update the current page input field
+
+    $('#current_page').val(page_num);
+		
+	}
+
+	if($('.feedtitle').css('display') == 'block')
+	{
+	$(".feedtitle p").addClass("feedcon");
+	} 

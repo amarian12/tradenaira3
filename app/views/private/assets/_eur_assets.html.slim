@@ -1,0 +1,52 @@
+.panel.panel-default.exchange
+  .panel-body
+    /*.row
+      #guide.col-xs-8
+        h3 = t('.title')
+        p.text-ignore = t('.intro')
+      #content.col-xs-16
+        .jumbotron
+          .row
+            .col-xs-offset-4.col-xs-16
+              span.pull-left = t('.total')
+              span.pull-right
+                == t("currency.icon.eur")
+                = @eur_proof.balance
+          .clearfix */
+	img.currencycoin src='#{'icon-eur.png'}'
+	.borderright.pad_20.col-md-12.col-xs-24.col-xs-24
+		p.currencytotal
+			| TRADENAIRA BANK ACCOUNT
+		div
+		   span.currency.totalcurrency
+		      == t("currency.icon.eur")
+		      = @eur_proof.sum
+		p.para
+			| Lookup number open to VIP customers, please contact customer support.
+		/*table
+			tbody
+				tr
+					td
+						| Bank
+					td
+						| 招商银行
+				tr
+					td
+						| Account
+					td
+						| 6214850101763297
+				tr
+					td
+						| Phone
+					td
+						| 95555		*/				
+    #eur-proof.tab-pane.col-md-12.col-xs-24.col-xs-24.pad_20:        .trade-wrapper
+	      .assets 
+	        p.title.currencytotal = t('.eur-assets-total')  
+	        div
+		        span.currency.totalcurrency
+		          == t("currency.icon.eur") 
+		          = @eur_proof.sum  
+	      = render 'liability_data', account: @eur_account, proof: @eur_proof  if current_user
+	      .assetlogin
+	      	= top_nav_link(t('header.assetlogin'), signin_path, '') unless current_user

@@ -11,15 +11,55 @@ Peatio::Application.routes.draw do
 
   root 'welcome#index'
 
+  get "money/req" => 'money#req'
+  get "money/send" => 'money#send'
+  get "money/req_success" => 'money#req_success'
+  get "money/commission" => 'money#commission'
+
+  Blogo::Routes.mount_to(self, at: '/blog')
+
+  resources :feeds do
+    member do
+     resources :entries, only: [:index, :show]
+    end
+  end
+
+  get "sliders/edit"
+  get "errors/error_404"
+  get "errors/error_500"
+  #get '/404', to: 'errors#not_found'
+  #get '/500', to: 'errors#server_error'
+  get "pages/amlpolicy" => 'pages#amlpolicy'
+  get "pages/about" => 'pages#about'
+  get "pages/cookie" => 'pages#cookie'
+  get "pages/fee" => 'pages#fee'
+  get "pages/privacy" => 'pages#privacy'
+  get "pages/termsofuse" => 'pages#termsofuse'
+  get "pages/riskwarning" => 'pages#riskwarning'
+  get "pages/news" => 'pages#news'
+  get "pages/learn" => 'pages#learn'
+  get "pages/tradeservices" => 'pages#tradeservices'
+  get "pages/contactus" => 'pages#contactus'
+  get "pages/send-money-to-nigeria" => 'pages#sendmoney'
+  get "pages/request-money" => 'pages#requestmoney'
+  get "pages/faq" => 'pages#faq'
+  get "newproj" => 'newproj#abcd'
+ 
+
+
+
   if Rails.env.development?
-    mount MailsViewer::Engine => '/mails'
+    #mount MailsViewer::Engine => '/mails'
   end
 
   get '/signin' => 'sessions#new', :as => :signin
   get '/signup' => 'identities#new', :as => :signup
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure', :as => :failure
+  get '/invitation/accept/signup' => 'identities#new'
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
+  #match '/news/' => 'news#new', via: [:get, :post]  
+  match '/invitation/new' => 'news#new', via: [:get, :post] 
 
   resource :member, :only => [:edit, :update]
   resource :identity, :only => [:edit, :update]

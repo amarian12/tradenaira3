@@ -1,0 +1,36 @@
+<%= metamagic title: "Request Money" %>
+<link rel="stylesheet" type="text/css" href="/assets/money.css?body=1">
+<div class=" form1">
+	<h3 class="head padding-left: 25px;">Request Money</h3>
+		<p class="desc1">
+			You can request payment from anyone with email address even if they do not have 'Trade Naira' account.
+		</p>
+	<div class="cont">
+		<form class="" action="/money/req_success">
+			<div class="mailfield"><span >Recipient's Email Address</span>
+				<textarea rows="4"  name="email" value=""  class="textarea" ></textarea>
+			</div>
+			<p class="desc">
+				(Enter multiple mail id separated by commas)
+			</p>
+			<div class="amountfield">
+				<span>Amount</span>&nbsp;&nbsp;
+				<input type="text" name="amount" value=""  class="amount"/>&nbsp;
+				<select class="select">
+					<option>Nigerian Naira(NGN)</option>
+					<option>US Dollar(USD)</option>
+					<option>British Pound(GBP)</option>
+					<option>Euro(EUR)</option>
+					<option>Chinese Yuan(CNY)</option>
+				</select>
+			</div>
+			<div class="commission">
+				<p>
+					<a class="cmsn" href="/money/commission">Click here</a> to view the fee for receiving payments.
+				</p>
+			</div>
+		<div class="button"><input type="submit" value="Continue" />
+		</div>
+		</form>
+	</div>
+</div>

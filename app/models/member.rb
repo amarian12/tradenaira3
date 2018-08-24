@@ -2,6 +2,7 @@ class Member < ActiveRecord::Base
   acts_as_taggable
   acts_as_reader
 
+
   has_many :orders
   has_many :accounts
   has_many :payment_addresses, through: :accounts
@@ -15,8 +16,10 @@ class Member < ActiveRecord::Base
   has_many :signup_histories
 
   has_one :id_document
+  has_one :slider
 
   has_many :authentications, dependent: :destroy
+  
 
   scope :enabled, -> { where(disabled: false) }
 
@@ -51,6 +54,15 @@ class Member < ActiveRecord::Base
 
     def admins
       Figaro.env.admin.split(',')
+    end
+
+    def as_csv
+      CSV.generate do |csv|
+        csv << ["Id", "Email"]
+        all.each do |item|
+          csv << [item.id, item.email] 
+        end
+      end
     end
 
     def search(field: nil, term: nil)

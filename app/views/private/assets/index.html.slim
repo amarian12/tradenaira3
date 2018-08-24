@@ -1,16 +1,37 @@
+= metamagic title: "Exchange Assets"
 = content_for :frame do
   .container
-    ul.nav.nav-justified.assets-nav
+  	.liabilityproof
+	  	h3
+			| Proof of Liabilities
+		p.proofcontent
+			| We publicise our bank account and digital assets for all our users, so everyone can be able to verify the solvency of our exchange.
+    /*ul.nav.nav-justified.assets-nav
       li.active data-scroll-nav='0'
         a = t('.liability-proof')
       li        data-scroll-nav='1'
-        a = t('.btc-assets')
-      li        data-scroll-nav='2'
         a = t('.cny-assets')
-
+      li        data-scroll-nav='2'
+        a = t('.ngn-assets')
+      li        data-scroll-nav='3'
+        a = t('.usd-assets')
+      li        data-scroll-nav='4'
+        a = t('.eur-assets')
+      li        data-scroll-nav='5'
+        a = t('.gbp-assets')
+      li        btc-scroll-nav='5'
+        a = t('.btc-assets')  
+      li        data-scroll-nav='6'
+        a = t('.btc-assets')*/        
+                
     - if current_user
       div data-scroll-index=0 = render 'liability_proof'
 
-    div data-scroll-index=1 = render 'btc_assets'
-    div data-scroll-index=2 = render 'cny_assets'
+    div data-scroll-index=1 = render 'cny_assets'
+    div data-scroll-index=2 = render 'ngn_assets'
+    div data-scroll-index=3 = render 'usd_assets'
+    div data-scroll-index=4 = render 'eur_assets'
+    div data-scroll-index=5 = render 'gbp_assets'
+    div data-scroll-index=6 = render 'btc_assets'
+    div data-scroll-index=6 = render 'ghs_assets'
 

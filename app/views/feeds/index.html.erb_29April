@@ -1,0 +1,253 @@
+<%= metamagic title: "Feeds" %>
+<div  class="container" style="min-height:420px;">
+<div class="col-md-4"></div>
+<h2 class="text-center col-xs-17" style="margin: 0 0 30px;">Listing feeds</h2>
+<div class="col-md-3 text-right">
+<%= link_to 'New Feed', new_feed_path , class:"btn btn-primary"%>
+</div>
+<div>
+<div class="col-xs-24 allfeedsdata" style="padding: 0">
+   
+    
+    <% @feeds.each do |data| %>     
+	   <span class="dummy">
+          	 <%= feed =  Feedjira::Feed.fetch_and_parse (data.try(:url)) %> 
+	   </span>
+	  <div class="col-xs-24 news_sub">
+	   <div class="details">
+		    	<% for entry in feed.entries %>
+		    	<div class="col-md-4"><%= @images = Nokogiri::HTML(entry.content).css('img')
+	    				raw @images %> </div>
+	    		<div class="col-md-20 feedtitle"><%= entry.title %> <span>
+	    			<%= @contents = Nokogiri::HTML(entry.content).css('p')
+	    				raw @contents %></span>
+	    		</div>
+	    		  		
+	   		<% end %>
+	    </div>
+	  	<input type='hidden' id='current_page' />  
+
+              <input type='hidden' id='show_per_page' />
+
+ 
+	  </div>
+	<% end %> 
+<div id='page_navigation' class="col-xs-24 text-right"></div>
+</div>
+<br>
+</div>
+<style>
+	#page_navigation
+	{
+		word-wrap: break-word;
+	}
+	.allfeeds
+	{
+		width:100%;
+		border:1px solid #000;
+	}
+	.allfeeds th, .allfeeds td
+	{
+		padding:5px
+	}
+	.allfeeds th,.allfeeds td
+	{
+		border-bottom:1px solid #000;
+		border-right:1px solid #000;
+	}
+	.dummy
+	{
+		display:none;
+	}
+	.details img
+	{
+		width:100%;
+		height:180px;
+		object-fit:cover;
+		border-radius:100px;
+	}
+	.feedtitle
+	{
+	    color: #38a6cb;
+		font-size: 22px;
+		text-transform:uppercase;
+		font-family: 'SourceSansProRegular';
+	}
+	.feedtitle span
+	{
+		font-size:15px;
+		text-transform:none;
+		color: #4d4d4d;
+		float: left;
+	}
+	.feedtitle > span
+	{
+		margin-top: 10px;
+	}
+	.page_link
+	{
+    background-color: #ddd;
+    margin-right: 3px;
+    padding: 5px;
+    line-height: 35px	
+	}
+	.active_page, .page_link:focus
+	{
+		background-color: #38a6cb;
+    	color: white;
+    	text-decoration:none;
+	}
+</style>
+
+<script>
+	$(document).ready(function()
+	{
+		var divs = $(".details > div");
+		for(var i = 0; i < divs.length; i+=2) 
+		{
+	 	 divs.slice(i, i+2).wrapAll("<div class='new col-xs-24 no_padding'></div>");
+		}
+		
+		var count = $(".details").children().length;
+
+    //how much items per page to show
+
+    var show_per_page = 3;
+
+    //getting the amount of elements inside content div
+
+    var number_of_items = $('.details').children().size();
+
+    //calculate the number of pages we are going to have
+
+    var number_of_pages = Math.ceil(number_of_items/show_per_page);
+
+ 
+
+    //set the value of our hidden input fields
+
+    $('#current_page').val(0);
+
+    $('#show_per_page').val(show_per_page);
+
+ 
+
+    var navigation_html = '<a class="previous_link" href="javascript:previous();">Prev</a>';
+
+    var current_link = 0;
+
+    while(number_of_pages > current_link){
+
+        navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';
+
+        current_link++;
+
+    }
+
+    navigation_html += '<a class="next_link" href="javascript:next();">Next</a>';
+
+ 
+
+    $('#page_navigation').html(navigation_html);
+
+ 
+
+    //add active_page class to the first page link
+
+    $('#page_navigation .page_link:first').addClass('active_page');
+
+ 
+
+    //hide all the elements inside content div
+
+    $('.details').children().css('display', 'none');
+
+ 
+
+    //and show the first n (show_per_page) elements
+
+    $('.details').children().slice(0, show_per_page).css({'display': 'block','transition' : 'all 250ms ease-in-out 0s'});
+
+ 
+
+});
+
+ 
+
+function previous(){
+
+ 
+
+    new_page = parseInt($('#current_page').val()) - 1;
+
+    //if there is an item before the current active link run the function
+
+    if($('.active_page').prev('.page_link').length==true){
+
+        go_to_page(new_page);
+
+    }
+
+ 
+
+}
+
+ 
+
+function next(){
+
+    new_page = parseInt($('#current_page').val()) + 1;
+
+    //if there is an item after the current active link run the function
+
+    if($('.active_page').next('.page_link').length==true){
+
+        go_to_page(new_page);
+
+    }
+
+ 
+
+}
+
+function go_to_page(page_num){
+
+    //get the number of items shown per page
+
+    var show_per_page = parseInt($('#show_per_page').val());
+
+ 
+
+    //get the element number where to start the slice from
+
+    start_from = page_num * show_per_page;
+
+ 
+
+    //get the element number where to end the slice
+
+    end_on = start_from + show_per_page;
+
+ 
+
+    //hide all children elements of content div, get specific items and show them
+
+    $('.details').children().css('display', 'none').slice(start_from, end_on).css({'display': 'block','transition' : 'all 250ms ease-in-out 0s'});
+
+ 
+
+    /*get the page link that has longdesc attribute of the current page and add active_page class to it
+
+    and remove that class from previously active page link*/
+
+    $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');
+
+ 
+
+    //update the current page input field
+
+    $('#current_page').val(page_num);
+		
+	}
+	
+</script>

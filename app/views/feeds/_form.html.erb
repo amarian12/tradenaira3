@@ -1,0 +1,60 @@
+<%= metamagic title: "Feeds" %>
+<div style="min-height:420px;">
+<div class="container">
+<div class="col-md-10 col-sm-12 col-xs-24 newsforms">
+<%= form_for(@feed) do |f| %>
+  <% if @feed.errors.any? %>
+    <div id="error_explanation">
+      <!--<h2><%= pluralize(@feed.errors.count, "error") %> prohibited this feed from being saved:</h2>-->
+
+      <ul class="listerror">
+      <% @feed.errors.full_messages.each do |msg| %>
+        <li style="list-style-type: none"><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <label class="col-md-12 col-sm-12 col-xs-12">Name</label>
+  <label class="col-md-12 col-sm-12 col-xs-12"><%= f.text_field :name %></label>
+  <label class="col-md-12 col-sm-12 col-xs-12">URL</label>
+  <label class="col-md-12 col-sm-12 col-xs-12"><%= f.text_field :url, type: 'url' %></label>
+  <label class="col-md-12 col-sm-12 col-xs-12">Description</label>
+  <label class="col-md-12 col-sm-12 col-xs-12"><%= f.text_area :description %></label>
+  <div style="text-align: center;">
+  <label class="newssubmit"><%= f.submit class:"btn btn-primary" %></label>
+  <label class="newssubmit"><%= link_to 'Back', feeds_path, class:"btn btn-primary" %></label>
+  <label class="newssubmit"><%= link_to 'Show', @feed  , class:"btn btn-primary"%></label>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+<style>
+.newsforms {
+    float: none;
+    margin: 0 auto;
+}
+.newssubmit
+{
+	
+	margin:30px 0px 0px;
+}
+.newsform input,.newsform textarea
+{
+	width:100%;
+}
+.newsform .btn-primary
+{
+	width:auto;
+}
+.listerror li
+{
+    background: #d9534f;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 8px 0px;
+}
+</style>
+

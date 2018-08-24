@@ -1,13 +1,64 @@
 - id: 200
+  key: bank
+  currency: cny
+  sort_order: 2
+  bank_accounts:
+    -
+      bank: 'Your Bank Name'
+      branch: 'Your Bank Branch'
+      holder: 'Your Account Holder'
+      account: 'Your Account Number'
+- id: 400
+  key: naira
+  currency: ngn
+  sort_order: 3
+  bank_accounts:
+    -
+      bank: 'Your Bank Name'
+      branch: 'Your Bank Branch'
+      holder: 'Your Account Holder'
+      account: 'Your Account Number'
+- id: 600
+  key: dollar
+  currency: usd
+  sort_order: 4
+  bank_accounts:
+    -
+      bank: 'Your Bank Name'
+      branch: 'Your Bank Branch'
+      holder: 'Your Account Holder'
+      account: 'Your Account Number'
+- id: 800
+  key: euro
+  currency: eur
+  sort_order: 5
+  bank_accounts:
+    -
+      bank: 'Your Bank Name'
+      branch: 'Your Bank Branch'
+      holder: 'Your Account Holder'
+      account: 'Your Account Number'
+- id: 1000
+  key: pound
+  currency: gbp
+  sort_order: 6
+  bank_accounts:
+    -
+      bank: 'Your Bank Name'
+      branch: 'Your Bank Branch'
+      holder: 'Your Account Holder'
+      account: 'Your Account Number'
+- id: 1200
   key: satoshi
   currency: btc
   sort_order: 1
   min_confirm: 1
   max_confirm: 3
-- id: 400
-  key: bank
-  currency: cny
-  sort_order: 2
+  
+- id: 1600
+  key: ghanaian
+  currency: ghs
+  sort_order: 7
   bank_accounts:
     -
       bank: 'Your Bank Name'

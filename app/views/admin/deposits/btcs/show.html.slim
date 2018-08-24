@@ -1,0 +1,40 @@
+.row
+  .col-xs-8
+    .panel.panel-primary
+      .panel-heading
+        span = t('.deposit')
+      .panel-body
+        = description_for :member do
+          = item_for @btc, :sn
+          = item_for @btc.member, :name
+          = item_for @btc, :amount
+          = item_for @btc, :created_at
+          hr.split
+          = item_for @btc, :fund_extra, (@btc.fund_extra)
+          = item_for @btc, :fund_uid
+          = item_for @btc, :aasm_state_text
+
+  .col-xs-8
+    .panel class='panel-primary'
+      .panel-heading
+        span = t('.target_deposit')
+      .panel-body
+        = form_for [:admin, @btc] do |f|
+          dl.dl-horizontal.dl-member
+            = item_for @btc, :sn
+            = item_for @btc, :amount
+            - if @btc.may_submit? or @btc.may_accept?
+              dt = t('.Edit the amount')
+           	  dd = f.text_field :amount
+            = item_for @btc, :done_at
+            - if @btc.may_submit? or @btc.may_accept?
+              dt = t('.txid')
+              dd = f.text_field :txid, class: 'col-xs-24'
+              hr.split
+              = f.submit t('.accept'), class: 'btn btn-primary pull-right', confirm: t('.confirm')
+              = link_to t("actions.cancel"), url_for(), method: :delete, class: 'btn btn-primary pull-right', style:'margin-right:10px;'
+            - else
+              = item_for @btc, :txid
+
+  .col-xs-8
+    = render partial: 'shared/admin/member', locals: {member: @btc.member}

@@ -1,0 +1,37 @@
+<%= metamagic title: "Feeds" %>
+<div style="min-height:420px;">
+<div class="container">
+<table class="allfeeds">
+	<tr>
+		<th>Name</th>
+		<th>Url</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td><%= @feed.name %></td>
+		<td><%= @feed.url %></td>
+		<td><%= @feed.description %></td>
+	</tr>
+</table>
+</div>
+<center style="margin-top: 20px;">
+<%= link_to 'Edit', edit_feed_path(@feed)  , class:"btn btn-primary"%> 
+<%= link_to 'Back', feeds_path  , class:"btn btn-primary"%>
+</center>
+</div>
+<style>
+	.allfeeds
+	{
+		width:100%;
+		border:1px solid #000;
+	}
+	.allfeeds th, .allfeeds td
+	{
+		padding:5px
+	}
+	.allfeeds th,.allfeeds td
+	{
+		border-bottom:1px solid #000;
+		border-right:1px solid #000;
+	}
+</style>

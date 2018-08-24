@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405053726) do
+ActiveRecord::Schema.define(version: 20160602122557) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -101,6 +101,52 @@ ActiveRecord::Schema.define(version: 20150405053726) do
   add_index "authentications", ["member_id"], name: "index_authentications_on_member_id", using: :btree
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
 
+  create_table "blogo_posts", force: true do |t|
+    t.integer  "user_id",          null: false
+    t.string   "permalink",        null: false
+    t.string   "title",            null: false
+    t.boolean  "published",        null: false
+    t.datetime "published_at",     null: false
+    t.string   "markup_lang",      null: false
+    t.text     "raw_content",      null: false
+    t.text     "html_content",     null: false
+    t.text     "html_overview"
+    t.string   "tags_string"
+    t.string   "meta_description", null: false
+    t.string   "meta_image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blogo_posts", ["permalink"], name: "index_blogo_posts_on_permalink", unique: true, using: :btree
+  add_index "blogo_posts", ["published_at"], name: "index_blogo_posts_on_published_at", using: :btree
+  add_index "blogo_posts", ["user_id"], name: "index_blogo_posts_on_user_id", using: :btree
+
+  create_table "blogo_taggings", force: true do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id",  null: false
+  end
+
+  add_index "blogo_taggings", ["tag_id", "post_id"], name: "index_blogo_taggings_on_tag_id_and_post_id", unique: true, using: :btree
+
+  create_table "blogo_tags", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blogo_tags", ["name"], name: "index_blogo_tags_on_name", unique: true, using: :btree
+
+  create_table "blogo_users", force: true do |t|
+    t.string   "name",            null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blogo_users", ["email"], name: "index_blogo_users_on_email", unique: true, using: :btree
+
   create_table "comments", force: true do |t|
     t.text     "content"
     t.integer  "author_id"
@@ -156,6 +202,25 @@ ActiveRecord::Schema.define(version: 20150405053726) do
     t.text     "keywords"
   end
 
+  create_table "entries", force: true do |t|
+    t.string   "title"
+    t.datetime "published"
+    t.text     "content"
+    t.string   "url"
+    t.string   "author"
+    t.integer  "feed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feeds", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "fund_sources", force: true do |t|
     t.integer  "member_id"
     t.integer  "currency"
@@ -206,9 +271,18 @@ ActiveRecord::Schema.define(version: 20150405053726) do
     t.boolean  "activated"
     t.integer  "country_code"
     t.string   "phone_number"
-    t.boolean  "disabled",     default: false
-    t.boolean  "api_disabled", default: false
+    t.boolean  "disabled",       default: false
+    t.boolean  "api_disabled",   default: false
     t.string   "nickname"
+    t.datetime "last_logged_at"
+  end
+
+  create_table "news", force: true do |t|
+    t.string   "name"
+    t.string   "summary"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "oauth_access_grants", force: true do |t|
@@ -369,6 +443,14 @@ ActiveRecord::Schema.define(version: 20150405053726) do
   end
 
   add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
+
+  create_table "sliders", force: true do |t|
+    t.string   "usdtxt"
+    t.string   "poundtxt"
+    t.string   "eurotxt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

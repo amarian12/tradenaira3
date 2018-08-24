@@ -1,5 +1,114 @@
+.liabilityproof
+{
+  text-align:center;
+  padding:0 15px;
+  h3
+  {
+    color: #555555;
+  }
+  .proofcontent
+  {
+        max-width: 700px;
+    font-size: 17px;
+    margin: auto;
+    color: #999;
+    padding-top: 10px;
+  }
+}
+.exchange.panel-default
+ {
+    margin: 50px 20px;
+ }
+.exchange
+  {
+    color:#555555;
+    .currencycoin
+    {
+          width: 50px;
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    }
+    .panel-body
+    {
+        padding: 30px 15px;
+        position: relative;
+    }
+    .assetlogin
+    {
+      li
+      {
+            list-style-type: none;
+            text-align: center;
+            margin: 35px 0 20px;
+            display: inline-flex;
+            width: 100%;
+      }
+      a
+      {
+        border: 1px solid #ccc;
+        padding: 10px;
+        color: #999;
+        text-decoration: none;
+        margin:auto;
+      }
+      a:hover
+      {
+        color: #333;
+        border-color: #aaa;
+      }
+    }
+    table
+    {
+      margin: 0 5px;
+      td
+      {
+        min-width: 70px;
+        padding: 5px;
+        font-size: 15px;
+      }
+      td:last-child
+      {
+        font-weight:bold;
+      }
+    }
+    .para
+    {
+      margin: 15px 0;
+      font-size: 17px;
+    }
+    .totalcurrency
+    {
+      font-weight: normal !important;
+      font-size: 24px;
+    }
+    .currencytotal
+    {
+        color: #b0b5bb;
+        font-size: 16px;
+    }
+    .btn-default
+    {
+        background-color: #50a569;
+        border-color: #50a569;
+    }
+    .btn-default:hover
+    {
+        background-color: #65b47c;
+        border-color: #50a569;
+    }
+  }
 #assets-index {
-
+  .proof
+  {
+    color:#999;
+    pre
+    {
+      background-color:white;
+      font-size:9px;
+      color:#777;
+    }
+  }
   header {
     .navbar-fixed-top {
       background-color: #f2f2f2;
@@ -11,7 +120,7 @@
   }
 
   .assets {
-    margin: 30px 0 10px 0;
+    margin: 0  0 10px 0;
 
     .title {
       width: 200px;
@@ -19,7 +128,7 @@
 
     .currency {
       font-weight: bold;
-      color: #fdbb00;
+      color: #555;
     }
   }
 
@@ -51,26 +160,28 @@
       text-align: center;
       padding: 10px 15px 0 10px;
       height: 36px;
-      border-bottom: 3px solid #999;
+      //border-bottom: 3px solid #999;
 
       a {
-        width: 190px;
+        width: 100%;
         color: #ccc;
         font-weight: bold;
       }
 
+    /*
       a:after {
-        content: "";
-        width: 16px;
-        height: 16px;
-        color: #ccc;
-        background-color: #f2f2f2;
-        border: 2px solid #ccc;
-        border-radius: 8px;
-        position: absolute;
-        top: 38px;
-        left: 50%;
-      }
+            content: "";
+            width: 16px;
+            height: 16px;
+            color: #ccc;
+            background-color: #f2f2f2;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            position: absolute;
+            top: 38px;
+            left: 50%;
+          }*/
+    
     }
 
     li.active {
@@ -87,5 +198,37 @@
         border-color: #fdbb00;
       }
     }
+  }
+}
+@media (min-width: 320px) and (max-width: 980px) {
+  .exchange
+  {
+      .pad_20
+    {
+      padding: 20px 10px;
+    }
+     .tab-pane
+    {
+        border-top: 1px solid #DDD;
+     }
+  }
+}
+@media (min-width: 1024px) and (max-width: 1920px) {
+  .exchange
+  {
+    .borderright
+    {
+      margin-right:-1px;
+      border-right: 1px solid #DDD;
+    }
+      .pad_20
+    {
+      padding: 0 30px;
+    }
+     .tab-pane
+    {
+        border-left: 1px solid #DDD;
+        min-height: 200px;
+     }
   }
 }

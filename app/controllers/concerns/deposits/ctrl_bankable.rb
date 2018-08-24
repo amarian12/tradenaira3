@@ -10,6 +10,7 @@ module Deposits
       @deposit = model_kls.new(deposit_params)
 
       if @deposit.save
+        IddocumentMailer.senddeposit(current_user.email,deposit_params[:currency],deposit_params[:amount]).deliver
         render nothing: true
       else
         render text: @deposit.errors.full_messages.join, status: 403

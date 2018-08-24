@@ -1,0 +1,40 @@
+.row
+  .col-xs-8
+    .panel.panel-primary
+      .panel-heading
+        span = t('.deposit')
+      .panel-body
+        = description_for :member do
+          = item_for @ghanaian, :sn
+          = item_for @ghanaian.member, :name
+          = item_for @ghanaian, :amount
+          = item_for @ghanaian, :created_at
+          hr.split
+          = item_for @ghanaian, :fund_extra, (@ghanaian.fund_extra)
+          = item_for @ghanaian, :fund_uid
+          = item_for @ghanaian, :aasm_state_text
+
+  .col-xs-8
+    .panel class='panel-primary'
+      .panel-heading
+        span = t('.target_deposit')
+      .panel-body
+        = form_for [:admin, @ghanaian] do |f|
+          dl.dl-horizontal.dl-member
+            = item_for @ghanaian, :sn
+            = item_for @ghanaian, :amount
+            - if @ghanaian.may_submit? or @ghanaian.may_accept?
+              dt = t('.Edit the amount')
+           	  dd = f.text_field :amount
+            = item_for @ghanaian, :done_at
+            - if @ghanaian.may_submit? or @ghanaian.may_accept?
+              dt = t('.txid')
+              dd = f.text_field :txid, class: 'col-xs-24'
+              hr.split
+              = f.button t('.accept'), class: 'btn btn-primary pull-right', confirm: t('js.confirm')
+              = link_to t("actions.cancel"), url_for(), method: :delete, class: 'btn btn-primary pull-right', style:'margin-right:10px;'
+            - else
+              = item_for @ghanaian, :txid
+
+  .col-xs-8
+    = render partial: 'shared/admin/member', locals: {member: @ghanaian.member}

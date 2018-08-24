@@ -1,0 +1,72 @@
+<h3 ng-bind="'fund_sources.manage_bank_account' | t"></h3>
+<h5 ng-bind="'fund_sources.manage_bank_account_desc' | t"></h5>
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th ng-bind="'fund_sources.bank' | t"></th>
+      <th ng-bind="'fund_sources.account' | t"></th>
+      <th class="text-center" ng-bind="'fund_sources.default' | t"></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="fs in fund_sources()">
+      <td class="col-xs-8" ng-bind=" 'ghsbanks.' + fs.extra | t"></td>
+      <td class="col-xs-10" ng-bind="fs.uid"></td>
+      <td class="col-xs-2 text-center">
+        <input type="radio" value="fs" ng-checked="fs == defaultFundSource()" ng-click="makeDefault(fs)">
+      </td>
+      <td class="col-xs-2">
+        <a href="javascript:;" ng-click="remove(fs)"><i class="fa fa-trash-o">&nbsp;</i></a>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-xs-8">
+        <select class="form-control" ng-model="extra">
+        			<option value="abgl">Access Bank Ghana Limited</option>
+              <option value="adbbl">ADB Bank Limited</option>
+              <option value="bagl">Bank of Africa Ghana Limited</option>
+              <option value="bbgl">Bank of Baroda Ghana Limited</option>
+              <option value="enb">Enterprise Bank</option>
+              <option value="bsicgl">BSIC Ghana Limited</option>
+              <option value="bbgl">Barclays Bank of Ghana Limited</option>
+              <option value="calbl">CAL Bank Limited</option>
+              <option value="egl">Ecobank Ghana Limited</option>
+              <option value="ebgl">Energy Bank Ghana Limited</option>
+              <option value="fbnbgl">FBNBank Ghana Limited</option>
+              <option value="fbgl">Fidelity Bank Ghana Limited</option>
+              <option value="fabl">First Atlantic Bank Limited</option>
+              <option value="fnbgl">First National Bank Ghana Limited</option>
+              <option value="gcbbl">GCB Bank Limited</option>
+              <option value="ghlbl">GHL Bank Limited</option>
+              <option value="gnbl">GN Bank Limited</option>
+              <option value="gtbgl">Guaranty Trust Bank (Ghana) Limited</option>
+              <option value="hfcbgl">HFC Bank Ghana Limited</option>
+              <option value="nibl">National Investment Bank Limited</option>
+              <option value="pbl">Prudential Bank Limited</option>
+              <option value="sggl">Société Générale Ghana Limited</option>
+              <option value="sbgl">Stanbic Bank Ghana Limited</option>
+              <option value="scbgl">Standard Chartered Bank Ghana Limited</option>
+              <option value="rbl">The Royal Bank Limited</option>
+              <option value="ugl">UniBank Ghana Limited</option>
+              <option value="ubagl">United Bank for Africa Ghana Limited</option>
+              <option value="umbgl">Universal Merchant Bank Ghana Limited</option>
+              <option value="zbg">Zenith Bank Ghana</option>
+              <option value="sbg">Sovereign Bank Ghana</option>
+              <option value="pbl">Premium Bank Limited</option>
+              <option value="ogl">OmniBank Ghana Limited</option>
+              <option value="hbl">Heritage Bank Limited</option>
+              <option value="cbgl">The Construction Bank Ghana Limited</option>
+              <option value="bbl">The Beige Bank Limited</option>
+              <option value="arbabl">ARB Apex Bank Limited</option>
+        </select>
+      </td>
+      <td class="col-xs-12">
+        <input class="string form-control" placeholder="{{'fund_sources.account' | t}}" ng-model="uid" ng-init="uid = ''" />
+      </td>
+      <td class="col-xs-4">
+        <button class="form-control" type="submit" ng-click="add()" ng-bind="'fund_sources.add' | t"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

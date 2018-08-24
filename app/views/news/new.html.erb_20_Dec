@@ -1,0 +1,74 @@
+<%= metamagic title: "Invite friends" %>
+<div class="container">
+<div class="col-md-10 col-sm-12 col-xs-24 newsform">
+<p class="invitefrnd"> Invite Your Friends email contacts
+</p>
+<h3 class="text-center sendinvite">Send invitation</h3>
+<%= form_for @new , :html => {:multipart => true} do |f| %>
+	<input type="hidden" name="new[member_id]" value="<%= current_user.id %>">
+	<label class="col-md-12 col-sm-12 col-xs-12 emailcls">Email</label>
+    <label class="col-md-12 col-sm-12 col-xs-12"><%= f.text_field :email , placeholder: "Enter email address"%></label>
+    <!--<label class="col-md-12 col-sm-12 col-xs-12">News Summary</label>
+    <label class="col-md-12 col-sm-12 col-xs-12"><%= f.text_area :summary %></label>
+    <label class="col-md-12 col-sm-12 col-xs-12">News Image</label>
+    <label class="col-md-12 col-sm-12 col-xs-12"><%= f.file_field :image %></label>-->
+    <label class="col-xs-24 newssubmit"><%= f.submit 'Send an invitation', class:"btn btn-primary" %></label>
+<% end %>
+</div>
+</div>
+<style>
+.navbar
+{
+	margin-bottom:0px;
+}
+.newsform {
+    float: none;
+    margin: 0 auto;
+    color: white;
+    font-family: 'SourceSansProRegular';
+}
+.newssubmit
+{
+	text-align:center;
+	margin:30px 0px 0px;
+}
+.newsform input,.newsform textarea,.newsform input:focus,.newsform textarea:focus
+{
+	width: 100%;
+    padding: 8px;
+    border: 0;
+}
+.newsform .btn-primary,.newsform .btn-primary:focus
+{    
+	width: auto;
+    background: #ffc82f !important;
+    font-size: 18px;
+    border: 0;
+}
+.sendinvite
+{
+	margin:20px 0px;
+    font-size: 28px;
+}
+.sign_in {
+    background: rgba(0,0,0,0.3) url('/assets/invite.jpg');
+    background-size: cover;
+    height: 430px;
+    background-blend-mode: multiply;
+	padding: 50px 0;
+}
+p.invitefrnd {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 0;
+}
+.emailcls
+{
+    font-size: 20px;
+    font-weight: normal;
+}
+#new_email
+{
+	color:#333;
+}
+</style>

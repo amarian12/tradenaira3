@@ -1,0 +1,12 @@
+- unless @one_nairas.empty?
+  .panel.panel-primary
+    .panel-heading: span = t('.one')
+    = render partial: 'table', locals: {nairas: @one_nairas}
+
+- unless @all_nairas.empty?
+  .panel.panel-success
+    .panel-heading: span = t('.all')
+    = render partial: 'table', locals: {nairas: @all_nairas}
+
+- if @all_nairas.empty? and @one_nairas.empty?
+  h3.text-info.text-center = t('.empty')

@@ -1,0 +1,38 @@
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-heading
+        span = t('.withdraw', sn: @naira.sn)
+      .panel-body
+        = description_for :withdraw do
+          = item_for @naira, :id
+          = item_for @naira, :created_at
+          = item_for @naira, :aasm_state_text
+          hr.split
+          = item_for @naira.member, :name do
+            span.fa.fa-copy data-clipboard-text='#{@naira.member.name}' = @bank.member.name
+          = item_for @naira, :fund_extra do
+            span.fa.fa-copy data-clipboard-text='#{bank_code_to_name @naira.fund_extra}' = bank_code_to_name @naira.fund_extra
+          = item_for @naira, :fund_uid do
+            span.fa.fa-copy data-clipboard-text='#{@naira.fund_uid}' = @naira.fund_uid
+          = item_for @naira, :amount do
+            span.fa.fa-copy data-clipboard-text='#{@naira.amount}' = @naira.amount
+          hr.split
+          hr.split
+          = item_for @naira, :remark do
+            span.fa.fa-copy data-clipboard-text='#{@naira.remark}' = @naira.remark
+          hr.split
+          ul.list-inline.pull-right
+            - if @naira.may_reject?
+              li
+                = link_to t('.reject'), url_for([:admin, @naira]), class: 'btn btn-danger', method: 'DELETE', confirm: t('.reject_confirm')
+            - if @naira.may_process?
+              li
+                = link_to t('.process'), url_for([:admin, @naira]), class: 'btn btn-primary', method: 'PATCH'
+            - if @naira.may_succeed?
+              li
+                = link_to t('.succeed'), url_for([:admin, @naira]), class: 'btn btn-success', method: 'PATCH', confirm: t('.succeed_confirm')
+
+  .col-xs-12
+    = render partial: 'shared/admin/member', locals: {member: @naira.member}
+    = render partial: 'shared/admin/account', locals: {account: @naira.account}

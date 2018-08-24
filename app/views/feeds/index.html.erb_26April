@@ -1,0 +1,49 @@
+<%= metamagic title: "Feeds" %>
+<div style="min-height:420px;">
+<h2 class="text-center">Listing feeds</h2>
+<div class="container">
+<table class="allfeeds">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feeds.each do |feed| %>
+      <tr>
+        <td><%= feed.name %></td>
+        <td><%= feed.url %></td>
+        <td><%= feed.description %></td>
+        <td><%= link_to 'Show', feed %></td>
+        <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<center>
+<%= link_to 'New Feed', new_feed_path , class:"btn btn-primary"%>
+</center>
+</div>
+<style>
+	.allfeeds
+	{
+		width:100%;
+		border:1px solid #000;
+	}
+	.allfeeds th, .allfeeds td
+	{
+		padding:5px
+	}
+	.allfeeds th,.allfeeds td
+	{
+		border-bottom:1px solid #000;
+		border-right:1px solid #000;
+	}
+</style>

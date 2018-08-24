@@ -1,28 +1,21 @@
-<h1 class="page-title"><%= t("header.funds") %></h1>
-
+<!-- <div class="fund"><h1 class="page-title"><%= t("header.funds") %></h1><div class="reqmoney"><a href="/money/req" class="reqmoneylink">Request Money / Payment</a></div></div> -->
 <div class="panel panel-default">
   <div class="panel-body panel-currencies">
-
     <div class='row'>
-      <div class='col-xs-8'>
-
+      <div class='col-md-9 col-sm-24 col-xs-24'>
         <div class="currencies-container">
           <accounts></accounts>
         </div>
       </div>
-
-      <div class='col-xs-16'>
+      <div class='col-md-15 col-sm-24 col-xs-24'>
         <div class="details-container">
           <!-- {{template 'flash'}} -->
           <ui-view></ui-view>
         </div>
       </div>
-
     </div><!-- .row -->
-
   </div>
 </div>
-
 <% content_for :scripts do %>
   <script type="text/javascript" charset="utf-8">
     $(window).load(function(){
@@ -33,3 +26,32 @@
     });
   </script>
 <% end %>
+<style>
+
+
+.reqmoney{
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    background: #38a6cb;
+    float: right;
+}
+.reqmoneylink{
+  color: #ffffff;
+  text-decoration: none;
+}
+.fund{
+  display: flow-root;
+  margin-bottom: 15px;      
+  display: inline-flex;
+}
+.page-title{
+   margin-right: 885px;
+}
+
+.reqmoneylink:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+</style>

@@ -1,3 +1,4 @@
+@import 'vars/bootstrap';
 .page-title {
   font-size: 26px;
   font-weight: bold;
@@ -7,7 +8,7 @@
 .panel-currencies {
   padding: 0;
   .currencies-container {
-    min-height: $funds-panel-height;
+    min-height: 584px;
     border-right: 1px solid #ddd;
   }
   .details-container {
@@ -18,6 +19,10 @@
       .form-submit .btn {
         padding: 4px 20px;
         margin-right: 5px;
+      }
+      .accountrow a
+      {
+        color:#38a6cb;
       }
       .currency-balance {
         color: #449D44;
@@ -91,6 +96,19 @@
     &.label-btc {
       background-color: #DDCD1B;
     }
+    &.label-ngn {
+      background-color: #ff9966;
+    }
+    &.label-usd {
+      background-color: #ff9966;
+    }
+    &.label-eur {
+      background-color: #ff9966;
+    }
+    &.label-gbp {
+      background-color: #ff9966;
+    }
+
   }
   .currency-logo {
     text-align: center;
@@ -195,7 +213,7 @@
       padding: 0;
     }
     .form-control-static {
-      font-size: 16px;
+      font-size: 13px;
       font-weight: bold;
       padding-bottom: 0;
     }

@@ -1,0 +1,727 @@
+<%= metamagic title: "Send money to Nigeria with the best rates for USD, EUR and GBP swapped for NGN",
+	      description: "Transfer money to Nigeria with Tradenaira.com. Send funds with the best rates for Naira. Exchange your pounds, dollars and euros for Nigerian Naira." %>
+<%= render "shared/homeheader"%>
+<div id="myCarousel" class="moneyslide carousel slide col-xs-24 nopad news_banner" data-ride="carousel">
+          <div class="carousel-inner container moneybanner" role="listbox">
+            <div class="item active">
+              <h2>Send Money to Nigeria</h2>
+              <p>Now there's a better way to transfer money to Nigeria. Safer, smarter online money transfers with no hidden charges.</p>
+            </div>
+          </div>
+	  <div class="vertical-align-center hidden-xs nav-next-section">
+	     <i class="fa fa-angle-down gotonext" aria-hidden="true"></i>
+	  </div>
+</div>
+<div class="col-xs-24" style="padding:0px;">
+<div class="container">
+<div class="moneynextcount">
+<div class="col-xs-24 frststepmoney moneysection">
+	<div class="col-sm-12 col-xs-24 text-center" style="overflow:hidden;margin:20px 0px;">
+		<iframe id="tran" src="http://transferwise.com/calcWidget?sourceCurrency=GBP&amp;targetCurrency=NGN&amp;sourceAmount=1000&amp;submitUrl=https%3A%2F%2Ftransferwise.com&amp;calcParameters=hideSavings%3Dtrue%26signup%3Dtrue%26&amp;lang=en;modestbranding=0" height="265" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+	</div>
+	<div class="col-sm-7 col-xs-24 col-md-offset-3 col-sm-offset-3">
+		<h3 class="tracksite">Track the rate</h3>
+		<p class="sitecon">Subscribe to our free daily email about your favourite currency route or receive an alert when the rate reaches your goal.</p>
+		<a class="tracksitebtn">Track the rate</a>
+	</div>
+</div>
+</div>
+<div class="col-xs-24 sndstepmoney moneysection">
+<div class="moneynextcount">
+        <div class="col-sm-12 col-xs-24 text-center">
+                <%= image_tag("credit.png", :alt => "credit", :class => "creditimg") %>
+        </div>
+        <div class="col-sm-11 col-xs-24 col-md-offset-1 col-sm-offset-1">
+                <h3 class="tracksite">HOW TO SEND MONEY TO NIGERIA?</h3>
+                <p class="sitecon">TradeNAIRA makes transferring money to Nigeria a breeze. Just tap in how much, and where to. Then make a local payment to TradeNAIRA, whether it’s with a bank transfer or your card. And that’s it. TradeNAIRA converts your money at the fairest rate out there - the real rate - so you save big time (even versus the guys saying there’s ‘zero’ commission). On TradeNAIRA, there's no room for sneaky bank surcharges or creeping hidden charges.</p>
+                <a class="tracksitelnk">What is TradeNAIRA?</a>
+		<a class="tracksitelnk">Find out more about Nigerian Naira transfers</a>
+        </div>
+
+	<div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
+	    <i class="fa fa-angle-down gotonext" aria-hidden="true" style="color:#38a6cb;"></i>
+	</div>
+</div>
+</div>
+</div>
+<div class="col-xs-24 trdstepmoney">
+<div class="moneynextcount">
+<div class="container">
+        <div class="col-md-6 col-sm-6 col-xs-24 text-center">
+	        <p><%= image_tag("chibueze.png", :alt => "credit", :class => "chiimg") %></p>
+		<p class="firstsec">Sir Richard Branson invested in TradeNAIRA.</p>		
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-24 text-center">
+                <p style= "height:72px;"><%= image_tag("star.png", :alt => "credit", :class => "starimg") %></p>
+                <p class="firstsec">24,000+ reviews on Trustpilot Customers love TradeNAIRA.</p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-24 text-center">
+                <p style= "height:72px;"><%= image_tag("skype.png", :alt => "credit", :class => "starimg") %></p>
+                <p class="firstsec">From the same people.</p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-24 text-center">
+                <p style= "height:72px;"><%= image_tag("secure.png", :alt => "credit", :class => "starimg secure") %></p>
+                <p class="firstsec">Authorised by the UK Financial Conduct Authority.</p>
+        </div>
+</div>
+</div>
+</div>
+<div class="col-xs-24 realcost">
+<div class="moneynextcount">
+<div class="container">
+	<div class="col-md-12 col-sm-12 col-xs-24">
+		<p class="interbnk">INTERNATIONAL BANK TRANSFERS - HERE’S HOW WE COMPARE</p>
+		<h2 class="realsend">THE REAL COST OF SENDING ₦300,000 TO NIGERIA</h2>
+		<p class="transwise">TradeNAIRA charges a small, fair fee and takes nothing from the rate. That's why you save so much, every time.</p>
+		<p class="transwise">The data presented was collected from competitors' websites on (June 10th 2015).</p>
+		<a class="startsave">Start saving now</a>
+	</div>
+	<div class="col-md-12 col-sm-12 col-xs-24 secondpart">
+		<div class="col-xs-24" style="margin-bottom:20px;">
+		<div class="col-md-8 col-sm-8 col-xs-24 text-right">
+			<%= image_tag("transprant_logo1.png", :alt => "credit", :class => "transfer") %>
+		</div>
+		<div class="col-md-16 col-sm-16 col-xs-24 text-right">
+			<div class="progress" style="width:120px;">£6.78</div>
+		</div>
+		</div>
+                <div class="col-xs-24" style="margin-bottom:20px;">
+                <div class="col-md-8 col-sm-8 col-xs-24 text-right">
+                        <%= image_tag("curfair.png", :alt => "credit", :class => "transfer") %>
+                </div>
+                <div class="col-md-16 col-sm-16 col-xs-24 text-right">
+                        <div class="progress" style="width:65%;background:#ffc82f;color:white;">£9.78</div>
+                </div>
+                </div>
+                <div class="col-xs-24" style="margin-bottom:20px;">
+                <div class="col-md-8 col-sm-8 col-xs-24 text-right">
+                        <%= image_tag("westunion.png", :alt => "credit", :class => "transfer") %>
+                </div>
+                <div class="col-md-16 col-sm-16 col-xs-24 text-right">
+                        <div class="progress" style="width:90%;background:#ffc82f;color:white;">£26.78</div>
+                </div>
+                </div>
+	</div>
+
+	<div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
+	    <i class="fa fa-angle-down gotonext" aria-hidden="true"></i>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-24 reviews">
+<div class="moneynextcount">
+<div class="container">
+        <div class="col-xs-24" style="margin-bottom:20px;">
+		<%= image_tag("yinka.png", :alt => "credit", :class => "reviewproimg") %>
+		<%= image_tag("stars1.png", :alt => "credit", :class => "reviewstarimg") %>
+                <p class="reviewcon">"TradeNAIRA has helped me get the best rates to send money to Nigeria. I sent money to my sister and I also use it for my business. It’s efficient, simple to use and they give you enough support while transferring, and also after the transfer. TradeNAIRA is the best in town right now!"</p>
+                <p class="reviewcust">Adedamola, TradeNAIRA Customer</p>
+        </div>
+        <div class="col-xs-24 text-right" style="margin-bottom:20px;">
+                <%= image_tag("chibueze.png", :alt => "credit", :class => "reviewproimg flright") %>
+                <%= image_tag("stars1.png", :alt => "credit", :class => "reviewstarimg") %>
+                <p class="reviewcon">"I use TradeNAIRA to send money to Nigeria; to my parents and to my brothers and sisters. It saves me a lot of money. Within a short time it’s all done and the money is there in my account."</p>
+                <p class="reviewcust">Kingsley, TradeNAIRA Customer</p>
+        </div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-24 twitterpost">
+<div class="moneynextcount">
+<div class="container">
+        <div class="col-xs-24" style="margin-bottom:20px;">
+                <p class="postpeople">PEOPLE LOVE USING TradeNAIRA TO SEND MONEY ABROAD</p>
+        </div>
+        <div class="col-xs-24" style="margin-bottom:20px;">
+             <div id="myCarousel1" class="carousel slide col-xs-24 nopad" data-ride="carousel">
+     		    <div class="carousel-inner container" role="listbox">
+		            <div class="item active">
+				<%= image_tag("twitterpost1.png", :alt => "credit", :class => "twitterimgs") %>
+		            </div>
+                            <div class="item">
+                                <%= image_tag("twitterpost2.png", :alt => "credit", :class => "twitterimgs") %>
+                            </div>
+                            <div class="item">
+                                <%= image_tag("twitterpost3.png", :alt => "credit", :class => "twitterimgs") %>
+                            </div>
+	            </div>
+                    <ol class="carousel-indicators">
+                      <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+                      <li data-target="#myCarousel1" data-slide-to="1"></li>
+                      <li data-target="#myCarousel1" data-slide-to="2"></li>
+                    </ol>
+		    <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
+		      <i class="fa fa-angle-left" aria-hidden="true"></i>
+		      <span class="sr-only">Previous</span>
+		    </a>
+		    <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next">
+		      <i class="fa fa-angle-right" aria-hidden="true"></i>
+		      <span class="sr-only">Next</span>
+		    </a>
+	     </div>
+        </div>
+	<div class="col-xs-24 text-center">
+		<a class="startsave" style="margin:20px auto;">See more tweets</a>
+	</div>
+
+	<div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
+	    <i class="fa fa-angle-down gotonext" aria-hidden="true"></i>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-24 howsend">
+<div class="moneynextcount">
+<div class="container">
+        <div class="col-xs-24">
+                <p class="howsendcon">HOW TO SEND MONEY TO NIGERIA IN THREE EASY STEPS.</p>
+        </div>
+        <div class="col-xs-24" style="margin-bottom:20px;">
+		<div class="col-md-8 col-sm-8 col-xs-24">
+			<div class="col-xs-24 text-center">
+				<%= image_tag("step1.png", :alt => "credit", :class => "stepsimg") %>
+			</div>
+			<div class="col-xs-24">
+				<div class="stepsindex">1</div>
+				<h3 class="steptit">Start your transfer</h3>
+				<p class="stepcontent">Pay in £ with your debit card, or send the money from your online banking.</p>
+			</div>
+		</div>
+                <div class="col-md-8 col-sm-8 col-xs-24">
+                        <div class="col-xs-24  text-center">
+				<div class="linesteps hidden-xs"></div>
+                                <%= image_tag("step2.png", :alt => "credit", :class => "stepsimg") %>
+                        </div>
+                        <div class="col-xs-24">
+                                <div class="stepsindex">2</div>
+                                <h3 class="steptit">Get the fairest rate out there</h3>
+                                <p class="stepcontent">TradeNAIRA always gives you the real and fair mid-market exchange rate.</p>
+                        </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-24">
+                        <div class="col-xs-24  text-center">
+                                <%= image_tag("step3.png", :alt => "credit", :class => "stepsimg") %>
+                        </div>
+                        <div class="col-xs-24">
+                                <div class="stepsindex">3</div>
+                                <h3 class="steptit">Get the fairest rate out there</h3>
+                                <p class="stepcontent">Your recipient gets ₦ directly from TradeNAIRA’s Nigerian bank account.</p>
+                        </div>
+                </div>
+	        <div class="col-xs-24 text-center">
+	                <a class="startsave" style="margin:20px auto;">Learn More</a>
+	        </div>
+        </div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-24 realrate">
+<div class="moneynextcount">
+<div class="container">
+        <div class="col-xs-24 col-md-12 col-sm-12" style="margin-bottom:20px;">
+                <p class="peermatch">PEER-TO-PEER MATCHING</p>
+		<p class="getreal">YOU GET THE REAL RATE</p>
+		<p class="realratecon">TradeNAIRA is built around clever peer-to-peer tech, so you always get the real ‘mid-market’ exchange rate - what you see on Google or XE. For Pound to Nigerian Naira, the only fee is a separate 1% with a flat fee of ₦900 (converted into GBP at the mid market rate at the time of transfer) that you can always see before you send.</p>
+        </div>
+	<div class="col-md-12 col-sm-12 col-xs-24">
+		<%= image_tag("realrateimg.png", :alt => "credit", :class => "realimg") %>
+	</div>
+        <div class="col-xs-24 text-center">
+                <a class="startsave" style="margin:20px auto;max-width:275px;">Send money at the best rate</a>
+        </div>
+
+	<div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
+	    <i class="fa fa-angle-down gotonext" aria-hidden="true"  style="color:#38a6cb;"></i>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-24 daycal">
+<div class="moneynextcount">
+<div class="container">
+<div class="dayimg" style="display: inline-flex;align-items: center;">
+        <div class="col-xs-24 col-md-12 col-sm-12 text-center" style="margin-bottom:20px;">
+		<%= image_tag("daycalendar.png", :alt => "credit", :class => "calimg") %>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-24">
+                <p class="quickthink">QUICKER THAN YOU THINK</p>
+                <p class="fastsimple">FASTER, SIMPLER</p>
+                <p class="quickcon">Everything about TradeNAIRA is streamlined, and creating your first transfer only takes a couple of taps. 90% of the transfers from the UK to Nigeria are completed within 1 business day, and you’ll always get delivery updates throughout.</p>
+        </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-24 realrate">
+<div class="moneynextcount">
+<div class="container">
+        <div class="col-xs-24 col-md-12 col-sm-12" style="margin-bottom:20px;">
+                <p class="peermatch">YOU CAN TRUST TradeNAIRA</p>
+                <p class="getreal">SAFE, SECURE & REGULATED</p>
+                <p class="realratecon">TradeNAIRA makes sending money to Nigeria as easy as transferring money to a friend, or buying something online.</p>
+                <p class="realratecon">Depending on your transfer, you’ll have a multitude of payment options - whether it’s local bank transfer, card payment or direct debit.</p>
+                <p class="realratecon">Furthermore TradeNAIRA is authorised by the Financial Conduct Authority.</p>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-24 text-center">
+                <%= image_tag("savesecure.png", :alt => "credit", :class => "savesecureimg") %>
+        </div>
+	<div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
+	    <i class="fa fa-angle-down gotonext" aria-hidden="true"  style="color:#38a6cb;"></i>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-24 rockstar">
+<div class="moneynextcount">
+<div class="container">
+        <div class="col-xs-24">
+                <p class="fastsimple">ROCKSTAR CUSTOMER SUPPORT</p>
+                <p class="quickcon">When questions come up, there's a team ready to help you</p>
+		<ul class="col-xs-24 text-center socialli">
+			<li><i class="fa fa-envelope" aria-hidden="true"></i> Email</li>
+			<li><i class="fa fa-weixin" aria-hidden="true"></i> Live Chat</li>
+			<li><i class="fa fa-phone" aria-hidden="true"></i> Phone</li>
+		</ul>
+		<div class="col-xs-24 text-center">
+			<a class="findmore">Find out more</a>
+		</div>
+        </div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-24 nextgbp">
+<div class="container">
+        <div class="col-xs-24 text-center">
+                <p class="leavebank">Are you also ready to leave your bank behind?</p>
+                <div class="col-xs-24 text-center"> <a class="getrate">Get the best rate for your next GBP → NGN transfer</a> </div>
+                <p class="realratecon col-xs-24 getgbpcon">Not ready to transfer yet? Sign up for our rates alerts to be notified when the exchange rate is more favourable</p>
+        </div>
+</div>
+</div>
+
+</div>
+<style>
+.secure
+{
+	width:45px !important;
+}
+.starimg {
+    width: 125px;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+}
+.firstsec {
+    font-size: 16px;
+    color: #38a6cb;
+}
+.chiimg
+{
+	border-radius: 100%;
+	width:75px;
+}
+.moneysection {
+    padding: 40px 0px 0;
+}
+iframe
+{
+    overflow: hidden;
+    margin-top: -40px;
+}
+.navbar-static-top
+{
+	display:none;
+}
+#content, .panel-body
+{
+	padding: 0;
+}
+.moneyslide
+{
+	-webkit-clip-path: polygon(0 0,100% 0,100% 84%,50% 100%,0 84%,0 0);
+	height:360px;
+}
+body
+{
+	font-family: 'SourceSansProRegular';
+}
+.tracksite {
+    color: #38a6cb;
+    text-transform: uppercase;
+    font-size:26px;
+}
+.sitecon {
+    color: #6f8691;
+    font-size: 17px;
+    margin-bottom: 20px;
+    line-height: 25px;
+}
+.moneybanner h2
+{
+    text-transform: uppercase;
+}
+.moneybanner p
+{
+        font-size:18px;
+}
+.tracksitebtn {
+    background: white;
+    border: 1px solid #38a6cb;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    color: #38a6cb;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: all 250ms ease-in 0s;
+}
+.tracksitebtn:hover
+{
+	background: #38a6cb;
+	color:white;
+	text-decoration:none;
+	cursor:pointer;
+}
+.creditimg {
+    width: 100%;
+    max-height: 350px;
+}
+.tracksitelnk,.tracksitelnk:hover {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    color: #38a6cb;
+}
+.trdstepmoney {
+    background: rgba(56, 166, 204, 0.03);
+    padding: 20px 0px;
+}
+.realcost {
+    background: #38a6cb;
+    padding: 5% 0;
+    color: white;
+}
+.interbnk {
+    font-size: 17px;
+}
+.transwise {
+    font-size: 17px;
+}
+.startsave, .startsave:hover {
+    background: #ffc82f;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 20px;
+    margin: 20px 0px;
+    display: block;
+    max-width: 200px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration:none;
+}
+.progress {
+    height: 35px;
+    border-radius: 13px;
+    color: #38a6cb;
+    padding: 5px 12px;
+    font-size: 18px;
+}
+.transfer {
+    width: 100%;
+    max-width: 140px;
+}
+.secondpart {
+    padding: 40px 15px;
+}
+.reviews {
+    background: #f2f5f7;
+    padding: 50px 0px 30px;
+}
+.reviewproimg {
+    width: 150px;
+    border-radius: 100%;
+    float: left;
+    margin-right: 15px;
+    margin-bottom:10px;
+}
+.reviewstarimg {
+    width: 100px;
+}
+.reviewcon {
+    font-size: 16px;
+    line-height: 28px;
+}
+.reviewcust {
+    font-size: 14px;
+}
+.reviewcust:before {
+    content: '\2014 \00A0';
+}
+.flright
+{
+   margin-left:15px;
+   float: right;
+}
+.twitterpost {
+    background: #38a6cb;
+    padding: 40px 0px;
+}
+.postpeople {
+    color: white;
+    text-align: center;
+    font-size: 29px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+.twitterimgs {
+    margin: 0 auto;
+    padding: 20px 0px;
+    max-width: 540px !important;
+    height: 300px !important;
+    object-fit: cover;
+}
+.carousel-control {
+    background: none !important;
+}
+.fa-angle-left, .fa-angle-right {
+    font-size: 60px;
+    color: white;
+    text-shadow: none;
+    top: 50%;
+    position: absolute;
+    vertical-align: middle;
+    transform: translateY(-50%);
+}
+.carousel-indicators {
+    bottom: auto;
+    position: relative;
+    left: auto;
+    right: auto;
+    margin: 0 auto;
+}
+.howsendcon {
+    text-align: center;
+    color: #38a6cb;
+    font-size: 28px;
+    margin: 70px 0px 0;
+}
+.stepsimg {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 3;
+	max-width:340px;
+}
+.stepsindex {
+    text-align: center;
+    font-size: 20px;
+    padding: 4px;
+    width: 38px;
+    margin: 0 auto;
+    border: 1px dashed #777;
+    border-radius: 100%;
+    color: #666;
+}
+.steptit {
+    text-align: center;
+    color: #38a6cb;
+    font-size: 25px;
+}
+.stepcontent {
+    font-size: 17px;
+    text-align: center;
+    color: rgba(80, 166, 195, 0.77);
+}
+.linesteps {
+    width: 200%;
+    border-bottom: 2px dashed #38a6cb;
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    height: 2px;
+}
+.howsend > div > div > div {
+    margin-bottom: 30px;
+}
+.realrate {
+    background: #EFEFEF;
+    padding: 50px 0px;
+}
+.peermatch {
+    font-size: 17px;
+    color: #777;
+}
+.getreal {
+    font-size: 28px;
+    color: #38a6cb;
+}
+.realratecon {
+    font-size: 18px;
+    color: rgba(80, 166, 195, 0.94);
+    line-height: 28px;
+}
+.realimg {
+    max-height: 350px;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+.calimg {
+    width: auto;
+    max-height: 350px;
+}
+.quickthink {
+    font-size: 16px;
+}
+.fastsimple {
+    font-size: 32px;
+    margin: 20px 0px;
+}
+.quickcon {
+    font-size: 19px;
+}
+.daycal {
+    background: #38a6cb;
+    color: white;
+    padding: 50px 0px;
+}
+.savesecureimg {
+    width: auto;
+    max-width: 100%;
+    max-height: 330px;
+}
+.rockstar {
+    background: url(/assets/support.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(56, 166, 203);
+    background-blend-mode: soft-light;
+    color: white;
+    text-align: center;
+    padding: 50px 0px;
+}
+.socialli li {
+    list-style-type: none;
+    display: inline-block;
+    font-size: 21px;
+    margin: 0 22px;
+}
+.socialli {
+    margin: 30px 0px;
+}
+.findmore {
+    font-size: 20px;
+    background: white;
+    color: #38a6cb;
+    padding: 12px 40px;
+    display: block;
+    max-width: 200px;
+    margin: 15px auto;
+    transition: all 250ms ease-in 0s;
+    cursor:pointer;
+}
+.findmore:hover
+{
+    background:#38a6cb;
+    color:white;
+    text-decoration:none;
+}
+.nextgbp {
+    background: white;
+    padding: 30px 0px;
+}
+.leavebank {
+    font-size: 24px;
+	color:#555;
+}
+.getrate, .getrate:hover {
+    background: #38a6cb;
+    text-decoration:none;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    display: inline-block;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 15px 0px 25px;
+}
+.getgbpcon
+{
+    max-width: 510px;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    float: none;
+}
+.moneybanner {
+    color: white;
+    text-align: center;
+    padding: 60px 15px 0px;
+    max-width: 850px;
+}
+.nav-next-section {
+    text-align: center;
+    color: white;
+    font-size: 42px;
+    padding: 50px 0 0px;
+}
+.gotonext
+{
+	cursor:pointer;
+}
+.moneynextcount
+{
+	overflow:hidden;
+}
+@media only screen and (max-width:640px)
+{
+.dayimg
+{
+	display:inline !important;
+}
+.progress
+{
+	float: right;
+    margin: 10px 0px;
+}
+}
+</style>
+
+<script>
+
+$(document).ready(function(){
+	
+    $('.gotonext').click(function() {
+    
+    container = $(this).parent();
+
+    // am I the last .container in my group?
+    while (document != container[0] && container.find('~.container, ~:has(.container)').length == 0)
+        container = container.parent(); // if so, search siblings of parent instead
+
+    nextdiv = container.nextAll('.moneynextcount, :has(.moneynextcount)').first();
+    // no next .container found, go back to first container
+    if (nextdiv.length==0) nextdiv = $(document).find('.moneynextcount:first');
+    
+    //$(document).scrollTop(nextdiv.offset().top);
+    $('body').animate({scrollTop:nextdiv.offset().top - 50},300);
+    // $(this).parent().next() // this is the next div container.
+    return false;
+
+    });
+
+});
+</script>

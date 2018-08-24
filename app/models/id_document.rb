@@ -1,4 +1,5 @@
 class IdDocument < ActiveRecord::Base
+  STATES = [:unverified, :verified, :verifying]
   extend Enumerize
   include AASM
   include AASM::Locking
@@ -11,18 +12,18 @@ class IdDocument < ActiveRecord::Base
 
   belongs_to :member
 
-  validates_presence_of :name, :id_document_type, :id_document_number, :id_bill_type, allow_nil: true
+  validates_presence_of :name, :id_document_type, :id_document_number, :id_bill_type, :address, :country, :zipcode , :id_document_file, :id_bill_file, allow_nil: true
   validates_uniqueness_of :member
 
   enumerize :id_document_type, in: {id_card: 0, passport: 1, driver_license: 2}
-  enumerize :id_bill_type,     in: {bank_statement: 0, tax_bill: 1}
+  enumerize :id_bill_type,     in: {bank_statement: 0, tax_bill: 1, utility_bill: 2}
 
   alias_attribute :full_name, :name
 
   aasm do
-    state :unverified, initial: true
+    state :unverified, initial: true, after_commit: :send_email
     state :verifying
-    state :verified
+    state :verified, after_commit: :send_email
 
     event :submit do
       transitions from: :unverified, to: :verifying
@@ -35,5 +36,35 @@ class IdDocument < ActiveRecord::Base
     event :reject do
       transitions from: [:verifying, :verified],  to: :unverified
     end
+    
+    event :reset do
+      transitions from: [:unverified, :verified],  to: :verifying
+    end
+    
   end
+  
+  class << self
+    
+    def search(field: nil, term: nil)
+      result = case field
+               when 'email'
+                 joins(:member).where('members.email LIKE ?', "%#{term}%")
+               when 'name'
+                 where('id_documents.name LIKE ?', "%#{term}%")
+               else
+                 all
+               end
+
+      result.order(:id).reverse_order
+    end
+    
+  end
+  
+  private
+
+    def send_email
+      IddocumentMailer.verified(self.id).deliver if self.verified?
+      IddocumentMailer.unverified(self.id).deliver if self.unverified?
+    end
+  
 end

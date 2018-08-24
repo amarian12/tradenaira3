@@ -17,12 +17,45 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
+set :output, "log/cron_log.log"
+#
+# every 2.hours do
+#   command "/usr/bin/some_great_command"
+#   runner "MyModel.some_method"
+#   rake "some:great:rake:task"
+# end
+#
+# every 4.days do
+#   runner "AnotherModel.prune_old_records"
+# end
+
 # Learn more: http://github.com/javan/whenever
 
-every 1.hours do
-  command '/usr/local/rbenv/shims/backup perform -t database_backup'
-end
+env :PATH, ENV['PATH']
+env :GEM_PATH, ENV['GEM_PATH']
+
+#every 1.hours do
+#  command '/usr/local/rbenv/shims/backup perform -t database_backup'
+#end
 
 every :day, at: '4am' do
-  rake 'solvency:clean solvency:liability_proof'
+  rake "solvency:clean"
 end
+
+every :day, at: '4:02am' do
+  rake "solvency:liability_proof"
+end
+
+every :day, at: '4:04am' do
+  rake "dailymail:email_sender"
+end
+
+# Learn more: http://github.com/javan/whenever
+
+# every 1.hours do
+#   command '/usr/local/rbenv/shims/backup perform -t database_backup'
+# end
+
+# every :day, at: '4am' do
+#   rake 'solvency:clean solvency:liability_proof'
+# end

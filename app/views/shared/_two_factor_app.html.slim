@@ -1,8 +1,9 @@
-label.string.required.col-xs-8.control-label for="two_factor_otp"
+= javascript_include_tag :tradeniara 
+label.string.required.col-md-10.col-sm-10.col-xs-24.control-label for="two_factor_otp"
   abbr == "*&nbsp;"
   span = t('two_factors.auth.google_app')
 
-.col-xs-14
+.col-md-6.col-sm-8.col-xs-24
   .input-group style="width:100%;"
     input.two_factor_auth_type type="hidden" name="two_factor[type]" value="app"
     input.string.required.form-control id="two_factor_otp" name="two_factor[otp]" placeholder=t('two_factors.auth.otp_placeholder')

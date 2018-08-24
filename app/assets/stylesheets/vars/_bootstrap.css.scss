@@ -11,7 +11,7 @@ $brand-primary: #364450;
 $up-text: rgb(77, 215, 16);
 $down-text: rgb(208, 0, 23);
 
-$navbar-default-bg: $brand-primary;
+//$navbar-default-bg: $brand-primary;
 $navbar-default-link-color: #DCDCDC;
 $navbar-default-link-hover-color: #EFEFEF;
 $navbar-default-link-active-color: #EFEFEF;
@@ -21,6 +21,7 @@ $btn-default-color: #fff;
 
 $btn-info-bg: #fff;
 $btn-info-color: #333;
+$gray-light: #d3d3d3;
 
 $font-family-sans-serif: 'Helvetica Neue', Arial, 'Hiragino Sans GB', sans-serif;
 
@@ -29,12 +30,12 @@ $font-family-sans-serif: 'Helvetica Neue', Arial, 'Hiragino Sans GB', sans-serif
 $screen-xs:                  1px;
 $screen-xs-min:              $screen-xs;
 $screen-phone:               $screen-xs-min;
-$screen-sm:                  2px;
+$screen-sm:                  760px;
 $screen-sm-min:              $screen-sm;
 $screen-tablet:              $screen-sm-min;
-$screen-md:                  3px;
+$screen-md:                  1024px;
 $screen-md-min:              $screen-md;
 $screen-desktop:             $screen-md-min;
-$screen-lg:                  4px;
+$screen-lg:                  1921px;
 $screen-lg-min:              $screen-lg;
 $screen-lg-desktop:          $screen-lg-min;

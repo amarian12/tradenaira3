@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   before_action :auth_member!, only: :destroy
   before_action :auth_anybody!, only: [:new, :failure]
   before_action :add_auth_for_weibo
-
+  before_action :set_last_logged_at
   helper_method :require_captcha?
 
   def new
@@ -18,9 +18,13 @@ class SessionsController < ApplicationController
     end
 
     if @member
-      if @member.disabled?
+      if @member.disabled? || @member.blockstatus == "yes"
         increase_failed_logins
-        redirect_to signin_path, alert: t('.disabled')
+        if(@member.blockstatus == "yes")
+          redirect_to signin_path, alert: ('Your account is currently under review, one of our customer service team will contact you shortly with any questions.')
+        else 
+          redirect_to signin_path, alert: t('.disabled')
+        end
       else
         clear_failed_logins
         reset_session rescue nil
@@ -86,6 +90,13 @@ class SessionsController < ApplicationController
       accept_language: request.headers["Accept-Language"],
       ua: request.headers["User-Agent"]
     )
+  end
+  
+  private
+  def set_last_logged_at
+    if current_user
+      current_user.update_attribute(:last_logged_at, Time.now)
+    end
   end
 
 end

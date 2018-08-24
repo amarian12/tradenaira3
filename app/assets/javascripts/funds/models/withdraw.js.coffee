@@ -17,6 +17,12 @@ class Withdraw extends PeatioModel.Model
   pathName: ->
     switch @currency
       when 'cny' then 'banks'
-      when 'btc' then 'satoshis'
+      when 'ngn' then 'nairas'
+      when 'usd' then 'dollars'
+      when 'eur' then 'euros'
+      when 'gbp' then 'pounds'
+      when 'btc' then 'bitcoins'
+      when 'ghs' then 'ghanaians'
+
 
 window.Withdraw = Withdraw

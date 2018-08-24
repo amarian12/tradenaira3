@@ -105,7 +105,8 @@ class Deposit < ActiveRecord::Base
   end
 
   def send_mail
-    DepositMailer.accepted(self.id).deliver if self.accepted?
+    #DepositMailer.accepted(self.id).deliver if self.accepted?
+    IddocumentMailer.depaccepted(self.id,currency_text,account.balance).deliver if self.accepted?
   end
 
   def send_sms

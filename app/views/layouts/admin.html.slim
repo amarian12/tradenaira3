@@ -4,6 +4,7 @@ html lang="en"
     = stylesheet_link_tag :admin, media: "all"
     = javascript_include_tag :admin
     = csrf_meta_tags
+    = metamagic title: "Admin Section"
 
   body id='#{body_id}'
     nav#top-menu.navbar.navbar-inverse.navbar-fixed-top role="navigation"
@@ -26,9 +27,10 @@ html lang="en"
 
           - if can? :menu, Deposit
             li.dropdown class = check_active('deposits')
-              = link_to 'javascript:;', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do
+              = link_to 'javascript:;', class: 'dropdown-toggle newdeposit', 'data-toggle' => 'dropdown' do
                 span = t('admin_header.deposits')
                 span.caret
+                span.depnew New
               ul.dropdown-menu
                 - DepositChannel.all.sort.each do |c|
                   - if can? :manage, c.kls
@@ -36,9 +38,10 @@ html lang="en"
 
           - if can? :menu, Withdraw
             li.dropdown class = check_active('withdraws')
-              = link_to 'javascript:;', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do
+              = link_to 'javascript:;', class: 'dropdown-toggle newwithdraw', 'data-toggle' => 'dropdown' do
                 span = t('admin_header.withdraws')
                 span.caret
+                span.withnew New
               ul.dropdown-menu
                 - WithdrawChannel.all.each do |c|
                   - if can? :manage, c.kls
@@ -50,20 +53,59 @@ html lang="en"
 
           - if can? :manage, Ticket
             li class = check_active(Proof)
-              = link_to t(".menus.items.operating.tickets"), admin_tickets_path
+              = link_to t(".menus.items.operating.tickets"), admin_tickets_path, class: 'newticket'
+              span.ticnew New
 
           li.dropdown class = check_active('statistic')
             = link_to 'javascript:;', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do
               span = t('admin_header.statistics')
               span.caret
             ul.dropdown-menu
+           	  
               - if can? :stat, Member
                 li class = check_active(Member)
                   = link_to Member.model_name.human, admin_statistic_members_path
-
+              
         ul.nav.navbar-nav.navbar-right
+		  
+          li = link_to t("Home Page Notification"), edit_admin_sliders_path
+               
           li = link_to t('actions.back'), main_app.root_path
 
     .container
       = render 'shared/flash'
       = yield
+
+javascript:
+
+	n = #{@newdep}
+	p = #{@newwith}
+	t = #{@newtic}
+	d = 0;
+    if (n != 0)
+		$(".newdeposit > .depnew").show();
+	if (p != 0)
+		$(".newwithdraw > .withnew").show();
+	if (t == 0)
+		$(".ticnew").hide();
+		
+scss:
+   @media only screen and (min-width:980px)
+   {
+	.container
+	{
+		width:1130px !important;
+	}
+   }
+   .ticnew {
+    display:block;
+    background: #38a6cb none repeat scroll 0 0;
+    border-radius:2px;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 1px 3px;
+    position: absolute;
+    right: -10px;
+    top: 1px;
+    z-index: 1;
+   }

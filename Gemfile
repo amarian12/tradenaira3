@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.1'
 gem 'rails', '~> 4.0.12'
 gem 'rails-i18n'
 
@@ -65,16 +65,23 @@ gem 'rack-attack', '~> 3.0.0'
 gem 'easy_table'
 gem 'phonelib', '~> 0.3.5'
 gem 'twilio-ruby', '~> 3.11'
-gem 'unread', github: 'peatio/unread'
+gem 'unread', github: 'itering/unread'
 gem 'carrierwave', '~> 0.10.0'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'rest-client', '~> 1.6.8'
+gem 'metamagic'
+gem 'blogo'
+gem 'devise',           '~> 3.5.2'
+gem 'devise_invitable', '~> 1.5.2'
+gem 'json_pure'
+
+
 
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.4.3'
   gem 'mina'
-  gem 'mina-slack', github: 'peatio/mina-slack'
+  gem 'mina-slack', github: 'johnkoht/mina-slack'
   gem 'meta_request'
   gem 'better_errors'
   gem 'binding_of_caller'

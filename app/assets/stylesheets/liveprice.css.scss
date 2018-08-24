@@ -1,0 +1,70 @@
+.nav-pills > li {
+    float: left;
+}
+.nav > li, .nav > li > a {
+    display: block;
+    position: relative;
+}
+#market_list > .nav .active a {
+    color: #ffffff;
+}
+#market_list > .nav a {
+    background-color: #e2e2e2;
+    color: #5f5f5f;
+    target-new: tab;
+}
+.nav-pills li.active a {
+    background-color: #38a6cb !important;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    background-color: #38a6cb;
+    color: #ffffff;
+}
+.btn, .nav-pills > li > a, input {
+    border-radius: 4px !important;
+}
+.nav > li > a {
+    padding: 10px 15px;
+}
+.nav > li, .nav > li > a {
+    display: block;
+    position: relative;
+}
+.available-balance:hover, .input-group.date .input-group-addon, .nav-tab li, a:active, a:focus, a:hover, a[ng-click] {
+    cursor: pointer;
+}
+.live-ticker ul {
+    display: table;
+    padding: 0;
+    width: 100%;
+}
+.ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+}
+li.ng-binding
+{
+  list-style-type: none;
+    float: left;
+    text-align:center;
+    padding:10px 15px;
+}
+.live-ticker, .live-ticker .last .price
+{
+  color:#333333;
+}
+.live-ticker p, .live-ticker .fot_siz
+{
+  font-size: 30px;
+}
+.live-ticker .buy-color .price, .live-ticker #buy_cnybtc .price, .live-ticker #buy_cnyltc .price, .live-ticker #buy_btcltc .price
+{
+  color:#3d7a3e !important;
+}
+.live-ticker .sell-color .price, .live-ticker #sell_cnybtc .price, .live-ticker #sell_cnyltc .price, .live-ticker #sell_btcltc .price
+{
+  color:#d02c2b !important;
+}
+.ng-scope
+{
+  padding-top:30px;
+}

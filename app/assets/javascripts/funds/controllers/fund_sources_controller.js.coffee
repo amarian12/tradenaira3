@@ -21,6 +21,28 @@ app.controller 'FundSourcesController', ['$scope', '$gon', 'fundSourceService', 
       $scope.uid = ""
       $scope.extra = "" if currency isnt $gon.fiat_currency
 
+  $scope.addusd = ->
+    uid   = $scope.uid.trim()   if angular.isString($scope.uid)
+    extra = $scope.extra.trim() if angular.isString($scope.extra)
+    account_name = $scope.account_name.trim() if angular.isString($scope.account_name)
+    iban = $scope.iban.trim() if angular.isString($scope.iban)
+    code = $scope.code.trim() if angular.isString($scope.code)
+    country = $scope.country.trim() if angular.isString($scope.country)
+    
+    return if not uid
+    return if not extra
+    return if not account_name
+   
+    
+    data = uid: uid, extra: extra, currency: currency, account_name: account_name, iban: iban, code: code, country: country
+    fundSourceService.create data, ->
+      $scope.uid = ""
+      $scope.extra = "" if currency isnt $gon.fiat_currency
+      $scope.account_name = ""
+      $scope.iban = ""
+      $scope.code = ""
+      $scope.country = ""
+    
   $scope.remove = (fund_source) ->
     fundSourceService.remove fund_source
 
