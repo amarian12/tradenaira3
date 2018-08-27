@@ -50,7 +50,7 @@
     """
 
   @beforeSend = (event, jqXHR) ->
-    if true #confirm(@confirmDialogMsg())
+    if confirm(@confirmDialogMsg())
       @disableSubmit()
     else
       jqXHR.abort()

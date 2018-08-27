@@ -1049,6 +1049,10 @@ en:
         global_trades_title: TRADES
       chat:
         title: Chat Channel
+      place_order: 
+        price: Price
+        amount: Amount
+        total: Total  
     settings:
       success: Settings updated successfully.
       failure: Invalid passcode. Please try again.
