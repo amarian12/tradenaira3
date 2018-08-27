@@ -17,4 +17,9 @@ module TagHelper
   def bank_code_to_name(code)
     I18n.t("banks.#{code}")
   end
+  def ngnbank_code_to_name(code)
+    I18n.t("js.ngnbanks.#{code}")
+  end
+
 end
+
