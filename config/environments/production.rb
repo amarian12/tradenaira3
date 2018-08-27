@@ -1,97 +1,70 @@
 Peatio::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # Code is not reloaded between requests.
+  # In the development environment your application's code is reloaded on
+  # every request. This slows down response time but is perfect for development
+  # since you don't have to restart the web server when you make code changes.
   config.cache_classes = true
-
-  # Eager load code on boot. This eager loads most of Rails and
-  # your application in memory, allowing both thread web servers
-  # and those relying on copy on write to perform better.
-  # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  # Full error reports are disabled and caching is turned on.
+  # Show full error reports and disable caching.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Enable Rack::Cache to put a simple HTTP cache in front of your application
-  # Add `rack-cache` to your Gemfile before enabling this.
-  # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
-  # config.action_dispatch.rack_cache = true
-
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
-
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = Uglifier.new(:mangle => false)
-  # config.assets.css_compressor = :sass
-
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
+  config.assets.precompile += ['*.js', '*.css', '*.css.erb', '*.js.coffee']
+  #config.assets.precompile = ['*.js', '*.css', '*.css.erb', '*.js.coffee']
+  config.assets.digest = false
+  #config.assets.version = '1.0'
 
-  # Generate digests for assets URLs.
-  config.assets.digest = true
-
-  # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.0'
-
-  # Specifies the header that your server uses for sending files.
-  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
-
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
-  # Prepend all log lines with the following tags.
-  # config.log_tags = [ :subdomain, :uuid ]
-
-  # Use a different logger for distributed setups.
-  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
-
   # Use a different cache store in production.
-  # config.cache_store = :memory_store
+  # config.cache_store = :file_store, "tmp"
   config.cache_store = :redis_store, ENV['REDIS_URL']
 
   config.session_store :redis_store, :key => '_peatio_session', :expire_after => ENV['SESSION_EXPIRE'].to_i.minutes
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.assets.precompile += %w( funds.js market.js withdraws_controller.js.coffee events.js.coffee market.css admin.js admin.css html5.js api_v2.css api_v2.js .svg .eot .woff .ttf )
 
-  # Precompile additional assets.
-  # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( funds.js market.js market.css admin.js admin.css html5.js api_v2.css api_v2.js .svg .eot .woff .ttf )
-
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  # Don't care if the mailer can't send.
   config.action_mailer.default_url_options = { host: ENV["URL_HOST"], protocol: ENV['URL_SCHEMA'] }
+
+  config.action_mailer.raise_delivery_errors = false
+
+  config.assets.js_compressor = Uglifier.new(:mangle => false)
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    port:           ENV["SMTP_PORT"],
-    domain:         ENV["SMTP_DOMAIN"],
-    address:        ENV["SMTP_ADDRESS"],
-    user_name:      ENV["SMTP_USERNAME"],
-    password:       ENV["SMTP_PASSWORD"],
-    authentication: ENV["SMTP_AUTHENTICATION"]
-  }
+  address:              'auth.smtp.1and1.co.uk',
+  port:                 '587',
+  domain:               'tradenaira.com',
+  user_name:            'support@tradenaira.com',
+  password:             'london247',
+  authentication:       'login',
+  enable_starttls_auto: true  }
 
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation can not be found).
-  config.i18n.fallbacks = true
+  # Print deprecation notices to the Rails logger.
+  config.active_support.deprecation = :log
 
-  # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :notify
+  # Raise an error on page load if there are pending migrations
+  config.active_record.migration_error = :page_load
 
-  # Disable automatic flushing of the log to improve performance.
-  # config.autoflush_log = false
+  # Debug mode disables concatenation and preprocessing of assets.
+  # This option may cause significant delays in view rendering with a large
+  # number of complex assets.
+  config.assets.debug = true
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
   config.active_record.default_timezone = :local
 
+  config.exceptions_app = self.routes
+
+  require 'middleware/i18n_js'
+  require 'middleware/security'
+  config.middleware.insert_before ActionDispatch::Static, Middleware::I18nJs
   config.middleware.insert_before Rack::Runtime, Middleware::Security
+  
 end
