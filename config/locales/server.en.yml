@@ -1054,7 +1054,7 @@ en:
         amount: Amount
         total: Total  
         price_low: Low
-        price_heigh: Heigh
+        price_high: Heigh
     settings:
       success: Settings updated successfully.
       failure: Invalid passcode. Please try again.
