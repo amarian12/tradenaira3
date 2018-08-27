@@ -63,6 +63,7 @@ Peatio::Application.routes.draw do
 
   resource :member, :only => [:edit, :update]
   resource :identity, :only => [:edit, :update]
+  resource :news, :only => [:new, :create]
 
   namespace :verify do
     resource :sms_auth,    only: [:show, :update]
