@@ -59,3 +59,82 @@ end
 # every :day, at: '4am' do
 #   rake 'solvency:clean solvency:liability_proof'
 # end
+
+# 5 am
+every :day, at: '5:00am' do
+  rake "daemons:stop"
+end
+every :day, at: '5:02am' do
+   rake 'admin:cleanup'
+end
+every :day, at: '5:03am' do
+  rake "daemons:start"
+end
+
+#8am
+every :day, at: '8:00am' do
+  rake "daemons:stop"
+end
+every :day, at: '8:02am' do
+   rake 'admin:cleanup'
+end
+every :day, at: '8:03am' do
+  rake "daemons:start"
+end
+
+every :day, at: '11:00am' do
+  rake "daemons:stop"
+end
+every :day, at: '11:02am' do
+   rake 'admin:cleanup'
+end
+every :day, at: '11:03am' do
+  rake "daemons:start"
+end
+
+
+#3pm
+every :day, at: '3:00pm' do
+  rake "daemons:stop"
+end
+every :day, at: '3:02pm' do
+   rake 'admin:cleanup'
+end
+every :day, at: '3:03pm' do
+  rake "daemons:start"
+end
+
+#6pm
+every :day, at: '6:00pm' do
+  rake "daemons:stop"
+end
+every :day, at: '6:02pm' do
+   rake 'admin:cleanup'
+end
+every :day, at: '6:03pm' do
+  rake "daemons:start"
+end
+
+
+#10pm
+every :day, at: '10:00pm' do
+  rake "daemons:stop"
+end
+every :day, at: '10:02pm' do
+   rake 'admin:cleanup'
+end
+every :day, at: '10:03pm' do
+  rake "daemons:start"
+end
+
+
+# 1 am
+every :day, at: '1:00am' do
+  rake "daemons:stop"
+end
+every :day, at: '1:02am' do
+   rake 'admin:cleanup'
+end
+every :day, at: '1:03am' do
+  rake "daemons:start"
+end
