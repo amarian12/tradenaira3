@@ -30,7 +30,8 @@ namespace :solvency do
       proof = []
       begin
         #proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
-        proof = Proof.create(sum: sum, root: eval(tree.root_json).to_json, currency: type)
+        troot = eval(tree.root_json).to_json
+        proof = Proof.create(sum: sum, root: troot , currency: type)
 
         puts proof.errors.full_messages.inspect
         puts "222222222222222"
