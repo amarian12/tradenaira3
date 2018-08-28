@@ -29,7 +29,8 @@ namespace :solvency do
       #puts tree.to_json
       proof = []
       begin
-        proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
+        #proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
+        proof = Proof.create!(sum: sum, root: tree.root_json, currency: accounts.last.currency)
       rescue StandardError => e
         puts e.inspect
        
