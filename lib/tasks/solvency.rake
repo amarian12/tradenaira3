@@ -35,11 +35,12 @@ namespace :solvency do
         puts tree.class.name
         puts type.class.name
 
-        proof = Proof.create(sum: sum.to_f, root: tree.root_json, currency: type)
+        proof = Proof.create(sum: sum, root: tree.root_json, currency: type)
+        
         puts proof.errors.full_messages.inspect
         puts "222222222222222"
-      rescue StandardError => e
-        puts e.inspect
+      rescue ActiveRecord::RecordInvalid => invalid
+        puts invalid.record.errors
        
       end
       puts "Generating partial trees .."
