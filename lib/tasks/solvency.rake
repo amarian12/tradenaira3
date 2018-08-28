@@ -53,7 +53,8 @@ namespace :solvency do
 
       proof.ready!
 
-    rescue
+    rescue StandardError => e
+      puts e.inspect
       puts "got error in liability-proof"
     end  
 
