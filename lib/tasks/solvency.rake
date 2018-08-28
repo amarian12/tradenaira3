@@ -11,6 +11,7 @@ namespace :solvency do
   desc "Generate liability proof"
   task :liability_proof => :environment do
     Account.currency.values.each do |type|
+    begin  
       puts "\n*** Start #{type} liability proof generation ***"
       accounts = Account.with_currency(type).includes(:member)
       formatted_accounts = accounts.map do |account|
@@ -51,6 +52,11 @@ namespace :solvency do
       end
 
       proof.ready!
+
+    rescue
+      puts "got error in liability-proof"
+    end  
+
     end
 
     puts "Complete."
