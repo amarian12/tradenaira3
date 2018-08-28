@@ -27,7 +27,8 @@ namespace :solvency do
       sum   = tree.root_json['root']['sum']
       puts "Generating ...1"
       puts tree.to_json
-      proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
+      #proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
+      proof = Proof.create!(sum: sum, root: tree.to_json, currency: type)
 
       puts "Generating partial trees .."
       accounts.each do |acct|
