@@ -31,16 +31,14 @@ namespace :solvency do
       begin
         #proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
         puts accounts.last.currency.inspect
-        puts sum.class.name
-        puts tree.class.name
-        puts type.class.name
+        puts tree.root_json.inspect
 
         proof = Proof.create(sum: sum, root: tree.root_json, currency: type)
-        
+
         puts proof.errors.full_messages.inspect
         puts "222222222222222"
-      rescue ActiveRecord::RecordInvalid => invalid
-        puts invalid.record.errors
+      rescue StandardError => e
+        puts e.inspect
        
       end
       puts "Generating partial trees .."
