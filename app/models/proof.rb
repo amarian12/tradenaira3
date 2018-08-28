@@ -3,7 +3,7 @@ class Proof < ActiveRecord::Base
 
   has_many :partial_trees
 
-  serialize :root, JSON
+  #serialize :root, JSON
   serialize :addresses, JSON
 
   validates_presence_of :root, :currency
