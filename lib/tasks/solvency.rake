@@ -30,6 +30,7 @@ namespace :solvency do
       proof = []
       begin
         #proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
+        put accounts.last.currency.inspect
         proof = Proof.create!(sum: sum, root: tree.root_json, currency: accounts.last.currency)
       rescue StandardError => e
         puts e.inspect
