@@ -25,6 +25,8 @@ namespace :solvency do
 
       puts "Generating root node .."
       sum   = tree.root_json['root']['sum']
+      puts "Generating ...1"
+      puts tree.inspect
       proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
 
       puts "Generating partial trees .."
