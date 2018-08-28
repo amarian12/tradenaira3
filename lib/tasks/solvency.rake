@@ -30,11 +30,7 @@ namespace :solvency do
       proof = []
       begin
         #proof = Proof.create!(sum: sum, root: tree.root_json, currency: type)
-        puts accounts.last.currency.inspect
-        puts tree.root_json.inspect
-        puts tree.root_json.to_json.inspect
-
-        proof = Proof.create(sum: sum, root: tree.root_json.to_json, currency: type)
+        proof = Proof.create(sum: sum, root: eval(tree.root_json), currency: type)
 
         puts proof.errors.full_messages.inspect
         puts "222222222222222"
