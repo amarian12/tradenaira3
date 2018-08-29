@@ -82,6 +82,6 @@ binding:
 
 channel:
   trade_executor:
-    prefetch: 5
+    prefetch: 1
   order_processor:
-    prefetch: 5
+    prefetch: 1
