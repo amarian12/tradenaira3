@@ -29,6 +29,10 @@ class AMQPQueue
       eid = AMQPConfig.binding_exchange_id(id) || :default
       payload.merge!({locale: I18n.locale})
       attrs.merge!({routing_key: AMQPConfig.routing_key(id)})
+      puts "enqueueing"
+      puts eid.inspect
+      puts payload.inspect
+      puts attrs.inspect
       publish(eid, payload, attrs)
     end
   end

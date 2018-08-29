@@ -12,6 +12,8 @@ class Ordering
     end
 
     @orders.each do |order|
+      puts "meching ordir submit for "
+      puts order.inspect
       AMQPQueue.enqueue(:matching, action: 'submit', order: order.to_matching_attributes)
     end
 
