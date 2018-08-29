@@ -50,9 +50,9 @@ every :day, at: '4:04am' do
   rake "dailymail:email_sender"
 end
 
-every 15.minutes do
-   rake "daemons:stop admin:cleanup daemons:start"
-end
+# every 15.minutes do
+#    rake "daemons:stop admin:cleanup daemons:start"
+# end
 
 # Learn more: http://github.com/javan/whenever
 
