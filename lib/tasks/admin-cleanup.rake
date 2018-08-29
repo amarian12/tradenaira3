@@ -51,7 +51,7 @@ namespace :admin do
 
     #sleep 90
 
-    exec("sudo service rabbitmq-server restart")
+    #exec("sudo service rabbitmq-server restart")
     #exec("service redis_6379 restart")
 
 
