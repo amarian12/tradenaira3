@@ -55,7 +55,7 @@
       setTimeout (->
         location.reload()
         return
-      ), 1500
+      ), 3000
     else
       jqXHR.abort()
 
