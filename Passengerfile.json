@@ -6,15 +6,15 @@
   // Run Passenger on port 80, the standard HTTP port.
 //  "port": 443,
  "port": 80,
-  "address": "0.0.0.0",
-//  "ssl": true,
+ "address": "0.0.0.0",
+ "ssl": true,
 // "rewrite": "^/(.*) https://alaskatap.com/$1 permanent",
   //80
-  //"ssl-port": 443,
+  "ssl-port": 443,
 
  
- // "ssl_certificate": "/home/alaskatap/current/alaskatap/ssl/ssl/alaskatap.com.chained.crt",
- // "ssl_certificate_key": "/home/alaskatap/current/alaskatap/ssl/ssl/alaskatap.com.key",
+  "ssl_certificate": "/root/peatio/newsetup/tradenaira3/ssl/tradenaira.com.chained.crt",
+  "ssl_certificate_key": "/root/peatio/newsetup/tradenaira3/ssl/tradenaira.com.key",
 
   // Tell Passenger to daemonize into the background.
   "daemonize": true,
