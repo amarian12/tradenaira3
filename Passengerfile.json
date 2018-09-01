@@ -10,7 +10,7 @@
  "ssl": true,
 // "rewrite": "^/(.*) https://alaskatap.com/$1 permanent",
   //80
-  "ssl-port": 443,
+ // "ssl-port": 443,
 
  
   "ssl_certificate": "/root/peatio/newsetup/tradenaira3/ssl/tradenaira.com.chained.crt",

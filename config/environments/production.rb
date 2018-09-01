@@ -17,7 +17,7 @@ Peatio::Application.configure do
   config.assets.digest = false
   #config.assets.version = '1.0'
 
-  config.force_ssl = false
+  config.force_ssl = true
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
