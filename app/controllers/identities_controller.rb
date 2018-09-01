@@ -1,8 +1,18 @@
 class IdentitiesController < ApplicationController
   before_filter :auth_anybody!, only: :new
 
+  #include ActionView::Helpers::OutputSafetyHelper
+
   def new
     @identity = env['omniauth.identity'] || Identity.new
+    if params[:id]
+    @newid = "#{request.url}"
+    @uri    = URI.parse(@newid)
+  @params = CGI.parse(@uri.query)
+  @id     = params['id']
+    @getemailid = New.where(:id =>@id).pluck(:email)
+    @getid = New.where(:id =>@id).pluck(:id)
+    end
   end
 
   def edit
