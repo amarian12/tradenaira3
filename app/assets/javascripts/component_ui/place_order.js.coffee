@@ -52,6 +52,10 @@
   @beforeSend = (event, jqXHR) ->
     if confirm(@confirmDialogMsg())
       @disableSubmit()
+      setTimeout (->
+        location.reload()
+        return
+      ), 1500
     else
       jqXHR.abort()
 
