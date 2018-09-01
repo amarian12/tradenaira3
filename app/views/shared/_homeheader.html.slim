@@ -22,8 +22,9 @@ script type="text/javascript" src="/assets/tradeniara.js?body=1"
 				li: a href="#{root_path}pages/tradeservices" class="header_menu header_help" role="button"
 			    		i.fa.fa-money.margin_right 
 			    		= t("header.trade")
-			    li: a href="#{root_path}pages/learn" class="header_menu header_help" role="button"
-			    		i.fa.fa-book.margin_right 
-			    		= t("header.learn")
+			    /* li: a href="#{root_path}pages/learn" class="header_menu header_help" role="button"
+			    / 		i.fa.fa-book.margin_right 
+			    / 		= t("header.learn")*/
+			    
 				.home_signup		    		
 			    	= top_nav_link(t("header.signup"), signup_path, '') unless current_user
