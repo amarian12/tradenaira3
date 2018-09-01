@@ -1,10 +1,47 @@
-= simple_form_for @identity, :url => '/auth/identity/register' do |f|
+= metamagic title: "Sign Up"
+.maxwidth.col-md-12.col-md-offset-6.col-sm-15.col-sm-offset-1.col-xs-24
+ .col-xs-24.borderbottom
+ 	| Welcome to the TradeNAIRA Community
+ = simple_form_for @identity, :url => '/auth/identity/register' do |f|
   = f.input :email, :input_html => {:name => 'email', :autofocus => 'true'}
   = f.input :password, :input_html => {:name => 'password'}
   = f.input :password_confirmation, :input_html => {:name => 'password_confirmation'}
+  div class="form-group password required identity_password_confirmation acctype"
+	div class="col-xs-8 text-right"
+    div class="col-xs-14"
+     = f.radio_button :account_type, 'individual', :name => 'account_type', :checked => true
+     = f.label :account_type, "Individual"
+     = f.radio_button :account_type, 'institutional', :name => 'account_type'
+     = f.label :account_type, "Institutional"
   hr.split
-  = f.button :wrapped, t('header.signup'), cancel: root_path
+  .col-xs-24.sign_bottom
+  	p.already
+  		|	Already has account?
+  		a.smal_link1 href='#{signin_path}' SIGN IN
+  		|	Agree
+  		a.smal_link href='#{root_path}pages/termsofuse' Terms and Services
+  	= f.button :wrapped, t('header.signup')
+  /*= content_for :guide do
+    ul.list-unstyled
+      li: a href='#{signin_path}'= t('.signin')*/
+.col-md-6.col-sm-8.col-sm-push-0.col-s-24.signup.videodiv
+	h5.subheading
+		|	QUICK & SECURE
+	p.complete
+		|	Most transfers completed in less than 6 Hours!
+	p.complete
+	    |   <iframe width="100%" height="240" src="https://www.youtube.com/embed/8YOhDY3GjsM" frameborder="0" allowfullscreen></iframe>
 
-= content_for :guide do
-  ul.list-unstyled
-    li: a href='#{signin_path}'= t('.signin')
+javascript:
+    var d = #{raw @getemailid.as_json};
+    var s = #{raw @getid.as_json};
+	$("#identity_email").val(d)
+    if(d != '')
+    {
+      $("#identity_email").prop('readonly', true);
+      $("#identity_password").focus();
+      $(".videodiv").css("display", "none");
+      $(".already").css("display", "none");
+      $(".acctype").css("display", "none");
+      $('#new_identity').attr('action', "/auth/identity/register?id="+s);
+    }
