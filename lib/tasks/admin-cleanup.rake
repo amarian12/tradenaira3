@@ -31,15 +31,15 @@ namespace :admin do
 
     puts "Removing log files"
     log_files = Dir.glob( File.join(Rails.root, "log", "*") )
-    File.delete(*log_files)
+    #File.delete(*log_files)
     #puts "listing files"
-    #log_files.each do |tf|
-      #fname = tf.split(".")
-      #unless fname.last == "pid"
-        #File.open(tf, 'w') {|file| file.truncate(0) }
-      #end
+    log_files.each do |tf|
+      fname = tf.split(".")
+      unless fname.last == "pid"
+        File.open(tf, 'w') {|file| file.truncate(0) }
+      end
       
-    #end
+    end
 
      # puts "starting daemons"
      # begin
