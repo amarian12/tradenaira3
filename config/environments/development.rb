@@ -22,10 +22,21 @@ Peatio::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.delivery_method = :file
+  #config.action_mailer.delivery_method = :file
   config.action_mailer.file_settings = { location: 'tmp/mails' }
 
   config.action_mailer.default_url_options = { :host => ENV["URL_HOST"] }
+
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'auth.smtp.1and1.co.uk',
+  port:                 '587',
+  domain:               'tradenaira.com',
+  user_name:            'support@tradenaira.com',
+  password:             'london247',
+  authentication:       'login',
+  enable_starttls_auto: :auto  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

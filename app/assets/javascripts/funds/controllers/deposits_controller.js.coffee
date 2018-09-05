@@ -59,6 +59,7 @@ app.controller 'DepositsController', ['$scope', '$stateParams', '$http', '$filte
       .finally ->
         depositCtrl.deposit = {}
         $('.form-submit > input').removeAttr('disabled')
+        location.reload(true)
 
   $scope.openFundSourceManagerPanel = ->
     ngDialog.open
