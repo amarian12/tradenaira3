@@ -34,7 +34,7 @@ Peatio::Application.configure do
   port:                 '587',
   domain:               'tradenaira.com',
   user_name:            'support@tradenaira.com',
-  password:             'london247',
+  password:             'f*//ishc&nt',
   authentication:       'login',
   enable_starttls_auto: :auto  }
 
