@@ -21,26 +21,39 @@ $(document).ready(function() {
                 $('.tooltip')
                 .css({ top: mousey, left: mousex });
         });
+
+ 
+
 	$(window).scroll(function(){
-		if($(window).scrollTop() > 200){
+    var sticky = $('.site-main-header');
+
+		if($(window).scrollTop() > 100){
+
+      sticky.addClass('fixed-header');
 			//$(".home_head>li>a>i").hide();
-			$(".home_head>li>a>i").addClass("home_icon1").removeClass("home_icon");
-			$(".home_head>li>a").addClass("margin_top1");
-			$(".tophead>li").addClass("margin_top1");
-			$(".tophead>li>a>i").addClass("home_icon1").removeClass("home_icon");
-			$(".home_logo").addClass("home_logo1").removeClass("home_logo");
-			$(".home_signup").addClass("home_signup1").removeClass("home_signup");
+			// $(".home_head>li>a>i").addClass("home_icon1").removeClass("home_icon");
+			// $(".home_head>li>a").addClass("margin_top1");
+			// $(".tophead>li").addClass("margin_top1");
+			// $(".tophead>li>a>i").addClass("home_icon1").removeClass("home_icon");
+			// $(".home_logo").addClass("home_logo1").removeClass("home_logo");
+			// $(".home_signup").addClass("home_signup1").removeClass("home_signup");
 		}
-		if($(window).scrollTop() < 200){
+		if($(window).scrollTop() < 100){
+       sticky.removeClass('fixed-header');
 			//$(".home_head>li>a>i").show();
-			$(".home_head>li>a>i").addClass("home_icon").removeClass("home_icon1");
-			$(".home_head>li>a").removeClass("margin_top1");
-			$(".tophead>li").removeClass("margin_top1");
-			$(".tophead>li>a>i").addClass("home_icon").removeClass("home_icon1");
-			$(".home_logo1").addClass("home_logo").removeClass("home_logo1");
-			$(".home_signup1").addClass("home_signup").removeClass("home_signup1");
+			// $(".home_head>li>a>i").addClass("home_icon").removeClass("home_icon1");
+			// $(".home_head>li>a").removeClass("margin_top1");
+			// $(".tophead>li").removeClass("margin_top1");
+			// $(".tophead>li>a>i").addClass("home_icon").removeClass("home_icon1");
+			// $(".home_logo1").addClass("home_logo").removeClass("home_logo1");
+			// $(".home_signup1").addClass("home_signup").removeClass("home_signup1");
 		}
 		});   
+
+
+ 
+
+
 });
 
 //Live Price exchange is update from BTCC site
@@ -235,4 +248,7 @@ if (marketp[0]) {
 }
 
 });
+
+
+
  

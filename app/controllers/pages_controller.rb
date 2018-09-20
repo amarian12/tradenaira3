@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  layout 'landing'
   def amlpolicy
   end
   def cookie

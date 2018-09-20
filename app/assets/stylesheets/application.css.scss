@@ -1201,5 +1201,10 @@ form.simple_form {
   margin-bottom: 4px;
   h5 i.fa { margin-right: 10px; }
 }
+#welcome-index section {
+    border-bottom: none;
+    padding: 0;
+}
+
 
 @import 'layouts/custom';
