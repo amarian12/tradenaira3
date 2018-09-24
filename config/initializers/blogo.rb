@@ -7,7 +7,7 @@ Blogo.configure do |config|
   config.markup_lang = :html
 
   config.paginator_size = 3
-  config.posts_per_page = 10
+  config.posts_per_page = 5
   config.recent_posts =  3
 
   # Maybe you do not want to use CKEditor, if you use markdown
@@ -20,6 +20,7 @@ Blogo.configure do |config|
 
   # Do not change this once you installed and ran migrations
   config.table_name_prefix = 'blogo_'
+  config.disqus_shortname = 'example'
 
   # Set disqus shortname if you want to your users to have ability to comment
   # your posts.

@@ -1,0 +1,84 @@
+require 'elasticsearch/model'
+class Blogo::Post < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  # include Virtus.model
+  # attribute :title, String
+  belongs_to :user
+
+  has_many :taggings
+  has_many :tags, through: :taggings, dependent: :destroy
+
+
+  validates :permalink, :title,  :raw_content, presence: true
+  validates :permalink, uniqueness: true
+
+  scope :published, -> { where(published: true).where("published_at <= ?", Time.zone.now) }
+
+  default_scope { order('published_at DESC') }
+
+  before_save :set_meta_description, :set_meta_image
+
+
+  client = Elasticsearch::Client.new log:true
+
+  def status
+    published? ? 'published' : 'draft'
+  end
+
+  # Array of tag names. Storing arrays in +tags_string+ we don't need to make
+  # many-to-many join with tags table to get tag names.
+  #
+  # @return [Array<String>]
+  def tag_names
+    if tags_string
+      tags_string.split(',').map(&:strip)
+    else
+      []
+    end
+  end
+
+
+  def to_param
+    permalink
+  end
+
+
+  private
+
+  # Filter html content to get plain text and set first 200 characters as meta_description.
+  #
+  # @return [void]
+  def set_meta_description
+    html = html_overview || html_content
+
+    self.meta_description =
+      html.
+        gsub(/<\/?[^>]*>/, ' ').  # replace HTML tags with spaces
+        gsub(/&\w{1,9};|"/, '').  # remove HTML special chars and double quotes
+        gsub(/\n+/, " ").         # remove new lines
+        gsub(/\s+/, ' ').         # remove duplicated spaces
+        strip[0..200]             # strip spaces and get first 200 chars
+  end
+
+  # Find first img tag and in content and grab its source.
+  #
+  # @return [void]
+  def set_meta_image
+    regexp = /<img[^>]+src=["']([^"']*)/
+    if img_tag = html_content.match(regexp)
+      self.meta_image = img_tag[1]
+    end
+  end
+end
+
+# # Delete the previous Posts index in Elasticsearch
+# Post.__elasticsearch__.client.indices.delete index: Post.index_name rescue nil
+
+# # Create the new index with the new mapping
+# Post.__elasticsearch__.client.indices.create 
+#   index: Post.index_name,
+#   body: { settings: Post.settings.to_hash, mappings: Post.mappings.to_hash }
+
+# # Index all Post records from the DB to Elasticsearch
+# Post.import

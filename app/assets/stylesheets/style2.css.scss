@@ -56,12 +56,15 @@
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{line-height: 1.3 !important;}
 
+
+h1, h2{font-family: 'poppinsbold';}
+
 img {
     max-width: 100%;
 }
 
 a:focus, button:focus{ outline: none; text-shadow: none; }
-body{ font-family:'poppinsregular'; font-size:15px; background:none !important;}
+body{ font-family:'poppinsregular' !important; font-size:15px !important; background:none !important;}
 a, a:hover{ text-decoration:none !important;}
 ul { padding:0; margin:auto;}
 
@@ -73,7 +76,7 @@ ul { padding:0; margin:auto;}
   
  .home_logo
  {
-   width:220px;
+   width:180px;
    -ms-transition:     all 0.3s ease-out;
     -moz-transition:    all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
@@ -82,7 +85,7 @@ ul { padding:0; margin:auto;}
  }
  .home_logo1
  {
-   width:200px;
+   width:180px;
    -ms-transition:     all 0.3s ease-out;
     -moz-transition:    all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
@@ -646,10 +649,10 @@ ul { padding:0; margin:auto;}
 .main-navbar-header {
   float: left;
   text-align: center;
-  width: 50%; padding:14px 0 0;
+  width: 50%; padding:12px 0 0;
 }
 .main-header-row{ overflow:hidden; clear:both;}
-.header_top_right {float: right; width: 30%; text-align:right; padding:4px 0 0;}	
+.header_top_right {float: right; width: 30%; text-align:right; padding:1px 0 0;}	
 
 .home_head {
   clear: both;
@@ -687,7 +690,7 @@ ul { padding:0; margin:auto;}
   padding: 8px 30px 8px!important;
   transition: all ease 0.3s;
 }
-header { height: auto !important; padding: 13px 0 14px 0; z-index:99 !important;}
+header { height: auto !important; padding: 9px 0 10px 0; z-index:99 !important;}
 
 header.fixed-header {background: #029abf !important;}
 
@@ -697,9 +700,9 @@ header.fixed-header {background: #029abf !important;}
 
 .banner-map {
     background: url(/assets/map_banner_bg.png);
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+    background-size: cover !important;
     position: relative; z-index:9;
     height: calc(103vh - 65px); margin-top:-20px;
 }
@@ -1152,10 +1155,10 @@ ul.social {margin: 0 0 60px 0;}
 
 /** 20-Sep-2018 Css Start here **/
 
-.about_banner_content .main-text p {max-width: 100%;}
+.about_banner_content .main-text p {max-width: 67%; margin: auto auto 20px;}
 .about_banner_content .main-text h1 span{ color: #fff200; display:block; }
 .about_banner_content .main-text h1{ margin-bottom: 0px; }
-.about_banner_content .banner-text.table-cell { text-align: center;}
+.about_banner_content .banner-text.table-cell .main-text { text-align: center;}
 .about_banner_content .main-text:after{ display: none; }
 .home_head li:nth-child(3) a {
     border-radius: 50%;
@@ -1211,8 +1214,735 @@ ul.social {margin: 0 0 60px 0;}
 
 
 
-/** @media Query Css for Responsive Start here **/
+/** Send Money Page Css Start here **/
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
 
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #029bbf;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.custom_radio_btn label {
+    color: #232323;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+
+.heading4 {
+    color: #3b3b3b;
+    font-size: 22px;
+    font-family: 'poppinsbold';
+    margin: 0 0 10px 0;
+}
+.para1 {
+    color: #232323;
+    font-size: 15px;
+    margin: auto;
+}
+.rate_input {
+    margin: 45px 0px 0 0;
+}
+.form_row input {
+    border-bottom: 1px solid #b7b7b7;
+    border-width: 0 0 1px 0;
+    border-radius: 0 !important;
+    padding: 7px 20px 10px 48px;
+    font-size: 16px; width: 100%;
+}
+.overflw{ overflow: hidden ;clear:both; position: relative; }
+
+.in_width50 {
+    width: 50%;
+    float: left; position: relative;
+}
+
+.form_row img {
+    position: absolute;
+    left: 4px;
+    bottom: 12px;
+    max-width: 26px;
+}
+
+.in_width50 {
+    padding: 0 30px 0px 0;
+}
+.in_width50:nth-child(2){ padding-right: 0px; }
+
+.form_row {margin: 0 0 25px 0;}
+
+.btn5 {
+    background: #029bbf;
+    color: #fff;
+    border: 1px solid #029bbf;
+    padding: 7px 60px 7px 60px;font-family: 'poppinsbold';
+    border-radius: 31px;
+    font-size: 16px; display: inline-block;
+}
+.custom_radio_btn {
+    display: inline-block;
+    margin: 0 20px 0 0;
+}
+
+
+.rate_content { padding-left: 40px;}
+.track_the_rate {
+    padding: 70px 0 40px 0;
+}
+
+.heading5 {
+    color: #3b3b3b;
+    font-size: 18px;
+    font-family: 'poppinsbold';
+    margin: 0 0
+}
+
+.send_money_content p {
+    color: #232323;
+    font-size: 15px;
+    margin:20px 0 31px;
+}
+
+.outlinebtn {
+    color: #029bbf;
+    border: 1px solid #029bbf;
+    border-radius: 30px;
+    padding: 9px 30px 9px 40px;
+    font-family: 'poppinsbold';
+    display: block;
+    margin: 0 0 10px 0;
+}
+.send_money_content {padding-right: 90px;}
+.send_money_img {padding-left: 20px;}
+
+
+.how_send_money {background: #fbfbfb;padding: 90px 0 90px 0;}
+
+
+.bank_transfer{padding: 30px 0 40px;}
+.headig_sub p{ color: #3e3e47; font-size: 16px; margin: 0; }
+.headig_sub{ margin: 0 0 100px 0; }
+
+
+.heading2 {
+    color: #3e3e3e;
+    font-size: 30px;
+    margin: auto;
+}
+.heading2 span{ color: #029bbf; }
+
+.left_cost_wrap p {
+    color: #313131;
+    font-size: 15px;
+    margin: 20px 0 20px 0;
+    max-width: 70%;
+}
+
+.left_cost_wrap .btn5 {margin: 30px 0 0 0;}
+.right_cost_wrap img {display: inline-block;margin: 0 0 10px 0}
+
+.right_cost_wrap {text-align: center;}
+
+
+.inli {display: inline-block;padding: 0 0 0 50px;}
+
+
+.what_people_say{ background: #ebfbff; padding: 70px 0; }
+
+
+.profile_img {
+    border: 1px solid #029bbf;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 9px;
+}
+
+.people_rating i {
+    color: #029bbf;
+    font-size: 17px;
+    margin: 0 1px 0 0px;
+}
+.people_content p {
+    color: #313131;
+    font-size: 16px;
+    margin: 10px 0 20px 0;
+}
+.people_content span {
+    color: #313131;
+    font-size: 16px; font-family: 'poppinsbold';
+
+}
+.people_img {
+    width: 22%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.people_content {
+    width: 77%;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 36px;
+}
+
+.people_box:nth-child(2) {
+    padding-left: 37px;
+}
+
+.twitterpost-slider .carousel-control img {
+    font-size: 60px;
+    color: white;
+    text-shadow: none;
+    top: 50%;
+    position: absolute;
+    vertical-align: middle;
+    transform: translateY(-50%); max-width: 50px;
+}
+
+.twitter_slider_content {
+    margin: 45px 0 0 0;
+    overflow: hidden;
+}
+
+.see_btn {margin: 40px 0 0 0;}
+.twitterpost-slider {padding: 50px 0 40px 0;}
+
+.twitter-tweet.twitter-tweet-rendered{ box-shadow: -2px 4px 28px -2px rgba(0, 0, 0, 0.18); }
+
+.carousel-control{ opacity: 1; }
+.moneynextcount { margin-bottom: 10px !important;}
+
+.w33{ width: 33.33%; float: left;}
+.w33{ position: relative; }
+.bx_content_wraper h4 {
+    color: #3b3b3b;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    font-family: 'poppinsbold';
+}
+.bx_content_img {
+    margin: 0 0 30px 0;
+}
+
+.start_up_transfer {padding: 0 20px;}
+
+.h_s_money_wraper {max-width: 90%;margin: auto;}
+
+.send_bx {padding: 90px 0 50px 0;}
+
+
+.start_up_transfer:after {
+    background-image: url(/assets/img/hoop.png);
+    content: "";
+    width: 245px;
+    height: 29px;
+    position: absolute;
+    background-repeat: no-repeat;
+    /* left: 0; */
+    right: -132px;
+    /* margin: auto; */
+    top: -30px;
+    background-size: 90%;
+}
+
+.start_up_transfer:last-child:after{ display: none; }
+
+
+.outline_btn {
+    border: 1px solid #029bbf;
+    color: #029bbf;
+    border: 1px solid #029bbf;
+    padding: 7px 60px 7px 60px;
+    border-radius: 31px;
+    font-size: 16px;font-family: 'poppinsbold';
+    display: inline-block;
+}
+
+
+.h_s_money {background: #fbfbfb;padding: 40px 0 40px 0;}
+.realstate_content span {
+    color: #3e3e3e;
+    font-size: 18px;
+    display: block;
+}
+.realstate_content p {
+    color: #313131;
+    font-size: 16px;
+    margin: 50px 0 40px 0;
+}
+
+.realstate_content {padding-right: 100px;}
+.realstate_img {
+    padding-left: 70px;
+}
+.realstate {padding: 80px 0 80px 0;}
+
+.state_conte {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.realstate_wraper {
+    display: flex;
+}
+.img_bx_fast {
+    min-height: 230px;
+}
+.fast_bx_content span {
+    color: #3e3e3e;
+    font-size: 16px;
+    display: block;
+}
+.fast_bx_content h4 {
+    color: #029bbf;
+    font-size: 18px;
+    margin: 5px 0 8px;
+    font-family: 'poppinsbold';
+}
+.fast_bx_content p {
+    color: #313131;
+    font-size: 15px;
+    margin: auto;
+}
+
+.pad60 {padding: 0 62px;}
+
+.fast_safe {background: #ebfbff;padding: 70px 0 70px 0;}
+.img_bx_fast img {max-width: 38%;}
+.heading_sub_heading p {
+    color: #3e3e3e;
+    font-size: 16px;
+    margin: auto;
+}
+.customer_support {margin: 40px 0 40px 0;}
+.support_bx p {
+    color: #3b3b3b;
+    margin: 20px 0 0;
+    font-size: 18px;
+    font-family: 'poppinsbold';
+}
+.support_bx img {
+    display: inline-block;
+}
+.support_bx {
+    padding:25px;
+}
+
+.support_wrapererss {
+    max-width: 60%;
+    margin: auto;
+}
+.support_wraper {padding: 45px 0 30px 0;}
+
+.hover_bx {
+    padding: 31px 35px;
+    min-height: 150px;
+}
+.hover_bx.active_hover {
+    box-shadow: -2px 0px 38px -2px rgba(0, 0, 0, 0.14);
+}
+/** Send Money Page Css End here **/
+
+
+
+/** Blog page Css Start here **/
+
+.header_height {min-height: 58px;}
+.header_height header.homepage{ background: #029abf !important; }
+.blog_top_bar{ background: #e3e3e3; padding: 15px 0; margin: 0 0 40px 0; }
+.blue_heading{ color: #029bbf; font-size: 22px; margin: auto;font-family: 'poppinsbold'; }
+.blue_heading a{ color:#029bbf; }
+.right_top_bar p {color: #595959;font-size: 15px;margin: auto;}
+
+.left_top_bar {  float: left;}
+.right_top_bar { text-align: right;float: right;}
+
+.blog_wraper, .top_max_width, .blog-detail {
+    max-width: 88%;
+    margin: auto;
+}
+
+.top_max_width{ overflow: hidden; clear: both; }
+.blog_wraper{ padding: 0 0 20px 0; }
+
+.blog_side_bar {
+    width: 34%;
+    float: left;
+    padding-left: 19px;
+}
+
+.blog_left_listng {
+    width: 64%;
+    float: left;
+    padding-right: 30px;
+}
+
+.main_post_heading h4 {
+    font-size: 18px;
+    margin: auto;
+    font-family: 'poppinsbold';
+    color: #fff;
+}
+
+.main_post_heading h4 a{ color: #fff; }
+
+.main_post_heading {
+    background: #029bbf;
+    padding: 20px 20px 20px 20px;
+    z-index: 1;
+    position: relative;
+}
+.main_post_img img {
+    border-radius: 10px;
+    margin-bottom: -10px;
+}
+.blog_main_post {margin: 0 0 40px 0;}
+
+.post_listing_img img {border-radius: 12px;}
+
+.post_listing_content h5 {
+    font-size: 16px;
+    color: #333333;
+    font-family: 'poppinsbold';
+    margin: 12px 0 17px 0;
+    border-bottom: 1px solid #029bbf;
+    padding: 0 0 13px 0;
+}
+
+.post_listing_content p {
+    color: #6d6d6d;
+    font-size: 14px;
+    margin: 0; font-weight: normal;
+}
+.post_wrap_content{ margin: 0 0 20px 0; }
+.author_address {
+    display: inline-block;
+    vertical-align: top;
+    width: 56%;
+    padding-left: 25px;
+    position: relative;
+}
+
+.author_address:after {
+    background: url(/assets/img/tag.png);
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 16px;
+    height: 19px;
+    top: 4px;
+    /* bottom: 0; */
+    /* margin: auto; */
+    background-repeat: no-repeat;
+    left: 0;
+}
+
+
+
+.post_date {
+    display: inline-block;
+    width: 42%; text-align: right; vertical-align: top;;
+}
+
+ .post_listing_content span{ color: #171717; font-size: 13px; font-weight: normal;}
+  .post_listing_content span a{ color: #171717;}
+
+
+.author_address img {padding-right: 8px;}
+.blog_listing_ul {
+    overflow: hidden;
+    clear: both; margin-right: -15px; margin-left: -15px;
+}
+
+.blog_listing_ul li {
+    width: 49.6%;
+    /* float: left; */
+    display: inline-block;
+    padding: 15px;
+    margin: 0px 0px 0px 0;
+    vertical-align: top;
+}
+
+.search_bx input {
+    background: #f3f3f3;
+    border: 1px solid #e0e0e0;
+    height: 50px;
+    padding: 4px 10px 4px 10px;
+    border-radius: 11px !important; width: 100%;
+}
+.btn1 {
+    background: #029BC1 !important;
+    border: 1px solid #029bbf !important;
+    color: #fff;
+    font-size: 16px !important;
+    height: 40px !important;
+    padding: 0px 18px 0 18px !important;
+    border-radius: 11px !important;
+    width: auto !important;
+}
+
+.search_bx, .search_bx form{ position: relative; }
+.search_bx .btn1 {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.border_span {
+    display: block;
+    color: #a5a5a5;
+    font-size: 15px; border-bottom: 1px solid #d4d4d5;
+    padding: 0 0 14px 0px; font-weight: normal;
+}
+.post_wrap_content strong{ font-weight: normal; }
+.bor_span {
+    display: block;
+    color: #a5a5a5;
+    font-size: 15px;
+    padding: 0 0 14px 0px;font-weight: normal;
+}
+
+.search_bx {
+    margin: 10px 0 40px 0;
+}
+
+.side_post_heading h5 {
+    color: #494949;
+    font-size: 15px;
+    font-family: 'poppinsbold';
+    margin: 0 0 10px 0;
+}
+
+.side_post_heading h5 a{ color: #494949; }
+
+.side_post_heading p {
+    color: #898989;
+    margin: auto; font-weight: normal;
+}
+.new_post ul li {
+    display: block;
+    border-bottom: 1px solid #d4d4d5;
+    padding: 0px 0 16px 0;
+    margin: 15px 0 10px 0;
+}
+.side_post_img {
+    display: inline-block;
+    width: 37%; vertical-align: top; padding-right: 15px;
+}
+
+
+
+.side_post_heading {
+    width: 61%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tag_list {
+    margin: 30px 0 0 0;
+}
+.tag_list li {
+    display: inline-block;
+}
+.tag_list li a {
+    border: 1px solid #a5a5a5;
+    border-radius: 3px;
+    color: #a5a5a5;
+    display: inline-block;
+    padding: 6px 10px 6px 10px;
+    margin: 0 0 7px 0; font-weight: normal;
+    font-size: 13px;
+}
+
+.tag_list ul {margin: 13px 0 0 0;}
+
+
+.paginator li {display: inline-block;}
+
+.paginator li a {
+    font-family: 'poppinsbold';
+    color: #919192;
+    font-size: 16px;
+    border: 1px solid #919192;
+    display: inline-block;
+    padding: 5px 13px 5px 13px;
+    border-radius: 9px; margin: 0 4px 0 0;
+}
+.paginator li a.pure-button-active{ color: #029bbf; border-color: #029bbf; }
+
+ul.pure-paginator.paginator {
+    text-align: center;
+    margin: 35px 0 0;
+}   
+
+
+/** Blog page Css End here **/
+
+
+/** Blog details page Css Start here **/
+
+.content p {
+    color: #3f3f3f;
+    font-size: 15px;
+    margin: 0 0 17px 0;
+}
+.content p:empty {
+    display: none;
+}
+.blogo-article h1 {
+    font-size: 25px;
+    margin: 10px 0 20px 0;
+}
+.blog-detail { padding: 30px 0 40px 0;}
+
+.article-tags {float: left; margin:0 0 20px 0;}
+.posted { float: right;}
+
+
+.blogo-article .content {margin: 25px 0 0 0;}
+.admin_name {
+    color: #029bbf;
+    text-transform: capitalize;
+}
+
+.social_icon span {
+    min-height: 29px !important;
+}
+
+
+
+.posted p {margin: auto;}
+
+.post-slide .heading3 {margin: 0 0 30px 0;}
+
+.post-slide li {display: block;}
+
+.post-slide .owl-nav {
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    margin: auto;
+    vertical-align: middle;
+    transform: translateY(-50%);
+    width: 100%; z-index: -1;
+}
+.post-slide .blog_li_post_ul{ display: flex !important; }
+
+.post-slide button.owl-next {
+    float: right;
+    right: -58px;
+    position: absolute;
+}
+
+.post-slide button.owl-prev {
+    left: -50px;
+    position: absolute;
+}
+
+
+.post-slide button.owl-prev span {
+    background-image: url(/assets/img/e-left.png);
+    padding: 20px 20px;
+    background-repeat: no-repeat;
+    background-size: 72%;
+    font-size: 0px;
+}
+
+.post-slide button.owl-next span {
+    background-image: url(/assets/img/e-right.png);
+    padding: 20px 20px;
+    background-repeat: no-repeat;
+    background-size: 72%;
+    font-size: 0px;
+}
+
+
+.tag_list .border_span img {padding: 0 0 0 7px;vertical-align: middle;}
+
+.social_icon  {
+    margin: 0 0 0 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dateee {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.dateee time {
+    font-size: 14px;
+    color: #000;
+}
+
+
+.blogo-article .content img{ display: none; }
+
+.blogo-article .tvideohumbline img {max-width: 100%;display: block !important;}
+
+
+.blogo-article .tvideohumbline {
+    margin: 20px 0 40px 0;
+}
+
+
+/** Blog details page Css End here **/
+
+
+
+
+
+
+
+/** @media Query Css for Responsive Start here **/
 
 /** Mobile Device responsive Start here **/
 
@@ -1272,13 +2002,13 @@ ul.social {margin: 0 0 20px 0;}
 
 .footer_menu_block {width: 100%;float: none;}
 
-.main-text h1{ font-size: 23px; margin: 4px 0 4px 0;}
+.main-text h1{ font-size: 26px; margin: 4px 0 4px 0;}
 .main-text{ max-width: 98%; }
 .main-text:after{ display: none; }
 .main-text p {
     font-size: 15px;
     margin: 0 0 20px 0;
-    max-width: 98%;
+    max-width: 98% !important;
 }
 .yellow_btn{ font-size: 18px; padding: 8px 18px 7px 18px }
 .main-text h3{ font-size: 20px; }
@@ -1364,7 +2094,7 @@ li.ng-binding {
 header .navbar-toggle {
     position: absolute;
     right: 6px;
-    top: 13px !important;
+    top: 7px !important;
     padding: 7px;
 }
 
@@ -1399,6 +2129,151 @@ header .navbar-collapse {
 
 
 .quickvideo {height: 310px;}
+
+
+
+
+/** send money page responsive css start here **/
+.track_the_rate{ padding: 30px 0 30px 0; }
+.display_img {text-align: center;}
+.how_send_money {padding: 30px 0 30px 0;}
+
+.outlinebtn {
+    padding: 9px 15px 9px 15px;
+    font-size: 13px;
+}
+.send_money_img{ text-align: center;}
+.headig_sub {margin: 0 0 30px 0;}
+.heading2 {font-size: 22px;}
+.heading2 br { display: none; }
+.left_cost_wrap p {
+    margin: 10px 0 10px 0 !important;
+    max-width: 99% !important;
+}
+.realstate_img{ padding-left: 0 !important; }
+.inli {
+    display: inline-block;
+    padding: 0px 10px 0 9px;
+    width: 31%;
+}
+.bank_transfer {
+    padding: 20px 0 20px;
+}
+.what_people_say { padding: 30px 0;}
+
+.people_img{ width: 100%; }
+.people_content {
+    width: 100%;
+    padding: 11px 0 0 0;
+}
+.people_box:nth-child(2) {
+    padding-left: 0;
+}
+
+.twitter_slider_content {margin: 15px 0 0 0;}
+.see_btn {margin: 10px 0 0 0;}
+.twitterpost-slider {padding: 30px 0 30px 0;}
+.h_s_money { padding: 30px 0 30px 0;}
+
+.send_bx {padding: 40px 0 30px 0;}
+
+.w33 {width: 100%;float: none;padding: 20px 0;}
+.start_up_transfer {padding: 20px 10px;}
+.realstate {padding: 30px 0 30px 0;}
+
+.realstate_wraper {display: block;}
+.state_conte {
+    position: relative;
+    top: inherit;
+    transform: none;
+}
+
+.btn5 {
+    padding: 10px 30px 10px 30px;
+    font-size: 14px;
+    display: inline-block;
+}
+.realstate_content p {
+    font-size: 15px;
+    margin: 30px 0 30px 0;
+}
+
+.realstate_wraper {
+    display: block;
+    text-align: center;
+}
+.fast_safe {
+    background: #ebfbff;
+    padding: 30px 0 30px 0;
+}
+.img_bx_fast {min-height: auto;margin: 0 0 30px 0;}
+.support_wrapererss {max-width: 98%;}
+.support_wraper {padding: 15px 0 20px 0;}
+.heading5{ text-align: center; }
+.bx_content_wraper h4{ font-size: 15px; }
+.start_up_transfer:after{ display: none; }
+.wraper_people{ text-align: center; }
+.carousel-control{ display: none; } 
+
+
+
+/** send money page responsive css End here **/
+
+
+
+/** blog page responsive css Start here **/
+
+.blog_wraper, .top_max_width, .blog-detail{ max-width: 100% }
+.top_max_width{ text-align: center; }
+.left_top_bar {float: none;margin: 0 0 4px 0;}
+.right_top_bar {text-align: center;float: none;}
+
+.right_top_bar p{ font-size: 14px; }
+.blue_heading{ font-size: 20px; }
+
+.blog_left_listng {
+    width: 100%;
+    float: none;
+    padding: 0;
+}
+.blog_side_bar {
+    width: 100%;
+    float: none;
+    padding: 30px 0px 0 0;
+}
+.main_post_heading h4{ font-size: 15px; }
+.main_post_heading{ padding: 10px; }
+.blog_main_post{ margin: 0 0 20px 0; }
+.post_listing_content h5{ font-size: 13px; }
+.post_listing_content p{ font-size: 13px; }
+
+.blog_listing_ul li {
+    width: 100%;
+    margin: 4px 0px 12px 0;
+ }
+.side_post_heading h5{ font-size: 14px; }
+
+.side_post_img{ width: 100%; }
+.side_post_heading{ width: 100%; margin: 9px 0px 0 0 }
+.post_listing_img img{ width: 100%; }
+.main_post_heading h4{ font-size: 14px; }
+
+.right_top_bar p{ font-size: 15px; }
+.blog_wraper, .top_max_width, .blog-detail{ max-width: 100%; }
+.main_post_heading {padding: 10px;}
+
+
+.blog_main_post { margin: 0 0 20px 0;}
+.post_listing_content h5{ font-size: 14px; }
+
+/** blog page responsive css End here **/
+
+
+/** blog details page responsive css Start here **/
+.blogo-article h1 {font-size: 17px;}
+.post-slide .owl-nav{ display: none; }
+
+/** blog details page responsive css End here **/
 
 
 
@@ -1485,7 +2360,159 @@ li.ng-binding {
 }
 .two-content-box{ padding-left: 10px 0; }
 
-}	
+
+
+/** send money page responsive css Start here **/
+
+.rate_content {
+    padding-left: 0px;
+}
+
+.display_img img {max-width: 90%;}
+.send_money_content{ padding: 0; }
+.send_money_content p { font-size: 14px; margin: 11px 0 15px;}
+
+.outlinebtn {
+    padding: 9px 15px 9px 15px;
+    margin: 0 0 10px 0;
+    font-size: 13px;
+}
+
+.outlinebtn {
+    color: #029bbf;
+    border: 1px solid #029bbf;
+    border-radius: 30px;
+    padding: 9px 15px 9px 15px;
+    font-family: 'poppinsbold';
+    display: block;
+    margin: 0 0 10px 0;
+    font-size: 13px;
+}
+
+.how_send_money { padding: 30px 0 30px 0;}
+
+.headig_sub {margin: 0 0 40px 0;}
+
+.heading2 {font-size: 22px;}
+.left_cost_wrap p {
+    font-size: 14px;
+    margin: 20px 0 20px 0;
+    max-width: 90%;
+}
+
+.inli {
+    padding: 0 0 0 11px;
+    width: 32%;
+}
+
+
+.people_img {width: 100%;}
+.people_content {
+    width: 100%;
+    padding: 20px 0 0 0;
+}
+
+.wraper_people {text-align: center;}
+
+.people_box:nth-child(2) {padding-left: 20px;}
+
+.what_people_say {padding: 30px 0;}
+.carousel-control.right{ right: 29px; }
+.carousel-control.left{ left: -29px; }
+.h_s_money_wraper{ max-width: 100%; }
+
+.start_up_transfer {padding: 0 10px;}
+
+
+.start_up_transfer:after {
+    right: -178px;
+    top: -20px;
+    background-size: 59%;
+}
+
+.realstate {  padding: 50px 0 50px 0;}
+
+.realstate_content {
+    padding-right: 20px;
+}
+.realstate_content p {
+    font-size: 15px;
+    margin: 20px 0 20px 0;
+}
+
+
+.btn5 {
+    padding: 7px 40px 7px 40px;
+    font-size: 15px;
+ }
+.realstate_img {padding-left: 30px;}
+.img_bx_fast img {max-width: 68%;}
+.pad60 {padding: 0 20px;}
+
+
+.fast_safe {padding: 50px 0 50px 0;}
+.support_wrapererss {max-width: 95%;}
+.form_row input {padding: 7px 20px 10px 36px; font-size: 15px;}
+/** send money page responsive css End here **/
+
+/** blog page responsive css Start here **/
+
+.main_post_heading h4{ font-size: 15px; }
+.main_post_heading{ padding: 10px; }
+.blog_main_post {margin: 0 0 20px 0;}
+.post_listing_content h5{ font-size: 14px; }
+
+.post_listing_content p{ font-size: 13px; }
+
+
+.post_date {
+    width: 100%;
+    text-align: left;
+    padding: 11px 0 0 0;
+}
+.author_address{ width: 100%; }
+
+.blog_listing_ul { margin-right: -4px;margin-left: -4px;}
+.blog_left_listng{ padding-right: 10px; }
+
+.blog_listing_ul li {
+    width: 49.4%;
+    padding: 4px;
+}
+
+.side_post_img {
+    width: 100%;
+    padding: 0 0 20px 0;
+}
+
+.side_post_heading {width: 100%;}
+.tag_list li a {
+    padding: 6px 5px 6px 5px;
+    font-size: 12px;
+}
+
+.blog_left_listng {padding-right: 18px;}
+
+.btn1 {
+    font-size: 14px !important;
+    padding: 0px 10px 0 10px !important;
+ }
+
+.blog_side_bar { padding-left: 8px;}
+
+
+/** blog page responsive css End here **/
+
+.blogo-article h1 {font-size: 18px;}
+
+/*.post-slide button.owl-prev {left: -37px;}
+
+.post-slide button.owl-next {right: -34px;}*/
+.post-slide .owl-nav { display: none; }
+
+}
+
+
 
 
 /** For Tablet ipad Device responsive End here **/
@@ -1525,6 +2552,50 @@ li.ng-binding {
     width: 950px !important;
 }
 
+
+/** send money page responsive css Start here **/
+
+
+.send_money_content {
+    padding-right: 30px;
+}
+
+.inli {
+    padding: 0 0 0 18px;
+    width: 32%;
+}
+
+.people_content {
+    width: 76%;
+    padding-left: 17px;
+}
+.people_content p {
+    font-size: 15px;
+    margin: 7px 0 10px 0;
+}
+
+.h_s_money_wraper {max-width: 100%;}
+
+.start_up_transfer:after {
+    right: -152px;
+    top: -18px;
+    background-size: 81%;
+}
+
+
+.realstate_content {padding-right: 50px;}
+.realstate_content p { margin: 20px 0 20px 0;}
+.pad60 {padding: 0 32px;}
+.support_wrapererss {max-width: 80%;}
+
+/** send money page responsive css End here **/
+
+/** Blog page responsive css Start here **/
+
+.blog_listing_ul li {width: 49.5%;}
+.blog_side_bar { padding-left: 0;}
+
+/** Blog page responsive css End here **/
 }
 
 /** For ipad-pro and small laptop Device Responsive Start here **/	

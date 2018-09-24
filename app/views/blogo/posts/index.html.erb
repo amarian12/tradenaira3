@@ -1,0 +1,149 @@
+
+<div class="blog_top_bar">
+<div class="container">
+  <div class="top_max_width">
+  <div class="left_top_bar">
+  <h3 class="blue_heading"><%= link_to Blogo.config.site_title, blogo_root_path %></h3>
+  </div>
+  <div class="right_top_bar">
+    <p><%= Blogo.config.site_subtitle %></p>
+  
+  </div>
+</div>
+</div>
+</div>
+<% unless @paginator.nil?%>
+
+
+
+<!-- blog listing wraper Section start here -->
+<div class="blog_listing">
+  <div class="container">
+    <div class="blog_wraper overflow-css">
+        <div class="blog_left_listng">
+           <div class="blog_main_post">
+              <div class="main_post_img">
+                <img src="/assets/img/blog1.png" alt="blog1">
+              </div>
+              <div class="main_post_heading">
+                <h4><a href="#">Over 1,000 firms bid for 2017 railway projects</a></h4>
+              </div>
+              
+           </div>
+           <div class="blog_post_listing">
+               
+            <ul class="blog_listing_ul">
+              <% @paginator.items.each do |post| %>  
+              <li><a href="#">
+                <div class="post_listing_img">
+                  <img src="/assets/img/blog2.png" alt="blog2">
+                </div>
+                <div class="post_listing_content">
+                  <h5><%= link_to post.title, blogo_post_path(post) %></h5>
+                    <div class="post_wrap_content"><p><%= raw (post_overview(post)[0,150]).gsub(/<\/?[^>]*>/, "") %></p></div>
+                  <span class="author_address">  <% post.tag_names.each do |tag_name| %>
+              <%= link_to tag_name, blogo_tag_path(tag_name), class: 'tag pure-button button-secondary' %>
+            <% end %>
+         </span>
+                  <span class="post_date"><time datetime="<%= post.published_at %>">
+              <%= I18n.localize(post.published_at.to_date, format: :long) %>
+            </time></span>
+                </div>
+
+              </a>
+            </li>
+
+ 
+           <% end %>
+            </ul>
+              
+           </div>
+           
+<ul class="pure-paginator paginator">
+  <% if @paginator.prev_page %>
+    <% prev_link = path_to_page(@paginator.prev_page, @tag) %>
+    <li> <a class="pure-button prev" href="<%= prev_link %>">&#171;</a> </li>
+  <% end %>
+  <% @paginator.pages.each do |page| %>
+    <% page_class = 'pure-button' %>
+    <% page_class << ' pure-button-active' if @paginator.page == page %>
+
+    <li><%= link_to page, path_to_page(page, @tag), class: page_class %></li>
+  <% end %>
+  <% if @paginator.next_page %>
+    <% next_link = path_to_page(@paginator.next_page, @tag) %>
+    <li><a class="pure-button prev" href="<%= next_link %>">&#187;</a></li>
+  <% end %>
+</ul>
+<% end %>
+</div>
+
+
+<!-- sidebar start here -->
+
+<div class="blog_side_bar">
+
+<div class="search_bx">
+  <span class="bor_span">Search</span>
+ <%= form_for(search_article,url: blogo_search_path, html: { class: "search_blog"}) do |f|%>
+  <%= f.text_field :title %>
+  <%= f.submit 'Search',class: "btn1" %>
+<% end %>
+
+
+<!-- <form class="search_blog" action="/action_page.php">
+  <input type="text" placeholder="" name="search">
+  <button class="btn1" type="submit">Search</button>
+</form> -->
+</div>
+ 
+    <% if @recent_posts %>
+<div class="new_post">
+   <span class="border_span">New posts</span>
+  <ul> 
+     <% @recent_posts.each do |post| %>
+    <li>
+      <div class="side_post_img">
+       <%= image_tag post.meta_image %>
+        
+      </div>
+      <div class="side_post_heading">
+        <h5> <%= link_to post.title, blogo_post_path(post) %></h5>
+        <p><time datetime="<%= post.published_at %>">
+          <%= I18n.localize(post.published_at.to_date, format: :long) %>
+        </time> </p>
+
+      </div>
+
+    </li>
+
+  <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="tag_list">
+<span class="border_span"><%= t('blogo.user.tags') %></span>
+  <ul class="tags1">
+    <li>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.name, blogo_tag_path(tag), class: 'tag pure-button button-secondary' %>
+    <% end %>
+  </li>
+  </ul>
+
+
+  </div>
+
+
+
+</div>
+
+<!-- sidebar End here -->
+
+
+
+</div>
+</div>
+</div>
+

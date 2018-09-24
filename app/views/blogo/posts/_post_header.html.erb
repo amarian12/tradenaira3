@@ -1,0 +1,22 @@
+
+  <h1><%= link_to post.title, blogo_post_path(post) %></h1>
+  <div class="overflow-css">
+    <div class="article-tags">
+      <span class="author_address"><% post.tag_names.each do |tag_name| %>
+        <%= link_to tag_name, blogo_tag_path(tag_name), class: 'tag pure-button button-secondary' %>
+      <% end %></span>
+    </div>
+
+  <div class="posted">
+    <p>
+      <span class="post_by"><%= t('blogo.user.post_by') %> </span> <span class="admin_name"> <%= post.user.name %></span>
+    </p>
+    <p>
+     <!--  <time datetime="<%= post.published_at %>">
+        <%= I18n.localize(post.published_at.to_date, format: :long) %>
+      </time> -->
+    </p>
+
+    
+  </div>
+</div>

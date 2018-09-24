@@ -74,6 +74,9 @@ gem 'blogo'
 gem 'devise',           '~> 3.5.2'
 gem 'devise_invitable', '~> 1.5.2'
 gem 'json_pure'
+gem 'owlcarousel-rails'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
 
 
 

@@ -5,6 +5,7 @@ namespace :admin do
   post '/uncomplete', to: 'id_documents#uncomplete' 
   post '/complete', to: 'members#complete' 
   post '/uncomplete', to: 'members#uncomplete' 
+  
 
   resources :documents
   resources :id_documents,     only: [:index, :show, :update] do

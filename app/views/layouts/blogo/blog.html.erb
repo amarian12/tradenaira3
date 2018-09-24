@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @meta[:title] %></title>
+  <meta charset="UTF-8">
+  <%= render partial: 'blogo/shared/meta' %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "style2" %>
+  
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "liveprice" %>
+  <%= javascript_include_tag "tradeniara"%>
+  <%= javascript_include_tag "application"%>
+  <%= javascript_include_tag "jquery.session"%>
+  <%= auto_discovery_link_tag :atom, blogo_feed_path %>
+  <%= render 'blogo/shared/google_analytics' %>
+</head>
+<body>
+<div class ="header_height">
+<header class="site-main-header sanc homepage">
+  <div class="main-header">
+    <div class="container">
+      <div class="main-header-row">
+        <div class="logo-div"><a class="logo" href="/"><img class="home_logo" src="/assets/transparent_logo2.png" /></a></div>
+        <div class="main-navbar-header">
+          <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="center-menu">
+              <ul>
+                <li><a>BUSINESS</a></li>
+                <li><a>PERSONAL</a></li>
+                <li><a>SUPPORT</a></li>
+                <li><a>INFORMATION </a></li>
+                <li><a href="/signup" target=""><i class="fa fa-"></i><span>Register</span></a></li>
+                <li><a href="/signin" target=""><i class="fa fa-"></i><span>Login</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="header_top_right">
+          <ul class="home_head tophead">
+            <li><a href="/signup" target=""><i class="fa fa-"></i><span>Register</span></a></li>
+            <li><a href="/signin" target=""><i class="fa fa-sign-in"></i><span>Login</span></a></li>
+            <li><a href="#">EN</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+</div>
+
+<%= yield %>
+
+
+<!-- blog listing wraper Section end here -->
+
+<%= render "shared/footer"%>
+</body>
+</html>

@@ -160,7 +160,13 @@ Peatio::Application.routes.draw do
       resources :comments, only: [:create]
     end
   end
+   
+   # post 'blog', to: 'blogo/posts#index' 
 
+   
+    post "posts/search", to: "blogo/posts#search", as: "blogo_search"
+ 
+  
   draw :admin
 
   mount APIv2::Mount => APIv2::Mount::PREFIX

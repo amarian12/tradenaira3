@@ -30,7 +30,7 @@
 #= require_tree ./component_data
 #= require_tree ./component_ui
 #= require_tree ./templates
-
+#= require owl.carousel
 $ ->
   BigNumber.config(ERRORS: false)
 

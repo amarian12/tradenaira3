@@ -245,5 +245,11 @@ module ApplicationHelper
     "#{number.first(3)}#{mask[3,number.size-7]}#{number.last(4)}"
   end
 
+  def search_article
+      Blogo::Post.new
+
+
+  end
+
   alias_method :d, :format_currency
 end
