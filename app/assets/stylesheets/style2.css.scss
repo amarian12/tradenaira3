@@ -651,13 +651,13 @@ ul { padding:0; margin:auto;}
   text-align: center;
   width: 50%; padding:12px 0 0;
 }
-.main-header-row{ overflow:hidden; clear:both;}
+.main-header-row{ /*overflow:hidden; */clear:both;}
 .header_top_right {float: right; width: 30%; text-align:right; padding:1px 0 0;}	
 
 .home_head {
   clear: both;
   margin: 0;
-  overflow: hidden;
+/*  overflow: hidden;*/
   padding: 0;
 }
 
@@ -1160,7 +1160,7 @@ ul.social {margin: 0 0 60px 0;}
 .about_banner_content .main-text h1{ margin-bottom: 0px; }
 .about_banner_content .banner-text.table-cell .main-text { text-align: center;}
 .about_banner_content .main-text:after{ display: none; }
-.home_head li:nth-child(3) a {
+.home_head li.language-div a {
     border-radius: 50%;
     height: 36px;
     width: 36px;
@@ -1204,7 +1204,7 @@ ul.social {margin: 0 0 60px 0;}
 }
 
 .mobile_login_register{ display: none; }
-.center-menu ul li:nth-child(5), .center-menu ul li:nth-child(6){ display: none; }
+/*.center-menu ul li:nth-child(5), .center-menu ul li:nth-child(6){ display: none; }*/
 
 
 .label-infodd{ background: none; color: #029bbf; font-size: 13px; display: block;margin:auto; font-family: 'poppinsregular';}
@@ -1937,6 +1937,49 @@ ul.pure-paginator.paginator {
 /** Blog details page Css End here **/
 
 
+/** 25-Sep-2018  Css Start here **/
+
+
+
+
+.tophead .dropdown.account-settings a.dropdown-toggle {padding: 8px 14px !important;font-size: 13px !important;}
+
+header .account-settings ul.dropdown-menu li {
+    display: block !important;
+    float: none !important;
+}
+
+
+header .account-settings ul.dropdown-menu li a {
+    /* border-radius: inherit; */
+    /* height: auto; */
+    /* width: auto; */
+    /* padding: 0 !important; */
+    /* line-height: inherit; */
+    /* font-family: 'poppinsregular'; */
+}
+
+
+header .account-settings ul.dropdown-menu li a {
+    display: inline-block !important;
+    font-family: "poppinsbold" !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+    text-decoration: none;
+    padding:6px 10px 4px !important;
+    transition: all ease 0.3s; line-height: inherit !important;
+}
+header .account-settings ul.dropdown-menu li a:hover{ color: #3b3b3b !important; }
+
+.header_top_right.mobile-view {
+    display: none;
+}
+
+
+li.dropdown.account-settings {padding-top: 0;}
+
+/** 25-Sep-2018  Css End here **/
+
 
 
 
@@ -2079,7 +2122,7 @@ li.ng-binding {
 
 .logo-div { width: 50%;float: none;}
 .logo-div img {
-    max-width: 180px;
+    max-width: 180px; width: 100% !important;
 }
 
 .header_top_right{ display: none; }
@@ -2090,12 +2133,11 @@ li.ng-binding {
 }
 
 
-
 header .navbar-toggle {
     position: absolute;
     right: 6px;
-    top: 7px !important;
-    padding: 7px;
+    top: 22px !important;
+    padding: 6px;
 }
 
 .center-menu ul li {
@@ -2113,7 +2155,7 @@ header .navbar-collapse {
     width: 100%;
     left: 0;
     right: 0;
-    margin: 13px 0px 0 0; border: none; box-shadow: none;
+    margin: 8px 0px 0 0; border: none; box-shadow: none;
     background: #029abf !important;
     opacity: 1;
     height: auto;
@@ -2125,7 +2167,7 @@ header .navbar-collapse {
 .site-main-header{background: #029abf !important}
 
 .mobile_login_register{ display: block; }
-.center-menu ul li:nth-child(5), .center-menu ul li:nth-child(6){ display: block; }
+/*.center-menu ul li:nth-child(5), .center-menu ul li:nth-child(6){ display: block; }*/
 
 
 .quickvideo {height: 310px;}
@@ -2276,6 +2318,46 @@ header .navbar-collapse {
 /** blog details page responsive css End here **/
 
 
+/** header top right for mobile responsive **/
+.mobile-view .home_head li a {
+    font-family: 'poppinsregular';
+    font-size: 12px !important;
+    margin: 0;
+    padding: 1px 4px 1px !important; border:none;
+
+}
+
+.mobile-view .home_head li:nth-child(1) a {
+    background: no-repeat;
+    color: #fff !important;
+}
+.mobile-view .home_head li { line-height: inherit; width: auto;}
+
+.home_head li.language-div a {
+    height: auto;
+    width: auto;
+    line-height: inherit;
+ }
+
+
+.header_top_right.mobile-view {display: block; margin:-11px 0 0px 0; width: 100%;}
+.tophead .dropdown.account-settings a.dropdown-toggle {
+    padding: 0 !important;
+    margin-right: 8px;
+}
+
+header .mobile-view .account-settings ul.dropdown-menu li a{ color: #029bbf  !important; }
+
+header {padding: 9px 0 13px 0;}
+/** header top right for mobile responsive **/
+
+
+.blog_left_listng iframe {
+    height: 300PX;
+    width: 100%;
+}
+
+
 
 }
 
@@ -2303,8 +2385,8 @@ header .navbar-collapse {
 
 .home_head li a {
     font-size: 13px !important;
-    margin: 0 0 0 5px;
-    padding: 6px 14px 5px !important;
+    margin: 0 0 0 3px;
+    padding: 6px 12px 5px !important;
  }
 .header_top_right{ padding: 1px 0 0 0; }
 .main-navbar-header{padding: 8px 0 0 0;}
@@ -2510,6 +2592,31 @@ li.ng-binding {
 .post-slide button.owl-next {right: -34px;}*/
 .post-slide .owl-nav { display: none; }
 
+
+/** header **/
+
+.tophead .dropdown.account-settings a.dropdown-toggle {
+    padding: 7px 5px !important;
+    font-size: 11px !important;
+    /* width: 162px; */
+}
+.home_head li.language-div a {
+    height: 33px;
+    width: 33px;
+    line-height: 33px;
+ }
+/** header **/
+
+
+.blog_left_listng iframe {
+    height: 280PX;
+    width: 100%;
+}
+
+
+
+
+
 }
 
 
@@ -2596,6 +2703,15 @@ li.ng-binding {
 .blog_side_bar { padding-left: 0;}
 
 /** Blog page responsive css End here **/
+
+
+.blog_left_listng iframe {
+    height: 320PX;
+    width: 100%;
+}
+
+
+
 }
 
 /** For ipad-pro and small laptop Device Responsive Start here **/	

@@ -7,6 +7,8 @@ html lang="en"
     link rel="icon" href="/favicon.ico"
 
     = include_gon
+    link rel="stylesheet" href="/assets/style2.css?body=1"
+
     - stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : "application"
     = stylesheet_link_tag stylesheet, media: "all"
     = javascript_include_tag "application"

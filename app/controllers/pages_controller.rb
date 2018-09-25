@@ -14,10 +14,10 @@ class PagesController < ApplicationController
   end
   def riskwarning
   end
-  #def news
-     #@new = New.all
-     #@feeds = Feed.all   
-  #end
+  def news
+     @new = New.all
+     @feeds = Feed.all   
+  end
   def learn
   end
   def tradeservices

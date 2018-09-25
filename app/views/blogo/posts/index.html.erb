@@ -3,7 +3,7 @@
 <div class="container">
   <div class="top_max_width">
   <div class="left_top_bar">
-  <h3 class="blue_heading"><%= link_to Blogo.config.site_title, blogo_root_path %></h3>
+  <h3 class="blue_heading"><%= link_to "TradeNAIRA News", blogo_root_path %></h3>
   </div>
   <div class="right_top_bar">
     <p><%= Blogo.config.site_subtitle %></p>
@@ -13,7 +13,6 @@
 </div>
 </div>
 <% unless @paginator.nil?%>
-
 
 
 <!-- blog listing wraper Section start here -->
@@ -36,11 +35,11 @@
               <% @paginator.items.each do |post| %>  
               <li><a href="#">
                 <div class="post_listing_img">
-                  <img src="/assets/img/blog2.png" alt="blog2">
+                   <%= image_tag post.meta_image %>
                 </div>
                 <div class="post_listing_content">
                   <h5><%= link_to post.title, blogo_post_path(post) %></h5>
-                    <div class="post_wrap_content"><p><%= raw (post_overview(post)[0,150]).gsub(/<\/?[^>]*>/, "") %></p></div>
+                    <div class="post_wrap_content"><p><%= raw (post_overview(post)[0,130]).gsub(/<\/?[^>]*>/, "") %></p></div>
                   <span class="author_address">  <% post.tag_names.each do |tag_name| %>
               <%= link_to tag_name, blogo_tag_path(tag_name), class: 'tag pure-button button-secondary' %>
             <% end %>
