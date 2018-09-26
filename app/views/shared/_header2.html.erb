@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= @meta[:title] %></title>
-  <meta charset="UTF-8">
-  <%= render partial: 'blogo/shared/meta' %>
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag "style2" %>
-  
-  <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag "liveprice" %>
-  <%= javascript_include_tag "tradeniara"%>
-  <%= javascript_include_tag "application"%>
-  <%= javascript_include_tag "jquery.session"%>
-  <%= auto_discovery_link_tag :atom, blogo_feed_path %>
-  <%= render 'blogo/shared/google_analytics' %>
-</head>
-<body>
 <div class ="header_height">
 <header class="site-main-header sanc homepage">
   <div class="main-header">
@@ -74,11 +56,3 @@
   </div>
 </header>
 </div>
-
-<%= yield %>
-
-<!-- blog listing wraper Section end here -->
-
-<%= render "shared/footer"%>
-</body>
-</html>

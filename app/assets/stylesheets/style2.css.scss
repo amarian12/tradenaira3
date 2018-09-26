@@ -1215,13 +1215,13 @@ ul.social {margin: 0 0 60px 0;}
 
 
 /** Send Money Page Css Start here **/
-[type="radio"]:checked,
-[type="radio"]:not(:checked) {
+.custom_radio [type="radio"]:checked, 
+.custom_radio [type="radio"]:not(:checked) {
     position: absolute;
     left: -9999px;
 }
-[type="radio"]:checked + label,
-[type="radio"]:not(:checked) + label
+.custom_radio [type="radio"]:checked + label,
+.custom_radio [type="radio"]:not(:checked) + label
 {
     position: relative;
     padding-left: 30px;
@@ -1230,8 +1230,8 @@ ul.social {margin: 0 0 60px 0;}
     display: inline-block;
     color: #666;
 }
-[type="radio"]:checked + label:before,
-[type="radio"]:not(:checked) + label:before {
+.custom_radio [type="radio"]:checked + label:before,
+.custom_radio [type="radio"]:not(:checked) + label:before {
     content: '';
     position: absolute;
     left: 0;
@@ -1243,8 +1243,8 @@ ul.social {margin: 0 0 60px 0;}
     background: #fff;
 }
 
-[type="radio"]:checked + label:after,
-[type="radio"]:not(:checked) + label:after {
+.custom_radio [type="radio"]:checked + label:after,
+.custom_radio [type="radio"]:not(:checked) + label:after {
     content: '';
     width: 10px;
     height: 10px;
@@ -1256,12 +1256,12 @@ ul.social {margin: 0 0 60px 0;}
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
-[type="radio"]:not(:checked) + label:after {
+.custom_radio [type="radio"]:not(:checked) + label:after {
     opacity: 0;
     -webkit-transform: scale(0);
     transform: scale(0);
 }
-[type="radio"]:checked + label:after {
+.custom_radio [type="radio"]:checked + label:after {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -1597,7 +1597,7 @@ ul.social {margin: 0 0 60px 0;}
 .blog_top_bar{ background: #e3e3e3; padding: 15px 0; margin: 0 0 40px 0; }
 .blue_heading{ color: #029bbf; font-size: 22px; margin: auto;font-family: 'poppinsbold'; }
 .blue_heading a{ color:#029bbf; }
-.right_top_bar p {color: #595959;font-size: 15px;margin: auto;}
+.right_top_bar p {color: #595959;font-size: 15px;margin: auto; padding: 4px 0 0 0;}
 
 .left_top_bar {  float: left;}
 .right_top_bar { text-align: right;float: right;}
@@ -1656,7 +1656,7 @@ ul.social {margin: 0 0 60px 0;}
 
 .post_listing_content p {
     color: #6d6d6d;
-    font-size: 14px;
+    font-size: 13px;
     margin: 0; font-weight: normal;
 }
 .post_wrap_content{ margin: 0 0 20px 0; }
@@ -1755,16 +1755,16 @@ ul.social {margin: 0 0 60px 0;}
 
 .side_post_heading h5 {
     color: #494949;
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'poppinsbold';
-    margin: 0 0 10px 0;
+    margin: 0 0 6px 0;
 }
 
 .side_post_heading h5 a{ color: #494949; }
 
 .side_post_heading p {
     color: #898989;
-    margin: auto; font-weight: normal;
+    margin: auto; font-weight: normal; font-size: 14px;
 }
 .new_post ul li {
     display: block;
@@ -1981,7 +1981,16 @@ li.dropdown.account-settings {padding-top: 0;}
 /** 25-Sep-2018  Css End here **/
 
 
+/** 26-Sep-2018  Css Start here **/
 
+
+.trade_banner, .moneyslide{ margin-top: 0px !important; }
+.moneyslide{ height: 450px; }
+
+.article-tags .author_address {width: 100%;}
+.article-tags .author_address a{ margin: 0 8px 4px 0; }
+
+/** 26-Sep-2018  Css End here **/
 
 
 

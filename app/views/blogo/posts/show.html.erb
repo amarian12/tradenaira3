@@ -1,182 +1,178 @@
 <div class="container">
-<div class="blog-detail">
-<div class="blog_left_listng details_listing">
-<article class="blogo-article">
-<div class="imageee">
-    <%= image_tag @post.meta_image %>
-</div>
-  <%= render partial: 'blogo/posts/post_header', locals: {post: @post} %>
-  <div class="dateee">
-   <time datetime="<%= @post.published_at %>">
-        <%= I18n.localize(@post.published_at.to_date, format: :long) %>
-      </time>
-      </div>
+  <div class="blog-detail">
+    <div class="blog_left_listng details_listing">
+      <article class="blogo-article">
+        <div class="imageee">
+            <%= image_tag @post.meta_image %>
+        </div>
+        <%= render partial: 'blogo/posts/post_header', locals: {post: @post} %>
+        <div class="dateee">
+           <time datetime="<%= @post.published_at %>">
+                <%= I18n.localize(@post.published_at.to_date, format: :long) %>
+           </time>
+        </div>
+       <div class='social_icon '>
+          <span class='twitter'>
+            <a class='twitter-share-button' data-url='<%= request.original_url %>' data-via='<%= Blogo.config.twitter_username %>' href='http://twitter.com/share'>Tweet</a>
+          </span>
+          <span class='google'>
+            <g:plusone href='<%= request.original_url %>' size='medium'></g:plusone>
+          </span>
+          <span class='facebook'>
+            <div class='fb-share-button' data-href='<%= request.original_url %>' data-type='button_count'></div>
+          </span>
+        </div>
+       <!--  <div class="content">
+          <%= raw @post.html_content %>
+        </div> -->
+        <div class ="content">
+          <%= raw post_overview(@post)%>
+          </div>
+      </article>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<div class='social_icon '>
-    <span class='twitter'>
-      <a class='twitter-share-button' data-url='<%= request.original_url %>' data-via='<%= Blogo.config.twitter_username %>' href='http://twitter.com/share'>Tweet</a>
-    </span>
-    <span class='google'>
-      <g:plusone href='<%= request.original_url %>' size='medium'></g:plusone>
-    </span>
-    <span class='facebook'>
-      <div class='fb-share-button' data-href='<%= request.original_url %>' data-type='button_count'></div>
-    </span>
-  </div>
+      <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+      <div id="fb-root"></div>
+      <script>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
+      <% if Blogo.config.disqus_shortname %>
+        <section id='disqus-comments'>
+          <h1><%= t('blogo.user.comments') %></h1>
+          <div id="disqus_thread" aria-live="polite"></div>
+          <noscript><%= t('blogo.user.please_enable_javascript') %></noscript>
+        </section>
+        <script type="text/javascript">
+          var disqus_shortname  = '<%= Blogo.config.disqus_shortname %>';
+          var disqus_identifier = 'blog-post-<%= @post.id %>';
+          var disqus_url        = '<%= blogo_post_url(@post) %>';
+          var disqus_title      = '<%= @post.title %>';
+          var disqus_script     = 'embed.js';
 
-
- <!--  <div class="content">
-    <%= raw @post.html_content %>
-
-  </div> -->
-  <div class ="content">
-    <%= raw post_overview(@post)%>
-    </div>
-</article>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-<div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-  <% if Blogo.config.disqus_shortname %>
-    <section id='disqus-comments'>
-      <h1><%= t('blogo.user.comments') %></h1>
-      <div id="disqus_thread" aria-live="polite"></div>
-      <noscript><%= t('blogo.user.please_enable_javascript') %></noscript>
-    </section>
-    <script type="text/javascript">
-      var disqus_shortname  = '<%= Blogo.config.disqus_shortname %>';
-      var disqus_identifier = 'blog-post-<%= @post.id %>';
-      var disqus_url        = '<%= blogo_post_url(@post) %>';
-      var disqus_title      = '<%= @post.title %>';
-      var disqus_script     = 'embed.js';
-
-      (function () {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = document.location.protocol + '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }());
-    </script>
-  <% end %>
-
-
-
-
-<div class="post-slide">
-<h3 class="heading3 text-center">LATEST BLOG</h3>
-  <% if @recent_posts %>
-     <ul class="blog_li_post_ul owl-carousel">
-              <%@recent_posts.each do |post| %>  
-              <li><a href="#">
-                <div class="post_listing_img">
-                     <%= image_tag post.meta_image %>
-                </div>
-                <div class="post_listing_content">
-                  <h5><%= link_to post.title, blogo_post_path(post) %></h5>
-                   <div class="post_wrap_content"><p><%= raw (post_overview(post)[0,150]).gsub(/<\/?[^>]*>/, "") %></p></div>
-                  <span class="author_address">  <% post.tag_names.each do |tag_name| %>
-              <%= link_to tag_name, blogo_tag_path(tag_name), class: 'tag pure-button button-secondary' %>
-            <% end %>
-         </span>
-                  <span class="post_date"><time datetime="<%= post.published_at %>">
-              <%= I18n.localize(post.published_at.to_date, format: :long) %>
-            </time></span>
-                </div>
-
-              </a>
-            </li>
-           <% end %>
-            </ul>          
-             <% end %> 
-</div>
-
-
-</div>
-<script type="text/javascript">
-  $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:20,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:2
-        },
-        1000:{
-            items:2
-        }
-    }
-});
-</script>
-
-
-<!-- <div class="newsheading"></div><div class="tvideohumbline"><a class="thumb" data-target="#myModal" data-toggle="modal"><img src="/assets/img/video_thumbnail.png" /></a></div>
- --> 
-       
-           
-
-
-<div class="blog_side_bar">
-<div class="search_bx">
-  <span class="bor_span">Search</span>
- <%= form_for(search_article,url: blogo_search_path, html: { class: "search_blog"}) do |f|%>
-  <%= f.text_field :title %>
-  <%= f.submit 'Search',class: "btn1" %>
-<% end %>
-
-
-<!-- <form class="search_blog" action="/action_page.php">
-  <input type="text" placeholder="" name="search">
-  <button class="btn1" type="submit">Search</button>
-</form> -->
-</div>
-<% if @recent_posts %>
-<div class="new_post">
-   <span class="border_span">New posts</span>
-  <ul> 
-    <% @recent_posts.each do |post| %>
-    <li>
-      <div class="side_post_img">
-       <%= image_tag post.meta_image %>
-        
-      </div>
-      <div class="side_post_heading">
-        <h5> <%= link_to post.title, blogo_post_path(post) %></h5>
-        <p><time datetime="<%= post.published_at %>">
-          <%= I18n.localize(post.published_at.to_date, format: :long) %>
-        </time> </p>
-
-      </div>
-
-    </li>
-
-  <% end %>
-    </ul>
-  <% end %>
-</div>
-<div class="tag_list">
-  <span class="border_span"><%= t('blogo.user.tags') %> <img src="/assets/img/tag.png" alt="tag"></span>
-    <ul class="tags1">
-      <li>
-      <% @tags.each do |tag| %>
-        <%= link_to tag.name, blogo_tag_path(tag), class: 'tag pure-button button-secondary' %>
+          (function () {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = document.location.protocol + '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          }());
+        </script>
       <% end %>
-    </li>
-    </ul>
-</div>
 
+
+    <!-- <div id="disqus_thread"></div>
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-tradenaira-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     -->
+
+    <div class="post-slide">
+      <h3 class="heading3 text-center">LATEST BLOG</h3>
+        <% if @recent_posts %>
+           <ul class="blog_li_post_ul owl-carousel">
+              <%@recent_posts.each do |post| %>  
+                  <li><a href="#">
+                    <div class="post_listing_img">
+                      <%= image_tag post.meta_image %>
+                    </div>
+                    <div class="post_listing_content">
+                      <h5><%= link_to post.title, blogo_post_path(post) %></h5>
+                         <div class="post_wrap_content"><p><%= raw (post_overview(post)[0,150]).gsub(/<\/?[^>]*>/, "") %></p></div>
+                        <span class="author_address">  <% post.tag_names.each do |tag_name| %>
+                        <%= link_to tag_name, blogo_tag_path(tag_name), class: 'tag pure-button button-secondary' %>
+                        <% end %>
+                        </span>
+                        <span class="post_date">
+                        <time datetime="<%= post.published_at %>">
+                        <%= I18n.localize(post.published_at.to_date, format: :long) %>
+                      </time>
+                     </span>
+                    </div>
+                    </a>
+                  </li>
+              <% end %>
+          </ul>          
+      <% end %> 
+   </div>
+  </div>
+    <script type="text/javascript">
+      $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:20,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:2
+            }
+        }
+    });
+    </script>
+    <div class="blog_side_bar">
+    <div class="search_bx">
+      <span class="bor_span">Search</span>
+     <%= form_for(search_article,url: blogo_search_path, html: { class: "search_blog"}) do |f|%>
+      <%= f.text_field :title %>
+      <%= f.submit 'Search',class: "btn1" %>
+    <% end %>
+    </div>
+    <% if @recent_posts %>
+    <div class="new_post">
+       <span class="border_span">New posts</span>
+      <ul> 
+        <% @recent_posts.first(5).each do |post| %>
+        <li>
+          <div class="side_post_img">
+           <%= image_tag post.meta_image %>  
+          </div>
+          <div class="side_post_heading">
+            <h5> <%= link_to post.title, blogo_post_path(post) %></h5>
+            <p><time datetime="<%= post.published_at %>">
+              <%= I18n.localize(post.published_at.to_date, format: :long) %>
+            </time> </p>
+          </div>
+        </li>
+      <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div class="tag_list">
+      <span class="border_span"><%= t('blogo.user.tags') %> <img src="/assets/img/tag.png" alt="tag"></span>
+        <ul class="tags1">
+          <li>
+          <% @tags.each do |tag| %>
+            <%= link_to tag.name, blogo_tag_path(tag), class: 'tag pure-button button-secondary' %>
+          <% end %>
+        </li>
+        </ul>
+    </div>
+    </div>
+    <div class="overflow-css"></div>
+  </div>
 </div>
-<div class="overflow-css"></div>
-</div></div>
 

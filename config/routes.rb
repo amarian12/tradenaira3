@@ -16,7 +16,7 @@ Peatio::Application.routes.draw do
   get "money/req_success" => 'money#req_success'
   get "money/commission" => 'money#commission'
 
-  Blogo::Routes.mount_to(self, at: '/blog')
+  Blogo::Routes.mount_to(self, at: '/news')
 
   resources :feeds do
     member do
@@ -40,10 +40,15 @@ Peatio::Application.routes.draw do
   get "pages/learn" => 'pages#learn'
   get "pages/tradeservices" => 'pages#tradeservices'
   get "pages/contactus" => 'pages#contactus'
+  get "pages/support" => 'pages#support'
   get "pages/send-money-to-nigeria" => 'pages#sendmoney'
   get "pages/request-money" => 'pages#requestmoney'
   get "pages/faq" => 'pages#faq'
   get "newproj" => 'newproj#abcd'
+  get "pages/riskwarning" => 'pages#riskwarning'
+  get "pages/marketplace" => 'pages#marketplace'
+
+
  
 
 

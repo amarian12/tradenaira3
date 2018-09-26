@@ -3,7 +3,7 @@
 <div class="container">
   <div class="top_max_width">
   <div class="left_top_bar">
-  <h3 class="blue_heading"><%= link_to "TradeNAIRA News", blogo_root_path %></h3>
+  <h3 class="blue_heading"><%= link_to Blogo.config.site_title, blogo_root_path %></h3>
   </div>
   <div class="right_top_bar">
     <p><%= Blogo.config.site_subtitle %></p>
@@ -33,7 +33,7 @@
                
             <ul class="blog_listing_ul">
               <% @paginator.items.each do |post| %>  
-              <li><a href="#">
+              <li>
                 <div class="post_listing_img">
                    <%= image_tag post.meta_image %>
                 </div>
@@ -100,7 +100,7 @@
 <div class="new_post">
    <span class="border_span">New posts</span>
   <ul> 
-     <% @recent_posts.each do |post| %>
+     <% @recent_posts.first(5).each do |post| %>
     <li>
       <div class="side_post_img">
        <%= image_tag post.meta_image %>

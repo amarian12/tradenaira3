@@ -30,4 +30,7 @@ class PagesController < ApplicationController
   end
   def faq
   end
+  def support
+  end
+
 end

@@ -1,14 +1,14 @@
 Blogo.configure do |config|
   # Edit this to match the subject of your blog
-  config.site_title    = 'TadeNAIRA News'
-  config.site_subtitle = 'Nigerian Currecy, Stock Exchange and Business News'
+  config.site_title    = 'TradeNAIRA News'
+  config.site_subtitle = 'Nigerian Currency, Stock Exchange and Business News'
 
   # Supported languages: :html, :markdown
   config.markup_lang = :html
 
   config.paginator_size = 3
   config.posts_per_page = 5
-  config.recent_posts =  3
+  config.recent_posts = 7
 
   # Maybe you do not want to use CKEditor, if you use markdown
   config.use_ckeditor = true
@@ -20,7 +20,7 @@ Blogo.configure do |config|
 
   # Do not change this once you installed and ran migrations
   config.table_name_prefix = 'blogo_'
-  config.disqus_shortname = 'example'
+  config.disqus_shortname = 'https-tradenaira-com'
 
   # Set disqus shortname if you want to your users to have ability to comment
   # your posts.
