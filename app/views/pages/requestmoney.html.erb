@@ -1,27 +1,29 @@
 <%= metamagic title: "Request payment from a business in Nigeria. We offer escrow services to international clients trading with Nigerian customers." %>
 <% metamagic description: "Get payment from your Nigerian customer swiftly and easily. We can facilitate the change from Naira to Pounds, Dollars, Euros and Chinese Yuan." %>
 <%= render "shared/header"%>
-<div id="myCarousel" class="moneyslide carousel slide col-xs-24" data-ride="carousel">
+<div id="myCarousel" class="moneyslide carousel slide verticle_middle" data-ride="carousel">
           <div class="carousel-inner container moneybanner" role="listbox">
-            <div class="item active" style="max-width:480px;">
-              <h2>REQUEST MONEY AT THE REAL EXCHANGE RATE</h2>
+            <div class="item active">
+             <div class="slider_max">
+              <h1 class="heading1">REQUEST MONEY AT THE REAL EXCHANGE RATE</h1>
               <p>The money arrives in your bank account within 2 business days.</p>
 
         <% if current_user %>
-            <a class="startsave" href = "/money/req" target = "_blank">Start Requesting</a> 
+            <a class="yellow_btn" href = "/money/req" target = "_blank">Start Requesting</a> 
         <% else %>
-            <a class="startsave" href = "/signup" target = "_blank">Start Requesting</a> 
+            <a class="yellow_btn" href = "/signup" target = "_blank">Start Requesting</a> 
         <% end %>
-			  
+			  </div>
             </div>
           </div>
-	  <div class="vertical-align-center hidden-xs nav-next-section">
+	 <!--  <div class="vertical-align-center hidden-xs nav-next-section">
 	     <i class="fa fa-angle-down gotonext" aria-hidden="true"></i>
-	  </div>
+	  </div> -->
 </div>
-<div class="col-xs-24">
-	<div class="container moneynextcount" style="padding:20px 10px;">
-		<h3 class="steps">3 SIMPLE STEPS TO GETTING PAID</h3>
+<div class="getpad">
+	<div class="container moneynextcount">
+		<h3 class="heading3">3 SIMPLE STEPS TO GETTING PAID</h3>
+        <div class="overflow-css row_step">
 		<div class="col-md-8 col-sm-8 col-xs-24 stepsimgs">
 			<%= image_tag("createnew.png", :alt => "createnew", :class => "chiimg") %>
 			<h4>1. Create a request</h4>
@@ -37,24 +39,26 @@
 			<h4>3. Get paid</h4>
 			<p>Your payer joins TradeNAIRA and pays. You'll get an email when it's all done.</p>
 		</div>
-        <div class="col-xs-24 text-center">
-                <a class="startsave" style="margin:20px auto;">Learn More</a>
+        </div>
+        <div class="learn_more text-center">
+                <a class="btn5">Learn More</a>
         </div>
 
-	  	<div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
+	  	<!-- div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
 	     		<i class="fa fa-angle-down gotonext" aria-hidden="true" style="color:#38a6cb;"></i>
-	  	</div>
+	  	</div> -->
 	</div>
 </div>
+
 <div class="col-xs-24 businessdiv">
 	<div class="container moneynextcount" style="padding:20px 10px;">
 		<div class="col-md-12 col-sm-12 col-xs-24">
 			<%= image_tag("businesspay.png", :alt => "createnew", :class => "businesspayimg") %>
 		</div>
 		<div class="col-md-12 col-sm-12 col-xs-24">
-			<h3 class="business">BUSINESSES: SAVE UP TO 8X ON INTERNATIONAL PAYMENTS</h3>
-			<p class="busicon">Asking customers to pay you through TradeNAIRA? Simply send them a request to avoid messy bank details and make sure you get the right amount. They'll need to join TradeNAIRA to pay.</p>
-			<p class="busicon">TradeNAIRA always converts your money at the real exchange rate and charges a fair & transparent fee - so you save big time versus the big guys.</p>
+			<h3 class="heading3">BUSINESSES: SAVE UP TO 8X ON INTERNATIONAL PAYMENTS</h3>
+			<p class="">Asking customers to pay you through TradeNAIRA? Simply send them a request to avoid messy bank details and make sure you get the right amount. They'll need to join TradeNAIRA to pay.</p>
+			<p class="">TradeNAIRA always converts your money at the real exchange rate and charges a fair & transparent fee - so you save big time versus the big guys.</p>
 			<a class="findmore">Find out more about requesting money</a>
 		</div>
 	</div>
@@ -64,24 +68,24 @@
 	<div class="container" style="padding:40px 10px;">
 		<div class="col-md-12 col-sm-12 col-xs-24">
 		<div class="customerdiv">
-			<h3 class="customerpay">CUSTOMERS: PAY ANY WAY YOU'D LIKE</h3>
-			<p class="busicon">Forget IBANs and routing numbers, simply click the link, join TradeNAIRA and choose how you want to pay. You can use your debit or credit card (subject to a small fee) or you can pay from your online bank.</p>
+			<h3 class="heading3">CUSTOMERS: PAY ANY WAY YOU'D LIKE</h3>
+			<p class="">Forget IBANs and routing numbers, simply click the link, join TradeNAIRA and choose how you want to pay. You can use your debit or credit card (subject to a small fee) or you can pay from your online bank.</p>
 		</div>
 		</div>
 		<div class="col-md-12 col-sm-12 col-xs-24 text-center">
 			<%= image_tag("visamaster.svg", :alt => "createnew", :class => "businesspayimg") %>
 		</div>
 
-	  	<div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
+	  	<!-- <div class="vertical-align-center hidden-xs nav-next-section col-xs-24">
 	     		<i class="fa fa-angle-down gotonext" aria-hidden="true" style="color:#38a6cb;"></i>
-	  	</div>
+	  	</div> -->
 	</div>
 </div>
 
 <div class="col-xs-24 businessdiv">
 	<div class="container moneynextcount" style="padding:20px 10px;">
 		<div class="col-xs-24">
-			<h2 class="text-center faqtxt">FREQUENTLY ASKED QUESTIONS (FAQ)</h2>
+			<h2 class="heading2 text-center">FREQUENTLY ASKED QUESTIONS (FAQ)</h2>
 		</div>
 		<div class="col-sm-24 m-t-lg col-xs-24">
 			<div class="panel-group" id="faqEntries" role="tablist" aria-multiselectable="true">
@@ -565,6 +569,7 @@
 		</div>
 	</div>
 </div>
+</div>
 
 <style>
 .navbar-static-top
@@ -578,7 +583,7 @@
 .moneyslide
 {
 	-webkit-clip-path: polygon(0 0,100% 0,100% 84%,50% 100%,0 84%,0 0);
-	height:360px;
+	height:500px;
     background: url(/assets/banner_image1.png);
 	background-size: cover;
 	margin-top: 70px;
@@ -586,7 +591,7 @@
 .moneybanner {
     color: white;
     padding-top: 70px;
-    text-align: left;
+    text-align: center;
 }
 .moneybanner h2 {
     line-height: 40px;
@@ -626,16 +631,7 @@
     text-align: center;
     padding: 15px 10px;
 }
-.stepsimgs h4 {
-    color: #4d4d4d;
-    font-size: 22px;
-    padding: 15px 0px;
-}
-.stepsimgs p {
-    color: rgba(80, 166, 195, 0.77);
-    font-size: 16px;
-    line-height: 25px;
-}
+
 .startsave, .startsave:hover {
     background: #ffc82f;
     color: white;
@@ -688,26 +684,16 @@
 .m-t-lg {
     margin: 30px 0px;
 }
-.faqtitle {
-    margin: 2px 0;
-    font-size: 21px;
-}
-.faq-answer {
-    padding: 20px !important;
-    font-size: 17px;
-	color: rgba(49, 57, 60, 0.77);
-	word-wrap:break-word;
-}
+
+
+
 .panel-heading:not(.collapsed) i.fa-angle-right
 {
 	transform: rotate(90deg);
 	-webkit-transform: rotate(90deg);
 }
-.panel-heading
-{
-	cursor:pointer;
-    padding: 15px;
-}
+
+
 </style>
 <script>
 

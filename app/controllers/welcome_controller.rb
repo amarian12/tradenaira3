@@ -13,4 +13,8 @@ class WelcomeController < ApplicationController
     #@feeds = Feed.find(:all, :order => "id desc", :limit => 1)
     #User.invite!(:email => "msk@cogzidel.com")
   end
+
+  def contact
+  
+  end
 end

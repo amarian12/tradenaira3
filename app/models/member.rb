@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  attr_accessor :last_name,:business, :business_address
   acts_as_taggable
   acts_as_reader
 

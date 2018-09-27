@@ -778,7 +778,7 @@ header.fixed-header {background: #029abf !important;}
 }
 .yellow_btn {
     color: #005a71;
-    font-size: 21px;
+    font-size: 20px;
     background: #fff200;
     font-family: 'poppinsbold';
     padding: 10px 24px 8px 24px;
@@ -1993,6 +1993,151 @@ li.dropdown.account-settings {padding-top: 0;}
 /** 26-Sep-2018  Css End here **/
 
 
+/** 27-Sep-2018  Css Start here **/
+
+.pad {padding: 70px 0;}
+.space_pad {padding: 36px 0;}
+
+.lear_page p {
+    margin: 15px 0 23px 0;
+    font-size: 14px;
+}
+.iframe_box {margin: 30px 0 30px 0;}
+
+.trade_page {
+    clear: both;
+    overflow: hidden;
+}
+
+.top_box_trade {
+    margin: 0 0 40px 0;
+}
+
+
+
+.top_box_trade p {margin: 10px 0 0 0;}
+.verticle_middle .moneybanner {display: table;height: 100%;}
+
+.verticle_middle .item {
+    display: table-cell !important;
+    vertical-align: bottom;
+    height: 100%; bottom: 70px;
+}
+
+.slider_max {
+    max-width: 60%;
+    margin: auto;
+}
+.heading1 {
+    font-size: 36px;
+    font-family: 'poppinsbold';
+    margin: 10px 0 8px 0;
+}
+.getpad {
+    background: #f4f5f6;
+    text-align: center;
+    padding: 170px 0 50px 0;
+    margin-top: -110px;
+}
+
+
+
+
+.getpad .heading3 {margin: 0 0 50px 0;}
+
+.stepsimgs h4 {
+    font-size: 21px;
+    margin: 23px 0 20px 0;
+}
+
+.learn_more {margin: 20px 0 0 0;}
+#pages-requestmoney .newsletter-box{ clear: both; }
+.panel-heading {
+    cursor: pointer;
+    padding
+    : 9px 25px;
+}
+.faqtitle {
+    margin: 4px 0;
+    font-size: 18px;
+}
+
+.faq-answer {
+    padding: 20px !important;
+    font-size: 15px;
+  color: rgba(49, 57, 60, 0.77);
+  word-wrap:break-word;
+}
+
+.privacy_page h4 {padding: 0 0 10px 20px;}
+.form_input input {
+    border: 1px solid #8a8a8a;
+    width: 100%;
+    border-radius: 2px !important;
+    height: 34px;
+    padding: 4px 10px;
+}
+.form_input label {
+    width: 100%;
+    font-weight: normal;
+}
+.form_row1 {margin: 10px 0;}
+
+.form_input input[type="submit"] {
+    background: #029bbf;
+    color: #fff;
+    border-color: #029bbf;
+    width: auto;
+    padding: 0 36px;
+    font-size: 16px;
+}
+.service_text h4 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+}
+
+
+.service_text h4 {
+    font-size: 21px;
+    margin: 0 0 10px 0;
+    font-family: 'poppinsbold';
+}
+
+.service_text {padding-top: 30px;}
+.pad-left {padding-left: 30px;}
+.pad-right {padding-right: 30px;}
+.service_img {padding: 0;}
+
+.readmore {text-align: left;padding: 10px 0 0;}
+.readmore a {
+    text-decoration: underline !important;
+    color: #029abf;
+}
+.service_text p {font-size: 14px;}
+
+
+.service_bottom {clear: both;overflow: hidden;}
+.btm_spc {
+    margin: 0 0 60px 0;
+}
+.service_bottom .heading2 {
+    margin: 0 0 30px 0;
+}
+.close{ opacity: 0.3 }
+.modal-content {
+    padding: 9px 25px;
+}
+
+.close {
+    font-size: 35px;
+}
+/** 27-Sep-2018  Css End here **/
+
+
+
+
+
+
 
 /** @media Query Css for Responsive Start here **/
 
@@ -2054,15 +2199,18 @@ ul.social {margin: 0 0 20px 0;}
 
 .footer_menu_block {width: 100%;float: none;}
 
-.main-text h1{ font-size: 26px; margin: 4px 0 4px 0;}
+.main-text h1{ font-size: 22px; margin: 4px 0 4px 0;}
 .main-text{ max-width: 98%; }
 .main-text:after{ display: none; }
 .main-text p {
-    font-size: 15px;
-    margin: 0 0 20px 0;
-    max-width: 98% !important;
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    max-width: 99% !important;
 }
-.yellow_btn{ font-size: 18px; padding: 8px 18px 7px 18px }
+.yellow_btn {
+    font-size: 16px;
+    padding: 7px 16px 6px 16px;
+}
 .main-text h3{ font-size: 20px; }
 
 
@@ -2164,11 +2312,11 @@ header .navbar-collapse {
     width: 100%;
     left: 0;
     right: 0;
-    margin: 8px 0px 0 0; border: none; box-shadow: none;
+    margin: 10px 0px 0 0; border: none; box-shadow: none;
     background: #029abf !important;
     opacity: 1;
-    height: auto;
-    padding: 0; opacity: 1 !important;
+    height: auto;    border-top: 1px solid #fff;
+    padding: 0; opacity: 1 !important; height: 100vh !important;
 }
 .center-menu {
     padding: 10px 12px 11px 16px;
@@ -2366,7 +2514,15 @@ header {padding: 9px 0 13px 0;}
     width: 100%;
 }
 
+.pad-left {
+    padding-left: 0;
+    padding-bottom: 30px;
+}
 
+.pad-right {
+    padding-right: 0;
+    padding-bottom: 30px;
+}
 
 }
 
@@ -2379,6 +2535,18 @@ header {padding: 9px 0 13px 0;}
 /** For Tablet Device responsive Start here **/
 
 @media screen and (min-width:768px) and (max-width:991px) {
+
+  .pad-left {
+    padding-left: 0;
+    padding-bottom: 30px;
+}
+
+.pad-right {
+    padding-right: 0;
+    padding-bottom: 30px;
+}
+
+
 .about_top { padding: 70px 0 50px 0;}
 .about_content {padding-right: 0;}
 .about_content p {

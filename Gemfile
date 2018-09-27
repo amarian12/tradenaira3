@@ -77,7 +77,7 @@ gem 'json_pure'
 gem 'owlcarousel-rails'
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
-
+gem 'gmaps-autocomplete-rails', github: "kristianmandrup/gmaps-autocomplete-rails"
 
 
 group :development, :test do

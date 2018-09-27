@@ -26,6 +26,13 @@ GIT
       mina-hooks
       rake
 
+GIT
+  remote: git://github.com/kristianmandrup/gmaps-autocomplete-rails.git
+  revision: 02b4dc4a5082cca1883b21b0e2ca5fc819dde86a
+  specs:
+    gmaps-autocomplete-rails (0.3.1)
+      rails (>= 3.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -515,6 +522,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   globalize (~> 4.0.0)
+  gmaps-autocomplete-rails!
   gon (~> 5.2.0)
   grape (~> 0.7.0)
   grape-entity (~> 0.4.2)

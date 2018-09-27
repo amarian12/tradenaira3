@@ -247,8 +247,10 @@ module ApplicationHelper
 
   def search_article
       Blogo::Post.new
+  end
 
-
+  def enquire
+    Member.new
   end
 
   alias_method :d, :format_currency

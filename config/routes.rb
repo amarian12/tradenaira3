@@ -47,6 +47,8 @@ Peatio::Application.routes.draw do
   get "newproj" => 'newproj#abcd'
   get "pages/riskwarning" => 'pages#riskwarning'
   get "pages/marketplace" => 'pages#marketplace'
+  get "pages/projectfunding" => 'pages#projectfunding'
+
 
 
  
@@ -170,7 +172,8 @@ Peatio::Application.routes.draw do
 
    
     post "posts/search", to: "blogo/posts#search", as: "blogo_search"
- 
+    post "welcome/contact", to: "welcome#contact"
+    get "welcome/contact", to: "welcome#contact"
   
   draw :admin
 
