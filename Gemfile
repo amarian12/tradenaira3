@@ -80,6 +80,9 @@ gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
 gem 'gmaps-autocomplete-rails', github: "kristianmandrup/gmaps-autocomplete-rails"
 
 
+gem "jquery-validation-rails"
+
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.4.3'

@@ -1,6 +1,5 @@
 <%= metamagic title: "Nigerian Business Escrow Services. We help Transparent Trade Happen." %>
 <%= metamagic description: "We provide escrow services as well as currency exchange to business doing business with Nigeria. Let us minimise your risks and work on your behalf to make sure your transaction is smooth." %>
-<script type="text/javascript" src="/assets/jquery-1.11.1.min.js?body=1"></script>
 <script type="text/javascript">
 $(function(){
   var $elems = $('.animateblock');
@@ -159,7 +158,7 @@ $(function(){
 		<div class="modal-content">
 			<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
 				<div>
-				<%= form_for(Member.new, url:"/welcome/contact", html: { class: "s"}) do |f|%>
+				<%= form_for(Member.new, url:"/welcome/contact", html: { class: "s", id: "member_form" }) do |f|%>
 				  <div class="form_row1">
 				    <div class="form_input">
 					   <%= f.label :Email %>
@@ -169,7 +168,7 @@ $(function(){
 				  <div class="form_row1">
 				    <div class="form_input">	   
 					   <%= f.label :Name %>
-					   <%= f.text_field :name,:required => true %>
+					   <%= f.text_field :display_name,:required => true %>
 					   </div></div>
 				 <div class="form_row1">
 				    <div class="form_input"> 	   
@@ -189,7 +188,7 @@ $(function(){
 				  <div class="form_row1">
 				    <div class="form_input">	   
 					   <%= f.label :Business_Address %>
-					   <%= f.text_field :business_address,:required => true %>
+					   <%= f.text_field :business_address,:input_html =>{:id => 'gmaps-input-address'},:required => true %>
 					   </div></div>
 				  <div class="form_row1">
 				    <div class="form_input submit-btn"> 
@@ -202,3 +201,34 @@ $(function(){
 </div>
 </div>
 </div>
+
+
+<script type="text/javascript">
+$("#member_form").validate({
+  //error place
+ 
+//adding rule
+  rules: {
+	  // username is required with max of 20 and min of 6
+	  "member[display_name]":{
+	    required: true,
+	  },
+  },
+  messages: {
+    "member[display_name]":{
+	    required: "name is required*",
+	  },
+  }
+});
+
+
+ var autocomplete1,autocomplete2 ;
+    function initAutocomplete() {
+    var options = {types: ['(cities)']};
+    var input1 = document.getElementById('member_business_address');
+    autocomplete1 = new google.maps.places.Autocomplete(input1 ,options);
+  }
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDaN5iM9L8iHlKoUjiu36hhHm-dWj_9aw&libraries=places&callback=initAutocomplete" async defer></script>

@@ -7,7 +7,9 @@ html lang="en"
 
     = include_gon
     = stylesheet_link_tag "application", :media => "all"
+     
     = javascript_include_tag "application"
+    = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"
     = javascript_include_tag "locales/#{I18n.locale}"
     = render 'shared/html5'
     /*= render 'shared/meta'*/
@@ -76,7 +78,7 @@ html lang="en"
                       a  href ="/pages/projectfunding"
                        | PROJECT FUNDING
                     li 
-                      a href= "/pages/tradeservices"
+                      a href= "/markets/usdngn"
                        | TRADE SERVICES
                        
 

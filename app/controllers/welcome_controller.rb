@@ -15,6 +15,12 @@ class WelcomeController < ApplicationController
   end
 
   def contact
-  
+   @user = Member.new(member_params)
+   MemberMailer.contact_mail(@user).deliver
+  end
+
+  private
+  def member_params
+    params.required(:member).permit(:email,:display_name,:last_name,:phone_number,:business,:business_address)
   end
 end

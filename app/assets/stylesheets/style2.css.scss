@@ -2134,8 +2134,10 @@ li.dropdown.account-settings {padding-top: 0;}
 /** 27-Sep-2018  Css End here **/
 
 
+.trade_page .modal{ z-index:999 !important;}
+.modal-backdrop{ z-index:111;}
 
-
+.error{ border-color:red !important; color:red;}
 
 
 

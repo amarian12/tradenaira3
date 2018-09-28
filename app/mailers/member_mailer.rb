@@ -28,8 +28,12 @@ class MemberMailer < BaseMailer
     set_mail(member_id)
   end
 
-  private
+  def contact_mail(user)
+  @user = user
+  mail( :to => "satyaprakash5989@gmail.com", :subject => "You Have a Message From Your Website")
+  end
 
+  private
   def set_mail(member_id)
     @member = Member.find member_id
     @membername = IdDocument.find @member.id

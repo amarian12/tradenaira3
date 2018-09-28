@@ -28,16 +28,15 @@ Peatio::Application.configure do
   config.action_mailer.default_url_options = { :host => ENV["URL_HOST"] }
 
 
-  config.action_mailer.delivery_method = :smtp
+   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address:              'auth.smtp.1and1.co.uk',
+  address:              'smtpout.secureserver.net',
   port:                 '587',
   domain:               'tradenaira.com',
-  user_name:            'support@tradenaira.com',
-  password:             'f*//ishc&nt',
+  user_name:            'shareenair@ptiwebtech.com',
+  password:             '&lvSn$n0m1Iq',
   authentication:       'login',
   enable_starttls_auto: :auto  }
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

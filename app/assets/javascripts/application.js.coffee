@@ -31,6 +31,12 @@
 #= require_tree ./component_ui
 #= require_tree ./templates
 #= require owl.carousel
+
+#= require jquery.validate
+#= require jquery.validate.additional-methods
+
+
+#= require gmaps-auto-complete
 $ ->
   BigNumber.config(ERRORS: false)
 
