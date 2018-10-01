@@ -77,7 +77,10 @@ $(document).ready(function() {
       ios = /iphone|ipad|ipod/.test( userAgent ),
       windows = navigator.userAgent.match(/windows/i);
   if(windows) {
-	  document.body.className += " windows";
+    if (document.body) {
+      document.body.className += " windows";
+    }
+	  
   }
   if (ios && safari) {
     try { localStorage.test = 2; } catch (e) {
@@ -246,19 +249,107 @@ if (marketp[0]) {
     //   }
     // })
 }
-$(function() {
-  var completer;
+  $(function() {
+    var completer;
 
-  completer = new GmapsCompleter({
-    inputField: '#gmaps-input-address',
-    errorField: '#gmaps-error'
+    if(typeof(GmapsCompleter) != "undefined"){
+        completer = new GmapsCompleter({
+        inputField: '#gmaps-input-address',
+        errorField: '#gmaps-error'
+      });
+
+      completer.autoCompleteInit({
+        country: "us"
+      });
+
+    }
+    
   });
 
-  completer.autoCompleteInit({
-    country: "us"
+  showFloatingPoints();
+
+});
+
+
+function submitEnquirey($this){
+  var turl = $($this).attr("action");
+  var tdata = $($this).serialize();
+
+  $("#submitformbtn").attr("disabled",true)
+  .val("Submitting...");
+
+
+  $.ajax({
+    url: turl,
+    type: "POST",
+    data: tdata,
+    dataType: "json",
+    success: function(resp){
+      if(resp.success){
+        var msg = "<p class='successmsg'>Thanks for connecting with us, we will back to you shortly!</p>";
+        $(".moformcontainer").html(msg);
+      }else{
+        var error_html = "<ul class='error-msgs'>";
+
+        for(var error in resp.errors){
+          if (resp.errors.hasOwnProperty(error)) {
+
+            error_html += "<li>"+error.replace("_", " ").toLowerCase()+": "+resp.errors[error]+"</li>";
+             //alert("Key is " + error + ", value is" + resp.errors);
+          }
+        }
+
+        error_html += "</ul>";
+
+        $("#respErrmsges").html(error_html);
+
+        $("#submitformbtn").removeAttr("disabled")
+        .val("Submit");
+
+      }
+    },
+    error:function(errors){
+      //alert(JSON.stringify(errors))
+    }
   });
-});
-});
+
+  return false;
+}
+
+
+function showFloatingPoints(){
+
+  var contain = $(".dfloatmap");
+
+  if(contain[0]){
+    setInterval(function() {
+
+      var dblpr = parseInt(Math.random()*10);
+      var dbble1 = parseInt(Math.random()*1000);
+      var dbble2 = parseInt(Math.random()*100);
+      var dbspn1 = "$"+dbble1+" Moments AGO";
+      var dbspn2 = "$"+dbble2+" SAVED";
+
+     var dbubble = "<div class='dbble-cont dbbble-point-id-"+dblpr+"'>";
+
+           dbubble += "<div class='dbble-bgr'>";
+             dbubble += "<span class='dbble-bgr1'>"+dbspn1+"</span>";
+             dbubble += "<span class='dbble-bgr2'>"+dbspn2+"</span>";
+           dbubble += "</div>";
+
+           dbubble += "<span class='dbble-pnt'><span>";
+
+        dbubble += "</div>";
+
+        contain.html(dbubble);
+
+         
+    }, 2000);
+  }
+  
+    
+
+}
 
 
 

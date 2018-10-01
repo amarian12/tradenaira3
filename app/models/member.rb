@@ -1,7 +1,11 @@
 class Member < ActiveRecord::Base
-  attr_accessor :last_name,:business, :business_address
+  attr_accessor :last_name,:business, :business_address, :nonsensefor
   acts_as_taggable
   acts_as_reader
+
+  validates :display_name ,:last_name,
+            :business, :phone_number, 
+            :business_address, presence: true, if: :has_nonsense?
 
 
   has_many :orders
@@ -257,4 +261,13 @@ class Member < ActiveRecord::Base
   def sync_update
     ::Pusher["private-#{sn}"].trigger_async('members', { type: 'update', id: self.id, attributes: self.changes_attributes_as_json })
   end
+
+  def has_nonsense?
+    if self.nonsensefor == "fghsGSTet45kh^y^t!!gd"
+      true
+    else
+      false
+    end
+  end
+
 end

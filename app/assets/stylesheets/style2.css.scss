@@ -699,7 +699,7 @@ header.fixed-header {background: #029abf !important;}
 }
 
 .banner-map {
-    background: url(/assets/map_banner_bg.png);
+    background: url(/assets/map_banner_bg_1.png);
     background-repeat: no-repeat !important;
     background-position: center top !important;
     background-size: cover !important;
@@ -981,10 +981,10 @@ li.ng-binding{ padding:0 15px;}
 
 /** 18-Sep-2018 Css End Here **/
 
-
+input{ box-shadow:none !important;}
 /** Newsletter box Css Start here **/
 
-.newsletter-box {background: #f4f5f6;padding: 60px 0 60px 0px;}
+.newsletter-box {background: #f4f5f6;padding: 60px 0 60px 0px; clear:both;}
 .newsletter_wrapper {
     text-align: center;
     margin: auto;
@@ -1304,9 +1304,13 @@ ul.social {margin: 0 0 60px 0;}
 .form_row img {
     position: absolute;
     left: 4px;
-    bottom: 12px;
+    bottom: 9px;
     max-width: 26px;
 }
+img.email_ico {
+    bottom: 12px;
+}
+
 
 .in_width50 {
     padding: 0 30px 0px 0;
@@ -2892,6 +2896,123 @@ li.ng-binding {
 
 
 }
+.error-msgs{
+  li{
+    list-style: none;
+    color: red;
+    text-transform: capitalize;
+  }
+}
+
+.successmsg{
+    width: 100%;
+    color: green;
+    display: block;
+    text-align: left;
+    margin: 1px;
+    padding: 50px 5px;
+}
+
+.dfloatmap{
+  position: relative;
+
+  .dbble-cont{
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 220px;
+  }
+
+  .dbble-bgr{ 
+      background: #fff;
+      display: inline-block;
+      padding: 8px 12px 8px 12px;
+      border-radius: 10px;
+      position: absolute;
+      margin: auto;
+      width: 100%;
+       
+  }
+  .dbble-bgr:after{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 22px 0 1px;
+    border-color: #fff transparent transparent transparent;
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 16px;
+  }
+
+  .dbble-pnt{
+    width: 9px;
+    height: 9px;
+    background: url(/assets/dbl_point.png);
+    display: block;
+    top: 76px;
+    left: 10px;
+    position: absolute;
+
+  }
+  .dbble-bgr1, .dbble-bgr1{
+    display: block;
+  }
+
+  .dbbble-point-id-1{
+    top: 22px;
+    left: 208px;
+  }
+  .dbbble-point-id-2{
+    top: 221px;
+    left: 220px;
+  }
+  .dbbble-point-id-3{
+    top: 66px;
+    left: 318px;
+  }
+  .dbbble-point-id-4{
+    top: 94px;
+    left: 581px;
+  }
+
+  .dbbble-point-id-4{
+    top: 166px;
+    left: 318px;
+  }
+
+  .dbbble-point-id-5{
+    top: 276px;
+    left: 323px;
+  }
+
+  .dbbble-point-id-6{
+    top: 276px;
+    left: 596px;
+  }
+
+  .dbbble-point-id-7{
+    top: 92px;
+    left: 599px;
+  }
+
+  .dbbble-point-id-8{
+    top: 88px;
+    left: 720px;
+  }
+  .dbbble-point-id-9{
+    top: 86px;
+    left: 839px;
+  }
+  .dbbble-point-id-10{
+    top: 233px;
+    left: 855px;
+  }
+
+
+}
+
+
 
 /** For ipad-pro and small laptop Device Responsive Start here **/	
 

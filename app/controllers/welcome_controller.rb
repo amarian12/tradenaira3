@@ -16,11 +16,27 @@ class WelcomeController < ApplicationController
 
   def contact
    @user = Member.new(member_params)
-   MemberMailer.contact_mail(@user).deliver
+   errors = false
+   success = false
+   if @user.valid?
+    success = true
+     MemberMailer.contact_mail(@user).deliver
+   else
+      errors = @user.errors
+      success = false
+   end
+
+   response = { success: success, errors: errors }
+
+   respond_to do |format|
+    format.json { render json: response }
+   end
+   
   end
 
   private
   def member_params
-    params.required(:member).permit(:email,:display_name,:last_name,:phone_number,:business,:business_address)
+    params.required(:member).permit(:email, :display_name, :last_name,
+      :phone_number, :business, :business_address, :nonsensefor)
   end
 end

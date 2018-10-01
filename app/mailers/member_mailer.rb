@@ -30,7 +30,8 @@ class MemberMailer < BaseMailer
 
   def contact_mail(user)
   @user = user
-  mail( :to => "satyaprakash5989@gmail.com", :subject => "You Have a Message From Your Website")
+  mail( :to => "tl1.ptiwebtech@gmail.com", 
+    :subject => "You Have a Message From Your Website")
   end
 
   private
@@ -40,7 +41,7 @@ class MemberMailer < BaseMailer
     @closename = @membername.name
     if @closename.blank?
        @closename = 'user'
-	end
+	  end
     mail to: @member.email
   end
 end

@@ -5,6 +5,7 @@
 #= require jquery-timing.min
 #= require bootstrap
 #= require bootstrap-switch.min
+#= require jquery.nicescroll.min
 #= require scrollIt
 #= require moment
 #= require bignumber

@@ -155,10 +155,16 @@ $(function(){
 
 <div aria-labelledby="myModalLabel" class="modal fade bs-example-modal-lg" id="myModal" role="dialog" tabindex="-1">
 	<div class="modal-dialog modal-md">
+		 
 		<div class="modal-content">
 			<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-				<div>
-				<%= form_for(Member.new, url:"/welcome/contact", html: { class: "s", id: "member_form" }) do |f|%>
+			<div id="respErrmsges" class="col-sm-12"></div>
+			<div id="respSuccmsges" class="col-sm-12"></div>
+				<div class="moformcontainer">
+				<%= form_for(Member.new, url:"/welcome/contact", 
+					html: { class: "s", 
+					id: "member_form", onSubmit:"return submitEnquirey(this);" }) do |f|%>
+					<%= f.hidden_field :nonsensefor, value: "fghsGSTet45kh^y^t!!gd" %>
 				  <div class="form_row1">
 				    <div class="form_input">
 					   <%= f.label :Email %>
@@ -192,7 +198,7 @@ $(function(){
 					   </div></div>
 				  <div class="form_row1">
 				    <div class="form_input submit-btn"> 
-				       <%= f.submit "Submit" %>
+				       <%= f.submit "Submit", id: "submitformbtn" %>
 				       </div></div>
 				<% end %>
 				</div>
