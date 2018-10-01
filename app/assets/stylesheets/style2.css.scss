@@ -722,10 +722,12 @@ header.fixed-header {background: #029abf !important;}
     position: relative;
 }
 
+
+
 .locate-div span {
     color: #1a2438;
     font-size: 11px;
-    display: block;
+    display: n;
 }
 
 .locate-div p {
@@ -736,7 +738,7 @@ header.fixed-header {background: #029abf !important;}
 
 .locate-div {
     background: #fff;
-    display: inline-block;
+    display: none;
     padding: 8px 12px 8px 12px;
     border-radius: 10px;
     position: absolute;
@@ -1943,7 +1945,7 @@ ul.pure-paginator.paginator {
 
 /** 25-Sep-2018  Css Start here **/
 
-
+.dfloatmap{ font-size:12px;}
 
 
 .tophead .dropdown.account-settings a.dropdown-toggle {padding: 8px 14px !important;font-size: 13px !important;}
@@ -2904,6 +2906,10 @@ li.ng-binding {
   }
 }
 
+.dis-table{
+  position: relative;
+}
+
 .successmsg{
     width: 100%;
     color: green;
@@ -2914,7 +2920,9 @@ li.ng-binding {
 }
 
 .dfloatmap{
-  position: relative;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 
   .dbble-cont{
     position: absolute;
@@ -2930,7 +2938,7 @@ li.ng-binding {
       border-radius: 10px;
       position: absolute;
       margin: auto;
-      width: 100%;
+      width: 70%;
        
   }
   .dbble-bgr:after{
