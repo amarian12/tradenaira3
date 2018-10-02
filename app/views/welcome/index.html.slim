@@ -207,16 +207,19 @@ div.exchange-section
                         = t("last_price")
                   li#ticker-btcusd-2 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                     
-                    .fot_siz
-                      span class="buy-color bid last-btcusd-bid" 
-                        |&dollar;&nbsp;
-                        span.price   
-                      |&nbsp;/&nbsp;
-                      span class="sell-color ask last-btcusd-ask"
-                        |&dollar;&nbsp;
-                        span.price 
+
+                    p
+                      span class="buy-color" &dollar; 
+                      span id="btcusd" class="last-btcusd-bid"
+                      |&dollar;/&nbsp
+                      span class="sell-color" &dollar; 
+                      span id="sell_btcusd" class="last-btcusd-ask"
                       span.label-infodd 
-                        = t("bid_ask")
+                        = t("bid_ask")    
+
+
+
+
                         
                   li class="ng-binding col-md-7 col-sm-12 col-xs-24"
                     
@@ -227,6 +230,9 @@ div.exchange-section
                       span.high#high_btcusd
                       span.label-infodd
                         = t("range")
+
+                        
+
                       
                   li class="last ng-binding col-md-6 col-sm-12 col-xs-24"
                       
