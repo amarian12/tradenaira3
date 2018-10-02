@@ -319,16 +319,29 @@ function submitEnquirey($this){
 
 function showFloatingPoints(){
 
-  var contain = $(".dfloatmap");
+    animatePointer();
+  
 
-  if(contain[0]){
     setInterval(function() {
 
-      var dblpr = parseInt(Math.random()*10);
+      
+      animatePointer();
+         
+    }, 4000);
+
+}
+
+
+function animatePointer(){
+      var contain = $(".dfloatmap");
+  if(contain[0]){
+      var dblpr = parseInt(Math.random()*30);
       var dbble1 = parseInt(Math.random()*1000);
       var dbble2 = parseInt(Math.random()*100);
       var dbspn1 = "$"+dbble1+" Moments AGO";
       var dbspn2 = "$"+dbble2+" SAVED";
+
+       
 
      var dbubble = "<div class='dbble-cont dbbble-point-id-"+dblpr+"'>";
 
@@ -343,12 +356,17 @@ function showFloatingPoints(){
 
         contain.html(dbubble);
 
-         
-    }, 2000);
-  }
-  
-    
+        $(".dbble-cont").animate({
+          opacity: '0.1'
+        },10000);
 
+        $(".dbble-pnt").animate({
+          width: '10px',
+          height: '10px',
+          left: '16px',
+          top: '82px'
+        },4000);
+  }     
 }
 
 
