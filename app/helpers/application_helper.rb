@@ -253,5 +253,6 @@ module ApplicationHelper
     Member.new
   end
 
+
   alias_method :d, :format_currency
 end

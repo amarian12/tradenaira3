@@ -21,6 +21,7 @@ Blogo.configure do |config|
   # Do not change this once you installed and ran migrations
   config.table_name_prefix = 'blogo_'
   config.disqus_shortname = 'https-tradenaira-com'
+ 
 
   # Set disqus shortname if you want to your users to have ability to comment
   # your posts.

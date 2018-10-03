@@ -322,10 +322,9 @@ function showFloatingPoints(){
     animatePointer();
   
 
-    setInterval(function() {
-
+     setInterval(function() {
       
-      animatePointer();
+        animatePointer();
          
     }, 4000);
 
@@ -334,12 +333,32 @@ function showFloatingPoints(){
 
 function animatePointer(){
       var contain = $(".dfloatmap");
+      var pointsa = [
+      { price1: "$5,000",      price2: "$191"},
+      { price1: "£3,000",      price2: "£138"},
+      { price1: "$12,000",     price2: "$245"},
+      { price1: "₦600,000",    price2: "₦15,360 "},
+      { price1: "₦750,000",    price2: "₦19,750"},
+      { price1: "₵14,000",     price2: "₵720"},
+      { price1: "$28,000",     price2: "$495"},
+      { price1: "₦800,000",    price2: "₦17,120 "},
+      { price1: "₦1,350,000",  price2: "₦28,960"},
+      { price1: "$8,000",      price2: "$377"},
+      { price1: "€6,000",      price2: "€320"},
+      { price1: "$13,500",     price2: "$548"},
+      { price1: "₦500,000 ",   price2: "₦14,500 "},
+      { price1: "€3,000",      price2: "€180"},
+      { price1: "£7,500",      price2: "£344"},
+      { price1: "$7,000",      price2: "$314"},
+      { price1: "₦250,000 ",   price2: "₦9,120"}
+      ];
   if(contain[0]){
-      var dblpr = parseInt(Math.random()*30);
-      var dbble1 = parseInt(Math.random()*1000);
-      var dbble2 = parseInt(Math.random()*100);
-      var dbspn1 = "$"+dbble1+" Moments AGO";
-      var dbspn2 = "$"+dbble2+" SAVED";
+      var dblpr = parseInt(Math.random()*16);
+      var cpoint = pointsa[dblpr];
+      var dbble1 = cpoint.price1;
+      var dbble2 = cpoint.price2;
+      var dbspn1 = dbble1+" Moments AGO";
+      var dbspn2 = dbble2+" SAVED";
 
        
 

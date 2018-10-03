@@ -14,7 +14,7 @@ html lang="en"
     = render 'shared/html5'
     /*= render 'shared/meta'*/
     = csrf_meta_tags
-    = metamagic description: "TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars or Euros at best Exchange Rates. Send money to Nigeria with the best rates for USD, EUR and GBP swapped for NGN."
+    = metamagic description: "TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars, Ghana Cedis, Euros & Bitcoin at best Naira Exchange Rates. Send money to Nigeria with the best NGN exchange rates for USD, EUR, BTC, GHC & GBP."
     = metamagic keywords: [:keywords, "Tradenaira", "Opensource", "Exchange", "Cryptocurrency"]
     = metamagic title: "Buy or Sell Naira – Transparent Nigerian Naira Exchange Rates"
 
@@ -36,6 +36,11 @@ html lang="en"
     
       ga('create', 'UA-73615965-1', 'auto');
       ga('send', 'pageview');
+
+      script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" 
+      javascript:
+           | (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-3087555010296956", enable_page_level_ads: true });
+
 
   body id='#{body_id}' data-lang="#{locale_name}"
     #wrap

@@ -16,6 +16,8 @@ Peatio::Application.routes.draw do
   get "money/req_success" => 'money#req_success'
   get "money/commission" => 'money#commission'
 
+  post "/blog/admin/images", to: "blogo/admin/images#create", as: "blogo_admin_images"
+
   Blogo::Routes.mount_to(self, at: '/news')
 
   resources :feeds do

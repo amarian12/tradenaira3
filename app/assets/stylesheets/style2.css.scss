@@ -699,24 +699,26 @@ header.fixed-header {background: #029abf !important;}
 }
 
 .banner-map {
-    background: url(/assets/home-bg-clor.jpg);
-    background-repeat: repeat;
-    position: relative; 
-    z-index:9;
-    //height: calc(103vh - 65px); 
-    margin-top:-20px;
-    
+    background: url(/assets/banner_bg_1.png);
+    position: relative;
+    z-index: 9;
+    margin-top: -20px;
+    height: 660px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center top;
 }
+
 
 .dflcontainer{
   width: 1200px;
   margin: 0 auto;
   padding: 0;
-  background: url(/assets/map_banner_bg_1.png);
+  background: url(/assets/transparent_map.png);
   background-repeat: no-repeat;
   background-position: center top;
   background-size:  'contain';
-  min-height: 540px!important;;
+  height: 660px!important;
   position: relative;
   z-index: 10;
 }
@@ -724,7 +726,7 @@ header.fixed-header {background: #029abf !important;}
 .container.dis-table {
     display: table !important;
     height: 100%;
-    top: 340px;
+    /* top: 340px; */
     /* width: 100%; */ position:relative;
 }
 .banner-text.table-cell {
@@ -733,7 +735,7 @@ header.fixed-header {background: #029abf !important;}
     height: 100%;
     margin: auto;
     width: 100%;
-    bottom: 35px;
+    bottom: 40px;
     position: relative;
 }
 
@@ -789,9 +791,9 @@ header.fixed-header {background: #029abf !important;}
     color: #fff200;
 }
 .main-text h1 {
-    font-size: 36px;
+    font-size: 38px;
     font-family: 'poppinsbold';
-    margin:10px 0 8px 0;
+    margin:6px 0;
 }
 .yellow_btn {
     color: #005a71;
@@ -808,15 +810,15 @@ box-shadow: -2px 0px 28px -2px rgba(0, 0, 0, 0.15);
 .main-text p {
     font-size: 16px;
     font-family: 'poppinsregular';
-    margin: 0 0 20px 0; max-width: 63%;
+    margin: auto auto 20px auto; max-width: 63%;
 }
 .main-text:after {
     background: #fff;
-    height: 129px;
+    height: 126px;
     width: 4px;
     position: absolute;
     content: "";
-    top: 5px;
+    top: 4px;
     left: -24px;
 }
 .exchange-section {
@@ -870,7 +872,7 @@ box-shadow: -2px 0px 28px -2px rgba(0, 0, 0, 0.15); padding:12px 15px;
 
 li.ng-binding{ padding:0 15px;}
 .live-ticker p, .live-ticker .fot_siz {
-    font-size: 13px;
+    font-size: 20px;
     font-family: 'poppinsbold';
     color: #363636; margin-bottom:0;
 }
@@ -1172,10 +1174,10 @@ ul.social {margin: 0 0 60px 0;}
 
 /** 20-Sep-2018 Css Start here **/
 
-.about_banner_content .main-text p {max-width: 67%; margin: auto auto 20px;}
-.about_banner_content .main-text h1 span{ color: #fff200; display:block; }
+
+
 .about_banner_content .main-text h1{ margin-bottom: 0px; }
-.about_banner_content .banner-text.table-cell .main-text { text-align: center;}
+
 .about_banner_content .main-text:after{ display: none; }
 .home_head li.language-div a {
     border-radius: 50%;
@@ -2162,6 +2164,75 @@ li.dropdown.account-settings {padding-top: 0;}
 
 
 
+
+
+
+/** send money banner css start here **/
+.inner-dis-table {
+    display: table !important;
+    height: 100%;
+    top: 0px;
+    position: relative;
+}
+
+
+.inner-table-cell {
+    display: table-cell;
+    vertical-align: bottom;
+    height: 100%;
+    margin: auto;
+    width: 100%;
+    bottom: 35px;
+    position: relative;
+}
+
+.inner-main-text {
+    color: #fff;
+    position: relative;
+    max-width: 75%;
+    margin: auto; text-align:center;
+}
+
+
+.inner-main-text h1 {
+    font-size: 38px;
+    font-family: 'poppinsbold';
+    margin: 6px 0;
+}
+
+.inner-main-text h1 span {
+    color: #fff200;
+    display: block;
+}
+.inner-main-text p {
+    font-size: 16px;
+    font-family: 'poppinsregular';
+    margin: auto auto 20px;
+    max-width: 67%;
+}
+
+
+.inner-banner-map {
+    position: relative;
+    z-index: 9;
+    margin-top: -20px;
+    height: 660px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center top !important;
+}
+
+
+/** send money banner css End here **/
+
+
+/** 03 October 2018 css start here **/
+.yellow_span{ color:#fff200; display:block;}
+
+
+
+
+
 /** @media Query Css for Responsive Start here **/
 
 /** Mobile Device responsive Start here **/
@@ -2227,7 +2298,7 @@ ul.social {margin: 0 0 20px 0;}
 .main-text:after{ display: none; }
 .main-text p {
     font-size: 14px;
-    margin: 0 0 10px 0;
+    margin:  auto auto 10px auto;
     max-width: 99% !important;
 }
 .yellow_btn {
@@ -2547,6 +2618,22 @@ header {padding: 9px 0 13px 0;}
     padding-bottom: 30px;
 }
 
+
+
+
+
+
+/** send money baaner responsive css start here **/
+.inner-banner-map {height: 510px;}
+.inner-main-text h1{ font-size:25px;}
+.inner-main-text{ max-width:100%;}
+.inner-main-text p {font-size: 15px;   max-width: 98%;}
+
+
+/** send money baaner responsive css End here **/
+
+
+
 }
 
 
@@ -2591,14 +2678,15 @@ header {padding: 9px 0 13px 0;}
 .header_top_right{ padding: 1px 0 0 0; }
 .main-navbar-header{padding: 8px 0 0 0;}
 .center-menu ul li a {
-    font-size: 14px;
-    padding: 0 5px 0 5px;
+    font-size: 12px;
+    padding: 0 3px 0 3px;
 }
+
 
 .main-text h1{ font-size: 30px; }
 .main-text p {
     font-size: 15px;
-    margin: 0 0 10px 0;
+    margin: auto auto 10px auto;
     max-width: 90%;
 }
 
@@ -2814,7 +2902,7 @@ li.ng-binding {
 }
 
 
-
+.inner-main-text h1{ font-size:32px;}
 
 
 }
@@ -2954,7 +3042,7 @@ li.ng-binding {
       border-radius: 10px;
       position: absolute;
       margin: 15px 0 0px 6px;
-      width: 66%; 
+      width: 78%; 
       font-size:11px; 
       text-transform:uppercase;
        

@@ -68,16 +68,14 @@ div.exchange-section
                         span.label-infodd  
                           = t("last_price")  
             		li#ticker-usdngn-2 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
-                      .fot_siz
-                          span class="buy-color bid last-usdngn-bid" 
-                            |₦&nbsp
-                            span.price   
-                          |&nbsp/&nbsp
-                          span class="sell-color ask last-usdngn-ask"
-                            |₦&nbsp
-                            span.price 
-                          span.label-infodd   
-                            = t("bid_ask")
+                      p
+                        span class="buy-color" ₦
+                        span id="usdngn" class="last-usdngn-bid"
+                        |&nbsp/&nbsp
+                        span class="sell-color" ₦
+                        span id="sell_usdngn" class="last-usdngn-ask"
+                        span.label-infodd  
+                          = t("bid_ask")
                     li class="ng-binding col-md-7 col-sm-12 col-xs-24"
                     	
                         p 
@@ -211,7 +209,7 @@ div.exchange-section
                     p
                       span class="buy-color" &dollar; 
                       span id="btcusd" class="last-btcusd-bid"
-                      |&dollar;/&nbsp
+                      |&nbsp/&nbsp
                       span class="sell-color" &dollar; 
                       span id="sell_btcusd" class="last-btcusd-ask"
                       span.label-infodd 
