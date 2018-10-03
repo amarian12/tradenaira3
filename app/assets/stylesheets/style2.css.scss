@@ -810,7 +810,7 @@ box-shadow: -2px 0px 28px -2px rgba(0, 0, 0, 0.15);
 .main-text p {
     font-size: 16px;
     font-family: 'poppinsregular';
-    margin: auto auto 20px auto; max-width: 63%;
+    margin: 0 0 20px 0; max-width: 63%;
 }
 .main-text:after {
     background: #fff;
@@ -2230,6 +2230,13 @@ li.dropdown.account-settings {padding-top: 0;}
 .yellow_span{ color:#fff200; display:block;}
 
 
+.about_banner_content1 .main-text p { margin: auto auto 20px auto;}
+
+
+
+
+
+
 
 
 
@@ -2298,7 +2305,7 @@ ul.social {margin: 0 0 20px 0;}
 .main-text:after{ display: none; }
 .main-text p {
     font-size: 14px;
-    margin:  auto auto 10px auto;
+    margin:  0 0 10px 0;
     max-width: 99% !important;
 }
 .yellow_btn {
@@ -2686,7 +2693,7 @@ header {padding: 9px 0 13px 0;}
 .main-text h1{ font-size: 30px; }
 .main-text p {
     font-size: 15px;
-    margin: auto auto 10px auto;
+    margin: 0 0 10px 0;
     max-width: 90%;
 }
 
