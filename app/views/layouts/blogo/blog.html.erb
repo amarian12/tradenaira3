@@ -4,7 +4,7 @@
   <title><%= @meta[:title] %></title>
   <meta name="description" content="TradeNAIRA News is Nigeria’s Business News centre. Get up to date Nigerian Financial & Economic News as well as Nigeria’s Political News that matters to the savvy investor & businessman. We have the latest Nigerian Naira Exchange rate data & research as well as Nigerian Business events in London, Lagos, Abuja and New York.">
   <meta charset="UTF-8">
-  <%= render partial: 'blogo/shared/meta' %>
+
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "style2" %>
   
@@ -15,7 +15,14 @@
   <%= javascript_include_tag "jquery.session"%>
   <%= auto_discovery_link_tag :atom, blogo_feed_path %>
   <%= render 'blogo/shared/google_analytics' %>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script> 
+<script> 
+(adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-3087555010296956", enable_page_level_ads: true }); 
+</script>
+
 </head>
+
 <body>
 <div class ="header_height">
 <header class="site-main-header sanc homepage">

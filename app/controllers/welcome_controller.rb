@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  before_action :set_metatags
+  
   layout 'landing'
 
   def index
@@ -12,6 +14,7 @@ class WelcomeController < ApplicationController
     @euroarray = Slider.where("eurotxt is NOT NULL and eurotxt != ''").pluck(:eurotxt)
     #@feeds = Feed.find(:all, :order => "id desc", :limit => 1)
     #User.invite!(:email => "msk@cogzidel.com")
+    
   end
 
   def contact

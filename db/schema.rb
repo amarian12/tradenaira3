@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602122557) do
+ActiveRecord::Schema.define(version: 20181004123718) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -37,13 +37,14 @@ ActiveRecord::Schema.define(version: 20160602122557) do
   create_table "accounts", force: true do |t|
     t.integer  "member_id"
     t.integer  "currency"
-    t.decimal  "balance",                         precision: 32, scale: 16
-    t.decimal  "locked",                          precision: 32, scale: 16
+    t.decimal  "balance",                                    precision: 32, scale: 16
+    t.decimal  "locked",                                     precision: 32, scale: 16
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "in",                              precision: 32, scale: 16
-    t.decimal  "out",                             precision: 32, scale: 16
+    t.decimal  "in",                                         precision: 32, scale: 16
+    t.decimal  "out",                                        precision: 32, scale: 16
     t.integer  "default_withdraw_fund_source_id"
+    t.string   "deposit_address",                 limit: 50
   end
 
   add_index "accounts", ["member_id", "currency"], name: "index_accounts_on_member_id_and_currency", using: :btree
@@ -153,14 +154,16 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.integer  "ticket_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ticketrplyimage", limit: 300
+    t.string   "ticketrplylink",  limit: 300
   end
 
   create_table "deposits", force: true do |t|
     t.integer  "account_id"
     t.integer  "member_id"
     t.integer  "currency"
-    t.decimal  "amount",                 precision: 32, scale: 16
-    t.decimal  "fee",                    precision: 32, scale: 16
+    t.decimal  "amount",                             precision: 32, scale: 16
+    t.decimal  "fee",                                precision: 32, scale: 16
     t.string   "fund_uid"
     t.string   "fund_extra"
     t.string   "txid"
@@ -173,6 +176,9 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.string   "type"
     t.integer  "payment_transaction_id"
     t.integer  "txout"
+    t.string   "fund_iban",              limit: 250
+    t.string   "fund_code",              limit: 250
+    t.string   "fund_account_name",      limit: 250
   end
 
   add_index "deposits", ["txid", "txout"], name: "index_deposits_on_txid_and_txout", using: :btree
@@ -226,10 +232,14 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.integer  "currency"
     t.string   "extra"
     t.string   "uid"
-    t.boolean  "is_locked",  default: false
+    t.boolean  "is_locked",                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
+    t.string   "iban",         limit: 250
+    t.string   "account_name"
+    t.string   "code",         limit: 250
+    t.string   "country",      limit: 250
   end
 
   create_table "id_documents", force: true do |t|
@@ -246,6 +256,7 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.string   "zipcode"
     t.integer  "id_bill_type"
     t.string   "aasm_state"
+    t.string   "trader",             limit: 250
   end
 
   create_table "identities", force: true do |t|
@@ -258,6 +269,7 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.datetime "last_verify_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_type",    limit: 250
   end
 
   create_table "members", force: true do |t|
@@ -271,18 +283,27 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.boolean  "activated"
     t.integer  "country_code"
     t.string   "phone_number"
-    t.boolean  "disabled",       default: false
-    t.boolean  "api_disabled",   default: false
+    t.boolean  "disabled",                   default: false
+    t.boolean  "api_disabled",               default: false
     t.string   "nickname"
     t.datetime "last_logged_at"
+    t.string   "notes",          limit: 250
+    t.text     "sendmail"
+    t.text     "subject"
+    t.text     "contents"
+    t.string   "name"
+    t.string   "sendmailcc",     limit: 250
+    t.string   "dailyrate",      limit: 250
+    t.string   "blockstatus",    limit: 5
   end
 
   create_table "news", force: true do |t|
-    t.string   "name"
+    t.string   "email",      null: false
     t.string   "summary"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "member_id"
   end
 
   create_table "oauth_access_grants", force: true do |t|
@@ -445,9 +466,18 @@ ActiveRecord::Schema.define(version: 20160602122557) do
   add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
 
   create_table "sliders", force: true do |t|
-    t.string   "usdtxt"
-    t.string   "poundtxt"
-    t.string   "eurotxt"
+    t.text     "usdtxt"
+    t.text     "poundtxt"
+    t.text     "eurotxt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "member_id"
+  end
+
+  create_table "subscribers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -477,6 +507,8 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ticketimage", limit: 300
+    t.string   "ticketlink",  limit: 300
   end
 
   create_table "tokens", force: true do |t|
@@ -537,8 +569,8 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.integer  "account_id"
     t.integer  "member_id"
     t.integer  "currency"
-    t.decimal  "amount",     precision: 32, scale: 16
-    t.decimal  "fee",        precision: 32, scale: 16
+    t.decimal  "amount",                        precision: 32, scale: 16
+    t.decimal  "fee",                           precision: 32, scale: 16
     t.string   "fund_uid"
     t.string   "fund_extra"
     t.datetime "created_at"
@@ -546,8 +578,11 @@ ActiveRecord::Schema.define(version: 20160602122557) do
     t.datetime "done_at"
     t.string   "txid"
     t.string   "aasm_state"
-    t.decimal  "sum",        precision: 32, scale: 16, default: 0.0, null: false
+    t.decimal  "sum",                           precision: 32, scale: 16, default: 0.0, null: false
     t.string   "type"
+    t.string   "fund_iban",         limit: 250
+    t.string   "fund_code",         limit: 250
+    t.string   "fund_account_name", limit: 250
   end
 
 end

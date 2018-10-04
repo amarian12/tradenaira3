@@ -2235,6 +2235,20 @@ li.dropdown.account-settings {padding-top: 0;}
 
 
 
+.mailchimperror li {
+    display: block;
+    margin: 3px 0 0 0;
+    color: red;
+}
+
+.mailchimperror {
+    margin: 10px 0 0 0;
+}
+.mailchimpsuccess {
+    font-size: 19px;
+    margin: 18px 0 0 0;
+    color: #029abf;
+}
 
 
 
@@ -2301,7 +2315,7 @@ ul.social {margin: 0 0 20px 0;}
 .footer_menu_block {width: 100%;float: none;}
 
 .main-text h1{ font-size: 22px; margin: 4px 0 4px 0;}
-.main-text{ max-width: 98%; }
+.main-text{ max-width: 100%; }
 .main-text:after{ display: none; }
 .main-text p {
     font-size: 14px;
@@ -2641,6 +2655,29 @@ header {padding: 9px 0 13px 0;}
 
 
 
+/** popup banner responsive css start here **/
+
+.banner-map{ height:550px;}
+.dflcontainer {
+    width: auto;
+    background-position: center center;
+    height: 550px !important;
+   background-size: cover;
+}
+
+/** popup banner responsive css end here **/
+
+.banner_image h3 {
+    font-size: 19px;
+ }
+
+.heading1 {font-size: 20px;}
+.slider_max {max-width: 80%;}
+.faqtitle { font-size: 16px;}
+
+.panel-heading { padding: 8px 14px;}
+
+
 }
 
 
@@ -2688,6 +2725,7 @@ header {padding: 9px 0 13px 0;}
     font-size: 12px;
     padding: 0 3px 0 3px;
 }
+
 
 
 .main-text h1{ font-size: 30px; }
@@ -2912,6 +2950,12 @@ li.ng-binding {
 .inner-main-text h1{ font-size:32px;}
 
 
+
+
+.dflcontainer {width: auto;}
+
+
+
 }
 
 
@@ -2983,6 +3027,7 @@ li.ng-binding {
     top: -18px;
     background-size: 81%;
 }
+.dflcontainer{ width:1010px;}
 
 
 .realstate_content {padding-right: 50px;}
@@ -3005,9 +3050,37 @@ li.ng-binding {
     width: 100%;
 }
 
+.center-menu ul li a {
+    font-size: 14px;
+    padding: 0 11px 0 11px;
+ }
+
+
+.service_text p {
+    font-size: 12px;
+    margin: 0 0 4px 0;
+}
 
 
 }
+
+
+
+
+/** For ipad-pro and small laptop Device Responsive Start here **/  
+
+
+/** @media Query Css for Responsive End here **/
+
+
+
+
+
+
+
+
+
+
 .error-msgs{
   li{
     list-style: none;
@@ -3228,10 +3301,3 @@ li.ng-binding {
 
 
 }
-
-
-
-/** For ipad-pro and small laptop Device Responsive Start here **/	
-
-
-/** @media Query Css for Responsive End here **/

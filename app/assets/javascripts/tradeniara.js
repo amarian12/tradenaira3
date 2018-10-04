@@ -389,5 +389,44 @@ function animatePointer(){
 }
 
 
+function subNewslater($this){
 
+  var formdata = $($this).serialize();
+  var url = $($this).attr("action");
+  var sumitbtn =  $(".subssbscribe");
+  $(".mailchimpsuccess, .mailchimperror").text("");
+  var oldfval = sumitbtn.val();
  
+  sumitbtn.val(oldfval+"...")
+  sumitbtn.attr("disabled",true);
+
+
+
+  $.ajax({
+    url: url,
+    type: "post",
+    data: formdata,
+    dataType: "json",
+    success: function(resp){
+
+      sumitbtn.val(oldfval);
+      $(".subscribemail").val("");
+      if (resp.success) {
+        $(".mailchimpsuccess").text(resp.msg);
+        $(".subscribemail").val("");
+      }else{
+        var errors = "<li class='err-head'>"+resp.msg+"</li>";
+        //errors += resp.errors.join(". ");
+
+         for(var error in resp.errors ){
+          errors += "<li>"+error+": "+resp.errors[error]+" </li>";
+         }
+        $(".mailchimperror").html(errors);
+
+        sumitbtn.removeAttr("disabled");
+      }
+    }
+  })
+  return false;
+
+}

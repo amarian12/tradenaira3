@@ -241,4 +241,16 @@ class ApplicationController < ActionController::Base
     super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
   end
 
+
+   private 
+
+  def set_metatags
+    @title = "Buy or Sell Naira – Transparent Nigerian Naira Exchange Rates"
+    @descrip = "TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. 
+    Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars, 
+    Ghana Cedis, Euros & Bitcoin at best Naira Exchange Rates. 
+    Send money to Nigeria with the best NGN exchange rates for USD, 
+    EUR, BTC, GHC & GBP."
+  end
+
 end

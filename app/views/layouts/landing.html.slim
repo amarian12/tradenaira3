@@ -14,9 +14,11 @@ html lang="en"
     = render 'shared/html5'
     /*= render 'shared/meta'*/
     = csrf_meta_tags
-    = metamagic description: "TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars, Ghana Cedis, Euros & Bitcoin at best Naira Exchange Rates. Send money to Nigeria with the best NGN exchange rates for USD, EUR, BTC, GHC & GBP."
+    
+    meta content=(@descrip) name="description" /
+    title #{@title}
     = metamagic keywords: [:keywords, "Tradenaira", "Opensource", "Exchange", "Cryptocurrency"]
-    = metamagic title: "Buy or Sell Naira – Transparent Nigerian Naira Exchange Rates"
+      
 
     meta http-equiv="content-type" content="text/html; charset=UTF-8"
 

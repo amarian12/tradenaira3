@@ -5,9 +5,14 @@ meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale
       h4
         | SUBSCRIBE FOR OUR NEWSLETTER
 
-      .input_bx
-        input class="email-in" type="email" placeholder="Enter Email Address"    
-        input type="submit" class="btn3" value="SUBSCRIBE"
+      = form_for(neslater, url: "/pages/subscribe", 
+      html: { onSubmit: "return subNewslater(this)"} ) do |f|
+      	.mailchimperror
+        .input_bx
+          
+          = f.email_field :email, class: "email-in subscribemail", placeholder: "Enter Email Address"
+          = f.submit "SUBSCRIBE", class: "btn3 subssbscribe" 
+        .mailchimpsuccess
 
         
 footer.main_footer
@@ -47,9 +52,15 @@ footer.main_footer
 		   .footer_newsletter_input
 		      h3
 		        | Get news from innovations 
-		      .input-div
-		        input type="email" placeholder="Your Mail address"
-		        input class="btn4" type="submit" value="SUBMIT"    
+		      = form_for(neslater, url: "/pages/subscribe", 
+      				html: { onSubmit: "return subNewslater(this)"} ) do |f|  
+      		    .mailchimperror
+      		    .input-div
+      		       = f.email_field :email, class: "subscribemail", placeholder: "Enter Email Address"
+          		   = f.submit "SUBMIT", class: "btn4 subssbscribe" 
+        		.mailchimpsuccess
+        	
+		            
 
 
 	

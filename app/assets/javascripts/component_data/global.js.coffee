@@ -5,8 +5,8 @@ window.GlobalData = flight.component ->
     price  = data.last
     market = [gon.market.ask.currency, gon.market.bid.currency].join("/").toUpperCase()
     brand  = "TradeNAIRA"
-
-    document.title = "#{symbol}#{price} #{market} - #{brand}"
+    if $("#welcome-index")[0]
+      document.title = "#{symbol}#{price} #{market} - #{brand}"
 
   @refreshDepth = (data) ->
     asks = []

@@ -50,6 +50,7 @@ Peatio::Application.routes.draw do
   get "pages/riskwarning" => 'pages#riskwarning'
   get "pages/marketplace" => 'pages#marketplace'
   get "pages/projectfunding" => 'pages#projectfunding'
+  post "pages/subscribe" => 'pages#subscribe'
 
 
 

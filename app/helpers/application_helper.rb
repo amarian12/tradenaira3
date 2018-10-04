@@ -253,6 +253,10 @@ module ApplicationHelper
     Member.new
   end
 
+  def neslater
+    Subscriber.new
+  end
+
 
   alias_method :d, :format_currency
 end
