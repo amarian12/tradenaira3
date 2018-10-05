@@ -8,6 +8,7 @@ html lang="en"
 
     = include_gon
     link rel="stylesheet" href="/assets/style2.css?body=1"
+    link rel="stylesheet" href="/assets/flaticon.css?body=1"
 
     - stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : "application"
     = stylesheet_link_tag stylesheet, media: "all"

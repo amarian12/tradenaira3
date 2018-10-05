@@ -322,7 +322,7 @@ function showFloatingPoints(){
     animatePointer();
   
 
-     setInterval(function() {
+    setInterval(function() {
       
         animatePointer();
          

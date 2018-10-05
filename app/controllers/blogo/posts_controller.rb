@@ -15,6 +15,7 @@ module Blogo
       set_paginator
       @meta = {}
       @meta[:title]     = "#{Blogo.config.site_title} - #{Blogo.config.site_subtitle}"
+      @meta[:description] = 'TradeNAIRA News is Nigeria’s Business News centre. Get up to date Nigerian Financial & Economic News as well as Nigeria’s Political News that matters to the savvy investor & businessman. We have the latest Nigerian Naira Exchange rate data & research as well as Nigerian Business events in London, Lagos, Abuja and New York.'
       @meta[:site_name] = Blogo.config.site_title
       @meta[:keywords]  = Blogo.config.keywords
       @meta[:type]      = 'website'
@@ -28,7 +29,7 @@ module Blogo
 
       @meta = {}
       @meta[:title]       = "#{@post.title} - #{Blogo.config.site_title}"
-      @meta[:description] = @post.meta_description
+      @meta[:description] = @post.meta_description.first(600)
       @meta[:keywords]    = [@post.tags_string, Blogo.config.keywords].flatten.join(", ")
       @meta[:url]         = request.url
       @meta[:image]       = meta_image

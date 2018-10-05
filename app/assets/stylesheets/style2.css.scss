@@ -861,7 +861,7 @@ box-shadow: -2px 0px 28px -2px rgba(0, 0, 0, 0.15); padding:12px 15px;
     border-radius: 22px;
     max-width: 60%;
     margin: auto;
-    padding: 20px 40px 18px 40px;
+    padding: 20px 34px 18px 34px;
     box-shadow: -2px 6px 96px -21px rgba(0, 0, 0, 0.3);
     position: absolute;
     bottom: -43px;
@@ -2253,6 +2253,32 @@ li.dropdown.account-settings {padding-top: 0;}
 
 
 
+/** 5 October 2018 Css Start here **/
+
+   
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after{ 
+  
+  margin-left:0px !important; 
+  font-size:18px !important;
+
+}
+
+
+
+.fot_siz i, .ng-binding i {font-weight: bold;display: inline-block;}
+
+
+
+
+/** 5 October 2018 Css End here **/
+
+
+
+
+
+
+
+
 
 /** @media Query Css for Responsive Start here **/
 
@@ -2658,12 +2684,7 @@ header {padding: 9px 0 13px 0;}
 /** popup banner responsive css start here **/
 
 .banner-map{ height:550px;}
-.dflcontainer {
-    width: auto;
-    background-position: center center;
-    height: 550px !important;
-   background-size: cover;
-}
+ 
 
 /** popup banner responsive css end here **/
 
@@ -2952,7 +2973,7 @@ li.ng-binding {
 
 
 
-.dflcontainer {width: auto;}
+ 
 
 
 
@@ -2980,7 +3001,7 @@ li.ng-binding {
 .main-text{ max-width: 90%; }
 
 #market_list > .nav a{ font-size:14px;  padding: 11px 11px; margin: 0 2px 0 0; }
-.live-ticker.home-trad-list{ max-width: 85%; padding: 20px 20px 18px 20px; }
+.live-ticker.home-trad-list{ max-width: 86%; padding: 20px 16px 18px 16px; }
 
 .choosebox {
     margin: 0 0 20px 0;
@@ -3027,7 +3048,10 @@ li.ng-binding {
     top: -18px;
     background-size: 81%;
 }
-.dflcontainer{ width:1010px;}
+// .dflcontainer{ width:1010px;}
+.banner-map{
+  width: 1010px;
+}
 
 
 .realstate_content {padding-right: 50px;}
@@ -3064,6 +3088,16 @@ li.ng-binding {
 
 }
 
+
+@media screen and (min-width:1200px) and (max-width:1300px) {
+
+.live-ticker.home-trad-list {
+    max-width: 65%;
+    padding: 20px 30px 18px 30px;
+ }
+
+
+ } 
 
 
 
@@ -3231,72 +3265,72 @@ li.ng-binding {
     top: 280px;
     left: 1047px;
   }
-  .dbbble-point-id-17{
-    top: 332px;
-    left: 1020px;
-  }
-  .dbbble-point-id-18{
-    top: 362px;
-    left: 1005px;
-  }
-  .dbbble-point-id-19{
-    top: 122px;
-    left: 995px;
-  }
-  .dbbble-point-id-20{
-    top: 89px;
-    left: 959px;
-  }
+//   .dbbble-point-id-17{
+//     top: 332px;
+//     left: 1020px;
+//   }
+//   .dbbble-point-id-18{
+//     top: 362px;
+//     left: 1005px;
+//   }
+//   .dbbble-point-id-19{
+//     top: 122px;
+//     left: 995px;
+//   }
+//   .dbbble-point-id-20{
+//     top: 89px;
+//     left: 959px;
+//   }
    
-   .dbbble-point-id-21{
-    top: 84px;
-    left: 861px;
-  }
-  .dbbble-point-id-22{
-    top: 201px;
-    left: 804px;
-  }
-  .dbbble-point-id-23{
-    top: 104px;
-    left: 797px;
-  }
-  .dbbble-point-id-24{
-    top: 153px;
-    left: 674px;
-  }
-  .dbbble-point-id-25{
-    top: 194px;
-    left: 517px;
-  }
-.dbbble-point-id-26{
-    top: 57px;
-    left: 351px;
-  }
-  .dbbble-point-id-27{
-    top: 74px;
-    left: 318px;
-  }
-  .dbbble-point-id-28{
-    top: 92px;
-    left: 275px;
-  }
-  .dbbble-point-id-29{
-    top: 104px;
-    left: 255px;
-  }
-  .dbbble-point-id-30{
-    top: 211px;
-    left: 628px;
-  }  
+//    .dbbble-point-id-21{
+//     top: 84px;
+//     left: 861px;
+//   }
+//   .dbbble-point-id-22{
+//     top: 201px;
+//     left: 804px;
+//   }
+//   .dbbble-point-id-23{
+//     top: 104px;
+//     left: 797px;
+//   }
+//   .dbbble-point-id-24{
+//     top: 153px;
+//     left: 674px;
+//   }
+//   .dbbble-point-id-25{
+//     top: 194px;
+//     left: 517px;
+//   }
+// .dbbble-point-id-26{
+//     top: 57px;
+//     left: 351px;
+//   }
+//   .dbbble-point-id-27{
+//     top: 74px;
+//     left: 318px;
+//   }
+//   .dbbble-point-id-28{
+//     top: 92px;
+//     left: 275px;
+//   }
+//   .dbbble-point-id-29{
+//     top: 104px;
+//     left: 255px;
+//   }
+//   .dbbble-point-id-30{
+//     top: 211px;
+//     left: 628px;
+//   }  
 
-  .dbbble-point-id-31{
-    top: 183px;
-    left: 904px;
-  }  
-  .dbbble-point-id-32{
-    top: 183px;
-    left: 904px;
-  }  
+//   .dbbble-point-id-31{
+//     top: 183px;
+//     left: 904px;
+//   }  
+//   .dbbble-point-id-32{
+//     top: 183px;
+//     left: 904px;
+//   }  
 
 
 

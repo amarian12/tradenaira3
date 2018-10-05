@@ -63,25 +63,28 @@ div.exchange-section
                 ul#ticker-usdngn  ng-show="market==='usdngn'"
                     li#ticker-usdngn-1 class="ng-binding col-md-4 col-sm-12 col-xs-24" 
                       .fot_siz.last
-                        | ₦ 
+                        i.flaticon-nigeria-naira-currency-symbol 
                         span.price class="last-usdngn-live-ticker"
                         span.label-infodd  
                           = t("last_price")  
             		li#ticker-usdngn-2 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                       p
-                        span class="buy-color" ₦
+                        span class="buy-color" 
+                        i.flaticon-nigeria-naira-currency-symbol 
                         span id="usdngn" class="last-usdngn-bid"
                         |&nbsp/&nbsp
-                        span class="sell-color" ₦
+                        span class="sell-color"
+                        i.flaticon-nigeria-naira-currency-symbol 
                         span id="sell_usdngn" class="last-usdngn-ask"
                         span.label-infodd  
                           = t("bid_ask")
                     li class="ng-binding col-md-7 col-sm-12 col-xs-24"
                     	
                         p 
-                        	| ₦&nbsp
+                        	i.flaticon-nigeria-naira-currency-symbol 
                            	span.low#low_usdngn
-                            |&nbsp-&nbsp₦&nbsp
+                            |&nbsp-&nbsp
+                            i.flaticon-nigeria-naira-currency-symbol 
                             span.high#high_usdngn
 
                         span.label-infodd   
@@ -96,26 +99,29 @@ div.exchange-section
                     li#ticker class="ng-binding col-md-4 col-sm-12 col-xs-24" 
                     	
                         p 
-                        	| ₦
+                        	i.flaticon-nigeria-naira-currency-symbol 
                             span class="last-gbpngn-live-ticker"
                             span.label-infodd  
                               = t("last_price")   
                     li#ticker-gbpngn-1 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                     	
                         p
-                            span class="buy-color bid"₦ 
+                            span class="buy-color bid"
+                            i.flaticon-nigeria-naira-currency-symbol  
                             span id="buy_btcltc" class="last-gbpngn-bid"
                             |&nbsp / &nbsp
-                            span class="sell-color ask" ₦ 
+                            span class="sell-color ask" 
+                            i.flaticon-nigeria-naira-currency-symbol  
                             span id="sell_cnyltc" class="last-gbpngn-ask" 
                             span.label-infodd        
                               = t("bid_ask")                 
                     li#ticker-gbpngn-2 class="ng-binding col-md-7 col-sm-12 col-xs-24"
                     	
                         p 
-                        	| ₦
+                        	i.flaticon-nigeria-naira-currency-symbol  
                             span id="low_gbpngn"
-                            |&nbsp-&nbsp₦
+                            |&nbsp-&nbsp
+                            i.flaticon-nigeria-naira-currency-symbol  
                             span id="high_gbpngn"
                             span.label-infodd   
                               = t("range")                          
@@ -131,7 +137,7 @@ div.exchange-section
                 ul#ticker-eurngn class="ng-hide" ng-show="market==='eurngn'"
                     li class="ng-binding col-md-4 col-sm-12 col-xs-24"
                         p 
-                        	| ₦
+                        	i.flaticon-nigeria-naira-currency-symbol  
                             span class="last-eurngn-live-ticker"
                             span.label-infodd 
                               = t("last_price")
@@ -139,19 +145,22 @@ div.exchange-section
                     li class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                     	
                         p
-                           	span class="buy-color" ₦ 
+                           	span class="buy-color" 
+                            i.flaticon-nigeria-naira-currency-symbol  
                            	span id="buy_btcltc" class="last-eurngn-bid"
                             |&nbsp/&nbsp
-                           	span class="sell-color" ₦ 
+                           	span class="sell-color"
+                            i.flaticon-nigeria-naira-currency-symbol  
                            	span id="sell_btcltc" class="last-eurngn-ask"
                             span.label-infodd 
                               = t("bid_ask")
                     li class="ng-binding col-md-7 col-sm-12 col-xs-24"
                     	
                         p 
-                        	| ₦
+                        	i.flaticon-nigeria-naira-currency-symbol  
                            	span id="low_eurngn" 
-                            |&nbsp-&nbsp₦
+                            |&nbsp-&nbsp
+                            i.flaticon-nigeria-naira-currency-symbol  
                            	span id="high_eurngn"
                             span.label-infodd 
                               = t("range")
@@ -167,25 +176,28 @@ div.exchange-section
                 ul#ticker-btcngn class="ng-hide" ng-show="market==='btcngn'"
                     li class="ng-binding col-md-4 col-sm-12 col-xs-24"
                         p 
-                        	| ₦
+                        	i.flaticon-nigeria-naira-currency-symbol  
                             span class="last-btcngn-live-ticker"
                         span.label-infodd     
                           = t("last_price")
                     li class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                     	
                         p
-                           	span class="buy-color" ₦ 
+                           	span class="buy-color" 
+                            i.flaticon-nigeria-naira-currency-symbol  
                            	span id="btcngn" class="last-btcngn-bid"
                             |&nbsp/&nbsp
-                           	span class="sell-color" ₦ 
+                           	span class="sell-color" 
+                            i.flaticon-nigeria-naira-currency-symbol  
                            	span id="sell_btcngn" class="last-btcngn-ask"
                             span.label-infodd 
                               = t("bid_ask")
                     li class="ng-binding col-md-7 col-sm-12 col-xs-24"
                         p 
-                        	| ₦
+                        	i.flaticon-nigeria-naira-currency-symbol  
                            	span id="low_btcngn" 
-                            |&nbsp;-&nbsp;₦
+                            |&nbsp;-&nbsp;
+                            i.flaticon-nigeria-naira-currency-symbol  
                            	span id="high_btcngn"
                             span.label-infodd
                               = t("range")
@@ -279,25 +291,28 @@ div.exchange-section
                     li#ticker class="ng-binding col-md-4 col-sm-12 col-xs-24" 
                       
                       p 
-                        | ₦
+                        i.flaticon-nigeria-naira-currency-symbol  
                         span class="last-ghsngn-live-ticker"
                       span.label-infodd   
                         = t("last_price")
                     li#ticker-ghsngn-1 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                       p
-                        span class="buy-color bid"₦ 
+                        span class="buy-color bid"
+                        i.flaticon-nigeria-naira-currency-symbol  
                         span id="buy_ghsngn" class="last-ghsngn-bid"
                         |&nbsp / &nbsp
-                        span class="sell-color ask" ₦ 
+                        span class="sell-color ask" 
+                        i.flaticon-nigeria-naira-currency-symbol  
                         span id="sell_ghsngn" class="last-ghsngn-ask"    
                         span.label-infodd    
                           = t("bid_ask")                   
                     li#ticker-ghsngn-2 class="ng-binding col-md-7 col-sm-12 col-xs-24"
                       
                       p 
-                        | ₦
+                       i.flaticon-nigeria-naira-currency-symbol  
                         span id="low_ghsngn"
-                        |&nbsp-&nbsp₦
+                        |&nbsp-&nbsp
+                        i.flaticon-nigeria-naira-currency-symbol  
                         span id="high_ghsngn"  
                       span.label-infodd  
                         = t("range")                            
@@ -312,7 +327,7 @@ div.exchange-section
                     li#ticker class="ng-binding col-md-4 col-sm-12 col-xs-24" 
                       
                       p 
-                        | ₵
+                        i.flaticon-ghana-cedis
                         span class="last-usdghs-live-ticker"
                       span.label-infodd   
                         = t("last_price")
@@ -320,19 +335,22 @@ div.exchange-section
                     li#ticker-usdghs-1 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                       
                       p
-                        span class="buy-color bid"₵ 
+                        span class="buy-color bid"
+                         i.flaticon-ghana-cedis 
                         span id="buy_btcltc" class="last-usdghs-bid"
                         |&nbsp / &nbsp
-                        span class="sell-color ask"₵ 
+                        span class="sell-color ask"
+                         i.flaticon-ghana-cedis  
                         span id="sell_cnyltc" class="last-usdghs-ask"   
                         span.label-infodd    
                           = t("bid_ask")                  
                     li#ticker-usdghs-2 class="ng-binding col-md-7 col-sm-12 col-xs-24"
                       
                       p 
-                        | ₵
+                        i.flaticon-ghana-cedis 
                         span id="low_usdghs"
-                        |&nbsp-&nbsp₵
+                        |&nbsp-&nbsp
+                        i.flaticon-ghana-cedis 
                         span id="high_usdghs"  
                       span.label-infodd    
                         = t("range")                        
@@ -346,26 +364,29 @@ div.exchange-section
                     li#ticker class="ng-binding col-md-4 col-sm-12 col-xs-24" 
                       
                       p 
-                        | ₵
+                        i.flaticon-ghana-cedis 
                         span class="last-gbpghs-live-ticker"
                       span.label-infodd  
                         = t("last_price") 
                     li#ticker-gbpghs-1 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                       
                       p
-                        span class="buy-color bid"₵ 
+                        span class="buy-color bid"
+                        i.flaticon-ghana-cedis 
                         span id="buy_btcltc" class="last-gbpghs-bid"
                         |&nbsp / &nbsp
-                        span class="sell-color ask"₵
+                        span class="sell-color ask"
+                        i.flaticon-ghana-cedis 
                         span id="sell_cnyltc" class="last-gbpghs-ask"    
                         span.label-infodd   
                           = t("bid_ask")                   
                     li#ticker-gbpghs-2 class="ng-binding col-md-7 col-sm-12 col-xs-24"
                       
                       p 
-                        | ₵
+                        i.flaticon-ghana-cedis 
                         span id="low_gbpghs"
-                        |&nbsp-&nbsp₵
+                        |&nbsp-&nbsp
+                        i.flaticon-ghana-cedis 
                         span id="high_gbpghs"  
                       span.label-infodd   
                         = t("range")                         
@@ -379,25 +400,28 @@ div.exchange-section
                 ul#ticker-btcghs class="ng-hide" ng-show="market==='btcghs'"
                     li#ticker-btcghs-1 class="ng-binding col-md-4 col-sm-12 col-xs-24" 
                       p 
-                        | ₵
+                        i.flaticon-ghana-cedis 
                         span class="last-btcghs-live-ticker"
                       span.label-infodd  
                         = t("last_price")  
                     li#ticker-btcghs-2 class="ng-binding col-md-7 col-sm-12 col-xs-24" 
                       
                       p
-                        span class="buy-color bid"₵ 
+                        span class="buy-color bid"
+                        i.flaticon-ghana-cedis 
                         span id="buy_btcghs" class="last-btcghs-bid"
                         |&nbsp / &nbsp
-                        span class="sell-color ask" ₵ 
+                        span class="sell-color ask"
+                        i.flaticon-ghana-cedis  
                         span id="sell_btcghs" class="last-btcghs-ask"   
                         span.label-infodd            
                           = t("bid_ask")           
                     li#ticker-btcghs-3 class="ng-binding col-md-7 col-sm-12 col-xs-24"
                       p 
-                        | ₵
+                        i.flaticon-ghana-cedis 
                         span id="low_btcghs"
-                        |&nbsp-&nbsp₵
+                        |&nbsp-&nbsp
+                        i.flaticon-ghana-cedis 
                         span id="high_btcghs" 
                       span.label-infodd  
                         = t("range")                            
