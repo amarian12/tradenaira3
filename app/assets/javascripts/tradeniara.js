@@ -322,11 +322,11 @@ function showFloatingPoints(){
     animatePointer();
   
 
-    // setInterval(function() {
+    setInterval(function() {
       
-    //     animatePointer();
+        animatePointer();
          
-    // }, 4000);
+    }, 4000);
 
 }
 
