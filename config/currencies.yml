@@ -4,6 +4,7 @@
   symbol: "₦"
   coin: false
   precision: 2
+  owait: 1
   assets:
     accounts:
       -
@@ -17,6 +18,7 @@
   code: btc
   symbol: "฿"
   coin: true
+  owait: 7
   quick_withdraw_max: 0
   rpc: http://username:password@127.0.0.1:18332
   blockchain: https://blockchain.info/tx/#{txid}
@@ -31,6 +33,7 @@
   code: usd
   symbol: "$"
   coin: false
+  owait: 2
   precision: 2
   assets:
     accounts:
@@ -39,24 +42,26 @@
         address: '6225 0885 6022 3501'
         password: '111111'
         tel: '95555'
-- id: 4
-  key: Euro
-  code: eur
-  symbol: "€"
-  coin: false
-  precision: 2
-  assets:
-    accounts:
-      -
-        bank: '招商银行'
-        address: '6225 0885 6022 3501'
-        password: '111111'
-        tel: '95555'
+# - id: 4
+#   key: Euro
+#   code: eur
+#   symbol: "€"
+#   coin: false
+#   owait: 3
+#   precision: 2
+#   assets:
+#     accounts:
+#       -
+#         bank: '招商银行'
+#         address: '6225 0885 6022 3501'
+#         password: '111111'
+#         tel: '95555'
 - id: 5
   key: Pound
   code: gbp
   symbol: "£"
   coin: false
+  owait: 4
   precision: 2
   assets:
     accounts:
@@ -70,6 +75,7 @@
   code: ghs
   symbol: "₵"
   coin: false
+  owait: 5
   precision: 2
   assets:
     accounts:
@@ -79,18 +85,19 @@
         password: '111111'
         tel: '95555'         
 
-- id: 7
-  key: renminbi
-  code: cny
-  symbol: "¥"
-  coin: false
-  precision: 2
-  assets:
-    accounts:
-      -
-        bank: '招商银行'
-        address: '6225 0885 6022 3501'
-        password: '111111'
-        tel: '95555'
+# - id: 7
+#   key: renminbi
+#   code: cny
+#   symbol: "¥"
+#   coin: false
+#   owait: 6
+#   precision: 2
+#   assets:
+#     accounts:
+#       -
+#         bank: '招商银行'
+#         address: '6225 0885 6022 3501'
+#         password: '111111'
+#         tel: '95555'
 
        

@@ -30,7 +30,7 @@ class MemberMailer < BaseMailer
 
   def contact_mail(user)
   @user = user
-  mail( :to => "shareenair@ptiwebtech.com", 
+  mail( :to => "support@tradenaira.com", 
     :subject => "You Have a Message From Your Website")
   end
 

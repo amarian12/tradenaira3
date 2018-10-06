@@ -17,6 +17,21 @@ module Private
       @banks = Bank.all
       @ngnbanks = Bank.all
 
+      #reorder accounts 
+      #@accounts.map{}
+      #puts "22222222222222222222222222222222222222222222222"
+      accounts = []
+       
+      cids =  Currency.all.sort_by { |k| k[:owait] }.map{|c| c.id}
+      cids.map{|c|  
+        accounts << @accounts.find_by_currency(c)
+      }
+      # puts "@@@@@@@@@@@"
+      # puts @accounts.inspect
+      # puts "2222222222222222"
+      # puts accounts.inspect
+      @accounts = accounts
+
       gon.jbuilder
     end
 

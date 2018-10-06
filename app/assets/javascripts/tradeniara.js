@@ -322,35 +322,36 @@ function showFloatingPoints(){
     animatePointer();
   
 
-    setInterval(function() {
+    // setInterval(function() {
       
-        animatePointer();
+    //     animatePointer();
          
-    }, 4000);
+    // }, 4000);
 
 }
 
 
 function animatePointer(){
+      var nairas = "<i class='flaticon-nigeria-naira-currency-symbol'></i>";
       var contain = $(".dfloatmap");
       var pointsa = [
       { price1: "$5,000",      price2: "$191"},
       { price1: "£3,000",      price2: "£138"},
       { price1: "$12,000",     price2: "$245"},
-      { price1: "₦600,000",    price2: "₦15,360 "},
-      { price1: "₦750,000",    price2: "₦19,750"},
+      { price1: nairas+"600,000",    price2: nairas+"15,360 "},
+      { price1: nairas+"750,000",    price2: nairas+"19,750"},
       { price1: "₵14,000",     price2: "₵720"},
       { price1: "$28,000",     price2: "$495"},
-      { price1: "₦800,000",    price2: "₦17,120 "},
-      { price1: "₦1,350,000",  price2: "₦28,960"},
+      { price1: nairas+"800,000",    price2: nairas+"17,120 "},
+      { price1: nairas+"1,350,000",  price2: nairas+"28,960"},
       { price1: "$8,000",      price2: "$377"},
       { price1: "€6,000",      price2: "€320"},
       { price1: "$13,500",     price2: "$548"},
-      { price1: "₦500,000 ",   price2: "₦14,500 "},
+      { price1: nairas+"500,000 ",   price2: nairas+"14,500 "},
       { price1: "€3,000",      price2: "€180"},
       { price1: "£7,500",      price2: "£344"},
       { price1: "$7,000",      price2: "$314"},
-      { price1: "₦250,000 ",   price2: "₦9,120"}
+      { price1: nairas+"250,000 ",   price2: nairas+"9,120"}
       ];
   if(contain[0]){
       var dblpr = parseInt(Math.random()*16);
@@ -369,7 +370,7 @@ function animatePointer(){
              dbubble += "<span class='dbble-bgr2'>"+dbspn2+"</span>";
            dbubble += "</div>";
 
-           dbubble += "<span class='dbble-pnt'><span>";
+           dbubble += "<span class='dbble-pnt'></span>";
 
         dbubble += "</div>";
 

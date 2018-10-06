@@ -77,8 +77,12 @@ javascript:
 		jQuery(".important").show();
 	}
 	else
-	{
-		document.getElementById("hai").style.display = "none";
+	{   
+
+		if($("#hai")[0])
+			document.getElementById("hai").style.display = "none";
+		
+		  
 	}
 
 
