@@ -96,7 +96,9 @@
         <tfoot>
           <tr>
             <td style="padding:0 30px 20px; font-size: 13px; color: #999">
-              <%= raw t('mailer.footer', contact_mail: ENV['SUPPORT_MAIL']) %>
+              <%= raw t('mailer.footer', contact_mail: ENV['SUPPORT_MAIL']) %><br>
+               
+              <%= link_to "Unsubscribe", unsubscribe_url(@member.email) %>
             </td>
           </tr>
         </tfoot>
@@ -105,4 +107,5 @@
   </tr>
   </tbody>
 </table>
+
 </body></html>

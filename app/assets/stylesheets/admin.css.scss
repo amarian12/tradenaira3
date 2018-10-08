@@ -11,6 +11,10 @@
 @import 'vars/basic';
 @import 'vars/custom';
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
 .dl-horizontal dt {
   width: 120px;
 }
@@ -122,4 +126,12 @@ span.detail-section {
     right: -10px;
     top: 1px;
     z-index: 1;
+}
+
+
+
+#dashboard-subscribers .nav > li > a{
+  padding-left: 6px;
+  padding-right: 6px;
+  font-size: 14px;
 }

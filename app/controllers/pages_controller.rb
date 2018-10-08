@@ -90,6 +90,24 @@ class PagesController < ApplicationController
 
   end
 
+
+  def unsubscribe
+    email = CGI.unescape(params[:email]).gsub("*",".")
+    @subscriber = Subscriber.find_by_email(email)
+    puts "****************************"
+    puts params[:email].inspect
+    puts @subscriber.inspect
+    puts "-------------------------------------"
+      @msg = "Something went wrong, Please try again!"
+      unless @subscriber.nil?
+        @subscriber.status = false
+        @subscriber.save(validate: false)
+         @msg = "Your email was unsubscribed successfully, 
+         hopefully you will back one day! good luck."
+      end
+    
+  end
+
  
 
 end

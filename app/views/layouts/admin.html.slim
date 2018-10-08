@@ -69,6 +69,9 @@ html lang="en"
               - if can? :stat, Member
                 li class = check_active(Member)
                   = link_to Member.model_name.human, admin_statistic_members_path
+
+          li class = check_active('subscribers')  
+            = link_to t('header.subscribers'), main_app.admin_subscribers_path      
               
         ul.nav.navbar-nav.navbar-right
 		  

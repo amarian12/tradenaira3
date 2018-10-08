@@ -1923,6 +1923,7 @@ en:
     withdraw: Withdraw
     viewmore: View More >>
     news: News
+    subscribers: "Subscribers"
   admin_header:
     deposits: Deposits
     withdraws: Withdraws

@@ -1,0 +1,8 @@
+ 
+<%= render "shared/header2" %>
+<div class="unsubscribe pad">
+	<div class="container contactus"> 
+		 <%= @msg %>
+		 <%= link_to "Unsubscribe", unsubscribe_url(@subscriber.email) %>
+	</div>
+</div>

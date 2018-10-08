@@ -1,0 +1,32 @@
+.row
+  .col-xs-24
+    .panel.panel-primary
+      .panel-heading Subscribers Summary
+      .panel-body
+        table.table.table-condensed
+          thead: tr
+            th Email
+            th.text-right Status
+            th.text-right Remove
+          tbody  
+            - @subscribers.each do |s| 
+              tr
+                td: b = s.email 
+                td.text-right
+                  == link_to(main_app.admin_update_subscribers_path(s.id)) do 
+                    - if s.status
+                      i.fa.fa-check-circle 
+                    - else
+                      i.fa.fa-ban
+
+                td.text-right
+                  == link_to(main_app.admin_remove_subscribers_path(s.id), 
+                  method: :delete, :data => {:confirm => 'Are you sure?'} ) do
+                    i.fa.fa-trash
+            tr
+              td colspan="3"
+                = paginate @subscribers          
+
+                        
+                        
+                      
