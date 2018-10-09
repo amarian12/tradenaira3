@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-9">
+    <h1 class="admin-header"><%= t('blogo.admin.'+@category) %></h1>
+
+    <%= link_to "New Banner at home top", new_blogo_admin_banner_path(category: @category ) %>
+
+    <% if @blogo_banners.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Image</th>
+           
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @blogo_banners.each do |blogo_banner| %>
+          <tr>
+            <td><%= blogo_banner.title %></td>
+            <td><%= image_tag blogo_banner.image.url, style: " max-height: 50px;" %></td>
+           
+            <td><%#= link_to 'Show', blogo_banner %></td>
+            <td><%#= link_to 'Edit', edit_blogo_banner_path(blogo_banner) %></td>
+            <td><%#= link_to 'Destroy', blogo_banner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+</div>
+
+
+
+<div id="main">
+
+
+
+
+<br>
+</div>
+
+<%#= link_to 'New Banner', new_blogo_banner_path %>

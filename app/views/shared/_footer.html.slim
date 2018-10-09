@@ -1,12 +1,12 @@
 meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 .newsletter-box
   .container
-    .newsletter_wrapper
+    .newsletter_wrapper#sbsf1
       h4
         | SUBSCRIBE FOR OUR NEWSLETTER
 
       = form_for(neslater, url: "/pages/subscribe", 
-      html: { onSubmit: "return subNewslater(this)"} ) do |f|
+      html: { onSubmit: "return subNewslater(this, '#sbsf1')"} ) do |f|
       	.mailchimperror
         .input_bx
           
@@ -49,11 +49,11 @@ footer.main_footer
 		      li: a href='https://twitter.com/tradenairacom' <i class="fa fa-twitter" aria-hidden="true"></i>
 		      li: a href='https://www.linkedin.com/company/tradenaira' <i class="fa fa-linkedin" aria-hidden="true"></i>
 
-		   .footer_newsletter_input
+		   .footer_newsletter_input#sbsf2
 		      h3
 		        | Get news from innovations 
 		      = form_for(neslater, url: "/pages/subscribe", 
-      				html: { onSubmit: "return subNewslater(this)"} ) do |f|  
+      				html: { onSubmit: "return subNewslater(this, '#sbsf2')"} ) do |f|  
       		    .mailchimperror
       		    .input-div
       		       = f.email_field :email, class: "subscribemail", placeholder: "Enter Email Address"

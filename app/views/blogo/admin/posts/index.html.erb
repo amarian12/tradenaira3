@@ -1,0 +1,42 @@
+<h1 class="admin-header"><%= t('blogo.admin.posts') %></h1>
+
+<div class="row">
+  <div class="col-md-9">
+    <table class="pure-table pure-table-striped">
+      <thead>
+        <tr>
+          <th><%= t('blogo.admin.title') %></th>
+          <th><%= t('blogo.admin.status') %></th>
+          <th><%= t('blogo.admin.author') %></th>
+          <th><%= t('blogo.admin.published_on') %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post|%>
+          <%= render partial: 'post_li', locals: {post: post} %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3">
+     <ul class="nav">
+        <li>
+        <%= link_to "List All Articles", blogo_admin_path %>  
+         
+       </li>
+       <li>
+         <%= link_to "News Home Top (728X90px)", list_blogo_admin_banners_path("news_home_top") %>
+       </li>
+       <li>
+         News Home Side (300X600px)
+       </li>
+       <li>
+         Article Home Top (720X90px)
+       </li>
+       <li>
+         Article Home Side (300X600px)
+       </li>
+     </ul>
+  </div>
+</div>

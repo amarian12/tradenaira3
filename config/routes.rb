@@ -7,6 +7,8 @@ class ActionDispatch::Routing::Mapper
 end
 
 Peatio::Application.routes.draw do
+  
+
   use_doorkeeper
 
   root 'welcome#index'
@@ -21,6 +23,22 @@ Peatio::Application.routes.draw do
   post "/blog/admin/images", to: "blogo/admin/images#create", as: "blogo_admin_images"
 
   Blogo::Routes.mount_to(self, at: '/news')
+
+  scope(path: "news", module: 'blogo', as: 'blogo') do
+    namespace :admin do
+      resources :banners, except: %w(show) do 
+        collection do
+          get 'list/:category', to: "banners#index", as: 'list'
+        end
+      end
+    end
+  end
+
+  namespace :blogo do
+    resources :banners
+  end
+
+
 
   resources :feeds do
     member do

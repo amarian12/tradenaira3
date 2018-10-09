@@ -25,6 +25,7 @@ class Member < ActiveRecord::Base
 
   has_many :authentications, dependent: :destroy
   
+  before_save :make_subscriber
 
   scope :enabled, -> { where(disabled: false) }
 
@@ -268,6 +269,17 @@ class Member < ActiveRecord::Base
     else
       false
     end
+  end
+
+
+  def make_subscriber
+
+    subscriber = Subscriber.find_by_email(self.email)
+
+    if subscriber.nil?
+      Subscriber.create(email: self.email, status: true, name: self.display_name)
+    end
+    
   end
 
 end

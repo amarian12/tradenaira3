@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181004123718) do
+ActiveRecord::Schema.define(version: 20181009104332) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -101,6 +101,22 @@ ActiveRecord::Schema.define(version: 20181004123718) do
 
   add_index "authentications", ["member_id"], name: "index_authentications_on_member_id", using: :btree
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
+
+  create_table "banners", force: true do |t|
+    t.string   "title"
+    t.string   "image"
+    t.integer  "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blogo_banners", force: true do |t|
+    t.string   "title"
+    t.string   "image"
+    t.integer  "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blogo_posts", force: true do |t|
     t.integer  "user_id",          null: false

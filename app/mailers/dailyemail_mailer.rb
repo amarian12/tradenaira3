@@ -1,7 +1,8 @@
 class DailyemailMailer < ActionMailer::Base
-  default from: 'support@tradenaira.com'
+  default from: 'news@tradenaira.com'
 
   def dailymail(member)
+    @date = Date.today
     @member = member
     @getusdall = Trade.where(:currency =>'1').pluck(:price)
     @getusdone = @getusdall.last
@@ -89,7 +90,7 @@ class DailyemailMailer < ActionMailer::Base
     @getrates =  @getrate.to_json.html_safe
 
     if @getrates != '["no"]'
-	    mail to: member.email, subject: 'TradeNAIRA daily rates update'
+	    mail to: member.email, subject: "TradeNAIRA daily rates update #{@date}"
 	end
 
   

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blogo_banner.title %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @blogo_banner.image %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @blogo_banner.category %>
+</p>
+
+<%= link_to 'Edit', edit_blogo_banner_path(@blogo_banner) %> |
+<%= link_to 'Back', blogo_banners_path %>

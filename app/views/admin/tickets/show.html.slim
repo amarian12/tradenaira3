@@ -16,7 +16,8 @@ ul.list-group
             p.text-ignore = @ticket.content
         .row
           .col-xs-12
-            span = "#{I18n.t("private.tickets.from")}: #{@ticket.author.email}"
+            = link_to(admin_member_path(@ticket.author)) do
+              span = "#{I18n.t("private.tickets.from")}: #{@ticket.author.email}"
           .col-xs-5
             i.fa.fa-clock-o.text-info
             span = time_ago_in_words @ticket.created_at
@@ -31,7 +32,8 @@ ul.list-group
               p.text-ignore = c.content
           .row
             .col-xs-12
-              span = "#{I18n.t("private.tickets.from")}: #{c.author.email}"
+              = link_to(admin_member_path(@ticket.author)) do
+                span = "#{I18n.t("private.tickets.from")}: #{c.author.email}"
             .col-xs-5
               i.fa.fa-clock-o.text-info
               span = time_ago_in_words c.created_at

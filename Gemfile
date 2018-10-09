@@ -35,6 +35,7 @@ gem "globalize", "~> 4.0.0"
 gem 'paper_trail', '~> 3.0.1'
 gem 'rails-observers'
 gem 'country_select', '~> 2.1.0'
+gem 'simple_enum', '~> 2.3.0' , require: 'simple_enum/mongoid'
 
 gem 'gon', '~> 5.2.0'
 gem 'pusher'
@@ -81,7 +82,7 @@ gem 'gmaps-autocomplete-rails', github: "kristianmandrup/gmaps-autocomplete-rail
 
 
 gem "jquery-validation-rails"
-
+gem 'sitemap_generator'
 
 group :development, :test do
   gem 'factory_girl_rails'

@@ -2,6 +2,7 @@ en:
   blogo:
     admin: 
       meta_description: "Meta descriptions"
+      news_home_top: "Banners at list all news"
   activerecord:
     models:
       api_tokens: API Token

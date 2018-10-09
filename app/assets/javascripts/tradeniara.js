@@ -390,12 +390,12 @@ function animatePointer(){
 }
 
 
-function subNewslater($this){
+function subNewslater($this, form_id){
 
   var formdata = $($this).serialize();
   var url = $($this).attr("action");
   var sumitbtn =  $(".subssbscribe");
-  $(".mailchimpsuccess, .mailchimperror").text("");
+  $(form_id+" .mailchimpsuccess, "+form_id+" .mailchimperror").text("");
   var oldfval = sumitbtn.val();
  
   sumitbtn.val(oldfval+"...")
@@ -411,10 +411,10 @@ function subNewslater($this){
     success: function(resp){
 
       sumitbtn.val(oldfval);
-      $(".subscribemail").val("");
+      $(form_id+" .subscribemail").val("");
       if (resp.success) {
-        $(".mailchimpsuccess").text(resp.msg);
-        $(".subscribemail").val("");
+        $(form_id+" .mailchimpsuccess").text(resp.msg);
+        $(form_id+" .subscribemail").val("");
       }else{
         var errors = "<li class='err-head'>"+resp.msg+"</li>";
         //errors += resp.errors.join(". ");
@@ -422,7 +422,7 @@ function subNewslater($this){
          for(var error in resp.errors ){
           errors += "<li>"+error+": "+resp.errors[error]+" </li>";
          }
-        $(".mailchimperror").html(errors);
+        $(form_id+" .mailchimperror").html(errors);
 
         sumitbtn.removeAttr("disabled");
       }

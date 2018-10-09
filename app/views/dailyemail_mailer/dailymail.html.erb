@@ -26,7 +26,7 @@
                   <p>Dear <%= @closename %>,</p>
 				  <table width="100%" style="border: 1px solid #ddd;border-collapse: collapse;">
 					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>USD/NGN<p></th>
+						<th rowspan=3 style="border: 1px solid #ddd"><p>USD/NGN</p></th>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
 						<td style="padding:0 10px;"><p><%= raw @getusdone %></p></td>
 					</tr>
@@ -39,7 +39,7 @@
 						<td style="padding:0 10px;"><p><%= raw @getusdaskone %></p></td>
 					</tr>
 					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>GBP/NGN<p></th>
+						<th rowspan=3 style="border: 1px solid #ddd"><p>GBP/NGN</p></th>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
 						<td style="padding:0 10px;"><p><%= raw @getgbpone %></p></td>
 					</tr>
@@ -52,7 +52,7 @@
 						<td style="padding:0 10px;"><p><%= raw @getgbpaskone %></p></td>
 					</tr>
 					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>EUR/NGN<p></th>
+						<th rowspan=3 style="border: 1px solid #ddd"><p>EUR/NGN</p></th>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
 						<td style="padding:0 10px;"><p><%= raw @geteurone %></p></td>
 					</tr>
@@ -65,7 +65,7 @@
 						<td style="padding:0 10px;"><p><%= raw @geteuraskone %></p></td>
 					</tr>
 					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>CNY/NGN<p></th>
+						<th rowspan=3 style="border: 1px solid #ddd"><p>CNY/NGN</p></th>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
 						<td style="padding:0 10px;"><p><%= raw @getcnyone %></p></td>
 					</tr>
@@ -82,7 +82,9 @@
 						<td style="padding:0 10px;"><p><%= raw @getghsaskone %></p></td>
 					</tr>
                   </table>
-                  </table>
+              	</td>
+              	</tr>
+            </table>
                   <p><%= raw t("mailer.please_contact", contact_mail: ENV['SUPPORT_MAIL']) %>  </p>
                   <p><%= raw t('mailer.signature') %></p>
                 </td>
@@ -97,7 +99,6 @@
           <tr>
             <td style="padding:0 30px 20px; font-size: 13px; color: #999">
               <%= raw t('mailer.footer', contact_mail: ENV['SUPPORT_MAIL']) %><br>
-               
               <%= link_to "Unsubscribe", unsubscribe_url(@member.email) %>
             </td>
           </tr>
@@ -107,5 +108,5 @@
   </tr>
   </tbody>
 </table>
-
-</body></html>
+</body>
+</html>
