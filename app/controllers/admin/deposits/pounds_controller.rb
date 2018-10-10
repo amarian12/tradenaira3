@@ -61,11 +61,19 @@ module Admin
           redirect_to :back and return
         end
 
-        @pound.charge!(target_params[:txid])
+        
 
         if @pound.update target_params
+          @pound.charge!(target_params[:txid])
          redirect_to :back and return
         else
+          msg = []
+          if @pound.errors.messages.present?
+            @pound.errors.messages.map{|key,values|
+              msg << " #{key}: #{values[0]}"
+            }
+          end
+          flash[:notice] = msg.join("/n")
           redirect_to :back and return
         end
       end

@@ -3,6 +3,7 @@ class DailyemailMailer < ActionMailer::Base
 
   def dailymail(member)
     @date = Date.today
+    @recent_posts = Blogo::Post.published.limit(2)
     @member = member
     @getusdall = Trade.where(:currency =>'1').pluck(:price)
     @getusdone = @getusdall.last
@@ -80,13 +81,13 @@ class DailyemailMailer < ActionMailer::Base
        @getghsaskone = 0.0
   end
 
-    @membername = IdDocument.find member.id
-    @closename = @membername.name
+    #@membername = IdDocument.find member.id
+    @closename = @member.name
     if @closename.blank?
        @closename = 'user'
 	end
 
-    @getrate =  Member.where(:id => member.id).pluck(:dailyrate)
+    @getrate =  Member.where(:email => member.email).pluck(:dailyrate)
     @getrates =  @getrate.to_json.html_safe
 
     if @getrates != '["no"]'

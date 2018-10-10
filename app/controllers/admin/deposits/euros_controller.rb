@@ -62,11 +62,19 @@ module Admin
           redirect_to :back and return
         end
 
-        @euro.charge!(target_params[:txid])
+        
 
         if @euro.update target_params
+          @euro.charge!(target_params[:txid])
          redirect_to :back and return
         else
+          msg = []
+          if @euro.errors.messages.present?
+            @euro.errors.messages.map{|key,values|
+              msg << " #{key}: #{values[0]}"
+            }
+          end
+          flash[:notice] = msg.join("/n")
           redirect_to :back and return
         end
       end

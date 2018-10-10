@@ -11,7 +11,7 @@
               <tbody>
               <tr>
                 <td width="1%" style=" padding: 10px 10px"></td>
-                <td style="font-size:24px; color:#FFF; padding:10px;">TRADENAIRA</td>
+                <td style="font-size:24px; color:#FFF; padding:10px;"></td>
               </tr>
               </tbody>
           </table></td>
@@ -84,6 +84,20 @@
                   </table>
               	</td>
               	</tr>
+              	<tr>
+              		<table width="100%">
+              			<% @recent_posts.each do |post| %>
+              			<% if post.meta_image %>
+	              			<tr>
+	              				<td>
+	              					<% host = "https://tradenaira.com"  %>
+	              					<%= image_tag(host+""+post.meta_image, style: "max-height: 200px; max-width: 500px;") %>
+	              				</td>
+	              			</tr>
+	              			<% end %>
+              			<% end %>
+              		</table>
+              	</tr>
             </table>
                   <p><%= raw t("mailer.please_contact", contact_mail: ENV['SUPPORT_MAIL']) %>  </p>
                   <p><%= raw t('mailer.signature') %></p>
@@ -99,7 +113,7 @@
           <tr>
             <td style="padding:0 30px 20px; font-size: 13px; color: #999">
               <%= raw t('mailer.footer', contact_mail: ENV['SUPPORT_MAIL']) %><br>
-              <%= link_to "Unsubscribe", unsubscribe_url(@member.email) %>
+              <%= link_to "Unsubscribe", unsubscribe_url(@member.email.gsub(".","*")) %>
             </td>
           </tr>
         </tfoot>

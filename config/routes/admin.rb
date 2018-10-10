@@ -2,6 +2,8 @@ namespace :admin do
   get '/', to: 'dashboard#index', as: :dashboard
   get '/subscribers', to: 'dashboard#subscribers', as: :subscribers
   get '/update_subscribers/:id', to: 'dashboard#update_subscribers', as: :update_subscribers
+  get '/new_subscriber', to: 'dashboard#new_subscriber', as: :new_subscriber
+  post '/subscribers', to: 'dashboard#create_subscribers', as: :create_subscribers
   delete '/remove_subscribers/:id', to: 'dashboard#remove_subscribers', as: :remove_subscribers
 
   get '/members', to: 'members#index'

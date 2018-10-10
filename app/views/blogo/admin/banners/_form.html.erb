@@ -1,7 +1,8 @@
+<div class="banner_edit_form">
 <div class="row">
-  <div class="col-md-9">
-
-<%= form_for [:blogo, :admin, @blogo_banner], method: :post,
+  <div class="col-md-22">
+<div class="form_css">
+<%= form_for [:blogo, :admin, @blogo_banner], 
 html: {id: 'post-form', class: 'pure-form pure-form-stacked', multipart: true } do |f| %>
   <%= f.hidden_field :category %>
   <% if @blogo_banner.errors.any? %>
@@ -17,11 +18,11 @@ html: {id: 'post-form', class: 'pure-form pure-form-stacked', multipart: true } 
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
  
@@ -32,3 +33,4 @@ html: {id: 'post-form', class: 'pure-form pure-form-stacked', multipart: true } 
 
 </div>
 </div>
+</div></div>

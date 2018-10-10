@@ -1,7 +1,8 @@
+<div class="spce_top">
 <h1 class="admin-header"><%= t('blogo.admin.posts') %></h1>
 
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-18 left_table_box">
     <table class="pure-table pure-table-striped">
       <thead>
         <tr>
@@ -19,24 +20,10 @@
       </tbody>
     </table>
   </div>
-  <div class="col-md-3">
-     <ul class="nav">
-        <li>
-        <%= link_to "List All Articles", blogo_admin_path %>  
-         
-       </li>
-       <li>
-         <%= link_to "News Home Top (728X90px)", list_blogo_admin_banners_path("news_home_top") %>
-       </li>
-       <li>
-         News Home Side (300X600px)
-       </li>
-       <li>
-         Article Home Top (720X90px)
-       </li>
-       <li>
-         Article Home Side (300X600px)
-       </li>
-     </ul>
+  <div class="col-md-6 right_img_box">
+    <%= render partial: '/blogo/admin/sidebar' %>
   </div>
-</div>
+     
+ </div>
+      
+ </div>

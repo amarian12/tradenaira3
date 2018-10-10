@@ -19,6 +19,21 @@
   width: 120px;
 }
 
+.panel-left{
+  float: left;
+ 
+}
+
+.panel-right{
+  float: right;
+  a{
+    color: #fff;
+  }
+}
+.panel-heading{
+  min-height: 40px;
+}
+
 .dl-horizontal dd {
   margin-left: 140px;
 }
@@ -134,4 +149,9 @@ span.detail-section {
   padding-left: 6px;
   padding-right: 6px;
   font-size: 14px;
+}
+
+.blogo-admin{
+  padding: 0;
+  margin: 0 auto;
 }

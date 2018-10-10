@@ -39,5 +39,24 @@ module Admin
 
     end
 
+    def new_subscriber
+        @subscriber = Subscriber.new
+        render "subscriber_form"
+    end
+
+    def create_subscribers
+         @subscribers = []
+         params[:subscriber][:email].split(",").map{|email| 
+            subs = Subscriber.new(email: email.strip, status: true)
+         
+          @subscribers <<  subs if subs.save 
+      
+         }
+
+        # render partial: "list_subscribers"
+    end
+
+    
+
   end
 end

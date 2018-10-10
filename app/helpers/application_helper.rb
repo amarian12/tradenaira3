@@ -257,6 +257,16 @@ module ApplicationHelper
     Subscriber.new
   end
 
+  def rand_banner category
+    banner = nil
+    banners = Blogo::Banner.send(category)
+    if banners.present?
+      randval = rand(banners.count+1)-1
+      banner = banners[randval]
+    end
+    banner
+  end
+
 
   alias_method :d, :format_currency
 end

@@ -34,9 +34,7 @@ Peatio::Application.routes.draw do
     end
   end
 
-  namespace :blogo do
-    resources :banners
-  end
+  
 
 
 

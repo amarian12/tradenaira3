@@ -1,0 +1,32 @@
+.row
+  .col-xs-24
+    .panel.panel-primary
+      .panel-heading
+        .panel-left 
+          | Create Subscribers from here.
+        .panel-right
+          = link_to "Show all Subscribers", admin_subscribers_path  
+
+      = simple_vertical_form_for([:admin, @subscriber]) do |f|
+        = f.text_area :email, class: "form-control", cols: "10", rows: 10,
+          placeholder: "Past here or write emails by separted by commas Ex.: abc@example.com, abd@test.com"
+        = f.submit("Save", class: "btn btn-default")  
+
+
+
+/ .row
+/   .col-md-24
+/     = simple_vertical_form_for([:admin, @subscriber]) do |f|
+/       = f.text_area :email, class: "form-control", cols: "10", rows: 10,
+/       placeholder: "Past here or write emails by separted by commas Ex.: abc@example.com, abd@test.com"
+
+/       = f.submit("Save")
+
+
+
+
+
+
+/= simple_vertical_form_for [:admin, @subscriber] do |f|
+   
+ 

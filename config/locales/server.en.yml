@@ -2,7 +2,10 @@ en:
   blogo:
     admin: 
       meta_description: "Meta descriptions"
-      news_home_top: "Banners at list all news"
+      news_home_top: "News Home Top (728X90px) Banner"
+      news_home_side: "News Home Side (300X600px) Banner"
+      article_home_top: "Article Home Top (728X90px) banner"
+      article_home_side:  "Article Home Side (300X600px) Banner"
   activerecord:
     models:
       api_tokens: API Token

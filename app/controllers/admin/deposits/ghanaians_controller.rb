@@ -62,11 +62,19 @@ module Admin
           redirect_to :back and return
         end
 
-        @ghanaian.charge!(target_params[:txid])
+        
 
         if @ghanaian.update target_params
+          @ghanaian.charge!(target_params[:txid])
          redirect_to :back and return
         else
+          msg = []
+          if @ghanaian.errors.messages.present?
+            @ghanaian.errors.messages.map{|key,values|
+              msg << " #{key}: #{values[0]}"
+            }
+          end
+          flash[:notice] = msg.join("/n")
           redirect_to :back and return
         end
         

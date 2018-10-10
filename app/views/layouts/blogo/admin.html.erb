@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blogo</title>
+  <%= javascript_include_tag "blogo/admin/application" %>
+
+  <% if Blogo.config.use_ckeditor %>
+    <%= javascript_include_tag "blogo/admin/ckeditor" %>
+  <% end %>
+
+  <%= stylesheet_link_tag "blogo/admin" %>
+  <%= stylesheet_link_tag "style2" %>
+  <%= stylesheet_link_tag "admin" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body class="blogo-admin">
+  <div class="container-fluid">
+    <div class="blogo-contaner-inner">
+  <% if blogo_current_user %>
+    <div id="admin-menu">
+      <%= render "blogo/admin/shared/nav_bar" %>
+    </div>
+  <% end %>
+
+  <div id="admin-container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}", class: (name == :notice ? "alert alert-info" : "alert alert-error") %>
+    <% end %>
+
+    <%= yield %>
+
+    
+  </div>
+</div>
+</div>
+</body>
+</html>

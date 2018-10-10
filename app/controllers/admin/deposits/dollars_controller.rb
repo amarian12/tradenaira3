@@ -62,11 +62,19 @@ module Admin
           redirect_to :back and return
         end
 
-        @dollar.charge!(target_params[:txid])
+        
 
         if @dollar.update target_params
+          @dollar.charge!(target_params[:txid])
          redirect_to :back and return
         else
+           msg = []
+          if @dollar.errors.messages.present?
+            @dollar.errors.messages.map{|key,values|
+              msg << " #{key}: #{values[0]}"
+            }
+          end
+          flash[:notice] = msg.join("/n")
           redirect_to :back and return
         end
         

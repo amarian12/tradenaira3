@@ -1860,7 +1860,7 @@ img.email_ico {
 
 .header_height {min-height: 58px;}
 .header_height header.homepage{ background: #029abf !important; }
-.blog_top_bar{ background: #e3e3e3; padding: 15px 0; margin: 0 0 40px 0; }
+.blog_top_bar{ background: #e3e3e3; padding: 15px 0; margin: 0; }
 .blue_heading{ color: #029bbf; font-size: 22px; margin: auto;font-family: 'poppinsbold'; }
 .blue_heading a{ color:#029bbf; }
 .right_top_bar p {color: #595959;font-size: 15px;margin: auto; padding: 4px 0 0 0;}
@@ -1956,7 +1956,7 @@ img.email_ico {
 }
 
  .post_listing_content span{ color: #171717; font-size: 13px; font-weight: normal;}
-  .post_listing_content span a{ color: #171717;}
+  .post_listing_content span a{ color: #171717; padding:0px !important;}
 
 
 .author_address img {padding-right: 8px;}
@@ -2106,7 +2106,7 @@ ul.pure-paginator.paginator {
     font-size: 25px;
     margin: 10px 0 20px 0;
 }
-.blog-detail { padding: 30px 0 40px 0;}
+.blog-detail { padding: /* 3 */0px 0 40px 0;}
 
 .article-tags {float: left; margin:0 0 20px 0;}
 .posted { float: right;}
@@ -2126,7 +2126,7 @@ ul.pure-paginator.paginator {
 
 .posted p {margin: auto;}
 
-.post-slide .heading3 {margin: 0 0 30px 0;}
+.post-slide .heading3 {margin: 20px 0 30px 0;}
 
 .post-slide li {display: block;}
 
@@ -2536,12 +2536,100 @@ li.dropdown.account-settings {padding-top: 0;}
 
 
 
-
-
-
-
-
 /** 9 October 2018 css End here **/
+
+
+/** 10 October 2018 css Start here **/
+
+.pure-button {
+    padding: .60em .5em !important;
+    font-size: 13px !important;
+    display: inline-block;
+    margin: 0 0 4px 0;
+}
+.pure-table td, .pure-table th{ padding: 9px 4px !important; font-size:13px;}
+
+.pure-table{ width:100%;}
+
+.right_img_box ul.nav {
+    border: 2px solid #cac9c9;
+    padding: 10px 10px 30px;
+}
+
+.inner_left_table_box td, .inner_left_table_box th {
+    padding: 11px 14px !important;
+    border: 1px solid #cbcbcb;
+}
+
+
+.inner_left_table_box table{ width:98%;}
+
+.admin-header{ margin-top:0px; margin-bottom:18px;}
+.banner_row ul.nav {
+    margin-top: 30px;
+}
+
+.spce_top {
+    margin: 40px 0 0 0;
+}
+
+/* .inner_left_table_box table td:empty {
+    empty-cells: hide;
+    display: none;
+}
+ */
+
+.inner_left_table_box a {
+    margin: 0 0 10px 0;
+    display: block;
+}
+
+
+.uploadimage {padding: 24px 0;}
+.side_uploadimg {
+    margin: 20px 0 10px;
+}
+.banner_edit_form .field {
+    margin: 23px 0;
+}
+
+
+.banner_edit_form label {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 5px;
+    display: block;
+}
+.banner_edit_form input {
+    border: 1px solid #a5a5a5;
+    width: 100%;
+    border-radius: 2px !important;
+}
+input[type="file"] {
+    display: block;
+    border: none !important;
+}
+
+
+.banner_edit_form input[type="submit"] {
+    background: #029bbf;
+    border: 1px solid #029bbf;
+    color: #fff;
+    height: 45px;
+    border-radius: 35px !important;
+    padding: 0 40px 0 40px;
+    text-transform: uppercase;
+    font-size: 16px; width:auto;
+}
+
+.form_css {
+    background: #f1f1f1;
+    padding: 1px 25px 22px 25px;
+}
+
+.edit_baner .heading2 {margin: 0 0 20px 0;}
+
+/** 10 October 2018 css End here **/
 
 
 
@@ -3061,6 +3149,9 @@ header {padding: 9px 0 13px 0;}
 .about_banner_content1 {
     top: -220px !important;
 }
+
+
+
 
 }
 

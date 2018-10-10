@@ -62,11 +62,19 @@ module Admin
           redirect_to :back and return
         end
 
-        @naira.charge!(target_params[:txid])
+        
 
         if @naira.update target_params
+          @naira.charge!(target_params[:txid])
          redirect_to :back and return
         else
+          msg = []
+          if @naira.errors.messages.present?
+            @naira.errors.messages.map{|key,values|
+              msg << " #{key}: #{values[0]}"
+            }
+          end
+          flash[:notice] = msg.join("/n")
           redirect_to :back and return
         end
         

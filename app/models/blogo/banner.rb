@@ -2,7 +2,7 @@ class Blogo::Banner < ActiveRecord::Base
 
 	mount_uploader :image, FileUploader
 
-	validates :category, presence: true
+	validates :category, :image, presence: true
 
 	#as_enum category: [:news_home_top, :news_home_side, :article_home_top, :article_home_side]
 

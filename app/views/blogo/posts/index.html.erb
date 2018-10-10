@@ -7,18 +7,30 @@
   </div>
   <div class="right_top_bar">
     <p><%= Blogo.config.site_subtitle %></p>
+     
   
   </div>
 </div>
 </div>
 </div>
+
+
+
 <% unless @paginator.nil?%>
-
-
 <!-- blog listing wraper Section start here -->
 <div class="blog_listing">
   <div class="container">
     <div class="blog_wraper overflow-css">
+        <div class="uploadimage text-center">
+ 
+            <% banner = rand_banner(:news_home_top) %>
+            <%# if Blogo.news_home_top.present? %>
+            <% unless banner.nil? %>
+            <%= image_tag(banner.image.url, width: 728, height: 90, 
+            class: "banner top_banner", alt: banner.title, title: banner.title)  %>
+            <%  end %>
+              
+            </div>
         <div class="blog_left_listng">
            <div class="blog_main_post">
               <div class="main_post_img">
@@ -89,11 +101,6 @@
   <%= f.submit 'Search',class: "btn1" %>
 <% end %>
 
-
-<!-- <form class="search_blog" action="/action_page.php">
-  <input type="text" placeholder="" name="search">
-  <button class="btn1" type="submit">Search</button>
-</form> -->
 </div>
  
     <% if @recent_posts %>
@@ -119,6 +126,17 @@
   <% end %>
     </ul>
   <% end %>
+</div>
+
+<div class="side_uploadimg text-center">
+
+    <% banner = rand_banner(:news_home_side) %>
+    <%# if Blogo.news_home_top.present? %>
+    <% unless banner.nil? %>
+    <%= image_tag(banner.image.url, width: 300, height: 600, 
+    class: "banner side_banner", alt: banner.title, title: banner.title)  %>
+    <%  end %>
+ 
 </div>
 
 <div class="tag_list">
