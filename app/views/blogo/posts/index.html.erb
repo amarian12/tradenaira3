@@ -21,13 +21,20 @@
 <div class="blog_listing">
   <div class="container">
     <div class="blog_wraper overflow-css">
-        <div class="uploadimage text-center">
+        <div class="uploadimage text-center banner-wrap-top">
  
             <% banner = rand_banner(:news_home_top) %>
             <%# if Blogo.news_home_top.present? %>
             <% unless banner.nil? %>
             <%=link_to image_tag(banner.image.url, width: 728, height: 90, 
             class: "banner top_banner", alt: banner.title, title: banner.title) , banner.target_link, target: "_blank" %>
+
+                <% unless banner.settings.nil? %>
+                  <div class="advert-banner">
+                    <%= raw banner.settings %>
+                  </div>
+                <% end %>
+
             <%  end %>
               
             </div>
@@ -128,13 +135,20 @@
   <% end %>
 </div>
 
-<div class="side_uploadimg text-center">
+<div class="side_uploadimg text-center banner-wrap-side">
 
     <% banner = rand_banner(:news_home_side) %>
     <%# if Blogo.news_home_top.present? %>
     <% unless banner.nil? %>
     <%=link_to image_tag(banner.image.url, width: 300, height: 600, 
     class: "banner side_banner", alt: banner.title, title: banner.title), banner.target_link, target: "_blank" %>
+
+    <% unless banner.settings.nil? %>
+      <div class="advert-banner">
+        <%= raw banner.settings %>
+      </div>
+    <% end %>
+
     <%  end %>
  
 </div>

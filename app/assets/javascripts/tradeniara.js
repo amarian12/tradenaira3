@@ -340,7 +340,7 @@ function animatePointer(){
       { price1: "$12,000",     price2: "$245"},
       { price1: nairas+"600,000",    price2: nairas+"15,360 "},
       { price1: nairas+"750,000",    price2: nairas+"19,750"},
-      { price1: "₵14,000",     price2: "₵720"},
+      { price1: "GH₵14,000",     price2: "GH₵720"},
       { price1: "$28,000",     price2: "$495"},
       { price1: nairas+"800,000",    price2: nairas+"17,120 "},
       { price1: nairas+"1,350,000",  price2: nairas+"28,960"},

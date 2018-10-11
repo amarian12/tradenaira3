@@ -17,6 +17,9 @@ class WelcomeController < ApplicationController
     
   end
 
+  def advertise
+  end
+
   def contact
    @user = Member.new(member_params)
    errors = false

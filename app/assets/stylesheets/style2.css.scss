@@ -63,6 +63,35 @@ img {
     max-width: 100%;
 }
 
+.banner-wrap-top{
+  position: relative;
+  .advert-banner{
+    bottom: 21px;
+    right: 149px;
+  }
+}
+
+.banner-wrap-side{
+  position: relative;
+  .advert-banner{
+    bottom: 7px;
+    right: 19px;
+  }
+}
+.advert-banner{
+  position: absolute;
+  
+  color: #fff;
+  a{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: underline !important;
+  }
+  a:hover{
+    color: #029ABF;
+  }
+}
+
 a:focus, button:focus{ outline: none; text-shadow: none; }
 body{ font-family:'poppinsregular' !important; font-size:15px !important; background:none !important;}
 a, a:hover{ text-decoration:none !important;}
@@ -2585,7 +2614,7 @@ li.dropdown.account-settings {padding-top: 0;}
 }
 
 
-.uploadimage {padding: 24px 0;}
+.uploadimage {padding: 19px 0;}
 .side_uploadimg {
     margin: 20px 0 10px;
 }
