@@ -20,7 +20,7 @@
   coin: true
   owait: 7
   quick_withdraw_max: 0
-  rpc: http://username:password@127.0.0.1:18332
+  rpc: http://bitcoinrpc:BuopnpHeCjzXme68wrVapEnzRY1MpRzTeSjAMNBWsWeN@127.0.0.1:18332
   blockchain: https://blockchain.info/tx/#{txid}
   address_url: https://blockchain.info/address/#{address}
   assets:

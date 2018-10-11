@@ -6,10 +6,9 @@
         <% banner = rand_banner(:article_home_top) %>
         <%# if Blogo.news_home_top.present? %>
         <% unless banner.nil? %>
-        <%= image_tag(banner.image.url, 
+        <%=link_to image_tag(banner.image.url, 
         width: 728, height: 90, class: "banner top_banner",
-        alt: banner.title, title: banner.title
-        )  %>
+        alt: banner.title, title: banner.title), banner.target_link, target: "_blank"  %>
         <%  end %>
         </div>
     <div class="blog_left_listng details_listing">
@@ -179,8 +178,8 @@
         <% banner = rand_banner(:article_home_side) %>
         <%# if Blogo.news_home_top.present? %>
         <% unless banner.nil? %>
-        <%= image_tag(banner.image.url, width: 300, height: 600, 
-        class: "banner side_banner", alt: banner.title, title: banner.title)  %>
+        <%=link_to image_tag(banner.image.url, width: 300, height: 600, 
+        class: "banner side_banner", alt: banner.title, title: banner.title), banner.target_link, target: "_blank" %>
         <%  end %>
       </div>
   

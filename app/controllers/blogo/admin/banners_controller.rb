@@ -63,7 +63,7 @@ class BannersController < BaseController
     end
 
     def blogo_banner_params
-      params.require(:banner).permit(:title, :image, :category)
+      params.require(:banner).permit(:title, :image, :category, :target_link)
     end
 
     def set_metatags
