@@ -59,10 +59,10 @@ scss:
     }
     
 javascript:
-	$(window).scroll(function()
-	{
-    var pos = $(this).scrollTop();
-    
-    if(pos > 0) {
-        $('.fundsbtn + li a span').text("Add funds or Withdraw from your account");
-    }
+    $(window).scroll(function(){ 
+    var pos = $(this).scrollTop(); 
+    	if(pos > 0){  
+    		$('.fundsbtn + li a span').text("Add funds or Withdraw from your account"); 
+    	}
+    } );
+

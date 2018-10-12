@@ -30,7 +30,7 @@
                 <%= I18n.localize(@post.published_at.to_date, format: :long) %>
            </time>
         </div>
-       <div class='social_icon '>
+        <div class='social_icon '>
           <span class='twitter'>
             <a class='twitter-share-button' data-url='<%= request.original_url %>' data-via='<%= Blogo.config.twitter_username %>' href='http://twitter.com/share'>Tweet</a>
           </span>
@@ -61,7 +61,7 @@
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
       </script>
-      <% if Blogo.config.disqus_shortname %>
+     <% if Blogo.config.disqus_shortname %>
         <section id='disqus-comments'>
           <h1><%= t('blogo.user.comments') %></h1>
           <div id="disqus_thread" aria-live="polite"></div>
@@ -80,10 +80,9 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
           }());
         </script>
-      <% end %>
+       <% end %> 
 
-
-    <!-- <div id="disqus_thread"></div>
+ <!-- <div id="disqus_thread"></div>
     <script>
 
     /**
@@ -103,7 +102,7 @@
     })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-     -->
+    -->
 
     <div class="post-slide">
       <h3 class="heading3 text-center">LATEST BLOG</h3>

@@ -68,6 +68,7 @@ img {
   .advert-banner{
     bottom: 21px;
     right: 149px;
+    display: block!important;
   }
 }
 
@@ -76,6 +77,7 @@ img {
   .advert-banner{
     bottom: 7px;
     right: 19px;
+    display: block!important;
   }
 }
 .advert-banner{
@@ -90,6 +92,27 @@ img {
   a:hover{
     color: #029ABF;
   }
+}
+
+.money-contaner{
+  text-align: center;
+  margin: 15px 0;
+}
+.details-container{
+  position: relative;
+}
+.transfer-contaer{
+  position: absolute;
+  top: 0;
+  left: auto;
+  z-index: 999;
+  background: #fff;
+}
+
+
+.send-or-requestmny:hover, .send-or-requestmny:active, 
+.strtdep.adddepbtn:hover, .strtdep.adddepbtn:active { 
+  color: yellow!important;
 }
 
 a:focus, button:focus{ outline: none; text-shadow: none; }
@@ -2104,12 +2127,18 @@ img.email_ico {
 .paginator li a {
     font-family: 'poppinsbold';
     color: #919192;
-    font-size: 16px;
+    font-size: 16px !important;
     border: 1px solid #919192;
     display: inline-block;
     padding: 5px 13px 5px 13px;
-    border-radius: 9px; margin: 0 4px 0 0;
+    border-radius: 50%;
+    margin: 0 4px 0 0;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 !important;
 }
+
 .paginator li a.pure-button-active{ color: #029bbf; border-color: #029bbf; }
 
 ul.pure-paginator.paginator {
@@ -2661,6 +2690,67 @@ input[type="file"] {
 /** 10 October 2018 css End here **/
 
 
+/** 12 October 2018 css Start here **/
+
+.box_btn_wrap {
+    padding: 50px 0;
+    text-align: center;
+    max-width: 70%;
+    margin: auto;
+}
+.bx_content h4 {
+    color: #029abf;
+    font-size: 17px;
+    margin: 0;
+}
+.bx_content p {
+    margin: 15px 0 0 0;
+    font-size: 14px;
+}
+.box_btn_wrap li {
+    width: 50%;
+    float: left;
+    display: block; padding:16px;
+}
+.li_bx_inner {
+    border: 1px solid #a2a2a2; min-height:340px;
+    border-radius: 4px; padding:15px 0px 0 0; height:100%;
+    position:relative;
+}
+
+
+
+.btm_colour_bx {
+    color: #fff;
+    background: #029abf;
+    padding: 7px 20px;
+    font-size: 14px;
+    position:relative;
+    bottom:0; width:100%;
+}
+
+
+.btm_colour_bx a {
+    text-decoration: underline !important;
+    color: #fff; font-family:"poppinsbold";
+}
+
+.btm_colour_bx i.fa.fa-shield {
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.top_bx_cn {padding: 10px 20px 30px 20px;}
+.li_bx_inner h3 {
+    font-size: 22px;
+    margin: 0;
+}
+.bx_img {
+    padding: 30px 0;
+}
+
+
+/** 12 October 2018 css End here **/
 
 
 /** @media Query Css for Responsive Start here **/
@@ -3180,6 +3270,13 @@ header {padding: 9px 0 13px 0;}
 }
 
 
+.box_btn_wrap li {width: 100%;float: none;}
+.box_btn_wrap {max-width: 90%;}
+.li_bx_inner {min-height:inherit;}
+
+
+
+.btm_colour_bx { position:relative;}
 
 
 }
@@ -3558,9 +3655,11 @@ body {
 .banner-text {  top: -255px;}
 
 
- 
+ .box_btn_wrap li {width: 50%;}
 
+.box_btn_wrap {max-width: 90%;}
 
+.li_bx_inner {min-height:370px;}
 
 }
 

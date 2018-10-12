@@ -48,6 +48,8 @@ module Private
       end
       render nothing: true
     end
+   def transfer
+   end 
 
   end
 end

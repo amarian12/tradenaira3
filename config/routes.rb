@@ -132,7 +132,7 @@ Peatio::Application.routes.draw do
         post :gen_address
       end
     end
-
+    
     namespace :deposits do
       Deposit.descendants.each do |d|
         resources d.resource_name do
@@ -195,6 +195,9 @@ Peatio::Application.routes.draw do
     post "posts/search", to: "blogo/posts#search", as: "blogo_search"
     post "welcome/contact", to: "welcome#contact"
     get "welcome/contact", to: "welcome#contact"
+     get "/advertise", to: "welcome#advertise"  
+
+  
   
   draw :admin
 

@@ -6,8 +6,18 @@ app.directive 'accounts', ->
     controller: ($scope, $state) ->
       ctrl = @
       @state = $state
-      if window.location.hash == ""
+
+       
+
+      if window.location.hash == "" || window.location.hash == "#/transfer"
         @state.transitionTo("deposits.currency", {currency: Account.first().currency})
+        if window.location.hash == "#/transfer"
+          setTimeout (->
+            #$('#transfer-contaer').show 0
+            return
+          ), 2000
+          
+          
 
       $scope.accounts = Account.all()
 
@@ -35,6 +45,14 @@ app.directive 'accounts', ->
         ctrl.state.transitionTo("withdraws.currency", {currency: account.currency})
         ctrl.selectedCurrency = account.currency
         ctrl.currentAction = "withdraws"
+
+      @openTransferPage = (accounts) ->
+        window.location.hash = "transfer"
+        #$("#transfer-contaer").show(0)
+         
+        #ctrl.currentAction = "transfer"
+
+         
 
       do @event = ->
         Account.bind "create update destroy", ->
