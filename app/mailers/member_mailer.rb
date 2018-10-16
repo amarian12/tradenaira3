@@ -35,6 +35,13 @@ class MemberMailer < BaseMailer
     :subject => "You Have a Message From Your Website")
   end
 
+  def subscribers_message subscriber
+    @subscriber = subscriber
+    @closename = subscriber.name.nil? ? " User " : subscriber.name
+     mail( :to => subscriber.email, 
+     :subject => subscriber.subject)
+  end
+
   private
   def set_mail(member_id)
     @member = Member.find member_id

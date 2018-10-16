@@ -10,6 +10,7 @@ module Admin
 
     def subscribers
     	@subscribers = Subscriber.all.page(params[:page]).per(50)
+      @subscriber = Subscriber.new
     end
 
     def update_subscribers
@@ -42,6 +43,38 @@ module Admin
     def new_subscriber
         @subscriber = Subscriber.new
         render "subscriber_form"
+    end
+
+    def send_msg
+      msg           = "There are some errors:"
+      errors        = false
+      success       = false
+      subscriber    = params[:subscriber]
+
+      if subscriber[:contents].to_s == ""
+        errors = "Please write message!"
+      elsif subscriber[:subject].to_s == ""
+        errors = "Please write subject!"
+      else
+        subscribers = subscriber[:active_only].nil? ? Subscriber.all : Subscriber.where(status: true)
+        
+        subscribers.each do |s|
+          s.contents  = subscriber[:contents]
+          s.subject   = subscriber[:subject]
+          MemberMailer.subscribers_message(s).deliver
+        end
+        msg     = "Message sent successfully!"
+        success = true
+      end
+
+      resp = { success: success, msg: msg, errors:errors, aa: subscriber[:contents]  }
+
+      respond_to do |format|
+        format.json{ render json: resp  }
+      end
+
+
+       
     end
 
     def create_subscribers

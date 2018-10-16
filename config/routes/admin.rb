@@ -4,6 +4,7 @@ namespace :admin do
   get '/update_subscribers/:id', to: 'dashboard#update_subscribers', as: :update_subscribers
   get '/new_subscriber', to: 'dashboard#new_subscriber', as: :new_subscriber
   post '/subscribers', to: 'dashboard#create_subscribers', as: :create_subscribers
+  post '/subscribers/send_msg', to: 'dashboard#send_msg', as: :send_msg
   delete '/remove_subscribers/:id', to: 'dashboard#remove_subscribers', as: :remove_subscribers
 
   get '/members', to: 'members#index'

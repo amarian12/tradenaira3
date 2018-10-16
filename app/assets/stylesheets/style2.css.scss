@@ -72,6 +72,29 @@ img {
   }
 }
 
+#senMsgModel{
+  label{
+    color: #333333;
+  }
+}
+
+.msglink{
+  margin: -62px -2px -2px -27px;
+}
+
+
+.response-box{
+  .form_success{
+    color: green;
+  }
+  .form_erros{
+    p{
+      color: red;
+    }
+    color: red;
+  }
+}
+
 .banner-wrap-side{
   position: relative;
   .advert-banner{

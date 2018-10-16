@@ -1,4 +1,7 @@
 class Subscriber < ActiveRecord::Base
+
+    attr_accessor :contents, :active_only, :subject
+
 	validates :email, uniqueness: { 
     message: "You are already added in the list!" }, unless: :values_there?
 

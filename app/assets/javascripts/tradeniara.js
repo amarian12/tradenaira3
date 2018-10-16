@@ -49,11 +49,6 @@ $(document).ready(function() {
 			// $(".home_signup1").addClass("home_signup").removeClass("home_signup1");
 		}
 		});   
-
-
- 
-
-
 });
 
 //Live Price exchange is update from BTCC site
@@ -267,6 +262,7 @@ if (marketp[0]) {
   });
 
   showFloatingPoints();
+  showVidoFroncontent();
 
 });
 
@@ -431,3 +427,44 @@ function subNewslater($this, form_id){
   return false;
 
 }
+
+// <iframe width="560" height="315" 
+//src="https://www.youtube.com/embed/pNb1HxKFYWE" ></iframe>
+
+function showVidoFroncontent(){
+  
+   $("body a").each(function(a){
+    var thref = $(this).attr("href");
+
+     
+
+    if(typeof(thref) != "undefined"){
+
+      if(thref.indexOf("embed-y") != -1){
+
+        var tarray = thref.split("/");
+     var tcode = tarray[tarray.length-1];
+
+        if(typeof(tcode) !="undefined"){
+
+            var youtb = '<iframe width="560" height="315"'; 
+
+            tcode = tcode.replace("&embed-y","");
+            youtb += ' src="https://www.youtube.com/embed/'+tcode+'?rel=0&amp;controls=1&amp;showinfo=0"'; 
+            youtb += ' frameborder="0" allow="autoplay; encrypted-media"';
+            youtb += ' autoplay="1" ';
+            youtb += ' allowfullscreen></iframe>';
+
+           
+            $(this).html(youtb)
+
+        }
+
+      }
+
+
+    }
+      
+   })
+}
+
