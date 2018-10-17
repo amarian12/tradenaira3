@@ -46,8 +46,15 @@ app.directive 'accounts', ->
         ctrl.selectedCurrency = account.currency
         ctrl.currentAction = "withdraws"
 
+      @transfer = ->
+        ctrl.state.transitionTo("transfer")
+        ctrl.currentAction = "transfer"
+        
+
       @openTransferPage = (accounts) ->
-        window.location.hash = "transfer"
+        ctrl.state.transitionTo("transfer")
+        ctrl.currentAction = "transfer"
+        #window.location.hash = "transfer"
         #$("#transfer-contaer").show(0)
          
         #ctrl.currentAction = "transfer"

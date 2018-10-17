@@ -8,28 +8,31 @@
 </div>
 
 <div id="senMsgModel" class="modal">
-
+<div class="modal-dialog modal-md">
 	<div class="modal-content">
 		<div class="content">
 			<div class="response-box">
 				<div class="form_success"></div>
 				<div class="form_erros"></div>
 			</div>
-			<div class="modal-header" style="border: none;">
+			<div class="modal-header1" style="border: none;">
 				<span class="close" onclick="$('#senMsgModel').modal('hide');" >&times;</span>
 			</div>
 			<%= form_for(@subscriber, url: admin_send_msg_path,
 			html: { onSubmit: "return senMsgToSubscr(this)"}) do |f| %>
 
-				<div class="form-group">
+				<div class="form_row1">
+					<div class="form_input">
 					<label for="exampleInputEmail1">Message subject</label>
 					<%= f.text_field :subject, class: "form-control" %>
 				</div>
+				</div>
 
-				<div class="form-group">
+				<div class="form_row1">
+					<div class="form_input text_area1">
 					<label for="exampleInputEmail1">Message Contents</label>
 					<%= f.text_area :contents, class: "form-control", rows: 3 %>
-				</div>
+				</div></div>
 
 				<div class="form-check">
 			    <%= f.check_box :active_only %>
@@ -37,10 +40,12 @@
 			     
 			  	</div>
 
-				<div class="form-group">
-				<%= f.submit "Send", class: "btn btn-primary subssbscribe" %>
-				</div>
+				<div class="form_row1">
+					<div class="form_input1">
+				<%= f.submit "Send", class: "btn1" %>
+				</div></div>
 			<% end %>
 		</div>	
 	</div>
+</div>
 </div>

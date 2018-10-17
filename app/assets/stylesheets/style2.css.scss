@@ -135,8 +135,14 @@ img {
 
 .send-or-requestmny:hover, .send-or-requestmny:active, 
 .strtdep.adddepbtn:hover, .strtdep.adddepbtn:active { 
-  color: yellow!important;
+    color: #fff !important;
+    background: #ffc82f;
 }
+
+
+
+
+
 
 a:focus, button:focus{ outline: none; text-shadow: none; }
 body{ font-family:'poppinsregular' !important; font-size:15px !important; background:none !important;}
@@ -2718,7 +2724,7 @@ input[type="file"] {
 .box_btn_wrap {
     padding: 50px 0;
     text-align: center;
-    max-width: 70%;
+    max-width: 100%;
     margin: auto;
 }
 .bx_content h4 {
@@ -2774,6 +2780,25 @@ input[type="file"] {
 
 
 /** 12 October 2018 css End here **/
+
+
+
+/** 17 October 2018 css Start here **/
+
+.text_area1 textarea {
+    border: 1px solid #8a8a8a;
+    width: 100%;
+    border-radius: 2px !important;
+    height: 100%;
+    padding: 4px 10px;
+}
+
+.adddepbtn{ max-width:45% !important;}
+
+
+
+/** 17 October 2018 css End here **/
+
 
 
 /** @media Query Css for Responsive Start here **/
@@ -3294,7 +3319,7 @@ header {padding: 9px 0 13px 0;}
 
 
 .box_btn_wrap li {width: 100%;float: none;}
-.box_btn_wrap {max-width: 90%;}
+.box_btn_wrap {max-width: 100%;}
 .li_bx_inner {min-height:inherit;}
 
 
@@ -3680,7 +3705,7 @@ body {
 
  .box_btn_wrap li {width: 50%;}
 
-.box_btn_wrap {max-width: 90%;}
+.box_btn_wrap {max-width: 100%;}
 
 .li_bx_inner {min-height:370px;}
 

@@ -1209,5 +1209,14 @@ form.simple_form {
     padding: 0;
 }
 
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+    border-color: #ffc82f;
+    color: #fff !important;
+    background: #ffc82f;
+}
+
+
+
+
 
 @import 'layouts/custom';

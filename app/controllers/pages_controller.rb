@@ -18,6 +18,20 @@ class PagesController < ApplicationController
     @title    = "TradeNAIRA fees"
     @descrip  = "Costs associated with using TradeNAIRA vary depending on the service you require. Our primary service is the currency exchange which is a peer to peer exchange system and we charge a small fee for matching transactions. ."
   end
+
+  def projectfunding
+
+    #host = "http://0.0.0.0:84"
+    #uri = URI(host)
+ 
+    #@output = Net::HTTP.get(uri)
+
+
+
+    #render "projectfunding", layout: false
+    
+  end
+
   def privacy
     @title    = "TradeNAIRA user privacy"
     @descrip  =  "at TradeNAIRA we take user privacy very seriously, all data is heavily encrypted and we will only contact you if you have requested to be on our mailing list or use our services."

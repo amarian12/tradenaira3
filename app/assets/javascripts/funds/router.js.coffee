@@ -20,3 +20,9 @@ app.config ($stateProvider, $urlRouterProvider) ->
       controller: 'WithdrawsController'
       currentAction: "withdraw"
     })
+    .state('transfer', {
+      url: "/transfer"
+      templateUrl: "/templates/funds/transfer.html"
+      controller: ''
+      currentAction: "transfer"
+    })
