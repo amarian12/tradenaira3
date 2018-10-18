@@ -449,7 +449,7 @@ function showVidoFroncontent(){
 
             var youtb = '<iframe width="560" height="315"'; 
 
-            tcode = tcode.replace("&embed-y","");
+            tcode = tcode.replace("&embed-y","").replace("&amp;embed-y","");
             youtb += ' src="https://www.youtube.com/embed/'+tcode+'?rel=0&amp;controls=1&amp;showinfo=0"'; 
             youtb += ' frameborder="0" allow="autoplay; encrypted-media"';
             youtb += ' autoplay="1" ';
