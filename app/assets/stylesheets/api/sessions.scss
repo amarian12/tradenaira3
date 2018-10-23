@@ -1,0 +1,86 @@
+// Place all the styles related to the Api::Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.session-container {
+  justify-content: center;
+}
+
+.session-title {
+  margin-left: 7px;
+}
+
+.login-form-container {
+  background-color: white;
+  box-shadow: 100px;
+  box-shadow: 2px 3px 4px lightgrey;
+  border: 1px solid grey;
+  border-color: lightgrey;
+  /*border-radius: 2px;*/
+  padding: 15px;
+  /*text-align: center;*/
+  width: 300px;
+  align-self: center;
+
+  /*margin-top: 3%;*/
+  /*margin-left: auto;
+  margin-right: auto;*/
+  border-radius: 5px;
+  /*font-family: 'Roboto', sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
+  /*font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+}
+
+.login-signup {
+  width: 60px;
+
+}
+.userbutton {
+  color: white;
+  background-color: #009e74;
+  padding: 10px;
+  margin: 7px;
+  cursor: pointer;
+  width: 295px;
+  border-radius: 5px;
+}
+
+.userbutton:hover {
+  background-color: purple;
+  transition: 0.3s;
+}
+
+.error-list {
+  list-style: none;
+  font-size: 15px;
+  color: red;
+}
+
+
+.nav-link {
+/*backg/*/
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-input {
+  padding: 10px;
+  margin: 7px;
+  width: 270px;
+  border-radius: 5px;
+}
+
+.demo-btn {
+  color: white;
+  background-color: #0030f3;
+  padding: 10px;
+  margin: 7px;
+  width: 295px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.demo-btn:hover {
+  background-color: purple;
+  transition: 0.3s;
+}

@@ -28,7 +28,7 @@ class PagesController < ApplicationController
 
 
 
-    #render "projectfunding", layout: false
+    render "projectfunding", layout: "kickstart"
     
   end
 

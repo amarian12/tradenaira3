@@ -3,9 +3,7 @@ class Member < ActiveRecord::Base
   acts_as_taggable
   acts_as_reader
 
-  validates :display_name ,:last_name,
-            :business, :phone_number, 
-            :business_address, presence: true, if: :has_nonsense?
+  
 
 
   has_many :orders
@@ -39,6 +37,11 @@ class Member < ActiveRecord::Base
   validates :sn, presence: true
   validates :display_name, uniqueness: true, allow_blank: true
   validates :email, email: true, uniqueness: true, allow_nil: true
+
+
+  validates :display_name ,:last_name,
+            :business, :phone_number, 
+            :business_address, presence: true, if: :has_nonsense?
 
   before_create :build_default_id_document
   after_create  :touch_accounts

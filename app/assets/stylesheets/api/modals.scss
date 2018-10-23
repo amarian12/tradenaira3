@@ -1,0 +1,413 @@
+
+
+/*modal2*/
+.modal2 {
+  display: none;
+}
+
+.modal2.is-open {
+  display: block;
+}
+
+.modal2-screen {
+  position: fixed;
+  /*background: rgba(0, 0, 0, 0.7);*/
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.modal2-div {
+  position: relative;
+  margin: 0;
+  padding: 6px;
+  background: #fff;
+  z-index: 3;
+  border-radius: 5px;
+  /*border: 1px solid #000;*/
+}
+
+.modal2-form {
+  position: absolute;
+  top: 0px;
+  margin: 0;
+  width: 100%;
+  padding: 14px;
+  background: #fff;
+  z-index: 3;
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+
+.modal2-close {
+  color: white;
+  background-color: blue;
+  padding: 10px;
+  cursor: pointer;
+  width: 105px;
+  border-radius: 5px;
+  /*position: absolute;
+  top: 10px;
+  right: 60px;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;*/
+}
+
+.modal2-close:hover {
+  background-color: purple;
+  transition: 0.5s;
+}
+
+.modal2-form > h1 {
+  font-size: 36px;
+  line-height: 4;
+  font-weight: 300;
+}
+
+.modal2-form > p {
+  margin: 0 0 20px 0;
+}
+
+.modal2-input-box {
+  border: 1px solid white;
+  background-color:white;
+  font-size: 30px;
+}
+
+.modal2-input-box:focus{
+  outline-width: 0;
+}
+
+.modal2-search-list {
+  list-style: none;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  padding: 15px;
+  border-top: 1px solid lightgrey;
+}
+.modal2-search-list:hover {
+  background-color: honeydew;
+  box-shadow: 1px 2px 3px grey;
+  transition: .4s
+}
+
+.modal2-img {
+    height: 50px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+/*madal-3*/
+.modal3 {
+  display: none;
+}
+
+.modal3.is-open {
+  display: block;
+  top: 0;
+  position: none;
+}
+
+.modal3-screen {
+  position: fixed;
+  /*background: rgba(0, 0, 0, 0.7);*/
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.modal3-div {
+  position: relative;
+  top: 0px;
+  margin: 0;
+  width: 100%;
+  padding: 7px;
+  height: 50px;
+  z-index: 3;
+  border-radius: 5px;
+}
+
+.modal3-close {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal3-close:hover {
+  color: #f00;
+}
+
+.modal3-form > h1 {
+  font-size: 36px;
+  line-height: 4;
+  font-weight: 300;
+}
+
+.modal3-form > p {
+  margin: 0 0 20px 0;
+}
+
+.modal3-input-box {
+  border: 1px solid white;
+  background-color:white;
+  font-size: 30px;
+}
+
+.modal3-input-box:focus{
+  outline-width: 0;
+}
+
+.modal3-search-list {
+  list-style: none;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  padding: 15px;
+  border-top: 1px solid lightgrey;
+}
+.modal3-search-list:hover {
+  background-color: honeydew;
+  box-shadow: 1px 2px 3px grey;
+  transition: .4s
+}
+
+.modal3-img {
+    height: 50px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+/*login modal*/
+.modal-login {
+  display: none;
+}
+
+.modal-login.is-open {
+  display: block;
+  top: 50%;
+  bottom: 50%;
+  right: 50%;
+  left: 50%;
+  /*position: none;*/
+}
+
+.modal-login-screen {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  bottom: 0;
+  z-index: 8000;
+}
+
+.modal-login-div {
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  padding: 7px;
+  z-index: 3;
+  border-radius: 5px;
+}
+
+.modal-login-close {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-login-close:hover {
+  color: #f00;
+}
+
+.modal-login-form > h1 {
+  font-size: 36px;
+  line-height: 4;
+  font-weight: 300;
+}
+
+.modal-login-form > p {
+  margin: 0 0 20px 0;
+}
+
+.modal-login-input-box {
+  border: 1px solid white;
+  background-color:white;
+  font-size: 30px;
+}
+
+.modal-login-input-box:focus{
+  outline-width: 0;
+}
+
+.modal-login-search-list {
+  list-style: none;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  padding: 15px;
+  border-top: 1px solid lightgrey;
+}
+.modal-login-search-list:hover {
+  background-color: honeydew;
+  box-shadow: 1px 2px 3px grey;
+  transition: .4s
+}
+
+.modal-login-img {
+    height: 50px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+/*dropdown modal*/
+@media (min-width: 600px){
+  .modal-dropdown {
+    display: none;
+  }
+  .modal-dropdown.is-open {
+    display: none;
+  }
+
+  .modal-dropdown-div {
+    display: none;
+  }
+}
+@media (max-width: 600px){
+.modal-dropdown {
+  display: none;
+}
+.modal-dropdown li{
+  list-style: none;
+}
+
+.modal-dropdown.is-open {
+  display: block;
+  justify-content: space-between;
+  z-index: 50;
+  background: white;
+  width: 100%;
+  position: fixed;
+  margin-top: 78px;
+  border-bottom: 1px solid black;
+  box-shadow: 5px 10px 15px grey;
+}
+
+.modal-dropdown-screen {
+  position: fixed;
+  // background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -50;
+}
+
+.modal-dropdown-div {
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  padding: 7px;
+  // z-index: 70;
+  border-radius: 5px;
+}
+
+.modal-dropdown-close {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-dropdown-close:hover {
+  color: #f00;
+}
+
+.modal-dropdown-form > h1 {
+  font-size: 36px;
+  line-height: 4;
+  font-weight: 300;
+}
+
+.modal-dropdown-form > p {
+  margin: 0 0 20px 0;
+}
+
+.modal-dropdown-input-box {
+  border: 1px solid white;
+  background-color:white;
+  font-size: 30px;
+}
+
+.modal-dropdown-input-box:focus{
+  outline-width: 0;
+}
+
+.modal-dropdown-search-list {
+  list-style: none;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  padding: 15px;
+  border-top: 1px solid lightgrey;
+}
+.modal-dropdown-search-list:hover {
+  background-color: honeydew;
+  box-shadow: 1px 2px 3px grey;
+  transition: .4s
+}
+
+.modal-dropdown ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+  left: 1px;
+}
+
+.modal-dropdown li {
+  text-indent: 60px;
+  margin-left: auto solid honeydew;
+  font-size: 20px;
+  border: 1px solid white;
+}
+
+.modal-dropdown img {
+  text-indent: 30px;
+  left: 20px;
+  position: fixed;
+  height: 20px;
+  width: 20px;
+}
+
+
+.modal-dropdown li:hover {
+  background-color: honeydew;
+  color: maroon;
+  border: 1px solid grey;
+  transition: 0.5s;
+}
+
+.modal-dropdown-img {
+    height: 50px;
+    width: 80px;
+    margin-right: 20px;
+}
+}

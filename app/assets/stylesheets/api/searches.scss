@@ -1,0 +1,139 @@
+// Place all the styles related to the Api::Searches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+  z-index: 100;
+}
+
+.modal-screen {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.modal-form {
+  text-indent: 20px;
+  position: absolute;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  padding: 16px 16px 16px 0;
+  background: #fff;
+  z-index: 3;
+  font-family: 'Open Sans';
+  /*height: 101%;*/
+  /*border-radius: 5px;*/
+  border: 1px solid #000;
+}
+
+.mid-form  {
+  padding-left: 0;
+}
+
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #f00;
+}
+
+.modal-form > h1 {
+  font-size: 36px;
+  line-height: 4;
+  font-weight: 300;
+}
+
+.modal-form > p {
+  margin: 0 0 20px 0;
+}
+
+.modal-input-box {
+  border: 1px solid white;
+  background-color:white;
+  font-size: 30px;
+  width: 100%;
+}
+
+.modal-input-box:focus{
+  outline-width: 0;
+}
+
+@media (min-height: 600px){
+  .modal-search-list {
+    list-style: none;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid lightgrey;
+  }
+  .modal-search-list:hover {
+    background-color: honeydew;
+    box-shadow: 1px 2px 3px grey;
+    transition: .4s
+  }
+
+  .modal-search-list-off {
+    display: none;
+    background-color: white;
+  }
+}
+@media (max-height: 600px){
+  .modal-search-list {
+    list-style: none;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid lightgrey;
+  }
+
+  .modal-search-list:hover {
+    background-color: honeydew;
+    box-shadow: 1px 2px 3px grey;
+    transition: .4s
+  }
+
+  .modal-search-list-off {
+    display: none;
+    background-color: white;
+  }
+}
+.modal-no-match {
+  transition: opacity 1s ease-in;
+}
+
+.modal-no-match {
+
+}
+#1 {
+  padding-left: 0;
+}
+
+.modal-img {
+    height: 50px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181011065737) do
+ActiveRecord::Schema.define(version: 20181023054332) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20181011065737) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "target_link"
+    t.string   "settings"
   end
 
   create_table "blogo_posts", force: true do |t|
@@ -164,6 +165,12 @@ ActiveRecord::Schema.define(version: 20181011065737) do
   end
 
   add_index "blogo_users", ["email"], name: "index_blogo_users_on_email", unique: true, using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -287,6 +294,13 @@ ActiveRecord::Schema.define(version: 20181011065737) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "account_type",    limit: 250
+  end
+
+  create_table "likes", force: true do |t|
+    t.integer  "total_likes"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "members", force: true do |t|
@@ -426,6 +440,37 @@ ActiveRecord::Schema.define(version: 20181011065737) do
   add_index "payment_transactions", ["txid", "txout"], name: "index_payment_transactions_on_txid_and_txout", using: :btree
   add_index "payment_transactions", ["type"], name: "index_payment_transactions_on_type", using: :btree
 
+  create_table "pledges", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "reward_id"
+    t.integer  "amount_pledged"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_categories", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "title",        null: false
+    t.string   "blurb",        null: false
+    t.string   "end_date",     null: false
+    t.integer  "funding_goal", null: false
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.string   "author"
+    t.integer  "total_amount"
+    t.text     "description"
+  end
+
   create_table "proofs", force: true do |t|
     t.string   "root"
     t.integer  "currency"
@@ -446,6 +491,15 @@ ActiveRecord::Schema.define(version: 20181011065737) do
 
   add_index "read_marks", ["member_id"], name: "index_read_marks_on_member_id", using: :btree
   add_index "read_marks", ["readable_type", "readable_id"], name: "index_read_marks_on_readable_type_and_readable_id", using: :btree
+
+  create_table "rewards", force: true do |t|
+    t.string   "title"
+    t.integer  "project_id"
+    t.integer  "amount_met"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "description"
+  end
 
   create_table "running_accounts", force: true do |t|
     t.integer  "category"
@@ -568,6 +622,15 @@ ActiveRecord::Schema.define(version: 20181011065737) do
     t.boolean  "activated"
     t.string   "type"
     t.datetime "refreshed_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "session_token"
+    t.string   "password_digest"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "versions", force: true do |t|

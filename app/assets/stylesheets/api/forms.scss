@@ -1,0 +1,341 @@
+@media (min-width: 600px){
+  .project-form-container {
+    margin: auto;
+    width: 936px;
+    height: 100%;
+    justify-content: center;
+  }
+  .form-section {
+    background-color: #F8F9FD;
+    display: flex;
+    width: 80%;
+  }
+  .form-section label {
+    margin: 20px;
+    font-weight: bold;
+  }
+  .form-title {
+    margin: 15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+  .form-greeting {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+  }
+
+  .form-blurb {
+    margin:15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .form-description {
+    margin:15px;
+    padding-left: 15px;
+  }
+
+  .form-end_date {
+    margin: 15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .form-funding_goal {
+    margin:15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+  .form-image_url {
+    margin:15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .dropzone-div {
+    height: 200px;
+    width: 450px;
+    border: 1px dotted black;
+    align-self: center;
+  }
+
+  .drop-text {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .form-photo-thumbnail {
+    height: 200px;
+    width: 450px;
+    object-fit: cover;
+    object-position: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-pic-inputs {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reward-form-title {
+    margin: 15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .reward-form-amount {
+    margin: 15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .reward-form-description {
+    margin: 15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .reward-form-id {
+    margin: 15px;
+    width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+}
+@media (max-width: 600px){
+  .project-form-container {
+    margin: auto;
+    width: 350px;
+    height: 100%;
+    justify-content: center;
+  }
+  .form-section {
+    flex-direction: column;
+    background-color: #F8F9FD;
+    display: flex;
+    width: 80%;
+  }
+  .form-section label {
+    margin: 20px;
+    font-weight: bold;
+  }
+
+  .form-title {
+    margin: 15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+  .form-greeting {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+  }
+
+  .form-blurb {
+    margin:15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .form-description {
+    margin:15px;
+    padding-left: 15px;
+  }
+
+  .form-end_date {
+    margin: 15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .form-funding_goal {
+    margin:15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+  .form-image_url {
+    margin:15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .dropzone-div {
+    height: 100px;
+    width: 150px;
+    border: 1px dotted black;
+    align-self: center;
+  }
+
+  .drop-text {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .form-photo-thumbnail {
+    height: 100px;
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-pic-inputs {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reward-form-title {
+    margin: 15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .reward-form-amount {
+    margin: 15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .reward-form-description {
+    margin: 15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+
+  .reward-form-id {
+    margin: 15px;
+    // width: 450px;
+    height: 30px;
+    padding-left: 15px;
+  }
+}
+
+.project-form {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin-top: 50px;
+  padding: 40px;
+  box-shadow: 3px 4px 5px grey;
+  border-radius: 2px;
+  border: 1px solid lightgrey;
+}
+
+
+
+.reward-form-container {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+
+label {
+  font-family: 'Open Sans', sans-serif;
+  margin-right: 40px;
+  width: 300px;
+}
+.form-greeting {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+
+
+@media (min-width: 600px){
+
+  .form-submission {
+    margin: 15px 15px 50px 15px;
+    background-color: #009e74;
+    color: white;
+    width: 450px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .form-submission:hover {
+    background-color: purple;
+    transition: 0.5s;
+  }
+  .form-btn {
+    padding: 15px;
+    margin: 5px;
+    font-weight: bold;
+  }
+  .form-btn:hover {
+    cursor: pointer;
+    color: blue;
+    transition: 0.2s;
+  }
+}
+@media (max-width: 600px){
+  .form-submission {
+    margin: 15px 15px 50px 15px;
+    background-color: #009e74;
+    color: white;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .form-submission:hover {
+    background-color: purple;
+    transition: 0.5s;
+  }
+  .form-btn {
+    width: 200px;
+    padding: 15px;
+    margin: 5px;
+    font-weight: bold;
+  }
+  .form-btn:hover {
+    cursor: pointer;
+    color: blue;
+    transition: 0.2s;
+  }
+}
+
+
+
+#update{
+
+}
+
+#rewards{
+
+}
+.reward-form{
+  margin: auto;
+  border: 1px solid lightgrey;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  text-align: left;
+  margin-top: 50px;
+  padding: 40px;
+  box-shadow: 3px 4px 5px grey;
+  border-radius: 2px;
+}

@@ -1,0 +1,8 @@
+const project1 = { author: "Jim", category_id: 1 ,user_id: 100, title: 'QUARTZ Bottle - Water Purification in a Self-Cleaning Bottle:', blurb:'No more stinky water bottles', description: 'The QUARTZ bottle is a reusable, rechargeable, insulated water bottle that cleans itself and the water you put inside it. With digital purification from UVC light, your water and bottle is purified at the touch of a button.', end_date: '10/24/2018', funding_goal: 30000, image_url: 'https://ksr-ugc.imgix.net/assets/018/810/436/390339e6110be68d81dde21b6b92c5ed_original.png?crop=faces&w=560&h=315&fit=crop&v=1510445617&auto=format&q=92&s=dcd42884d334729731a35805d5820b6e', total_amount: 0 };
+
+const project2 = { author: "Betty", category_id: 9, user_id: 90, title: 'Greater Goods - Heirloom-Quality Cast Iron for Everyone', blurb:'We’ve created affordable heirloom-quality cast iron by using a modern manufacturing process to replicate heritage craftsmanship.', description: 'Cast iron used to be priced for everyone to afford—like the skillet that’s been in our family since the 1930’s, which originally cost $2. To get a pan like that today, you have to spend $100 or more. Together with the rest of our team at Greater Goods, we set out to make a 10” skillet that’s better than anything out there, at a price that is accessible to anyone. ', end_date: '9/12/2019', funding_goal: 12000, image_url: 'https://ksr-ugc.imgix.net/assets/018/946/698/2fd66ae5de1e2204828b20632198a5c6_original.jpg?w=680&fit=max&v=1509123268&auto=format&q=92&s=a6abfce2083af41d73a7718d9b27009c', total_amount: 0 };
+
+export const testProjects = {
+  [project1.id]: project1,
+  [project2.id]: project2,
+};

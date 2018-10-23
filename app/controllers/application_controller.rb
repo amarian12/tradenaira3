@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :is_admin?, :current_market, :gon
+  helper_method :current_user, :is_admin?, :current_market, :gon, :logged_in?
   before_action :set_timezone, :set_gon
   after_action :allow_iframe
   after_action :set_csrf_cookie_for_ng
@@ -30,7 +30,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= Member.current = Member.enabled.where(id: session[:member_id]).first
+    if session[:member_id]
+      @current_user ||= Member.current = Member.enabled.where(id: session[:member_id]).first
+    elsif session[:session_token]
+      @current_user ||= User.find_by_session_token(session[:session_token])
+    end
+   # 
+   
   end
 
   def auth_member!
@@ -113,6 +119,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_gon
+    unless current_user.nil?
+      if current_user.class.name == "User"
+        return false
+      end
+    end
     gon.env = Rails.env
     gon.local = I18n.locale
     gon.market = current_market.attributes
@@ -239,6 +250,28 @@ class ApplicationController < ActionController::Base
 
   def verified_request?
     super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
+  end
+
+
+
+  #for kickstart
+  def login(user)
+    @current_user = user
+    session[:session_token] = user.reset_session_token
+  end
+
+  def logout
+    current_user.try(:reset_session_token)
+    session[:session_token] = nil
+  end
+
+  def logged_in?
+    !!current_user
+  end
+
+  def require_login
+    # "do we need this?"
+    redirect_to new_session_url unless logged_in?
   end
 
   

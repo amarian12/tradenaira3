@@ -20,6 +20,14 @@ gem 'omniauth-weibo-oauth2', '~> 0.4.0'
 gem 'figaro'
 gem 'hashie'
 
+#kiskstart
+
+gem 'rails_12factor'
+
+#gem 'activejob'
+
+#kickend
+
 gem 'aasm', '~> 3.4.0'
 gem 'amqp', '~> 1.3.0'
 gem 'bunny', '~> 1.2.1'
@@ -113,4 +121,5 @@ group :test do
   # rspec-rails rely on test-unit if rails version less then 4.1.0
   # but test-unit has been removed from ruby core since 2.2.0
   gem 'test-unit'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end

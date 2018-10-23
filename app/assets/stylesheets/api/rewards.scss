@@ -1,0 +1,40 @@
+// Place all the styles related to the Api::Rewards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.show-reward {
+  /*margin-bottom: 25px;*/
+  margin: 25px 0 0px 1px;
+  /*padding: 10px;*/
+  max-width: 430px;
+  width: 100%;
+  border: 1px solid grey;
+  padding: 10px;
+  float: right;
+}
+
+.show-reward:hover {
+  border: 1px solid #009e74;
+  background-color: rgba(0,158,116, 0.3);
+  transition: .5s;
+}
+
+.description-reward-box {
+  width: 100%;
+  display: flex;
+}
+
+.reward-btn {
+  color: white;
+  background-color: #009e74;
+  cursor: pointer;
+  width: 57px;
+  height: 18px;
+  border: 1px solid #009e74;
+  border-radius: 5px;
+}
+
+.reward-btn:hover {
+  color: white;
+  background-color: blue;
+  transition: 0.5s;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KicksmarterApp</title>
+      <%= csrf_meta_tags %>
+      <link rel="shortcut icon" href="#" />
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto|Baloo|Nunito" rel="stylesheet">
+      <%= stylesheet_link_tag    'kickstart', media: 'all' %>
+      
+      
+
+      <%= javascript_include_tag 'action_cable' %>
+      <%= javascript_include_tag 'cable' %>
+      
+      <%= javascript_include_tag 'bundle' %>
+  </head>
+
+  <body>
+
+    <script>
+    $(function(){
+      $("body").on("click", ".js-modal-open", function(event){
+        event.preventDefault();
+        $(".modal").addClass("is-open");
+        $(".modal-input-box").focus();
+      });
+
+      $("body").on("click", ".js-modal-close", function(event){
+        event.preventDefault();
+        $(".modal").removeClass("is-open");
+      });
+
+      $("body").on("click", ".js-modal2-open", function(event){
+        event.preventDefault();
+        $(".modal2").addClass("is-open");
+        $(".modal2").css({ position: "absolute"})
+        $(".pledge-input").focus();
+      });
+
+      $("body").on("click", ".js-modal2-close", function(event){
+        event.preventDefault();
+        $(".modal2").removeClass("is-open");
+      });
+
+      $("body").on("click", ".js-modal3-open", function(event){
+        event.preventDefault();
+        $(".modal3").addClass("is-open");
+        $(".modal3").css({ position: "absolute", top: event.pageY})
+        $(".pledge-input").focus();
+      });
+
+      $("body").on("click", ".js-modal3-close", function(event){
+        event.preventDefault();
+        $(".modal3").removeClass("is-open");
+
+      });
+
+      $("body").on("click", ".js-modal-login-open", function(event){
+        event.preventDefault();
+        $(".modal-login").addClass("is-open");
+          $(".modal-login").css({ position: "absolute"})
+      });
+
+      $("body").on("click", ".js-modal-login-close", function(event){
+        event.preventDefault();
+        $(".modal-login").removeClass("is-open");
+      });
+
+      $("body").on("click", ".js-modal-dropdown-open", function(event){
+        event.preventDefault();
+        $(".modal-dropdown").addClass("is-open");
+      });
+
+      $("body").on("click", ".js-modal-dropdown-close", function(event){
+        event.preventDefault();
+        setTimeout($(".modal-dropdown").removeClass("is-open"),1000);
+      });
+    });
+
+    </script>
+
+    <%= yield %>
+  </body>
+</html>

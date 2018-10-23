@@ -7,6 +7,40 @@ class ActionDispatch::Routing::Mapper
 end
 
 Peatio::Application.routes.draw do
+
+  #kicksmart
+   namespace :api, defaults: { format: :json } do
+  #   resources :users, only: [:create]
+      #resource :session, only: [:create, :destroy]
+  #   #post 'session', to: "auths#create"
+  #   resources :projects, except: [:new]
+  #   resources :likes, only: [:create, :destroy]
+  #   resources :rewards, only: [:index, :create, :show, :delete, :edit, :update]
+  #   resources :pledges, only: [:create]
+  #   resources :searches, only: [:index]
+  #   resources :categories, only: [:index, :show] do
+  #     resources :project, only: [:index]
+  #   end
+   end
+
+
+ namespace :api, module: "api_kicksmart", defaults: { format: :json } do
+  resources :users, only: [:create]
+  resource :session, only: [:create, :destroy]
+  resources :projects, except: [:new]
+  resources :likes, only: [:create, :destroy]
+  resources :rewards, only: [:index, :create, :show, :delete, :edit, :update]
+  resources :pledges, only: [:create]
+  resources :searches, only: [:index]
+  resources :categories, only: [:index, :show] do
+  resources :project, only: [:index]
+  end
+ end
+
+
+
+   
+
   
 
   use_doorkeeper
@@ -67,7 +101,9 @@ Peatio::Application.routes.draw do
   get "newproj" => 'newproj#abcd'
   get "pages/riskwarning" => 'pages#riskwarning'
   get "pages/marketplace" => 'pages#marketplace'
-  get "pages/projectfunding" => 'pages#projectfunding'
+
+  get "pages/projectfunding" => 'static_pages#root'
+  
   post "pages/subscribe" => 'pages#subscribe'
 
 
@@ -195,12 +231,15 @@ Peatio::Application.routes.draw do
     post "posts/search", to: "blogo/posts#search", as: "blogo_search"
     post "welcome/contact", to: "welcome#contact"
     get "welcome/contact", to: "welcome#contact"
-     get "/advertise", to: "welcome#advertise"  
+    get "/advertise", to: "welcome#advertise"  
 
   
   
   draw :admin
 
   mount APIv2::Mount => APIv2::Mount::PREFIX
+
+
+  
 
 end

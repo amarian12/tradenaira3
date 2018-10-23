@@ -1,0 +1,174 @@
+// Place all the styles related to the API::Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.project-container {
+  margin: 25px;
+  padding-bottom: 20px;
+  background: white;
+  max-width: 400px;
+  min-width: 400px;
+  width: 100%;
+  max-height: 530px;
+  min-height: 530px;
+  height: 100%;
+  box-shadow: 100px;
+  box-shadow: 2px 3px 4px lightgrey;
+  border: 1px solid grey;
+  border-color: lightgrey;
+  border-radius: 2px;
+  font-weight: lighter;
+  /*font-family: 'Open Sans', sans-serif;*/
+  /*font-family: "Maison Neue Book", Helvetica, Arial, "Liberation Sans",  sans-serif;*/
+  -webkit-transition: all 0.3s ease; /* Safari and Chrome */
+-moz-transition: all 0.3s ease; /* Firefox */
+-ms-transition: all 0.3s ease; /* IE 9 */
+-o-transition: all 0.3s ease; /* Opera */
+transition: all 0.3s ease;
+}
+
+.project-container:hover {
+  /*border: 1px solid #009e74;
+  box-shadow: 2px 3px 4px #009e74;
+
+  transition: 0.5s;*/
+  -webkit-transform:scale(1.07); /* Safari and Chrome */
+    -moz-transform:scale(1.07); /* Firefox */
+    -ms-transform:scale(1.07); /* IE 9 */
+    -o-transform:scale(1.07); /* Opera */
+     transform:scale(1.07);
+     box-shadow: 5px 6px 7px lightgrey;
+}
+
+@media (min-width: 900px) {
+  .project-index-stats {
+    flex-wrap: wrap;
+    border-bottom: 0.2px solid black;
+    // height: 100%;
+    width: 100%;
+  }
+}
+@media (max-width: 900px) {
+  .project-index-stats {
+    display: none;
+  }
+}
+
+.project-stat-list {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 9%;
+  margin-right: 11%;
+}
+
+.project-stat-list li {
+  /*padding: 30px;*/
+  /*margin: 10px;*/
+
+  text-align: justify;
+  height: inherit;
+  width: 22.5%;
+
+  /*padding: 1.55%;*/
+}
+
+.psl-mid {
+  border-left: 0.2px solid lightgrey;
+  height: inherit;
+  padding: 1.55%;
+}
+.psl-left {
+  height: inherit;
+  padding: 1.6%;
+}
+
+.psl-right {
+  height: inherit;
+  border-left: 0.2px solid lightgrey;
+  padding: 1.6%;
+}
+
+#try {
+
+}
+
+@media (min-width: 600px){
+  .project-list {
+    width: 90%;
+    margin-left: 3%;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (max-width: 600px){
+  .project-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+.project-list li {
+  padding: 0;
+  margin: 0;
+}
+
+.flexin {
+  box-shadow: 10px;
+}
+
+.project-title {
+  min-width: 342px;
+  width: 100%;
+}
+
+.project-img {
+  object-fit: cover;
+  /* background-color: grey; */
+  object-position: left top;
+  max-height: 250px;
+  height: 100%;
+  max-width: 400px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.project-index-text {
+  padding: 20px;
+}
+
+
+.project-title {
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.project-blurb {
+  color: grey;
+}
+
+.limit-3-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-text {
+  margin: 0px 15px 0px 15px;
+  padding: 10px;
+}
+
+.project-description {
+
+}

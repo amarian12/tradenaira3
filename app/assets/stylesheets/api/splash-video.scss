@@ -1,0 +1,102 @@
+.wrapper {
+  height:100%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+#logo-landing {
+  top: 24px;
+  text-shadow: 2px 2px black;
+  text-decoration: none;
+  position: absolute;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Fredoka One';
+  z-index: 4;
+}
+
+.welcome-text {
+  text-shadow: 2px 2px black;
+  top: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  color: white;
+  z-index: 5;
+}
+
+.enter-button {
+  color: white;
+  background-color: #009e74;
+  text-align: center;
+  align-self: center;
+  height: 60px;
+  width: 100px;
+  cursor: pointer;
+  font-size: 25px;
+  border-radius: 10px;
+  border: 1px solid #009e74;
+  z-index: 100;
+  /*width: 295px;*/
+}
+
+.enter-button:hover {
+  background-color: purple;
+  border: 1px solid purple;
+  transition: 0.5s;
+}
+/*.gradient {
+  background-image: radial-gradient(rgba(11, 39, 65, 0.2) 87%, rgba(0, 0, 0, 0.8));
+  width: 100%;
+  height: 0px
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  object-fit: cover;
+  position: relative;
+  z-index: 3;
+}*/
+
+.background-video {
+  background-color: black;
+  margin-bottom: -120px;
+  margin-top: -90px;
+  max-height: 1600px;
+  min-height: 900px;
+  /*max-width: 2000px;*/
+  min-width: 1600px;
+  height: 115%;
+  width: 110%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  padding: none;
+  overflow: hidden;
+
+}
+
+/*
+.background-video{
+height: 100%;
+width: 100%;
+float: left;
+top: 0;
+padding: none;
+position: absolute;
+
+}*/
+
+/*.video-filter {
+  z-index: 100;
+  position: absolute;
+  background: rgba(0,0,0,0.7);
+  height: 100%;
+  width: 100%;
+}*/
