@@ -4,4 +4,9 @@ class Pledge < ApplicationRecord
   belongs_to :user
   belongs_to :project
   belongs_to :reward
+
+  belongs_to :member,
+  foreign_key: :user_id
+
+  
 end

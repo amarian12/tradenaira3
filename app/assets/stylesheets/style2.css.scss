@@ -1164,10 +1164,23 @@ h3.sub_head {
     background-color: #fff;
     color: #029bbf;
     target-new: tab;
-    font-size: 15px; margin:0 6px 0 0;-webkit-box-shadow:-2px 0px 28px -2px rgba(0, 0, 0, 0.15);
+    font-size: 13px; 
+    margin:0 6px 0 0;
+    -webkit-box-shadow:-2px 0px 28px -2px rgba(0, 0, 0, 0.15);
 -moz-box-shadow:-2px 0px 28px -2px rgba(0, 0, 0, 0.15);
 box-shadow: -2px 0px 28px -2px rgba(0, 0, 0, 0.15); padding:12px 15px;
+  .csymble{
+    display: block;
+    font-size: 15px;
+    i:before{
+      font-size: 14px!important;
+      line-height: 17px;
+      vertical-align: top;
+    }
+  }
 }
+
+
 
 .exchange-section ul {
     text-align: center;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181023054332) do
+ActiveRecord::Schema.define(version: 20181024053551) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -314,18 +314,21 @@ ActiveRecord::Schema.define(version: 20181023054332) do
     t.boolean  "activated"
     t.integer  "country_code"
     t.string   "phone_number"
-    t.boolean  "disabled",                   default: false
-    t.boolean  "api_disabled",               default: false
+    t.boolean  "disabled",                    default: false
+    t.boolean  "api_disabled",                default: false
     t.string   "nickname"
     t.datetime "last_logged_at"
-    t.string   "notes",          limit: 250
+    t.string   "notes",           limit: 250
     t.text     "sendmail"
     t.text     "subject"
     t.text     "contents"
     t.string   "name"
-    t.string   "sendmailcc",     limit: 250
-    t.string   "dailyrate",      limit: 250
-    t.string   "blockstatus",    limit: 5
+    t.string   "sendmailcc",      limit: 250
+    t.string   "dailyrate",       limit: 250
+    t.string   "blockstatus",     limit: 5
+    t.string   "username"
+    t.string   "session_token"
+    t.string   "password_digest"
   end
 
   create_table "news", force: true do |t|

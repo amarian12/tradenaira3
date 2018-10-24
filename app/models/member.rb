@@ -1,7 +1,16 @@
 class Member < ActiveRecord::Base
-  attr_accessor :last_name,:business, :business_address, :nonsensefor
+  attr_accessor :last_name,:business, :business_address, :nonsensefor, :password
   acts_as_taggable
   acts_as_reader
+
+  #for kicksmarter
+  has_many :projects,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: "Project"
+
+  has_many :pledges
+  after_initialize :ensure_session_token
 
   
 
@@ -47,6 +56,9 @@ class Member < ActiveRecord::Base
   after_create  :touch_accounts
   after_update :resend_activation
   after_update :sync_update
+
+
+
 
   class << self
     def from_auth(auth_hash)
@@ -240,6 +252,32 @@ class Member < ActiveRecord::Base
     })
   end
 
+  #kicksmarterfunctions
+  def ensure_session_token
+    self.session_token ||= SecureRandom.urlsafe_base64(16)
+  end
+
+  def reset_session_token
+    self.session_token = SecureRandom.urlsafe_base64(16)
+    self.save
+    self.session_token
+  end
+
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def valid_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def self.find_by_credentials(username, password )
+    user = Member.find_by(username: username )
+    return nil unless user && user.valid_password?(password)
+    user
+  end
+
   private
 
   def sanitize
@@ -284,5 +322,10 @@ class Member < ActiveRecord::Base
     end
     
   end
+
+
+
+  
+
 
 end

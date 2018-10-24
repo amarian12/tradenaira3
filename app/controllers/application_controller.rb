@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     if session[:member_id]
       @current_user ||= Member.current = Member.enabled.where(id: session[:member_id]).first
     elsif session[:session_token]
-      @current_user ||= User.find_by_session_token(session[:session_token])
+      @current_user ||= Member.find_by_session_token(session[:session_token])
     end
    # 
    

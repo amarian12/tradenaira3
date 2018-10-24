@@ -3,9 +3,7 @@ module APIKicksmart
 		skip_load_and_authorize_resource
 
 	  def create
-	    @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
-
-	    
+	    @user = Member.find_by_credentials(params[:user][:username], params[:user][:password])
 
 	    if @user
 	      login(@user)

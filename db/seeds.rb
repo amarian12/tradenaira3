@@ -13,7 +13,7 @@ puts "ssssssssssssssssssssss"
 admin_member = Member.find_or_create_by(email: ADMIN_EMAIL)
 admin_member.authentications.build(provider: 'identity', uid: admin_identity.id)
 unless admin_member.valid?
-  puts admin_member.errors.inspect
+  #puts admin_member.errors.inspect
 end
 admin_member.save!
 
@@ -53,11 +53,12 @@ end
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #User.destroy_all
-user1 = User.create(username: 'userBob', password: 'iambob', email: 'bobisgreat@gmail.com')
-user2 = User.create(username: 'Betty Smith', password: 'iambetty', email: 'bettyIsGreat@gmail.com')
-user3 = User.create(username: 'April Jones', password: 'iamapril', email: 'aprilIsGreat@gmail.com')
-user4 = User.create(username: 'Sam Dekker ', password: 'iamsam', email: 'samIsGreat@gmail.com')
-user5 = User.create(username: 'Luis Baez', password: 'iamluis', email: 'luisIsGreat@gmail.com')
+user1 = Member.create(username: 'userBob', password: 'iambob', email: 'bobisgreat@gmail.com')
+puts user1.errors.inspect
+user2 = Member.create(username: 'Betty Smith', password: 'iambetty', email: 'bettyIsGreat@gmail.com')
+user3 = Member.create(username: 'April Jones', password: 'iamapril', email: 'aprilIsGreat@gmail.com')
+user4 = Member.create(username: 'Sam Dekker ', password: 'iamsam', email: 'samIsGreat@gmail.com')
+user5 = Member.create(username: 'Luis Baez', password: 'iamluis', email: 'luisIsGreat@gmail.com')
 
 category1 = Category.create(
   name: 'Arts'

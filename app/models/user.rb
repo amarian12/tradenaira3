@@ -9,7 +9,8 @@ class User < ApplicationRecord
   foreign_key: :user_id,
   class_name: "Project"
 
-  has_many :pledges
+  has_many :pledges,
+  foreign_key: :user_id
 
   after_initialize :ensure_session_token
 

@@ -263,6 +263,7 @@ if (marketp[0]) {
 
   showFloatingPoints();
   showVidoFroncontent();
+  showCurrencyPrice();
 
 });
 
@@ -432,39 +433,97 @@ function subNewslater($this, form_id){
 //src="https://www.youtube.com/embed/pNb1HxKFYWE" ></iframe>
 
 function showVidoFroncontent(){
-  
    $("body a").each(function(a){
     var thref = $(this).attr("href");
-
-     
-
     if(typeof(thref) != "undefined"){
-
       if(thref.indexOf("embed-y") != -1){
-
         var tarray = thref.split("/");
      var tcode = tarray[tarray.length-1];
 
         if(typeof(tcode) !="undefined"){
 
             var youtb = '<iframe width="560" height="315"'; 
-
             tcode = tcode.replace("&embed-y","");
             youtb += ' src="https://www.youtube.com/embed/'+tcode+'?rel=0&amp;controls=1&amp;showinfo=0"'; 
             youtb += ' frameborder="0" allow="autoplay; encrypted-media"';
             youtb += ' autoplay="1" ';
             youtb += ' allowfullscreen></iframe>';
-
-           
             $(this).html(youtb)
-
         }
-
       }
-
-
     }
-      
    })
 }
+
+
+function showCurrencyPrice(cntr = 0){
+  if(cntr < 0 || typeof(cntr) == "undefined" || cntr > 8){
+    return false;
+  }
+  var cnara = '<i class="flaticon-nigeria-naira-currency-symbol"></i>';
+  var cendi = '<i class="flaticon-ghana-cedis"></i>';
+  var wrapper = '.nav.nav-pills li a.lnk';
+
+  var curobj = [
+          { m: "usdngn", s: cnara },
+          { m: "gbpngn", s: cnara },
+          { m: "ghsngn", s: cnara },
+          { m: "btcngn", s: cnara },
+          { m: "btcusd", s: "$" },
+          { m: "btcgbp", s: "£" },
+          { m: "usdghs", s: cendi },
+          { m: "gbpghs", s: cendi },
+          { m: "btcghs", s: cendi }
+          ];
+
+          //for(var i=0; i<curobj.length; i++){
+             
+            var pobj = curobj[cntr];
+            //setTimeout(function(){
+             // alert(curobj[i])
+              if(typeof(pobj) != "undefined"){
+                $.ajax({
+                type: 'GET',
+                dataType: "json",
+                url: "/markets/"+pobj.m,
+                dataType: "json",
+                success:function(data){
+                  if(data.trades[0]){
+                    price = data.trades[0]['price'];
+
+                    var nhtml = pobj.s+""+price;
+
+                    var nobj = '<span class="csymble">'+nhtml+'</span>';
+                    //alert(wrapper+"."+pobj.m)
+                    $(wrapper).each(function(){
+                      if ($(this).attr("datas") == pobj.m ) {
+                        $(this).append(nobj);
+                      }
+                    })
+                    showCurrencyPrice(cntr+1);
+                    //$(wrapper+"datas").append(nobj);
+                  }
+                }
+                })
+              }
+                
+            //},2*1000);    
+          //}
+
+
+        // $.ajax({
+        //   type: 'GET',
+        //   dataType: "json",
+        //   url: url,
+        //   dataType: "json",
+        //   success:function(data){
+        //    if(data.trades[0])
+        //      price = data.trades[0]['price'];
+        //    if(data.asks[0])
+        //     ask_rate=data.asks[0][0];
+        //    if(data.bids[0])
+        //     bids_rate=data.bids[0][0];
+        // }
+}
+
 
