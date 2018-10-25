@@ -32284,7 +32284,7 @@ var App = function App() {
           _react2.default.createElement(
             'h1',
             { id: 'logo' },
-            'Tradenaira'
+           
           )
         )
       ),
@@ -32348,7 +32348,7 @@ var App = function App() {
             { to: '/', onClick: function onClick() {
                 return $(".modal-dropdown").removeClass("is-open");
               } },
-            'Index'
+          
           )
         ),
         _react2.default.createElement(
@@ -32512,6 +32512,7 @@ var _reactRouterDom = __webpack_require__(2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var sessionLinks = function sessionLinks() {
+    return "";
   return _react2.default.createElement(
     'nav',
     { className: 'login-signup' },
@@ -32524,6 +32525,7 @@ var sessionLinks = function sessionLinks() {
 };
 
 var personalGreeting = function personalGreeting(currentUser, logout) {
+    return "";
   return _react2.default.createElement(
     _reactRouterDom.Link,
     { to: '/login' },

@@ -12,6 +12,8 @@ module Private
         .where(id: @oauth_api_tokens.map(&:oauth_access_token_id))
         .group(:application_id).select('max(id) as id')
       @oauth_access_tokens = Doorkeeper::AccessToken.where(id: ids).includes(:application)
+      @currency_groups = ["usdngn","gbpngn","ghsngn",
+        "btcngn","btcusd","btcgbp","usdghs","gbpghs","btcghs"]
     end
 
     def new

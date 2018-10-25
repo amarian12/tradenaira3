@@ -8,14 +8,76 @@
       <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto|Baloo|Nunito" rel="stylesheet">
       <%= stylesheet_link_tag    'kickstart', media: 'all' %>
-      
-      
+      <%= stylesheet_link_tag "style2" %>
+      <%= stylesheet_link_tag "application" %>
 
       <%= javascript_include_tag 'action_cable' %>
       <%= javascript_include_tag 'cable' %>
-      
       <%= javascript_include_tag 'bundle' %>
+      <%= javascript_include_tag 'tradeniara' %>
+      <!--Start of Zendesk Chat Script--> <script type="text/javascript"> window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s= d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set. _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8"); $.src="https://v2.zopim.com/?64PkgLEiFf0LIMM36Kx644dkOj6ByT1e";z.t=+new Date;$. type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+
+    </script>
+
   </head>
+      <div class ="header_height">
+      <header class="site-main-header sanc homepage">
+        <div class="main-header">
+          <div class="container">
+          <div class="header_top_right mobile-view">
+                    <ul class="home_head tophead">
+                    <% if current_user && controller_name == 'markets'%>
+                     <%= render 'shared/header_account_balance' %>
+                     <% end %>
+                     <% if current_user %>
+                      <%= render 'shared/header_profile_setting' %> 
+                      <% end %>
+                      <% unless current_user %>
+                      <li><a href="/signup" target=""><i class="fa fa-"></i><span>Register</span></a></li>
+                      <li><a href="/signin" target=""><i class="fa fa-sign-in"></i><span>Login</span></a></li>  
+                      <% end %>   
+                      <li class="language-div"> <a href="#"> EN</a></li>
+                    </ul>
+               </div>
+            <div class="main-header-row">
+              <div class="logo-div"><a class="logo" href="/"><img class="home_logo" src="/assets/transparent_logo2.png" /></a></div>
+              <div class="main-navbar-header">
+                <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <div class="center-menu">
+                    <ul>
+                     <!--  <li><a>BUSINESS</a></li>
+                      <li><a>PERSONAL</a></li> -->
+                      <li><a href="/news">BUSINESS NEWS</a></li>
+                      <li><a href="/pages/projectfunding">PROJECT FUNDING </a></li>
+                      <li><a href="/pages/tradeservices">TRADE SERVICES</a></li>
+                     
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+
+              <div class="header_top_right">
+                    <ul class="home_head tophead">
+                    <% if current_user && controller_name == 'markets'%>
+                     <%= render 'shared/header_account_balance' %>
+                     <% end %>
+                     <% if current_user %>
+                      <%= render 'shared/header_profile_setting' %> 
+                      <% end %>
+                      <% unless current_user %>
+                      <li><a href="/signup" target=""><i class="fa fa-"></i><span>Register</span></a></li>
+                      <li><a href="/signin" target=""><i class="fa fa-sign-in"></i><span>Login</span></a></li>  
+                      <% end %>   
+                      <li class="language-div"> <a href="#"> EN</a></li>
+                    </ul>
+               </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      </div>
 
   <body>
 
@@ -82,5 +144,7 @@
     </script>
 
     <%= yield %>
+
+      <%= render 'shared/footer' %>
   </body>
 </html>

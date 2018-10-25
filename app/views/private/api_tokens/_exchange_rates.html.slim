@@ -1,0 +1,19 @@
+.panel.panel-default
+  .panel-heading
+    h2.panel-title Exchange Rate Extraction
+  .panel-body
+    .row
+      #guide.col-xs-8
+        h3 Exchange Rate external links
+      #content.col-xs-16
+        table.table.table-condensed.table-striped
+          thead: tr
+            th class='token-label' Currency 
+            th class='access_key' Link
+            th  
+          tbody
+            - @currency_groups.each do |c|
+              tr 
+                td = c
+                td ="https://tradenaira.com/markets/#{c}"
+             

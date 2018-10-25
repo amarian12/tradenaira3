@@ -2813,6 +2813,22 @@ input[type="file"] {
 /** 17 October 2018 css End here **/
 
 
+/** 25 Octobeotlight h1, .spotlight h2 {
+    font-size: 25px;
+}tart here **/
+
+
+
+
+/** 25 October 2018 css End here **/
+
+
+
+
+
+
+
+
 
 /** @media Query Css for Responsive Start here **/
 
@@ -3339,8 +3355,29 @@ header {padding: 9px 0 13px 0;}
 
 .btm_colour_bx { position:relative;}
 
+.spotlight h1 {
+    font-size: 25px;
+}
+
+.recent-items {
+    width: 80% !important;
+}
+.recent-data li {width: 100% !important;}
+.modal-dropdown {display: block !important; margin:30px 0 0;}
+.top-line .hamburger-menu {display: none;}
+.top-line{ display:none;}
+
+.project-form{ padding:10px;}
+
+
+
+
 
 }
+
+
+
+
 
 
 /** Mobile Device responsive End here **/
@@ -3722,6 +3759,15 @@ body {
 
 .li_bx_inner {min-height:370px;}
 
+.main-page{ display:block}
+.categories{min-width:auto;}
+
+.project-form-container {width: 720px;}
+
+
+
+
+
 }
 
 
@@ -3876,6 +3922,7 @@ body {
     top: 245px;
     left: 538px;
   }
+
 }
 
 
@@ -3914,6 +3961,8 @@ body {
     margin: 0 0 4px 0;
 }
 
+.categories{min-width:auto;}
+.index-categories li{ width:auto; margin-left:0;}
 
 }
 
