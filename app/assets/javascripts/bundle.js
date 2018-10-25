@@ -32284,7 +32284,7 @@ var App = function App() {
           _react2.default.createElement(
             'h1',
             { id: 'logo' },
-           
+            ''
           )
         )
       ),
@@ -32348,7 +32348,7 @@ var App = function App() {
             { to: '/', onClick: function onClick() {
                 return $(".modal-dropdown").removeClass("is-open");
               } },
-          
+            ''
           )
         ),
         _react2.default.createElement(
