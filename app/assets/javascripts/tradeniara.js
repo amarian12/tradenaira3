@@ -263,7 +263,7 @@ if (marketp[0]) {
 
   showFloatingPoints();
   showVidoFroncontent();
-  showCurrencyPrice();
+  showCurrencyPrice(0);
 
 });
 
@@ -456,7 +456,7 @@ function showVidoFroncontent(){
 }
 
 
-function showCurrencyPrice(cntr = 0){
+function showCurrencyPrice(cntr){
   if(cntr < 0 || typeof(cntr) == "undefined" || cntr > 8){
     return false;
   }
