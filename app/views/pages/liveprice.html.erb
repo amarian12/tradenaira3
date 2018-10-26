@@ -22,7 +22,7 @@
             for(var i=0; i <traden_cobj.length; i++){
                 if (traden_cobj[i].m == mkt) {
                     syble =  traden_cobj[i].s;
-
+                    $(".currecy-symbol").html(syble);
                 }
             }
             
@@ -45,7 +45,7 @@
 
                         if (traden_cobj[i].m == mkt) {
                            syble =  traden_cobj[i].s;
-                           $(".currecy-symbol").html(syble);
+                           //$(".currecy-symbol").html(syble);
                         }
                     }
                     var nhtml = syble+price;
@@ -75,11 +75,14 @@
             font-size: 16px;
         }
         #ticker{ 
-            width: 350px;
+            width: 400px;
             height: auto;
             position: relative;
             top: 0;
             left: 0;
+        }
+        .currecy-symbol{
+            font-size: 28px;
         }
     </style>
   
@@ -93,17 +96,17 @@
 
     <div class="panel panel-default" id="ticker">
         <div class="panel-body">
-            <div class="bid col-xs-7 pull-left">
+            <div class="bid col-xs-4 pull-left">
                 <div class="currecy-symbol text-up"></div>
             </div>
-            <div class="bid col-xs-7 pull-left">
+            <div class="bid col-xs-6 pull-left">
                 <div class="hint">BID</div>
                 <div class="price text-up"></div>
             </div>
-            <div class="last col-xs-10">
+            <div class="last col-xs-8">
                 <div class="price text-up"></div>
             </div>
-            <div class="ask col-xs-7 pull-right">
+            <div class="ask col-xs-6 pull-right">
                 <div class="hint">ASK</div>
                 <div class="price text-up"></div>
             </div>
