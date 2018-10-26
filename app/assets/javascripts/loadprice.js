@@ -9,7 +9,7 @@
 
 jQuery(document).ready(function() { 
 	var at,pt,ar,ai;
-  at = $("a.tascode");
+  at = jQuery("a.tascode");
  if(at[0]){
  	 ap = at.attr("href");
  	 ar = "https://tradenaira.com/pages/liveprice/"+ap;
