@@ -18,6 +18,13 @@
              //setInterval(function(){
                 //loadExtLiveprice(mkt,traden_cobj);
             //},1000);
+            var syble;
+            for(var i=0; i <traden_cobj.length; i++){
+                if (traden_cobj[i].m == mkt) {
+                    syble =  traden_cobj[i].s;
+
+                }
+            }
             
     })
 
@@ -38,7 +45,7 @@
 
                         if (traden_cobj[i].m == mkt) {
                            syble =  traden_cobj[i].s;
-
+                           $(".currecy-symbol").html(syble);
                         }
                     }
                     var nhtml = syble+price;
@@ -87,16 +94,20 @@
     <div class="panel panel-default" id="ticker">
         <div class="panel-body">
             <div class="bid col-xs-7 pull-left">
+                <div class="currecy-symbol text-up"></div>
+            </div>
+            <div class="bid col-xs-7 pull-left">
                 <div class="hint">BID</div>
                 <div class="price text-up"></div>
             </div>
-        <div class="last col-xs-10">
-            <div class="price text-up"></div>
+            <div class="last col-xs-10">
+                <div class="price text-up"></div>
+            </div>
+            <div class="ask col-xs-7 pull-right">
+                <div class="hint">ASK</div>
+                <div class="price text-up"></div>
+            </div>
         </div>
-        <div class="ask col-xs-7 pull-right">
-            <div class="hint">ASK</div>
-            <div class="price text-up"></div>
-        </div></div>
     </div>      
 
   </body>
