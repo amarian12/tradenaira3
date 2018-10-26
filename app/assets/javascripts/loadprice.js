@@ -7,7 +7,7 @@
 
 
 
-$(document).ready(function() { 
+jQuery(document).ready(function() { 
 	var at,pt,ar,ai;
   at = $("a.tascode");
  if(at[0]){
