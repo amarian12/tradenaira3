@@ -16,4 +16,13 @@
               tr 
                 td = c
                 td ="https://tradenaira.com/markets/#{c}"
+                td 
+                  blockquote
+                    pre 
+                      code 
+                        | &lt;!-- Paste the below code in head section of your webpage --&gt;<br>
+                        | &lt;script src="https://tradenaira.com/assets/loadprice.js"&gt; &lt;/script&gt; 
+                        | &lt;!-- Paste the below code where you would like to show realtime price --&gt;<br>
+                        | &lt;a href="#{c}" class="tascode"&gt; &lt;/a&gt;
+                         
              

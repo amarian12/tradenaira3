@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="funds">
+  <head>
+     
+    <%= include_gon %>
+    <link rel="shortcut icon" href="/favicon.ico"></link>
+    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico">
+    <%= stylesheet_link_tag "flaticon.css?body=1", media: "all" %>
+    <%= stylesheet_link_tag "market", media: "all" %>
+    <%= javascript_include_tag "market" %>
+    <%= javascript_include_tag "locales/#{I18n.locale}" %>
+    
+    <%= javascript_include_tag "tradeniara" %>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var mkt = '<%= @market %>';
+             //setInterval(function(){
+                //loadExtLiveprice(mkt,traden_cobj);
+            //},1000);
+            
+    })
+
+
+    function loadExtLiveprice(mkt,traden_cobj){
+
+        $.ajax({
+                type: 'GET',
+                dataType: "json",
+                url: "/markets/"+mkt,
+                dataType: "json",
+                success:function(data){
+                  if(data.trades[0]){
+                    var syble = "";
+                    price = data.trades[0]['price'];
+
+                    for(var i=0; i <traden_cobj.length; i++){
+
+                        if (traden_cobj[i].m == mkt) {
+                           syble =  traden_cobj[i].s;
+
+                        }
+                    }
+                    var nhtml = syble+price;
+
+                    var nobj = '<span class="csymble">'+nhtml+'</span>';
+                    //alert(wrapper+"."+pobj.m)
+                    
+                    $(".liveprice").html(nobj)
+                    //$(wrapper+"datas").append(nobj);
+                  }
+                }
+        })
+
+    }
+    </script>
+
+
+
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: none;
+        }
+        .csymble i:before{
+            font-size: 16px;
+        }
+        #ticker{ 
+            width: 100%;
+            height: auto;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+    </style>
+  
+  </head>
+  <body id="markets-show">
+      <div class="liveprice"></div>
+     
+      
+
+
+
+    <div class="panel panel-default" id="ticker">
+        <div class="panel-body">
+            <div class="bid col-xs-7 pull-left">
+                <div class="hint">BID</div>
+                <div class="price text-up"></div>
+            </div>
+        <div class="last col-xs-10">
+            <div class="price text-up"></div>
+        </div>
+        <div class="ask col-xs-7 pull-right">
+            <div class="hint">ASK</div>
+            <div class="price text-up"></div>
+        </div></div>
+    </div>      
+
+  </body>
+  </html>

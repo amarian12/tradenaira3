@@ -48,6 +48,11 @@ class PagesController < ApplicationController
      @new = New.all
      @feeds = Feed.all   
   end
+  def liveprice
+     
+    @market = params[:market]
+    render "liveprice", layout: false
+  end
   def learn
     @title    = "Nigerian and Naira Business Data and Statistics - TradeNAIRA"
     @descrip  = "Browse through Nigeria trade statistics and other relevant data to enable you to make more informed business decisions in Nigeria. Read our Guide to doing business in Nigeria."

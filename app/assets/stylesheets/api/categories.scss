@@ -40,8 +40,8 @@
 @media (min-width: 600px){
   .index-categories li {
     text-align:justify;
-    margin-left: 20%;
-    width: 10%;
+   /*  margin-left: 20%;
+    width: 10%; */
     -webkit-transition: all 0.3s ease; /* Safari and Chrome */
     -moz-transition: all 0.3s ease; /* Firefox */
     -ms-transition: all 0.3s ease; /* IE 9 */
@@ -61,7 +61,7 @@
   .index-categories li {
     text-align:justify;
     // margin-left: 20%;
-    width: 10%;
+   
     -webkit-transition: all 0.3s ease; /* Safari and Chrome */
     -moz-transition: all 0.3s ease; /* Firefox */
     -ms-transition: all 0.3s ease; /* IE 9 */
@@ -78,13 +78,7 @@
   }
 }
 
-.index-categories li a {
-  font-size: 40px;
-  color: #009e74;
-  /*font-family: 'Open Sans', sans-serif;*/
-  /*font-family: "Maison Neue Book", Helvetica, Arial, "Liberation Sans",  sans-serif;*/
 
-}
 
 .index-categories li a:hover {
 
@@ -92,7 +86,7 @@
 @media (min-width: 700px){
   .categories {
     height: 100%;
-    min-width: 1400px;
+    min-width: 1200px;
     display: flex;
     justify-content: space-around;
   }
@@ -107,8 +101,9 @@
 @media (min-width: 700px){
   .categories img {
     margin-top: 30px;
-    max-width: 700px;
-    max-height: 655px;
+    max-width: 35%;
+    max-height:450px;
+
     object-fit: contain;
     object-position: center;
   }
@@ -117,10 +112,6 @@
   .categories img {
     display: none;
   }
-}
-.category-index-item {
-  margin:10px;
-
 }
 
 

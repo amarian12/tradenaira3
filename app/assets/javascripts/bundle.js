@@ -32641,8 +32641,11 @@ var Protected = function Protected(_ref2) {
   var Component = _ref2.component,
       path = _ref2.path,
       loggedIn = _ref2.loggedIn;
-  return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
-      return loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });
+  return _react2.default.createElement(_reactRouterDom.Route, { path: path, 
+    render: function render(props) {
+      //return loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });
+      return _react2.default.createElement(Component, props);
+      //dinesh100ni
     } });
 };
 
@@ -37305,7 +37308,6 @@ var ProjectShow = function (_React$Component) {
     key: 'render',
     value: function render() {
       var _this2 = this;
-
       var user = this.props.user;
       var project = this.props.project;
 
@@ -37580,6 +37582,13 @@ var ProjectForm = function (_React$Component) {
     key: 'render',
     value: function render() {
       var _this3 = this;
+
+      if(this.props.user == null){
+        //this.redirect("/login");
+        //return "";
+        return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });
+         return ""
+      } 
 
       // console.log(this.props);
       var project = this.state;
@@ -40784,7 +40793,7 @@ var RewardIndex = function (_React$Component) {
         this.props.updateProject(this.state);
         // console.log("should be update", this.state.total_amount)
       } else {
-        alert("User is not logged in");
+        alert("You must be logged in!");
       }
       // console.log("clicked", e.target.value)
       // this.props.createPledge(this.state);
@@ -40950,7 +40959,7 @@ var PledgeForm = function (_React$Component) {
         this.props.updateProject(this.state);
         this.props.amount['amount_pledged'] = 0;
       } else {
-        alert("User is not logged in");
+        alert("You must be logged in!");
       }
       // this.props.createPledge(this.state);
     }

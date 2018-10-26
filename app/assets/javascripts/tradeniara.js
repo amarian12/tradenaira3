@@ -455,26 +455,29 @@ function showVidoFroncontent(){
    })
 }
 
+var traden_cnara = '<i class="flaticon-nigeria-naira-currency-symbol"></i>';
+var traden_cendi = '<i class="flaticon-ghana-cedis"></i>';
+var traden_cobj = [
+          { m: "usdngn", s: traden_cnara },
+          { m: "gbpngn", s: traden_cnara },
+          { m: "ghsngn", s: traden_cnara },
+          { m: "btcngn", s: traden_cnara },
+          { m: "btcusd", s: "$" },
+          { m: "btcgbp", s: "£" },
+          { m: "usdghs", s: traden_cendi },
+          { m: "gbpghs", s: traden_cendi },
+          { m: "btcghs", s: traden_cendi }
+          ];
 
 function showCurrencyPrice(cntr){
   if(cntr < 0 || typeof(cntr) == "undefined" || cntr > 8){
     return false;
   }
-  var cnara = '<i class="flaticon-nigeria-naira-currency-symbol"></i>';
-  var cendi = '<i class="flaticon-ghana-cedis"></i>';
+  var cnara = traden_cnara;
+  var cendi = traden_cendi;
   var wrapper = '.nav.nav-pills li a.lnk';
 
-  var curobj = [
-          { m: "usdngn", s: cnara },
-          { m: "gbpngn", s: cnara },
-          { m: "ghsngn", s: cnara },
-          { m: "btcngn", s: cnara },
-          { m: "btcusd", s: "$" },
-          { m: "btcgbp", s: "£" },
-          { m: "usdghs", s: cendi },
-          { m: "gbpghs", s: cendi },
-          { m: "btcghs", s: cendi }
-          ];
+  var curobj = traden_cobj;
 
           //for(var i=0; i<curobj.length; i++){
              

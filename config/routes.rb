@@ -105,6 +105,7 @@ Peatio::Application.routes.draw do
   get "pages/projectfunding" => 'static_pages#root'
   
   post "pages/subscribe" => 'pages#subscribe'
+  get "/pages/liveprice/:market", to: 'pages#liveprice'
 
 
 

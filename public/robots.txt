@@ -6,3 +6,9 @@
 Sitemap:  https://tradenaira.com/sitemap.xml.gz
 
 Sitemap: https://tradenaira.com/sitemap_location.xml
+
+Disallow: /news/consortium-led-by-general-electric-submits-only-bid-for-nigeria-s-rail-concession
+Disallow: /pages/subscribe
+Disallow: /newproj
+Disallow: /pages
+Disallow: /welcome

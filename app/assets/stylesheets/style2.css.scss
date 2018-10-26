@@ -2820,10 +2820,27 @@ input[type="file"] {
 
 
 
-/** 25 October 2018 css End here **/
+/** 26 October 2018 css Start here **/
+
+.nav > li > a {
+    padding: 15px 6px;
+    font-size: 14px;
+}
+
+.index-categories li{}
+
+.index-categories li a {
+    font-size: 24px;
+    color: #029abf;
+    display: block;
+    padding: 6px 13px 5px 10px;
+}
 
 
+.index-categories {  width: 40%;}
 
+
+/** 26 October 2018 css End here **/
 
 
 
@@ -3370,9 +3387,9 @@ header {padding: 9px 0 13px 0;}
 .project-form{ padding:10px;}
 
 
+.index-categories {width: 100%;}  
 
-
-
+.categories {min-width: auto;}
 }
 
 
@@ -3769,8 +3786,6 @@ body {
 
 
 }
-
-
 
 
 /** For Tablet ipad Device responsive End here **/

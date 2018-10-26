@@ -1,14 +1,23 @@
 <main id="root">
 
-  <% if logged_in? %>
+  <%# if logged_in? %>
     <script type="text/javascript">
+      <% if logged_in? %>
         window.currentUser = <%= render("/api_kicksmart/users/user.json.jbuilder",
         user: current_user).html_safe %>
+      <% else %>  
+      window.currentUser = {"id":0,"username": "","password": "","email": ""}
+      window.currentUser = null
+      <% end %>
+        //alert(JSON.stringify(window.currentUser));
+        //window.currentUser = []
+
+        
     </script>
-  <% else %>
+  <%# else %>
   <script type="text/javascript">
-      window.test = 2
+      //window.test = 2
   </script>
-  <% end %>
+  <%# end %>
 
 </main>
