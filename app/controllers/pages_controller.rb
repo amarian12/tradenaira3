@@ -49,7 +49,7 @@ class PagesController < ApplicationController
      @feeds = Feed.all   
   end
   def liveprice
-     
+    response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
     @market = params[:market]
     render "liveprice", layout: false
   end
