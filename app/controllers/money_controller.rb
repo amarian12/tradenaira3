@@ -5,4 +5,11 @@ class MoneyController < ApplicationController
   end
   def commission
   end
+
+  def send_money
+  	if params[:member]
+  		resp = { msg: "Still working" }
+  		render json: resp
+  	end
+  end
 end

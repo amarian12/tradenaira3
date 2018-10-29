@@ -82,6 +82,50 @@ img {
   margin: -62px -2px -2px -27px;
 }
 
+.money-form-wrapper {
+  position: relative;
+  .dropdown-item{
+    display: block;
+    margin: 8px 0px 12px 0;
+    padding: 0 2px;
+    img{
+      width: 20px; 
+      height: 20px;
+      position: relative;
+      top: 0;
+      left: 3px;
+      margin: 0 3px 0px 0;
+    }
+  }
+  .pricebox{
+    .currencybox{
+      img{
+        position: relative;
+        top: 30px;
+        left: 16px;
+      }
+    }
+  }
+  .amterr{
+    color: red;
+  }
+  .wait-section{
+    position: absolute;
+    z-index: 999;
+    background: #ccc;
+    color: #fff;
+    opacity: 0.6;
+    padding: 138px 0;
+    left: 0;
+    top: 0;
+    width: 550px;
+    p{
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
 
 .response-box{
   .form_success{

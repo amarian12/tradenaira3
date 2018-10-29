@@ -149,8 +149,7 @@ $(document).ready(function() {
        
   	 	// setTimeout(function(){location.reload()}, 1000);
   	 })
-  	 $(".lnk").click(function () 
-  	 {
+  	 $(".lnk").click(function (){
         var url = $(this).attr('data-link');
         $("#frameExternal").attr('src', url);
      });
@@ -527,6 +526,68 @@ function showCurrencyPrice(cntr){
         //    if(data.bids[0])
         //     bids_rate=data.bids[0][0];
         // }
+}
+
+function sndMoenyCurrecy($this){
+  var account_id = $($this).data("id"); 
+  var cccurrency = $($this).data("currency"); 
+  if (typeof(cccurrency) == "undefined") {
+    return false;
+  }
+  if (typeof(account_id) == "undefined") {
+    return false;
+  }
+  $(".amterr").text("");
+
+  $("#member_currency").val(account_id);
+  $(".sendmoneybtn").show();
+  var cimg = '<img src="/icon-'+cccurrency+'.png" />';
+  $(".pricebox .currencybox").html(cimg);
+  $(".pricebox").show();
+  return false;
+}
+
+function checkAmount($this){
+    var amt = parseFloat($($this).val());
+
+    if(!amt > 0){
+      $(".amterr").text("Amount must be greter than 0.0");
+    }else{
+      $(".amterr").text("");
+    }
+
+}
+
+function SendMoney($this){
+  $(".wait-section")
+  .html("<p>Please wait, while we processing your request...</p>")
+  .show();
+  var formdata = $($this).serialize();
+  var faction = $($this).attr("action");
+  $.ajax({
+    url: faction,
+    type: "post",
+    data: formdata,
+    dataType: "json",
+    success:function(resp){
+      $(".wait-section")
+      .text("")
+      .hide();
+
+      alert(JSON.stringify(resp))
+    },
+    timeout: 10000,
+    error: function(errors){
+      
+      $(".wait-section")
+      .text("")
+      .hide();
+      alert(JSON.stringify(errors))
+
+    }
+
+  })
+  return false;
 }
 
 

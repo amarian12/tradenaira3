@@ -1,0 +1,51 @@
+<% unless current_user.nil?  %>
+<div class="money-form-wrapper">
+	<div class="wait-section" style="display: none;"></div>
+<%= form_for(current_user, url: "/money/send", html: { onsubmit: "return SendMoney(this)" }) do |f| %>
+		<%= f.hidden_field :currency %>
+		<div class="form_row overflw">
+	        <div class="full_width ">
+	         	<img class="email_ico" src="/assets/img/email.png" alt="email"> 
+	        	<%= f.email_field :email, placeholder: "E-mail Address"  %>
+	        </div>
+        </div>  
+
+        <div class="form_row">
+	        <div class="full_width">
+	            <label>Select Currency to send</label>
+	            <div class="dropdown">
+	            	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	            		Select Currecy
+  					</button>
+  					<div class="dropdown-menu">
+	            	<% current_user.accounts.where("balance > 0").each do |a| %> 
+		            <% unless a.currency.nil? %>
+			            <a href="#" class="dropdown-item" 
+			            	data-id="<%= a.id %>"
+			            	data-currency="<%= a.currency %>"
+			            	onClick="return sndMoenyCurrecy(this)">
+			             	<%= image_tag "/icon-#{a.currency}.png" %>
+			             	 <%= a.balance   %>
+			            </a>
+		             <% end %>
+	            	<% end %>
+	            	</div>
+	            </div>
+	        </div>  
+	        <div class="pricebox" style="display: none;">
+	        	<div class="currencybox"></div>
+	        	<%= f.text_field :amount_to_send, onchange: "checkAmount(this)",
+	        	placeholder: "Amount to send" %>
+	        	<p class="amterr"></p>
+	        </div> 
+    	</div>
+    	<div class="form_row">
+    		<div class="full_width">
+	        <button style="display: none;" class="btn5 sendmoneybtn" type="submit">
+	        	Send
+	        </button> 
+	    	</div>
+	    </div>
+<% end %>
+<% end %>
+</div>

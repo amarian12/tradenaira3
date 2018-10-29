@@ -3,6 +3,8 @@ class Member < ActiveRecord::Base
   acts_as_taggable
   acts_as_reader
 
+  attr_accessor :currency, :amount_to_send
+
   #for kicksmarter
   has_many :projects,
   primary_key: :id,

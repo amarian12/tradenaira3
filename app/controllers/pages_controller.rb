@@ -66,6 +66,11 @@ class PagesController < ApplicationController
     @descrip  = "Contact TradeNAIRA for business enquiries or to find out about our services and future plans. Follow us on twitter and facebook for real time updates and information relating to business in Nigeria and West Africa."
   end
   def sendmoney
+
+    
+
+
+    
       @title = "Send money to Nigeria"
       @descrip = "Send money to Nigeria with our online money transfer services. Transfer money to Nigeria safely to arrive same day, within minutes. We make sending money cheap and easy. "
   end

@@ -27,10 +27,13 @@
           <img src="/assets/img/bilgisayr.png" alt="screen1"> 
         </div>
         <div class="rate_content w50">
-            <h3 class="heading4">TRACK THE RATE</h3>
-            <p class="para1">Subscribe to our free daily email about your favourite currency route or receive an alert when the rate reaches your goal.</p>
+            <!-- <h3 class="heading4">TRACK THE RATE</h3>
+            <p class="para1">Subscribe to our free daily email about your favourite currency route or receive an alert when the rate reaches your goal.</p> -->
+            <h3 class="heading4">SEND MONEY</h3>
+            <p class="para1">Select the Currency to send money</p>
             <div class="rate_input">
-               <form>
+                <%= render "shared/money/send_money_form" %>
+            <!-- <form>
                 <div class="form_row overflw">
                 <div class="full_width ">
                  <img class="email_ico" src="/assets/img/email.png" alt="email"> 
@@ -38,39 +41,37 @@
                  </div>
                 </div>   
 
-           <div class="form_row overflw">
-                <div class="in_width50">
-                 <img src="/assets/img/password.png" alt="screen1"> 
-                <input type="password" placeholder="Password">
-                 </div>
-                <div class="in_width50">
-                 <img src="/assets/img/password.png" alt="screen1"> 
-                <input type="password" placeholder="Password again">
-                 </div>
+                <div class="form_row overflw">
+                    <div class="in_width50">
+                        <img src="/assets/img/password.png" alt="screen1"> 
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="in_width50">
+                        <img src="/assets/img/password.png" alt="screen1"> 
+                        <input type="password" placeholder="Password again">
+                    </div>
 
                 </div>   
                 <div class="form_row">
                     <div class="custom_radio">
-                 <div class="custom_radio_btn">
-    <input type="radio" id="individualin" name="radio-group" checked>
-    <label for="individualin">Individual </label>
-  </div>
-  <div class="custom_radio_btn">
-    <input type="radio" id="estitutional" name="radio-group">
-    <label for="estitutional">Institutional</label>
-  </div>
+                        <div class="custom_radio_btn">
+                            <input type="radio" id="individualin" name="radio-group" checked>
+                            <label for="individualin">Individual </label>
+                        </div>
+                        <div class="custom_radio_btn">
+                            <input type="radio" id="estitutional" name="radio-group">
+                            <label for="estitutional">Institutional</label>
+                        </div>
+                    </div>
                 </div>
-          </div>
-<div class="btn6">
- <button class="btn5" type="submit">Register</button>   
-
-</div>
-
-               </form>
+                <div class="btn6">
+                    <button class="btn5" type="submit">Register</button>   
+                </div>
+            </form> -->
 
             </div>
 
-        </div>
+</div>
 
 
 
