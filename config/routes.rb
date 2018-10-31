@@ -152,7 +152,11 @@ Peatio::Application.routes.draw do
   get '/documents/websocket_api'
   get '/documents/oauth'
   resources :documents, only: [:show]
-  resources :two_factors, only: [:show, :index, :update]
+
+  patch '/two_factors/validatetrans', to: "two_factors#validatetrans"
+  post '/two_factors/validatetrans', to: "two_factors#validatetrans"
+  resources :two_factors, only: [:show, :index, :update, :validatetrans]
+
 
   scope module: :private do
     resource  :id_document, only: [:edit, :update]

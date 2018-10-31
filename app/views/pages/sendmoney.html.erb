@@ -1,4 +1,5 @@
-    <section style="background: url('/assets/send_money_banner.png');" class="inner-banner-map about_banner_content">
+<section style="background: url('/assets/send_money_banner.png');" 
+        class="inner-banner-map about_banner_content">
         <div class="container inner-dis-table">
             <div class="inner-banner-text inner-table-cell">
                 <div class="inner-main-text">
@@ -14,7 +15,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+</section>
 
 
 
@@ -33,6 +34,7 @@
             <p class="para1">Select the Currency to send money</p>
             <div class="rate_input">
                 <%= render "shared/money/send_money_form" %>
+                
             <!-- <form>
                 <div class="form_row overflw">
                 <div class="full_width ">
@@ -905,7 +907,9 @@ select#from-currencies-list, select#to-currencies-list, select#from-currencies-l
 <script>
 
 $(document).ready(function(){
-	
+	if(!$('.gotonext')[0]){
+        return false;
+    }
     $('.gotonext').click(function() {
     
     container = $(this).parent();

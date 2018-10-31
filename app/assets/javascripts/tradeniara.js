@@ -476,6 +476,10 @@ function showCurrencyPrice(cntr){
   var cendi = traden_cendi;
   var wrapper = '.nav.nav-pills li a.lnk';
 
+  if(!$(wrapper)[0]){
+    return false;
+  }
+
   var curobj = traden_cobj;
 
           //for(var i=0; i<curobj.length; i++){
@@ -549,24 +553,46 @@ function sndMoenyCurrecy($this){
 
 function checkAmount($this){
     var amt = parseFloat($($this).val());
-
     if(!amt > 0){
       $(".amterr").text("Amount must be greter than 0.0");
+      return false;
     }else{
       $(".amterr").text("");
+      return true;
     }
+}
 
+function checkEmailf($this){
+  var cemail = $($this).val();
+  var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+
+    if(!pattern.test(cemail)){
+      $(".mailerr").text("Please fill the valid email address!");
+      return false;
+    }else{
+      $(".mailerr").text("");
+      return true;
+    }
 }
 
 function SendMoney($this){
+  
+  var validAmount = checkAmount("#member_amount_to_send");
+  var valid_email = checkEmailf("#member_email");
+  if(!(valid_email && validAmount)){
+    return false;
+  }
+
   $(".wait-section")
   .html("<p>Please wait, while we processing your request...</p>")
   .show();
+
   var formdata = $($this).serialize();
   var faction = $($this).attr("action");
   $.ajax({
     url: faction,
     type: "post",
+    method: "post",
     data: formdata,
     dataType: "json",
     success:function(resp){
@@ -574,7 +600,50 @@ function SendMoney($this){
       .text("")
       .hide();
 
-      alert(JSON.stringify(resp))
+      $.ajax({
+        url: "/two_factors",
+        type: "get",
+        method: "get",
+        data: { respas: "noheader" },
+        success: function(twofectresp){
+          $(".sendmenyform").hide();
+          $(".twofectorauth").html(twofectresp);
+
+          $(".twofectorauth").find(".dropdown-menu").find("a").click(function(){
+            var dauth = $(this).data("type");
+            var dcontent = $(this).text();
+            $(".twofectorauth").find(".input-group-btn").find("button").text(dcontent);
+            $(".twofectorauth").find("input.two_factor_auth_type").val(dauth);
+          })
+
+            $(".twofectorauth").find("form").submit(function(e){
+              e.preventDefault();
+              //alert(5);
+              var ftdata = $(this).serialize();
+              var ftaction = $(this).attr("action");
+
+              $.ajax({
+                url: "/two_factors/validatetrans",
+                data: ftdata,
+                method: "post",
+                type: "post",
+                dataType:"json",
+                success: function(ftresp){
+                  alert(JSON.stringify(ftresp));
+                  return false;
+                },
+                error: function(dterr){
+                  alert(JSON.stringify(dterr));
+                }
+              });
+              return false;
+            })
+          //end the submitform
+          return false;
+          //alert(twofectresp);
+        }
+      })
+       
     },
     timeout: 10000,
     error: function(errors){
@@ -582,7 +651,9 @@ function SendMoney($this){
       $(".wait-section")
       .text("")
       .hide();
-      alert(JSON.stringify(errors))
+      //alert(JSON.stringify(errors))
+      var error = "There was some errors, while we processing your request";
+      alert(error);
 
     }
 

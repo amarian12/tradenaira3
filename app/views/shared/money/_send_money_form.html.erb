@@ -1,12 +1,42 @@
 <% unless current_user.nil?  %>
+<%= javascript_include_tag("moneyexchange") %>
+
+<% content_for :scripts do %>
+  <script type="text/javascript" charset="utf-8">
+    $(window).load(function(){
+      $.ajax({
+        type: "post",
+        url: "<%= gen_address_funds_path %>"
+      })
+    });
+  </script>
+<% end %>
+<!-- <div ng-app="money">
+	<div ng-controller = "exChangeController">
+
+	<ui-view>
+ 
+	 <ng-include src="'/templates/funds/_two_factor_auth.html'"></ng-include>  
+	 	 
+	</ui-view>
+	</div>
+</div> -->
+ 
 <div class="money-form-wrapper">
 	<div class="wait-section" style="display: none;"></div>
-<%= form_for(current_user, url: "/money/send", html: { onsubmit: "return SendMoney(this)" }) do |f| %>
+	<div class="col-md-24">
+		<div class="twofectorauth"></div>
+	</div>
+<%= form_for(current_user, url: "/money/send", html: { onsubmit: "return SendMoney(this)", 
+class: "sendmenyform" }) do |f| %>
 		<%= f.hidden_field :currency %>
+		<%= hidden_field_tag "member[action_as]","init" %>
 		<div class="form_row overflw">
 	        <div class="full_width ">
+	        	<p class="mailerr"></p>
 	         	<img class="email_ico" src="/assets/img/email.png" alt="email"> 
-	        	<%= f.email_field :email, placeholder: "E-mail Address"  %>
+	        	<%= f.email_field :email, placeholder: "E-mail Address",value: "",
+	        	onchange: "checkEmailf(this)"  %>
 	        </div>
         </div>  
 
@@ -47,5 +77,12 @@
 	    	</div>
 	    </div>
 <% end %>
-<% end %>
+
 </div>
+<% else %>
+<div class="form_row overflw">
+	        <div class="full_width ">
+	         	<p>Please <%= link_to "Login", signin_path %> to send/receive money.</p>
+	        </div>
+        </div> 
+<% end %>

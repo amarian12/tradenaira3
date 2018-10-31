@@ -106,7 +106,7 @@ img {
       }
     }
   }
-  .amterr{
+  .amterr,.mailerr{
     color: red;
   }
   .wait-section{
@@ -123,6 +123,9 @@ img {
       text-align: center;
       width: 100%;
     }
+  }
+  .col-md-12{
+    width: 100%;
   }
 }
 

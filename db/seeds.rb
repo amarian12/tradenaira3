@@ -8,7 +8,7 @@ admin_identity.password = admin_identity.password_confirmation = ADMIN_PASSWORD
 admin_identity.is_active = true
 admin_identity.save!
 
-puts "ssssssssssssssssssssss"
+ 
 
 admin_member = Member.find_or_create_by(email: ADMIN_EMAIL)
 admin_member.authentications.build(provider: 'identity', uid: admin_identity.id)
@@ -17,8 +17,7 @@ unless admin_member.valid?
 end
 admin_member.save!
 
-puts "000000000000000000"
-
+ 
 if Rails.env == 'development'
   NORMAL_PASSWORD = 'Pass@word8'
 
@@ -29,20 +28,16 @@ if Rails.env == 'development'
   foo_member.tag_list.add 'hero'
   foo_member.save
 
-  puts "111111111111111111"
-
   bar = Identity.create(email: 'bar@peatio.dev', password: NORMAL_PASSWORD, password_confirmation: NORMAL_PASSWORD, is_active: true)
   bar_member = Member.create(email: bar.email)
   bar_member.authentications.build(provider: 'identity', uid: bar.id)
   bar_member.tag_list.add 'vip'
   bar_member.tag_list.add 'hero'
   bar_member.save
-  puts "22222222222222222222222"
+   
 end
 
-
-puts "3333333333333333333"
-
+ 
 rescue
 end
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -63,7 +58,7 @@ user5 = Member.create(username: 'Luis Baez', password: 'iamluis', email: 'luisIs
 category1 = Category.create(
   name: 'Arts'
 )
-puts "4444444444444444444444"
+ 
 
 category2 = Category.create(
   name: 'Comics'

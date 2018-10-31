@@ -16,6 +16,22 @@ class TwoFactorsController < ApplicationController
   end
 
   def index
+     
+    unless params["respas"].nil?
+      if params["respas"] == "noheader"
+        render "index", layout: false
+        return false
+      end
+    end
+  end
+
+  def validatetrans
+    sucess = false
+    if two_factor_auth_verified?
+      sucess
+    end
+    resp = { sucess: sucess }
+    render json: resp
   end
 
   def update
