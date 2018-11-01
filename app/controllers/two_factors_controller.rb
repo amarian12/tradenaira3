@@ -41,7 +41,7 @@ class TwoFactorsController < ApplicationController
           if me.sent_to_id.to_i == 0
             #sendSignupMailtoUser
             msg = "Money sent success"
-            UserMailer.signup_request(me,current_user)
+            UserMailer.signup_request(me,current_user).deliver
           end
         end
       else
