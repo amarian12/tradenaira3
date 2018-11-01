@@ -66,19 +66,20 @@ class PagesController < ApplicationController
     @descrip  = "Contact TradeNAIRA for business enquiries or to find out about our services and future plans. Follow us on twitter and facebook for real time updates and information relating to business in Nigeria and West Africa."
   end
   def sendmoney
+    unless current_user.nil?
+      @deposit_channels = DepositChannel.all
+      @withdraw_channels = WithdrawChannel.all
+      @currencies = Currency.all.sort
+      @deposits = current_user.deposits
+      @accounts = current_user.accounts.enabled
+      @withdraws = current_user.withdraws
+      @fund_sources = current_user.fund_sources
+      @banks = Bank.all
+      @ngnbanks = Bank.all
 
-    @deposit_channels = DepositChannel.all
-    @withdraw_channels = WithdrawChannel.all
-    @currencies = Currency.all.sort
-    @deposits = current_user.deposits
-    @accounts = current_user.accounts.enabled
-    @withdraws = current_user.withdraws
-    @fund_sources = current_user.fund_sources
-    @banks = Bank.all
-    @ngnbanks = Bank.all
 
-
-    gon.jbuilder
+      gon.jbuilder
+    end
 
 
     
