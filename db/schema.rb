@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030101310) do
+ActiveRecord::Schema.define(version: 20181101101329) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -342,6 +342,7 @@ ActiveRecord::Schema.define(version: 20181030101310) do
     t.datetime "approved_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
   create_table "news", force: true do |t|

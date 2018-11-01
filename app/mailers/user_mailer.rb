@@ -6,6 +6,14 @@ class UserMailer < ActionMailer::Base
     set_mail(getemail,getsubject,getcc,getcontent)
   end
 
+  def signup_request me,member
+    @by_member = member
+    @amount = me.amount
+    @currency = me.account.currency
+    subjects = "You have received money from #{@by_member.email}!"
+    mail to: @by_member.email, subject: subjects
+  end
+
   private
 
   def set_mail(getemail,getsubject,getcc,getcontent)

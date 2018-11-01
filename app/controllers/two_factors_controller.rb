@@ -27,10 +27,36 @@ class TwoFactorsController < ApplicationController
 
   def validatetrans
     sucess = false
-    if two_factor_auth_verified?
-      sucess
+    errors = ""
+    mei = params[:two_factor][:mei] 
+    acode = params[:two_factor][:acode]
+    me = MoneyExchange.find_by_id(mei)
+    capreq = false
+
+    unless me.nil?
+      if two_factor_auth_verified?
+        me.status = 1
+        if me.save
+          sucess = true
+          if me.sent_to_id.to_i == 0
+            #sendSignupMailtoUser
+            msg = "Money sent success"
+            UserMailer.signup_request(me,current_user)
+          end
+        end
+      else
+        sucess = false
+        if two_factor_failed_locked?
+          capreq = true
+          errors = "Please enter the code shown in the picture."
+        else
+          errors = "Two factor verification code error, please re-enter."
+        end
+        
+      end
     end
-    resp = { sucess: sucess }
+
+    resp = { success: sucess, errors: errors, captach: capreq, msg: msg  }
     render json: resp
   end
 

@@ -1,6 +1,7 @@
 class Account < ActiveRecord::Base
   include Currencible
 
+
   FIX = :fix
   UNKNOWN = :unknown
   STRIKE_ADD = :strike_add
@@ -22,7 +23,7 @@ class Account < ActiveRecord::Base
   has_many :payment_addresses
   has_many :versions, class_name: "::AccountVersion"
   has_many :partial_trees
-
+  has_many :money_exchanges
   # Suppose to use has_one here, but I want to store
   # relationship at account side. (Daniel)
   belongs_to :default_withdraw_fund_source, class_name: 'FundSource'

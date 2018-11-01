@@ -36,13 +36,26 @@ class MoneyController < ApplicationController
         sent_to_id = receiver.id
       end
 
+      success = false;
+
+      MoneyExchange.where(
+        sent_by_id: member.id,
+        sent_to_id: sent_to_id,
+        sent_on_email: email,
+        status: 0).destroy_all
+
       me = MoneyExchange.new(
         sent_by_id: member.id,
         sent_to_id: sent_to_id, 
+        sent_on_email: email,
+        account_id: account.id,
         amount: amount,
         status: 0)
+      if me.save
+        success = true
+      end
 
-  		resp = { msg: "", success: true, errors: errors, status: me.status }
+  		resp = { msg: "", success: success, acode: "send", errors: errors, mei: me.id }
 
   		render json: resp
 

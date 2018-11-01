@@ -1,4 +1,5 @@
 class MoneyExchange < ActiveRecord::Base
+	belongs_to :account
 	attr_accessor :currency
 	include Currencible
 	STATUS_CODES = {

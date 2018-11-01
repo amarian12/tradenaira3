@@ -76,12 +76,8 @@ class PagesController < ApplicationController
       @fund_sources = current_user.fund_sources
       @banks = Bank.all
       @ngnbanks = Bank.all
-
-
       gon.jbuilder
     end
-
-
     
       @title = "Send money to Nigeria"
       @descrip = "Send money to Nigeria with our online money transfer services. Transfer money to Nigeria safely to arrive same day, within minutes. We make sending money cheap and easy. "

@@ -127,6 +127,17 @@ img {
   .col-md-12{
     width: 100%;
   }
+  .globalerros{
+    background: #F2DEDE;
+    padding: 8px 11px 1px;
+    margin-bottom: 4px;
+    display: none;
+
+    p{
+      color: #a94442;
+
+    }
+  }
 }
 
 
@@ -2664,8 +2675,8 @@ li.dropdown.account-settings {padding-top: 0;}
 
 
 .banner-map i:before {
-    font-size: 12px !important;
-    padding: 0 3px 0 0;
+    font-size: 11px !important;
+    padding: 0 0px 0 0;
 }
 
 

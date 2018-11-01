@@ -23,10 +23,13 @@
 </div> -->
  
 <div class="money-form-wrapper">
+	<div class="globalerros"></div>
+	<div class="sentsuccess"></div>
 	<div class="wait-section" style="display: none;"></div>
 	<div class="col-md-24">
 		<div class="twofectorauth"></div>
 	</div>
+
 <%= form_for(current_user, url: "/money/send", html: { onsubmit: "return SendMoney(this)", 
 class: "sendmenyform" }) do |f| %>
 		<%= f.hidden_field :currency %>

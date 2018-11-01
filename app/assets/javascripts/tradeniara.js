@@ -599,66 +599,178 @@ function SendMoney($this){
       $(".wait-section")
       .text("")
       .hide();
-
-      $.ajax({
-        url: "/two_factors",
-        type: "get",
-        method: "get",
-        data: { respas: "noheader" },
-        success: function(twofectresp){
-          $(".sendmenyform").hide();
-          $(".twofectorauth").html(twofectresp);
-
-          $(".twofectorauth").find(".dropdown-menu").find("a").click(function(){
-            var dauth = $(this).data("type");
-            var dcontent = $(this).text();
-            $(".twofectorauth").find(".input-group-btn").find("button").text(dcontent);
-            $(".twofectorauth").find("input.two_factor_auth_type").val(dauth);
-          })
-
-            $(".twofectorauth").find("form").submit(function(e){
-              e.preventDefault();
-              //alert(5);
-              var ftdata = $(this).serialize();
-              var ftaction = $(this).attr("action");
-
-              $.ajax({
-                url: "/two_factors/validatetrans",
-                data: ftdata,
-                method: "post",
-                type: "post",
-                dataType:"json",
-                success: function(ftresp){
-                  alert(JSON.stringify(ftresp));
-                  return false;
-                },
-                error: function(dterr){
-                  alert(JSON.stringify(dterr));
-                }
-              });
-              return false;
-            })
-          //end the submitform
-          return false;
-          //alert(twofectresp);
-        }
-      })
-       
+      if(resp.success){
+        showTwoFectorAuth(resp);
+      }
+      //
     },
     timeout: 10000,
     error: function(errors){
-      
       $(".wait-section")
       .text("")
       .hide();
       //alert(JSON.stringify(errors))
       var error = "There was some errors, while we processing your request";
       alert(error);
-
     }
-
   })
   return false;
 }
+
+//resend verification message functions
+var alreadysent = false;
+function resentVerificationMsg($this){
+  var textmsg = $($this).data("alt-name");
+  var defmsg = $($this).data("orig-name");
+  $($this).attr("disabled",true);
+  var countst = 30;
+  var rsc = setInterval(function(){
+    if(countst <= 0){
+      clearInterval(rsc);
+      $($this).removeAttr("disabled")
+      .text(defmsg);
+      return false;
+    }
+    $($this).text(textmsg.replace("COUNT",countst));
+    countst--;
+
+  },1000);
+  SendVerificationMsg(alreadysent);
+  alreadysent = true
+  return false;
+}
+//loadtwofectorauth
+function showTwoFectorAuth(resp){
+  $.ajax({
+    url: "/two_factors",
+    type: "get",
+    method: "get",
+    data: { respas: "noheader" },
+    success: function(twofectresp){
+      //alert(twofectresp)
+      $(".sendmenyform").hide();
+      $(".twofectorauth").html(twofectresp);
+
+      var verifybtn = $(".twofectorauth").find(".form-submit");
+      verifybtn.show();
+      //.find("input[type=submit]");
+      var resend = $(".twofectorauth").find(".send-code-button");
+
+      $(".twofectorauth").find(".dropdown-menu").find("a").click(function(){
+        var dauth = $(this).data("type");
+        var dcontent = $(this).text();
+        $(".twofectorauth").find(".input-group-btn").find("button").text(dcontent);
+        $(".twofectorauth").find("input.two_factor_auth_type").val(dauth);
+
+        var hintapp = $(".twofectorauth").find(".hint.app");
+        var orgname = resend.find("button[type=submit]").data("orig-name");
+        resend.find("button[type=submit]").text(orgname);
+
+        if (dauth == "sms") {
+          resend.removeClass("hide");
+          hintapp.hide();
+        }else{
+          resend.addClass("hide");
+          hintapp.show();
+        }
+      });
+
+      resend.find("button[type=submit]").click(function(reEvent){
+        resentVerificationMsg(this);
+        return false;
+      });
+
+      verifybtn.find("input[type=submit]").click(function(reEvent){
+        verifyTwofectoAuth(this,resp);
+        return false;
+      });
+
+      return false;
+       
+    },
+    error:function(respErr){
+      //alert(5)
+      if(respErr.readyState == 4){
+        $(".captcha-wrap").html(respErr.responseText);
+      }
+      //alert(JSON.stringify(respErr))
+    }
+  })
+}
+
+//function to send verificationmsg
+function SendVerificationMsg(sent){
+  $.ajax({
+    url: "/two_factors/sms?refresh="+sent,
+    method: "get"
+  })
+}
+//function to verifymsg
+function verifyTwofectoAuth($this,resp){
+  $(".globalerros").hide();
+  var formobject = $(".twofectorauth").find("form");
+  formobject.append("<input type='hidden' name='two_factor[mei]' value='"+resp.mei+"' />");
+  formobject.append("<input type='hidden' name='two_factor[acode]' value='"+resp.acode+"' />");
+    $($this).attr("disabled",true);
+    var ftdata = $(formobject).serialize();
+    var ftaction = $(formobject).attr("action");
+    //ftdata.push("_meid",resp.mei);
+    //
+     //alert(JSON.stringify(ftdata));
+    $.ajax({
+      url: "/two_factors/validatetrans",
+      data: ftdata,
+      method: "post",
+      type: "post",
+      dataType:"json",
+      success: function(ftresp){
+       // alert(JSON.stringify(ftresp));
+       console.log(ftresp);
+
+       if(ftresp.success){
+        //alert(8);
+          $(".globalerros").hide();
+          $(".sentsuccess").html(ftresp.msg);
+          $(".twofectorauth").hide();
+       }else{
+
+          $(".globalerros").html("<p>"+ftresp.errors+"</p>").show();
+          $($this).removeAttr("disabled");
+          if(ftresp.captach){
+            loadCapchform($this,resp);
+          }
+       }
+        return false;
+      },
+      error: function(dterr){
+        //alert(4);
+        //alert(JSON.stringify(dterr));
+        console.log(dterr);
+      }
+    });
+    return false;
+}
+
+//loadcapcha
+function loadCapchform($this,resp){
+  $.ajax({
+    url: "/two_factors/app",
+    type: "get",
+    method:'get',
+    dataType: "json",
+    success:function(respCap){
+      alert(1);
+      alert(JSON.stringify(respCap));
+    },
+    error: function(respErr){
+      //alert(2);
+      if(respErr.readyState == 4){
+        $(".captcha-wrap").html(respErr.responseText);
+      }
+    }
+
+  })
+}
+
 
 
