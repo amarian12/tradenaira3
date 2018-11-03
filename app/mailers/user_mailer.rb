@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
     @amount = me.amount
     @currency = me.account.currency
     subjects = "You have received money from #{@by_member.email}!"
-    mail to: @by_member.email, subject: subjects
+    mail to: me.sent_on_email, subject: subjects
   end
 
   private
