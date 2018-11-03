@@ -8,7 +8,16 @@ class MoneyExchange < ActiveRecord::Base
 		declined: 2
 	}
 
+	REQTYPES = {
+		send_money: 0,
+		request_meney: 1
+	}
+
 enumerize :status, in: STATUS_CODES, scope: true
+
+enumerize :request_type, in: REQTYPES, scope: true
+
+
 
 
 end

@@ -48,6 +48,7 @@ Peatio::Application.routes.draw do
   root 'welcome#index'
 
   patch "money/send", to: "money#send_money"
+  patch "money/request", to: "money#request_money"
 
   get "money/req" => 'money#req'
   get "money/send" => 'money#send'

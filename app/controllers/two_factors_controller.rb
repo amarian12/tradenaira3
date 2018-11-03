@@ -28,6 +28,7 @@ class TwoFactorsController < ApplicationController
   def validatetrans
     sucess = false
     errors = ""
+    msg = ""
     mei = params[:two_factor][:mei] 
     acode = params[:two_factor][:acode]
     me = MoneyExchange.find_by_id(mei)
@@ -40,7 +41,14 @@ class TwoFactorsController < ApplicationController
           sucess = true
           if me.sent_to_id.to_i == 0
             #sendSignupMailtoUser
-            msg = "Money sent success"
+            if acode == "request"
+              msg = "Money request sent success, 
+              your account will reflect once admin approve the request."
+            elsif "send"
+              msg = "Money sent success, 
+              your account will reflect once admin approve the request."  
+            end
+            
             UserMailer.signup_request(me,current_user).deliver
           end
         end

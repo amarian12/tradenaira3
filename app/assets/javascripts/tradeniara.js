@@ -255,14 +255,13 @@ if (marketp[0]) {
       completer.autoCompleteInit({
         country: "us"
       });
-
     }
     
   });
 
   showFloatingPoints();
   showVidoFroncontent();
-  showCurrencyPrice(0);
+  showCurrencyPrice(8);
 
 });
 
@@ -506,7 +505,7 @@ function showCurrencyPrice(cntr){
                         $(this).append(nobj);
                       }
                     })
-                    showCurrencyPrice(cntr+1);
+                    showCurrencyPrice(cntr-1);
                     //$(wrapper+"datas").append(nobj);
                   }
                 }
@@ -530,6 +529,25 @@ function showCurrencyPrice(cntr){
         //    if(data.bids[0])
         //     bids_rate=data.bids[0][0];
         // }
+}
+
+function requestMoenyCurrecy($this){
+  var account_id = $($this).data("id"); 
+  var cccurrency = $($this).data("currency"); 
+  if (typeof(cccurrency) == "undefined") {
+    return false;
+  }
+  if (typeof(account_id) == "undefined") {
+    return false;
+  }
+  $(".amterr").text("");
+  $("#member_currency").val(account_id);
+  var cimg = '<img src="/icon-'+cccurrency+'.png" />';
+  $(".pricebox .currencybox").html(cimg);
+  $(".pricebox").show();
+  $(".sendmoneybtn").show();
+
+  return false;
 }
 
 function sndMoenyCurrecy($this){
@@ -600,7 +618,14 @@ function SendMoney($this){
       .text("")
       .hide();
       if(resp.success){
-        showTwoFectorAuth(resp);
+        if(resp.two_fetor.is_active){
+          showTwoFectorAuth(resp);
+        }else{
+          var msg = "Before send money, you must activate, ";
+          msg += "twofector authentication."
+          $(".globalerros").html("<p>"+msg+" </p>");
+        }
+        
       }
       //
     },
@@ -733,7 +758,6 @@ function verifyTwofectoAuth($this,resp){
           $(".sentsuccess").html(ftresp.msg);
           $(".twofectorauth").hide();
        }else{
-
           $(".globalerros").html("<p>"+ftresp.errors+"</p>").show();
           $($this).removeAttr("disabled");
           if(ftresp.captach){

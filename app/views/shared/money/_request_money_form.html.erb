@@ -1,7 +1,6 @@
 <% unless current_user.nil?  %>
- 
- 
- 
+<%= javascript_include_tag "tradeniara" %>
+<%= stylesheet_link_tag "style2", media: "all" %>
 <div class="money-form-wrapper">
 	<div class="globalerros"></div>
 	<div class="sentsuccess"></div>
@@ -10,7 +9,7 @@
 		<div class="twofectorauth"></div>
 	</div>
 
-<%= form_for(current_user, url: "/money/send", html: { onsubmit: "return SendMoney(this)", 
+<%= form_for(current_user, url: "/money/request", html: { onsubmit: "return SendMoney(this)", 
 class: "sendmenyform" }) do |f| %>
 		<%= f.hidden_field :currency %>
 		<%= hidden_field_tag "member[action_as]","init" %>
@@ -25,8 +24,8 @@ class: "sendmenyform" }) do |f| %>
 
         <div class="form_row">
 	        <div class="full_width">
-	            <label>Select Currency to send</label>
-	            <% accounts = current_user.accounts.where("balance > 0") %>
+	            <label>Select Currency from Request money</label>
+	            <% accounts = current_user.accounts %>
 	            <% if accounts.present? %>
 	            <div class="dropdown">
 	            	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,9 +37,10 @@ class: "sendmenyform" }) do |f| %>
 			            <a href="#" class="dropdown-item" 
 			            	data-id="<%= a.id %>"
 			            	data-currency="<%= a.currency %>"
-			            	onClick="return sndMoenyCurrecy(this)">
+			            	onClick="return requestMoenyCurrecy(this)">
 			             	<%= image_tag "/icon-#{a.currency}.png" %>
-			             	 <%= a.balance   %>
+			             	 <%#= a.balance   %>
+			             	 <%= a.currency %>
 			            </a>
 		             <% end %>
 	            	<% end %>
@@ -53,14 +53,14 @@ class: "sendmenyform" }) do |f| %>
 	        <div class="pricebox" style="display: none;">
 	        	<div class="currencybox"></div>
 	        	<%= f.text_field :amount_to_send, onchange: "checkAmount(this)",
-	        	placeholder: "Amount to send" %>
+	        	placeholder: "Amount to request" %>
 	        	<p class="amterr"></p>
 	        </div> 
     	</div>
     	<div class="form_row">
     		<div class="full_width">
 	        <button style="display: none;" class="btn5 sendmoneybtn" type="submit">
-	        	Send
+	        	Send request
 	        </button> 
 	    	</div>
 	    </div>
