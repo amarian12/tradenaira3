@@ -1,0 +1,13 @@
+<%= form_for(@category,url: @url) do |f| %>
+<div class="col-md-24">
+		<% if @category.errors.any? %>
+		<ul class="errors">
+		    <% @category.errors.full_messages.each do |message| %>
+		      <li><%= message %></li>
+		    <% end %>
+		</ul>    
+		<% end %>
+	<%= f.text_field :name, class: "form-control" %>
+	<%= f.submit  %>
+</div>
+<% end %>

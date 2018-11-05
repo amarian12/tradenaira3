@@ -12,6 +12,11 @@ module Admin
     	@subscribers = Subscriber.all.page(params[:page]).per(50)
       @subscriber = Subscriber.new
     end
+ 
+
+    def kicksmart
+      
+    end
 
     def update_subscribers
     	subscriber = Subscriber.find_by_id(params[:id])

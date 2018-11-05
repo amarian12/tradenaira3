@@ -1,0 +1,26 @@
+<div class="col-md-12">
+	 
+	<%= link_to "New category", new_admin_kicksmart_category_path %>
+</div>
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @categories.each do |category| %>
+		<tr>
+			<td><%= category.id %></td>
+			<td><%= category.name %></td>
+			<td><%= link_to "Edit",edit_admin_kicksmart_category_path(category) %></td>
+			<td><%= link_to "Delete",admin_kicksmart_category_path(category), data:{ method: :delete, confirm: "Sure to delete category" } %></td>
+		</tr>
+
+		<% end %>
+
+	</tbody>
+</table>

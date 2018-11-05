@@ -9,10 +9,37 @@ class UserMailer < ActionMailer::Base
   def signup_request me,member
     @by_member = member
     @amount = me.amount
+    @member_name = member.display_name.nil? ? member.email : member.display_name
     @currency = me.account.currency
-    subjects = "You have received money from #{@by_member.email}!"
+    subjects = "You have been sent some money"
     mail to: me.sent_on_email, subject: subjects
   end
+
+  def receive_success me,member
+    @by_member = member
+    @amount = me.amount
+    @currency = me.account.currency
+    subjects = "You have been sent some money"
+    mail to: me.sent_on_email, subject: subjects
+    #when receiver has account
+  end
+
+  def admin_decline me,member
+    @by_member = member
+    @amount = me.amount
+    @receiver_email = me.email
+    @currency = me.account.currency
+    subjects = "Your money transfer has failed"
+    mail to: member.sent_on_email, subject: subjects
+     #when admin decline
+  end
+
+  def admin_approval
+
+    # subject ="New money transfer request"
+    # mail to: 
+  end
+
 
   private
 

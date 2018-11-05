@@ -34,6 +34,8 @@ module Admin
       can :manage, ::Withdraws::Satoshi
       can :manage, ::Withdraws::Ghanaian
       can :manage, ::Withdraws::Btc
+
+      can :manage, Category
     end
   end
 end

@@ -12,6 +12,14 @@ namespace :admin do
   post '/uncomplete', to: 'id_documents#uncomplete' 
   post '/complete', to: 'members#complete' 
   post '/uncomplete', to: 'members#uncomplete' 
+
+
+  #get '/categories', to: "dashboard#kicksmart_categories", as: "categories"
+
+  namespace :kicksmart do 
+    resources :categories
+    resources :projects
+  end
   
 
   resources :documents

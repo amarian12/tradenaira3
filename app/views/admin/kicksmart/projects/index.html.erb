@@ -1,0 +1,28 @@
+<div class="col-md-12">
+	 
+	<%= link_to "New Project", new_admin_kicksmart_project_path %>
+</div>
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Title</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @projects.each do |project| %>
+		<tr>
+			<td><%= project.id %></td>
+			<td><%= project.title %></td>
+			<td><%= link_to "Edit",edit_admin_kicksmart_project_path(project) %></td>
+			<td><%= link_to "view",admin_kicksmart_project_path(project) %></td>
+
+			<td><%= link_to "Delete",admin_kicksmart_project_path(project), data:{ method: :delete, confirm: "Sure to delete project" } %></td>
+		</tr>
+
+		<% end %>
+
+	</tbody>
+</table>

@@ -52,6 +52,18 @@ html lang="en"
                     - if can? :manage, c.kls
                       li = link_to c.title_text, [:admin, c.kls]
 
+            - if can? :index, Category
+              li.dropdown class = check_active('kicksmart')
+                = link_to 'javascript:;', class: 'dropdown-toggle newwithdraw', 'data-toggle' => 'dropdown' do
+                  span = t('admin_header.kicksmart')
+                  span.caret
+                  span.withnew New
+                ul.dropdown-menu
+                  li = link_to "Categories", admin_kicksmart_categories_path
+                  li = link_to "Projects", admin_kicksmart_projects_path
+
+              categories                   
+
             - if can? :manage, Member
               li class = check_active('members')
                 = link_to t(".menus.sections.members"), admin_members_path

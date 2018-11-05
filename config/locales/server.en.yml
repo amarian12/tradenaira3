@@ -1933,6 +1933,7 @@ en:
     withdraws: Withdraws
     statistics: Data Statistics
     id_documents: Verify Account
+    kicksmart: "Kicksmart"
   footer:
     about: About
     privacy: Privacy
