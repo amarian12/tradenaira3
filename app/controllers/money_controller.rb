@@ -43,6 +43,8 @@ class MoneyController < ApplicationController
       receiver = Member.find_by_id(email)
       unless receiver.nil?
         sent_to_id = receiver.id
+      else
+         errors << "Receipent does not exists in the system."
       end
 
       success = false;
@@ -62,9 +64,13 @@ class MoneyController < ApplicationController
         request_type: 1,
         amount: amount,
         status: 0)
-      if me.save
-        success = true
+      
+      unless errors.present?
+        if me.save
+          success = true
+        end
       end
+      
 
       two_fetor = { is_active: current_user.two_factors.activated.first }
 

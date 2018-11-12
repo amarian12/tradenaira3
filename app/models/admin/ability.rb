@@ -36,6 +36,9 @@ module Admin
       can :manage, ::Withdraws::Btc
 
       can :manage, Category
+      can :manage, MoneyExchange
+      
+      
     end
   end
 end

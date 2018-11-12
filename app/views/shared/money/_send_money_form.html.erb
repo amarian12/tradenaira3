@@ -11,7 +11,7 @@
 	</div>
 
 <%= form_for(current_user, url: "/money/send", html: { onsubmit: "return SendMoney(this)", 
-class: "sendmenyform" }) do |f| %>
+class: "sendmenyform", data: { actionfor: "send" } }) do |f| %>
 		<%= f.hidden_field :currency %>
 		<%= hidden_field_tag "member[action_as]","init" %>
 		<div class="form_row overflw">

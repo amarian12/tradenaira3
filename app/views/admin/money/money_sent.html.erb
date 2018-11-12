@@ -1,0 +1,54 @@
+ <h1>Request Type: <%= @request_type %></h1>
+ <table class="table">
+ 	<thead>
+ 		<tr>
+ 			<td>#</td>
+ 			<td>Sent By</td>
+ 			<td>Sent To</td>
+ 			<td>Amount to send</td>
+ 			<td>Sender Current Balance</td>
+ 			<td>Actions</td>
+ 		</tr>
+ 	</thead>
+ 	<tbody>
+ 		<% @me.each do |me| %>
+	 		<tr>
+	 			<td><%= me.id %></td>
+	 			<td><%= me.sender.display_name || me.sender.email %></td>
+	 			<td>
+	 				<% if me.receiver.nil? %>
+	 				<%= me.sent_on_email %>
+	 				<% else %>
+	 					<%= me.receiver.display_name || me.receiver.email %>
+	 				<% end %>	
+	 			</td>
+	 			<td>
+	 				<%= me.amount %><%= me.account.currency %>
+	 			</td>
+	 			<td>
+	 				<%= me.account.balance %><%= me.account.currency %>
+	 			</td>
+	 			<td>
+	 				<% unless me.receiver_account.nil? %>
+	 				 
+	 				<%#= me.receiver_account.balance %>
+	 				<%#= me.receiver_account.currency %>
+	 				<button class="btn btn-default">Approve</button>
+	 				<button class="btn btn-default">Decline</button>
+	 				<% else %>
+	 					<%= link_to "Resend Notification to create account", admin_resend_instructions_money_path(me.id), 
+	 					data:{ method: "POST" } %>
+	 					<%#= me.receiver_account.inspect %>
+	 				<% end %>
+	 			</td>
+	 			<td></td>
+	 			<td></td>
+	 			<td></td>
+	 			<td></td>
+	 			<td></td>
+	 			<td></td>
+	 			<td></td>
+	 		</tr>
+ 		<% end %>
+ 	</tbody>
+ </table>

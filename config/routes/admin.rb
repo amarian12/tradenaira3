@@ -13,6 +13,10 @@ namespace :admin do
   post '/complete', to: 'members#complete' 
   post '/uncomplete', to: 'members#uncomplete' 
 
+  get "money/sent",               to: "money#money_sent",     as: "sent_money"
+  get "money/requested",          to: "money#money_request",  as: "requested_money"
+  post "money/resend_instructions/:id", to: "money#resend_instructions",   as: "resend_instructions_money"
+  post "money_controller/manage", to: "money#manage",         as: "manage_money"
 
   #get '/categories', to: "dashboard#kicksmart_categories", as: "categories"
 

@@ -54,7 +54,7 @@ html lang="en"
 
             - if can? :index, Category
               li.dropdown class = check_active('kicksmart')
-                = link_to 'javascript:;', class: 'dropdown-toggle newwithdraw', 'data-toggle' => 'dropdown' do
+                = link_to 'javascript:;', class: 'dropdown-toggle newwithdraw kicksmart', 'data-toggle' => 'dropdown' do
                   span = t('admin_header.kicksmart')
                   span.caret
                   span.withnew New
@@ -62,7 +62,17 @@ html lang="en"
                   li = link_to "Categories", admin_kicksmart_categories_path
                   li = link_to "Projects", admin_kicksmart_projects_path
 
-              categories                   
+              categories    
+
+            - if can? :manage, MoneyExchange    
+              li.dropdown class = check_active('money')
+                = link_to 'javascript:;', class: 'dropdown-toggle newwithdraw money', 'data-toggle' => 'dropdown' do
+                  span = t('admin_header.money')
+                  span.caret
+                   
+                ul.dropdown-menu
+                  li = link_to "Sent Money", admin_sent_money_path
+                  li = link_to "Requested Money", admin_requested_money_path             
 
             - if can? :manage, Member
               li class = check_active('members')

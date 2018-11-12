@@ -604,6 +604,9 @@ function SendMoney($this){
   $(".wait-section")
   .html("<p>Please wait, while we processing your request...</p>")
   .show();
+  $(".globalerros").html("").hide();
+  var actionfor = $($this).data("actionfor");
+
 
   var formdata = $($this).serialize();
   var faction = $($this).attr("action");
@@ -617,15 +620,23 @@ function SendMoney($this){
       $(".wait-section")
       .text("")
       .hide();
+      //alert(JSON.stringify(resp))
       if(resp.success){
         if(resp.two_fetor.is_active){
           showTwoFectorAuth(resp);
         }else{
           var msg = "Before send money, you must activate, ";
           msg += "twofector authentication."
-          $(".globalerros").html("<p>"+msg+" </p>");
+          $(".globalerros").html("<p>"+msg+" </p>").show();
         }
-        
+      }else{
+        var errhtml = "";
+          if (resp.errors.length > 0) {
+            for(k=0; k<resp.errors.length; k++){
+              errhtml += "<p>"+resp.errors[k]+" </p>";
+            }
+             $(".globalerros").html(errhtml).show();
+          }
       }
       //
     },
