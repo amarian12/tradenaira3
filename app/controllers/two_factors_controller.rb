@@ -33,6 +33,7 @@ class TwoFactorsController < ApplicationController
     acode = params[:two_factor][:acode]
     me = MoneyExchange.find_by_id(mei)
     capreq = false
+    account = me.account
 
     unless me.nil?
       if two_factor_auth_verified?
@@ -45,6 +46,9 @@ class TwoFactorsController < ApplicationController
               msg = "Money request sent success, 
               your account will reflect once admin approve the request."
             elsif "send"
+              account.lock_funds(me.amount, reason: Account::MONEYSENT, ref: self)
+              puts account.inspect
+              puts "accountlockedsuccess --------------------------------"
               msg = "Money sent success, 
               your account will reflect once admin approve the request."  
             end

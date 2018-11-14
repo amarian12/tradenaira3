@@ -1,6 +1,10 @@
 class MoneyExchange < ActiveRecord::Base
+
+  
+  
+
 	belongs_to :account
-	attr_accessor :currency
+	attr_accessor :currency, :trans_errors, :update_success
 	include Currencible
 	STATUS_CODES = {
 		pending: 0,
@@ -38,13 +42,62 @@ class MoneyExchange < ActiveRecord::Base
 
 	def receiver_account
 		unless receiver.nil?
-
 			currency = Currency.where(code: self.account.currency).last
-		 
 			receiver.accounts.where("currency=(?)",currency[:id]).last
-
 		end
 	end
+
+	def sender_account
+		unless sender.nil?
+			currency = Currency.where(code: self.account.currency).last
+			sender.accounts.where("currency=(?)",currency[:id]).last
+		end
+	end
+
+	def approve_transuction
+		 
+		if self.request_type == "send_money"
+			s_account = sender_account
+			r_account = receiver_account
+			unless s_account.nil?
+				if s_account.balance >= self.amount 
+					#debit aacount of sender
+					unlock_and_sub_funds(s_account, self.amount, 0.0, Account::MONEYSENT)
+					if s_account.save
+						r_account.balance = r_account.balance + self.amount
+
+						# r_account.plus_funds(
+						# 	self.amount, 
+						# 	reason: Account::MONERECEIVE, 
+						# 	ref: self)
+						real_fee = (self.amount*0.5)/100
+						real_add = self.amount - real_fee
+
+						r_account.plus_funds \
+					    real_add, fee: real_fee,
+					    reason: Account::MONEYRECEIVED, ref: self	
+
+						r_account.save	
+						self.update_success = true
+					else
+						self.trans_errors = s_account.errors.full_messages
+					end
+				else
+					self.trans_errors = "Sender's account doesn't have sufficient balance."	
+				end
+			end
+		end
+		
+	end
+
+
+	def unlock_and_sub_funds account, sum, fee, reason
+		#unlock_and_sub_funds(amount, locked: ZERO, fee: ZERO, reason: nil, ref: nil)
+    	#account.lock!
+    	puts "0000000000000000"
+    	puts reason.inspect
+    	account.unlock_and_sub_funds sum, locked: sum, fee: fee, reason: reason, ref: self
+  	end
 
 
 

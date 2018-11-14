@@ -1,7 +1,10 @@
 class AccountVersion < ActiveRecord::Base
   include Currencible
 
-  HISTORY = [Account::STRIKE_ADD, Account::STRIKE_SUB, Account::STRIKE_FEE, Account::DEPOSIT, Account::WITHDRAW, Account::FIX]
+  HISTORY = [Account::STRIKE_ADD, Account::STRIKE_SUB, 
+    Account::STRIKE_FEE, Account::DEPOSIT, 
+    Account::WITHDRAW, Account::FIX,
+  ]
 
   enumerize :fun, in: Account::FUNS
 
@@ -18,7 +21,10 @@ class AccountVersion < ActiveRecord::Base
     Account::WITHDRAW_LOCK => 800,
     Account::WITHDRAW_UNLOCK => 810,
     Account::DEPOSIT => 1000,
-    Account::WITHDRAW => 2000 }
+    Account::WITHDRAW => 2000,
+    Account::MONEYSENT => 7080,
+    Account::MONEYRECEIVED => 7081,
+     }
   enumerize :reason, in: REASON_CODES, scope: true
 
   belongs_to :account

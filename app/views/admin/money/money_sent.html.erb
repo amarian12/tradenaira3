@@ -33,7 +33,10 @@
 	 				 
 	 				<%#= me.receiver_account.balance %>
 	 				<%#= me.receiver_account.currency %>
-	 				<button class="btn btn-default">Approve</button>
+	 				<%= link_to "Approve", 
+	 				admin_manage_money_path(me.id,"approve"),
+	 				class: "btn btn-default", data: { method: "POST" } %>
+	 			 
 	 				<button class="btn btn-default">Decline</button>
 	 				<% else %>
 	 					<%= link_to "Resend Notification to create account", admin_resend_instructions_money_path(me.id), 

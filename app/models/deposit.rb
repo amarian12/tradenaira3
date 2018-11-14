@@ -142,4 +142,6 @@ class Deposit < ActiveRecord::Base
   def sync_destroy
     ::Pusher["private-#{member.sn}"].trigger_async('deposits', { type: 'destroy', id: self.id })
   end
+
+  
 end
