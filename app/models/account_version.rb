@@ -24,6 +24,8 @@ class AccountVersion < ActiveRecord::Base
     Account::WITHDRAW => 2000,
     Account::MONEYSENT => 7080,
     Account::MONEYRECEIVED => 7081,
+    Account::MONEYSENTCANCEL => 7082,
+
      }
   enumerize :reason, in: REASON_CODES, scope: true
 

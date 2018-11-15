@@ -47,13 +47,13 @@ class TwoFactorsController < ApplicationController
               your account will reflect once admin approve the request."
             elsif "send"
               account.lock_funds(me.amount, reason: Account::MONEYSENT, ref: self)
-              puts account.inspect
-              puts "accountlockedsuccess --------------------------------"
               msg = "Money sent success, 
               your account will reflect once admin approve the request."  
             end
+            if me.receiver.nil?
+              UserMailer.signup_request(me,current_user).deliver
+            end
             
-            UserMailer.signup_request(me,current_user).deliver
           end
         end
       else

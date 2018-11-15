@@ -66,10 +66,6 @@ class MoneyExchange < ActiveRecord::Base
 					if s_account.save
 						r_account.balance = r_account.balance + self.amount
 
-						# r_account.plus_funds(
-						# 	self.amount, 
-						# 	reason: Account::MONERECEIVE, 
-						# 	ref: self)
 						real_fee = (self.amount*0.5)/100
 						real_add = self.amount - real_fee
 
@@ -79,6 +75,10 @@ class MoneyExchange < ActiveRecord::Base
 
 						r_account.save	
 						self.update_success = true
+						#send success mail to receiver
+						UserMailer.receive_success(self,receiver).deliver
+						#send success mail to sender
+						UserMailer.sent_success(self, sender).deliver
 					else
 						self.trans_errors = s_account.errors.full_messages
 					end
@@ -90,14 +90,29 @@ class MoneyExchange < ActiveRecord::Base
 		
 	end
 
+	def decline_transuction
+
+		if self.request_type == "send_money"
+			s_account = sender_account
+			r_account = receiver_account
+			unless s_account.nil?
+				unlock_funds s_account, self.amount
+			end
+		end
+		
+	end
+
 
 	def unlock_and_sub_funds account, sum, fee, reason
 		#unlock_and_sub_funds(amount, locked: ZERO, fee: ZERO, reason: nil, ref: nil)
     	#account.lock!
-    	puts "0000000000000000"
-    	puts reason.inspect
     	account.unlock_and_sub_funds sum, locked: sum, fee: fee, reason: reason, ref: self
   	end
+
+  	def unlock_funds account, sum
+       account.lock!
+       account.unlock_funds sum, reason: Account::MONEYSENTCANCEL, ref: self
+    end
 
 
 

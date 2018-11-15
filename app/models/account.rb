@@ -17,6 +17,7 @@ class Account < ActiveRecord::Base
   WITHDRAW = :withdraw
   ZERO = 0.to_d
   MONEYSENT = :money_sent
+  MONEYSENTCANCEL = :money_sent_cancel
   MONEYRECEIVED = :money_received
 
   FUNS = {:unlock_funds => 1, :lock_funds => 2, :plus_funds => 3, :sub_funds => 4, :unlock_and_sub_funds => 5}

@@ -8,9 +8,13 @@
     </span>
                     </h1>
                     <p>Now there's a better way to transfer money to Nigeria. Safer, smarter 
-    online money transfers with no hidden charges.
-
+                    online money transfers with no hidden charges.
     </p>
+                <% if current_user %>
+                        <a class="yellow_btn" href = "/money/send" target = "_blank">Start Sending</a> 
+                    <% else %>
+                        <a class="yellow_btn" href = "/signup" target = "_blank">Start Sending</a> 
+                    <% end %>
                     
                     </div>
                 </div>
@@ -71,7 +75,7 @@
                 </div>
             </form> -->
 
-            </div>
+      </div>
 
 </div>
 

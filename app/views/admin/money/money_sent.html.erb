@@ -1,4 +1,23 @@
  <h1>Request Type: <%= @request_type %></h1>
+ <p>Show only requets for Status: </p>
+ <div class="navbar navbar-inverse" id="navbarNav">
+ <ul class="nav navbar-nav navbar-left">
+ 	<li class="<% 'active' if @status == "" %>">
+ 		<%= link_to "All", admin_sent_money_path() %>
+ 	</li>
+ 	 
+ 	<li class="<%= 'active' if @status == "active" %> nav-item">
+ 		<%= link_to t(:active), admin_sent_money_path(status: :active) %>
+ 	</li>
+ 	<li class="<%= 'active' if @status == "declined" %> nav-item">
+ 		<%= link_to t(:declined), admin_sent_money_path(status: :declined) %>
+ 	</li>
+ 	<li class="<%= 'active' if @status == "approved" %> nav-item">
+ 		<%= link_to t(:approved), admin_sent_money_path(status: :approved) %>
+ 	</li>
+ </ul>
+</div>
+
  <table class="table">
  	<thead>
  		<tr>
@@ -7,6 +26,7 @@
  			<td>Sent To</td>
  			<td>Amount to send</td>
  			<td>Sender Current Balance</td>
+ 			<td>Status</td>
  			<td>Actions</td>
  		</tr>
  	</thead>
@@ -29,26 +49,30 @@
 	 				<%= me.account.balance %><%= me.account.currency %>
 	 			</td>
 	 			<td>
+	 				<span class="trans_<%= t me.status %>"><%= t me.status %></span>
+	 				
+	 				 
+	 			</td>
+	 			<td>
 	 				<% unless me.receiver_account.nil? %>
 	 				 
-	 				<%#= me.receiver_account.balance %>
-	 				<%#= me.receiver_account.currency %>
-	 				<%= link_to "Approve", 
-	 				admin_manage_money_path(me.id,"approve"),
-	 				class: "btn btn-default", data: { method: "POST" } %>
-	 			 
-	 				<button class="btn btn-default">Decline</button>
+	 				 <% case me.status %>
+	 				 <% when "active" %>
+	 				 	<%= link_to "Approve", 
+	 						admin_manage_money_path(me.id,"approve"),
+	 						class: "btn btn-default", data: { method: "POST" } %>
+	 					<%= link_to "Decline", 
+	 						admin_manage_money_path(me.id,"declined"),
+	 						class: "btn btn-default", data: { method: "POST" } %>
+	 				 <% end %>
+	 				 
+	 				
 	 				<% else %>
 	 					<%= link_to "Resend Notification to create account", admin_resend_instructions_money_path(me.id), 
 	 					data:{ method: "POST" } %>
-	 					<%#= me.receiver_account.inspect %>
+	 					 
 	 				<% end %>
 	 			</td>
-	 			<td></td>
-	 			<td></td>
-	 			<td></td>
-	 			<td></td>
-	 			<td></td>
 	 			<td></td>
 	 			<td></td>
 	 		</tr>

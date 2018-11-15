@@ -1,5 +1,5 @@
 <%= metamagic title: "Send Money" %>
-<link rel="stylesheet" type="text/css" href="/assets/money.css?body=1">
+<!-- <link rel="stylesheet" type="text/css" href="/assets/money.css?body=1">
 <div class=" form1">
 	<h3 class="head padding-left: 25px;">Send Money</h3>
 		<p class="desc1">
@@ -30,5 +30,25 @@
 		<div class="button"><input type="submit" value="Continue" />
 		</div>
 		</form>
+	</div>
+</div> -->
+
+
+
+<div class="container">
+    <div class="track_rate_wraper overflow-css">  
+        <div class="display_img w50">
+          <img src="/assets/img/bilgisayr.png" alt="screen1"> 
+        </div>
+        <div class="rate_content w50">
+            <!-- <h3 class="heading4">TRACK THE RATE</h3>
+            <p class="para1">Subscribe to our free daily email about your favourite currency route or receive an alert when the rate reaches your goal.</p> -->
+            <h3 class="heading4">SEND MONEY</h3>
+            <p class="para1">Select the Currency to send money</p>
+            <div class="rate_input">
+                <%= render "shared/money/send_money_form" %>
+            </div>
+
+		</div>
 	</div>
 </div>

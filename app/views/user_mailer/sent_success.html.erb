@@ -1,8 +1,8 @@
 <p>Dear User!</p>
 <br /><br /><br />
-<p><%=@by_member.display_name || @by_member.email %> sent you some money.<p>
+<p>Your money sent success to <%= @me.receiver.email %>.<p>
 <p>Amount sent:<%= @amount %><%= @currency%> </p> 
-These funds have been credited into your TradeNAIRA wallet.
+These funds have been credited into his TradeNAIRA wallet.
 <p>Thanks</p>
 <p>
 	Regards<br>
