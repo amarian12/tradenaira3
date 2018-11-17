@@ -1,0 +1,10 @@
+<p>Dear User!</p>
+<br /><br /><br />
+<p><%=@sender.display_name || @sender.email %> sent you request to send some money.<p>
+<p>Amount in request:<%= @amount %><%= @currency%> </p> 
+ To approve/decline the request, please login into your TradeNAIRA account and click 
+ <%= link_to "here", send_money_url(id: @me.id ) %>.
+<p>Thanks</p>
+<p>Regards<br>
+	<a href="https://tradenaira.com">tradenaira.com</a>
+</p>

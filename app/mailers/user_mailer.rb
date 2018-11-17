@@ -26,6 +26,17 @@ class UserMailer < ActionMailer::Base
     #when receiver has account
   end
 
+  def money_request me,member
+    @by_member = member
+    @amount = me.amount
+    @me = me
+    @currency = me.account.currency
+    @sender = @me.sender
+    @receiver = @me.receiver
+    subjects = "You have been requested money"
+    mail to: me.receiver.email, subject: subjects
+  end
+
   # sent success mail to sender
   def sent_success me, member
     @by_member = member
@@ -33,6 +44,14 @@ class UserMailer < ActionMailer::Base
     @me = me
     @currency = me.account.currency
     subjects = "Money sent success"
+    mail to: me.sender.email, subject: subjects
+  end
+  # declined request to receive money by receipent
+  def request_declined me 
+    @amount = me.amount
+    @me = me
+    @currency = me.account.currency
+    subjects = "Money request declined by receipent!"
     mail to: me.sender.email, subject: subjects
   end
 
@@ -46,10 +65,24 @@ class UserMailer < ActionMailer::Base
      #when admin decline
   end
 
-  def admin_approval
+ 
 
-    # subject ="New money transfer request"
-    # mail to: 
+  def admin_approval me
+    @amount = me.amount
+    @receiver_email = me.sent_on_email
+    @currency = me.account.currency
+    @me = me 
+    if me.request_type == "send_money"
+      subjects = "Approval requets to send money"
+      @sender_name = @me.sender.display_name || @me.sender.email
+      @receiver_name = @me.receiver.display_name || @me.receiver.email
+    elsif "request_meney"
+      subjects = "Approval requets to receive money"
+      @sender_name = @me.receiver.display_name || @me.receiver.email       
+      @receiver_name = @me.sender.display_name || @me.sender.email
+    end
+    
+    mail to: "support@tradenaira.com",  subject: subjects
   end
 
 

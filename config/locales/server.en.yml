@@ -2306,4 +2306,6 @@ en:
   declined: Declined
   approved: Approved
   active: "Pending"
+  accepted_by_receipent: "Accepted by user"
+  declined_by_receipent: "Declined by user"
 

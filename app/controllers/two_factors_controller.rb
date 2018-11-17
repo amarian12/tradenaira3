@@ -40,21 +40,23 @@ class TwoFactorsController < ApplicationController
         me.status = 1
         if me.save
           sucess = true
-          if me.sent_to_id.to_i == 0
+
+          #if me.sent_to_id.to_i == 0
             #sendSignupMailtoUser
-            if acode == "request"
-              msg = "Money request sent success, 
-              your account will reflect once admin approve the request."
-            elsif "send"
-              account.lock_funds(me.amount, reason: Account::MONEYSENT, ref: self)
-              msg = "Money sent success, 
-              your account will reflect once admin approve the request."  
-            end
+          if acode == "request"
+            msg = "Money request sent success, 
+            your account will reflect once admin approve the request."
+            UserMailer.money_request(me,current_user).deliver
+          elsif "send"
+            account.lock_funds(me.amount, reason: Account::MONEYSENT, ref: self)
+            msg = "Money sent success, 
+            your account will reflect once admin approve the request."  
+
             if me.receiver.nil?
               UserMailer.signup_request(me,current_user).deliver
             end
-            
           end
+
         end
       else
         sucess = false

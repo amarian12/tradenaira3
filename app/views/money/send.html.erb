@@ -1,48 +1,39 @@
 <%= metamagic title: "Send Money" %>
-<!-- <link rel="stylesheet" type="text/css" href="/assets/money.css?body=1">
-<div class=" form1">
-	<h3 class="head padding-left: 25px;">Send Money</h3>
-		<p class="desc1">
-			You can send money to your friends and family using 'Trade Naira' 
-		</p>
-	<div class="cont">
-		<form class="" action="/money/send_success">
-			<div class="mailfield1"><span >Reciver's Email Address</span>
-				<input type="text" name="email" class="recmail">
-			</div>
-			
-			<div class="amountfield">
-				<span>Amount</span>&nbsp;&nbsp;
-				<input type="text" name="amount" value=""  class="amount"/>&nbsp;
-				<select class="select">
-					<option>NGN -- Nigerian Naira</option>
-					<option>USD -- US Dollar</option>
-					<option>GBP -- British Pound</option>
-					<option>EUR -- Euro</option>
-					<option>CNY -- Chinese Yuan</option>
-				</select>
-			</div>
-			<div class="commission">
-				<p>
-					<a class="cmsn" href="/money/commission">Click here</a> to view the fee for sending payments.
-				</p>
-			</div>
-		<div class="button"><input type="submit" value="Continue" />
-		</div>
-		</form>
-	</div>
-</div> -->
-
-
-
+<% if @requests.present? %>
+	<table class="table">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Date</td>
+				<td>Request from</td>
+				<td>Amount</td>
+				<td>Actions</td>
+			</tr>
+		</thead>
+	<% @requests.each do |me| %>
+		<tbody>
+			<tr>
+				<td><%= me.id %></td>
+				<td><%= me.created_at %></td>
+				<td><%= me.sender.email %></td>
+				<td><%= me.amount %><%= me.account.currency %></td>
+				<td>
+					<%= link_to "Accept", two_factor_money_path(me.id, "accept"), 
+					class: "btn btn-default" %>
+					<%= link_to "Decline", two_factor_money_path(me.id,"decline"), 
+					class: "btn btn-danger" %>
+				</td>
+			</tr>
+		</tbody>
+	<% end %>
+	</table>
+<% end %>
 <div class="container">
     <div class="track_rate_wraper overflow-css">  
         <div class="display_img w50">
           <img src="/assets/img/bilgisayr.png" alt="screen1"> 
         </div>
         <div class="rate_content w50">
-            <!-- <h3 class="heading4">TRACK THE RATE</h3>
-            <p class="para1">Subscribe to our free daily email about your favourite currency route or receive an alert when the rate reaches your goal.</p> -->
             <h3 class="heading4">SEND MONEY</h3>
             <p class="para1">Select the Currency to send money</p>
             <div class="rate_input">

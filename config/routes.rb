@@ -51,9 +51,12 @@ Peatio::Application.routes.draw do
   patch "money/request", to: "money#request_money"
 
   get "money/req" => 'money#req'
-  get "money/send" => 'money#send'
+  get "money/send" => 'money#sendm', as: "send_money"
   get "money/req_success" => 'money#req_success'
   get "money/commission" => 'money#commission'
+
+  patch "money/process/:id/:status", to: "money#processm", as: "process_request"
+  get "money/two_factor/:id/:status", to: "money#two_factor", as: "two_factor_money"
 
   get '/unsubscribe/:email', to: 'pages#unsubscribe', as: :unsubscribe
 

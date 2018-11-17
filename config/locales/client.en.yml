@@ -451,6 +451,10 @@ en:
         ghs: GHS Market
         ghs_html: GHS Market
 
+  money:
+    two_factor:
+      verify: Verify        
+
    
 
 

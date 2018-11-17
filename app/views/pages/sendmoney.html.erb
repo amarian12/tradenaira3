@@ -4,18 +4,15 @@
             <div class="inner-banner-text inner-table-cell">
                 <div class="inner-main-text">
                     <h1>
-                        <span>SEND MONEY TO NIGERIA
-    </span>
+                        <span>SEND MONEY TO NIGERIA</span>
                     </h1>
                     <p>Now there's a better way to transfer money to Nigeria. Safer, smarter 
-                    online money transfers with no hidden charges.
-    </p>
-                <% if current_user %>
+                    online money transfers with no hidden charges.</p>
+                     <% if current_user %>
                         <a class="yellow_btn" href = "/money/send" target = "_blank">Start Sending</a> 
-                    <% else %>
+                     <% else %>
                         <a class="yellow_btn" href = "/signup" target = "_blank">Start Sending</a> 
-                    <% end %>
-                    
+                     <% end %> 
                     </div>
                 </div>
             </div>
@@ -25,19 +22,19 @@
 
 
   <!-- track the rate section start here -->      
-<section class="track_the_rate">
+<!-- <section class="track_the_rate">
   <div class="container">
     <div class="track_rate_wraper overflow-css">  
         <div class="display_img w50">
           <img src="/assets/img/bilgisayr.png" alt="screen1"> 
         </div>
-        <div class="rate_content w50">
+        <div class="rate_content w50"> -->
             <!-- <h3 class="heading4">TRACK THE RATE</h3>
             <p class="para1">Subscribe to our free daily email about your favourite currency route or receive an alert when the rate reaches your goal.</p> -->
-            <h3 class="heading4">SEND MONEY</h3>
+            <!-- <h3 class="heading4">SEND MONEY</h3>
             <p class="para1">Select the Currency to send money</p>
-            <div class="rate_input">
-                <%= render "shared/money/send_money_form" %>
+            <div class="rate_input"> -->
+                <%#= render "shared/money/send_money_form" %>
                 
             <!-- <form>
                 <div class="form_row overflw">
@@ -75,7 +72,7 @@
                 </div>
             </form> -->
 
-      </div>
+      <!-- </div>
 
 </div>
 
@@ -87,7 +84,7 @@
 
 
 </section>
-
+ -->
  <!-- track the rate section End here -->    
 
  <!-- Send Money section Start here -->    
@@ -124,45 +121,37 @@
     <div class="container">
         <div class="bank_transfer_wrapper">
             <div class="headig_sub text-center">
-            <h4 class="heading5">INTERNATIONAL BANK TRANSFERS</h4>
-            <p>Here’s how we Compare </p>
-        </div>
-    <div class="cost_wrap overflow-css">
-        <div class="left_cost_wrap w50">
-            <h2 class="heading2">
-            THE REAL COST OF<br> 
-            SENDING <span>£1,000</span><br>
-            TO NIGERIA
-
-            </h2>
-            <p>TradeNAIRA charges a small, fair fee and takes nothing from the rate. That's why you save so much, every time.</p>
-            <p>The data presented was collected from competitors' websites on (June 10th 2015).</p>
-            <a class="btn5" href="https://tradenaira.com/signup">Start Saving Now</a>
-        </div>
-        <div class="right_cost_wrap w50">
-           <div class="tradenaiara_graph inli">
-           <div class="graph"><img src="/assets/img/egraphic1.png" alt="graphic1"></div>
-           <div class="graph_logo"><img src="/assets/img/tradenaira.png" alt="tradenaira"></div>
-           </div>
-           <div class="cureency_fair inli">
-            <div class="graph"><img src="/assets/img/egraphic2.png" alt="graphic2"></div>
-           <div class="graph_logo"><img src="/assets/img/currencyfair.png" alt="currencyfair"></div>
-           </div>
-           <div class="westernunicorn inli">
-            <img src="/assets/img/egraphic3.png" alt="graphic3">
-           <div class="graph_logo"> <img src="/assets/img/westernunicorn.png" alt="westernunicorn"></div>
-
-
-               
-           </div> 
-
-</div>
-</div>
-
-
-</div>
-</div>
-
+                <h4 class="heading5">INTERNATIONAL BANK TRANSFERS</h4>
+                <p>Here’s how we Compare </p>
+            </div>
+            <div class="cost_wrap overflow-css">
+                <div class="left_cost_wrap w50">
+                    <h2 class="heading2">
+                    THE REAL COST OF<br> 
+                    SENDING <span>£1,000</span><br>
+                    TO NIGERIA
+                    </h2>
+                    <p>TradeNAIRA charges a small, fair fee and takes nothing from the rate. That's why you save so much, every time.</p>
+                    <p>The data presented was collected from competitors' websites on (June 10th 2015).</p>
+                    <a class="btn5" href="https://tradenaira.com/signup">Start Saving Now</a>
+                </div>
+                <div class="right_cost_wrap w50">
+                   <div class="tradenaiara_graph inli">
+                       <div class="graph"><img src="/assets/img/egraphic1.png" alt="graphic1"></div>
+                       <div class="graph_logo"><img src="/assets/img/tradenaira.png" alt="tradenaira"></div>
+                   </div>
+                   <div class="cureency_fair inli">
+                       <div class="graph"><img src="/assets/img/egraphic2.png" alt="graphic2"></div>
+                       <div class="graph_logo"><img src="/assets/img/currencyfair.png" alt="currencyfair"></div>
+                   </div>
+                   <div class="westernunicorn inli">
+                       <img src="/assets/img/egraphic3.png" alt="graphic3">
+                       <div class="graph_logo"> <img src="/assets/img/westernunicorn.png" alt="westernunicorn"></div>  
+                   </div> 
+                </div>
+          </div>
+       </div>
+  </div>
 </section>
 
 <!-- inetrnational bank transfer End here -->   

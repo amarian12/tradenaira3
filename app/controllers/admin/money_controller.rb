@@ -10,19 +10,26 @@ module Admin
 	  	end
 
 	  	@me = @me
-	  	.where(request_type: :send_meney)
+	  	.where(request_type: 0)
 	  	.order(created_at: :desc)
 	  	@request_type = "Send Money"
 	  	@status = status
 	  end
 
 	  def money_request
-	  	status = params[:status] || ""
-	  	@me = MoneyExchange.where(status: status)
-	  	.where(request_type: :request_meney)
+	  	 status = params[:status] || ""
+	  	if params[:status].nil?
+	  		@me = MoneyExchange.where("status > 0")	
+	  	else
+	  		@me = MoneyExchange.where(status: MoneyExchange::STATUS_CODES[status.to_sym])
+	  	end
+
+	  	@me = @me
+	  	.where(request_type: 1)
 	  	.order(created_at: :desc)
-	  	@request_type = "Request Money"
+	  	@request_type = "Receive Money request"
 	  	@status = status
+
 	  end
 
 	  def manage
@@ -40,8 +47,6 @@ module Admin
 	  		redirect_to :back
 	  		return false
 	  	end
-
-
 
 	  	doaction = params[:doaction]
 	  	case doaction
@@ -66,6 +71,8 @@ module Admin
 	  			return false
 	  		end
 	  	end
+
+
 	  	if @me.trans_errors
 	  		flash[:notice] = @me.trans_errors.join(", ")
 	  	end

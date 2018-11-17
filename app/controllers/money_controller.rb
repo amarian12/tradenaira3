@@ -1,5 +1,6 @@
 class MoneyController < ApplicationController
-
+before_action :two_factor_required!, only: [:two_factor, :processm]
+before_action :auth_member!, only: [:two_factor, :processm]
 
   def req
     if current_user.nil?
@@ -12,6 +13,57 @@ class MoneyController < ApplicationController
   def req_success
   end
   def commission
+  end
+
+  def two_factor
+    validate_request
+    @url = process_request_path(@me.id,@status)
+
+    render "two_factor", layout: "application"
+
+  end
+
+  def processm
+    validate_request
+
+    if two_factor_auth_verified?
+      if @status == "accept"
+
+        if @me.accept_request
+          flash[:notice] = "Amount sent is in process and waiting for admin approval!"
+        else
+          errors = @me.trans_errors 
+          flash[:alert] = errors
+        end
+
+      elsif @status == "decline"
+            
+        if @me.decline_request
+          flash[:notice] = "Request declined successfully!"
+        else
+          errors = @me.trans_errors 
+          flash[:alert] = errors
+        end
+      end
+      redirect_to send_money_path
+    else
+
+      flash[:alert] = "Two factor verification code error, please re-enter."
+      redirect_to :back
+    end
+
+  end
+
+
+  def sendm
+    @member = current_user
+    @requests = MoneyExchange.where(
+      sent_on_email: @member.email, 
+      request_type: MoneyExchange::REQTYPES[:request_meney], 
+      status: MoneyExchange::STATUS_CODES[:active]).order(created_at: :desc) 
+
+    render "send"
+    
   end
 
   def request_money
@@ -40,7 +92,8 @@ class MoneyController < ApplicationController
       end
       sent_to_id = 0
 
-      receiver = Member.find_by_id(email)
+      receiver = Member.find_by_email(email)
+      
       unless receiver.nil?
         sent_to_id = receiver.id
       else
@@ -147,4 +200,56 @@ class MoneyController < ApplicationController
 
   	end
   end
+
+  private
+
+  def validate_request
+    @status = params[:status]
+    success = false
+    errors = false
+    @member = current_user
+    @me = MoneyExchange.find_by_id(params[:id])
+
+    unless @me.receiver == @member
+      flash[:warning] = "You are not authorised to process this request!" 
+      redirect_to :back
+      return false
+    end
+
+    unless @me.account.balance >= @me.amount
+      flash[:warning] = "You do not have sufficient balance to process this request!" 
+      redirect_to :back
+      return false
+    end
+
+  end
+
+  def two_factor_required!
+    @two_factor ||= two_factor_by_type || first_available_two_factor
+
+    if @two_factor.nil?
+      redirect_to settings_path, alert: t('two_factors.auth.please_active_two_factor')
+    end
+  end
+
+  def two_factor_by_type
+    current_user.two_factors.activated.by_type(params[:id])
+  end
+
+  def first_available_two_factor
+    current_user.two_factors.activated.first
+  end
+
+  def require_send_sms_verify_code?
+    @two_factor.is_a?(TwoFactor::Sms) && params[:refresh]
+  end
+
+  def send_sms_verify_code
+    @two_factor.refresh!
+    @two_factor.send_otp
+  end
+
+
+
+
 end

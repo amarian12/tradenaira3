@@ -1,8 +1,6 @@
 class MoneyExchange < ActiveRecord::Base
 
-  
-  
-
+ 
 	belongs_to :account
 	attr_accessor :currency, :trans_errors, :update_success
 	include Currencible
@@ -10,7 +8,9 @@ class MoneyExchange < ActiveRecord::Base
 		pending: 0,
 		active: 1,
 		approved: 2,
-		declined: 3
+		declined: 3,
+		accepted_by_receipent: 4,
+		declined_by_receipent: 5
 	}
 
 	REQTYPES = {
@@ -29,6 +29,26 @@ class MoneyExchange < ActiveRecord::Base
 			"Send Money"
 		when "request_meney"
 			"Request Money"
+		end
+	end
+
+	def accept_request
+		self.status = 4
+		if self.save
+			#send approval request to admin
+			UserMailer.admin_approval(self).deliver
+			#send confirmation to receiver
+			#UserMailer.receive_success(self,self.sender).deliver
+			return true
+		end
+		return false
+	end
+
+	def decline_request
+		self.status = 5
+		if self.save
+			UserMailer.request_declined(self).deliver
+			return true
 		end
 	end
 
@@ -86,6 +106,38 @@ class MoneyExchange < ActiveRecord::Base
 					self.trans_errors = "Sender's account doesn't have sufficient balance."	
 				end
 			end
+		elsif self.request_type == "request_meney"
+			s_account = receiver_account
+			r_account = sender_account
+
+			unless s_account.nil?
+				if s_account.balance >= self.amount 
+					#debit aacount of sender
+					unlock_and_sub_funds(s_account, self.amount, 0.0, Account::MONEYSENT)
+					if s_account.save
+						r_account.balance = r_account.balance + self.amount
+
+						real_fee = (self.amount*0.5)/100
+						real_add = self.amount - real_fee
+
+						r_account.plus_funds \
+					    real_add, fee: real_fee,
+					    reason: Account::MONEYRECEIVED, ref: self	
+
+						r_account.save	
+						self.update_success = true
+						#send success mail to receiver
+						UserMailer.receive_success(self,receiver).deliver
+						#send success mail to sender
+						UserMailer.sent_success(self, sender).deliver
+					else
+						self.trans_errors = s_account.errors.full_messages
+					end
+				else
+					self.trans_errors = "Sender's account doesn't have sufficient balance."	
+				end
+			end
+
 		end
 		
 	end

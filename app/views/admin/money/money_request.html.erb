@@ -1,13 +1,44 @@
  <h1>Request Type: <%= @request_type %></h1>
+
+ <div class="navbar navbar-inverse" id="navbarNav">
+ <ul class="nav navbar-nav navbar-left">
+ 	<li class="<% 'active' if @status == "" %>">
+ 		<%= link_to "All", admin_requested_money_path() %>
+ 	</li>
+ 	 
+ 	<li class="<%= 'active' if @status == "active" %> nav-item">
+ 		<%= link_to t(:active), admin_requested_money_path(status: :active) %>
+ 	</li>
+ 	<li class="<%= 'active' if @status == "declined" %> nav-item">
+ 		<%= link_to t(:declined), admin_requested_money_path(status: :declined) %>
+ 	</li>
+ 	<li class="<%= 'active' if @status == "approved" %> nav-item">
+ 		<%= link_to t(:approved), admin_requested_money_path(status: :approved) %>
+ 	</li>
+
+ 	<li class="<%= 'active' if @status == "approved" %> nav-item">
+ 		<%= link_to t(:accepted_by_receipent), admin_requested_money_path(status: :accepted_by_receipent) %>
+ 	</li>
+
+ 	<li class="<%= 'active' if @status == "approved" %> nav-item">
+ 		<%= link_to t(:declined_by_receipent), admin_requested_money_path(status: :declined_by_receipent) %>
+ 	</li>
+
+
+ 	
+ </ul>
+</div>
+
  <table class="table">
  	<thead>
  		<tr>
  			<td>#</td>
  			<td>Date of Request</td>
- 			<td>Sent By</td>
- 			<td>Sent To</td>
+ 			<td>Request sent by</td>
+ 			<td>Request sent to</td>
  			<td>Requested Amount</td>
  			<td>Receipent Current Balance</td>
+ 			<td>Status</td>
  			<td>Actions</td>
  		</tr>
  	</thead>
@@ -27,20 +58,37 @@
 	 			<td>
 	 				<%= me.amount %><%= me.account.currency %>
 	 			</td>
+
 	 			<td>
-	 				<% unless me.receiver.nil? %>
-	 				<%#= me.receiver_account.balance %>
-	 				<%#= me.receiver_account.currency %>
-	 				<button class="btn btn-default">Approve</button>
-	 				<button class="btn btn-default">Decline</button>
-	 				<% else %>
-	 					<span>Account yet to create</span>
+	 				<% unless me.receiver_account.nil? %>
+	 				<%= me.receiver_account.balance  %><%= me.receiver_account.currency  %>
+	 				<% end %>
+	 			</td>
+	 			<td>
+	 				<%= t me.status %>
+	 			</td>
+	 			<td>
+	 				<% if me.status == "accepted_by_receipent" %>
+	 				 
+
+	 				<% case me.status %>
+	 				 <% when "accepted_by_receipent" %>
+	 				 	<%= link_to "Approve", 
+	 						admin_manage_money_path(me.id,"approve"),
+	 						class: "btn btn-default", data: { method: "POST" } %>
+	 					<%= link_to "Decline", 
+	 						admin_manage_money_path(me.id,"declined"),
+	 						class: "btn btn-default", data: { method: "POST" } %>
+	 				 <% end %>
+
+
+
 	 				<% end %>
 	 			</td>
 	 			<td>
 	 				
 	 			</td>
-	 			<td></td>
+	 			
 	 			<td></td>
 	 			
 	 		</tr>
