@@ -35,6 +35,8 @@ class MoneyExchange < ActiveRecord::Base
 	def accept_request
 		self.status = 4
 		if self.save
+			#lock amount of seder
+			self.lock_funds(self.receiver_account, self.amount, reason: nil, ref: nil)
 			#send approval request to admin
 			UserMailer.admin_approval(self).deliver
 			#send confirmation to receiver
@@ -84,7 +86,7 @@ class MoneyExchange < ActiveRecord::Base
 					#debit aacount of sender
 					unlock_and_sub_funds(s_account, self.amount, 0.0, Account::MONEYSENT)
 					if s_account.save
-						r_account.balance = r_account.balance + self.amount
+						#r_account.balance = r_account.balance + self.amount
 
 						real_fee = (self.amount*0.5)/100
 						real_add = self.amount - real_fee
@@ -115,7 +117,7 @@ class MoneyExchange < ActiveRecord::Base
 					#debit aacount of sender
 					unlock_and_sub_funds(s_account, self.amount, 0.0, Account::MONEYSENT)
 					if s_account.save
-						r_account.balance = r_account.balance + self.amount
+						#r_account.balance = r_account.balance + self.amount
 
 						real_fee = (self.amount*0.5)/100
 						real_add = self.amount - real_fee
@@ -141,7 +143,7 @@ class MoneyExchange < ActiveRecord::Base
 		end
 		
 	end
-
+	#by admin user only
 	def decline_transuction
 
 		if self.request_type == "send_money"
@@ -150,7 +152,12 @@ class MoneyExchange < ActiveRecord::Base
 			unless s_account.nil?
 				unlock_funds s_account, self.amount
 			end
+		elsif self.request_type == "request_meney"
+			s_account = receiver_account
+			r_account = sender_account	
+			unlock_funds s_account, self.amount
 		end
+
 		
 	end
 
@@ -164,6 +171,12 @@ class MoneyExchange < ActiveRecord::Base
   	def unlock_funds account, sum
        account.lock!
        account.unlock_funds sum, reason: Account::MONEYSENTCANCEL, ref: self
+    end
+
+
+    def lock_funds(account, amount, reason: nil, ref: nil)
+    	( amount > account.balance) and raise AccountError, "cannot lock funds (amount: #{amount})"
+    	account.change_balance_and_locked -amount, amount
     end
 
 

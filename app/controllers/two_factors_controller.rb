@@ -51,10 +51,11 @@ class TwoFactorsController < ApplicationController
             account.lock_funds(me.amount, reason: Account::MONEYSENT, ref: self)
             msg = "Money sent success, 
             your account will reflect once admin approve the request."  
-
+            UserMailer.admin_approval(me).deliver
             if me.receiver.nil?
               UserMailer.signup_request(me,current_user).deliver
             end
+
           end
 
         end
