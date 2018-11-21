@@ -16,7 +16,9 @@ before_action :auth_member!, only: [:two_factor, :processm]
   end
 
   def two_factor
-    validate_request
+   unless validate_request
+    return false
+   end
     @url = process_request_path(@me.id,@status)
 
     render "two_factor", layout: "application"
@@ -24,7 +26,9 @@ before_action :auth_member!, only: [:two_factor, :processm]
   end
 
   def processm
-    validate_request
+    unless validate_request
+      return false
+    end
 
     if two_factor_auth_verified?
       if @status == "accept"
@@ -211,17 +215,19 @@ before_action :auth_member!, only: [:two_factor, :processm]
     @me = MoneyExchange.find_by_id(params[:id])
 
     unless @me.receiver == @member
-      flash[:warning] = "You are not authorised to process this request!" 
+      flash[:alert] = "You are not authorised to process this request!" 
       redirect_to :back
       return false
     end
+    puts @me.receiver_account.balance
+    puts "---------------------------"
 
-    unless @me.account.balance >= @me.amount
-      flash[:warning] = "You do not have sufficient balance to process this request!" 
+    unless @me.receiver_account.balance >= @me.amount
+      flash[:alert] = "You do not have sufficient balance to process this request!" 
       redirect_to :back
       return false
     end
-
+    return true
   end
 
   def two_factor_required!

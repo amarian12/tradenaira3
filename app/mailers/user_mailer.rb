@@ -21,6 +21,7 @@ class UserMailer < ActionMailer::Base
     @by_member = member
     @amount = me.amount
     @currency = me.account.currency
+    @me = me
     subjects = "You have been sent some money"
     mail to: me.receiver.email, subject: subjects
     #when receiver has account
@@ -75,7 +76,12 @@ class UserMailer < ActionMailer::Base
     if me.request_type == "send_money"
       subjects = "Approval requets to send money"
       @sender_name = @me.sender.display_name || @me.sender.email
-      @receiver_name = @me.receiver.display_name || @me.receiver.email
+      # @receiver_name = @me.receiver.display_name || @me.receiver.email
+       if @me.receiver.nil?
+        @receiver_name = @me.sent_on_email
+      else
+        @receiver_name = @me.receiver.display_name || @me.receiver.email
+      end      
     elsif "request_meney"
       subjects = "Approval requets to receive money"
       @sender_name = @me.receiver.display_name || @me.receiver.email       
