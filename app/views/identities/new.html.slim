@@ -1,30 +1,32 @@
 = metamagic title: "Sign Up"
-.maxwidth.col-md-12.col-md-offset-6.col-sm-15.col-sm-offset-1.col-xs-24
- .col-xs-24.borderbottom
- 	| Welcome to the TradeNAIRA Community
- = simple_form_for @identity, :url => '/auth/identity/register' do |f|
-  = f.input :email, :input_html => {:name => 'email', :autofocus => 'true'}
-  = f.input :password, :input_html => {:name => 'password'}
-  = f.input :password_confirmation, :input_html => {:name => 'password_confirmation'}
-  div class="form-group password required identity_password_confirmation acctype"
-	div class="col-xs-8 text-right"
-    div class="col-xs-14"
-     = f.radio_button :account_type, 'individual', :name => 'account_type', :checked => true
-     = f.label :account_type, "Individual"
-     = f.radio_button :account_type, 'institutional', :name => 'account_type'
-     = f.label :account_type, "Institutional"
-  hr.split
-  .col-xs-24.sign_bottom
-  	p.already
-  		|	Already has account?
-  		a.smal_link1 href='#{signin_path}' SIGN IN
-  		|	Agree
-  		a.smal_link href='#{root_path}pages/termsofuse' Terms and Services
-  	= f.button :wrapped, t('header.signup')
-  /*= content_for :guide do
-    ul.list-unstyled
-      li: a href='#{signin_path}'= t('.signin')*/
-.col-md-6.col-sm-8.col-sm-push-0.col-s-24.signup.videodiv
+.max-width-register.col-md-14.forms-sign-signup
+  .form-max-width-register
+   .col-xs-24.borderbottom
+   	| Welcome to the TradeNAIRA Community
+   = simple_form_for @identity, :url => '/auth/identity/register' do |f|
+    = f.input :email, :input_html => {:name => 'email', :autofocus => 'true'}
+    = f.input :password, :input_html => {:name => 'password'}
+    = f.input :password_confirmation, :input_html => {:name => 'password_confirmation'}
+    div class="form-group password required identity_password_confirmation acctype"
+  	div class="radio_btns"
+        div class="radio_indi"
+         = f.radio_button :account_type, 'individual', :name => 'account_type', :checked => true
+         = f.label :account_type, "Individual"
+         = f.radio_button :account_type, 'institutional', :name => 'account_type'
+         = f.label :account_type, "Institutional"
+    .sign_bottom
+      = f.submit t('header.signup'), :class => 'btn44'
+    	p.already
+    		|	Already has account?
+    		a.smal_link1 href='#{signin_path}' SIGN IN
+    		|	Agree
+    		a.smal_link href='#{root_path}pages/termsofuse' Terms and Services
+    	
+      
+    /*= content_for :guide do
+      ul.list-unstyled
+        li: a href='#{signin_path}'= t('.signin')*/
+.col-md-10.signup.videodiv
 	h5.subheading
 		|	QUICK & SECURE
 	p.complete

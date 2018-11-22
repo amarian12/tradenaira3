@@ -203,7 +203,7 @@ img {
 
 
 a:focus, button:focus{ outline: none; text-shadow: none; }
-body{ font-family:'poppinsregular' !important; font-size:15px !important; background:none !important;}
+body{ font-family:'poppinsregular' !important; font-size:15px !important; background:none !important; overflow-x:hidden;}
 a, a:hover{ text-decoration:none !important;}
 ul { padding:0; margin:auto;}
 
@@ -1116,7 +1116,7 @@ header.fixed-header {background: #029abf !important;}
 
 .banner-text {
     position: absolute;
-    width: 98%;
+    width: 95%;
     top: -270px;
     z-index:11;
 }
@@ -2903,6 +2903,121 @@ input[type="file"] {
 
 
 
+/** 22 November 2018 2018 css Start here **/
+
+.forms-sign-signup label {
+    font-weight: normal;
+    padding: 7px 10px 0 0;
+    font-size: 16px;
+    display: block;
+    text-align: left !important;
+    margin: 0 0 6px !important;
+    font-family: 'poppinsregular' !important;
+}
+
+
+.forms-sign-signup abbr {
+    display: none;
+}
+
+
+.radio_btns label {
+    margin: 0 15px 0 9px !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+.radio_btns input {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0! important;
+    margin: 0 !important;
+}
+span.hint {
+    margin-top: 13px !important;
+    font-size: 13px;
+    color: #029bbf;
+}
+.already a {
+    color: #029bbf;
+    text-transform: capitalize;
+    padding: 0 4px;
+}
+
+.forms-sign-signup .borderbottom {
+    border-bottom: 1px solid #d6d6d6;
+    padding: 0 0 9px;
+    font-size: 20px;
+    margin: 0 0 25px;
+}
+
+.sign_in .form-max-width-register 
+{
+    background: #f7f7f7;
+    padding: 30px;
+    margin: 0 50px 0  0;
+}
+
+
+.form-max-widt-login{
+   max-width: 40%; 
+    margin: auto;
+    background: #f7f7f7;
+    padding: 30px;
+    margin: 0 auto 0  auto;
+
+}
+
+.sign_in .panel-body {margin: 0 0 40px 0;}
+p.already {
+    font-size: 13px;
+
+}
+.sign_bottom {
+    margin: 14px -4px;
+}
+
+.btn44 {
+    background: #029bbf;
+    border: 1px solid #029bbf;
+    color: #fff;
+    border-radius: 17px !important;
+    padding: 7px 29px;
+    text-transform: capitalize;
+    font-size: 16px;
+    cursor:pointer !important;
+}
+
+
+ input[type="password"], .ui-autocomplete-input, textarea, .uneditable-input{ padding:6px 12px !important; }
+
+#new_email {
+    color: #333;
+    border: 1px solid #b1b1b1;
+}
+
+
+#wrap .sub_menu {
+    padding: 0 !important;
+}
+#wrap header {
+    padding: 0 !important;
+
+}
+
+
+#wrap .navbar-collapse, #wrap .navbar-header {
+    padding: 10px 0 !important;
+}
+
+
+/** 22 November 2018 2018 css End here **/
+
+
+
+
+
+
 
 
 /** @media Query Css for Responsive Start here **/
@@ -2967,7 +3082,7 @@ ul.social {margin: 0 0 20px 0;}
 
 .footer_menu_block {width: 100%;float: none;}
 
-.main-text h1{ font-size: 22px; margin: 4px 0 4px 0;}
+.main-text h1{ font-size: 20px; margin: 4px 0 4px 0;}
 .main-text{ max-width: 100%; }
 .main-text:after{ display: none; }
 .main-text p {
@@ -3454,6 +3569,36 @@ header {padding: 9px 0 13px 0;}
     
 }
 
+.sign_in .form-max-width-register {
+    margin: auto;
+    padding: 20px;
+ }
+.forms-sign-signup .borderbottom {
+    font-size: 18px;
+ }
+
+
+
+.header_height {min-height: 68px;}
+.form-max-widt-login{ max-width:100%;}
+#wrap .sub_menu a {
+    color: #fff !important;
+    font-size: 16px !important;
+    text-transform: uppercase;
+    padding: 10px 28px;
+}
+
+#wrap .sub_menu {
+    padding: 0 !important;
+}
+
+.navbar-collapse{ margin:auto !important;}
+
+
+#wrap header .navbar-toggle {
+    top: 12px !important;
+ }
+
 
 }
 
@@ -3847,7 +3992,14 @@ body {
 .project-form-container {width: 720px;}
 
 
+.sign_in .form-max-width-register {
+   margin: auto;
+}
 
+.form-max-widt-login {
+    max-width: 80%;
+    margin: auto;
+ }
 
 
 }
@@ -4043,6 +4195,13 @@ body {
 
 .categories{min-width:auto;}
 .index-categories li{ width:auto; margin-left:0;}
+
+.sign_in .form-max-width-register {
+    padding: 20px;
+    margin: 0 20px 0 0;
+}
+
+
 
 }
 

@@ -21,22 +21,21 @@
           </table></td>
         </tr>
         <tr>
-          <td style="border-top:none; padding:30px; color: #666 ">
+          <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
             <!--body-->
             <table>
               <tbody>
               <tr>
                 <td>
                   <p>Dear User!</p>
-					<br/>
-					<p>Your money sent success to <%= @me.receiver.email %>.<p>
-					<p>Amount sent:<%= @amount %><%= @currency%> </p> 
-					These funds have been credited into his TradeNAIRA wallet.
-					<!-- <p>Thanks</p>
-					<p>
-						Regards<br>
-						<a href="https://tradenaira.com">tradenaira.com</a>
-					</p> -->
+        					<p>Your money sent success to <%= @me.receiver.email %>.<p>
+        					<p>Amount sent: <%= @amount %><%= @currency%> </p> 
+        					These funds have been credited into his TradeNAIRA wallet.
+        					<!-- <p>Thanks</p>
+        					<p>
+        						Regards<br>
+        						<a href="https://tradenaira.com">tradenaira.com</a>
+        					</p> -->
 
                   <p><%= raw t('mailer.signature') %></p>
                 </td>

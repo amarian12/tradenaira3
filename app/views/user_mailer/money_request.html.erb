@@ -20,16 +20,15 @@
           </table></td>
         </tr>
         <tr>
-          <td style="border-top:none; padding:30px; color: #666 ">
+          <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
             <!--body-->
             <table>
               <tbody>
               <tr>
                 <td>
                   <p>Dear User!</p>
-                  <br/>
                   <p><%=@sender.display_name || @sender.email %> sent you request to send some money.<p>
-                  <p>Amount in request:<%= @amount %><%= @currency%> </p> 
+                  <p>Amount in request: <%= @amount %><%= @currency%> </p> 
                    To approve/decline the request, please login into your TradeNAIRA account and click 
                    <%= link_to "here", send_money_url(id: @me.id ) %>.
                   <!-- <p>Thanks</p>
@@ -59,7 +58,6 @@
   </tbody>
 </table>
 </body></html>
-
 
 
 

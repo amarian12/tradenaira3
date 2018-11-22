@@ -155,3 +155,11 @@ span.detail-section {
   padding: 0;
   margin: 0 auto;
 }
+
+
+@media (min-width: 760px) {
+.navbar-nav > li > a {
+    padding: 7px 9px;
+    font-size: 13px !important;
+}
+}

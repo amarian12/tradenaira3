@@ -6,6 +6,11 @@
 <div class="money-form-wrapper">
 	<div class="globalerros"></div>
 	<div class="sentsuccess"></div>
+	<div class="row back_to_wallet" style="display: none;">
+	    	<div class="col-md-24">
+	    		<a class="btn btn-default" href = "/funds">Click here to go back to wallet</a>
+	    	</div>
+	    </div>
 	<div class="wait-section" style="display: none;"></div>
 	<div class="col-md-24">
 		<div class="twofectorauth"></div>
@@ -58,6 +63,7 @@ class: "sendmenyform", data: { actionfor: "send" } }) do |f| %>
 	        	<p class="amterr"></p>
 	        </div> 
     	</div>
+
     	<div class="form_row">
     		<div class="full_width">
 	        <button style="display: none;" class="btn5 sendmoneybtn" type="submit">
@@ -65,6 +71,7 @@ class: "sendmenyform", data: { actionfor: "send" } }) do |f| %>
 	        </button> 
 	    	</div>
 	    </div>
+	    
 <% end %>
 
 </div>

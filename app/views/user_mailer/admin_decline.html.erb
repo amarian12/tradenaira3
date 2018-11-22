@@ -21,16 +21,15 @@
           </table></td>
         </tr>
         <tr>
-          <td style="border-top:none; padding:30px; color: #666 ">
+          <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
             <!--body-->
             <table>
               <tbody>
               <tr>
                 <td>
                   <p>Dear User!</p>
-				<br/>
-				<p>Your money transfer has failed</p>
-				<p>Unfortunately, your request to send <%= @amount %><%= @currency%> to <%= @receiver_email%> has failed. Your funds are once again available on your wallet.</p>
+          				<p>Your money transfer has failed</p>
+          				<p>Unfortunately, your request to send <%= @amount %><%= @currency%> to <%= @receiver_email%> has failed. Your funds are once again available on your wallet.</p>
                   <p><%= raw t('mailer.signature') %></p>
                 </td>
               </tr>

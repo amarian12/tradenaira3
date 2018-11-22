@@ -768,6 +768,8 @@ function verifyTwofectoAuth($this,resp){
           $(".globalerros").hide();
           $(".sentsuccess").html(ftresp.msg);
           $(".twofectorauth").hide();
+          $(".back_to_wallet").show();
+          $(".hide_send_money").hide();
        }else{
           $(".globalerros").html("<p>"+ftresp.errors+"</p>").show();
           $($this).removeAttr("disabled");

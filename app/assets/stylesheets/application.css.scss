@@ -106,6 +106,8 @@
 }
 /* layouts
 -------------------------------------------------------------- */
+
+
 html, body {
   height: 100%;
 }
@@ -1217,6 +1219,13 @@ form.simple_form {
 
 .btn-default {
       background-color: #38a6cb;
+}
+
+
+
+@media screen and (max-width:767px) {
+body{ overflow-x:hidden;}
+
 }
 
 

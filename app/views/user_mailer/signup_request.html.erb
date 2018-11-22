@@ -19,18 +19,17 @@
           </table></td>
         </tr>
         <tr>
-          <td style="border-top:none; padding:30px; color: #666 ">
+          <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
             <!--body-->
             <table>
               <tbody>
               <tr>
                 <td>
                   <p>Dear User!</p>
-					<br/>
-					<p><%=@member_name %> sent you some money</p>
-					<p>Amount sent:<%= @amount %><%= @currency%> </p>
-					<p>You have received Amount <%= @amount %><%= @currency%> </p> 
-					<p>You are not a user of TradeNAIRA. Please sign up to receive these funds.<a href="https://tradenaira.com/signup"></a></p>
+        					<p><%=@member_name %> sent you some money</p>
+        					<p>Amount sent: <%= @amount %><%= @currency%> </p>
+        					<p>You have received Amount <%= @amount %><%= @currency%> </p> 
+        					<p>You are not a user of TradeNAIRA. Please sign up to receive these funds.<a href="https://tradenaira.com/signup"></a></p>
                   <p><%= raw t('mailer.signature') %></p>
                 </td>
               </tr>

@@ -21,21 +21,20 @@
           </table></td>
         </tr>
         <tr>
-          <td style="border-top:none; padding:30px; color: #666 ">
+          <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
             <!--body-->
             <table>
               <tbody>
               <tr>
                 <td>
                   <p>Dear User!</p>
-					<br/>
-					<p>Your money transfer request has been declined by <%= @me.receiver.email %></p>
-					<p>Unfortunately, your request to send <%= @amount %><%= @currency%> to 
-						<%= @me.receiver.email %> has been declined by user. </p>
-					<!-- <p>Thanks</p>
-					<p>
-						Regards<br>
-						<a href="https://tradenaira.com">tradenaira.com</a> -->
+        					<p>Your money transfer request has been declined by <%= @me.receiver.email %></p>
+        					<p>Unfortunately, your request to send <%= @amount %><%= @currency%> to 
+        						<%= @me.receiver.email %> has been declined by user. </p>
+        					<!-- <p>Thanks</p>
+        					<p>
+        						Regards<br>
+        						<a href="https://tradenaira.com">tradenaira.com</a> -->
                   <p><%= raw t('mailer.signature') %></p>
                 </td>
               </tr>

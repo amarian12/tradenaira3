@@ -20,16 +20,15 @@
           </table></td>
         </tr>
         <tr>
-          <td style="border-top:none; padding:30px; color: #666 ">
+          <td style="border-top:none;padding:0px 30px 30px 30px; color: #666 ">
             <!--body-->
             <table>
               <tbody>
               <tr>
                 <td>
                  <p>Dear User!</p>
-          				<br/>
           				<p><%=@me.sender.display_name || @me.sender.email %> sent you some money.</p>
-          				<p>Amount sent:<%= @amount %><%= @currency%> </p> 
+          				<p>Amount sent: <%= @amount %><%= @currency%> </p> 
           				These funds have been credited into your TradeNAIRA wallet.
                   <p><%= raw t('mailer.signature') %></p>
                 </td>
