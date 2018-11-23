@@ -45,8 +45,14 @@ class TwoFactorsController < ApplicationController
             #sendSignupMailtoUser
           if acode == "request"
             msg = "Your money has been requested successfully. Your wallet will reflect once user approved your transaction"
-            UserMailer.money_request(me,current_user).deliver
+            if me.receiver.nil?
+             UserMailer.signup_request(me,current_user).deliver 
+            else
+             UserMailer.money_request(me,current_user).deliver
+            end
+            
           elsif "send"
+             
             account.lock_funds(me.amount, reason: Account::MONEYSENT, ref: self)
             msg = "Your money has been sent successfully. Your wallet will reflect once we have approved your transaction"  
             UserMailer.admin_approval(me).deliver

@@ -3176,7 +3176,7 @@ li.ng-binding {
 header .navbar-toggle {
     position: absolute;
     right: 6px;
-    top: 22px !important;
+    top: 27px !important;
     padding: 6px;
 }
 
@@ -3200,6 +3200,7 @@ header .navbar-collapse {
     opacity: 1;
     height: auto;    border-top: 1px solid #fff;
     padding: 0; opacity: 1 !important; height: 100vh !important;
+    margin:12px 0 0 0 !important;
 }
 .center-menu {
     padding: 10px 12px 11px 16px;
@@ -3335,7 +3336,7 @@ header .navbar-collapse {
  }
 .side_post_heading h5{ font-size: 14px; }
 
-.side_post_img{ width: 100%; }
+.side_post_img{ width: 100%; padding:0; }
 .side_post_heading{ width: 100%; margin: 9px 0px 0 0 }
 .post_listing_img img{ width: 100%; }
 .main_post_heading h4{ font-size: 14px; }
@@ -3598,6 +3599,22 @@ header {padding: 9px 0 13px 0;}
 #wrap header .navbar-toggle {
     top: 12px !important;
  }
+
+ label.string.required.col-xs-2.control-label {
+    display: none;
+}
+.rate_input {
+    margin: 25px 0px 0 0;
+}
+
+
+.banner-wrap-side .advert-banner {
+    right: 59px;
+ }
+
+
+
+
 
 
 }

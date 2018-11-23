@@ -34,8 +34,12 @@ div.exchange-section
 			h3.sub_head
 				| NAIRA EXCHANGE RATE - REAL TIME PRICES ON PLATFORM	
 			h1.vishid
-				| Better than Naira Black Market rates on Abokifx the best way to send money to Nigeria	  	
-            ul class="nav nav-pills col-md-23 col-md-offset-1 col-sm-12 col-sm-offset-8 col-xs-22 col-xs-offset-2" role="tablist"
+				| Better than Naira Black Market rates on Abokifx the best way to send money to Nigeria
+            div.row
+              div.col-md-25
+                div.loading-wraper
+                  = image_tag "loader.gif"	  	
+            ul class="nav nav-pills col-md-23 col-md-offset-1 col-sm-12 col-sm-offset-8 loading-loded col-xs-22 col-xs-offset-2" role="tablist" style="display:none"
                 li id="li1" class="" ng-class="{true:'active'}[market==='usdngn']"
                 	a href="javascript:void(0)" data-link="/markets/usdngn" datas="usdngn" head="USD" class="gbpngn lnk" USD|NGN
                 	iframe id="frameExternal" style="display:none;"

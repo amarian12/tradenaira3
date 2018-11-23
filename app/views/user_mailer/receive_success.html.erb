@@ -29,6 +29,9 @@
                  <p>Dear User!</p>
           				<p><%=@me.sender.display_name || @me.sender.email %> sent you some money.</p>
           				<p>Amount sent: <%= @amount %><%= @currency%> </p> 
+                   <% unless @me.note.nil? %>
+                   <p>Reason to send money: <%=@me.note %></p>
+                   <% end %>
           				These funds have been credited into your TradeNAIRA wallet.
                   <p><%= raw t('mailer.signature') %></p>
                 </td>

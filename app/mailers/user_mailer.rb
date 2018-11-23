@@ -10,9 +10,14 @@ class UserMailer < ActionMailer::Base
   def signup_request me,member
     @by_member = member
     @amount = me.amount
+    @me = me
     @member_name = member.display_name.nil? ? member.email : member.display_name
     @currency = me.account.currency
-    subjects = "You have been sent some money"
+    if @me.request_type == "send_money"
+      subjects = "You have been sent some money"
+    else
+      subjects = "You have been requetsed some money"
+    end
     mail to: me.sent_on_email, subject: subjects
   end
 

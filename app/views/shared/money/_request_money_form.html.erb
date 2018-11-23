@@ -34,7 +34,7 @@ class: "sendmenyform", data: { actionfor: "request" } }) do |f| %>
 	            <% if accounts.present? %>
 	            <div class="dropdown">
 	            	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	            		Select Currecy
+	            		Select Currency
   					</button>
   					<div class="dropdown-menu">
 	            	<% accounts.each do |a| %> 
@@ -60,10 +60,15 @@ class: "sendmenyform", data: { actionfor: "request" } }) do |f| %>
 	        	<%= f.text_field :amount_to_send, onchange: "checkAmount(this)",
 	        	placeholder: "Amount to request" %>
 	        	<p class="amterr"></p>
+	        	<div class="col-md-24">
+	        		<%= f.text_field :notes, placeholder: "Reason for request(Max 50 characters)", 
+	        		class: "form-control", onkeyup: "return filterNotes(this)"  %>
+	        	</div>
 	        </div> 
     	</div>
     	<div class="form_row">
     		<div class="full_width">
+    			<br />
 	        <button style="display: none;" class="btn5 sendmoneybtn" type="submit">
 	        	Send request
 	        </button> 

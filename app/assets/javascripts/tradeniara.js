@@ -506,6 +506,11 @@ function showCurrencyPrice(cntr){
                       }
                     })
                     showCurrencyPrice(cntr-1);
+
+                    if (cntr <= 0) {
+                      $(".loading-loded").show();
+                      $(".loading-wraper").hide();
+                    }
                     //$(wrapper+"datas").append(nobj);
                   }
                 }
@@ -807,6 +812,17 @@ function loadCapchform($this,resp){
     }
 
   })
+}
+
+function filterNotes($this){
+  var notes = $($this).val();
+
+  var nnotes = notes.replace(/[^A-Za-z 0-9\-\_]+/g,"");
+  if (nnotes.length >100) {
+   nnotes = nnotes.substr(0,50);
+  }
+  $($this).val(nnotes);
+
 }
 
 

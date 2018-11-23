@@ -27,7 +27,7 @@
 					class: "btn btn-default" %>
 					<% end %>
 					<%= link_to "Decline", two_factor_money_path(me.id,"decline"), 
-					class: "btn btn-danger" %>
+					class: "btn btn-danger", data: {confirm: "Are you sure, decline the request!"} %>
 				</td>
 			</tr>
 		</tbody>

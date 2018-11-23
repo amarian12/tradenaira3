@@ -21,6 +21,7 @@
         <tr>
           <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
             <!--body-->
+          <% if @me.request_type == "send_money" %>
             <table>
               <tbody>
               <tr>
@@ -29,12 +30,28 @@
         					<p><%=@member_name %> sent you some money</p>
         					<p>Amount sent: <%= @amount %><%= @currency%> </p>
         					<p>You have received Amount <%= @amount %><%= @currency%> </p> 
-        					<p>You are not a user of TradeNAIRA. Please sign up to receive these funds.<a href="https://tradenaira.com/signup"></a></p>
+        					<p>You are not a user of TradeNAIRA. Please <a href="https://tradenaira.com/signup">sign up</a> to receive these funds.</p>
                   <p><%= raw t('mailer.signature') %></p>
                 </td>
               </tr>
               </tbody>
             </table>
+          <% else %>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>Hi,</p>
+                      <p><%=@member_name %> has made a payment request from you 
+                       for <%= @amount %><%= @currency%> </p>
+                      
+                      <p>You are not currently a registered user of TradeNAIRA, please <a href="https://tradenaira.com/signup">sign up</a> to make payment.</p>
+                      <p><%= raw t('mailer.signature') %></p>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+          <% end %>
             <!--body-->
           </td>
         </tr>

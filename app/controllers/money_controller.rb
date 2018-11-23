@@ -19,6 +19,17 @@ before_action :auth_member!, only: [:two_factor, :processm]
    unless validate_request
     return false
    end
+
+   if @status == "decline"
+      if @me.decline_request
+          flash[:notice] = "Request declined successfully!"
+      else
+          errors = @me.trans_errors 
+          flash[:alert] = errors
+      end
+      redirect_to :back
+      return false
+   end
     @url = process_request_path(@me.id,@status)
 
     render "two_factor", layout: "application"
@@ -41,13 +52,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
         end
 
       elsif @status == "decline"
-            
-        if @me.decline_request
-          flash[:notice] = "Request declined successfully!"
-        else
-          errors = @me.trans_errors 
-          flash[:alert] = errors
-        end
+        #already processed
       end
       redirect_to send_money_path
     else
@@ -77,6 +82,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
       amount = BigDecimal.new(params[:member][:amount_to_send])
       account_id =  params[:member][:currency]
       email =  params[:member][:email]
+      note  = params[:member][:notes]
       errors = []
       email_regex = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
       unless email.match(email_regex)
@@ -100,8 +106,6 @@ before_action :auth_member!, only: [:two_factor, :processm]
       
       unless receiver.nil?
         sent_to_id = receiver.id
-      else
-         errors << "Receipent does not exists in the system."
       end
 
       success = false;
@@ -110,6 +114,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
         sent_by_id: member.id,
         sent_to_id: sent_to_id,
         sent_on_email: email,
+        note: note,
         request_type: 1,
         status: 0).destroy_all
 
@@ -119,6 +124,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
         sent_on_email: email,
         account_id: account.id,
         request_type: 1,
+        note: note,
         amount: amount,
         status: 0)
       
@@ -148,6 +154,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
       amount = BigDecimal.new(params[:member][:amount_to_send])
       account_id =  params[:member][:currency]
       email =  params[:member][:email]
+      note  = params[:member][:notes]
       errors = []
       email_regex = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
       unless email.match(email_regex)
@@ -179,6 +186,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
         sent_to_id: sent_to_id,
         sent_on_email: email,
         request_type: 0,
+        note: note,
         status: 0).destroy_all
 
       me = MoneyExchange.new(
@@ -187,6 +195,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
         sent_on_email: email,
         account_id: account.id,
         request_type: 0,
+        note: note,
         amount: amount,
         status: 0)
       if me.save
@@ -219,9 +228,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
       redirect_to :back
       return false
     end
-    puts @me.receiver_account.balance
-    puts "---------------------------"
-
+    
     unless @me.receiver_account.balance >= @me.amount
       flash[:alert] = "You do not have sufficient balance to process this request!" 
       redirect_to :back

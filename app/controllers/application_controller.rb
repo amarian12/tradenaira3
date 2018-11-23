@@ -25,7 +25,11 @@ class ApplicationController < ActionController::Base
       redirect_to cookies[:redirect_to]
       cookies[:redirect_to] = nil
     else
-      redirect_to settings_path
+      if @member.activated?
+        redirect_to funds_path
+      else
+        redirect_to settings_path
+      end
     end
   end
 
