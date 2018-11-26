@@ -35,7 +35,7 @@ module ActionCable
 
       private
         def log(type, message) # :doc:
-          tag(@logger) { @logger.send type, message }
+          #tag(@logger) { @logger.send type, message }
         end
     end
   end

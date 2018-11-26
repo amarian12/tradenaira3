@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 
 require "monitor"
-
+module ActionCable
+  class Logger 
+      def info data
+        puts "-----Loger---Info was --------------"
+        puts data.inspect
+        ""
+      end
+  end
+end
 module ActionCable
   module Server
     # A singleton ActionCable::Server instance is available via ActionCable.server. It's used by the Rack process that starts the Action Cable server, but
@@ -15,9 +23,16 @@ module ActionCable
       cattr_accessor :config, instance_accessor: true, default: ActionCable::Server::Configuration.new
 
       def self.logger; config.logger; end
-      delegate :logger, to: :config
+      #puts Rails.configuration.inspect
+      #delegate :logger, to: :config
+      
+
 
       attr_reader :mutex
+
+      def logger
+        ActionCable::Logger.new
+      end
 
       def initialize
         @mutex = Monitor.new
@@ -27,7 +42,8 @@ module ActionCable
       # Called by Rack to setup the server.
       def call(env)
         setup_heartbeat_timer
-        config.connection_class.call.new(self, env).process
+        ApplicationCable::Connection.new(self, env).process
+        #config.connection_class.call.new(self, env).process
       end
 
       # Disconnect all the connections identified by +identifiers+ on this server or any others via RemoteConnections.
@@ -70,7 +86,8 @@ module ActionCable
       # the database connection pool and block while they wait for other workers to release their connections. Use a smaller worker pool or a larger
       # database connection pool instead.
       def worker_pool
-        @worker_pool || @mutex.synchronize { @worker_pool ||= ActionCable::Server::Worker.new(max_size: config.worker_pool_size) }
+        worker_pool_size = 4
+        @worker_pool || @mutex.synchronize { @worker_pool ||= ActionCable::Server::Worker.new(max_size: worker_pool_size) }
       end
 
       # Adapter used for all streams/broadcasting.

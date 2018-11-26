@@ -195,7 +195,8 @@ module ActionCable
         end
 
         def allow_request_origin?
-          return true if server.config.disable_request_forgery_protection
+          return true 
+          #return true if server.config.disable_request_forgery_protection
 
           proto = Rack::Request.new(env).ssl? ? "https" : "http"
           if server.config.allow_same_origin_as_host && env["HTTP_ORIGIN"] == "#{proto}://#{env['HTTP_HOST']}"
@@ -223,6 +224,8 @@ module ActionCable
 
         # Tags are declared in the server but computed in the connection. This allows us per-connection tailored tags.
         def new_tagged_logger
+          return TaggedLoggerProxy.new server.logger, tags: []
+
           TaggedLoggerProxy.new server.logger,
             tags: server.config.log_tags.map { |tag| tag.respond_to?(:call) ? tag.call(request) : tag.to_s.camelize }
         end

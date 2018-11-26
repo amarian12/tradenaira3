@@ -19,6 +19,11 @@ module ActionCable
         # channel instances created off the connection.
         def identified_by(*identifiers)
           Array(identifiers).each { |identifier| attr_accessor identifier }
+
+           if self.identifiers.nil?
+            self.identifiers = Set.new
+           end
+
           self.identifiers += identifiers
         end
       end
