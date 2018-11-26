@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   after_action :set_csrf_cookie_for_ng
   rescue_from CoinRPC::ConnectionRefusedError, with: :coin_rpc_connection_refused
 
+
+
   private
 
   include SimpleCaptcha::ControllerHelpers
@@ -292,3 +294,7 @@ class ApplicationController < ActionController::Base
   end
 
 end
+
+
+ 
+ 

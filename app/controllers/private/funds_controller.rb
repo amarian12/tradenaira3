@@ -37,13 +37,14 @@ module Private
 
     def gen_address
       current_user.accounts.each do |account|
-        next if not account.currency_obj.coin?
-
-        if account.payment_addresses.blank?
-          account.payment_addresses.create(currency: account.currency)
-        else
-          address = account.payment_addresses.last
-          address.gen_address if address.address.blank?
+        unless account.currency_obj.nil?
+            next if not account.currency_obj.coin?
+            if account.payment_addresses.blank?
+              account.payment_addresses.create(currency: account.currency)
+            else
+              address = account.payment_addresses.last
+              address.gen_address if address.address.blank?
+            end
         end
       end
       render nothing: true

@@ -29,6 +29,7 @@ class SessionsController < ApplicationController
         clear_failed_logins
         reset_session rescue nil
         session[:member_id] = @member.id
+        cookies.encrypted[:user_id] = @member.id
         save_session_key @member.id, cookies['_peatio_session']
         save_signup_history @member.id
         MemberMailer.notify_signin(@member.id).deliver if @member.activated?
@@ -48,6 +49,7 @@ class SessionsController < ApplicationController
   def destroy
     clear_all_sessions current_user.id
     reset_session
+    cookies.encrypted[:user_id] = ""
     redirect_to root_path
   end
 

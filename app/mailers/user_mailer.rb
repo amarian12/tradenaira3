@@ -87,7 +87,7 @@ class UserMailer < ActionMailer::Base
       else
         @receiver_name = @me.receiver.display_name || @me.receiver.email
       end      
-    elsif "request_meney"
+    elsif me.request_type == "request_meney"
       subjects = "Approval requets to receive money"
       @sender_name = @me.receiver.display_name || @me.receiver.email       
       @receiver_name = @me.sender.display_name || @me.sender.email

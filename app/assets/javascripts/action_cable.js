@@ -238,6 +238,8 @@
             if (this.webSocket != null) {
               this.uninstallEventHandlers();
             }
+            //console.log(this.consumer.url)
+            //console.log(protocols)
             this.webSocket = new ActionCable.WebSocket(this.consumer.url, protocols);
             this.installEventHandlers();
             this.monitor.start();
