@@ -48,13 +48,26 @@ class TwoFactorsController < ApplicationController
             if me.receiver.nil?
              UserMailer.signup_request(me,current_user).deliver 
             else
+              msgnoti = "#{current_user.email} requested you some money!"
+              SrNotofication.create(
+              member_id: me.receiver.id,
+              msg: msgnoti,
+              status: false)
              UserMailer.money_request(me,current_user).deliver
             end
+
+
             
-          elsif "send"
-             
+          elsif acode == "send"
             account.lock_funds(me.amount, reason: Account::MONEYSENT, ref: self)
             msg = "Your money has been sent successfully. Your wallet will reflect once we have approved your transaction"  
+            #send notification
+            msgnoti = "#{current_user.email} sent you some money, 
+            currently its waiting for admin approval."
+            SrNotofication.create(
+              member_id: me.receiver.id,
+              msg: msgnoti,
+              status: false)
             UserMailer.admin_approval(me).deliver
             if me.receiver.nil?
               UserMailer.signup_request(me,current_user).deliver

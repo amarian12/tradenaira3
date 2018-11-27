@@ -61,7 +61,7 @@ class: "sendmenyform", data: { actionfor: "send" } }) do |f| %>
 	        	<%= f.text_field :amount_to_send, onchange: "checkAmount(this)",
 	        	placeholder: "Amount to send" %>
 	        	<p class="amterr"></p>
-	        	<div class="col-md-24">
+	        	<div class="aaa">
 	        		<%= f.text_field :notes, placeholder: "Reason for send money(Max 50 characters)", 
 	        		class: "form-control", onkeyup: "return filterNotes(this)" %>
 	        	</div>

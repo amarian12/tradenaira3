@@ -22,6 +22,12 @@ before_action :auth_member!, only: [:two_factor, :processm]
 
    if @status == "decline"
       if @me.decline_request
+        msgnoti = "Your money request was declined by #{@me.receiver.email}"
+        SrNotofication.create(
+          member_id: @me.sender.id,
+          msg: msgnoti,
+          status: false)
+
           flash[:notice] = "Request declined successfully!"
       else
           errors = @me.trans_errors 
@@ -43,8 +49,13 @@ before_action :auth_member!, only: [:two_factor, :processm]
 
     if two_factor_auth_verified?
       if @status == "accept"
-
         if @me.accept_request
+          msgnoti = "Your money request was accepted by #{@me.receiver.email} and waiting
+          for admin approval"
+          SrNotofication.create(
+          member_id: @me.sender.id,
+          msg: msgnoti,
+          status: false)
           flash[:notice] = "Amount sent is in process and waiting for admin approval!"
         else
           errors = @me.trans_errors 

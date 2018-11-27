@@ -13,10 +13,14 @@ class PusherSubscriber
     @subscribeUserChannel(user_sn)
 
   subscribeUserChannel: (user_sn)->
+
     channel = @socket.subscribe("private-" + user_sn)
     self = @
     channel.bind 'pusher:subscription_succeeded', (status) ->
       console.log('Pusher bind member channel successfully')
+      console.log('Pusher bind to channel private-'+user_sn+ " status: ")
+      console.log(status)
+
       new MemberHandler(channel)
       new AccountHandler(channel)
       new DepositHandler(channel)
@@ -37,6 +41,7 @@ class EventHandler
         throw 'Unknown type:' + type
 
   processWithoutAjax: =>
+    alert 1
     args = arguments
     PeatioModel.Ajax.disable =>
       @process(args...)

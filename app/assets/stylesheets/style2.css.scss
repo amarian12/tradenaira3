@@ -102,7 +102,7 @@ img {
       img{
         position: relative;
         top: 30px;
-        left: 16px;
+        left: 0px;
       }
     }
   }
@@ -152,6 +152,41 @@ img {
     color: red;
   }
 }
+
+.srnotification{
+   
+  margin: 13px 2px;
+  position: relative;
+  cursor: pointer;
+  i{
+    color: #fff;
+    font-size: 22px;
+  }
+  .ncntr{
+    color: red;
+    left: 2px;
+    top: 0;
+    position: absolute;
+  }
+}
+.notificationbar{
+  position: relative;
+  .csbar{
+    position: absolute;
+    top: 42px;
+    left: auto;
+    width: 100%;
+    z-index: 99;
+    li{
+      list-style: none;
+      margin-left: 20px;
+
+    }
+  }
+}
+
+
+
 
 .banner-wrap-side{
   position: relative;
@@ -1705,8 +1740,11 @@ ul.social {margin: 0 0 60px 0;}
     border-bottom: 1px solid #b7b7b7;
     border-width: 0 0 1px 0;
     border-radius: 0 !important;
-    padding: 7px 20px 10px 48px;
+    padding: 7px 20px 10px 38px;
     font-size: 16px; width: 100%;
+}
+.aaa input {
+    padding-left: 0;
 }
 .overflw{ overflow: hidden ;clear:both; position: relative; }
 
@@ -1714,7 +1752,7 @@ ul.social {margin: 0 0 60px 0;}
     width: 50%;
     float: left; position: relative;
 }
-
+.full_width br{display:none;}
 .form_row img {
     position: absolute;
     left: 4px;
@@ -1737,9 +1775,10 @@ img.email_ico {
     background: #029bbf;
     color: #fff;
     border: 1px solid #029bbf;
-    padding: 7px 60px 7px 60px;font-family: 'poppinsbold';
+    padding: 7px 60px 7px 59px;font-family: 'poppinsbold';
     border-radius: 31px;
     font-size: 16px; display: inline-block;
+    margin-left:-5px;
 }
 .custom_radio_btn {
     display: inline-block;
@@ -3298,8 +3337,6 @@ header .navbar-collapse {
 .wraper_people{ text-align: center; }
 .carousel-control{ display: none; } 
 
-
-
 /** send money page responsive css End here **/
 
 
@@ -3612,11 +3649,6 @@ header {padding: 9px 0 13px 0;}
     right: 59px;
  }
 
-
-
-
-
-
 }
 
 
@@ -3735,6 +3767,7 @@ li.ng-binding {
     margin: 0 0 10px 0;
     font-size: 13px;
 }
+
 
 .outlinebtn {
     color: #029bbf;

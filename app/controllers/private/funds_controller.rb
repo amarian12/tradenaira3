@@ -33,6 +33,7 @@ module Private
       @accounts = accounts
 
       gon.jbuilder
+      #private-PEAIGRFVLXTTIO      
     end
 
     def gen_address

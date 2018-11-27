@@ -15,6 +15,10 @@ html lang="en"
     = javascript_include_tag "application"
     = javascript_include_tag "locales/#{I18n.locale}"
 
+    - unless current_user.nil?
+      = javascript_include_tag "sr_noti"
+
+
     = yield(:scripts) if content_for?(:scripts)
     = render 'shared/html5'
     /* = render 'shared/meta'*/

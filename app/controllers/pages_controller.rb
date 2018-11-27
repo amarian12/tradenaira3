@@ -32,6 +32,23 @@ class PagesController < ApplicationController
     
   end
 
+  def srnoti
+    unless current_user.nil?
+      if params[:task] == "load"
+        msgs = current_user.sr_notofications.where(status: false)
+        resp = { success: true, msgs: msgs  }
+        
+      elsif params[:task] == "clear"
+         msgs = current_user.sr_notofications.map{|n| 
+          n.status = true 
+          n.save
+        } 
+         resp = { success: true, msgs: msgs  }
+      end
+      render json: resp
+    end
+  end
+
   def privacy
     @title    = "TradeNAIRA user privacy"
     @descrip  =  "at TradeNAIRA we take user privacy very seriously, all data is heavily encrypted and we will only contact you if you have requested to be on our mailing list or use our services."

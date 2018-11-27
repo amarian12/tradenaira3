@@ -22,6 +22,8 @@ class MoneyExchange < ActiveRecord::Base
 
 	enumerize :request_type, in: REQTYPES, scope: true
 
+	 
+
 
 	def humunize_request_type
 		case self.request_type
@@ -178,6 +180,9 @@ class MoneyExchange < ActiveRecord::Base
     	( amount > account.balance) and raise AccountError, "cannot lock funds (amount: #{amount})"
     	account.change_balance_and_locked -amount, amount
     end
+
+
+   
 
 
 
