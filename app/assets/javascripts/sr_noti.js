@@ -1,5 +1,5 @@
- var msgresp = "";
- $(document).ready(function(){ 
+ 
+ $(document).ready(function(){  
 
  	if(typeof(gon.current_user) != "undefined"){
  		if(typeof(gon.current_user.sn) != "undefined"){
@@ -31,16 +31,10 @@
  		data: { task: "load" },
  		success: function(resp){
  				 
- 			 if(resp.success && resp.msgs.length > 0){
+ 			 if(resp.success && resp.active_count > 0){
 
- 			 	var noti = '<i class="fa fa-bell" aria-hidden="true"></i>';
- 			 	noti += '<span class="ncntr">'+resp.msgs.length+'</span>';
- 			 	 $("li.srnotification").html(noti);
- 			 	 msgresp = resp.msgs;
-
- 			 	 // .click(function(){
- 			 	 // 	listNotifications(resp);
- 			 	 // })
+ 			 	 $("li.srnotification .ncntr").text(resp.active_count);
+ 			 	  
  			 }else{
  			 	
  			 }
@@ -53,20 +47,29 @@
  }
 
  function listNotifications(){
+ 	$(".notificationbar").toggle();
+
  	$.ajax({
  		url: "/pages/alerts",
  		type: "post",
  		data: { task: "load" },
  		success: function(resp){
 	 		if(resp.success && resp.msgs.length > 0){
-	 			var htmld = '<ul class="alert alert-danger alert-dismissible csbar">';
+	 			//console.log(resp.msgs)
+	 			var htmld = '<i class="uparrow"></i>';
+	 				htmld += '<ul class="alert alert-danger alert-dismissible csbar">';
 			 		for(var i=0; i <resp.msgs.length; i++){
-			 			htmld += '<li>'+resp.msgs[i].msg+'</li>';	
+			 			htmld += '<li class="notalt'+resp.msgs[i].status+'">';
+			 			htmld += resp.msgs[i].msg;	
+			 			htmld += '<span class="ddif">';
+			 			htmld += '<i class="fa fa-calendar"></i>';
+			 			htmld += resp.msgs[i].ddif;
+			 			htmld += ' ago</span>';
+			 			htmld += '</li>';
 			 		}
 			 		htmld += '</ul>';
 
-			 		$(".notificationbar").html(htmld)
-			 		.toggle();
+			 		$(".notificationbar").html(htmld);
 			 		removeAllNotifications();
 	 		}
  
@@ -75,7 +78,8 @@
  		error: function(){
 
  		}
- 	})
+ 	});
+
  }
 
  function removeAllNotifications(){
@@ -84,7 +88,7 @@
  		type: "post",
  		data: { task: "clear" },
  		success: function(resp){
- 			 $("li.srnotification").html("");
+ 			 $("li.srnotification .ncntr").html("");
  		},
  		dataType: "json",
  		error: function(){

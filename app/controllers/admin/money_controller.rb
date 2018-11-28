@@ -53,17 +53,6 @@ module Admin
 	  	when "approve"
 	  		me.status = 2
 	  		@me.approve_transuction
-	  		msgnoti = "Money request accepted by admin"
-	  		SrNotofication.create(
-	          member_id: me.sender.id,
-	          msg: msgnoti,
-	          status: false)
-
-	  		SrNotofication.create(
-	          member_id: me.receiver.id,
-	          msg: msgnoti,
-	          status: false)
-
 	  		if @me.update_success
 	  			if me.save
 		  			flash[:notice] = "Amount transfer successfully approved"
@@ -74,16 +63,6 @@ module Admin
   		when "declined"
   			@me.status = "declined"
   			@me.decline_transuction
-  			msgnoti = "Money request declined by admin"
-	  		SrNotofication.create(
-	          member_id: @me.sender.id,
-	          msg: msgnoti,
-	          status: false)
-	  		SrNotofication.create(
-	          member_id: @me.receiver.id,
-	          msg: msgnoti,
-	          status: false)
-
   			if @me.save
 	  			flash[:notice] = "Request declined successfully!"
 	  			UserMailer.admin_decline(@me,@me.sender).deliver

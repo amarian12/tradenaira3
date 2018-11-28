@@ -25,6 +25,12 @@ gem 'hashie'
 gem 'rails_12factor'
 
 #gem 'activejob'
+gem 'nio4r', '~> 1.2', '>= 1.2.1'
+gem 'websocket-driver'
+gem 'time_difference'
+
+
+ 
 
 #kickend
 

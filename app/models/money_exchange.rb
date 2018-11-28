@@ -99,6 +99,24 @@ class MoneyExchange < ActiveRecord::Base
 
 						r_account.save	
 						self.update_success = true
+
+						sender_msg = "Your request for send money to #{self.sent_on_email} for amount: "
+						sender_msg += "#{self.amount}#{self.account.currency} on Date: #{self.created_at} "
+						sender_msg += " was approved by admin."
+				  		SrNotofication.create(
+				          member_id: self.sender.id,
+				          msg: sender_msg,
+				          status: false)
+
+				  		sender_msg = "You have received money from #{self.sender.email}, amount: "
+						sender_msg += "#{self.amount}#{self.account.currency} on Date: #{self.created_at} "
+						sender_msg += " amount is credited into your wallet."
+
+				  		SrNotofication.create(
+				          member_id: self.receiver.id,
+				          msg: sender_msg,
+				          status: false)
+
 						#send success mail to receiver
 						UserMailer.receive_success(self,receiver).deliver
 						#send success mail to sender
@@ -130,6 +148,24 @@ class MoneyExchange < ActiveRecord::Base
 
 						r_account.save	
 						self.update_success = true
+
+						sender_msg = "Your request for money to #{self.sent_on_email} for amount: "
+						sender_msg += "#{self.amount}#{self.account.currency} on Date: #{self.created_at} "
+						sender_msg += " was approved by admin."
+				  		SrNotofication.create(
+				          member_id: self.sender.id,
+				          msg: sender_msg,
+				          status: false)
+
+				  		sender_msg = "You have received money from #{self.sender.email}, amount: "
+						sender_msg += "#{self.amount}#{self.account.currency} on Date: #{self.created_at} "
+						sender_msg += " amount is credited into your wallet."
+
+				  		SrNotofication.create(
+				          member_id: self.receiver.id,
+				          msg: sender_msg,
+				          status: false)
+
 						#send success mail to receiver
 						UserMailer.receive_success(self,receiver).deliver
 						#send success mail to sender
@@ -154,11 +190,43 @@ class MoneyExchange < ActiveRecord::Base
 			unless s_account.nil?
 				unlock_funds s_account, self.amount
 			end
+			sender_msg = "Your request for send money to #{self.sent_on_email} for amount: "
+			sender_msg += "#{self.amount}#{self.account.currency} on Date: #{self.created_at} "
+			sender_msg += " was declined by admin."
+			SrNotofication.create(
+	          member_id: self.sender.id,
+	          msg: sender_msg,
+	          status: false)
+
 		elsif self.request_type == "request_meney"
 			s_account = receiver_account
 			r_account = sender_account	
 			unlock_funds s_account, self.amount
+
+			sender_msg = "Your request for money transfer to #{self.sender.email} for amount: "
+			sender_msg += "#{self.amount}#{self.account.currency} on Date: #{self.created_at} "
+			sender_msg += " was declined by admin."
+
+			SrNotofication.create(
+	          member_id: self.receiver.id,
+	          msg: sender_msg,
+	          status: false)
+
+			sender_msg = "Your money request to #{self.receiver.email} for amount: "
+			sender_msg += "#{self.amount}#{self.account.currency} on Date: #{self.created_at} "
+			sender_msg += " was declined by admin."
+
+			SrNotofication.create(
+	          member_id: self.sender.id,
+	          msg: sender_msg,
+	          status: false)
+
 		end
+
+
+  		
+
+  		
 
 		
 	end

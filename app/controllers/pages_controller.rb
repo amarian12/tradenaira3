@@ -35,8 +35,19 @@ class PagesController < ApplicationController
   def srnoti
     unless current_user.nil?
       if params[:task] == "load"
-        msgs = current_user.sr_notofications.where(status: false)
-        resp = { success: true, msgs: msgs  }
+        msgs = current_user.sr_notofications
+        active_count = msgs.where(status: false).count
+        #.order(created_at: :desc)
+        #TimeDifference.between(start_time, end_time).humanize
+        msgsresp = []
+
+        msgs.order(created_at: :desc).map{|n| 
+          ddif = TimeDifference.between(DateTime.now, n.created_at).humanize
+          msgsresp << { id: n.id, msg: n.msg, 
+            created_at: n.created_at, status: n.status, ddif: ddif   }
+        }
+
+        resp = { success: true, msgs: msgsresp, active_count: active_count    }
         
       elsif params[:task] == "clear"
          msgs = current_user.sr_notofications.map{|n| 
@@ -47,6 +58,7 @@ class PagesController < ApplicationController
       end
       render json: resp
     end
+
   end
 
   def privacy

@@ -3,6 +3,10 @@ header.navbar.navbar-default.navbar-static-top.sanc role = "navigation"
 	  .container
 	    ul.nav.navbar-nav.innerheader
           li.srnotification
+            .nav-ball
+              i.fa.fa-bell
+              span.ncntr
+            .notificationbar style="display:none" 
           li
 	      	a href='#{root_path}pages/contactus' 
 	      		| Contact us
@@ -12,8 +16,7 @@ header.navbar.navbar-default.navbar-static-top.sanc role = "navigation"
 	      = top_nav_link(t('header.login'), signin_path, '') unless current_user
 	      li
 	      	a href="#{signup_path}" class="openaccount" role="button" = t("header.openaccount") unless current_user
-	      <!--= render partial: 'shared/header_lang_sel'-->
-  .notificationbar style="display:none"      
+	      <!--= render partial: 'shared/header_lang_sel'-->     
   .col-xs-24
 	  .container  		
 		  .navbar-header

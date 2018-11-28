@@ -801,8 +801,8 @@ function loadCapchform($this,resp){
     method:'get',
     dataType: "json",
     success:function(respCap){
-      alert(1);
-      alert(JSON.stringify(respCap));
+       
+      //alert(JSON.stringify(respCap));
     },
     error: function(respErr){
       //alert(2);

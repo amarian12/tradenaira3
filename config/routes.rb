@@ -90,6 +90,9 @@ Peatio::Application.routes.draw do
   get "errors/error_500"
   #get '/404', to: 'errors#not_found'
   #get '/500', to: 'errors#server_error'
+
+  post "pages/alerts", to: "pages#srnoti"
+
   get "pages/amlpolicy" => 'pages#amlpolicy'
   get "pages/about" => 'pages#about'
   get "pages/cookie" => 'pages#cookie'

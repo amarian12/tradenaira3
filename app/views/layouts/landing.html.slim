@@ -12,9 +12,11 @@ html lang="en"
     = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"
     = javascript_include_tag "locales/#{I18n.locale}"
     = render 'shared/html5'
-    /*= render 'shared/meta'*/
+
     - unless current_user.nil?
       = javascript_include_tag "sr_noti"
+
+    /*= render 'shared/meta'*/
     = csrf_meta_tags
     meta content="3pgC5eUXws57gm6P18OIZb-ov_wrIy1krauueWJwSq4" name="google-site-verification" /
 
@@ -57,55 +59,65 @@ html lang="en"
     #wrap
       = render 'shared/alert'
       #push
-    header.site-main-header.sanc.homepage
-      .main-header                    
-        .container
-          .header_top_right.mobile-view
-              ul.home_head.tophead
-                = render partial: 'shared/header_account_balance' if current_user && controller_name == 'markets'
-                = render partial: 'shared/header_profile_setting' if current_user        
-                = top_nav_link(t("header.signup"), signup_path, '') unless current_user  
-                = top_nav_link(t('header.signin'), signin_path, 'sign-in') unless current_user 
-                li.language-div: a href='#' EN
+    - page = params[:action]
+    - excepthdr = ["support"]
+    - unless excepthdr.include?(page)
+      header.site-main-header.sanc.homepage
+        .main-header                    
+          .container
+            .header_top_right.mobile-view
+                ul.home_head.tophead
+                  = render partial: 'shared/header_account_balance' if current_user && controller_name == 'markets'
+                  = render partial: 'shared/header_profile_setting' if current_user        
+                  = top_nav_link(t("header.signup"), signup_path, '') unless current_user  
+                  = top_nav_link(t('header.signin'), signin_path, 'sign-in') unless current_user 
+                  li.language-div: a href='#' EN
 
-          .main-header-row
-            .logo-div
-              a href='#{root_path}' class="logo"
-                img class="home_logo" src='#{image_path 'transparent_logo2.png'}' 
+            .main-header-row
+              .logo-div
+                a href='#{root_path}' class="logo"
+                  img class="home_logo" src='#{image_path 'transparent_logo2.png'}' 
 
-            .main-navbar-header
-              button.navbar-toggle.collapsed data-toggle="collapse" type="button" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
-                  span.icon-bar
-                  span.icon-bar
-                  span.icon-bar
-              .collapse.navbar-collapse#bs-example-navbar-collapse-1  
-                .center-menu
-                  ul
-                    /li 
-                      a
-                       | BUSINESS
-                     /li
-                      a
-                       | PERSONAL
-                    li 
-                      a  href='/news' 
-                       |  BUSINESS NEWS
-                    li 
-                      a  href ="/pages/projectfunding"
-                       | PROJECT FUNDING
-                    li 
-                      a href= "/pages/tradeservices"
-                       | TRADE SERVICES
-                       
+              .main-navbar-header
+                button.navbar-toggle.collapsed data-toggle="collapse" type="button" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                .collapse.navbar-collapse#bs-example-navbar-collapse-1  
+                  .center-menu
+                    ul
+                      /li 
+                        a
+                         | BUSINESS
+                       /li
+                        a
+                         | PERSONAL
+                      li 
+                        a  href='/news' 
+                         |  BUSINESS NEWS
+                      li 
+                        a  href ="/pages/projectfunding"
+                         | PROJECT FUNDING
+                      li 
+                        a href= "/pages/tradeservices"
+                         | TRADE SERVICES
+                         
+              - unless current_user.nil?
+                ul.nav.navbar-nav
+                  li.srnotification
+                    .nav-ball
+                      i.fa.fa-bell
+                      span.ncntr
+                    .notificationbar style="display:none" 
 
-            .header_top_right
-              ul.home_head.tophead
-                = render partial: 'shared/header_account_balance' if current_user && controller_name == 'markets'
-                = render partial: 'shared/header_profile_setting' if current_user        
-                = top_nav_link(t("header.signup"), signup_path, '') unless current_user  
-                = top_nav_link(t('header.signin'), signin_path, 'sign-in') unless current_user 
-                li.language-div: a href='#' EN
-            .overflow-css    
+              .header_top_right
+                ul.home_head.tophead
+                  = render partial: 'shared/header_account_balance' if current_user && controller_name == 'markets'
+                  = render partial: 'shared/header_profile_setting' if current_user        
+                  = top_nav_link(t("header.signup"), signup_path, '') unless current_user  
+                  = top_nav_link(t('header.signin'), signin_path, 'sign-in') unless current_user 
+                  li.language-div: a href='#' EN
+              .overflow-css    
 
     = yield          
 

@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   after_action :allow_iframe
   after_action :set_csrf_cookie_for_ng
   rescue_from CoinRPC::ConnectionRefusedError, with: :coin_rpc_connection_refused
+  skip_before_filter :verify_authenticity_token, 
+  :if => Proc.new { |c| c.request.format == 'application/json' }
 
 
 
