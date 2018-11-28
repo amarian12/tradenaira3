@@ -41,7 +41,6 @@ class EventHandler
         throw 'Unknown type:' + type
 
   processWithoutAjax: =>
-    alert 1
     args = arguments
     PeatioModel.Ajax.disable =>
       @process(args...)
