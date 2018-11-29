@@ -17,9 +17,15 @@
       <%= javascript_include_tag 'bundle' %>
       <%= javascript_include_tag 'tradeniara' %>
 
+
       <% unless current_user.nil? %> 
-       
       <%= javascript_include_tag 'sr_noti' %>
+      <% else %>
+        <style type="text/css">
+          .srnotification{
+            display:none!important;
+          }
+        </style>
       <% end %>
       <!--Start of Zendesk Chat Script--> <script type="text/javascript"> window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s= d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set. _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8"); $.src="https://v2.zopim.com/?64PkgLEiFf0LIMM36Kx644dkOj6ByT1e";z.t=+new Date;$. type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 
@@ -63,7 +69,10 @@
                 </div>
               </div>
               
-              <ul class ="nav navbar-nav">
+             
+
+              <div class="header_top_right">
+                   <ul class ="nav navbar-nav">
                   <li class ="srnotification">
                     <div class="nav-ball">
                       <i class =" fa fa-bell"></i>
@@ -72,8 +81,6 @@
                     </div>
                   </li>
               </ul>
-
-              <div class="header_top_right">
                     <ul class="home_head tophead">
                     <% if current_user && controller_name == 'markets'%>
                      <%= render 'shared/header_account_balance' %>

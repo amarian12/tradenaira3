@@ -80,7 +80,6 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
             $(".startdepreq").show()
           if $("#two_factor_otp")[0]
             $("#two_factor_otp").val("")
-
     else
       event.preventDefault();
      

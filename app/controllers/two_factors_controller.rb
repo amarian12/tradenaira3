@@ -52,6 +52,7 @@ class TwoFactorsController < ApplicationController
               SrNotofication.create(
               member_id: me.receiver.id,
               msg: msgnoti,
+              link_page: "accept_decline",
               status: false)
              UserMailer.money_request(me,current_user).deliver
             end
@@ -67,6 +68,7 @@ class TwoFactorsController < ApplicationController
             SrNotofication.create(
               member_id: me.receiver.id,
               msg: msgnoti,
+              link_page: "accept_decline",
               status: false)
             UserMailer.admin_approval(me).deliver
             if me.receiver.nil?

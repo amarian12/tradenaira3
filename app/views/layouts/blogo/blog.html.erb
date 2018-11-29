@@ -72,6 +72,18 @@
         
 
         <div class="header_top_right">
+
+        <% unless current_user.nil? %>  
+            <ul class ="nav navbar-nav">
+                <li class ="srnotification">
+                    <div class="nav-ball">
+                      <i class =" fa fa-bell"></i>
+                      <span class ="nctr"></span>
+                      <div class ="notificationbar" style ="display:none;"></div>
+                    </div>
+                  </li>
+            </ul>
+      <% end %>
               <ul class="home_head tophead">
               <% if current_user && controller_name == 'markets'%>
                <%= render 'shared/header_account_balance' %>
@@ -85,16 +97,9 @@
                 <% end %>   
                 <li class="language-div"> <a href="#"> EN</a></li>
               </ul>
-         </div>
-      <ul class ="nav navbar-nav innerheader">
-          <li class ="srnotification">
-              <div class="nav-ball">
-                <i class =" fa fa-bell"></i>
-                <span class ="nctr"></span>
-                <div class ="notificationbar" style ="display:none;"></div>
-              </div>
-            </li>
-      </ul>
+         
+        
+      </div>
       </div>
 
     </div>

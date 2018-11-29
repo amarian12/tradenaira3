@@ -1,6 +1,6 @@
 <%= metamagic title: "Send Money" %>
-<% if @requests.present? %>
-	<table class="table">
+<% #if @requests.present? %>
+	<!-- <table class="table">
 		<thead>
 			<tr>
 				<td>#</td>
@@ -10,30 +10,31 @@
 				<td>Requested amount</td>
 				<td>Actions</td>
 			</tr>
-		</thead>
-	<% @requests.each do |me| %>
-		<tbody>
+		</thead> -->
+	<% #@requests.each do |me| %>
+		<!-- <tbody>
 			<tr>
-				<td><%= me.id %></td>
-				<td><%= me.created_at %></td>
-				<td><%= me.sender.email %></td>
-				<td><%= "#{me.receiver_account.balance}#{me.receiver_account.currency} " %></td>
-				<td><%= me.amount %><%= me.account.currency %></td>
+ -->				<td><%#= me.id %></td>
+				<td><%#= me.created_at %></td>
+				<td><%#= me.sender.email %></td>
+				<td><%#= "#{me.receiver_account.balance}#{me.receiver_account.currency} " %></td>
+				<td><%#= me.amount %><%#= me.account.currency %></td>
 				<td>
-					<% if me.receiver_account.balance < me.amount %>
-					Deposit fund to accept request
-					<% else %>
-					<%= link_to "Accept", two_factor_money_path(me.id, "accept"), 
+					<%# if me.receiver_account.balance < me.amount %>
+				<!-- 	Deposit fund to accept request -->
+					<% #else %>
+					<%#= link_to "Accept", two_factor_money_path(me.id, "accept"), 
 					class: "btn btn-default" %>
-					<% end %>
-					<%= link_to "Decline", two_factor_money_path(me.id,"decline"), 
+					<% #end %>
+					<%#= link_to "Decline", two_factor_money_path(me.id,"decline"), 
 					class: "btn btn-danger", data: {confirm: "Are you sure, decline the request!"} %>
-				</td>
+			<!-- 	</td>
 			</tr>
-		</tbody>
-	<% end %>
-	</table>
-<% end %>
+		</tbody> -->
+	<% #end %>
+	<!-- </table> -->
+<% #end %>
+
 <div class="container">
     <div class="track_rate_wraper overflow-css">  
         <div class="display_img w50">
@@ -46,6 +47,9 @@
             </div>
             <div class="rate_input">
                 <%= render "shared/money/send_money_form" %>
+                <div class="accet_decline">
+                <a class="yellow_btn" href = "/money/accept_decline_money" target = "_blank"> Go To Accept Decline Request</a>
+                </div>
             </div>
 		</div>
 	</div>

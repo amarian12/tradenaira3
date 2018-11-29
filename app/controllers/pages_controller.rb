@@ -43,7 +43,7 @@ class PagesController < ApplicationController
 
         msgs.order(created_at: :desc).map{|n| 
           ddif = TimeDifference.between(DateTime.now, n.created_at).humanize
-          msgsresp << { id: n.id, msg: n.msg, 
+          msgsresp << { id: n.id, msg: n.msg, link_page: n.link_page,
             created_at: n.created_at, status: n.status, ddif: ddif   }
         }
 

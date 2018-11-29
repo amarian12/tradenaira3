@@ -14,6 +14,12 @@ html lang="en"
     = stylesheet_link_tag stylesheet, media: "all"
     = javascript_include_tag "application"
     = javascript_include_tag "locales/#{I18n.locale}"
+    - if current_user.nil?
+      style type="text/css"
+        | .srnotification{
+        |   display:none!important;
+        | }
+
 
     - unless current_user.nil?
       = javascript_include_tag "sr_noti"
@@ -23,9 +29,14 @@ html lang="en"
     = render 'shared/html5'
     /* = render 'shared/meta'*/
     = csrf_meta_tags
+
+    meta content=(@descrip) name="description" /
+    title #{@title}
     
     meta content=("TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars, Ghana Cedis, Euros & Bitcoin at best Naira Exchange Rates. Send money to Nigeria with the best NGN exchange rates for USD, EUR, BTC, GHC & GBP.") name="description" /
     = metamagic keywords: [:keywords, "Tradenaira", "Opensource", "Exchange", "Cryptocurrency"]
+    
+
 
 
      

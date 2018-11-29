@@ -26,6 +26,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
         SrNotofication.create(
           member_id: @me.sender.id,
           msg: msgnoti,
+          link_page: "accept_decline",
           status: false)
 
           flash[:notice] = "Request declined successfully!"
@@ -55,6 +56,7 @@ before_action :auth_member!, only: [:two_factor, :processm]
           SrNotofication.create(
           member_id: @me.sender.id,
           msg: msgnoti,
+          link_page: "accept_decline",
           status: false)
           flash[:notice] = "Amount sent is in process and waiting for admin approval!"
         else
@@ -104,9 +106,10 @@ before_action :auth_member!, only: [:two_factor, :processm]
       end
 
       account = member.accounts.find_by_id(account_id)
-      if amount > account.balance
-        errors << "you can not send more than available balance."
-      end
+
+      # if amount > account.balance
+      #   errors << "you can not send more than available balance."
+      # end
 
       if amount <= 0
         errors << "You must fill valid amount."
@@ -176,6 +179,9 @@ before_action :auth_member!, only: [:two_factor, :processm]
       end
 
       account = member.accounts.find_by_id(account_id)
+      
+      puts params.inspect
+
       if amount > account.balance
         errors << "you can not send more than available balance."
       end
@@ -190,7 +196,8 @@ before_action :auth_member!, only: [:two_factor, :processm]
         sent_to_id = receiver.id
       end
 
-      success = false;
+      success = false
+      me_id = 0
 
       MoneyExchange.where(
         sent_by_id: member.id,
@@ -200,7 +207,11 @@ before_action :auth_member!, only: [:two_factor, :processm]
         note: note,
         status: 0).destroy_all
 
-      me = MoneyExchange.new(
+
+      if errors.present?
+        success = false;
+      else
+        me = MoneyExchange.new(
         sent_by_id: member.id,
         sent_to_id: sent_to_id, 
         sent_on_email: email,
@@ -209,15 +220,21 @@ before_action :auth_member!, only: [:two_factor, :processm]
         note: note,
         amount: amount,
         status: 0)
-      if me.save
-        success = true
+        if me.save
+          success = true
+        end
+        me_id = me.id
       end
+
+      
+
+      
 
       two_fetor = { is_active: current_user.two_factors.activated.first }
 
   		resp = { msg: "", success: success, 
         acode: "send", errors: errors, 
-        mei: me.id,
+        mei: me_id,
         two_fetor: two_fetor }
 
   		render json: resp
@@ -225,6 +242,38 @@ before_action :auth_member!, only: [:two_factor, :processm]
   	end
   end
 
+  def accept_decline_money
+    if current_user.nil?
+        flash[:notice] = "You must be loggedin, before continue."
+        redirect_to root_path
+        return false
+    end
+
+    @title    = "Accept Decline Money"
+    @descrip  = "Accept Decline Money" 
+    @member = current_user
+    @requests = MoneyExchange.where(
+      sent_on_email: @member.email, 
+      request_type: MoneyExchange::REQTYPES[:request_meney], 
+      status: MoneyExchange::STATUS_CODES[:active]).order(created_at: :desc) 
+
+     @send_money = MoneyExchange.where(
+      sent_by_id: @member.id, 
+      request_type: MoneyExchange::REQTYPES[:send_money])
+     .where("status > 0")
+      .order(created_at: :desc) 
+
+    @requests_sent_you =  MoneyExchange.where(
+      sent_by_id: @member.id, 
+      request_type: MoneyExchange::REQTYPES[:request_meney])
+     .where("status > 0")
+      .order(created_at: :desc)  
+    
+
+  end
+
+ 
+  
   private
 
   def validate_request

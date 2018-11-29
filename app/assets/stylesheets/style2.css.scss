@@ -155,20 +155,28 @@ img {
 
 .srnotification{
    
-  margin: 13px 2px;
+  margin: 8px 2px 0;
   position: relative;
   cursor: pointer;
   i{
     color: #fff;
-    font-size: 22px;
+    font-size: 25px;
   }
   .ncntr{
     color: red;
-    left: 2px;
-    top: 0;
+    left: 4px;
+    top: 4px;
     position: absolute;
   }
 }
+
+.srnotification.active{
+  i{
+     color: #FFF200;
+  }
+ 
+}
+
 #wrap .innerheader{
    
 }
@@ -1096,15 +1104,17 @@ ul { padding:0; margin:auto;}
 .main-header-row{ /*overflow:hidden; */clear:both;}
 .header_top_right {
   float: right; 
-  width: 26%; 
+  width: 30%; 
   text-align:right; 
-  padding:1px 0 0;}	
+  padding:0px 0 0;}	
 
 .home_head {
   clear: both;
   margin: 0;
 /*  overflow: hidden;*/
   padding: 0;
+  display:inline-block;
+  vertical-align:middle;
 }
 
 .home_head li {
@@ -1132,8 +1142,8 @@ ul { padding:0; margin:auto;}
   display: inline-block;
   font-family: "poppinsbold";
   font-size: 14px !important;
-  margin: 0 0 0 15px; text-decoration:none;
-  padding: 8px 30px 8px!important;
+  margin: 0 0 0 11px; text-decoration:none;
+  padding: 8px 27px 8px!important;
   transition: all ease 0.3s;
 }
 header { 
@@ -3096,6 +3106,26 @@ p.already {
 /** 22 November 2018 2018 css End here **/
 
 
+/** 29 November 2018 2018 css End here **/
+
+
+.back_to_wallet {
+    padding: 16px 0px;
+}
+
+
+ul.nav.navbar-nav {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+/** 29 November 2018 2018 css End here **/
+
+
+
+
 
 
 
@@ -3247,7 +3277,8 @@ li.ng-binding {
     max-width: 180px; width: 100% !important;
 }
 
-.header_top_right{ display: none; }
+.home_head{ display: none; }
+
 .main-navbar-header {
     float: none;
     width: 100%;
@@ -3258,7 +3289,7 @@ li.ng-binding {
 header .navbar-toggle {
     position: absolute;
     right: 6px;
-    top: 27px !important;
+    top: 31px !important;
     padding: 6px;
 }
 
@@ -3461,7 +3492,8 @@ header .navbar-collapse {
  }
 
 
-.header_top_right.mobile-view {display: block; margin:-11px 0 0px 0; width: 100%;}
+.header_top_right.mobile-view {display: block; margin:-11px 0 7px 0; width: 100%;}
+.header_top_right.mobile-view .home_head{ display:block;}
 .tophead .dropdown.account-settings a.dropdown-toggle {
     padding: 0 !important;
     margin-right: 8px;
@@ -3692,6 +3724,38 @@ header {padding: 9px 0 13px 0;}
     right: 59px;
  }
 
+
+/* .nav-ball {
+    position: absolute;
+    right: 54px;
+    top: -31px;
+}
+ */
+
+.notificationbar .csbar {
+    top: 15px;
+    width: 360px;
+    right: -50px;
+}
+.notificationbar .uparrow {
+    right: 0px;
+    top: 0px;
+}
+.navbar-nav {
+    margin: 0;
+}
+
+
+ul.nav.navbar-nav {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    position: absolute;
+    right: 60px;
+    top: 31px;
+}
+
+
 }
 
 
@@ -3737,7 +3801,7 @@ header {padding: 9px 0 13px 0;}
     margin: 0 0 0 3px;
     padding: 6px 12px 5px !important;
  }
-.header_top_right{ padding: 1px 0 0 0; }
+.header_top_right{ padding: 1px 0 0 0; width:30%; }
 .main-navbar-header{padding: 8px 0 0 0;}
 .center-menu ul li a {
     font-size: 12px;
@@ -4093,6 +4157,14 @@ body {
     max-width: 80%;
     margin: auto;
  }
+.srnotification {
+    margin: 7px 0px;
+    
+}
+
+header {
+    padding: 10px 0 4px 0;
+ }
 
 
 }
@@ -4294,7 +4366,9 @@ body {
     margin: 0 20px 0 0;
 }
 
-
+.header_top_right {
+    width: 30%;
+ }
 
 }
 

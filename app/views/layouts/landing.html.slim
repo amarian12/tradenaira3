@@ -102,15 +102,17 @@ html lang="en"
                         a href= "/pages/tradeservices"
                          | TRADE SERVICES
                          
-              - unless current_user.nil?
-                ul.nav.navbar-nav
-                  li.srnotification
-                    .nav-ball
-                      i.fa.fa-bell
-                      span.ncntr
-                    .notificationbar style="display:none" 
+              
 
               .header_top_right
+                - unless current_user.nil?
+                  ul.nav.navbar-nav
+                    li.srnotification
+                      .nav-ball
+                        i.fa.fa-bell
+                        span.ncntr
+                      .notificationbar style="display:none" 
+                    
                 ul.home_head.tophead
                   = render partial: 'shared/header_account_balance' if current_user && controller_name == 'markets'
                   = render partial: 'shared/header_profile_setting' if current_user        

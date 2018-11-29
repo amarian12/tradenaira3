@@ -106,6 +106,7 @@ class MoneyExchange < ActiveRecord::Base
 				  		SrNotofication.create(
 				          member_id: self.sender.id,
 				          msg: sender_msg,
+				          link_page: "wallet",
 				          status: false)
 
 				  		sender_msg = "You have received money from #{self.sender.email}, amount: "
@@ -115,6 +116,7 @@ class MoneyExchange < ActiveRecord::Base
 				  		SrNotofication.create(
 				          member_id: self.receiver.id,
 				          msg: sender_msg,
+				          link_page: "wallet",
 				          status: false)
 
 						#send success mail to receiver
@@ -154,6 +156,7 @@ class MoneyExchange < ActiveRecord::Base
 						sender_msg += " was approved by admin."
 				  		SrNotofication.create(
 				          member_id: self.sender.id,
+				          link_page: "wallet",
 				          msg: sender_msg,
 				          status: false)
 
@@ -163,6 +166,7 @@ class MoneyExchange < ActiveRecord::Base
 
 				  		SrNotofication.create(
 				          member_id: self.receiver.id,
+				          link_page: "wallet",
 				          msg: sender_msg,
 				          status: false)
 
@@ -196,6 +200,7 @@ class MoneyExchange < ActiveRecord::Base
 			SrNotofication.create(
 	          member_id: self.sender.id,
 	          msg: sender_msg,
+	          link_page: "accept_decline",
 	          status: false)
 
 		elsif self.request_type == "request_meney"
@@ -219,6 +224,7 @@ class MoneyExchange < ActiveRecord::Base
 			SrNotofication.create(
 	          member_id: self.sender.id,
 	          msg: sender_msg,
+	          link_page: "accept_decline",
 	          status: false)
 
 		end

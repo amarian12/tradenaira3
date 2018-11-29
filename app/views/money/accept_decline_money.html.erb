@@ -1,0 +1,134 @@
+<!-- money request received -->
+<% if @requests.present? %>
+<div class="panel">
+	<div class="panel-title">
+		<h4 class="title">All Incomming Money Request</h4>
+	</div>
+	<div class="panel-info">
+	<table class="table">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Date</td>
+				<td>Request from</td>
+				<td>Your balance</td>
+				<td>Requested amount</td>
+				<td>Actions</td>
+			</tr>
+		</thead>
+	<% @requests.each do |me| %>
+		<tbody>
+			<tr>
+				<td><%= me.id %></td>
+				<td><%= me.created_at %></td>
+				<td><%= me.sender.email %></td>
+				<td><%= "#{me.receiver_account.balance}#{me.receiver_account.currency} " %></td>
+				<td><%= me.amount %><%= me.account.currency %></td>
+				<td>
+					<% if me.receiver_account.balance < me.amount %>
+					Deposit fund to accept request
+					<% else %>
+					<%= link_to "Accept", two_factor_money_path(me.id, "accept"), 
+					class: "btn btn-default" %>
+					<% end %>
+					<%= link_to "Decline", two_factor_money_path(me.id,"decline"), 
+					class: "btn btn-danger", data: {confirm: "Are you sure, decline the request!"} %>
+				</td>
+			</tr>
+		</tbody>
+	<% end %>
+	</table>
+	</div>
+</div>
+<% end %>
+<!-- money requests sent -->
+<% if @requests_sent_you.present? %>
+<div class="panel">
+	<div class="panel-title">
+		<h4 class="title">Money Requests sent by you</h4>
+	</div>
+	<div class="panel-info">
+		<table class="table">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Date</td>
+				<td>Send Money to</td>
+				<td>Amount</td>
+				<td>Status</td>
+				 
+			</tr>
+		</thead>
+		<% @send_money.each do |me| %>
+		<tbody>
+			<tr>
+				<td>#<%= me.id %></td>
+				<td><%= me.created_at %></td>
+				<td><%= me.sent_on_email %></td>
+				<td><%= me.amount %><%= me.account.currency %></td>
+				<td>
+					<% case me.status %>
+					<% when "active" %>
+						<span>Wating to accepted by receipent</span>
+					<% when "accepted_by_receipent" %>
+						<span>Waiting for admin approval</span>
+					<% when "approved" %>
+						<span>Receive Success</span>	
+					<% when "declined_by_receipent" %>
+						<span>Declined by receipent</span>	
+						<% when "declined" %>
+						<span>Declined by admin</span>	
+					<% else  %>
+					<span>In complete request</span>
+					<% end %>
+				</td>
+			</tr>
+		</tbody>
+		<% end %>
+		</table>	
+	</div>
+</div>
+<% end %>
+
+<!-- money sent -->
+<% if @send_money.present? %>
+<div class="panel">
+	<div class="panel-title">
+		<h4 class="title">Sent Money Logs</h4>
+	</div>
+	<div class="panel-info">
+		<table class="table">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Date</td>
+				<td>Send Money to</td>
+				<td>Amount</td>
+				<td>Status</td>
+				 
+			</tr>
+		</thead>
+		<% @send_money.each do |me| %>
+		<tbody>
+			<tr>
+				<td>#<%= me.id %></td>
+				<td><%= me.created_at %></td>
+				<td><%= me.sent_on_email %></td>
+				<td><%= me.amount %><%= me.account.currency %></td>
+				<td>
+					<% case me.status %>
+					<% when "active" %>
+						<span>Wating for admin approval</span>
+					<% when "approved" %>
+						<span>Sent Success</span>	
+					<% when "declined" %>
+						<span>Declined by admin</span>	
+					<% end %>
+				</td>
+			</tr>
+		</tbody>
+		<% end %>
+		</table>	
+	</div>
+</div>
+<% end %>
