@@ -85,5 +85,17 @@ module Admin
 	  	redirect_to :back
 	  end
 
+
+
+	  def finances
+	  	 @member = 
+	  	 @account_versions = AccountVersion.where("fee > 0")
+	  	 unless params[:currency].nil?
+	  	  @account_versions = @account_versions.where(currency: params[:currency] )	
+	  	 end
+	  	 @account_versions = @account_versions.order(:id)
+	  	 .reverse_order.page params[:page]
+	  end
+
 	end
 end

@@ -82,6 +82,19 @@ img {
   margin: -62px -2px -2px -27px;
 }
 
+.ddicone:after{
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .255em;
+  vertical-align: .255em;
+  content: "";
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+}
+
 .money-form-wrapper {
   position: relative;
   .dropdown-item{
@@ -1657,7 +1670,11 @@ ul.social {margin: 0 0 60px 0;}
 
 /** 20-Sep-2018 Css Start here **/
 
+.back_wallet {
+  margin-bottom: 10px;
+  padding-left: 0px !important;
 
+}
 
 .about_banner_content .main-text h1{ margin-bottom: 0px; }
 
@@ -3114,11 +3131,13 @@ p.already {
 }
 
 
-ul.nav.navbar-nav {
+.notification_bell {
     display: inline-block;
     vertical-align: middle;
 }
 
+
+.notification_bell1 .srnotification {margin: 13px 2px 0;}
 
 
 /** 29 November 2018 2018 css End here **/
@@ -3741,12 +3760,12 @@ header {padding: 9px 0 13px 0;}
     right: 0px;
     top: 0px;
 }
-.navbar-nav {
-    margin: 0;
+.notification_bell {
+    margin: 0 !important;
 }
 
 
-ul.nav.navbar-nav {
+.notification_bell{
     display: inline-block;
     vertical-align: middle;
     margin: 0;
@@ -3755,6 +3774,16 @@ ul.nav.navbar-nav {
     top: 31px;
 }
 
+
+.money_page .panel-info {overflow-x: scroll;}
+
+.money_page table.table {width: 900px;}
+
+.money_page .panel{ overflow-x:scroll}
+
+.history-pages .panel-body{ overflow-x:scroll;}
+
+.history-pages table.table{ width:900px;}
 
 }
 
@@ -4165,6 +4194,16 @@ body {
 header {
     padding: 10px 0 4px 0;
  }
+
+.money_page .panel-info {overflow-x: scroll;}
+
+.money_page table.table {width: 1100px;}
+
+.money_page .panel{ overflow-x:scroll}
+
+.history-pages .panel-body{ overflow-x:scroll;}
+
+.history-pages table.table{ width:1100px;}
 
 
 }

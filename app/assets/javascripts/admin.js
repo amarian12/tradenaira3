@@ -54,3 +54,13 @@ function senMsgToSubscr($this){
   })
   return false;
 };
+
+$(document).ready(function(){
+  var d = new Date();
+  $('input.datepicker').datetimepicker(
+    { 
+     
+       
+      //startDate:'+'+d.getMonth()+'/'+d.getDate()+'/'+d.getYear() 
+    }) 
+})

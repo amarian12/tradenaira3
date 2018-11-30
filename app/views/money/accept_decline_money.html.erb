@@ -1,43 +1,47 @@
 <!-- money request received -->
 <% if @requests.present? %>
+<div class="money_page">
 <div class="panel">
+	<div class="col-md-24 back_wallet">
+	    <a class="btn btn-default" href = "/funds">Click here to go back to wallet</a>
+	 </div>
 	<div class="panel-title">
-		<h4 class="title">All Incomming Money Request</h4>
+		<h4 class="title">All Incoming Money Request</h4>
 	</div>
 	<div class="panel-info">
-	<table class="table">
-		<thead>
-			<tr>
-				<td>#</td>
-				<td>Date</td>
-				<td>Request from</td>
-				<td>Your balance</td>
-				<td>Requested amount</td>
-				<td>Actions</td>
-			</tr>
-		</thead>
-	<% @requests.each do |me| %>
-		<tbody>
-			<tr>
-				<td><%= me.id %></td>
-				<td><%= me.created_at %></td>
-				<td><%= me.sender.email %></td>
-				<td><%= "#{me.receiver_account.balance}#{me.receiver_account.currency} " %></td>
-				<td><%= me.amount %><%= me.account.currency %></td>
-				<td>
-					<% if me.receiver_account.balance < me.amount %>
-					Deposit fund to accept request
-					<% else %>
-					<%= link_to "Accept", two_factor_money_path(me.id, "accept"), 
-					class: "btn btn-default" %>
-					<% end %>
-					<%= link_to "Decline", two_factor_money_path(me.id,"decline"), 
-					class: "btn btn-danger", data: {confirm: "Are you sure, decline the request!"} %>
-				</td>
-			</tr>
-		</tbody>
-	<% end %>
-	</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>#</td>
+					<td>Date</td>
+					<td>Request from</td>
+					<td>Your balance</td>
+					<td>Requested amount</td>
+					<td>Actions</td>
+				</tr>
+			</thead>
+			<% @requests.each do |me| %>
+				<tbody>
+					<tr>
+						<td><%= me.id %></td>
+						<td><%= me.created_at %></td>
+						<td><%= me.sender.email %></td>
+						<td><%= "#{me.receiver_account.balance}#{me.receiver_account.currency} " %></td>
+						<td><%= me.amount %><%= me.account.currency %></td>
+						<td>
+							<% if me.receiver_account.balance < me.amount %>
+							Deposit fund to accept request
+							<% else %>
+							<%= link_to "Accept", two_factor_money_path(me.id, "accept"), 
+							class: "btn btn-default" %>
+							<% end %>
+							<%= link_to "Decline", two_factor_money_path(me.id,"decline"), 
+							class: "btn btn-danger", data: {confirm: "Are you sure, decline the request!"} %>
+			        	</td>
+					</tr>
+				</tbody>
+			<% end %>
+	  </table>
 	</div>
 </div>
 <% end %>
@@ -130,5 +134,6 @@
 		<% end %>
 		</table>	
 	</div>
+</div>
 </div>
 <% end %>

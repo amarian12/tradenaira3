@@ -1,0 +1,69 @@
+<% currency 	= params[:currency].to_i %>
+<% page 		= params[:page]  %>
+<% currency_obj = Currency.find_by_id(currency) %>
+<h3>Finances </h3>
+<table class="table">
+	<tr>
+		<th>
+			<div class="btn-group">
+
+				 
+
+				<button type="button" 
+				 class="btn btn-success ddicone dropdown-toggle" data-toggle="dropdown" 
+				 aria-haspopup="true" aria-expanded="false">
+				 Date
+  				</button>
+				<ul class="dropdown-menu">
+
+				<input type="text" class="dropdown-item datepicker"  
+				 placeholder="Start Date" 
+				data-date-format="dd-mm-yyyy" >	
+
+				<input type="text" class="dropdown-item datepicker"  
+				 placeholder="End Date" 
+				data-date-format="dd-mm-yyyy" >	
+				 
+				</ul>
+			</div>
+
+		</th>
+		<th>Amount</th>
+		<th>
+			<div class="btn-group">
+				<button type="button" 
+				 class="btn btn-success ddicone dropdown-toggle" data-toggle="dropdown" 
+				 aria-haspopup="true" aria-expanded="false">
+				 <%= currency_obj.nil? ? "Currency" : currency_obj.code.upcase %>
+  				</button>
+				<ul class="dropdown-menu">
+					<%= raw Currency.all.map{|c|		
+				link = admin_finances_path(page: page,currency: c.id)	
+				active = currency == c.id ? " active" : " ----"	
+				("<li class='dropdown-item#{active}'><a href='#{link}'>#{c.code.upcase}
+					</a></li>")	
+					}.join(" ") %>
+				</ul>
+			</div>
+		</th>
+		<th>Link</th>
+		<th>Reason</th>
+		<th>Income</th>
+		<th>Expenses</th>
+		<th>Fee</th> 
+	</tr>
+	<% @account_versions.each do |av| %>
+		<tr>
+			<td><%= av.created_at %></td>
+			<td><%= av.amount %></td>
+			<td><%= av.currency_text %></td>
+			<td><%= av.amount %></td>
+			<td><%= av.reason_text %></td>
+			<td><%= av.in.nil? ? "-" : av.in > 0 ? av.in : "-" %></td>
+			<td><%= av.out.nil? ? "-" : av.out > 0 ? av.out : "-"   %></td>
+			<td><%= av.fee %><%= av.account.currency %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= paginate @account_versions%>

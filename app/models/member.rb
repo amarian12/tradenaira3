@@ -257,7 +257,11 @@ class Member < ActiveRecord::Base
 
   #kicksmarterfunctions
   def ensure_session_token
+    begin
     self.session_token ||= SecureRandom.urlsafe_base64(16)
+    rescue => e
+      self.session_token = SecureRandom.urlsafe_base64(16)
+    end
   end
 
   def reset_session_token
