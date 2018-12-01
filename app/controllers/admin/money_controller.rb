@@ -93,6 +93,17 @@ module Admin
 	  	 unless params[:currency].nil?
 	  	  @account_versions = @account_versions.where(currency: params[:currency] )	
 	  	 end
+
+	  	 if params[:sd] && params[:ed]
+
+	  	 	sd = Date.strptime(params[:sd], '%m-%d-%Y').to_datetime
+	  	 	ed = Date.strptime(params[:ed], '%m-%d-%Y').to_datetime
+
+	  	 	@account_versions = @account_versions
+	  	 	.where("created_at >= ? AND created_at <= ?",sd,ed)	
+	  	 	
+	  	 	
+	  	 end
 	  	 @account_versions = @account_versions.order(:id)
 	  	 .reverse_order.page params[:page]
 	  end

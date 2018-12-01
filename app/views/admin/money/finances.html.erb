@@ -1,30 +1,40 @@
 <% currency 	= params[:currency].to_i %>
 <% page 		= params[:page]  %>
+<% sd 			= params[:sd] %>
+<% ed 			= params[:ed] %>
 <% currency_obj = Currency.find_by_id(currency) %>
 <h3>Finances </h3>
+<% if currency_obj || page || sd || ed %>
+	<div class="row">
+		<div class="col-xl-24 col-md-4">
+			<%= link_to "Clear all filter", admin_finances_path, 
+				class: "btn btn-success"  %>	
+				<br />
+				<br />
+		</div>
+
+	</div>
+<% end %>
 <table class="table">
 	<tr>
 		<th>
-			<div class="btn-group">
+			<div class=" dateranges">
+				<input type="text" class="dropdown-item datepicker sd"  
+					placeholder="Start Date" 
+					data-target="sd"
+					value="<%= sd %>" 
+					data-date-format="dd-mm-yyyy">	
 
-				 
+				<input type="text" class="dropdown-item datepicker ed"  
+					 placeholder="End Date" 
+					 data-target="ed"
+					 value="<%= ed %>" 
+					data-date-format="dd-mm-yyyy">	
 
-				<button type="button" 
-				 class="btn btn-success ddicone dropdown-toggle" data-toggle="dropdown" 
-				 aria-haspopup="true" aria-expanded="false">
-				 Date
-  				</button>
-				<ul class="dropdown-menu">
+				<%= link_to "By Date", admin_finances_path, class: "searchbydate btn btn-success",
+					data: { currency: currency, sd: sd, ed: ed, page: page  },
+					onclick: "return srchFinances(this)"  %>		
 
-				<input type="text" class="dropdown-item datepicker"  
-				 placeholder="Start Date" 
-				data-date-format="dd-mm-yyyy" >	
-
-				<input type="text" class="dropdown-item datepicker"  
-				 placeholder="End Date" 
-				data-date-format="dd-mm-yyyy" >	
-				 
-				</ul>
 			</div>
 
 		</th>
@@ -37,12 +47,14 @@
 				 <%= currency_obj.nil? ? "Currency" : currency_obj.code.upcase %>
   				</button>
 				<ul class="dropdown-menu">
-					<%= raw Currency.all.map{|c|		
-				link = admin_finances_path(page: page,currency: c.id)	
-				active = currency == c.id ? " active" : " ----"	
-				("<li class='dropdown-item#{active}'><a href='#{link}'>#{c.code.upcase}
-					</a></li>")	
-					}.join(" ") %>
+					<%= raw Currency.all.map{|c|	
+						options = {page: page,currency: c.id, sd: sd, ed: ed}	
+						link = admin_finances_path(options)	
+						active = currency == c.id ? " active" : " ----"	
+						("<li class='dropdown-item#{active}'><a href='#{link}'>#{c.code.upcase}
+							</a></li>")	
+						}.join(" ") 
+					%>
 				</ul>
 			</div>
 		</th>
@@ -64,6 +76,15 @@
 			<td><%= av.fee %><%= av.account.currency %></td>
 		</tr>
 	<% end %>
+	<% if @account_versions.empty? %>
+		<tr align="center">
+			<td colspan="8" align="center" style="text-align: center;">
+				No result found for your query, please try again with different criteria.
+			</td>
+			 
+		</tr>
+	<% end %>
 </table>
 
 <%= paginate @account_versions%>
+

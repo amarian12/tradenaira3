@@ -94,6 +94,21 @@ img {
   border-bottom: 0;
   border-left: .3em solid transparent;
 }
+.dateranges{
+  width: 250px;
+  .datepicker, .searchbydate{
+    width: 90px;
+    border: none;
+    font-size: 14px;
+    float: left;
+    margin: 0 2px 0 0;
+  }
+  .searchbydate{
+    width: 65px;
+    padding: 6px 5px;
+    margin: 0;
+  }
+}
 
 .money-form-wrapper {
   position: relative;
