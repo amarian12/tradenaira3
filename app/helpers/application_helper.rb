@@ -89,7 +89,23 @@ module ApplicationHelper
   def top_nav_link(link_text, link_path, link_icon, controllers: [], counter: 0, target: '')
     merged = (controllers & controller_path.split('/'))
     class_name = current_page?(link_path) ? 'active' : nil
+
+     
     class_name ||= merged.empty? ? nil : 'active'
+
+    if (params[:controller] == "private/funds" && params[:action] == "index")
+      if "The Trading Floor" == link_text
+        class_name = class_name.to_s+ " active"
+      else
+        class_name = ""
+      end
+    else
+      if "Funds" == link_text
+        class_name = class_name.to_s+ " active"
+      else
+        class_name = ""
+      end
+    end  
 
     content_tag(:li, :class => class_name) do
       link_to link_path, target: target do

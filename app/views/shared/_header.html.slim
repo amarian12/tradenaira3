@@ -31,21 +31,23 @@ header.navbar.navbar-default.navbar-static-top.sanc role = "navigation"
 			  	
 			    = top_nav_link(t('header.history'), order_history_path, '', controllers: ['history']) if current_user
 			    = top_nav_link(t('header.market'), market_path(current_market.id), '', target: true)
-			    li.fundsbtn
+
+
+			    //- raw("li.fundsbtn") 
 			    = top_nav_link(t('header.funds'), funds_path, '', controllers: ['funds']) if current_user
-                //= top_nav_link(t('header.Invite friends'), new_news_path, '', controllers: ['news']) if current_user
                 - if current_user
                  li 
                   a href='#{root_path}invitation/new'
                    span = "Invite Friends"
-			    //= top_nav_link(t('header.deposit'), funds_path, '', controllers: ['funds']) if current_user
-			    //= top_nav_link(t('header.withdraw'), funds_path, '', controllers: ['funds']) if current_user
+
+
+
 			    - if is_admin?
 				 li
                   a href = "/news/admin" class = "addfeed"  Add Blog
 			    
 scss:
-    .fundsbtn + li a
+    .sub_menu li.active a
     {
         color:white !important;
         display: block;
@@ -55,8 +57,8 @@ scss:
         border-radius: 5px;
         margin-top: 10px;
     }
-    .fundsbtn + li a:hover,
-    .fundsbtn + li a:active,
+    .sub_menu li.active a:hover,
+    .sub_menu li.active a:active,
     {
         color:white !important;
         display: block;
