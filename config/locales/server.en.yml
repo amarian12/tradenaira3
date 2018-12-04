@@ -1059,6 +1059,8 @@ en:
         total: Total  
         price_low: Low
         price_high: High
+        full_bid: FULL 
+        full_ask: FULL 
     settings:
       success: Settings updated successfully.
       failure: Invalid passcode. Please try again.
