@@ -38,6 +38,11 @@ en:
     submit: Confirm 
     cancel: Cancel
     confirm: Confirm
+    private:
+      markets: 
+        place_order: 
+          full_bid: FULL 
+          
     banks:
       icbc: Industryand Commercial Bank of China
       cbc: Construction Bank of China
