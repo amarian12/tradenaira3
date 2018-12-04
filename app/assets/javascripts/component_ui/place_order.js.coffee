@@ -109,7 +109,10 @@
     available = formatter.fix type, @getBalance().minus(order[@usedInput])
 
     if BigNumber(available).equals(0)
-      @select('positionsLabelSel').hide().text(gon.i18n.place_order["full_#{type}"]).fadeIn()
+    # dinesh100ni
+      full_amt_txt = gon.i18n.place_order["full_#{type}"]
+      full_amt_txt = full_amt_txt.replace("FUNDS_LINK","<a href=\'/funds\'> deposit</a>")
+      @select('positionsLabelSel').hide().html(full_amt_txt).fadeIn()
     else
       @select('positionsLabelSel').fadeOut().text('')
     node.text(available)

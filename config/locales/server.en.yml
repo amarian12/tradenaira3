@@ -1059,8 +1059,8 @@ en:
         total: Total  
         price_low: Low
         price_high: High
-        full_bid: FULL 
-        full_ask: FULL 
+        full_bid: Not enough money in your wallet to do this transaction, Please make a FUNDS_LINK to continue. 
+        full_ask: Not enough money in your wallet to do this transaction, Please make a FUNDS_LINK to continue.  
     settings:
       success: Settings updated successfully.
       failure: Invalid passcode. Please try again.

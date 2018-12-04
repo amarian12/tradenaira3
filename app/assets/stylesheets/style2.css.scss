@@ -198,7 +198,7 @@ img {
   .ncntr{
     color: red;
     left: 4px;
-    top: 4px;
+    top: 1px;
     position: absolute;
   }
 }
@@ -227,7 +227,8 @@ img {
     color: #a94442;
     border-top: none;
     max-height: 350px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     li{
       list-style: none;

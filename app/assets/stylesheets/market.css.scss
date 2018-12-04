@@ -34,6 +34,14 @@ body,
   height: 100%;
   @include user-select(none);
 }
+#bid_entry, #ask_entry{
+  .hint-positions{
+    white-space: normal;
+    font-weight: 500;
+    background: #000;
+  }
+}
+
 
 body {
   min-width: $min-width !important;

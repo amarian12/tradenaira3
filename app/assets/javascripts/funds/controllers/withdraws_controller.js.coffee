@@ -49,7 +49,7 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
   @withdraw = {}
   @createWithdraw = (currency) ->
     b = $("#fund_source option:selected").text();
-    x = confirm("Please confirm your withdrawal request of " +  currency + " to bank account " + b + " A fee of 2.5% will be deducted from the total withdrawal request. Once confirmed we will make payment shortly. We may contact you if we have issues processing your payment. Thanks");
+    x = confirm("Please confirm your withdrawal request of " +  currency + " to bank account " + b + " A fee of 2% will be deducted from the total withdrawal request. Once confirmed we will make payment shortly. We may contact you if we have issues processing your payment. Thanks");
     if (x == true)
       $.publish 'flash', {message: "We have received your withdrawal request and will process your withdrawal shortly. Thanks!" }
       withdraw_channel = WithdrawChannel.findBy('currency', currency)

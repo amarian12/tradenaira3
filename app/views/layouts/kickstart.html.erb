@@ -72,27 +72,27 @@
              
 
               <div class="header_top_right">
-                   <ul class ="nav navbar-nav notification_bell">
-                  <li class ="srnotification">
-                    <div class="nav-ball">
-                      <i class =" fa fa-bell"></i>
-                      <span class ="nctr"></span>
-                      <div class ="notificationbar" style ="display:none;"></div>
-                    </div>
-                  </li>
-              </ul>
+                      <ul class ="nav navbar-nav notification_bell">
+                        <li class ="srnotification">
+                          <div class="nav-ball">
+                            <i class ="fa fa-bell"></i>
+                            <span class ="ncntr"></span>
+                            <div class ="notificationbar" style ="display:none;"></div>
+                          </div>
+                        </li>
+                     </ul>
                     <ul class="home_head tophead">
-                    <% if current_user && controller_name == 'markets'%>
-                     <%= render 'shared/header_account_balance' %>
-                     <% end %>
-                     <% if current_user %>
-                      <%= render 'shared/header_profile_setting' %> 
-                      <% end %>
-                      <% unless current_user %>
-                      <li><a href="/signup" target=""><i class="fa fa-"></i><span>Register</span></a></li>
-                      <li><a href="/signin" target=""><i class="fa fa-sign-in"></i><span>Login</span></a></li>  
-                      <% end %>   
-                      <li class="language-div"> <a href="#"> EN</a></li>
+                      <% if current_user && controller_name == 'markets'%>
+                       <%= render 'shared/header_account_balance' %>
+                       <% end %>
+                       <% if current_user %>
+                        <%= render 'shared/header_profile_setting' %> 
+                        <% end %>
+                        <% unless current_user %>
+                        <li><a href="/signup" target=""><i class="fa fa-"></i><span>Register</span></a></li>
+                        <li><a href="/signin" target=""><i class="fa fa-sign-in"></i><span>Login</span></a></li>  
+                        <% end %>   
+                        <li class="language-div"> <a href="#"> EN</a></li>
                     </ul>
                </div>
             </div>
