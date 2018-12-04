@@ -461,42 +461,43 @@ html {
 /*
  *
  *
+ *
  */
-/* line 10, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 11, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 a {
   color: #286790;
 }
 
-/* line 13, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 14, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #admin-container {
   background: white;
   margin: 20px;
   display: block;
 }
 
-/* line 18, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 19, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #modal-preview {
   width: 100%;
   height: 100%;
 }
-/* line 21, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 22, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #modal-preview .modal-inner {
   height: 100%;
   width: 100%;
   margin: auto;
   left: 0px;
 }
-/* line 27, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 28, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #modal-preview header h1 {
   font-size: 20px;
   font-weight: 100;
 }
-/* line 30, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 31, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #modal-preview .modal-content {
   height: 90%;
   max-height: 90%;
 }
-/* line 33, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 34, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #modal-preview iframe {
   display: block;
   margin: auto;
@@ -505,101 +506,101 @@ a {
   border: none;
 }
 
-/* line 41, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 42, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .form-new-post .left-fields {
   width: 97%;
 }
-/* line 43, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 44, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .form-new-post .left-fields input {
   width: 100%;
 }
-/* line 45, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 46, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .form-new-post .left-fields textarea {
   width: 100%;
   height: 350px;
 }
-/* line 49, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 50, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .form-new-post #post-title {
   font-weight: bold;
   color: #444444;
 }
-/* line 52, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 53, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .form-new-post #post-url {
   padding: 11px 7px;
   font-size: 12px;
 }
 
-/* line 56, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 57, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #admin-menu {
   margin: 0 auto;
   margin-bottom: 10px;
 }
-/* line 58, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 59, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #admin-menu .nav {
   padding: 0px;
   background-color: white;
   box-shadow: 0px 0px 10px #aaaaaa;
 }
-/* line 63, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 64, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #admin-menu li {
   margin: 8px;
 }
-/* line 65, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 66, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 #admin-menu ul.pull-right {
   text-align: right;
   float: right;
 }
 
-/* line 71, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 72, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .admin-header {
   color: #888888;
   font-size: 18px;
 }
 
-/* line 76, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 77, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .alert {
   padding: 20px;
   margin: 10px auto;
 }
 
-/* line 80, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 81, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .alert-error {
   background-color: #ffeeee;
 }
 
-/* line 83, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 84, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .alert-info {
   background-color: #eeffee;
 }
 
-/* line 86, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 87, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .input-content {
   height: 250px;
 }
 
-/* line 90, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 91, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .field_with_errors input {
   background: #fff0f0;
 }
 
-/* line 94, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 95, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .button-secondary, .button-warning, .button-success {
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-/* line 99, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 100, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .button-secondary {
   background: #42b8dd;
 }
 
-/* line 102, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 103, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .button-warning {
   background: #df7514;
 }
 
-/* line 105, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/vendor/bundle/ruby/2.2.0/gems/blogo-0.1.4/app/assets/stylesheets/blogo/admin.sass */
+/* line 106, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/blogo/admin.sass */
 .button-success {
   background: #1cb841;
 }

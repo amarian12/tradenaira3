@@ -23080,7 +23080,9 @@ discardElement:Va,css:K,each:p,extend:s,map:za,merge:y,pick:q,splat:qa,extendCla
       price = data.last;
       market = [gon.market.ask.currency, gon.market.bid.currency].join("/").toUpperCase();
       brand = "TradeNAIRA";
-      return document.title = "" + symbol + price + " " + market + " - " + brand;
+      if ($("#welcome-index")[0]) {
+        return document.title = "" + symbol + price + " " + market + " - " + brand;
+      }
     };
     this.refreshDepth = function(data) {
       var asks, asks_sum, bids, bids_sum, la, lb, mid, offset, _ref;

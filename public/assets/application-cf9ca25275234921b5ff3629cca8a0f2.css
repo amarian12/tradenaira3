@@ -14268,131 +14268,131 @@ header #languages li > a {
 
 /* layouts
 -------------------------------------------------------------- */
-/* line 109, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 111, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 html, body {
   height: 100%;
 }
 
-/* line 113, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 115, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 header {
   overflow: visible !important;
 }
 
-/* line 117, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 119, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .container {
   padding: 0 10px;
 }
 
-/* line 121, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 123, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .innerheader {
   float: right;
 }
-/* line 124, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 126, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .innerheader li {
   float: left;
 }
 
-/* line 130, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 132, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .flash-message {
   max-width: 600px;
   margin: auto;
 }
 
-/* line 135, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 137, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .innerheader > li > a {
   padding: 15px;
 }
 
-/* line 139, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 141, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .innerheader > li > a > .fa-phone-square {
   padding-left: 5px;
 }
 
 @media (min-width: 320px) and (max-width: 640px) {
-  /* line 144, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 146, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .service_bgimg {
     background-position: -600px !important;
   }
 
-  /* line 148, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 150, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   ul.footer li {
     text-align: left;
   }
 }
 @media (min-width: 760px) and (max-width: 980px) {
-  /* line 154, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 156, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   #wrap .sub_menu a {
     font-size: 14px !important;
   }
 
-  /* line 158, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 160, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .service_bgimg {
     background-position: -80px !important;
   }
 
-  /* line 162, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 164, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .goodcompy_bgimg {
     background-position: 47%  !important;
   }
 }
 @media (min-width: 320px) and (max-width: 980px) {
-  /* line 168, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 170, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .slide_arrow {
     width: 10px !important;
     height: 10px !important;
   }
 
-  /* line 172, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 174, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .carousel-indicators {
     margin-bottom: 0 !important;
   }
 
-  /* line 176, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 178, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .panel-currencies .currencies-container {
     min-height: auto !important;
   }
 }
 @media (min-width: 320px) and (max-width: 360px) {
-  /* line 182, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 184, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   #wrap #content .maxwidth label {
     font-size: 13px !important;
     padding: 7px 0px 0 0 !important;
   }
 
-  /* line 187, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 189, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   #wrap #content .maxwidth .identity_password_confirmation .control-label {
     padding: 0 !important;
   }
 
-  /* line 191, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 193, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .full-width {
     width: 100% !important;
   }
 }
 @media (min-width: 980px) and (max-width: 1024px) {
-  /* line 197, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 199, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .container {
     width: 950px !important;
   }
 }
 @media (min-width: 1025px) {
-  /* line 203, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 205, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .container {
     width: 1170px !important;
   }
 }
 @media (min-width: 760px) {
-  /* line 209, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 211, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .pad-L {
     padding-left: 20px !important;
   }
 
-  /* line 213, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 215, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .pad-R {
     padding-right: 20px !important;
   }
 
-  /* line 217, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 219, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .map_image {
     background: url(mapimage.png);
     background-position: 100% 100%;
@@ -14400,32 +14400,32 @@ header {
   }
 }
 @media (min-width: 800px) and (max-width: 979px) {
-  /* line 225, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 227, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .container {
     width: 750px !important;
   }
 }
 @media screen and (max-width: 760px) {
-  /* line 232, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 234, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .res_table td, .res_table th, .res_table tr, .res_table tbody, .res_table thead, table.res_table,
   .res_table1 td, .res_table1 th, .res_table1 tr, .res_table1 tbody, .res_table1 thead, table.res_table1 {
     display: block;
     overflow: hidden;
   }
 
-  /* line 236, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 238, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
 
-  /* line 242, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 244, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .clsTable_View {
     border: 1px solid #EFEFEF;
   }
 
-  /* line 245, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 247, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .res_table td, .res_table1 td {
     border-bottom: 0px solid #dddddd;
     position: relative;
@@ -14433,7 +14433,7 @@ header {
     word-wrap: break-word;
   }
 
-  /* line 251, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 253, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .res_table td:before, .res_table1 td:before {
     position: absolute;
     top: 0px;
@@ -14446,18 +14446,18 @@ header {
     /*    white-space: nowrap;*/
   }
 
-  /* line 262, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 264, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .res_table tr, .res_table1 tr {
     border-bottom: 1px solid #aeaeae;
   }
 
-  /* line 267, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 269, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .res_tabledep td, .res_tabledep th, .res_tabledep tr, .res_tabledep tbody, .res_tabledep thead, table.res_table {
     display: block;
     overflow: hidden;
   }
 
-  /* line 271, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 273, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .res_tabledep td {
     border-bottom: 0px solid #dddddd;
     position: relative;
@@ -14467,7 +14467,7 @@ header {
     padding-bottom: 20px !important;
   }
 
-  /* line 279, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 281, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .res_tabledep td:before {
     position: absolute;
     top: 0px;
@@ -14480,12 +14480,12 @@ header {
     /*    white-space: nowrap;*/
   }
 
-  /* line 290, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 292, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   .res_tabledep tr {
     border-bottom: 1px solid #aeaeae;
   }
 }
-/* line 295, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 297, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .pleasecheck {
   text-align: center;
   background: #d9534f;
@@ -14495,7 +14495,7 @@ header {
   border-radius: 10px;
 }
 
-/* line 303, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 305, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .file.optional.control-label:before {
   content: "*";
   float: left;
@@ -14503,136 +14503,136 @@ header {
   margin: 0px 5px;
 }
 
-/* line 310, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 312, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .ticket_desc {
   text-align: center;
   padding-bottom: 15px;
   color: #777777;
 }
 
-/* line 316, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 318, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .home_banner {
   background: url(banner_image.png);
   height: 450px;
 }
 
-/* line 321, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 323, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .trade_banner {
   background: url(service_banner.jpg);
   height: 450px;
   margin-top: 70px;
 }
 
-/* line 327, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 329, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .news_banner {
   background: url(newsbanner.png);
   height: 450px;
   margin-top: 70px;
 }
 
-/* line 333, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 335, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .banner_image {
   font-family: "sansserif";
   color: white;
   text-align: center;
-  top: 40%;
+  top: 50%;
   transform: translateY(-50%);
   padding: 0 15px;
   max-width: 850px;
 }
 
-/* line 343, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 345, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .banner_image h3 {
   font-size: 27px;
   margin-top: 0;
 }
 
-/* line 348, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 350, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .banner_image p {
   font-size: 15px;
   padding-top: 5px;
 }
 
-/* line 352, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 354, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .clsTable_View th {
   padding: 7px 10px;
 }
 
-/* line 355, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 357, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .clsTable_View td {
   padding: 7px 10px;
   min-height: 35px;
   vertical-align: top;
 }
 
-/* line 361, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 363, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .navbar-default {
   background-color: #f8f8f8 !important;
   border-color: #e7e7e7 !important;
 }
 
-/* line 366, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 368, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #efefef;
   background-color: transparent;
 }
 
-/* line 371, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 373, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .sanc {
   font-family: 'SourceSansProRegular';
 }
 
-/* line 376, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 378, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .wholedivsms {
   overflow: hidden;
   display: inline-table;
   width: 100%;
 }
 
-/* line 382, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 384, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .nopad {
   padding: 0;
 }
 
-/* line 386, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 388, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .service_benef p {
   padding: 15px 0 0;
   display: inline-block;
 }
 
-/* line 391, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 393, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .padding-TB-20 {
   padding: 20px 0;
 }
 
-/* line 395, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 397, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .padding-RL-15 {
   padding: 0px 15px;
 }
 
-/* line 399, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 401, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .margin-T-15 {
   margin-top: 15px;
 }
 
-/* line 403, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 405, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .tree_map {
   width: 100%;
   height: 600px;
   border: 0px solid;
 }
 
-/* line 409, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 411, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #guide .text-ignore, .text-warning {
   text-align: center;
 }
 
-/* line 413, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 415, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #edit_sms_auth + .text-ignore {
   text-align: center;
 }
 
-/* line 417, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 419, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .linktrade {
   position: relative;
   top: 40%;
@@ -14645,7 +14645,7 @@ header {
   float: none;
 }
 
-/* line 428, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 430, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .linktradeadd {
   display: block;
   background: #ffc82f;
@@ -14655,7 +14655,7 @@ header {
   color: white;
 }
 
-/* line 437, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 439, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .linktrade button {
   color: #FFFFFF !important;
   font-size: 19px;
@@ -14665,13 +14665,13 @@ header {
   outline: none;
 }
 
-/* line 445, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 447, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .linktradeadd:hover {
   text-decoration: none;
   color: white;
 }
 
-/* line 450, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 452, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .quickvideo {
   width: 100%;
   border: 0;
@@ -14679,65 +14679,65 @@ header {
   padding: 15px 0;
 }
 
-/* line 457, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 459, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .close {
   font-size: 23px;
 }
 
-/* line 461, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 463, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .modal-content {
   padding: 15px;
 }
 
-/* line 465, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 467, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .modal-open {
   padding: 0 !important;
 }
 
-/* line 469, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 471, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .flnonesms {
   float: none;
   margin: 0 auto;
 }
 
-/* line 474, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 476, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .linesms {
   display: inline-block;
   width: 100%;
 }
 
-/* line 479, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 481, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .readmore {
   color: #4d4d4d;
   text-align: right;
 }
 
-/* line 484, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 486, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .ngdialog-content {
   overflow: hidden;
 }
 
-/* line 490, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 492, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .usdbank label {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-/* line 495, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 497, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .usdbank .sub_usdbank {
   border-bottom: 1px solid #dddddd;
   margin-bottom: 2px;
 }
-/* line 500, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 502, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .usdbank .sub_usdbank.ng-scope label {
   font-size: 12px;
   font-weight: normal;
 }
-/* line 505, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 507, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .usdbank input {
   font-size: 12px;
 }
 
-/* line 509, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 511, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap {
   float: left;
   width: 100%;
@@ -14750,12 +14750,12 @@ header {
   /* animated elements */
   /* animation transition styles */
 }
-/* line 519, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 521, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .ticket_head {
   text-align: center;
   font-size: 24px;
 }
-/* line 524, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 526, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock {
   padding: 8px 0;
   color: #fff;
@@ -14764,128 +14764,128 @@ header {
   -moz-transition: all 0.55s linear;
   transition: all 0.55s linear;
 }
-/* line 533, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 535, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.animated {
   opacity: 1;
 }
-/* line 538, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 540, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.left {
   margin-left: -2%;
 }
-/* line 541, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 543, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.left.animated {
   margin-left: 12%;
 }
-/* line 545, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 547, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.right {
   display: block;
   margin-left: 100%;
 }
-/* line 549, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 551, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.right.animated {
   margin-left: 70%;
 }
-/* line 553, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 555, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.top {
   display: block;
   width: auto;
   text-align: center;
   margin-top: -25px;
 }
-/* line 559, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 561, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.top.animated {
   margin-top: 0px;
 }
-/* line 563, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 565, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.btm {
   display: block;
   text-align: center;
   margin-top: 25px;
 }
-/* line 568, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 570, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.btm.animated {
   margin-top: 0;
 }
-/* line 572, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 574, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.centerleft {
   display: block;
   width: auto;
   text-align: center;
   margin-right: -10%;
 }
-/* line 578, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 580, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.centerleft.animated {
   margin-right: 0;
 }
-/* line 582, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 584, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.centerright {
   display: block;
   width: auto;
   text-align: center;
   margin-left: -10%;
 }
-/* line 588, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 590, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.centerright.animated {
   margin-left: 0;
 }
-/* line 592, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 594, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.center {
   margin-left: 2%;
 }
-/* line 595, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 597, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.center.animated {
   margin-left: 42%;
 }
-/* line 599, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 601, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.size {
   display: block;
   width: 10%;
   text-align: center;
 }
-/* line 604, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 606, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.size.animated {
   width: 100%;
   height: 100%;
 }
-/* line 608, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 610, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .animateblock.size img {
   max-width: 100%;
   height: auto;
 }
-/* line 613, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 615, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .signup {
   color: #616060;
   padding: 0 15px;
   display: unset;
 }
-/* line 618, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 620, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .signup .subheading {
   padding: 0 0 15px;
   font-size: 18px;
 }
-/* line 623, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 625, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .signup .complete {
   font-size: 14px;
 }
-/* line 628, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 630, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .contactus {
   max-width: 750px;
   padding-bottom: 40px;
 }
-/* line 633, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 635, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static {
   font-family: 'twccenmt';
   color: #666666;
   font-size: 18px;
 }
-/* line 635, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 637, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .border_bot {
   padding: 5px 0;
   float: left;
   width: 100%;
   border-bottom: 1px solid #dddddd;
 }
-/* line 642, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 644, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .border_bot_head {
   padding: 5px 0;
   float: left;
@@ -14893,46 +14893,46 @@ header {
   border-bottom: 2px solid #dddddd;
   font-weight: bold;
 }
-/* line 649, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 651, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .trans_fee {
   float: left;
   padding-top: 20px;
 }
-/* line 654, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 656, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static table, #wrap .static th, #wrap .static td {
   border: 1px solid #cccccc;
 }
 @media (min-width: 320px) and (max-width: 640px) {
-  /* line 662, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  /* line 664, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
   #wrap .static table {
     font-size: 13px !important;
   }
 }
-/* line 667, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 669, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .service_top {
   text-align: center;
 }
-/* line 671, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 673, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .service_img {
   padding: 50px 15px 0 15px;
 }
-/* line 674, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 676, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .service_img img {
   width: 100%;
 }
-/* line 679, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 681, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .service_benef {
   padding: 10px 15px 20px 15px;
 }
-/* line 682, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 684, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .service_benef img {
   width: 100%;
 }
-/* line 687, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 689, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .service_text {
   padding: 30px 15px 0 15px;
 }
-/* line 691, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 693, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static hr {
   margin-top: 5px;
   margin-bottom: 20px;
@@ -14940,69 +14940,69 @@ header {
   width: 70px;
   float: left;
 }
-/* line 699, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 701, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static a {
   color: #38a6cb;
   word-break: break-all;
 }
-/* line 704, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 706, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news {
   font-family: 'avenirnextltmid';
   padding: 15px 0;
 }
-/* line 708, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 710, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news img {
   width: 100%;
 }
-/* line 712, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 714, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news .heading {
   font-size: 23px;
 }
-/* line 716, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 718, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news .news_sub {
   padding: 30px 15px 0;
 }
-/* line 720, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 722, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news .details {
   padding: 15px 10px;
 }
-/* line 724, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 726, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news p {
   font-size: 17px;
   padding: 10px 0;
 }
-/* line 729, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 731, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news .color_link a:nth-child(1) {
   color: #fec910;
 }
-/* line 733, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 735, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news .color_link a:nth-child(2) {
   color: #9dc322;
 }
-/* line 737, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 739, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .news .color_link a:nth-child(0) {
   color: #000080;
 }
-/* line 743, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 745, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .newsbanner img {
   width: 100%;
 }
-/* line 747, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 749, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .lock img {
   width: 100%;
   max-width: 150px;
   margin-bottom: 20px;
 }
-/* line 753, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 755, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .schedule {
   padding: 0 0 0 30px;
 }
-/* line 756, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 758, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .schedule h2 {
   border-bottom: 1px solid #dddddd;
   padding: 0 0 15px;
 }
-/* line 762, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 764, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .fee_table {
   color: #4d4d4d;
   font-size: 18px;
@@ -15010,89 +15010,89 @@ header {
   padding: 0;
   margin: 15px 0 0;
 }
-/* line 769, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 771, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .fee_table .fee_head {
   color: #38a6cb;
 }
-/* line 773, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 775, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .fee_table .perc {
   padding: 15px;
   text-align: center;
 }
-/* line 778, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 780, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static .fee_table .border_righ {
   padding: 0;
   border-right: 1px solid #dddddd;
 }
-/* line 784, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 786, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static h2 {
   color: #4d4d4d;
   font-family: helveticanormal;
   font-size: 22px;
 }
-/* line 790, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 792, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static h4 {
   color: #38a6cb;
   font-size: 20px;
   margin: 25px 0 15px;
 }
-/* line 796, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 798, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static h5 {
   color: #38a6cb;
   font-size: 20px;
   margin: 15px 0;
 }
-/* line 802, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 804, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static ol {
   list-style-type: lower-roman;
 }
-/* line 806, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 808, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .static ul {
   padding-left: 20px;
 }
-/* line 811, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 813, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page {
   font-family: 'twccenmt';
 }
-/* line 814, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 816, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .investor {
   border-bottom: 1px solid #bdbdbd;
   margin: 20px 0 25px;
   padding: 35px 0;
   border-top: 2px solid #bdbdbd;
 }
-/* line 821, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 823, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .location {
   color: #1ea7cd;
   font-size: 23px;
   padding-bottom: 15px;
 }
-/* line 827, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 829, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .companyname {
   color: #4d4d4d;
   font-size: 22px;
   font-weight: bold;
   font-family: 'SourceSansProRegular';
 }
-/* line 834, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 836, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .address {
   color: #4d4d4d;
   font-size: 18px;
   padding-bottom: 20px;
   font-family: 'SourceSansProRegular';
 }
-/* line 841, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 843, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .fouder_head {
   color: #333333;
   font-size: 29px;
   font-family: SourceSansProRegular;
   text-align: center;
 }
-/* line 848, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 850, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .pantera {
   max-width: 100%;
 }
-/* line 852, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 854, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .about_head {
   text-align: center;
   font-size: 29px;
@@ -15100,23 +15100,23 @@ header {
   color: #10586c;
   margin: 0;
 }
-/* line 859, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 861, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .about_head span {
   font-family: 'avenirnextltbold';
   font-size: 37px;
 }
-/* line 861, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 863, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .about_head .withborder {
   font-size: 20px;
 }
-/* line 864, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 866, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .withborder {
   font-family: 'avenirnextltmid';
   font-size: 21px;
   color: #10586c;
   text-align: center;
 }
-/* line 871, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 873, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .box_white {
   background-color: #ffffff;
   padding: 15px 20px;
@@ -15124,123 +15124,123 @@ header {
   color: #999999;
   font-size: 16px;
 }
-/* line 878, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 880, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .box_white img {
   width: 100%;
   max-width: 110px;
   border-radius: 50%;
 }
-/* line 885, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 887, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .customer {
   font-size: 17px;
 }
-/* line 888, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 890, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .customer span {
   color: #38a6cb;
 }
-/* line 892, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 894, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .customer .name {
   color: #38a6cb;
   font-size: 18px;
   margin: 0 0 10px;
 }
-/* line 898, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 900, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .customer .descript {
   color: #666666;
 }
-/* line 903, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 905, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .box_padding {
   padding: 20px 0px;
 }
-/* line 907, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 909, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .box_white h6 {
   color: #4d4d4d;
   font-size: 21px;
   font-family: SourceSansProRegular;
   margin: 20px 0 15px 0;
 }
-/* line 914, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 916, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .box_white p {
   margin-bottom: 15px;
 }
-/* line 920, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 922, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .fouder .name {
   font-family: avenirnextltmid;
   font-size: 17px;
   color: #4d4d4d;
 }
-/* line 926, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 928, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .fouder span {
   color: #999999;
   padding-left: 10px;
   font-family: twccenmt;
   font-size: 15px;
 }
-/* line 933, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 935, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .fouder .detail {
   color: #666666;
   font-size: 18px;
 }
-/* line 938, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 940, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .about_page .fouder img {
   width: 100%;
   border-radius: 50%;
 }
-/* line 945, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 947, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .innerbut {
   top: 10px;
   border: 1px solid #38a6cb;
   background-color: #ffffff;
 }
-/* line 950, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 952, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .innerbut .icon-bar {
   background-color: #38a6cb;
 }
-/* line 955, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 957, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .innerbut:hover {
   background-color: #38a6cb;
 }
-/* line 959, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 961, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .innerbut:hover .icon-bar {
   background-color: #ffffff;
 }
-/* line 963, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 965, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .sub_menu a {
   color: #333333;
   font-size: 17px;
 }
-/* line 967, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 969, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .sub_menu a span {
   margin: 0;
 }
-/* line 972, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 974, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .sub_menu a:hover {
   color: gray;
 }
-/* line 976, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 978, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .sub_menu {
   padding: 15px 0;
 }
-/* line 980, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 982, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .navbar-brand {
   height: auto !important;
 }
-/* line 984, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 986, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .aferlogin {
   background-color: transparent;
 }
-/* line 988, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 990, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .innerheader {
   background-color: #4d4d4d;
   font-size: 16px;
 }
-/* line 993, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 995, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .openaccount {
   padding: 0 15px;
   margin: 15px 0;
   border-left: 1px solid #ffffff;
 }
-/* line 1002, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1004, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .borderbottom {
   padding: 0 0 15px;
   margin-bottom: 17px;
@@ -15248,7 +15248,7 @@ header {
   color: #616060;
   border-bottom: 1px solid #dddddd;
 }
-/* line 1010, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1012, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .btn-default {
   background: #ffc82f none repeat scroll 0 0;
   border-radius: 5px;
@@ -15259,30 +15259,30 @@ header {
   text-decoration: none !important;
   border: none;
 }
-/* line 1021, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1023, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .btn-default:hover {
   background: rgba(255, 200, 47, 0.8);
 }
-/* line 1025, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1027, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .sign_btn {
   float: right;
 }
-/* line 1029, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1031, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .smal_link {
   color: #38a6cb;
   padding-left: 5px;
 }
-/* line 1034, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1036, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth p.already {
   font-size: 12px;
   float: left;
   padding-top: 10px;
 }
-/* line 1040, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1042, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .hint, #wrap .maxwidth abbr {
   display: none;
 }
-/* line 1044, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1046, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .smal_link1 {
   border-right: 1px solid #38a6cb;
   padding-right: 10px;
@@ -15290,79 +15290,79 @@ header {
   color: #38a6cb;
   padding-left: 5px;
 }
-/* line 1052, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1054, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content .maxwidth label {
   font-weight: normal;
   padding: 7px 10px 0 0;
   font-size: 16px;
 }
-/* line 1058, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1060, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth {
   min-height: 500px;
 }
-/* line 1064, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1066, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .sign_bottom .form-group {
   float: right;
 }
-/* line 1068, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1070, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .maxwidth .sign_bottom {
   /* font-family: 'helveticanormal'; */
 }
-/* line 1072, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1074, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .sign_in #guide .text-ignore {
   font-size: 20px;
 }
-/* line 1076, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1078, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap .innerheader li a {
   background-color: transparent;
 }
-/* line 1081, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1083, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content #setting_list.table tr:first-of-type td {
   border-top: 0px;
 }
-/* line 1082, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1084, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content #setting_list.table .hint {
   color: #777;
   font-size: .7em;
   text-align: center;
   padding-top: 8px;
 }
-/* line 1090, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1092, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content .list-group {
   margin-right: -15px;
   margin-bottom: 0px;
 }
-/* line 1094, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1096, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content .list-group .list-group-item {
   border-left: 0px;
   border-right: 0px;
 }
-/* line 1098, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1100, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content .list-group .list-group-item.split {
   padding-bottom: 8px;
 }
-/* line 1101, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1103, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content .list-group .list-group-item.split > * {
   margin-top: 4px;
   margin-bottom: 0px;
 }
-/* line 1107, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1109, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content .list-group .list-group-item:first-of-type {
   padding-top: 0px;
   border-top: 0px;
 }
-/* line 1112, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1114, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #wrap #content .list-group .list-group-item:last-of-type {
   border-bottom: 0px;
 }
 
-/* line 1120, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1122, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #push, footer {
   /*height: $footer-height;*/
   box-sizing: 'border-box';
 }
 
-/* line 1125, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1127, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 footer {
   color: lightgrey;
   box-sizing: 'border-box';
@@ -15370,7 +15370,7 @@ footer {
   background-color: #4d4d4d;
   border-top: 1px solid #dddddd;
 }
-/* line 1132, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1134, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 footer ul.footer {
   list-style-type: none;
   float: left;
@@ -15378,17 +15378,17 @@ footer ul.footer {
   margin: 0;
   border-bottom: 1px solid white;
 }
-/* line 1140, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1142, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 footer ul.footer li {
   float: left;
   padding: 0 5px 20px 5px;
 }
-/* line 1145, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1147, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 footer ul.footer li a {
   color: white;
   font-size: 18px;
 }
-/* line 1150, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1152, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 footer .copyright {
   padding: 20px 0 0;
   float: left;
@@ -15398,7 +15398,7 @@ footer .copyright {
   width: 100%;
   text-align: left;
 }
-/* line 1159, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1161, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 footer .copyright a {
   color: white;
   text-decoration: underline;
@@ -15406,18 +15406,18 @@ footer .copyright a {
 
 /* ticker
 ------------------------------------------- */
-/* line 1168, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1170, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .dl-horizontal.dl-ticker {
   margin-bottom: 10px;
   line-height: 40px;
 }
-/* line 1172, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1174, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .dl-horizontal.dl-ticker dt {
   width: 38px;
   cursor: pointer;
   color: lightgrey;
 }
-/* line 1178, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1180, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .dl-horizontal.dl-ticker dd {
   margin-top: -4px;
   font-size: 20px;
@@ -15427,11 +15427,11 @@ footer .copyright a {
 
 /* simple_form mix
 ------------------------------------------------------- */
-/* line 1190, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1192, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 form.simple_form .form-submit input[type=submit] + a, form.simple_form .form-submit a + a, form.simple_form .form-group input[type=submit] + a, form.simple_form .form-group a + a {
   margin-right: 20px;
 }
-/* line 1195, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1197, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 form.simple_form hr.split {
   border-top-color: #DDD;
 }
@@ -15439,22 +15439,40 @@ form.simple_form hr.split {
 /* flash message element
 
 ------------------------------------------------------- */
-/* line 1202, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1204, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .flash-alert, .flash-notice {
   margin-top: 4px;
   margin-bottom: 4px;
 }
-/* line 1205, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1207, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 .flash-alert h5 i.fa, .flash-notice h5 i.fa {
   margin-right: 10px;
 }
 
-/* line 1207, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+/* line 1209, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
 #welcome-index section {
   border-bottom: none;
   padding: 0;
 }
 
+/* line 1214, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+  border-color: #ffc82f;
+  color: #fff !important;
+  background: #ffc82f;
+}
+
+/* line 1220, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+.btn-default {
+  background-color: #38a6cb;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 1227, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/application.css.scss */
+  body {
+    overflow-x: hidden;
+  }
+}
 /* line 2, /home/ptiweb/Desktop/ROR/TRADEAIRA/newsetup/tradenaira/app/assets/stylesheets/layouts/_custom.css.scss */
 #kline_chart .panel-body {
   padding: 0;
