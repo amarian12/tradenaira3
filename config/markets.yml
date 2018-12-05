@@ -64,8 +64,8 @@
   base_unit: btc
   quote_unit: ngn
   #price_group_fixed: 1 # aggregate price levels in orderbook
-  bid: {fee: 0.0050, currency: btc, fixed: 2}
-  ask: {fee: 0.0050, currency: ngn, fixed: 4}
+  bid: {fee: 0.0050, currency: ngn, fixed: 2}
+  ask: {fee: 0.0050, currency: btc, fixed: 4}
   sort_order: 1
   #visible: false     # default to true
 - id: btcusd
@@ -74,8 +74,8 @@
   base_unit: btc
   quote_unit: usd
   #price_group_fixed: 1 # aggregate price levels in orderbook
-  bid: {fee: 0.0050, currency: btc, fixed: 2}
-  ask: {fee: 0.0050, currency: usd, fixed: 4}
+  bid: {fee: 0.0050, currency: usd, fixed: 2}
+  ask: {fee: 0.0050, currency: btc, fixed: 4}
   sort_order: 1
   #visible: false     # default to true
 - id: btcgbp
@@ -84,8 +84,8 @@
   base_unit: btc
   quote_unit: gbp
   #price_group_fixed: 1 # aggregate price levels in orderbook
-  bid: {fee: 0.0050, currency: btc, fixed: 2}
-  ask: {fee: 0.0050, currency: gbp, fixed: 4}
+  bid: {fee: 0.0050, currency: gbp, fixed: 2}
+  ask: {fee: 0.0050, currency: btc, fixed: 4}
   sort_order: 1
   #visible: false     # default to true
 # - id: btceur
@@ -126,7 +126,7 @@
   base_unit: btc
   quote_unit: ghs
   #price_group_fixed: 1 # aggregate price levels in orderbook
-  bid: {fee: 0.0050, currency: btc, fixed: 2}
-  ask: {fee: 0.0050, currency: ghs, fixed: 4}
+  bid: {fee: 0.0050, currency: ghs, fixed: 2}
+  ask: {fee: 0.0050, currency: btc, fixed: 4}
   sort_order: 1
   #visible: false     # default to true 
