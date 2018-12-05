@@ -916,7 +916,7 @@ en:
         id_bill_type: Proof Of Residence
         id_bill_file: Proof Of Residence Photo
       update:
-        notice: Your account verification has been submitted.
+        notice: Your account verification has been submitted for review. You should receive a response within 24 hours.
     markets:
       show:
         error: Failed
@@ -1818,7 +1818,7 @@ en:
       content: Unfortunately, your account has not been approved as we were unable to verify your identity.Please log on to your TradeNAIRA account and submit a copy of valid government ID (Such as a Driver's License, Passport or National ID card) and a proof of address (Such as a utility bill, bank statement or local tax bill.) Once we have received and confirmed this information we will approve and activate your account. We look forward to having you as a member.
     verified:
       subject: "[Tradenaira] Your account verification state update"
-      content: Congratulations, we have verified your documents and your TradeNAIRA account has been approved. If you have verified you phone number already, you can now log on and have full access to our platform. You will be able to bid to buy and sell Naira online.
+      content: Congratulations, we have verified your documents and your TradeNAIRA account has been approved. If you have verified your phone number already, you can now log on and have full access to our platform.
 
 
   'true': true

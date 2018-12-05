@@ -289,11 +289,15 @@ before_action :auth_member!, only: [:two_factor, :processm]
       return false
     end
     
-    unless @me.receiver_account.balance >= @me.amount
-      flash[:alert] = "You do not have sufficient balance to process this request!" 
-      redirect_to :back
-      return false
+    if @status != "decline"
+      unless @me.receiver_account.balance >= @me.amount
+        flash[:alert] = "You do not have sufficient balance to process this request!" 
+        redirect_to :back
+        return false
+      end
     end
+
+
     return true
   end
 
