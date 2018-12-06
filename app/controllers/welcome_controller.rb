@@ -24,14 +24,16 @@ class WelcomeController < ApplicationController
    @user = Member.new(member_params)
    errors = false
    success = false
-   if @user.valid?
-    success = true
-     MemberMailer.contact_mail(@user).deliver
-   else
-      errors = @user.errors
-      success = false
-   end
-
+   
+  if 1 == 2
+     if @user.valid?
+      success = true
+       MemberMailer.contact_mail(@user).deliver
+     else
+        errors = @user.errors
+        success = false
+     end
+  end   
    response = { success: success, errors: errors }
 
    respond_to do |format|
