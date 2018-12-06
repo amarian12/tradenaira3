@@ -34,6 +34,7 @@ class TwoFactorsController < ApplicationController
     me = MoneyExchange.find_by_id(mei)
     capreq = false
     account = me.account
+    receiver_id = me.receiver.nil? ? 0 : me.receiver.id
 
     unless me.nil?
       if two_factor_auth_verified?
@@ -41,8 +42,7 @@ class TwoFactorsController < ApplicationController
         if me.save
           sucess = true
 
-          #if me.sent_to_id.to_i == 0
-            #sendSignupMailtoUser
+          #Request money
           if acode == "request"
             msg = "Your money has been requested successfully. Your wallet will reflect once user approved your transaction"
             if me.receiver.nil?
@@ -50,15 +50,13 @@ class TwoFactorsController < ApplicationController
             else
               msgnoti = "#{current_user.email} requested you some money!"
               SrNotofication.create(
-              member_id: me.receiver.id,
+              member_id: receiver_id,
               msg: msgnoti,
               link_page: "accept_decline",
               status: false)
              UserMailer.money_request(me,current_user).deliver
             end
-
-
-            
+          #Request money  
           elsif acode == "send"
             account.lock_funds(me.amount, reason: Account::MONEYSENT, ref: self)
             msg = "Your money has been sent successfully. Your wallet will reflect once we have approved your transaction"  
@@ -66,7 +64,7 @@ class TwoFactorsController < ApplicationController
             msgnoti = "#{current_user.email} sent you some money, 
             currently its waiting for admin approval."
             SrNotofication.create(
-              member_id: me.receiver.id,
+              member_id: receiver_id,
               msg: msgnoti,
               link_page: "accept_decline",
               status: false)
@@ -74,6 +72,24 @@ class TwoFactorsController < ApplicationController
             if me.receiver.nil?
               UserMailer.signup_request(me,current_user).deliver
             end
+          
+          #Escrow Money
+          elsif acode == "escrow"
+            account.lock_funds(me.amount, reason: Account::MONEYESCROW, ref: self)
+            msg = "Your money has been escrow successfully. Same fund is locked from your wallet and will reflect as per admin actions."  
+            #send notification
+            msgnoti = "#{current_user.email} escrowed some money with you, 
+            currently its waiting for admin approval."
+            SrNotofication.create(
+              member_id: receiver_id,
+              msg: msgnoti,
+              link_page: "escrow",
+              status: false)
+            UserMailer.admin_approval(me).deliver
+            if me.receiver.nil?
+              UserMailer.signup_request(me,current_user).deliver
+            end
+           
 
           end
 

@@ -29,16 +29,31 @@
               </tr>
               </tbody>
             </table>
-          <% else %>
+          <% elsif @me.request_type == "request_meney" %>
               <table>
                 <tbody>
                   <tr>
                     <td>
                       <p>Hi,</p>
                       <p><%=@member_name %> has made a payment request from you 
-                       for <%= @amount %><%= @currency%> </p>
+                       for <%= @amount %><%= @currency%>. </p>
                       
                       <p>You are not currently a registered user of TradeNAIRA, please <a href="https://tradenaira.com/signup">sign up</a> to make payment.</p>
+                      <p><%= raw t('mailer.signature') %></p>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+          <% elsif @me.request_type == "escrow_money" %>  
+            <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>Hi,</p>
+                      <p><%=@member_name %> has escrowed a payment with you 
+                       for <%= @amount %><%= @currency%> </p>
+                      
+                      <p>You are not currently a registered user of TradeNAIRA, please <a href="https://tradenaira.com/signup">sign up</a> to involve for escrowed payment.</p>
                       <p><%= raw t('mailer.signature') %></p>
                     </td>
                   </tr>

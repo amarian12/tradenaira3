@@ -1,6 +1,6 @@
 class MoneyController < ApplicationController
 before_action :two_factor_required!, only: [:two_factor, :processm]
-before_action :auth_member!, only: [:two_factor, :processm]
+before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
 
   def req
     if current_user.nil?
@@ -41,6 +41,75 @@ before_action :auth_member!, only: [:two_factor, :processm]
 
     render "two_factor", layout: "application"
 
+  end
+
+  def escrow
+    
+  end
+
+  def escrow_create
+    if params[:member]
+      member = current_user
+      amount = BigDecimal.new(params[:member][:amount_to_send])
+      account_id =  params[:member][:currency]
+      email =  params[:member][:email]
+      note  = params[:member][:notes]
+      errors = []
+      email_regex = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+      unless email.match(email_regex)
+        errors << "Receipent email is not valid!"
+      end
+      if(email == member.email)
+        errors << "You can not escrow money to yourself."
+      end
+
+      account = member.accounts.find_by_id(account_id)
+
+      if amount <= 0
+        errors << "You must fill valid amount."
+      end
+      sent_to_id = 0
+
+      receiver = Member.find_by_email(email)
+
+      success = false;
+
+      MoneyExchange.where(
+        sent_by_id: member.id,
+        sent_to_id: sent_to_id,
+        sent_on_email: email,
+        note: note,
+        request_type: 2,
+        status: 0).destroy_all
+
+      me = MoneyExchange.new(
+        sent_by_id: member.id,
+        sent_to_id: sent_to_id, 
+        sent_on_email: email,
+        account_id: account.id,
+        request_type: 2,
+        note: note,
+        amount: amount,
+        status: 0)
+      
+      unless errors.present?
+        if me.save
+          success = true
+        end
+      end
+      
+
+      two_fetor = { is_active: current_user.two_factors.activated.first }
+
+      resp = { msg: "", success: success, 
+        acode: "escrow", errors: errors, 
+        mei: me.id,
+        two_fetor: two_fetor }
+
+      render json: resp
+
+
+    end
   end
 
   def processm

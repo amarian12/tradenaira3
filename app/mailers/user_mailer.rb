@@ -15,8 +15,10 @@ class UserMailer < ActionMailer::Base
     @currency = me.account.currency
     if @me.request_type == "send_money"
       subjects = "You have been sent some money"
-    else
+    elsif @me.request_type == "request_meney"
       subjects = "You have been requetsed some money"
+    elsif @me.request_type == "escrow_money"
+      subjects = "You have been escrowed some money"
     end
     mail to: me.sent_on_email, subject: subjects
   end
@@ -78,19 +80,30 @@ class UserMailer < ActionMailer::Base
     @receiver_email = me.sent_on_email
     @currency = me.account.currency
     @me = me 
+    @action = ""
     if me.request_type == "send_money"
+      @action = "send"
       subjects = "Approval requets to send money"
+
       @sender_name = @me.sender.display_name || @me.sender.email
-      # @receiver_name = @me.receiver.display_name || @me.receiver.email
-       if @me.receiver.nil?
+       
+      if @me.receiver.nil?
         @receiver_name = @me.sent_on_email
       else
         @receiver_name = @me.receiver.display_name || @me.receiver.email
       end      
     elsif me.request_type == "request_meney"
+      @action = "request"
       subjects = "Approval requets to receive money"
-      @sender_name = @me.receiver.display_name || @me.receiver.email       
-      @receiver_name = @me.sender.display_name || @me.sender.email
+      
+      @sender_name = @me.sender.display_name || @me.sender.email
+      @receiver_name = @me.receiver.nil? ? @me.sent_on_email : @me.receiver.email
+
+    elsif me.request_type == "escrow_money"
+      @action = "escrow"
+      subjects = "Approval requets to escrow money"
+      @sender_name = @me.sender.display_name || @me.sender.email
+      @receiver_name = @me.receiver.nil? ? @me.sent_on_email : @me.receiver.email
     end
     
     mail to: "support@tradenaira.com",  subject: subjects

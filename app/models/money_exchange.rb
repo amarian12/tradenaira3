@@ -15,7 +15,8 @@ class MoneyExchange < ActiveRecord::Base
 
 	REQTYPES = {
 		send_money: 0,
-		request_meney: 1
+		request_meney: 1,
+		escrow_money: 2
 	}
 
 	enumerize :status, in: STATUS_CODES, scope: true
