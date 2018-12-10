@@ -8,6 +8,8 @@ namespace :admin do
   delete '/remove_subscribers/:id', to: 'dashboard#remove_subscribers', as: :remove_subscribers
 
   get '/members', to: 'members#index'
+  get '/members', to: 'members#edit'
+  get '/members', to: 'members#update'
   post '/complete', to: 'id_documents#complete' 
   post '/uncomplete', to: 'id_documents#uncomplete' 
   post '/complete', to: 'members#complete' 
@@ -51,6 +53,7 @@ namespace :admin do
       post :withdraw
       post :complete
       post :uncomplete
+      post :lock_user, as: "lock_user"
     end
 
     resources :two_factors, only: [:destroy]

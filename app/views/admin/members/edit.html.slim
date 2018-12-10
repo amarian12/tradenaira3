@@ -1,0 +1,26 @@
+<%= form_for [:member, @user], 
+html: {id: 'post-form', class: 'pure-form pure-form-stacked', multipart: true } do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_link %>
+    <%= f.text_field :target_link %>
+  </div>
+
+    <div class="field">
+    <%= f.label :content %>
+    <%= f.text_field :settings %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

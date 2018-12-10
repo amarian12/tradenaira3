@@ -97,6 +97,7 @@ gem 'gmaps-autocomplete-rails', github: "kristianmandrup/gmaps-autocomplete-rail
 
 gem "jquery-validation-rails"
 gem 'sitemap_generator'
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :development, :test do
   gem 'factory_girl_rails'

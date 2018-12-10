@@ -27,6 +27,9 @@
 
       = item_for member, :actions do
         = link_to 'Activate Email', active_admin_member_path(member), method: :post, confirm: 'Activate ?', class: 'btn btn-danger btn-xs'
+        
+      = item_for member, :actions do
+        = link_to 'Block', lock_user_admin_member_path(member), method: :post, confirm: 'Block User?', class: 'btn btn-danger btn-xs'
 
       hr.split
 

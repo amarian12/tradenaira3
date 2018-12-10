@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user, :is_admin?, :current_market, :gon, :logged_in?
-  before_action :set_timezone, :set_gon
+  before_action :set_timezone, :set_gon, :is_locked?
   after_action :allow_iframe
   after_action :set_csrf_cookie_for_ng
   rescue_from CoinRPC::ConnectionRefusedError, with: :coin_rpc_connection_refused
@@ -293,6 +293,17 @@ class ApplicationController < ActionController::Base
     Ghana Cedis, Euros & Bitcoin at best Naira Exchange Rates. 
     Send money to Nigeria with the best NGN exchange rates for USD, 
     EUR, BTC, GHC & GBP."
+  end
+
+  def is_locked?
+    if current_user
+      if current_user.is_locked?
+        #current_user.try(:reset_session_token)
+        #session[:session_token] = nil
+        #redirect_to root_path, alert: "Your account has been blocked for Misuse and violations of our terms and conditions. "
+      end
+    end
+    
   end
 
 end

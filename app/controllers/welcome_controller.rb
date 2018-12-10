@@ -23,23 +23,22 @@ class WelcomeController < ApplicationController
   def contact
    @user = Member.new(member_params)
    errors = false
-   success = false
-   
-  if 1 == 2
-     if @user.valid?
-      success = true
-       MemberMailer.contact_mail(@user).deliver
-     else
-        errors = @user.errors
-        success = false
-     end
-  end   
+   success = false 
+    if verify_recaptcha(model: @user)
+        if @user.valid?
+          success = true
+          MemberMailer.contact_mail(@user).deliver
+        else
+            errors = @user.errors
+            success = false
+        end
+    else
+      errors = {captcha: "Invalid captcha please try again!"}
+    end
    response = { success: success, errors: errors }
-
    respond_to do |format|
-    format.json { render json: response }
+     format.json { render json: response }
    end
-   
   end
 
   private

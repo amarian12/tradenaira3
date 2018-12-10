@@ -242,6 +242,20 @@ class Member < ActiveRecord::Base
     two_factors.by_type(:app)
   end
 
+  def is_locked?
+    identity = Identity.find_by_email(self.email)
+    unless identity.nil?
+      puts identity.inspect
+      if identity.is_locked
+        return true
+      end
+    else
+      puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    end
+  end
+
+
+
   def sms_two_factor
     two_factors.by_type(:sms)
   end

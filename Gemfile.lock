@@ -375,6 +375,8 @@ GEM
     rbtree (0.4.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    recaptcha (4.9.0)
+      json
     redis (3.0.7)
     redis-actionpack (4.0.0)
       actionpack (~> 4)
@@ -576,6 +578,7 @@ DEPENDENCIES
   rails-observers
   rails_12factor
   rbtree
+  recaptcha
   redis-rails
   rest-client (~> 1.6.8)
   rotp

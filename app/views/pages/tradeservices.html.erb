@@ -1,4 +1,4 @@
-
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">
 $(function(){
   var $elems = $('.animateblock');
@@ -196,6 +196,7 @@ $(function(){
 					   <%= f.label :Business_Address %>
 					   <%= f.text_field :business_address,:input_html =>{:id => 'gmaps-input-address'},:required => true %>
 					   </div></div>
+					    <%= recaptcha_tags %>
 				  <div class="form_row1">
 				    <div class="form_input submit-btn"> 
 				       <%= f.submit "Submit", id: "submitformbtn" %>
