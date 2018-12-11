@@ -28,8 +28,14 @@ module Admin
       #puts Identity.find_by_email(@member.email).inspect
       identity = Identity.find_by_email(@member.email)
       unless identity.nil?
-        identity.is_locked = true
-        identity.locked_at = DateTime.now
+        if params[:block] == "false"
+          identity.is_locked = nil
+          identity.locked_at = nil
+        else
+          identity.is_locked = true
+          identity.locked_at = DateTime.now
+        end
+        
 
         if identity.save(validate: false)
           flash[:notice] = 'success'
@@ -60,7 +66,7 @@ module Admin
 private 
 
 def subscriber_member
-      params.require(:member).permit(:email)
+      params.require(:member).permit(:email,:name, :phone_number,:notes,:created_at)
     end
   end
 end

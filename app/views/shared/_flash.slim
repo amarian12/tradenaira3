@@ -11,7 +11,7 @@
       button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
       p
         i.fa.fa-info-circle
-        span = flash[:alert]
+        span = raw(flash[:alert].gsub("##TC_LINK##","<a href='/pages/termsofuse'>terms and conditions</a>"))
 
   -if flash[:info]
     .alert.alert-dismissable.alert-info

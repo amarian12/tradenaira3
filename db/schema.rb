@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181129113226) do
+ActiveRecord::Schema.define(version: 20181211124749) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -670,6 +670,14 @@ ActiveRecord::Schema.define(version: 20181129113226) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
+  create_table "visitor_counters", force: true do |t|
+    t.string   "ip_address"
+    t.boolean  "is_signedin"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "withdraws", force: true do |t|
     t.string   "sn"

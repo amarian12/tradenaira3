@@ -33,31 +33,38 @@ class PagesController < ApplicationController
   end
 
   def srnoti
+    #first update the visitor counter
+    update_visitor_counter
+
     unless current_user.nil?
-      if params[:task] == "load"
-        msgs = current_user.sr_notofications
-        active_count = msgs.where(status: false).count
-        #.order(created_at: :desc)
-        #TimeDifference.between(start_time, end_time).humanize
-        msgsresp = []
+        if params[:task] == "load"
+          msgs = current_user.sr_notofications
+          active_count = msgs.where(status: false).count
+          #.order(created_at: :desc)
+          #TimeDifference.between(start_time, end_time).humanize
+          msgsresp = []
 
-        msgs.order(created_at: :desc).map{|n| 
-          ddif = TimeDifference.between(DateTime.now, n.created_at).humanize
-          msgsresp << { id: n.id, msg: n.msg, link_page: n.link_page,
-            created_at: n.created_at, status: n.status, ddif: ddif   }
-        }
+          msgs.order(created_at: :desc).map{|n| 
+            ddif = TimeDifference.between(DateTime.now, n.created_at).humanize
+            msgsresp << { id: n.id, msg: n.msg, link_page: n.link_page,
+              created_at: n.created_at, status: n.status, ddif: ddif   }
+          }
 
-        resp = { success: true, msgs: msgsresp, active_count: active_count    }
-        
-      elsif params[:task] == "clear"
-         msgs = current_user.sr_notofications.map{|n| 
-          n.status = true 
-          n.save
-        } 
-         resp = { success: true, msgs: msgs  }
-      end
-      render json: resp
+          resp = { success: true, msgs: msgsresp, active_count: active_count    }
+          
+        elsif params[:task] == "clear"
+           msgs = current_user.sr_notofications.map{|n| 
+            n.status = true 
+            n.save
+          } 
+          resp = { success: true, msgs: msgs  }   
+        end
+    else    
+      resp = { success: false, msgs: ""  }
     end
+
+     
+    render json: resp
 
   end
 

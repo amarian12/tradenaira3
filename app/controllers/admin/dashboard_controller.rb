@@ -18,6 +18,14 @@ module Admin
       
     end
 
+    def visitors_counter
+      vcs = VisitorCounter.find(:all, 
+        :conditions => ["updated_at > ?", 30.seconds.ago] )
+      resp = { success: true, vcs: vcs  }
+      render json: resp
+
+    end
+
     def update_subscribers
     	subscriber = Subscriber.find_by_id(params[:id])
     	unless subscriber.nil?

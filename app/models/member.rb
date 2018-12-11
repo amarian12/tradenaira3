@@ -32,6 +32,7 @@ class Member < ActiveRecord::Base
 
   has_one :id_document
   has_one :slider
+  has_one :visitor_counters
 
   has_many :authentications, dependent: :destroy
   
@@ -250,7 +251,6 @@ class Member < ActiveRecord::Base
         return true
       end
     else
-      puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
     end
   end
 

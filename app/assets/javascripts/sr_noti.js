@@ -1,13 +1,13 @@
  
  $(document).ready(function(){  
 
- 	if(typeof(gon.current_user) != "undefined"){
- 		if(typeof(gon.current_user.sn) != "undefined"){
+ 	//if(typeof(gon.current_user) != "undefined"){
+ 		//if(typeof(gon.current_user.sn) != "undefined"){
  			  setInterval(function(){
  			 	sRNotification();
  			 },3000)
- 		}
- 	}
+ 		//}
+ 	//}
 
  	if ($("li.srnotification")[0]) {
  		var titlemsg = "No new notification"
@@ -25,29 +25,27 @@
 
 
  function sRNotification(){
- 	if(!$(".srnotification")[0]){
- 		return false;
- 	}
+ 	// if(!){
+ 	// 	return false;
+ 	// }
 
  	$.ajax({
  		url: "/pages/alerts",
  		type: "post",
  		data: { task: "load" },
  		success: function(resp){
- 				 
- 			 if(resp.success && resp.active_count > 0){
+ 			if(resp.success && resp.active_count > 0){
  			 	var ss = resp.active_count > 0 ? "s" : "";
  			 	var titlemsg = resp.active_count+" new notification"+ss;
-
- 			 	 $("li.srnotification .ncntr").text(resp.active_count);
-
- 			 	 $("li.srnotification ").addClass("active")
- 			 	 .attr("title",titlemsg)
- 			 	 .attr("alt",titlemsg);
- 			 	  
- 			 }else{
+ 			 	if($(".srnotification")[0]){
+ 			 		$("li.srnotification .ncntr").text(resp.active_count);
+ 			 	 	$("li.srnotification ").addClass("active")
+ 			 	 	.attr("title",titlemsg)
+ 			 	 	.attr("alt",titlemsg);
+ 			 	} 			 	  
+ 			}else{
  			 	
- 			 }
+ 			}
  		},
  		dataType: "json",
  		error: function(){

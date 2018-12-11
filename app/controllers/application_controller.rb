@@ -282,6 +282,25 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless logged_in?
   end
 
+  def update_visitor_counter
+    ip = request.remote_ip
+    member_id = current_user.nil? ? nil : current_user.id
+    vc = VisitorCounter.find_by_ip_address(ip)
+    if vc.nil?
+      vc = VisitorCounter.new(
+        ip_address: ip, 
+        member_id: member_id,
+        updated_at: DateTime.now(),
+        is_signedin: (member_id.nil? ? false : true)  )
+    else
+      vc.ip_address = ip
+      vc.member_id  = member_id
+      vc.updated_at  = DateTime.now() 
+    end
+    vc.save
+    
+  end
+
   
 
    private 
@@ -298,9 +317,12 @@ class ApplicationController < ActionController::Base
   def is_locked?
     if current_user
       if current_user.is_locked?
-        #current_user.try(:reset_session_token)
-        #session[:session_token] = nil
-        #redirect_to root_path, alert: "Your account has been blocked for Misuse and violations of our terms and conditions. "
+
+        clear_all_sessions current_user.id
+        reset_session
+        cookies.encrypted[:user_id] = ""
+        session[:session_token] = nil
+        redirect_to signin_path, alert: "Your account has been blocked for Misuse and violations of our ##TC_LINK##. "
       end
     end
     

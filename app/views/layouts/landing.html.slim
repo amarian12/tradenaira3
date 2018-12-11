@@ -13,8 +13,8 @@ html lang="en"
     = javascript_include_tag "locales/#{I18n.locale}"
     = render 'shared/html5'
 
-    - unless current_user.nil?
-      = javascript_include_tag "sr_noti"
+    //- unless current_user.nil?
+    = javascript_include_tag "sr_noti"
 
     /*= render 'shared/meta'*/
     = csrf_meta_tags

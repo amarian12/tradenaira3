@@ -1,50 +1,45 @@
- <%= form_for @member, :url => url_for(:controller => 'members', :action => 'update') do |f| %>  
+<%= form_for @member, :url => url_for(:controller => 'members', :action => 'update') do |f| %>  
   <div class="form_row1"> 
     <div class="form_input">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
   </div>
-  </div>
-    <div class="form_row1"> 
+  <div class="form_row1"> 
     <div class="form_input">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
   </div>
-  </div>
-
-   <div class="form_row1"> 
+  <div class="form_row1"> 
     <div class="form_input">
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number %>
    </div>
-  </div>
-
-  <div class="form_row1"> 
-    <div class="form_input">
-    <%= f.label :created_at %>
-    <%= f.text_field :created_at %>
-  </div>
-  </div>
-   <div class="form_row1"> 
-    <div class="form_input">
-    <%= f.label :notes %>
-    <%= f.text_field :notes %>
-  </div>
-  </div>
-
-   <div class="form_row1"> 
-    <div class="form_input">
-    <%= f.label :notes_created %>
-    <%= f.text_field :updated_at %>
-  </div>
-  </div>
-
-
-  <div class="form_row1">
-    <div class="form_input submit-btn"> 
-    <%= f.submit "update" %> 
  </div>
-  </div>
+ <div class="form_row1"> 
+   <div class="form_input">
+      <%= f.label :created_at %>
+      <%= f.text_field :created_at %>
+   </div>
+ </div>
+ <div class="form_row1"> 
+   <div class="form_input">
+      <%= f.label :notes %>
+      <%= f.text_field :notes %>
+   </div>
+ </div>
+ <div class="form_row1"> 
+   <div class="form_input">
+      <%= f.label :notes_created %>
+      <%= f.text_field :updated_at %>
+   </div>
+ </div>
+ <div class="form_row1">
+   <div class="form_input submit-btn"> 
+      <%= f.submit "update" %> 
+    </div>
+ </div>
 <% end %>
 
 

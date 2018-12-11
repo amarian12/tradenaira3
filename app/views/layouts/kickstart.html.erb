@@ -17,9 +17,10 @@
       <%= javascript_include_tag 'bundle' %>
       <%= javascript_include_tag 'tradeniara' %>
 
-
-      <% unless current_user.nil? %> 
       <%= javascript_include_tag 'sr_noti' %>
+      
+      <% unless current_user.nil? %> 
+      
       <% else %>
         <style type="text/css">
           .srnotification{

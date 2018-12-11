@@ -74,6 +74,11 @@ $(document).ready(function(){
            
         }
     }) 
+
+    setInterval(function(){
+      liveCounter()
+    },4000);
+     
 })
 
 function validateSrDates(){
@@ -128,4 +133,30 @@ function srchFinances($this){
  
 
   return false;
+}
+
+function liveCounter(){
+
+  var livecl = $(".live_counter");
+  if (livecl[0]) {
+    $.ajax({
+      url: "/admin/visitors_counter",
+      type: "post",
+      dataType: "json",
+      success: function(resp){
+          
+        //alert(JSON.stringify(resp))
+        if(resp.success){
+          cntr_html = '<span>'+resp.vcs.length+'</span>';
+          $(".live_counter a span.cntr").html(cntr_html);
+          
+        }
+      },
+      error: function(resp){
+         
+        //alert(JSON.stringify(resp))
+      }
+
+    })
+  }
 }

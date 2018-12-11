@@ -1,5 +1,6 @@
 namespace :admin do
   get '/', to: 'dashboard#index', as: :dashboard
+  post 'visitors_counter',to: 'dashboard#visitors_counter', as: "visitors_counter"
   get '/subscribers', to: 'dashboard#subscribers', as: :subscribers
   get '/update_subscribers/:id', to: 'dashboard#update_subscribers', as: :update_subscribers
   get '/new_subscriber', to: 'dashboard#new_subscriber', as: :new_subscriber

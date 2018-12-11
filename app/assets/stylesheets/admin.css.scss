@@ -54,6 +54,31 @@ b.caret {
 
 span.detail-item, span.detail-section { display: block; }
 
+.counter-container{
+  position: relative;
+  .live_counter{
+    position: absolute;
+    right: -30px;
+    top: 0;
+    width: 100px;
+    a{
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      padding: 8px 2px;
+      margin: 0;
+      .cntr{
+        display: block;
+        display: block;
+        color: green;
+        margin: -9px 1px 0 32px;
+        background: #fff;
+        width: 30px;
+      }
+    }
+  }
+}
+
 span.detail-item {
   & > i.fa {
     &:before {
