@@ -32,6 +32,22 @@ module Admin
 
 	  end
 
+	  def escrow
+	  	status = params[:status] || ""
+	  	if params[:status].nil?
+	  		@me = MoneyExchange.where("status > 0")	
+	  	else
+	  		@me = MoneyExchange.where(status: MoneyExchange::STATUS_CODES[status.to_sym])
+	  	end
+
+	  	@me = @me
+	  	.where(request_type: 2)
+	  	.order(created_at: :desc)
+	  	@request_type = "Escrow Money"
+	  	@status = status
+
+	  end
+
 	  def manage
 	  	@me = MoneyExchange.find_by_id(params[:id])
 	  	me = @me
@@ -55,7 +71,7 @@ module Admin
 	  		@me.approve_transuction
 	  		if @me.update_success
 	  			if me.save
-		  			flash[:notice] = "Amount transfer successfully approved"
+		  			flash[:notice] = "Amount approved successfully"
 		  			redirect_to :back
 		  			return false
 	  			end
@@ -64,11 +80,21 @@ module Admin
   			@me.status = "declined"
   			@me.decline_transuction
   			if @me.save
-	  			flash[:notice] = "Request declined successfully!"
+	  			flash[:notice] = "Declined successfully!"
 	  			UserMailer.admin_decline(@me,@me.sender).deliver
 	  			redirect_to :back
 	  			return false
 	  		end
+	  	when "won_sender"
+	  		@me.status = "won_sender"
+	  		@me.save
+	  		@me.approve_transuction
+	  		flash[:notice] = "Success!"
+	  	when "won_receiver"	
+	  		@me.status = "won_receiver"
+	  		@me.save
+	  		@me.approve_transuction
+	  		flash[:notice] = "Success!"
 	  	end
 
 

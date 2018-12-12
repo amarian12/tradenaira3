@@ -1,0 +1,90 @@
+ <h1>Request Type: <%= @request_type %></h1>
+ <p>Show only requets for Status: </p>
+ <div class="navbar navbar-inverse" id="navbarNav">
+ <ul class="nav navbar-nav navbar-left">
+ 	<li class="<% 'active' if @status == "" %>">
+ 		<%= link_to "All", admin_escrow_money_path() %>
+ 	</li>
+ 	 
+ 	<li class="<%= 'active' if @status == "active" %> nav-item">
+ 		<%= link_to t(:active), admin_escrow_money_path(status: :active) %>
+ 	</li>
+ 	<li class="<%= 'active' if @status == "declined" %> nav-item">
+ 		<%= link_to t(:declined), admin_escrow_money_path(status: :declined) %>
+ 	</li>
+ 	<li class="<%= 'active' if @status == "approved" %> nav-item">
+ 		<%= link_to t(:approved), admin_escrow_money_path(status: :approved) %>
+ 	</li>
+ </ul>
+</div>
+
+ <table class="table">
+ 	<thead>
+ 		<tr>
+ 			<td>#</td>
+ 			<td>Sent By</td>
+ 			<td>Sent To</td>
+ 			<td>Amount to send</td>
+ 			<td>Escrower Current Balance</td>
+ 			<td>Status</td>
+ 			<td>Actions</td>
+ 		</tr>
+ 	</thead>
+ 	<tbody>
+ 		<% @me.each do |me| %>
+	 		<tr>
+	 			<td><%= me.id %></td>
+	 			<td><%= me.sender.display_name || me.sender.email %></td>
+	 			<td>
+	 				<% if me.receiver.nil? %>
+	 				<%= me.sent_on_email %>
+	 				<% else %>
+	 					<%= me.receiver.display_name || me.receiver.email %>
+	 				<% end %>	
+	 			</td>
+	 			<td>
+	 				<%= me.amount %><%= me.account.currency %>
+	 			</td>
+	 			<td>
+	 				<%= me.account.balance %><%= me.account.currency %>
+	 			</td>
+	 			<td>
+	 				<span class="trans_<%= t me.status %>"><%= t me.status %></span>
+	 				
+	 				 
+	 			</td>
+	 			<td>
+	 				<% unless me.receiver_account.nil? %>
+	 				 
+	 				 <% case me.status %>
+	 				 <% when "active" %>
+	 				 	<%= link_to "Approve", 
+	 						admin_manage_money_path(me.id,"approve"),
+	 						class: "btn btn-default", data: { method: "POST" } %>
+	 					<%= link_to "Decline", 
+	 						admin_manage_money_path(me.id,"declined"),
+	 						class: "btn btn-default", data: { method: "POST" } %>
+	 				<% when "approved" %>	
+	 					<%= link_to "Won sender", 
+	 						admin_manage_money_path(me.id,"won_sender"),
+	 						class: "btn btn-default", data: { method: "POST" } %>
+
+	 					<%= link_to "Won receiver", 
+	 						admin_manage_money_path(me.id,"won_receiver"),
+	 						class: "btn btn-default", data: { method: "POST" } %>	
+
+	 				 <% end %>
+	 				 
+	 				
+	 				<% else %>
+	 					<%= link_to "Resend Notification to create account", admin_resend_instructions_money_path(me.id), 
+	 					data:{ method: "POST" } %>
+	 					 
+	 				<% end %>
+	 			</td>
+	 			<td></td>
+	 			<td></td>
+	 		</tr>
+ 		<% end %>
+ 	</tbody>
+ </table>

@@ -75,9 +75,20 @@ $(document).ready(function(){
         }
     }) 
 
-    setInterval(function(){
-      liveCounter()
-    },4000);
+    if($(".live_counter")[0]){
+        setInterval(function(){
+          liveCounter();
+        },4000);
+
+        $(".live_counter a").click(function(){
+          //alert(1)
+          $(".live_counter .counter_info").toggle();
+          return false;
+        })
+
+    }
+
+    
      
 })
 
@@ -138,17 +149,79 @@ function srchFinances($this){
 function liveCounter(){
 
   var livecl = $(".live_counter");
+  var counter_info = $(".counter_info");
+  var info_html, user;
   if (livecl[0]) {
     $.ajax({
       url: "/admin/visitors_counter",
       type: "post",
       dataType: "json",
       success: function(resp){
-          
+          console.log(resp);
         //alert(JSON.stringify(resp))
         if(resp.success){
           cntr_html = '<span>'+resp.vcs.length+'</span>';
           $(".live_counter a span.cntr").html(cntr_html);
+
+          info_html = "<table class='table info-inner'>";
+
+          //total signed in users
+          info_html += '<tr>';
+            info_html += '<td colspan=2>';
+              info_html += 'Total Signed in users: ';
+            info_html += '</td>';
+            info_html += '<td>';
+              info_html += resp.signed_in_count;
+            info_html += '</td>';
+          info_html += '</tr>';
+
+          //total unsigned in users
+          info_html += '<tr>';
+            info_html += '<td colspan=2>';
+              info_html += 'Total Unknown visitors:';
+            info_html += '</td>';
+            info_html += '<td>';
+              info_html += (resp.vcs.length - resp.signed_in_count);
+            info_html += '</td>';
+          info_html += '</tr>';
+
+          info_html += '<tr>';
+            info_html += '<td>';
+              info_html += 'user#';
+            info_html += '</td>';
+            info_html += '<td>';
+              info_html += "Email";
+            info_html += '</td>';
+
+            info_html += '<td>';
+              info_html += "IP Address";
+            info_html += '</td>';
+          info_html += '</tr>';
+
+          for(var i=0; i<resp.vcs.length; i++){
+            vc = resp.vcs[i];
+            if(vc.member_id > 0){
+              info_html += '<tr>';
+                info_html += '<td>';
+                  info_html += vc.member_id;
+                info_html += '</td>';
+                info_html += '<td>';
+                  info_html += '<a href="/admin/members/'+vc.member_id+'">';
+                    info_html += vc.member.email;
+                  info_html += '</a>';  
+                info_html += '</td>';
+
+                info_html += '<td>';
+                  info_html += vc.ip_address;
+                info_html += '</td>';
+              info_html += '</tr>';
+            }
+            
+          }
+
+          info_html += "</table>";
+
+          counter_info.html(info_html);
           
         }
       },

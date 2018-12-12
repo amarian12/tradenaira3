@@ -66,7 +66,7 @@ module Admin
 private 
 
 def subscriber_member
-      params.require(:member).permit(:email,:name, :phone_number,:notes,:created_at)
+      params.require(:member).permit(:name,:email,:phone_number,:notes,:created_at)
     end
   end
 end

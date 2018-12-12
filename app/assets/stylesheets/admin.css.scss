@@ -61,6 +61,7 @@ span.detail-item, span.detail-section { display: block; }
     right: -30px;
     top: 0;
     width: 100px;
+    z-index: 99;
     a{
       color: #fff;
       text-align: center;
@@ -74,6 +75,24 @@ span.detail-item, span.detail-section { display: block; }
         margin: -9px 1px 0 32px;
         background: #fff;
         width: 30px;
+      }
+    }
+
+    .counter_info{
+      position: absolute;
+      left: -450px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 500px;
+      top: 44px;
+      overflow-y: scroll;
+      max-height: 265px; 
+      td{
+        color: #364450;
+        a{
+          color: #364450;
+        }
       }
     }
   }

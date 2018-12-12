@@ -76,6 +76,7 @@ html lang="en"
                 ul.dropdown-menu
                   li = link_to "Sent Money", admin_sent_money_path
                   li = link_to "Requested Money", admin_requested_money_path   
+                  li = link_to "Escrow", admin_escrow_money_path 
                   li = link_to "Finances", admin_finances_path            
 
             - if can? :manage, Member
@@ -102,9 +103,10 @@ html lang="en"
 
           ul.counter-container.nav.navbar-nav.navbar-right
             li class = "live_counter"
-              = link_to "Live Counter" do 
+              = link_to "javascript:void(0)" do 
                 label Live Counter
                 span.cntr
+              .counter_info style="display: none;"  
                        
                 
           ul.nav.navbar-nav.navbar-right

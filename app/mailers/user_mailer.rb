@@ -73,6 +73,14 @@ class UserMailer < ActionMailer::Base
      #when admin decline
   end
 
+  def escrow_success me
+    @me       = me
+    @sender   = @me.sender
+    @receiver = @me.receiver
+    subjects  = "Money escrowed successfully!"
+    mail to: [@sender.email,@receiver.email], subject: subjects
+  end
+
  
 
   def admin_approval me

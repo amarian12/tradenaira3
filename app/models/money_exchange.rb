@@ -10,7 +10,9 @@ class MoneyExchange < ActiveRecord::Base
 		approved: 2,
 		declined: 3,
 		accepted_by_receipent: 4,
-		declined_by_receipent: 5
+		declined_by_receipent: 5,
+		won_sender: 6,
+		won_receiver: 7
 	}
 
 	REQTYPES = {
@@ -183,6 +185,21 @@ class MoneyExchange < ActiveRecord::Base
 				end
 			end
 
+		elsif self.request_type == "escrow_money"	
+			self.update_success = true
+			msg = "Money escrowed successfully approved by admin"
+			SrNotofication.create(
+	          member_id: self.sender.id,
+	          link_page: "escrow",
+	          msg: msg,
+	          status: false)
+			SrNotofication.create(
+	          member_id: self.receiver.id,
+	          link_page: "escrow",
+	          msg: msg,
+	          status: false)
+
+			UserMailer.escrow_success(self).deliver
 		end
 		
 	end
@@ -228,12 +245,24 @@ class MoneyExchange < ActiveRecord::Base
 	          link_page: "accept_decline",
 	          status: false)
 
+		elsif self.request_type == "escrow_money"	
+
+			s_account = sender_account
+			r_account = receiver_account
+			unless s_account.nil?
+				unlock_funds s_account, self.amount
+			end
+			sender_msg = "Your request for escrow money to #{self.sent_on_email} for amount: "
+			sender_msg += "#{self.amount}#{self.account.currency} on Date: #{self.created_at} "
+			sender_msg += " was declined by admin."
+			SrNotofication.create(
+	          member_id: self.sender.id,
+	          msg: sender_msg,
+	          link_page: "escrow",
+	          status: false)
+
 		end
 
-
-  		
-
-  		
 
 		
 	end

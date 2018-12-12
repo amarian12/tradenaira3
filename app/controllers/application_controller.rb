@@ -285,7 +285,7 @@ class ApplicationController < ActionController::Base
   def update_visitor_counter
     ip = request.remote_ip
     member_id = current_user.nil? ? nil : current_user.id
-    vc = VisitorCounter.find_by_ip_address(ip)
+    vc = VisitorCounter.where(ip_address: ip, member_id: member_id).last
     if vc.nil?
       vc = VisitorCounter.new(
         ip_address: ip, 

@@ -19,9 +19,21 @@ module Admin
     end
 
     def visitors_counter
+      # update the admin user too
+      update_visitor_counter
+
       vcs = VisitorCounter.find(:all, 
         :conditions => ["updated_at > ?", 30.seconds.ago] )
-      resp = { success: true, vcs: vcs  }
+
+      vcs = VisitorCounter.where("updated_at > ?",30.seconds.ago) 
+
+      resp = { 
+        success: true, 
+
+        vcs: JSON.parse(vcs.to_json(include: { member: { only: [:email]}  })), 
+
+        signed_in_count: vcs.where("member_id > 0").count  
+      }
       render json: resp
 
     end

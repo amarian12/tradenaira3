@@ -70,6 +70,10 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
       end
       sent_to_id = 0
 
+      if amount > account.balance
+        errors << "you can not escrow more than available balance."
+      end
+
       receiver = Member.find_by_email(email)
 
       success = false;
@@ -248,8 +252,6 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
       end
 
       account = member.accounts.find_by_id(account_id)
-      
-      puts params.inspect
 
       if amount > account.balance
         errors << "you can not send more than available balance."
