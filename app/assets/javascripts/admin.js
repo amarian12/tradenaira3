@@ -200,22 +200,30 @@ function liveCounter(){
 
           for(var i=0; i<resp.vcs.length; i++){
             vc = resp.vcs[i];
-            if(vc.member_id > 0){
+            
               info_html += '<tr>';
                 info_html += '<td>';
+                if(vc.member_id > 0){
                   info_html += vc.member_id;
+                }else{
+                  info_html += "N/A";
+                }
                 info_html += '</td>';
                 info_html += '<td>';
+                if(vc.member_id > 0){
                   info_html += '<a href="/admin/members/'+vc.member_id+'">';
                     info_html += vc.member.email;
                   info_html += '</a>';  
+                }else{
+                    info_html += "N/A";
+                }  
                 info_html += '</td>';
 
                 info_html += '<td>';
                   info_html += vc.ip_address;
                 info_html += '</td>';
               info_html += '</tr>';
-            }
+            
             
           }
 
