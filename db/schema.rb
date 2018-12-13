@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181211124749) do
+ActiveRecord::Schema.define(version: 20181213102049) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -498,6 +498,18 @@ ActiveRecord::Schema.define(version: 20181211124749) do
     t.string   "sum"
     t.text     "addresses"
     t.string   "balance",    limit: 30
+  end
+
+  create_table "quick_exchanges", force: true do |t|
+    t.string   "base_currency"
+    t.string   "target_currency"
+    t.integer  "member_id"
+    t.decimal  "amount",          precision: 10, scale: 0
+    t.integer  "status"
+    t.text     "note"
+    t.text     "admin_not"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "read_marks", force: true do |t|

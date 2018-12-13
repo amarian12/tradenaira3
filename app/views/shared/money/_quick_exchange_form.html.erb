@@ -1,0 +1,150 @@
+<% unless current_user.nil?  %>
+<%= javascript_include_tag "tradeniara" %>
+<%= stylesheet_link_tag "style2", media: "all" %>
+ 
+ 
+<div class="money-form-wrapper">
+	<div class="globalerros"></div>
+	<div class="sentsuccess"></div>
+	<div class="row back_to_wallet" style="display: none;">
+	    	<div class="col-md-24">
+	    		<a class="btn btn-default" href = "/funds">Click here to go back to wallet</a>
+	    	</div>
+	    </div>
+	<div class="wait-section" style="display: none;"></div>
+	<div class="col-md-24">
+		<div class="twofectorauth"></div>
+	</div>
+
+<%= form_for(QuickExchange.new, url: "/money/send", html: { onsubmit: "return SendMoney(this)", 
+class: "sendmenyform", data: { actionfor: "exchange" } }) do |f| %>
+		 
+		<%= f.hidden_field :member_id, value: current_user.id %>
+		<div class="row"> 
+			
+		<div class="col-md-11"> 
+	        <div class="form_row">
+		        <div class="full_width">
+		             <!-- Base currency -->
+		            <% accounts = current_user.accounts.where("balance > 0") %>
+		            <% if accounts.present? %>
+		            <div class="dropdown">
+		            	<%= button_tag("", class: "btn btn-secondary dropdown-toggle",
+		            		id: "dropdownMenu2",
+		            		data: { toggle: "dropdown" },
+		            		"aria-haspopup": "true", "aria-expanded": "false") do 
+		            		 %>
+		            		 Send <i class="caret"></i>
+		            		<% end %> 
+	  					<div class="dropdown-menu">
+		            	<% accounts.each do |a| %> 
+			            <% unless a.currency.nil? %>
+			            	<%= link_to("#", class: "dropdown-item", 
+			            	data:{ id: a.id, currency: a.currency  },
+			            	onclick: "return sndMoenyCurrecy(this)") do  %>
+				             	<%= image_tag "/icon-#{a.currency}.png" %>
+				             	<%= a.balance   %>
+					            </a>
+					        <% end %>    
+			             <% end %>
+		            	<% end %>
+		            	</div>
+		            </div>
+		            <% else %>
+		            <p>Your account is empty.</p>
+		            <% end %>
+		        </div>  
+
+		        <div class="pricebox" style="">
+		        	<div class="currencybox">
+		        		<%= image_tag("/icon-usd.png") %>
+		        	</div>
+		        	<%= f.text_field :amount, onchange: "checkAmount(this)",
+		        	placeholder: "Amount to exchange" %>
+		        	<p class="amterr"></p>
+		        </div> 
+
+		          <!-- Base currency end -->
+	    	</div>
+    	</div>
+    	 
+    	<div class="col-md-11 left-shift"> 
+	        <div class="form_row">
+		        <div class="full_width">
+		             <!-- Target currency -->
+		            <% accounts = current_user.accounts %>
+		            <% if accounts.present? %>
+		            <div class="dropdown">
+		            	 
+		            	<%= button_tag("", class: "btn btn-secondary dropdown-toggle",
+		            		id: "dropdownMenu2",
+		            		data: { toggle: "dropdown" },
+		            		"aria-haspopup": "true", "aria-expanded": "false") do 
+		            		 %>
+		            		 Receive <i class="caret"></i>
+		            		<% end %> 
+		            			 
+	  					<div class="dropdown-menu">
+		            	<% accounts.each do |a| %> 
+			            <% unless a.currency.nil? %>
+				            <%= link_to("#", class: "dropdown-item", 
+			            	data:{ id: a.id, currency: a.currency  },
+			            	onclick: "return sndMoenyCurrecy(this, 1)") do  %>
+				             	<%= image_tag "/icon-#{a.currency}.png" %>
+				             	<%= a.balance   %>
+					            </a>
+					        <% end %> 
+			             <% end %>
+		            	<% end %>
+		            	</div>
+		            </div>
+		            
+		            <% end %>
+		        </div>  
+
+
+		        <div class="pricebox" style="">
+		        	<div class="currencybox">
+		        		<%= image_tag("/icon-ngn.png") %>
+		        	</div>
+		        	<%= f.text_field :amount, onchange: "checkAmount(this)",
+		        	placeholder: "Amount to exchange" %>
+		        	<p class="amterr"></p>
+		        </div> 
+	    	</div>
+    	</div>
+    	<!-- Target currency end -->
+    	<div class="col-md-1"></div>
+
+    		<div class="pricebox" >
+	    	<div class="col-md-12">
+    			<div class="aaa">
+	        		<%= f.text_field :note, placeholder: "Reason for exchange money(Max 50 characters)", 
+	        		class: "form-control", onkeyup: "return filterNotes(this)" %>
+		        </div>
+	    	</div>
+	    	</div>
+    	</div>
+
+
+
+    	<div class="form_row">
+    		<div class="full_width pricebox">
+    			<p class="col-md-22">
+    				By clicking on next button, you are agree for the terms and condtions of 
+				TRADENair site.</p>
+				<%= f.button "SEND MONEY", class: "btn5 sendmoneybtn"  %>
+		         
+	    	</div>
+	    </div>
+	    
+<% end %>
+
+</div>
+<% else %>
+	<div class="form_row overflw">
+	    <div class="full_width ">
+	     	<p>Please <%= link_to "Login", signin_path %> to send/receive money.</p>
+	    </div>
+	</div> 
+<% end %>

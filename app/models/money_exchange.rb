@@ -260,10 +260,7 @@ class MoneyExchange < ActiveRecord::Base
 	          msg: sender_msg,
 	          link_page: "escrow",
 	          status: false)
-
 		end
-
-
 		
 	end
 

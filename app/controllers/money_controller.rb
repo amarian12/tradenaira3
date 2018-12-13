@@ -116,6 +116,13 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     end
   end
 
+  def quick_exchange
+    
+    
+    @title = "Quick exchange money"
+    @descrip = "Quick exchange money to Nigeria"
+  end
+
   def processm
     unless validate_request
       return false

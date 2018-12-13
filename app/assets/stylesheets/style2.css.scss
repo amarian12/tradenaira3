@@ -147,11 +147,15 @@ img {
       margin: 0 3px 0px 0;
     }
   }
+  .btn:hover{
+    color: #333333;
+  }
   .pricebox{
     .currencybox{
+      margin: 14px 0px -28px 2px;
       img{
         position: relative;
-        top: 30px;
+        top: 0px;
         left: 0px;
       }
     }
@@ -185,7 +189,6 @@ img {
 
     p{
       color: #a94442;
-
     }
   }
 }

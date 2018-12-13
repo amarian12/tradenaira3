@@ -223,8 +223,7 @@ function liveCounter(){
                   info_html += vc.ip_address;
                 info_html += '</td>';
               info_html += '</tr>';
-            
-            
+              
           }
 
           info_html += "</table>";

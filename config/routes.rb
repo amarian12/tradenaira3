@@ -65,6 +65,8 @@ Peatio::Application.routes.draw do
   patch "money/process/:id/:status", to: "money#processm", as: "process_request"
   get "money/two_factor/:id/:status", to: "money#two_factor", as: "two_factor_money"
 
+  get "money/quick_exchange", to: 'money#quick_exchange', as: "quick_exchange"
+
   get '/unsubscribe/:email', to: 'pages#unsubscribe', as: :unsubscribe
 
   post "/blog/admin/images", to: "blogo/admin/images#create", as: "blogo_admin_images"
@@ -122,6 +124,8 @@ Peatio::Application.routes.draw do
   
   post "pages/subscribe" => 'pages#subscribe'
   get "/pages/liveprice/:market", to: 'pages#liveprice'
+
+  
 
 
 

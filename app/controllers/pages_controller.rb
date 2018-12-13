@@ -20,16 +20,6 @@ class PagesController < ApplicationController
   end
 
   def projectfunding
-
-    #host = "http://0.0.0.0:84"
-    #uri = URI(host)
- 
-    #@output = Net::HTTP.get(uri)
-
-
-
-    #render "projectfunding", layout: false
-    
   end
 
   def srnoti
@@ -122,6 +112,7 @@ class PagesController < ApplicationController
     @title    = "TradeNAIRA Payment Request – send an invoice to a customer in Nigeria."
     @descrip  = "Get paid fast by making a payment request from your customers in Nigeria. Invoice your customer for free and we can collect your payment on your behalf, let be your Nigerian paypal."
   end
+
   def faq
     @title    = "TradeNAIRA frequently asked questions"
     @descrip  = "find out everything you need to know about TradeNAIRA and our currency exchange services we are an Africa focused business. "
