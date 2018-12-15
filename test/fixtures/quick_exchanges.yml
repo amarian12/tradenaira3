@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  base_currency: MyString
+  target_currency: MyString
+  member_id: 1
+  amount: 9.99
+  status: 1
+  note: MyText
+  admin_not: MyText
+
+two:
+  base_currency: MyString
+  target_currency: MyString
+  member_id: 1
+  amount: 9.99
+  status: 1
+  note: MyText
+  admin_not: MyText

@@ -1,21 +1,22 @@
 <%= metamagic title: "Escrow Money" %>
 
-<div class="container">
+<div class="container" ng-app="money">
     <div class="track_rate_wraper overflow-css">  
         <div class="display_img w50">
           <img src="/assets/img/bilgisayr.png" alt="screen1"> 
         </div>
-        <div class="rate_content w50">
-        	<div class="hide_send_money">
-            <h3 class="heading4">Escrow Money</h3>
         
-            </div>
-            <div class="rate_input">
-                <%= render "shared/money/escrow" %>
+        	 
+            
+                
+                <ui-view>
+                     
+                </ui-view>
+                <%#= render "shared/money/escrow" %>
                 <div class="accet_decline">
                <!--  <a class="" href = "/funds" target = "_blank"> Click here </a> go to wallet page -->
                 </div>
-            </div>
-		</div>
+           
+		 
 	</div>
 </div>

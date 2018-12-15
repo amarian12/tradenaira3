@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181213102049) do
+ActiveRecord::Schema.define(version: 20181215090729) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -329,6 +329,21 @@ ActiveRecord::Schema.define(version: 20181213102049) do
     t.string   "username"
     t.string   "session_token"
     t.string   "password_digest"
+  end
+
+  create_table "meta_categories", force: true do |t|
+    t.string   "title"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meta_contents", force: true do |t|
+    t.string   "title"
+    t.integer  "meta_category_id"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "money_exchanges", force: true do |t|

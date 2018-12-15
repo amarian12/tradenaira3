@@ -7,7 +7,6 @@ class ActionDispatch::Routing::Mapper
 end
 
 Peatio::Application.routes.draw do
-
   #kicksmart
    namespace :api, defaults: { format: :json } do
   #   resources :users, only: [:create]

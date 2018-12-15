@@ -44,7 +44,20 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
   end
 
   def escrow
-    
+    role         = MetaCategory.find_by_title("Escrow roles")
+    transaction  = MetaCategory.find_by_title("Escrow transaction")
+
+    meta = { 
+      roles: (role.meta_contents unless role.nil?),
+      transactions: (transaction.meta_contents unless transaction.nil?)
+      }
+    resp = { success: true, meta: meta }
+    respond_to do |formate|
+      formate.json{ render json: resp }
+      formate.html{ 
+        puts request.inspect
+       }
+    end
   end
 
   def escrow_create

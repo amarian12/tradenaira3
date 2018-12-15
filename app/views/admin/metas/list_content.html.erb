@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-md-24">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="col-md-20">
+					Laist of all Contents
+				</div>
+				<div class="col-md-4">
+					<%= link_to "New", admin_new_content_path, class: "btn btn-default",
+					style: "margin: -6px 0 0 0; float: right;" %>
+				</div>
+			</div>
+			<div class="panel-body">
+				<table class="table table-condensed table-hover">
+					<tr>
+						<td>Title</td>
+						<td>Description</td>
+						<td>Category</td>
+						<td>Actions</td>
+					</tr>
+					<% @contents.each do |content| %>
+					<tr>
+						<td><%= content.title %></td>
+						<td>
+							<div style="max-height: 200px; max-width: 300px; overflow: hedden;">
+							<%= content.description    %>
+								
+						</td>
+						<td><%= content.meta_category ? content.meta_category.title : "-" %></td>
+						
+						<td><%= link_to "Delete", admin_destroy_meta_path("content", content.id),
+						data: { confirm: "Are you sure?",  }, method: "delete" %>
+							|
+						<%= link_to "Edit", admin_edit_meta_path("content", content.id)
+						 %>	
+						</td>
+					</tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

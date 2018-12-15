@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-24">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="col-md-20">
+					Create new Meta content
+				</div>
+				<div class="col-md-4">
+					<%= link_to "List all contents", admin_list_content_path, class: "btn btn-default",
+					style: "margin: -6px 0 0 0; float: right;" %>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-14">
+				 <%= render "content_form"  %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -71,6 +71,11 @@ img {
     display: block!important;
   }
 }
+.money-transactions{
+  label{
+    color: #333333;
+  }
+}
 
 #senMsgModel{
   label{
@@ -1898,6 +1903,10 @@ img.email_ico {
 
 
 .rate_content { padding-left: 40px;}
+.track_the_rate {
+    padding: 70px 0 40px 0;
+}
+.rate_content_quick {padding-left: 216px; padding-right: 416px;}
 .track_the_rate {
     padding: 70px 0 40px 0;
 }

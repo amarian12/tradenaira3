@@ -23,6 +23,22 @@ namespace :admin do
   get "money/escrow", to: "money#escrow", as: "escrow_money"
   get 'finances', to: "money#finances", as: "finances"
 
+  get 'meta/category', to: "metas#list_category", as: "list_category"
+  get 'meta/category/new', to: "metas#new_category", as: "new_category"
+  post 'meta/category', to: "metas#create_category", as: "create_category"
+
+  get 'meta/content', to: "metas#list_content", as: "list_content"
+  get 'meta/content/new', to: "metas#new_content", as: "new_content"
+  post 'meta/content', to: "metas#create_content", as: "create_content"
+
+  delete 'meta/:type/:id', to: "metas#destroy", as: "destroy_meta"
+  get 'meta/edit/:type/:id', to: "metas#edit", as: "edit_meta"
+
+  patch 'meta/:type', to: "metas#update", as: "update_meta"
+
+
+
+
   #get '/categories', to: "dashboard#kicksmart_categories", as: "categories"
 
   namespace :kicksmart do 

@@ -21,8 +21,11 @@ html lang="en"
         | }
 
 
-    - unless current_user.nil?
-      = javascript_include_tag "sr_noti"
+    - if(current_user && params[:controller] == "money" && params[:action] == "escrow")
+      = javascript_include_tag "money"
+      
+    = javascript_include_tag "sr_noti"
+
 
 
     = yield(:scripts) if content_for?(:scripts)
