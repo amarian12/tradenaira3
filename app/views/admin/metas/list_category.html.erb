@@ -15,6 +15,7 @@
 					<tr>
 						<td>Title</td>
 						<td>Parent</td>
+						<td>Slug</td>
 						<td>No of items</td>
 						<td>Actions</td>
 					</tr>
@@ -22,6 +23,7 @@
 					<tr>
 						<td><%= cat.title %></td>
 						<td><%= cat.parent_category.nil? ? "-" : cat.parent_category.title    %></td>
+						<td><%= cat.slug %></td>
 						<td><%= cat.meta_contents.size %></td>
 						<td>
 							<%= link_to "Delete", admin_destroy_meta_path("category", cat.id),

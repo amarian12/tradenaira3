@@ -76,6 +76,9 @@ img {
     color: #333333;
   }
 }
+.error{
+  color: #a94442;
+}
 
 #senMsgModel{
   label{
@@ -1877,6 +1880,15 @@ ul.social {margin: 0 0 60px 0;}
 }
 img.email_ico {
     bottom: 12px;
+}
+.escrow-currecy{
+  img{
+    top: 3px;
+    left: 6px;
+  }
+}
+#tn-amount{
+  padding: 0 0 0 30px;
 }
 
 

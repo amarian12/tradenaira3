@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181215090729) do
+ActiveRecord::Schema.define(version: 20181217071031) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -336,6 +336,7 @@ ActiveRecord::Schema.define(version: 20181215090729) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "meta_contents", force: true do |t|
@@ -344,6 +345,7 @@ ActiveRecord::Schema.define(version: 20181215090729) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "money_exchanges", force: true do |t|

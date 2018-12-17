@@ -23,11 +23,15 @@
 		 						<label class="">Type of transaction</label>
 		 					</div>	
 		 					<div class="col-md-13">
-			 					<select class="">
+			 					<select class="select form-control">
+			 						<option value="">Select</option>
 			 						<option 
 			 						ng-repeat="role in resp.meta.transactions"
+			 						ng-click="transaction.type=role.slug"
+			 						ng-selected="transaction.type==role.slug"
 			 						value="{{role.id}}">{{role.title}}</option>
 			 					</select>
+			 					<p class="error">{{errors.type}}</p>
 		 					</div>
 		 				</div>
 
@@ -37,69 +41,48 @@
 		 					</div>	
 		 				 
 		 					<div class="col-md-13">
-			 					<select class=""">
+			 					<select class="select form-control" style="text-transform: capitalize;">
+			 						<option value="">Select</option>
 			 						<option 
 			 						ng-repeat="role in resp.meta.roles"
-			 						value="{{role.id}}">{{role.title}}</option>
+			 						ng-click="transaction.role=role"
+			 						ng-selected="transaction.role==role"
+			 						value="{{role.id}}">{{role}}</option>
 			 					</select>
+			 					<p class="error">{{errors.role}}</p>
 			 				</div>
 		 				</div>
 		 				<div class="col-md-24">
-		 					<button class="btn btn-success" ng-click="nextStep()">Continue</button>
+		 					<button class="btn btn-success" 
+		 						ng-click="moveonStep(2,true)">Continue</button>
 		 				</div>
 		 			</div>
 	 			</div>
-
 	 			<!-- escrow page -->
 	 			<div ng-if="page_index==2">
 	 			<div class="form_row overflw">
 	 				<div class="full_width">
 	 					<p class="mailerr"></p>
 	 					<img class="email_ico" src="/assets/img/email.png" alt="email">
-	 					<input id="member_email" name="member[email]" onchange="checkEmailf(this)" placeholder="E-mail Address" value="" type="email">
+	 					<input id="member_email" name="member[email]" 
+	 						onchange="checkEmailf(this)" placeholder="E-mail Address" 
+	 						value="" type="email">
 	 				</div>
 	 			</div>
 
 	 			<div class="form_row">
 			        <div class="full_width">
-			            <label>Select Currency to escrow</label>
-			            <div class="dropdown open">
-			            	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			            		Select Currency
-		  					</button>
-		  					<div class="dropdown-menu">
-					            <a href="#" class="dropdown-item" data-id="1" data-currency="ngn" onclick="return sndMoenyCurrecy(this)">
-					             	<img alt="Icon ngn" src="/icon-ngn.png">
-					             	 80092030.1555
-					            </a>
-					            <a href="#" class="dropdown-item" data-id="2" data-currency="btc" onclick="return sndMoenyCurrecy(this)">
-					             	<img alt="Icon btc" src="/icon-btc.png">
-					             	 2271.7708515
-					            </a>
-					            <a href="#" class="dropdown-item" data-id="3" data-currency="usd" onclick="return sndMoenyCurrecy(this)">
-					             	<img alt="Icon usd" src="/icon-usd.png">
-					             	 9950.000091
-					            </a>
-					            <a href="#" class="dropdown-item" data-id="5" data-currency="gbp" onclick="return sndMoenyCurrecy(this)">
-					             	<img alt="Icon gbp" src="/icon-gbp.png">
-					             	 7592.175
-					            </a>
-					            <a href="#" class="dropdown-item" data-id="9606" data-currency="ghs" onclick="return sndMoenyCurrecy(this)">
-					             	<img alt="Icon ghs" src="/icon-ghs.png">
-					             	 1000021789.57935
-					            </a>
-			            	</div>
-			        	</div>
-			    	</div>  	
-		        	<div class="pricebox" style="display: none;">
-		        		<div class="currencybox"></div>
-		        		<input id="member_amount_to_send" name="member[amount_to_send]" onchange="checkAmount(this)" placeholder="Amount to escrow" type="text">
-		        		<p class="amterr"></p>
-			        	<div class="aaa">
-			        		<input class="form-control" id="member_notes" name="member[notes]" onkeyup="return filterNotes(this)" placeholder="Reason for escrow money(Max 50 characters)" type="text">
-			        	</div>
-		        	</div> 
-		        	<button class="btn btn-default" ng-click="moveonStep(page_index-1)">Back</button>
+			         	 
+			         	 
+				         <ng-include ng-if="transaction.role=='seller'" 
+				         	src="'/templates/money/_seller_form.html'"></ng-include>
+
+				         <ng-include ng-if="transaction.role=='buyer'" 
+				         	src="'/templates/money/_buyer_form.html'"></ng-include>	
+
+			        </div> 	
+		        	 
+		        	<button class="btn btn-default" ng-click="moveonStep(page_index-1,false)">Back</button>
     			</div>
     		</div>
 

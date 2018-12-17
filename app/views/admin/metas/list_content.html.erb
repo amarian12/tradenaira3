@@ -16,6 +16,7 @@
 						<td>Title</td>
 						<td>Description</td>
 						<td>Category</td>
+						<td>Slug</td>
 						<td>Actions</td>
 					</tr>
 					<% @contents.each do |content| %>
@@ -27,6 +28,7 @@
 								
 						</td>
 						<td><%= content.meta_category ? content.meta_category.title : "-" %></td>
+						<td><%= content.slug %></td>
 						
 						<td><%= link_to "Delete", admin_destroy_meta_path("content", content.id),
 						data: { confirm: "Are you sure?",  }, method: "delete" %>
