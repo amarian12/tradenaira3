@@ -1,5 +1,5 @@
 <div class="money-transactions">
-	<div class="rate_content w50">
+	<div class="rate_content">
 	 
 	 <div class="row">
 	 	<div class="col-md-24">
@@ -23,11 +23,12 @@
 		 						<label class="">Type of transaction</label>
 		 					</div>	
 		 					<div class="col-md-13">
-			 					<select class="select form-control">
+			 					<select class="select form-control"
+			 						ng-model="transaction.type">
 			 						<option value="">Select</option>
 			 						<option 
 			 						ng-repeat="role in resp.meta.transactions"
-			 						ng-click="transaction.type=role.slug"
+			 						 
 			 						ng-selected="transaction.type==role.slug"
 			 						value="{{role.id}}">{{role.title}}</option>
 			 					</select>
@@ -41,50 +42,59 @@
 		 					</div>	
 		 				 
 		 					<div class="col-md-13">
-			 					<select class="select form-control" style="text-transform: capitalize;">
+			 					<select class="select form-control" 
+			 						style="text-transform: capitalize;"
+			 						ng-model="transaction.role">
 			 						<option value="">Select</option>
 			 						<option 
 			 						ng-repeat="role in resp.meta.roles"
-			 						ng-click="transaction.role=role"
 			 						ng-selected="transaction.role==role"
-			 						value="{{role.id}}">{{role}}</option>
+			 						value="{{role}}">{{role}}</option>
 			 					</select>
 			 					<p class="error">{{errors.role}}</p>
 			 				</div>
-		 				</div>
-		 				<div class="col-md-24">
-		 					<button class="btn btn-success" 
-		 						ng-click="moveonStep(2,true)">Continue</button>
 		 				</div>
 		 			</div>
 	 			</div>
 	 			<!-- escrow page -->
 	 			<div ng-if="page_index==2">
-	 			<div class="form_row overflw">
-	 				<div class="full_width">
-	 					<p class="mailerr"></p>
-	 					<img class="email_ico" src="/assets/img/email.png" alt="email">
-	 					<input id="member_email" name="member[email]" 
-	 						onchange="checkEmailf(this)" placeholder="E-mail Address" 
-	 						value="" type="email">
-	 				</div>
-	 			</div>
-
-	 			<div class="form_row">
-			        <div class="full_width">
-			         	 
-			         	 
-				         <ng-include ng-if="transaction.role=='seller'" 
-				         	src="'/templates/money/_seller_form.html'"></ng-include>
-
-				         <ng-include ng-if="transaction.role=='buyer'" 
-				         	src="'/templates/money/_buyer_form.html'"></ng-include>	
-
-			        </div> 	
-		        	 
-		        	<button class="btn btn-default" ng-click="moveonStep(page_index-1,false)">Back</button>
+		 			<div class="form_row overflw">
+		 				<div class="full_width">
+		 					<p class="error">{{errors.email}}</p>
+		 					<img class="email_ico" src="/assets/img/email.png" alt="email">
+		 					<input id="member_email" name="transaction[email]" 
+		 					    ng-model="transaction.email"
+		 						onchange="checkEmailf(this)" placeholder="E-mail Address" 
+		 						value="" type="email">
+		 				</div>
+		 			</div>
+		 			<div class="form_row">
+				        <div class="full_width">
+					         <ng-include ng-if="transaction.role=='seller'" 
+					         	src="'/templates/money/_seller_form.html'"></ng-include>
+					         <ng-include ng-if="transaction.role=='buyer'" 
+					         	src="'/templates/money/_buyer_form.html'"></ng-include>	
+				        </div> 	
+			        	 
+			        	
+			        	
+	    			</div>
     			</div>
-    		</div>
+    			<div class="clearfix">
+	    			<div class="form_row">
+	    				<div class="row">
+	    					<div class="col-md-4">
+	    						<button class="btn btn-success" 
+			 			 			ng-click="moveonStep(page_index+1,true)">
+			 			 		Continue</button>
+	    					</div>
+	    					<div class="col-md-3" ng-show="page_index > 1">
+	    						<button class="btn btn-default" 
+	    							ng-click="moveonStep(page_index-1,false)">Back</button>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>	
 
 	 		</div>
 

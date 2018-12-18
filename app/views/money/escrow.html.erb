@@ -2,20 +2,18 @@
 
 <div class="container" ng-app="money">
     <div class="track_rate_wraper overflow-css">  
-        <div class="display_img w50">
-          <img src="/assets/img/bilgisayr.png" alt="screen1"> 
+        <div class="col-md-10">
+            <div class="display_img">
+              <img src="/assets/img/bilgisayr.png" alt="screen1"> 
+            </div>
         </div>
-        
-        	 
-            
-                
-                <ui-view>
-                     
-                </ui-view>
-                <%#= render "shared/money/escrow" %>
-                <div class="accet_decline">
-               <!--  <a class="" href = "/funds" target = "_blank"> Click here </a> go to wallet page -->
-                </div>
+        <div class="col-md-14">     
+            <ui-view></ui-view>
+            <%#= render "shared/money/escrow" %>
+            <div class="accet_decline">
+           <!--  <a class="" href = "/funds" target = "_blank"> Click here </a> go to wallet page -->
+            </div>
+        </div>    
            
 		 
 	</div>
