@@ -3,102 +3,116 @@
 	 
 	 <div class="row">
 	 	<div class="col-md-24">
-	 		<div class="panel">
-	 			<div class="panel-heading">
-	 				<div class="hide_send_money">
-			            <h3 class="heading4">{{page_title}}</h3>
-			        </div>
+	 		<div ng-hide="is_page_loading">
+	 			<div class="panel">
+		 			<div class="panel-heading">
+		 				<div class="hide_send_money">
+				            <h3 class="heading4">{{page_title}}</h3>
+				        </div>
 
-			        <div ng-if="page_index==1">
-			        	<ul class="panel-info">
-			        		<li>Review the transaction type bellow, and select the type that fits with you are buying, selling or brocking.</li>
-			        		<li>TRADENaira.com may refuse to accept certain payment types, including credit cards and PayPal, for any reason, at its discretion </li>
-			        	</ul>
-			        </div>
-	 			</div>
-	 			<div ng-if="page_index==1">
-		 			<div class="panel-body">
-		 				<div class="col-md-24">
-		 					<div class="col-md-11">
-		 						<label class="">Type of transaction</label>
-		 					</div>	
-		 					<div class="col-md-13">
-			 					<select class="select form-control"
-			 						ng-model="transaction.type">
-			 						<option value="">Select</option>
-			 						<option 
-			 						ng-repeat="role in resp.meta.transactions"
-			 						 
-			 						ng-selected="transaction.type==role.slug"
-			 						value="{{role.id}}">{{role.title}}</option>
-			 					</select>
-			 					<p class="error">{{errors.type}}</p>
-		 					</div>
-		 				</div>
-
-		 				<div class="col-md-24">
-		 					<div class="col-md-11">
-		 						<label class="">Your role</label>
-		 					</div>	
-		 				 
-		 					<div class="col-md-13">
-			 					<select class="select form-control" 
-			 						style="text-transform: capitalize;"
-			 						ng-model="transaction.role">
-			 						<option value="">Select</option>
-			 						<option 
-			 						ng-repeat="role in resp.meta.roles"
-			 						ng-selected="transaction.role==role"
-			 						value="{{role}}">{{role}}</option>
-			 					</select>
-			 					<p class="error">{{errors.role}}</p>
+				        <div ng-if="page_index==1">
+				        	<ul class="panel-info">
+				        		<li>Review the transaction type bellow, and select the type that fits with you are buying, selling or brocking.</li>
+				        		<li>TRADENaira.com may refuse to accept certain payment types, including credit cards and PayPal, for any reason, at its discretion </li>
+				        	</ul>
+				        </div>
+		 			</div>
+	 			
+		 			<div ng-if="page_index==1">
+			 			<div class="panel-body">
+			 				<div class="col-md-24">
+			 					<div class="col-md-11">
+			 						<label class="">Type of transaction</label>
+			 					</div>	
+			 					<div class="col-md-13">
+				 					<select class="select form-control"
+				 						ng-model="transaction.type">
+				 						<option value="">Select</option>
+				 						<option 
+				 						ng-repeat="role in resp.meta.transactions"
+				 						 
+				 						ng-selected="transaction.type==role.slug"
+				 						value="{{role.id}}">{{role.title}}</option>
+				 					</select>
+				 					<p class="error">{{errors.type}}</p>
+			 					</div>
 			 				</div>
-		 				</div>
-		 			</div>
-	 			</div>
-	 			<!-- escrow page -->
-	 			<div ng-if="page_index==2">
-		 			<div class="form_row overflw">
-		 				<div class="full_width">
-		 					<p class="error">{{errors.email}}</p>
-		 					<img class="email_ico" src="/assets/img/email.png" alt="email">
-		 					<input id="member_email" name="transaction[email]" 
-		 					    ng-model="transaction.email"
-		 						onchange="checkEmailf(this)" placeholder="E-mail Address" 
-		 						value="" type="email">
-		 				</div>
-		 			</div>
-		 			<div class="form_row">
-				        <div class="full_width">
-					         <ng-include ng-if="transaction.role=='seller'" 
-					         	src="'/templates/money/_seller_form.html'"></ng-include>
-					         <ng-include ng-if="transaction.role=='buyer'" 
-					         	src="'/templates/money/_buyer_form.html'"></ng-include>	
-				        </div> 	
-			        	 
-			        	
-			        	
-	    			</div>
-    			</div>
-    			<div class="clearfix">
-	    			<div class="form_row">
-	    				<div class="row">
-	    					<div class="col-md-4">
-	    						<button class="btn btn-success" 
-			 			 			ng-click="moveonStep(page_index+1,true)">
-			 			 		Continue</button>
-	    					</div>
-	    					<div class="col-md-3" ng-show="page_index > 1">
-	    						<button class="btn btn-default" 
-	    							ng-click="moveonStep(page_index-1,false)">Back</button>
-	    					</div>
-	    				</div>
-	    			</div>
-	    		</div>	
 
+			 				<div class="col-md-24">
+			 					<div class="col-md-11">
+			 						<label class="">Your role</label>
+			 					</div>	
+			 				 
+			 					<div class="col-md-13">
+				 					<select class="select form-control" 
+				 						style="text-transform: capitalize;"
+				 						ng-model="transaction.role">
+				 						<option value="">Select</option>
+				 						<option 
+				 						ng-repeat="role in resp.meta.roles"
+				 						ng-selected="transaction.role==role"
+				 						value="{{role}}">{{role}}</option>
+				 					</select>
+				 					<p class="error">{{errors.role}}</p>
+				 				</div>
+			 				</div>
+			 			</div>
+		 			</div>
+	 				<!-- escrow page -->
+	 			
+		 			<div ng-if="page_index==2 ">
+			 			<div class="form_row">
+					        <div class="full_width">
+						         <ng-include ng-if="transaction.role=='seller'" 
+						         	src="'/templates/money/_seller_form.html'"></ng-include>
+						         <ng-include ng-if="transaction.role=='buyer'" 
+						         	src="'/templates/money/_buyer_form.html'"></ng-include>	
+					        </div> 	
+		    			</div>
+	    			</div>
+
+	    			<div ng-if="page_index == 3">
+			 			<div class="form_row">
+					        <div class="full_width" style="display: none;">
+						         <ng-include 
+						         	src="'/templates/funds/_two_factor_auth.html'"></ng-include>
+					        </div> 	
+		    			</div>
+	    			</div>
+
+	    			<div ng-if="two_fetor_error">
+			 			<div class="form_row">
+					        <div class="full_width">
+						         <p>{{two_fetor_error}}</p>
+					        </div> 	
+		    			</div>
+	    			</div>
+
+
+
+	    			<div class="clearfix">
+		    			<div class="form_row">
+		    				<div class="row">
+		    					<div class="col-md-4">
+		    						<button class="btn btn-success" 
+				 			 			ng-click="moveonStep(page_index+1,true)">
+				 			 		Continue</button>
+		    					</div>
+		    					<div class="col-md-3" ng-show="page_index > 1">
+		    						<button class="btn btn-default" 
+		    							ng-click="moveonStep(page_index-1,false)">Back</button>
+		    					</div>
+		    				</div>
+		    			</div>
+		    		</div>	
+
+
+		    	</div>	
 	 		</div>
-
-
+	 		<div class="page-loader col-md-24" ng-show="is_page_loading" 
+		    	style="text-align: center; margin: 100px auto">
+		    		<img src="/assets/loader.gif">
+		    </div>
 	 	</div>
 	 </div>
 	 

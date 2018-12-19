@@ -20,9 +20,18 @@
 	$selected_trans_type = 1
 	$selected_trans_role = 1
 	$scope.resp = ""
+	$scope.is_page_loading = true
+	$scope.two_fetor_error = false
 	
 	$scope.currecy_image = ""
 	$scope.shipping_currecy_image = ""
+
+	$scope.auth = {
+		google_app: "google", 
+		sms: "sms", 
+		hints: { app: "app", sms: "sms" }, 
+		send_code: "send_code"
+	}
 
 	$scope.transaction = 
 	  email: ''
@@ -54,6 +63,7 @@
 	    descriptions: ''
 
 	$scope.intializeVars()	
+	$scope.current_user =  ""
 
 
 	$scope.dateDiff = (startD, endD)->
@@ -72,6 +82,8 @@
 	  .success (resp)->
 	    $scope.resp = resp
 	    $scope.moveonStep(1,false)
+	    $scope.is_page_loading = false
+	    $scope.current_user = resp.user
 	    console.log(resp)
 
 	$scope.loadDatePicker = ()->  
@@ -138,6 +150,7 @@
 	      	$scope.loadDatePicker()
 	  else if step == 3  
 	    $scope.doSubmitSeller(true)	
+
 	  return      	
 
     #Seller function
@@ -188,7 +201,79 @@
 	      $scope.errors.inspection_length = "Please fill, inspection duration"  
 
 	    if $scope.transaction.descriptions == ""  
-	      $scope.errors.descriptions = "Please fill, shor descriptions about this escro."   
+	      $scope.errors.descriptions = "Please fill, shor descriptions about this escro." 
+
+	    angular.forEach $scope.errors, (value, key)->
+	      if value == ""
+	      else $scope.is_valid = false 
+
+	    if $scope.is_valid  
+	      $http.patch("/money/escrow.json", $scope.transaction)
+	      .success (ecr_resp)->
+	        if ecr_resp.success
+	          $scope.processWithTwoFector(ecr_resp)
+	        else
+	          angular.forEach ecr_resp.errors, (value, key)->
+	            if key == "tn_amount"
+	              $scope.errors.amount = value[0]
+
+	            if key == "email"
+	              $scope.errors.email = value[0]  
+
+	            if key == "tn_type"
+	              $scope.errors.type = value[0]  
+
+	            if key == "tn_role"
+	              $scope.errors.role = value[0]  
+
+	            if key == "phone"
+	              $scope.errors.phone = value[0]  
+
+	            if key == "tn_currency"
+	              $scope.errors.currency = value[0] 
+
+	            if key == "tn_amount"
+	              $scope.errors.amount = value[0]  
+
+	            if key == "item_name"
+	              $scope.errors.item_name = value[0]  
+
+	            if key == "shipping_currency"
+	              $scope.errors.shipping_currency = value[0]  
+
+	            if key == "fee_payer"
+	              $scope.errors.fee_payer = value[0]  
+
+	            if key == "inspection_length"
+	              $scope.errors.inspection_length = value[0]  
+
+	            if key == "descriptions"
+	              $scope.errors.descriptions = value[0]  
+
+	$scope.processWithTwoFector = (ecr_resp)->
+	  $scope.page_index = 3
+	  if ecr_resp.two_fetor.is_active
+	     
+	  else
+	    $scope.two_fetor_error = "Please activate two fector autentication to move on next step"
+
+	$scope.sms_and_app_activated = ->
+      current_user.app_activated and current_user.sms_activated
+
+  	$scope.only_app_activated = ->
+      current_user.app_activated and !current_user.sms_activated
+
+  	$scope.only_sms_activated = ->
+      current_user.sms_activated and !current_user.app_activated
+
+	  #$scope.auth = 
+
+
+	            
+	        
+
+	    
+
 
 
 

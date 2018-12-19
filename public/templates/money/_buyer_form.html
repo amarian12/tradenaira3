@@ -1,1 +1,182 @@
-sssssssssssssssssssssssssss
+<div class="clearfix">
+<div class="form_row overflw">
+	<label for="tn-phone-number">The seller's email address</label>
+	<div class="full_width">
+		<p class="error">{{errors.email}}</p>
+		<img class="email_ico" src="/assets/img/email.png" alt="email">
+		<input id="member_email" name="transaction[email]" 
+		    ng-model="transaction.email"
+			onchange="checkEmailf(this)" placeholder="E-mail Address" 
+			value="" type="email">
+	</div>
+</div>
+</div>
+
+
+<div class="clearfix">
+	<div class="form_row">
+	 <label for="tn-phone-number">The seller's Phone number(If known)</label>
+	 <input class="form-control" id="tn-phone-number" 
+	 placeholder="Phone number"  
+	 size="30" type="text" ng-model="transaction.phone">
+	 <p class="error">{{errors.phone}}</p>
+	</div> 
+</div> 
+ 
+<div class="clearfix">
+ 	<div class="form_row">
+ 		<label for="tn-phone-number">Select Currency and fill Amount</label>
+ 		<div class="row">
+	 	<div class="col-md-24">
+	 		<div class="row">
+				<div class="amount-coulumn col-md-8">
+
+					<select class="select form-control" 
+						ng-model="transaction.currency"
+						ng-change="selectCurrecy()"
+						style="text-transform: capitalize;">
+						<option value="">Select Currency</option>
+						<option 
+						ng-repeat="account in resp.meta.accounts"
+						ng-selected="transaction.currency==account.currency"
+						ng-value="account.currency"
+						>{{account.amount+""+account.currency}}</option>
+					</select>
+					<p class="error">{{errors.currency}}</p>
+				</div>
+				<div class="amount-coulumn col-md-16">
+					<div class="escrow-currecy" ng-bind-html="currecy_image"></div>
+					<input class="form-control tn-amount" id="tn-amount"   
+					 size="30" type="text" ng-model="transaction.amount">
+					 <p class="error">{{errors.amount}}</p>
+			    </div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="clearfix">
+ 	<div class="form_row">
+ 		<label for="tn-phone-number">What are you buying</label>
+ 		<div class="row">
+		 	<div class="col-md-24">
+		 		<textarea class="form-control tn-buying-item_name" 
+		 		placeholder="What are you buying, please explain" 
+		 		id="tn-item_name"   
+		 		onkeyup="if(this.value.length > 50){this.value = this.value.substr(0,50)}"
+		 		onmouseup="if(this.value.length > 50){this.value = this.value.substr(0,50)}" 
+				ng-model="transaction.item_name">
+		 		</textarea> 
+		 		<p class="error">{{errors.item_name}}</p>
+		 	</div>
+		</div> 	
+	</div>	
+</div>
+<!-- who will pay fee -->
+<div class="clearfix">
+ 	<div class="form_row">
+ 		<label for="tn-phone-number">Who will pay the escrow Amount fee?</label>
+ 		<div class="row">
+		 	<div class="col-md-24">
+		 		<div class="row">
+			 		<div class="col-md-2">
+			 			<label for="fee_payer">Seller </label>
+			 		</div>
+			 		<div class="col-md-2">
+			 			<input type="radio" value="seller"
+			 			 name="fee_payer"
+			 			 ng-model="transaction.fee_payer"
+			 			 id="tn_fee_payer">
+			 		</div>
+		 		</div>
+		 	</div>
+		 	<div class="col-md-24">
+		 		<div class="row">
+			 		<div class="col-md-2">
+			 			<label for="fee_payer">Buyer </label>
+			 		</div>
+			 		<div class="col-md-2">
+			 			<input type="radio" 
+			 			 value="buyer"
+			 			 ng-model="transaction.fee_payer"
+			 			 name="fee_payer"
+			 			 id="tn_fee_payer">
+			 		</div>
+			 	</div>
+		 	</div>
+		 	<p class="error">{{errors.fee_payer}}</p>
+		</div> 	
+	</div>	
+</div>
+<!-- shipping cost -->
+<div class="clearfix">
+ 	<div class="form_row">
+ 		<label for="tn-phone-number">Shipping cost?</label>
+ 		 <div class="row">
+		 	<div class="col-md-24">
+		 		<div class="row">
+					<div class="amount-coulumn col-md-8">
+						<select class="select form-control" 
+							ng-model="transaction.shipping_currency"
+							ng-change="selectShippingCu()"
+							style="text-transform: capitalize;">
+							<option value="">Select Currency</option>
+							<option 
+							ng-repeat="account in resp.meta.accounts"
+							ng-selected="transaction.account==account"
+							>{{account.amount+""+account.currency}}</option>
+						</select>
+						<p class="error">{{errors.shipping_currency}}</p>
+					</div>
+					<div class="amount-coulumn col-md-16">
+						<div class="escrow-currecy" ng-bind-html="shipping_currecy_image"></div>
+						<input class="form-control tn-amount" id="tn-amount"  
+						placeholder="Amount" 
+						size="30" type="text" ng-model="transaction.shipping_amount">
+						 <p class="error">{{errors.shipping_amount}}</p>
+				    </div>
+				</div>
+			</div>
+		</div>
+
+	</div>	
+</div>  
+<!-- Lenth of inspection period -->
+<div class="clearfix">
+ 	<div class="form_row">
+ 		<div class="row">
+ 			<div class="col-md-13">
+		 		<label for="tn-phone-number">Length of inspection period</label>
+		 		<input class="form-control datepicker" id="tn-inspection-length" required="true" 
+		 			ng-mousedown="loadDatePicker()" ng-keypress="loadDatePicker()"
+		 			value="{{transaction.inspection_length}}"
+		 			placeholder="Ex. 10 days"
+			 		size="30" type="text" ng-model="transaction.inspection_length">
+			 		<p class="error">{{errors.inspection_length}}</p>
+		 	</div>
+	 	</div>
+
+	</div>	
+</div>  
+
+<!-- DESCRIPTION & IMPORTANT NOTES -->
+<div class="clearfix">
+ 	<div class="form_row">
+ 		<div class="row">
+ 			<div class="col-md-24">
+		 		<label for="tn-description">Description and important notes</label>
+		 		<textarea class="form-control description" id="tn-description" required="true" 
+		 		placeholder="Description and important notes max 800 characters"	 
+		 		style="height: 150px;" 
+		 		onkeyup="if(this.value.length > 800){this.value = this.value.substr(0,799)}"
+		 		onmouseup="if(this.value.length > 800){this.value = this.value.substr(0,799)}" 
+			 	ng-model="transaction.descriptions">
+			 	</textarea>
+			 	<p class="error">{{errors.descriptions}}</p>
+		 	</div>
+	 	</div>
+
+	</div>	
+</div>  
+

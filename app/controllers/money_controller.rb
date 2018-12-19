@@ -53,7 +53,8 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     meta = { 
       roles: roles,
       transactions: (transaction.meta_contents unless transaction.nil?),
-      accounts: accounts
+      accounts: accounts,
+      user: current_user
       }
     resp = { success: true, meta: meta }
     respond_to do |formate|
@@ -63,72 +64,56 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
   end
 
   def escrow_create
-    if params[:member]
-      member = current_user
-      amount = BigDecimal.new(params[:member][:amount_to_send])
-      account_id =  params[:member][:currency]
-      email =  params[:member][:email]
-      note  = params[:member][:notes]
-      errors = []
-      email_regex = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-      unless email.match(email_regex)
-        errors << "Receipent email is not valid!"
-      end
-      if(email == member.email)
-        errors << "You can not escrow money to yourself."
-      end
+    success = false
+    errors  = false
+    escrow = Escrow.new
 
-      account = member.accounts.find_by_id(account_id)
-
-      if amount <= 0
-        errors << "You must fill valid amount."
-      end
-      sent_to_id = 0
-
-      if amount > account.balance
-        errors << "you can not escrow more than available balance."
-      end
-
-      receiver = Member.find_by_email(email)
-
-      success = false;
-
-      MoneyExchange.where(
-        sent_by_id: member.id,
-        sent_to_id: sent_to_id,
-        sent_on_email: email,
-        note: note,
-        request_type: 2,
-        status: 0).destroy_all
-
-      me = MoneyExchange.new(
-        sent_by_id: member.id,
-        sent_to_id: sent_to_id, 
-        sent_on_email: email,
-        account_id: account.id,
-        request_type: 2,
-        note: note,
-        amount: amount,
-        status: 0)
-      
-      unless errors.present?
-        if me.save
-          success = true
-        end
-      end
-      
-
-      two_fetor = { is_active: current_user.two_factors.activated.first }
-
-      resp = { msg: "", success: success, 
-        acode: "escrow", errors: errors, 
-        mei: me.id,
-        two_fetor: two_fetor }
-
-      render json: resp
-
-
+    escrow.email              = params[:email]
+    escrow.tn_type            = params[:type]
+    escrow.tn_role            = params[:role]
+    escrow.phone              = params[:phone]
+    escrow.tn_currency        = params[:currency]
+    escrow.tn_amount          = params[:amount]
+    escrow.item_name          = params[:item_name]
+    escrow.shipping_currency  = params[:shipping_currency]
+    escrow.shipping_amount    = params[:shipping_amount]
+    escrow.fee_payer          = params[:fee_payer]
+    escrow.inspection_length  = params[:inspection_length]
+    escrow.descriptions       = params[:descriptions]
+    escrow.member_id          = current_user.id
+    escrow.status             = 0
+    receipent = Member.find_by_email(params[:email])
+    unless receipent.nil?
+      escrow.recepient_id     = receipent.id
     end
+
+    current_user.escrows.where(status: 0 ).destroy_all
+    two_fetor = ""
+    if escrow.save
+      success = true
+      sms     = current_user.two_factors.where(type: "TwoFactor::Sms").last
+      google  = current_user.two_factors.where(type: "TwoFactor::App").last
+      two_fetor = { 
+          is_active: current_user.two_factors.activated.first, 
+          google_app: (google.nil? ? false : true),
+          sms:      (sms.nil? ? false : true)
+        }
+    else
+      errors = escrow.errors.messages
+    end
+
+    puts current_user.two_factors.inspect
+    puts "-------------------------------------"
+      
+    resp = { msg: "", success: success, 
+      errors: errors, 
+      escrow_id: escrow.id,
+      two_fetor: two_fetor }
+
+    render json: resp
+
+
+    
   end
 
   def quick_exchange

@@ -12,6 +12,7 @@ class Member < ActiveRecord::Base
   class_name: "Project"
 
   has_many :pledges
+  has_many :escrows
   after_initialize :ensure_session_token
 
   
