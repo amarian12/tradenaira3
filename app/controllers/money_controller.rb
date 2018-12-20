@@ -44,6 +44,9 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
   end
 
   def escrow
+    if current_user.nil?
+      return false
+    end
     roles         = [ "buyer", "seller", "brocker"  ]
     transaction  = MetaCategory.find_by_title("Escrow transaction")
     accounts = []

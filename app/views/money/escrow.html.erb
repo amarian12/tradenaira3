@@ -1,5 +1,5 @@
 <%= metamagic title: "Escrow Money" %>
-
+<% if current_user %>
 <div class="container" ng-app="money">
     <div class="track_rate_wraper overflow-css">  
         <div class="col-md-10">
@@ -18,3 +18,22 @@
 		 
 	</div>
 </div>
+<% else  %>
+<div class="container">
+    <div class="track_rate_wraper overflow-css">  
+        <div class="col-md-10">
+            <div class="display_img">
+              <img src="/assets/img/bilgisayr.png" alt="screen1"> 
+            </div>
+        </div>
+        <div class="col-md-14" style="text-align: center;">     
+            
+            <div class="accet_decline">
+            You must <%= link_to "Login", signin_path %> to access this page.
+            </div>
+        </div>    
+           
+         
+    </div>
+</div>
+<% end %>
