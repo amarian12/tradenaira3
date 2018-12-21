@@ -2,11 +2,11 @@
 	<div class="form_row overflw">
 		<label for="tn-phone-number">The buyer's email address</label>	
 		<div class="full_width">
-			<p class="error">{{errors.email}}</p>
+			<p class="error">{{errors.buyer_email}}</p>
 			<img class="email_ico" src="/assets/img/email.png" alt="email">
-			<input id="member_email" name="transaction[email]" 
-			    ng-model="transaction.email"
-				onchange="checkEmailf(this)" placeholder="E-mail Address" 
+			<input id="member_email" name="transaction[buyer_email]" 
+			    ng-model="transaction.buyer_email"
+				placeholder="E-mail Address" 
 				value="" type="email">
 		</div>
 	</div>

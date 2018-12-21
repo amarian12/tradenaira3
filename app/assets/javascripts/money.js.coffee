@@ -6,10 +6,11 @@
 #= require bootstrap
 #= require bootstrap-datepicker
 #= require ./lib/angular-ui-router
+#= require_tree ./funds/filters
 
 
 
-@money =  angular.module 'money', ["ui.router", "ngResource"]
+@money =  angular.module 'money', ["ui.router", "ngResource", "translateFilters"]
 @money.controller 'MoneyController', ($scope, $stateParams, $http, $sce) ->
 
 	ctrl = @
@@ -22,6 +23,9 @@
 	$scope.resp = ""
 	$scope.is_page_loading = true
 	$scope.two_fetor_error = false
+	$scope.twofactor_html = ""
+
+	$scope.current_user = current_user =  ""
 	
 	$scope.currecy_image = ""
 	$scope.shipping_currecy_image = ""
@@ -34,7 +38,8 @@
 	}
 
 	$scope.transaction = 
-	  email: ''
+	  seller_email: ''
+	  buyer_email: ''
 	  type: ''
 	  role: ''
 	  phone: ''
@@ -49,7 +54,8 @@
 
 	$scope.intializeVars = ->
 	  $scope.errors = 
-	    email: ''
+	    seller_email: ''
+	    buyer_email: ''
 	    type: ''
 	    role: ''
 	    phone: ''
@@ -63,7 +69,113 @@
 	    descriptions: ''
 
 	$scope.intializeVars()	
-	$scope.current_user =  ""
+
+	$scope.SendVerificationMsg = (sent)->
+	  $http.get("/two_factors/sms?refresh="+sent)
+	  return false
+
+	alreadysent = false
+	$scope.resentVerificationMsg = (_this)->
+	  textmsg = $(_this).data("alt-name")
+	  defmsg = $(_this).data("orig-name")
+	  $(_this).attr("disabled",true)
+	  countst = 30
+	  rsc = setInterval (->
+	    if(countst <= 0)
+	      clearInterval(rsc)
+	      $(_this).removeAttr("disabled")
+	      .text(defmsg)
+	      return false
+	    $(_this).text(textmsg.replace("COUNT",countst))  
+	    countst--
+	  ), 1000
+	  $scope.SendVerificationMsg(alreadysent) 
+	  alreadysent = true
+	  return false 
+
+
+	$scope.loadTowFactor = (ecr_resp)->
+	  $scope.is_page_loading = true 	
+	  $http.get("/two_factors?respas=noheader")
+	    .success (twofectresp)->
+	      $scope.is_page_loading = false 
+	      $(".twofectorauth").html(twofectresp)
+	      $(".twofectorauth").find(".col-md-12.col-sm-13.col-xs-24").attr("class","col-md-23")
+	      
+
+	      verifybtn = $(".twofectorauth").find(".form-submit");
+	      resend = $(".twofectorauth").find(".send-code-button");
+	      drp_toggle = $(".twofectorauth").find(".dropdown-toggle")
+	      hintapp = $(".twofectorauth").find(".hint.app");
+	      hintsms = $(".twofectorauth").find(".hint.sms");
+	      orgname = resend.find("button[type=submit]").data("orig-name");
+	      
+	       
+	      drp_toggle.click ()->
+	        $(".twofectorauth").find(".dropdown-menu").toggle()
+	        
+	      $(".twofectorauth").find(".dropdown-menu").find("a").click ()->
+	      	dauth = $(this).data("type");
+	      	dcontent = $(this).text();
+	      	$(".twofectorauth").find(".input-group-btn").find("button").text(dcontent);
+	      	$(".twofectorauth").find("input.two_factor_auth_type").val(dauth);
+	      	$(".twofectorauth").find(".dropdown-menu").toggle()
+	      	resend.find("button[type=submit]").text(orgname);
+	      	if dauth == "sms"
+	      	  resend.removeClass("hide")
+	      	  hintsms.removeClass("hide")
+	      	  $(hintapp).hide()
+	      	else
+	      	  resend.addClass("hide")
+	      	  hintsms.addClass("hide")
+	      	  hintapp.removeClass("hide")
+	      	resend.find("button[type=submit]").click ->
+	      	  $scope.resentVerificationMsg(this)
+	      	  return false
+	      verifybtn.find("input[type=submit]").click ((reEvent)->
+	      	$scope.is_page_loading = true
+	      	$scope.verifyTwofectoAuth(this,ecr_resp)
+	      	return false
+	      )	  
+
+	  return false      	   
+
+	      	
+	      #$scope.twofactor_html = $sce.trustAsHtml(twofectresp)	
+	      #alert(resend)
+	      #verifybtn.show() 
+
+	$scope.verifyTwofectoAuth = (_this, ecr_resp)->
+	  $scope.is_page_loading = true 
+	  $scope.two_fetor_error = ""	
+	  authenticity_token = $(".twofectorauth").find("input[name=authenticity_token]").val()
+	  two_factor_type = $(".twofectorauth").find("input[name='two_factor[type]']").val() 
+	  two_factor_otp = $(".twofectorauth").find("input[name='two_factor[otp]']").val()
+
+	  request_data = {
+	  	eid: ecr_resp.escrow_id,
+	  	acode: "escrow",
+	  	utf8: "✓",
+	  	_method: "patch",
+	  	commit: "Verify",
+	  	authenticity_token: authenticity_token,
+	  	two_factor: {
+	  		type: two_factor_type
+	  		otp: two_factor_otp
+	  	}
+	  }	
+		
+	  $http.post("/two_factors/validatetrans",request_data)
+	    .success (tf_resp)->
+	      $scope.is_page_loading = false 
+	      if tf_resp.success
+	        $scope.page_index = 4
+	      else  
+	        $scope.two_fetor_error = tf_resp.errors
+	  return false      
+
+
+ 
 
 
 	$scope.dateDiff = (startD, endD)->
@@ -83,7 +195,7 @@
 	    $scope.resp = resp
 	    $scope.moveonStep(1,false)
 	    $scope.is_page_loading = false
-	    $scope.current_user = resp.user
+	    $scope.current_user = current_user = resp.user
 	    console.log(resp)
 
 	$scope.loadDatePicker = ()->  
@@ -156,17 +268,10 @@
     #Seller function
 	$scope.doSubmitSeller = (validate)->
 	  if validate
-	    if $scope.transaction.email == ""
-	      $scope.errors.email = "Please fill the email address" 
 	    email_pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/  
-
-	    if email_pattern.test($scope.transaction.email)
-	    else
-	      $scope.errors.email = "Please fill the valid email address" 
-
-	    $scope.transaction.phone
 	    pattern = /^[0-9-+]+$/
 	    plenth = $scope.transaction.phone.length
+	    # validate phone  
 	    if plenth > 0
 	      if (pattern.test($scope.transaction.phone) && plenth >9 && plenth <14) 
 	      else
@@ -203,13 +308,43 @@
 	    if $scope.transaction.descriptions == ""  
 	      $scope.errors.descriptions = "Please fill, shor descriptions about this escro." 
 
+	    if $scope.transaction.role == "buyer"
+	      if $scope.transaction.seller_email == ""
+	        $scope.errors.seller_email = "Please fill the seller's email address"
+	      if email_pattern.test($scope.transaction.seller_email)
+	      else
+	        $scope.errors.seller_email = "Please fill the valid seller's email address"
+
+	    if $scope.transaction.role == "seller"
+	      if $scope.transaction.buyer_email == ""
+	        $scope.errors.buyer_email = "Please fill the buyer's email address" 
+	      if email_pattern.test($scope.transaction.buyer_email)
+	      else
+	        $scope.errors.buyer_email = "Please fill the valid buyer's email address" 
+
+	    if $scope.transaction.role == "broker"
+	      if $scope.transaction.seller_email == ""
+	        $scope.errors.seller_email = "Please fill the seller's email address"
+	      if $scope.transaction.buyer_email == ""
+	        $scope.errors.buyer_email = "Please fill the buyer's email address"
+	      if email_pattern.test($scope.transaction.seller_email)
+	      else
+	        $scope.errors.seller_email = "Please fill the valid seller's email address"
+	      if email_pattern.test($scope.transaction.buyer_email)
+	      else
+	        $scope.errors.buyer_email = "Please fill the valid buyer's email address"     
+
+
+
 	    angular.forEach $scope.errors, (value, key)->
 	      if value == ""
 	      else $scope.is_valid = false 
 
-	    if $scope.is_valid  
+	    if $scope.is_valid 
+	      $scope.is_page_loading = true 
 	      $http.patch("/money/escrow.json", $scope.transaction)
 	      .success (ecr_resp)->
+	        $scope.is_page_loading = true 
 	        if ecr_resp.success
 	          $scope.processWithTwoFector(ecr_resp)
 	        else
@@ -253,7 +388,7 @@
 	$scope.processWithTwoFector = (ecr_resp)->
 	  $scope.page_index = 3
 	  if ecr_resp.two_fetor.is_active
-	     
+	    $scope.loadTowFactor(ecr_resp) 
 	  else
 	    $scope.two_fetor_error = "Please activate two fector autentication to move on next step"
 

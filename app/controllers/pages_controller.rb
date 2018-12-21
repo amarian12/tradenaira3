@@ -30,8 +30,6 @@ class PagesController < ApplicationController
         if params[:task] == "load"
           msgs = current_user.sr_notofications
           active_count = msgs.where(status: false).count
-          #.order(created_at: :desc)
-          #TimeDifference.between(start_time, end_time).humanize
           msgsresp = []
 
           msgs.order(created_at: :desc).map{|n| 
@@ -153,10 +151,6 @@ class PagesController < ApplicationController
   def unsubscribe
     email = CGI.unescape(params[:email]).gsub("*",".")
     @subscriber = Subscriber.find_by_email(email)
-    puts "****************************"
-    puts params[:email].inspect
-    puts @subscriber.inspect
-    puts "-------------------------------------"
       @msg = "Something went wrong, Please try again!"
       unless @subscriber.nil?
         @subscriber.status = false

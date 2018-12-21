@@ -247,7 +247,6 @@ class Member < ActiveRecord::Base
   def is_locked?
     identity = Identity.find_by_email(self.email)
     unless identity.nil?
-      puts identity.inspect
       if identity.is_locked
         return true
       end

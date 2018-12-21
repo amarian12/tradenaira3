@@ -31,12 +31,17 @@ class TwoFactorsController < ApplicationController
     msg = ""
     mei = params[:two_factor][:mei] 
     acode = params[:two_factor][:acode]
-    me = MoneyExchange.find_by_id(mei)
     capreq = false
-    account = me.account
-    receiver_id = me.receiver.nil? ? 0 : me.receiver.id
+    if params[:acode] == "escrow"
+      process_escrow_two_factor
+      return false
+    end
+
+    me = MoneyExchange.find_by_id(mei)
 
     unless me.nil?
+      account = me.account
+      receiver_id = me.receiver.nil? ? 0 : me.receiver.id
       if two_factor_auth_verified?
         me.status = 1
         if me.save
@@ -146,4 +151,37 @@ class TwoFactorsController < ApplicationController
     @two_factor.refresh!
     @two_factor.send_otp
   end
+
+  def process_escrow_two_factor
+    escrow = Escrow.find_by_id(params[:eid])
+    msg = ""
+    if two_factor_auth_verified?
+      captach = true
+      if escrow 
+        escrow.status = 1
+        escrow.save
+        success = true
+        errors = false
+      else
+        success = false
+        if two_factor_failed_locked?
+          capreq = true
+          errors = "Please enter the code shown in the picture."
+        else
+          errors = "Two factor verification code error, please re-enter."
+        end
+      end
+    else
+      captach = false
+      success = false
+      errors = "Two factor verification code error, please re-enter."
+    end
+    
+    
+
+    resp = { success: success, errors: errors, captach: capreq, msg: msg  }
+    render json: resp
+    
+  end
+
 end

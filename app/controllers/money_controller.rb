@@ -47,7 +47,7 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     if current_user.nil?
       return false
     end
-    roles         = [ "buyer", "seller", "brocker"  ]
+    roles         = [ "buyer", "seller", "broker"  ]
     transaction  = MetaCategory.find_by_title("Escrow transaction")
     accounts = []
      current_user.accounts.map{|a| 
@@ -56,10 +56,9 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     meta = { 
       roles: roles,
       transactions: (transaction.meta_contents unless transaction.nil?),
-      accounts: accounts,
-      user: current_user
+      accounts: accounts
       }
-    resp = { success: true, meta: meta }
+    resp = { success: true, meta: meta, user: current_user }
     respond_to do |formate|
       formate.json{ render json: resp }
       formate.html{  }
@@ -71,7 +70,8 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     errors  = false
     escrow = Escrow.new
 
-    escrow.email              = params[:email]
+    escrow.buyer_email        = params[:buyer_email]
+    escrow.seller_email       = params[:seller_email]
     escrow.tn_type            = params[:type]
     escrow.tn_role            = params[:role]
     escrow.phone              = params[:phone]
@@ -104,14 +104,14 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     else
       errors = escrow.errors.messages
     end
-
-    puts current_user.two_factors.inspect
-    puts "-------------------------------------"
       
-    resp = { msg: "", success: success, 
+    resp = { 
+      msg: "", 
+      success: success, 
       errors: errors, 
       escrow_id: escrow.id,
-      two_fetor: two_fetor }
+      two_fetor: two_fetor 
+    }
 
     render json: resp
 

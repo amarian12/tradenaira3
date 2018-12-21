@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181219094305) do
+ActiveRecord::Schema.define(version: 20181221134159) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -244,7 +244,6 @@ ActiveRecord::Schema.define(version: 20181219094305) do
   end
 
   create_table "escrows", force: true do |t|
-    t.string   "email"
     t.string   "tn_type"
     t.string   "tn_role"
     t.string   "phone"
@@ -261,6 +260,8 @@ ActiveRecord::Schema.define(version: 20181219094305) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "buyer_email"
+    t.string   "seller_email"
   end
 
   create_table "feeds", force: true do |t|
