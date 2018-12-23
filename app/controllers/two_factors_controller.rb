@@ -118,6 +118,7 @@ class TwoFactorsController < ApplicationController
   end
 
   def update
+    flash[:alert] = "Password for authentication is incorrect, please re-enter, e3"
     if two_factor_auth_verified?
       unlock_two_factor!
 

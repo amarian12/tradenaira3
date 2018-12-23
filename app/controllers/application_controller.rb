@@ -86,7 +86,6 @@ class ApplicationController < ActionController::Base
   end
 
   def two_factor_auth_verified?
-    flash[:alert] = "Password for authentication is incorrect, please re-enter, e3"
     return false if not current_user.two_factors.activated?
     return false if two_factor_failed_locked? && !simple_captcha_valid?
 
