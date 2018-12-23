@@ -17,11 +17,13 @@ class TwoFactorsController < ApplicationController
 
   def index
      
-    unless params["respas"].nil?
+    if params["respas"]
       if params["respas"] == "noheader"
         render "index", layout: false
         return false
       end
+    else
+      render "index"
     end
   end
 
