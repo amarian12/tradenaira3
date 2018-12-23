@@ -123,7 +123,8 @@ class TwoFactorsController < ApplicationController
 
       redirect_to session.delete(:return_to) || settings_path
     else
-      redirect_to two_factors_path, alert: t('.alert')
+      redirect_to two_factors_path
+      #, alert: t('.alert')
     end
   end
 
