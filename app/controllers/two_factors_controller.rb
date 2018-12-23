@@ -118,14 +118,13 @@ class TwoFactorsController < ApplicationController
   end
 
   def update
-    flash[:alert] = "Password for authentication is incorrect, please re-enter, e3"
+
     if two_factor_auth_verified?
       unlock_two_factor!
 
       redirect_to session.delete(:return_to) || settings_path
     else
-      redirect_to two_factors_path
-      #, alert: t('.alert')
+      redirect_to two_factors_path, alert: t('.alert')
     end
   end
 
