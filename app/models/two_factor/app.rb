@@ -6,6 +6,8 @@ class TwoFactor::App < ::TwoFactor
     rotp = ROTP::TOTP.new(otp_secret)
      
     timed = Time.parse(dtime)
+    puts timed.inspect
+    puts "-------------------------"
     if rotp.verify(otp,timed)
       touch(:last_verify_at)
       true
