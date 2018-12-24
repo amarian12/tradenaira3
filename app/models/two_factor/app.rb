@@ -6,6 +6,7 @@ class TwoFactor::App < ::TwoFactor
     rotp = ROTP::TOTP.new(otp_secret)
     puts rotp.inspect
     puts "*******************************"
+    puts ENV['URL_HOST'].inspect
     puts otp.inspect
     if rotp.verify(otp)
       touch(:last_verify_at)
