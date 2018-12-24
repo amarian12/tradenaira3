@@ -4,6 +4,8 @@ class TwoFactor::App < ::TwoFactor
     return false if otp_secret.blank?
 
     rotp = ROTP::TOTP.new(otp_secret)
+    puts rotp.inspect
+    puts "*******************************"
 
     if rotp.verify(otp)
       touch(:last_verify_at)
