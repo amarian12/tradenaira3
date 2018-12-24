@@ -1,13 +1,12 @@
 class TwoFactor::App < ::TwoFactor
-
+  attr_accessor :dtime
   def verify?
     return false if otp_secret.blank?
 
     rotp = ROTP::TOTP.new(otp_secret)
-    puts Time.now
-    puts "------------------------------------"
-
-    if rotp.verify(otp)
+     
+    timed = Time.parse(dtime)
+    if rotp.verify(otp,timed)
       touch(:last_verify_at)
       true
     else

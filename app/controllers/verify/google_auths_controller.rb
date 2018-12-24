@@ -38,7 +38,7 @@ module Verify
     end
 
     def google_auth_params
-      params.require(:google_auth).permit(:otp)
+      params.require(:google_auth).permit(:otp,:dtime)
     end
 
     def one_time_password_verified?

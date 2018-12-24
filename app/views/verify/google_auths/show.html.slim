@@ -14,6 +14,7 @@
     = f.input :otp_secret do
       .input-group
         = f.input_field :otp_secret, class: 'upcase', readonly: true
+        = f.hidden_field :dtime
         span.input-group-btn
           a.btn.btn-default href='#{verify_google_auth_path(:app, refresh: true)}'
             i.fa.fa-refresh

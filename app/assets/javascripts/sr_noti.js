@@ -21,6 +21,7 @@
  		})
  	}
 
+ 	setdTime();
  })
 
 
@@ -119,6 +120,31 @@
 
  		}
  	})
+ }
+
+
+ function setdTime(){
+ 	var app_cont = $(".sms_authh input[type=submit]");
+ 	var timeinput = $("input#google_auth_dtime");
+ 	var today = new Date();
+ 	var years = today.getFullYear();
+ 	var months = today.getMonth()+1;
+ 	var day = today.getDate();
+ 	var hours = today.getHours();
+ 	var minutes = today.getMinutes();
+ 	var seconds = today.getSeconds();
+ 	var dtime = years+"-"+months+"-"+day+" "+hours+":"+minutes+":"+seconds ;
+ 	//"yyyy-mm-dd hh:ii:ss"
+
+ 	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
+ 	if(app_cont[0]){
+ 		app_cont.click(function(){
+ 			timeinput.val(dtime);
+ 			//return false;
+ 		})
+ 	}
  }
  
  
