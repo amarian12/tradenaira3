@@ -2,10 +2,10 @@ class TwoFactor::App < ::TwoFactor
 
   def verify?
     return false if otp_secret.blank?
-    puts "------------------------------"
-    puts otp_secret.inspect
-    puts "------------------------------"
+
     rotp = ROTP::TOTP.new(otp_secret)
+    puts Time.now
+    puts "------------------------------------"
 
     if rotp.verify(otp)
       touch(:last_verify_at)
