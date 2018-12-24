@@ -2,13 +2,9 @@ class TwoFactor::App < ::TwoFactor
 
   def verify?
     return false if otp_secret.blank?
-
+    puts otp_secret.inspect
     rotp = ROTP::TOTP.new(otp_secret)
-    puts rotp.inspect
-    puts "*******************************"
-    puts ENV['URL_HOST'].inspect
-    puts otp.inspect
-    puts rotp.verify(otp).inspect
+
     if rotp.verify(otp)
       touch(:last_verify_at)
       true
