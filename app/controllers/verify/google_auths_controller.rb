@@ -43,7 +43,7 @@ module Verify
 
     def one_time_password_verified?
       puts google_auth_params.inspect
-      @google_auth.assign_attributes(google_auth_params)
+      puts @google_auth.assign_attributes(google_auth_params).inspect
       puts @google_auth.inspect
       puts "------------------------------------"
       @google_auth.verify?
