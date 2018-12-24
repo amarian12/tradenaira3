@@ -14,13 +14,10 @@ module Verify
     end
 
     def update
-      puts "**************11*************************"
       if one_time_password_verified?
-        puts "**************11*************************"
         @google_auth.active! and unlock_two_factor!
         redirect_to settings_path, notice: t('.notice')
       else
-        puts "**************22*************************"
         redirect_to verify_google_auth_path, alert: t('.alert')
       end
     end
@@ -46,6 +43,8 @@ module Verify
 
     def one_time_password_verified?
       @google_auth.assign_attributes(google_auth_params)
+      puts @google_auth.inspect
+      puts "------------------------------------"
       @google_auth.verify?
     end
 
