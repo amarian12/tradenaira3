@@ -140,7 +140,7 @@
  	if(app_cont[0]){
  		app_cont.click(function(){
  			timeinput.val(today);
- 			timeinput.attr("type","text")
+ 			//timeinput.attr("type","text")
  			//return false;
  		})
  	}
