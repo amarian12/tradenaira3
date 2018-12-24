@@ -4,16 +4,28 @@ class TwoFactor::App < ::TwoFactor
     return false if otp_secret.blank?
 
     rotp = ROTP::TOTP.new(otp_secret)
-     
-    timed = Time.parse(dtime)
-    puts timed.inspect
+    puts dtime.inspect 
+    timed = Time.parse(dtime) if dtime
+    puts timed.inspect if timed
     puts "-------------------------"
-    if rotp.verify(otp,timed)
-      touch(:last_verify_at)
-      true
+    if timed
+      puts "1111111111"
+        if rotp.verify(otp,timed)
+          touch(:last_verify_at)
+          true
+        else
+          errors.add :otp, :invalid
+          false
+        end
     else
-      errors.add :otp, :invalid
-      false
+      puts "22222222"
+        if rotp.verify(otp)
+          touch(:last_verify_at)
+          true
+        else
+          errors.add :otp, :invalid
+          false
+        end
     end
   end
 
