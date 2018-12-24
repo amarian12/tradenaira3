@@ -17,11 +17,13 @@ class TwoFactorsController < ApplicationController
 
   def index
      
-    unless params["respas"].nil?
+    if params["respas"]
       if params["respas"] == "noheader"
         render "index", layout: false
         return false
       end
+    else
+      render "index"
     end
   end
 
@@ -116,6 +118,7 @@ class TwoFactorsController < ApplicationController
   end
 
   def update
+
     if two_factor_auth_verified?
       unlock_two_factor!
 
