@@ -33,3 +33,7 @@
 #= require_tree ./component_mixin
 #= require_tree ./component_data
 #= require_tree ./component_ui
+
+#= require js.cookie
+#= require jstz
+#= require browser_timezone_rails/set_time_zone

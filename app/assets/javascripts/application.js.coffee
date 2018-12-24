@@ -37,6 +37,11 @@
 #= require jquery.validate.additional-methods
 
 
+#= require js.cookie
+#= require jstz
+#= require browser_timezone_rails/set_time_zone
+
+
 #= require gmaps-auto-complete
 $ ->
   BigNumber.config(ERRORS: false)

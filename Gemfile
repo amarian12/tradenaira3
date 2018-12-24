@@ -28,6 +28,7 @@ gem 'rails_12factor'
 gem 'nio4r', '~> 1.2', '>= 1.2.1'
 gem 'websocket-driver'
 gem 'time_difference'
+gem 'browser-timezone-rails'
 
 
  
