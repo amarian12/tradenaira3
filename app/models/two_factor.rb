@@ -27,10 +27,10 @@ class TwoFactor < ActiveRecord::Base
     end
   end
 
-  def verify?
-    msg = "#{self.class.name}#verify? is not implemented."
-    raise NotImplementedError.new(msg)
-  end
+  # def verify?
+  #   msg = "#{self.class.name}#verify? is not implemented."
+  #   raise NotImplementedError.new(msg)
+  # end
 
   def expired?
     Time.now >= 30.minutes.since(refreshed_at)

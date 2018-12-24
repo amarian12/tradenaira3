@@ -42,13 +42,7 @@ module Verify
     end
 
     def one_time_password_verified?
-      puts google_auth_params.inspect
-      @google_auth.assign_attributes(google_auth_params).inspect
-       
-      @google_auth.otp = google_auth_params[:otp]
-      puts @google_auth.otp.inspect
-      puts @google_auth.inspect
-      puts "------------------------------------"
+      @google_auth.assign_attributes(google_auth_params)
       @google_auth.verify?
     end
 
