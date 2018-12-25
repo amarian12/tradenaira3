@@ -123,7 +123,7 @@ Peatio::Application.routes.draw do
   
   post "pages/subscribe" => 'pages#subscribe'
   get "/pages/liveprice/:market", to: 'pages#liveprice'
-
+  post "pages/support" => 'pages#support'
   
 
 

@@ -118,10 +118,8 @@ class TwoFactorsController < ApplicationController
   end
 
   def update
-
     if two_factor_auth_verified?
       unlock_two_factor!
-
       redirect_to session.delete(:return_to) || settings_path
     else
       redirect_to two_factors_path, alert: t('.alert')
@@ -163,8 +161,27 @@ class TwoFactorsController < ApplicationController
       if escrow 
         escrow.status = 1
         escrow.save
+        
         success = true
         errors = false
+        if escrow.seller
+          msgnoti = "Escrow created with you."
+          SrNotofication.create(
+              member_id: escrow.seller.id,
+              msg: msgnoti,
+              link_page: "escrow",
+              status: false)
+          msgnoti = "Escrow created with you."
+        end
+        if escrow.buyer
+          msgnoti = "Escrow created with you."
+          SrNotofication.create(
+              member_id: escrow.buyer.id,
+              msg: msgnoti,
+              link_page: "escrow",
+              status: false)
+        end
+        UserMailer.escrow_created(escrow,current_user).deliver
       else
         success = false
         if two_factor_failed_locked?
@@ -179,8 +196,6 @@ class TwoFactorsController < ApplicationController
       success = false
       errors = "Two factor verification code error, please re-enter."
     end
-    
-    
 
     resp = { success: success, errors: errors, captach: capreq, msg: msg  }
     render json: resp

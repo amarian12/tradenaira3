@@ -9,7 +9,10 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     end
   end
 
-
+  def new
+    @identity = Identity.new
+  end
+  
   def req_success
   end
   def commission
@@ -70,11 +73,10 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     errors  = false
     escrow = Escrow.new
 
-    escrow.buyer_email        = params[:buyer_email]
-    escrow.seller_email       = params[:seller_email]
     escrow.tn_type            = params[:type]
     escrow.tn_role            = params[:role]
-    escrow.phone              = params[:phone]
+    escrow.buyer_phone        = params[:buyer_phone]
+    escrow.seller_phone       = params[:seller_phone]
     escrow.tn_currency        = params[:currency]
     escrow.tn_amount          = params[:amount]
     escrow.item_name          = params[:item_name]
@@ -85,6 +87,22 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     escrow.descriptions       = params[:descriptions]
     escrow.member_id          = current_user.id
     escrow.status             = 0
+    
+
+    if escrow.tn_role == "broker"
+      escrow.amount_payer       = params[:amount_payer]
+      escrow.buyer_email        = params[:buyer_email]
+      escrow.seller_email       = params[:seller_email]
+    elsif escrow.tn_role == "seller" 
+      escrow.amount_payer       = "buyer"
+      escrow.buyer_email        = params[:buyer_email]
+      escrow.seller_email       = current_user.email 
+    elsif escrow.tn_role == "buyer" 
+      escrow.amount_payer       = "seller"
+      escrow.buyer_email        = current_user.email
+      escrow.seller_email       = params[:seller_email]  
+    end
+
     receipent = Member.find_by_email(params[:email])
     unless receipent.nil?
       escrow.recepient_id     = receipent.id
@@ -115,8 +133,6 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
 
     render json: resp
 
-
-    
   end
 
   def quick_exchange

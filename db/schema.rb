@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181221134159) do
+ActiveRecord::Schema.define(version: 20181225102823) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -246,7 +246,6 @@ ActiveRecord::Schema.define(version: 20181221134159) do
   create_table "escrows", force: true do |t|
     t.string   "tn_type"
     t.string   "tn_role"
-    t.string   "phone"
     t.string   "tn_currency"
     t.decimal  "tn_amount",         precision: 10, scale: 0
     t.string   "item_name"
@@ -262,6 +261,9 @@ ActiveRecord::Schema.define(version: 20181221134159) do
     t.string   "status"
     t.string   "buyer_email"
     t.string   "seller_email"
+    t.string   "amount_payer"
+    t.string   "buyer_phone"
+    t.string   "seller_phone"
   end
 
   create_table "feeds", force: true do |t|

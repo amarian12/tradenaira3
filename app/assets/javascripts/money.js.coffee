@@ -42,12 +42,14 @@
 	  buyer_email: ''
 	  type: ''
 	  role: ''
-	  phone: ''
+	  buyer_phone: ''
+	  seller_phone: ''
 	  currency: ''
 	  amount: ''
 	  item_name: ''
 	  shipping_currency: ''
 	  shipping_amount: ''
+	  amount_payer: ''
 	  fee_payer: ''
 	  inspection_length: ''
 	  descriptions: ''
@@ -58,12 +60,14 @@
 	    buyer_email: ''
 	    type: ''
 	    role: ''
-	    phone: ''
+	    buyer_phone: ''
+	    seller_phone: ''
 	    currency: ''
 	    amount: ''
 	    item_name: ''
 	    shipping_currency: ''
 	    shipping_amount: ''
+	    amount_payer: ''
 	    fee_payer: ''
 	    inspection_length: ''
 	    descriptions: ''
@@ -270,13 +274,19 @@
 	  if validate
 	    email_pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/  
 	    pattern = /^[0-9-+]+$/
-	    plenth = $scope.transaction.phone.length
-	    # validate phone  
-	    if plenth > 0
-	      if (pattern.test($scope.transaction.phone) && plenth >9 && plenth <14) 
-	      else
-	        $scope.errors.phone = "Invalid Phone number"
 
+	    seller_phone_len = $scope.transaction.seller_phone.length 
+	    buyer_phone_len  = $scope.transaction.buyer_phone.length 
+	    if seller_phone_len > 0
+	      if (pattern.test($scope.transaction.seller_phone) && seller_phone_len >9 && seller_phone_len <14) 
+	      else
+	        $scope.errors.seller_phone = "Invalid seller's phone number"
+
+	    if buyer_phone_len > 0    
+	      if (pattern.test($scope.transaction.buyer_phone) && buyer_phone_len >9 && buyer_phone_len <14) 
+	      else
+	        $scope.errors.buyer_phone = "Invalid buyer's phone number"
+	        
 	    if $scope.transaction.currency == ""
 	      $scope.errors.currency = "Please select the currency"   
 
@@ -327,12 +337,17 @@
 	        $scope.errors.seller_email = "Please fill the seller's email address"
 	      if $scope.transaction.buyer_email == ""
 	        $scope.errors.buyer_email = "Please fill the buyer's email address"
+
 	      if email_pattern.test($scope.transaction.seller_email)
 	      else
 	        $scope.errors.seller_email = "Please fill the valid seller's email address"
+
 	      if email_pattern.test($scope.transaction.buyer_email)
 	      else
-	        $scope.errors.buyer_email = "Please fill the valid buyer's email address"     
+	        $scope.errors.buyer_email = "Please fill the valid buyer's email address" 
+
+	      if $scope.transaction.amount_payer == ""      
+	        $scope.errors.amount_payer = "Please select, who will pay escrow amount?"
 
 
 
@@ -383,7 +398,9 @@
 	              $scope.errors.inspection_length = value[0]  
 
 	            if key == "descriptions"
-	              $scope.errors.descriptions = value[0]  
+	              $scope.errors.descriptions = value[0] 
+	    else
+	      console.log($scope.errors)       
 
 	$scope.processWithTwoFector = (ecr_resp)->
 	  $scope.page_index = 3

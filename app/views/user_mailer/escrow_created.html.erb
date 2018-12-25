@@ -1,0 +1,131 @@
+
+<html><head></head>
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" style=" background: #EEEEEE; font:14px/20px 'Helvetica', Arial, sans-serif;">
+  <tbody>
+  <tr>
+    <td style="padding: 30px 0;"><table cellspacing="0" cellpadding="0" width="650" align="center" border="0" style="background: #FFFFFF; border-radius: 10px">
+        <tbody>
+        <tr>
+          <td>
+            <%= render "shared/emails/logo_template" %></td>
+        </tr>
+        <tr>
+          <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
+            <!--body-->
+            <table>
+              <tbody>
+              <tr>
+                <td>
+                  <p>Dear User!</p>
+        					<p>Money escrowed successfully by <%= @escrow.member.email %>, with terms and conditions mentioned on TRADENaira site.<p>
+
+                   <p>Money escrowed by:<%= @escrow.member.email %></p>
+                   
+        					 <p>Escrowed amount: <%= @escrow.tn_amount %><%= @escrow.tn_currency %>. </p> 
+
+                   <% if @escrow.tn_type == "broker" %>
+                       <table class="table" width="100%">
+                          <tr>
+                             <td>Brocker:</td>
+                             <td><%= @escrow.member.email %></td>
+                          </tr>   
+                          <tr>
+                             <td>Seller: </td>
+                             <td><%= @escrow.seller_email %></td>
+                          </tr>
+                          <tr>
+                             <td>Buyer: </td>
+                             <td><%= @escrow.buyer_email %></td>
+                          </tr>
+                          
+                       </table>
+                   <% end %>
+                   <% if @escrow.tn_type == "seller" %>
+                       <table class="table" width="100%">
+                          <tr>
+                             <td>Buyer: </td>
+                             <td><%= @escrow.buyer_email %></td>
+                          </tr>
+                          <tr>
+                             <td>Seller: </td>
+                             <td><%= @escrow.seller_email %></td>
+                          </tr>
+                          
+                       </table>
+                   <% end %>
+                   <% if @escrow.tn_type == "buyer" %>
+                       <table class="table" width="100%"> 
+                          <tr>
+                             <td>Seller: </td>
+                             <td><%= @escrow.seller_email %></td>
+                          </tr>
+                          <tr>
+                             <td>Buyer: </td>
+                             <td><%= @escrow.buyer_email %></td>
+                          </tr>
+                          
+                       </table>
+                   <% end %>
+                   
+                   <p>Item name: 
+                    <b><%= @escrow.item_name %></b></p>
+
+                   <p>Shiping : 
+                    <b><%= @escrow.shipping_amount %><%= @escrow.shipping_currency %></b>
+                   </p>
+
+                   <p>Escrow amount payer : 
+                    <b><%= @escrow.amount_payer %></b>
+                   </p>
+
+                   <p>Escrow amount fee payer : 
+                    <b><%= @escrow.fee_payer %></b>
+                   </p>
+                   
+                    <p>Inspection length : 
+                      <b><%= @escrow.inspection_length %></b>
+                    </p>
+
+                    <p>Descriptions : 
+                      <b><%= @escrow.descriptions %></b>
+                    </p>
+                    <% if @escrow.tn_role == "broker" %>
+        					     <p>These funds will be locked, once buyer and seller both are accepted the request. </p>
+                    <% end %>
+                    <% if @escrow.tn_role == "seller" %>
+                      <p>These funds will be locked, once buyer accepted the request. </p>
+                    <% end %>
+
+                    <% if @escrow.tn_role == "buyer" %>
+                      <p>These funds will be locked, once seller accepted the request. </p>
+                    <% end %>
+
+        				 <p>Thanks</p>
+        					<p>
+        						Regards<br>
+        						<a href="https://tradenaira.com">tradenaira.com</a>
+        					</p>  
+                  <p><%= raw t('mailer.signature') %></p>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <!--body-->
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style="padding:0 30px 20px; font-size: 13px; color: #999">
+              <%= raw t('mailer.footer', contact_mail: ENV['SUPPORT_MAIL']) %>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body></html>
+

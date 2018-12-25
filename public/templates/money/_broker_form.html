@@ -30,11 +30,21 @@
 
 <div class="clearfix">
 	<div class="form_row">
-	 <label for="tn-phone-number">Recepient phone number(If known)</label>
-	 <input class="form-control" id="tn-phone-number"   
-	 placeholder="Phone number"  
-	 size="30" type="text" ng-model="transaction.phone">
-	 <p class="error">{{errors.phone}}</p>
+	 <label for="tn-seller-phone-number">Seller's phone number(If known)</label>
+	 <input class="form-control" id="tn-seller-phone-number"   
+	 placeholder="Seller's Phone number"  
+	 size="30" type="text" ng-model="transaction.seller_phone">
+	 <p class="error">{{errors.seller_phone}}</p>
+	</div> 
+</div> 
+
+<div class="clearfix">
+	<div class="form_row">
+	 <label for="tn-seller-phone-number">Buyer's phone number(If known)</label>
+	 <input class="form-control" id="tn-buyer-phone-number"   
+	 placeholder="Buyer's Phone number"  
+	 size="30" type="text" ng-model="transaction.buyer_phone">
+	 <p class="error">{{errors.buyer_phone}}</p>
 	</div> 
 </div> 
  
@@ -119,7 +129,7 @@
 			 		</div>
 			 	</div>
 		 	</div>
-		 	<p class="error">{{errors.fee_payer}}</p>
+		 	<p class="error">{{errors.amount_payer}}</p>
 		</div> 	
 	</div>	
 </div>

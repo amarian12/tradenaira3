@@ -17,10 +17,33 @@ class UserMailer < ActionMailer::Base
       subjects = "You have been sent some money"
     elsif @me.request_type == "request_meney"
       subjects = "You have been requetsed some money"
-    elsif @me.request_type == "escrow_money"
-      subjects = "You have been escrowed some money"
     end
     mail to: me.sent_on_email, subject: subjects
+  end
+
+
+  def signup_request_escrow escrow, email
+    @escrow = escrow
+    
+    subjects = "You have been escrowed some money from TRADENaira"
+    mail to: email, subject: subjects    
+  end
+
+  def escrow_created escrow, current_user
+    @escrow       = escrow
+    @member       = current_user
+    @seller       = @escrow.seller
+    @buyer        = @escrow.buyer
+    receips       = []
+    subjects      = "You have been escrowed some money"
+    if @seller
+      receips << @seller.email
+    end
+    if @buyer
+      receips << @buyer.email
+    end
+    receips << escrow.member.email
+    mail to: receips, subject: subjects
   end
 
   #sent to receiver after receive money
@@ -73,12 +96,21 @@ class UserMailer < ActionMailer::Base
      #when admin decline
   end
 
-  def escrow_success me
-    @me       = me
-    @sender   = @me.sender
-    @receiver = @me.receiver
+  def escrow_success escrow
+    @escrow       = escrow
+    @seller   = @escrow.seller
+    @buyer = @escrow.buyer
+    receips = []
     subjects  = "Money escrowed successfully!"
-    mail to: [@sender.email,@receiver.email], subject: subjects
+    if @seller
+      receips << @seller.email
+    end
+    if @buyer
+      receips << @buyer.email
+    end
+    receips << escrow.member.email
+    
+    mail to: receips, subject: subjects
   end
 
  
@@ -92,18 +124,17 @@ class UserMailer < ActionMailer::Base
     if me.request_type == "send_money"
       @action = "send"
       subjects = "Approval requets to send money"
-
       @sender_name = @me.sender.display_name || @me.sender.email
        
       if @me.receiver.nil?
         @receiver_name = @me.sent_on_email
       else
         @receiver_name = @me.receiver.display_name || @me.receiver.email
-      end      
+      end     
+
     elsif me.request_type == "request_meney"
       @action = "request"
       subjects = "Approval requets to receive money"
-      
       @sender_name = @me.sender.display_name || @me.sender.email
       @receiver_name = @me.receiver.nil? ? @me.sent_on_email : @me.receiver.email
 
@@ -124,14 +155,14 @@ class UserMailer < ActionMailer::Base
     @getcontent = getcontent
     @memberid = Member.where(:email => getemail).pluck(:id)
     if @memberid.blank? == false
-    @membername = IdDocument.find_by(id: @memberid)
-    @closename = @membername.name
-    if @closename.blank?
-       @closename = 'user'
-	end
+      @membername = IdDocument.find_by(id: @memberid)
+      @closename = @membername.name
+        if @closename.blank?
+            @closename = 'user'
+	     end
     else
       @closename = 'user'
-	end
+	  end
     mail to: getemail, subject: getsubject, cc: getcc
   end
 
