@@ -4,7 +4,7 @@
  	//if(typeof(gon.current_user) != "undefined"){
  		//if(typeof(gon.current_user.sn) != "undefined"){
  			  setInterval(function(){
- 			 	sRNotification();
+ 			 	//sRNotification();
  			 },3000)
  		//}
  	//}
@@ -144,6 +144,34 @@
  			//return false;
  		})
  	}
+ }
+
+ function manage_escrow(id, action_for, $this) {
+ 	$($this).attr("disabled",true)
+ 	.text("Please wait ...")
+ 	$.ajax({
+ 		url: "/money/escrow_manage",
+ 		type: "POST",
+ 		dataType: "json",
+ 		data: { id: id, request_for: action_for  },
+ 		success: function(resp){
+ 			if (resp.success) {
+ 				$($this).hide();
+ 				$("#success-"+id).text(resp.msg)
+ 			}else{
+ 				if(resp.errors.length > 0){
+ 					var er = "";
+ 					for(var i=0; i < resp.errors.length; i++){
+ 						error = resp.errors[i];
+ 						er += '<p>'+error+'</p>'
+ 					}
+ 					$("#errors-"+id).html(er)
+ 				}
+ 			}
+ 		}
+
+ 	})
+ 	return false;
  }
  
  

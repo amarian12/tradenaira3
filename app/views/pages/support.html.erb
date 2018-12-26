@@ -1235,7 +1235,8 @@ ol.main > li > ol > li:before {
 			<div id="respSuccmsges" class="col-sm-12"></div>
 			<div class="moformcontainer">
 				<p>Welcome Back</p>
-				<%= simple_form_for @identity, url: '/auth/identity/callback', :method => 'post' do |f| %>
+				<%= simple_form_for @identity, url: '/pages/support', :method => 'post', html: { onsubmit: "return SendMoney(this)", 
+				data: { actionfor: "support" }} do |f| %>
 					<%= f.input :email, label:t('simple_form.labels.session.email'), placeholders: t('simple_form.placeholders.session.email')%>
 					<%= f.input :password, :as=> 'password', :input_html => {:name => 'password'}, label:t('simple_form.labels.session.password'), placeholder: t('simple_form.placeholders.session.password')%>
 					<% #if required_captcha %>

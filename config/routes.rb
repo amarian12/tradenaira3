@@ -52,6 +52,7 @@ Peatio::Application.routes.draw do
 
   get "money/escrow", to: "money#escrow", as: "escrow"
   patch "money/escrow", to: "money#escrow_create", as: "escrow_create"
+  post "money/escrow_manage", to: "money#escrow_manage", as: "escrow_manage"
    
 
   get "money/accept_decline_money" => 'money#accept_decline_money'

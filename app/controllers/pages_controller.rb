@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_action :set_metatags
   layout 'landing'
+
   def amlpolicy
     @title    = "TradeNAIRA anti-money laundering policy "
     @descrip  = "at TradeNAIRA, we take money laundering very seriously and will take all appropriate steps to inform the relevant authorities and close suspected accounts if we believe that is being used for illicit purposes."
@@ -21,10 +22,6 @@ class PagesController < ApplicationController
 
   def projectfunding
   end
-
-  #  def new_abc
-  #   @identity = Identity.new
-  # end
 
   def srnoti
     #first update the visitor counter
@@ -122,17 +119,10 @@ class PagesController < ApplicationController
   def support
     @title    = "TradeNAIRA Support"
     @descrip  = "Get in touch with TradeNAIRA today and discover how easy it is to do business in Nigeria, Ghana and West Africa."
-    @identity = Identity.new
+   @identity = Identity.new
      
   end
-   def abc
-      identity = Identity.new(identity_params.merge(email: current_user.email))
-      if identity.save && current_user.create_auth_for_identity(identity)
-        redirect_to settings_path, notice: t('.success')
-      else
-        redirect_to new_authentications_identity_path, alert: identity.errors.full_messages.join(',')
-      end
-    end
+   
 
   def subscribe
     subs_fields = params.required(:subscriber).permit(:email, :name)
@@ -173,10 +163,7 @@ class PagesController < ApplicationController
       end
     
   end
-private
-  def identity_params
-      params.required(:identity).permit(:password, :password_confirmation)
-    end
+
  
 
 end

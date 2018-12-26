@@ -187,6 +187,53 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     
   end
 
+  def escrow_manage
+    escrow = Escrow.find_by_id(params[:id])
+    user = current_user
+    errors = []
+    request_for = params[:request_for]
+    success = false
+    msg = ""
+
+    if request_for == "accept"
+      if escrow.is_user_amount_payer? user
+        if escrow.has_tn_amount? user
+          if escrow.approve_by_buyer(user)
+            escrow.status = 2
+            escrow.save(validate: false)
+            success = true
+            msg = "Approved success"
+          end
+        else
+          errors << "You don't have sufficient balance to process this request!"
+        end
+      else
+        errors << "You are not authorised to access this page!"
+      end
+    else
+    request_for == "decline"  
+      if escrow.status == 1
+        escrow.decline_by_buyer(user)
+        escrow.status = 6
+        escrow.save
+        msg = "declined success"
+        success = true
+      else
+        success = false
+        msg = "can't declin on this status"
+        errors << "can't declin on this status"
+      end
+      
+    end
+
+    resp = { success: success, msg: msg, errors: errors }
+
+    respond_to do |formate|
+      formate.json{ render json: resp }
+    end
+      
+  end
+
   def request_money
 
     if params[:member]
@@ -365,6 +412,9 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
       request_type: MoneyExchange::REQTYPES[:request_meney])
      .where("status > 0")
       .order(created_at: :desc)  
+    @escrows = Escrow.where("(member_id = ? OR seller_email = ? OR buyer_email = ?) AND status > 0",
+      current_user.id, current_user.email, current_user.email)
+      .order(status: :asc)   
     
 
   end

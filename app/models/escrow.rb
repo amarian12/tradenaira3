@@ -2,13 +2,38 @@ class Escrow < ActiveRecord::Base
 	belongs_to :member
 
 	validates :tn_type, :tn_role, 
-	:tn_currency, :tn_amount, :item_name, :shipping_currency, :shipping_amount,
-	:fee_payer, :inspection_length, :descriptions, :member_id, :status, presence: true
+	:tn_currency, :tn_amount, :item_name, :shipping_currency, 
+	:amount_payer, :fee_payer, :shipping_amount,
+	:inspection_length, :descriptions, :member_id, :status, presence: true
 
 	validates :seller_email, format: { with: URI::MailTo::EMAIL_REGEXP }, if: :is_buyer?
 	validates :buyer_email, format: { with: URI::MailTo::EMAIL_REGEXP }, if: :is_seller? 
 	validates :buyer_email, :seller_email, format: { with: URI::MailTo::EMAIL_REGEXP }, 
 	if: :is_broker? 
+
+
+	MONEYDB = :money_debited
+	MONEYCR = :money_credited
+	MONEYRB = :money_rollback	
+
+	MONEYSHDB = :shipping_money_debited
+	MONEYSHCR = :shipping_money_credited
+	MONEYSHRB = :shipping_money_rollback
+
+	FEE = 2.0 #% amount
+
+	def get_status
+		st = [	
+			"pending", 			#0
+			"active",			#1
+			"approved_buyer",	#2
+			"declined_buyer",	#3
+			"approved_admin",	#4
+			"declined_admin",	#5
+			"closed"			#6
+		 ]
+		 st[status.to_i]
+	end
 
 
 	validates :tn_amount, numericality: { only_integer: true, greater_than_or_equal_to: 200 }
@@ -23,9 +48,125 @@ class Escrow < ActiveRecord::Base
 		Member.find_by_email(buyer_email)
 	end
 
+	def broker
+		self.member if self.tn_role == "broker"
+	end
+
+	def user_role email
+		return "seller" if (self.seller_email == email)
+		return "buyer"  if (self.buyer_email == email)
+		return "broker" if (self.tn_role == "broker" &&  self.member.email == email)
+	end
+
+	def is_user_amount_payer? user
+		if tn_role == "seller" || tn_role == "buyer"
+			return true if buyer_email == user.email
+		elsif tn_role == "broker"
+			return true if (amount_payer == user_role(user.email) && amount_payer != "")	
+		end
+		return false
+	end
+
+	def is_user_fee_payer user
+		return true if fee_payer == user_role(user.email)
+		return false
+	end
+
+	def has_tn_amount? user
+		tncurrency = Currency.where(code: tn_currency).last
+		shippingcurrency = Currency.where(code: shipping_currency).last
+		 
+		amount = user.accounts.where(currency: tncurrency.id)
+		.where("balance >= ?", tn_amount).last
+		
+		shipp = user.accounts.where(currency: shippingcurrency.id)
+		.where("balance >= ?", shipping_amount).last
+		 return true if amount && shipp
+		 return false
+	end
+
+	
+
+	def approve_by_buyer user
+		if has_tn_amount? user
+
+			tncurrency = Currency.where(code: tn_currency).last
+			shippingcurrency = Currency.where(code: shipping_currency).last
+
+			tn_account = user.accounts.where(currency: tncurrency.id).last
+			sh_account = user.accounts.where(currency: shippingcurrency.id).last
+
+			unlock_and_sub_funds(tn_account, tn_amount, 0.0, Escrow::MONEYDB)
+			unlock_and_sub_funds(sh_account, shipping_amount, 0.0, Escrow::MONEYSHCR)
+
+			if tn_type == "seller" || tn_type == "buyer"
+			  msg = "Money escrow successfully accepted by buyer"
+			  if buyer
+			  	SrNotofication.create(
+		          member_id: buyer.id,
+		          link_page: "escrow",
+		          msg: msg,
+		          status: false)
+				end
+			else
+			  msg = "Money escrow successfully accepted by recepient"
+			  	if buyer
+				  	SrNotofication.create(
+			          member_id: buyer.id,
+			          link_page: "escrow",
+			          msg: msg,
+			          status: false)
+				end  	
+			  SrNotofication.create(
+		          member_id: member.id,
+		          link_page: "escrow",
+		          msg: msg,
+		          status: false)
+			end
+
+			return true
+
+			
+		end
+	end
+
+	def decline_by_buyer user
+		if tn_type == "seller" || tn_type == "buyer"
+			msg = "Money escrow declined by buyer"
+			if buyer
+			  	SrNotofication.create(
+		          member_id: buyer.id,
+		          link_page: "escrow",
+		          msg: msg,
+		          status: false)
+			end
+		else
+			msg = "Money escrow declined by recepient"
+			  	if buyer
+				  	SrNotofication.create(
+			          member_id: buyer.id,
+			          link_page: "escrow",
+			          msg: msg,
+			          status: false)
+				end  	
+
+			  SrNotofication.create(
+		          member_id: member.id,
+		          link_page: "escrow",
+		          msg: msg,
+		          status: false)
+		end
+	end
+
 
 	private
 
+	def unlock_and_sub_funds account, sum, fee, reason
+		#unlock_and_sub_funds(amount, locked: ZERO, fee: ZERO, reason: nil, ref: nil)
+    	#account.lock!
+    	account.unlock_and_sub_funds sum, locked: sum, fee: fee, reason: reason, ref: self
+		
+	end
 	def is_seller?
 		return self.tn_role == "seller"
 	end
