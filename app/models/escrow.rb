@@ -173,7 +173,7 @@ class Escrow < ActiveRecord::Base
 	    account.sub_funds(amount, fee, reason, ref)
   	end
 
-  	def lock_funds
+  	def lock_funds user
   		tncurrency = Currency.where(code: tn_currency).last
 		shippingcurrency = Currency.where(code: shipping_currency).last
 
