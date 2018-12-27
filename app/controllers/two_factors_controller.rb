@@ -192,7 +192,11 @@ class TwoFactorsController < ApplicationController
               link_page: "escrow",
               status: false)
         end
-        UserMailer.escrow_created(escrow,current_user).deliver
+        begin
+          UserMailer.escrow_created(escrow,current_user).deliver
+        rescue
+          puts "email errors"
+        end  
       else
         success = false
         if two_factor_failed_locked?

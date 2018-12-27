@@ -183,7 +183,7 @@ class Escrow < ActiveRecord::Base
 
     	tn_account.lock_funds(tn_amount, reason: Escrow::MONEYDB, ref: self)
     	sh_account.lock_funds(shipping_amount, reason: Escrow::MONEYSHDB, ref: self)
-    	
+
   	end
 
 	def is_seller?
@@ -201,12 +201,16 @@ class Escrow < ActiveRecord::Base
 	private
 
 	def notify_users
-		if seller.nil? && status == 1
-			UserMailer.signup_request_escrow(self, seller_email).deliver
-		end
-		if buyer.nil? && status == 1
-			UserMailer.signup_request_escrow(self, buyer_email).deliver
-		end
+		begin
+			if seller.nil? && status == 1
+				UserMailer.signup_request_escrow(self, seller_email).deliver
+			end
+			if buyer.nil? && status == 1
+				UserMailer.signup_request_escrow(self, buyer_email).deliver
+			end
+		rescue
+			puts "email errors"
+		end	
 	end
 
  
