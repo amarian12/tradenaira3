@@ -163,7 +163,7 @@ class TwoFactorsController < ApplicationController
 
         if escrow.is_user_amount_payer? current_user
           if escrow.has_tn_amount? current_user
-            escrow.lock_funds
+            escrow.lock_funds current_user
             escrow.status = 1
           end
         else

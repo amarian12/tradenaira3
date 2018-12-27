@@ -180,8 +180,10 @@ class Escrow < ActiveRecord::Base
 		tn_account = user.accounts.where(currency: tncurrency.id).last
 		sh_account = user.accounts.where(currency: shippingcurrency.id).last
 
-    	tn_account.lock_funds(tn_amount)
-    	sh_account.lock_funds(shipping_amount)
+
+    	tn_account.lock_funds(tn_amount, reason: Escrow::MONEYDB, ref: self)
+    	sh_account.lock_funds(shipping_amount, reason: Escrow::MONEYSHDB, ref: self)
+    	
   	end
 
 	def is_seller?
