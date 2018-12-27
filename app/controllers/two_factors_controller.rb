@@ -164,7 +164,8 @@ class TwoFactorsController < ApplicationController
         if escrow.is_user_amount_payer? current_user
           if escrow.has_tn_amount? current_user
             escrow.lock_funds current_user
-            escrow.status = 1
+            # if user has paid, move status directly to paid
+            escrow.status = 2
           end
         else
           escrow.status = 1
