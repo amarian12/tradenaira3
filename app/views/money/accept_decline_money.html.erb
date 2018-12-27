@@ -31,13 +31,13 @@
 						<td><%= me.amount %><%= me.account.currency %></td>
 						<td>
 							<% if me.receiver_account.balance < me.amount %>
-							Deposit fund to accept request
+								Deposit fund to accept request
 							<% else %>
-							<%= link_to "Accept", two_factor_money_path(me.id, "accept"), 
-							class: "btn btn-default" %>
+								<%= link_to "Accept", two_factor_money_path(me.id, "accept"), 
+								class: "btn btn-default" %>
 							<% end %>
 							<%= link_to "Decline", two_factor_money_path(me.id,"decline"), 
-							class: "btn btn-danger", data: {confirm: "Are you sure, decline the request!"} %>
+								class: "btn btn-danger", data: {confirm: "Are you sure, decline the request!"} %>
 			        	</td>
 					</tr>
 				</tbody>
@@ -56,10 +56,11 @@
 	<div class="col-md-24">
 		<div class="row">
 			<% @escrows.each do |es| %>
-				<div class="col-md-6">
+				<div class="col-md-6" id="card-iteam-<%= es.id %>">
 					<div class="card" style="height: 430px; overflow-y: scroll; 
 					overflow-x: hidden; ">
 					  <div class="card-body">
+					  	<p style="text-align: center;">#<%= es.id %></p>
 					  	<p class="get_status">Escrow status: <%= es.get_status %></p>
 					    <h5 class="card-title">Date: <%= es.created_at %></h5>
 					    <p class="card-text">Item name: <%= es.item_name %></p>
@@ -101,17 +102,28 @@
 					    <% if es.is_user_amount_payer?(current_user) && es.status == "1" %>
 						    <% if es.has_tn_amount? current_user %>
 								<p>
-									<%= link_to "Approve", "#", class: "btn btn-default",
+									<%= link_to "Approve", "#", class: "btn btn-default accept",
 									onclick: "return manage_escrow(#{es.id}, 'accept', this)" %>
-									<%= link_to "Decline", "#", class: "btn btn-danger" %>
+
+									<%= link_to "Decline", "#", class: "btn btn-danger decline",
+									onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
 								</p>
 							<% else %>	
-							<%= link_to "Approve", "#", class: "btn btn-default", disabled: true %>
-							<%= link_to "Decline", "#", class: "btn btn-danger",
-							onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
-							<p class="error" style="font-size: 10px">To approve this transaction please add balance in your account.</p>
+									<%= link_to "Approve", "#", 
+									class: "btn btn-default accept", disabled: true %>
+
+									<%= link_to "Decline", "#", class: "btn btn-danger decline",
+									onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
+
+									<p class="error" style="font-size: 10px">
+										To approve this transaction please add 
+										balance in your account.</p>
 							<% end %>
+
+							
+
 						<% end %>
+
 
 
 					    <!-- 
@@ -136,12 +148,12 @@
 			<tr>
 				<td>#</td>
 				<td>Date</td>
-				<td>Send Money to</td>
+				<td>Sent Money request to</td>
 				<td>Amount</td>
 				<td>Status</td>
 			</tr>
 		</thead>
-		<% @send_money.each do |me| %>
+		<% @requests_sent_you.each do |me| %>
 		<tbody>
 			<tr>
 				<td>#<%= me.id %></td>
@@ -176,7 +188,7 @@
 <% if @send_money.present? %>
 <div class="panel">
 	<div class="panel-title">
-		<h4 class="title">Sent Money Logs</h4>
+		<h4 class="title">Money Requests sent to you</h4>
 	</div>
 	<div class="panel-info">
 		<table class="table">
@@ -184,7 +196,7 @@
 			<tr>
 				<td>#</td>
 				<td>Date</td>
-				<td>Send Money to</td>
+				<td>Sent Money to</td>
 				<td>Amount</td>
 				<td>Status</td>
 				 

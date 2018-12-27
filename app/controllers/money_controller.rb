@@ -212,7 +212,7 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
       end
     else
     request_for == "decline"  
-      if escrow.status == 1
+      if escrow.status == "1"
         escrow.decline_by_buyer(user)
         escrow.status = 6
         escrow.save
@@ -220,8 +220,8 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
         success = true
       else
         success = false
-        msg = "can't declin on this status"
-        errors << "can't declin on this status"
+        msg = "Please review following errors!"
+        errors << "can't declin on this stage"
       end
       
     end
@@ -396,6 +396,7 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     @title    = "Accept Decline Money"
     @descrip  = "Accept Decline Money" 
     @member = current_user
+    
     @requests = MoneyExchange.where(
       sent_on_email: @member.email, 
       request_type: MoneyExchange::REQTYPES[:request_meney], 
@@ -411,9 +412,11 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
       sent_by_id: @member.id, 
       request_type: MoneyExchange::REQTYPES[:request_meney])
      .where("status > 0")
-      .order(created_at: :desc)  
+     .order(created_at: :desc)  
+
     @escrows = Escrow.where("(member_id = ? OR seller_email = ? OR buyer_email = ?) AND status > 0",
       current_user.id, current_user.email, current_user.email)
+      .order(updated_at: :desc)
       .order(status: :asc)   
     
 

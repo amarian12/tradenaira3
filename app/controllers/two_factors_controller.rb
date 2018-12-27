@@ -158,23 +158,33 @@ class TwoFactorsController < ApplicationController
     msg = ""
     if two_factor_auth_verified?
       captach = true
+      #if user is buyer check the balance 
       if escrow 
-        escrow.status = 1
+
+        if escrow.is_user_amount_payer? current_user
+          if escrow.has_tn_amount? current_user
+            escrow.lock_funds
+            escrow.status = 1
+          end
+        else
+          escrow.status = 1
+        end
+        
         escrow.save
         
         success = true
         errors = false
         if escrow.seller
-          msgnoti = "Escrow created with you."
+          msgnoti = "##{escrow.id}: Escrow created with you."
           SrNotofication.create(
               member_id: escrow.seller.id,
               msg: msgnoti,
               link_page: "escrow",
               status: false)
-          msgnoti = "Escrow created with you."
+           
         end
         if escrow.buyer
-          msgnoti = "Escrow created with you."
+          msgnoti = "##{escrow.id}:  Escrow created with you."
           SrNotofication.create(
               member_id: escrow.buyer.id,
               msg: msgnoti,

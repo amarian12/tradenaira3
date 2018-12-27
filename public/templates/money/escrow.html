@@ -26,7 +26,8 @@
 			 					</div>	
 			 					<div class="col-md-13">
 				 					<select class="select form-control"
-				 						ng-model="transaction.type">
+				 						ng-model="transaction.type"
+				 						ng-change="changeTrans()">
 				 						<option value="">Select</option>
 				 						<option 
 				 						ng-repeat="role in resp.meta.transactions"
@@ -54,6 +55,9 @@
 				 					</select>
 				 					<p class="error">{{errors.role}}</p>
 				 				</div>
+			 				</div>
+			 				<div class="col-md-24">
+			 					<div class="info_box" ng-bind-html="role_info">{{role_info}} </div>
 			 				</div>
 			 			</div>
 		 			</div>

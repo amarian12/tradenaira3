@@ -90,17 +90,10 @@ class Escrow < ActiveRecord::Base
 	def approve_by_buyer user
 		if has_tn_amount? user
 
-			tncurrency = Currency.where(code: tn_currency).last
-			shippingcurrency = Currency.where(code: shipping_currency).last
-
-			tn_account = user.accounts.where(currency: tncurrency.id).last
-			sh_account = user.accounts.where(currency: shippingcurrency.id).last
-
-			unlock_and_sub_funds(tn_account, tn_amount, 0.0, Escrow::MONEYDB)
-			unlock_and_sub_funds(sh_account, shipping_amount, 0.0, Escrow::MONEYSHCR)
-
+			lock_funds(user)
+			 
 			if tn_type == "seller" || tn_type == "buyer"
-			  msg = "Money escrow successfully accepted by buyer"
+			  msg = "##{id}: Money escrow successfully accepted by buyer"
 			  if buyer
 			  	SrNotofication.create(
 		          member_id: buyer.id,
@@ -109,14 +102,25 @@ class Escrow < ActiveRecord::Base
 		          status: false)
 				end
 			else
-			  msg = "Money escrow successfully accepted by recepient"
+			  tmp_role = user_role(user.email)
+
+			  	msg = "##{id}: Money escrow successfully accepted by #{tmp_role}"
 			  	if buyer
 				  	SrNotofication.create(
 			          member_id: buyer.id,
 			          link_page: "escrow",
 			          msg: msg,
 			          status: false)
-				end  	
+				end  
+
+				if seller
+				  	SrNotofication.create(
+			          member_id: seller.id,
+			          link_page: "escrow",
+			          msg: msg,
+			          status: false)
+				end 
+					
 			  SrNotofication.create(
 		          member_id: member.id,
 		          link_page: "escrow",
@@ -132,7 +136,7 @@ class Escrow < ActiveRecord::Base
 
 	def decline_by_buyer user
 		if tn_type == "seller" || tn_type == "buyer"
-			msg = "Money escrow declined by buyer"
+			msg = "##{id}: Money escrow declined by buyer"
 			if buyer
 			  	SrNotofication.create(
 		          member_id: buyer.id,
@@ -141,7 +145,7 @@ class Escrow < ActiveRecord::Base
 		          status: false)
 			end
 		else
-			msg = "Money escrow declined by recepient"
+			msg = "##{id}: Money escrow declined by recepient"
 			  	if buyer
 				  	SrNotofication.create(
 			          member_id: buyer.id,
@@ -159,14 +163,27 @@ class Escrow < ActiveRecord::Base
 	end
 
 
-	private
+	
 
 	def unlock_and_sub_funds account, sum, fee, reason
-		#unlock_and_sub_funds(amount, locked: ZERO, fee: ZERO, reason: nil, ref: nil)
-    	#account.lock!
     	account.unlock_and_sub_funds sum, locked: sum, fee: fee, reason: reason, ref: self
-		
 	end
+
+	def sub_funds(account, amount, fee, reason, ref)
+	    account.sub_funds(amount, fee, reason, ref)
+  	end
+
+  	def lock_funds
+  		tncurrency = Currency.where(code: tn_currency).last
+		shippingcurrency = Currency.where(code: shipping_currency).last
+
+		tn_account = user.accounts.where(currency: tncurrency.id).last
+		sh_account = user.accounts.where(currency: shippingcurrency.id).last
+
+    	tn_account.lock_funds(tn_amount)
+    	sh_account.lock_funds(shipping_amount)
+  	end
+
 	def is_seller?
 		return self.tn_role == "seller"
 	end
@@ -178,6 +195,8 @@ class Escrow < ActiveRecord::Base
 	def is_broker?
 		return self.tn_role == "broker"
 	end
+
+	private
 
 	def notify_users
 		if seller.nil? && status == 1

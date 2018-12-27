@@ -24,6 +24,16 @@
 	$scope.is_page_loading = true
 	$scope.two_fetor_error = false
 	$scope.twofactor_html = ""
+	$scope.role_info = ""
+	k = 1
+	$scope.days_range = []
+	while k < 61
+	  if k == 1	
+	    $scope.days_range.push(k+" Day")
+	  else
+	    $scope.days_range.push(k+" Days")  
+	  k++ 
+
 
 	$scope.current_user = current_user =  ""
 	
@@ -73,6 +83,21 @@
 	    descriptions: ''
 
 	$scope.intializeVars()	
+
+	$scope.changeTrans = ->
+	   ttype = $scope.transaction.type
+	   i = 0
+	   tobj = ""
+	   if ttype == ""
+	     $scope.role_info = ""
+	   
+	   while i < $scope.resp.meta.transactions.length
+	     tobj = $scope.resp.meta.transactions[i]
+	     
+	     if tobj.id == parseInt(ttype)
+	       $scope.role_info = $sce.trustAsHtml(tobj.description)
+	     i++
+	     
 
 	$scope.SendVerificationMsg = (sent)->
 	  $http.get("/two_factors/sms?refresh="+sent)

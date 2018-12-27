@@ -25,9 +25,6 @@ class MoneyExchange < ActiveRecord::Base
 
 	enumerize :request_type, in: REQTYPES, scope: true
 
-	 
-
-
 	def humunize_request_type
 		case self.request_type
 		when "send_money"
@@ -92,7 +89,6 @@ class MoneyExchange < ActiveRecord::Base
 					unlock_and_sub_funds(s_account, self.amount, 0.0, Account::MONEYSENT)
 					if s_account.save
 						#r_account.balance = r_account.balance + self.amount
-
 						real_fee = (self.amount*0.5)/100
 						real_add = self.amount - real_fee
 

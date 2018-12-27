@@ -149,11 +149,26 @@
  		<div class="row">
  			<div class="col-md-13">
 		 		<label for="tn-phone-number">Length of inspection period</label>
-		 		<input class="form-control datepicker" id="tn-inspection-length" required="true" 
+
+		 		<select class="select form-control" 
+					ng-model="transaction.inspection_length"
+					style="text-transform: capitalize;">
+						<option value="">Select Length</option>
+						<option 
+						ng-repeat="n in  days_range"
+						ng-selected="transaction.inspection_length == n"
+						ng-value="n"
+						>{{n}}</option>
+				</select>
+					
+
+		 		<!-- <input class="form-control datepicker" id="tn-inspection-length" required="true" 
 		 			ng-mousedown="loadDatePicker()" ng-keypress="loadDatePicker()"
 		 			placeholder="Ex. 10 days"
 		 			value="{{transaction.inspection_length}}"
-			 		size="30" type="text" ng-model="transaction.inspection_length">
+			 		size="30" type="text" ng-model="transaction.inspection_length"> -->
+
+
 			 		<p class="error">{{errors.inspection_length}}</p>
 		 	</div>
 	 	</div>

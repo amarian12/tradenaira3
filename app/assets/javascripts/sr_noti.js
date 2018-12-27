@@ -3,6 +3,7 @@
 
  	//if(typeof(gon.current_user) != "undefined"){
  		//if(typeof(gon.current_user.sn) != "undefined"){
+ 				sRNotification();
  			  setInterval(function(){
  			 	//sRNotification();
  			 },3000)
@@ -26,9 +27,6 @@
 
 
  function sRNotification(){
- 	// if(!){
- 	// 	return false;
- 	// }
 
  	$.ajax({
  		url: "/pages/alerts",
@@ -147,6 +145,10 @@
  }
 
  function manage_escrow(id, action_for, $this) {
+ 	if(!confirm("Are you sure?")){
+ 		return false;
+ 	}
+ 	
  	$($this).attr("disabled",true)
  	.text("Please wait ...")
  	$.ajax({
@@ -155,17 +157,26 @@
  		dataType: "json",
  		data: { id: id, request_for: action_for  },
  		success: function(resp){
+ 			console.log(resp);
+ 			$($this).hide();
  			if (resp.success) {
- 				$($this).hide();
- 				$("#success-"+id).text(resp.msg)
+ 				$("#success-"+id).text(resp.msg);
+
+ 				if(action_for == "decline"){
+ 					$("#card-iteam-"+id+" a.accept").hide();
+ 				}else{
+ 					$("#card-iteam-"+id+" a.decline").hide();
+ 				}
+ 				
  			}else{
  				if(resp.errors.length > 0){
- 					var er = "";
+ 					var er = "<p>"+resp.msg+"</p>";
  					for(var i=0; i < resp.errors.length; i++){
  						error = resp.errors[i];
- 						er += '<p>'+error+'</p>'
+ 						er += '<p>'+error+'</p>';
  					}
- 					$("#errors-"+id).html(er)
+ 					$("#errors-"+id).html(er);
+
  				}
  			}
  		}
