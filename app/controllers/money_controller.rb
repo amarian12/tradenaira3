@@ -47,6 +47,10 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
   end
 
   def escrow
+   @title    = "Nigeria’s most Trusted Escrow Platform. Manage all your transactions in one place!"
+   @descrip  = "TradeNAIRA hosts Nigeria’s most trusted Escrow Service. Create secure online payments 
+                and transactions with Nigerian businesses and individuals using our Escrow Platform."
+   @keyword  = "escrow, online transactions, safe online transactions, escrow services, escrow service"
     if current_user.nil?
       return false
     end
@@ -72,6 +76,9 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
     success = false
     errors  = false
     escrow = Escrow.new
+    user = current_user
+    errors = []
+    msg = 0
 
     escrow.tn_type            = params[:type]
     escrow.tn_role            = params[:role]
@@ -108,23 +115,33 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
       escrow.recepient_id     = receipent.id
     end
 
+    if escrow.is_user_amount_payer? user
+      unless escrow.has_tn_amount? user
+        msg = "You do not have sufficient balance to process this request!"
+        errors << msg
+
+      end
+    end
+
     current_user.escrows.where(status: 0 ).destroy_all
     two_fetor = ""
-    if escrow.save
-      success = true
-      sms     = current_user.two_factors.where(type: "TwoFactor::Sms").last
-      google  = current_user.two_factors.where(type: "TwoFactor::App").last
-      two_fetor = { 
-          is_active: current_user.two_factors.activated.first, 
-          google_app: (google.nil? ? false : true),
-          sms:      (sms.nil? ? false : true)
-        }
-    else
-      errors = escrow.errors.messages
+    unless errors.present?
+      if escrow.save
+        success = true
+        sms     = current_user.two_factors.where(type: "TwoFactor::Sms").last
+        google  = current_user.two_factors.where(type: "TwoFactor::App").last
+        two_fetor = { 
+            is_active: current_user.two_factors.activated.first, 
+            google_app: (google.nil? ? false : true),
+            sms:      (sms.nil? ? false : true)
+          }
+      else
+        errors = escrow.errors.messages
+      end
     end
       
     resp = { 
-      msg: "", 
+      msg: msg, 
       success: success, 
       errors: errors, 
       escrow_id: escrow.id,

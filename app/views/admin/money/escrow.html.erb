@@ -1,90 +1,128 @@
  <h1>Request Type: <%= @request_type %></h1>
  <p>Show only requets for Status: </p>
  <div class="navbar navbar-inverse" id="navbarNav">
- <ul class="nav navbar-nav navbar-left">
- 	<li class="<% 'active' if @status == "" %>">
- 		<%= link_to "All", admin_escrow_money_path() %>
- 	</li>
- 	 
- 	<li class="<%= 'active' if @status == "active" %> nav-item">
- 		<%= link_to t(:active), admin_escrow_money_path(status: :active) %>
- 	</li>
- 	<li class="<%= 'active' if @status == "declined" %> nav-item">
- 		<%= link_to t(:declined), admin_escrow_money_path(status: :declined) %>
- 	</li>
- 	<li class="<%= 'active' if @status == "approved" %> nav-item">
- 		<%= link_to t(:approved), admin_escrow_money_path(status: :approved) %>
- 	</li>
- </ul>
+ 	<div class="row">
+ 		<div class="col-md-12">
+		 <ul class="nav navbar-nav navbar-left">
+		 	<li class="<% 'active' if @status == "" %>">
+		 		<%= link_to "All", admin_escrow_money_path() %>
+		 	</li>
+		 	<li class="<%= 'active' if @status == "active" %> nav-item">
+		 		<%= link_to t(:active), admin_escrow_money_path(status: 1) %>
+		 	</li>
+		 	<li class="<%= 'active' if @status == "declined" %> nav-item">
+		 		<%= link_to t(:declined_by_buyer), admin_escrow_money_path(status: 3) %>
+		 	</li>
+		 	<li class="<%= 'active' if @status == "approved" %> nav-item">
+		 		<%= link_to t(:approved_by_buyer), admin_escrow_money_path(status: 2) %>
+		 	</li>
+		 	<li class="<%= 'active' if @status == "approved" %> nav-item">
+		 		<%= link_to t(:approved_by_buyer), admin_escrow_money_path(status: 2) %>
+		 	</li>
+		 </ul>
+		</div>
+		<div class="col-md-12 top-pagging">
+			<%= paginate @escrows %>
+		</div>
+	</div>
 </div>
 
- <table class="table">
- 	<thead>
- 		<tr>
- 			<td>#</td>
- 			<td>Sent By</td>
- 			<td>Sent To</td>
- 			<td>Amount to send</td>
- 			<td>Escrower Current Balance</td>
- 			<td>Status</td>
- 			<td>Actions</td>
- 		</tr>
- 	</thead>
- 	<tbody>
- 		<% @me.each do |me| %>
-	 		<tr>
-	 			<td><%= me.id %></td>
-	 			<td><%= me.sender.display_name || me.sender.email %></td>
-	 			<td>
-	 				<% if me.receiver.nil? %>
-	 				<%= me.sent_on_email %>
-	 				<% else %>
-	 					<%= me.receiver.display_name || me.receiver.email %>
-	 				<% end %>	
-	 			</td>
-	 			<td>
-	 				<%= me.amount %><%= me.account.currency %>
-	 			</td>
-	 			<td>
-	 				<%= me.account.balance %><%= me.account.currency %>
-	 			</td>
-	 			<td>
-	 				<span class="trans_<%= t me.status %>"><%= t me.status %></span>
-	 				
-	 				 
-	 			</td>
-	 			<td>
-	 				<% unless me.receiver_account.nil? %>
-	 				 
-	 				 <% case me.status %>
-	 				 <% when "active" %>
-	 				 	<%= link_to "Approve", 
-	 						admin_manage_money_path(me.id,"approve"),
-	 						class: "btn btn-default", data: { method: "POST" } %>
-	 					<%= link_to "Decline", 
-	 						admin_manage_money_path(me.id,"declined"),
-	 						class: "btn btn-default", data: { method: "POST" } %>
-	 				<% when "approved" %>	
-	 					<%= link_to "Won sender", 
-	 						admin_manage_money_path(me.id,"won_sender"),
-	 						class: "btn btn-default", data: { method: "POST" } %>
+<div class="row">
+	<div class="col-md-24">
+		<div class="row">
+			<% @escrows.each do |es| %>
+				<div class="col-md-6" id="card-iteam-<%= es.id %>">
+					<div class="card" style="height: 550px; overflow-y: scroll; 
+					overflow-x: hidden; ">
+					  <div class="card-body">
+					  	<p style="text-align: center;">#<%= es.id %></p>
+					  	<div class="center" style="text-align: center;">
+					  		 
+					  		<% if es.status == "2" %>
+						  		<%= link_to "Approve", 
+		 							admin_manage_money_path(es.id,"approve", tn: :escrow),
+		 						class: "btn btn-default", data: { method: "POST", 
+		 							confirm: "Are you sure?" } %>	
+		 						<%= link_to "Decline", 
+		 							admin_manage_money_path(es.id,"decline", tn: :escrow),
+		 						class: "btn btn-danger", data: { method: "POST",
+		 						confirm: "Are you sure?" } %>	
+					  		<% end %>
+						  	 
+					  	</div>
+					  	<p class="get_status">Escrow status: <%= es.get_status %></p>
+					    <h5 class="card-title">Date: <%= es.created_at %></h5>
+					    <p class="card-text">Item name: <%= es.item_name %></p>
+					    <p class="card-text">Item Description: <%= es.descriptions %></p>
+					    <p class="card-text">your role: 
+					    	<b class="up"><%= es.user_role(current_user.email) %></b>
+					    </p>
+					    <p class="card-text">Seller: <%= es.seller_email %></p>
+					    <p class="card-text">Buyer: <%= es.buyer_email %></p>
+					    <% if broker = es.broker %>
+					    <p class="card-text">Broker: <%= broker.email %></p>
+					    <% end %>
+					    <p class="card-text">
+					    	Escrowed Amount: 
+					    	<b>
+					    	  <%= es.tn_amount %><%= es.tn_currency.upcase if es.tn_currency  %>
+					    	</b>
+					    </p>
+					    <p class="card-text">
+					    	Shipping:
+					    	<b><%= es.shipping_amount %><%= es.shipping_currency.upcase %></b>
+					    </p>
+					    <p>Grand Total: <b>
+					    	<% if es.shipping_currency == es.tn_currency %>
+					    		<%= es.tn_amount+es.shipping_amount %><%= es.shipping_currency.upcase %>
+					    	<% else %>
+					    	<%= es.tn_amount %><%= es.tn_currency.upcase if es.tn_currency  %>
+					    	+
+					    	<%= es.shipping_amount %><%= es.shipping_currency.upcase %> 
+					    	<% end %>
+					    </b></p>
+					    <p class="card-text">
+					    	Fee payer: <b class="up"><%= es.fee_payer %></b>
+					    </p>
 
-	 					<%= link_to "Won receiver", 
-	 						admin_manage_money_path(me.id,"won_receiver"),
-	 						class: "btn btn-default", data: { method: "POST" } %>	
+					    <div class="es-success" id="success-<%= es.id %>"></div>
+					  	<div class="es-errors" id="errors-<%= es.id %>"></div>
 
-	 				 <% end %>
-	 				 
-	 				
-	 				<% else %>
-	 					<%= link_to "Resend Notification to create account", admin_resend_instructions_money_path(me.id), 
-	 					data:{ method: "POST" } %>
-	 					 
-	 				<% end %>
-	 			</td>
-	 			<td></td>
-	 			<td></td>
-	 		</tr>
- 		<% end %>
- 	</tbody>
- </table>
+					    <% if es.is_user_amount_payer?(current_user) && es.status == "1" %>
+						    <% if es.has_tn_amount? current_user %>
+								<p>
+									<%= link_to "Approve", "#", class: "btn btn-default accept",
+									onclick: "return manage_escrow(#{es.id}, 'accept', this)" %>
+
+									<%= link_to "Decline", "#", class: "btn btn-danger decline",
+									onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
+								</p>
+							<% else %>	
+									<%= link_to "Approve", "#", 
+									class: "btn btn-default accept", disabled: true %>
+
+									<%= link_to "Decline", "#", class: "btn btn-danger decline",
+									onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
+
+									<p class="error" style="font-size: 10px">
+										To approve this transaction please add 
+										balance in your account.</p>
+							<% end %>
+
+
+						<% end %>
+
+
+
+					    <!-- 
+					    <a class="card-link">Another link</a> -->
+					  </div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="row">
+
+		</div>
+	</div>
+</div>

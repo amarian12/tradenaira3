@@ -16,14 +16,20 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-
+//677005500130 icic0006770 mak technolabs
 .dl-horizontal dt {
   width: 120px;
 }
 
 .panel-left{
   float: left;
- 
+}
+
+.top-pagging{
+  ul.pagination{
+    margin: 7px 14px 0 0;
+    float: right;
+  }
 }
 
 .panel-right{

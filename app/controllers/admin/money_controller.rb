@@ -34,21 +34,23 @@ module Admin
 
 	  def escrow
 	  	status = params[:status] || ""
-	  	if params[:status].nil?
-	  		@me = MoneyExchange.where("status > 0")	
-	  	else
-	  		@me = MoneyExchange.where(status: MoneyExchange::STATUS_CODES[status.to_sym])
-	  	end
 
-	  	@me = @me
-	  	.where(request_type: 2)
-	  	.order(created_at: :desc)
-	  	@request_type = "Escrow Money"
+	  	if params[:status].nil?
+	  		@escrows = Escrow.where("status > 0")	
+	  	else
+	  		@escrows = Escrow.where(status: status)
+	  	end
+	  	@escrows = @escrows.order(updated_at: :desc ).page(params[:page]).per(12)
+
 	  	@status = status
 
 	  end
 
 	  def manage
+	  	tn = params[:tn]
+	  	if tn == "escrow"
+	  		return manage_escrow
+	  	end
 	  	@me = MoneyExchange.find_by_id(params[:id])
 	  	me = @me
 	  	if @me.nil?
@@ -128,11 +130,27 @@ module Admin
 	  	 	@account_versions = @account_versions
 	  	 	.where("created_at >= ? AND created_at <= ?",sd,ed)	
 	  	 	
-	  	 	
 	  	 end
 	  	 @account_versions = @account_versions.order(:id)
 	  	 .reverse_order.page params[:page]
 	  end
 
+	  def manage_escrow
+	  	escrow = Escrow.find_by_id(params[:id])
+	  	doaction = params[:doaction]
+	  	case doaction
+	  	when "approve"
+	  		if escrow.status == "2"
+	  			escrow.status = 4
+	  			escrow.save
+	  			flash[:notice] = "Approved successfully"
+	  		end
+	  	when "decline"
+	  		escrow.status = 5
+	  		escrow.save
+	  		flash[:notice] = "Declined successfully"
+	  	end
+	  	redirect_to :back
+	  end
 	end
 end

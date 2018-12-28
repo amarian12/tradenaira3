@@ -202,12 +202,36 @@ class Escrow < ActiveRecord::Base
 
 	def notify_users
 		begin
-			if seller.nil? && status == 1
+			msg = nil
+			if seller.nil? && status == "1"
 				UserMailer.signup_request_escrow(self, seller_email).deliver
 			end
-			if buyer.nil? && status == 1
+			if buyer.nil? && status == "1"
 				UserMailer.signup_request_escrow(self, buyer_email).deliver
 			end
+
+			if status == 4 #approved by admin
+				msg = "##{id}: Escrow approved by admin!"
+			end
+			 
+			if status == 5 #declined by admin
+				msg = "##{id}: Escrow declined by admin!"
+			end
+
+			if msg && (status == 4 || status == 5)
+				SrNotofication.create(
+		          member_id: seller.id,
+		          link_page: "escrow",
+		          msg: msg,
+		          status: false) if seller
+				SrNotofication.create(
+		          member_id: buyer.id,
+		          link_page: "escrow",
+		          msg: msg,
+		          status: false) if buyer
+			end
+
+
 		rescue
 			puts "email errors"
 		end	

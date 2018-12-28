@@ -312,6 +312,7 @@ class ApplicationController < ActionController::Base
     Ghana Cedis, Euros & Bitcoin at best Naira Exchange Rates. 
     Send money to Nigeria with the best NGN exchange rates for USD, 
     EUR, BTC, GHC & GBP."
+    @keyword =  "Tradenaira", "Opensource", "Exchange", "Cryptocurrency"
   end
 
   def is_locked?

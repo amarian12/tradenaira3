@@ -25,6 +25,7 @@
 	$scope.two_fetor_error = false
 	$scope.twofactor_html = ""
 	$scope.role_info = ""
+	$scope.data_errors = ""
 	k = 1
 	$scope.days_range = []
 	while k < 61
@@ -384,10 +385,14 @@
 	      $scope.is_page_loading = true 
 	      $http.patch("/money/escrow.json", $scope.transaction)
 	      .success (ecr_resp)->
-	        $scope.is_page_loading = true 
+	        console.log(ecr_resp)
+	        $scope.is_page_loading = false 
 	        if ecr_resp.success
 	          $scope.processWithTwoFector(ecr_resp)
 	        else
+	          if ecr_resp.msg.length > 0
+	            $scope.data_errors = $sce.trustAsHtml("<p class=error>"+ecr_resp.msg+"</p>")
+
 	          angular.forEach ecr_resp.errors, (value, key)->
 	            if key == "tn_amount"
 	              $scope.errors.amount = value[0]
