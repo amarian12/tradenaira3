@@ -1,51 +1,88 @@
 <%= metamagic title: "Escrow Money" %>
 <% if current_user %>
-<div class="container" ng-app="money">
-    <div class="track_rate_wraper overflow-css">  
-        <div class="col-md-10">
-            <div class="display_img">
-              <img src="/assets/img/bilgisayr.png" alt="screen1"> 
+    <div class="container" ng-app="money">
+        <div class="track_rate_wraper overflow-css">  
+            <div class="col-md-10">
+                <div class="display_img">
+                  <img src="/assets/img/bilgisayr.png" alt="screen1"> 
+                </div>
             </div>
-        </div>
-        <div class="col-md-14">     
-            <ui-view></ui-view>
-            <%#= render "shared/money/escrow" %>
-            <div class="accet_decline">
-           <!--  <a class="" href = "/funds" target = "_blank"> Click here </a> go to wallet page -->
-            </div>
-        </div>    
-           
-		 
-	</div>
-</div>
-<% else  %>
-<div class="container">
-    <div class="track_rate_wraper overflow-css">  
-        <div class="col-md-10">
-            <div class="display_img">
-              <img src="/assets/img/bilgisayr.png" alt="screen1"> 
-            </div>
-        </div>
-        <div>
-             <h4>THE MOST TRUSTED NIGERIAN ESCROW SERVICE</h4>
-            <h5>How does TradeNAIRA Escrow Work?</h5>
-            <p>TradeNAIRA reduces the risk of fraud by acting as a trusted third-party that collects, holds and only disburses funds when both Buyers and Sellers are satisfied.</p>
-            <ol>
-                <li>Buyer and Seller agree to terms - Either the Buyer or Seller begins a transaction. After registering at TradeNAIRA, all parties agree to the terms of the transaction.</li>
-                <li>Buyer pays TradeNAIRA - The Buyer submits a payment by approved payment method to our secure Escrow Account, TradeNAIRA verifies the payment, the Seller is notified that funds have been secured 'In Escrow'.</li>
-                <li>Seller ships merchandise to Buyer - Upon payment verification, the Seller is authorised to send the merchandise and submit tracking information. TradeNAIRA verifies that the Buyer receives the merchandise.</li>
-                <li>Buyer accepts merchandise - The Buyer has a set number of days to inspect the merchandise and the option to accept or reject it. The Buyer accepts the merchandise</li>
-                <li>TradeNAIRA pays the Seller - TradeNAIRA releases funds to the Seller from the Escrow Account.</li>
-                <li>Transaction is complete - safely and securely!</li>
-            </ol>
-        </div>
-        <div class="col-md-14" style="text-align: center;">     
-            <div class="accet_decline">
-            You must <%= link_to "Login", signin_path %> to access this page.
-            </div>
-        </div>    
-           
-         
+            <div class="col-md-14">     
+                <ui-view></ui-view>
+                <%#= render "shared/money/escrow" %>
+                <div class="accet_decline">
+               <!--  <a class="" href = "/funds" target = "_blank"> Click here </a> go to wallet page -->
+                </div>
+            </div>    
+               
+    		 
+    	</div>
     </div>
-</div>
+<% else  %>
+    <div class="container">
+        <div class="track_rate_wraper overflow-css">  
+            <div class="col-md-10">
+                <div class="display_img">
+                  <img src="/assets/img/bilgisayr.png" alt="screen1"> 
+                </div>
+            </div>
+            <div>
+                <h4>THE MOST TRUSTED NIGERIAN ESCROW SERVICE</h4>
+                <h5>How does TradeNAIRA Escrow Work?</h5>
+                <p>TradeNAIRA reduces the risk of fraud by acting as a trusted third-party that collects, holds and only disburses funds when both Buyers and Sellers are satisfied.</p>
+                <ol>
+                    <li>Buyer and Seller agree to terms - Either the Buyer or Seller begins a transaction. After registering at TradeNAIRA, all parties agree to the terms of the transaction.</li>
+                    <li>Buyer pays TradeNAIRA - The Buyer submits a payment by approved payment method to our secure Escrow Account, TradeNAIRA verifies the payment, the Seller is notified that funds have been secured 'In Escrow'.</li>
+                    <li>Seller ships merchandise to Buyer - Upon payment verification, the Seller is authorised to send the merchandise and submit tracking information. TradeNAIRA verifies that the Buyer receives the merchandise.</li>
+                    <li>Buyer accepts merchandise - The Buyer has a set number of days to inspect the merchandise and the option to accept or reject it. The Buyer accepts the merchandise</li>
+                    <li>TradeNAIRA pays the Seller - TradeNAIRA releases funds to the Seller from the Escrow Account.</li>
+                    <li>Transaction is complete - safely and securely!</li>
+                </ol>
+            </div>
+            <div class="col-md-14" style="text-align: center;">     
+                <div class="yellow_btn">
+                 <%= link_to "Login", "javascript:void(0)", 
+                 data: { target: "#loginModal", toggle: "modal" } %> 
+                 or 
+                 <%= link_to "Signup", "javascript:void(0)",
+                    data: { target: "#signupModal", toggle: "modal" }
+                 %>  to start new Escrow transaction.
+                </div>
+            </div>       
+        </div>
+    </div>
+    <div class="signup_on_samepage">
+
+        <div aria-labelledby="SignUp" class="signup-modal modal fade" 
+            id="signupModal" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-md"> 
+                <div class="modal-content">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                    <div class="col-sm-24 signupErrmsges"></div>
+                    <div class="col-sm-24 signupSuccmsges"></div>
+                    <div class="moformcontainer">
+                        <div class="row">
+                        <%= render file:  "identities/new" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login_on_samepage">
+        <div aria-labelledby="login" class="modal fade" 
+            id="loginModal" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-md"> 
+                <div class="modal-content">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span></button>
+                    <div class="col-sm-24 signupErrmsges"></div>
+                    <div class="col-sm-24 signupSuccmsges"></div>
+                    <div class="moformcontainer">
+                        <%= render file:  "sessions/new" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <% end %>

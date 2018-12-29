@@ -101,6 +101,27 @@ img {
     text-transform: capitalize;
   }
 
+  .signup_on_samepage{
+    .signup.videodiv{
+      display: none !important;
+    }
+    .max-width-register{
+      width: 100%;
+    }
+    .form-max-width-register{
+      margin: 0!important;
+    }
+  }
+  .login_on_samepage{
+    .form-max-widt-login{
+      max-width: 100%!important;
+      margin-top: 25px!important;
+      .sign_bottom{
+        display: none!important;
+      }
+    }
+  }
+
 
 .banner-wrap-top{
   position: relative;

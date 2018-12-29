@@ -1,0 +1,26 @@
+<p>Dear <%= email %></p>
+<p>A <%= @tn_role == "broker" ? "Broker" : "Buyer" %> has initiated an escrow transaction on TradeNAIRA with you. The time and date is 
+	<%= @escrow.created_at %>.</p>
+<p>The Buyer’s email is:<%= @escrow.buyer_email %> </p>
+
+<p>Your role is as a Seller and <%= @tn_role == "broker" ? "Broker" : "Buyer" %> have specified that the <%= @escrow.fee_payer %> will pay the fees for this transaction.</p>
+<p>Please find details of the transaction below.</p>	
+
+<p>Type of transaction: <%= @escrow.tn_type %></p>
+<p>Transaction amount: <%= @escrow.tn_amount %><%= @escrow.tn_currency.upcase %> </p>
+<p>What are you selling: <%= @escrow.item_name %></p>
+<p>Buyer’s email: <%= @escrow.buyer_email  %></p>
+<%= if @escrow.buyer_phone  %>
+	<p>Buyer’s phone number: <%= @escrow.buyer_phone  %></p>
+<% end %>
+<% if @escrow.shipping_amount  %>
+	<p>Shipping costs: <%= @escrow.shipping_amount  %><%= @escrow.shipping_currency  %></p>
+<% else %>	
+	<p>Shipping costs: none</p>
+<% end %>	
+<p>Length of inspection period: <%= @escrow.inspection_length  %></p>
+<p>Descriptions and important notes: 
+	<%= @escrow.descriptions.nil? ? "none" : @escrow.descriptions  %>
+</p>
+<p>Please sign up to TradeNAIRA and accept the terms and conditions to initiate this transaction. We may be in touch to verify details of this transaction with you.</p>
+<p>Best Regards</p>

@@ -55,13 +55,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def require_captcha?
-    failed_logins > 3
-  end
-
-  def failed_logins
-    Rails.cache.read(failed_login_key) || 0
-  end
+  
 
   def increase_failed_logins
     Rails.cache.write(failed_login_key, failed_logins+1)
@@ -71,9 +65,7 @@ class SessionsController < ApplicationController
     Rails.cache.delete failed_login_key
   end
 
-  def failed_login_key
-    "peatio:session:#{request.ip}:failed_logins"
-  end
+  
 
   def auth_hash
     @auth_hash ||= env["omniauth.auth"]

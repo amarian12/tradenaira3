@@ -1,0 +1,28 @@
+<p>Dear <%= email %></p>
+<p>You have initiated an escrow transaction with TradeNAIRA. The time and date is 
+	<%= @escrow.created_at %>.</p>
+<p>Your role is as a Buyer and you have specified that the <%= @escrow.fee_payer %> will pay the fees for this transaction.</p>
+<p>Please find details of the transaction below. Let us know immediately if any changes need to be made.</p>	
+
+<p>Type of transaction: <%= @escrow.tn_type %></p>
+<p>Transaction amount: <%= @escrow.tn_amount %><%= @escrow.tn_currency.upcase %> </p>
+<p>What are you buying: <%= @escrow.item_name %></p>
+<p>Seller’s email: <%= @escrow.seller_email  %></p>
+<%= if @escrow.seller_phone  %>
+	<p>Buyer’s phone number: <%= @escrow.seller_phone  %></p>
+<% end %>
+<% if @escrow.shipping_amount  %>
+	<p>Shipping costs: <%= @escrow.shipping_amount  %><%= @escrow.shipping_currency  %></p>
+<% else %>	
+	<p>Shipping costs: none</p>
+<% end %>	
+<p>Length of inspection period: <%= @escrow.inspection_length  %></p>
+
+<p>Descriptions and important notes: 
+	<%= @escrow.descriptions.nil? ? "none" : @escrow.descriptions  %>
+</p>
+<p>We will now get in contact with the seller to ensure they have agreed to the terms specified above to start the transaction.</p>
+
+<p>We have blocked the funds for this transaction in your account.</p>
+
+<p>Best Regards</p>

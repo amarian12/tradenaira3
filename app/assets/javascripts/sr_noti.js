@@ -10,6 +10,7 @@
  		//}
  	//}
 
+
  	if ($("li.srnotification")[0]) {
  		var titlemsg = "No new notification"
  		$("li.srnotification")
@@ -23,6 +24,7 @@
  	}
 
  	setdTime();
+ 	loadSignupfromOnEscrowPage();
  })
 
 
@@ -184,6 +186,147 @@
  	})
  	return false;
  }
+
+function loadSignupfromOnEscrowPage(){ 
+
+
+  // ***********signup**************// 
+  var loginp = $(".signup_on_samepage");
+  if(loginp[0]){
+    var formc = $("#signupModal form").submit(function(){
+    	$("#signupModal .signupErrmsges").html("");
+
+    	var fdata = $(this).serializeArray();
+    	var username,email,password,password_confirmationm,error,success;
+    	var duser = { username: "", email: "", password: "" };
+    	error = "";
+    	for(var i=0; i<fdata.length; i++){
+    		var itm = fdata[i];
+    		if (itm.name == "email") {
+    			email = itm.value;
+    			duser.email = email;
+    		}
+    		if (itm.name == "password") {
+    			password = itm.value;
+    			duser.password = password;
+    		}
+    		if (itm.name == "password_confirmation") {
+    			password_confirmation = itm.value;
+    		}   		 
+    	}
+
+    	if (password == "" || password_confirmation == "") {
+    		error += '<p class="error">Password or confirm password can not be blank!</p>';
+    	}
+
+    	if(password != password_confirmation ){
+    		error += '<p class="error">Password and confirm password must be same!</p>';
+    	}
+
+    	if (error != "") {
+    		$("#signupModal .signupErrmsges").html(error);
+    		return false;
+    	}
+    	 
+    	var furl = "/api/users";
+    	$.ajax({
+    		url: furl,
+    		data: { user: duser },
+    		type: 'post',
+    		dataType: "json",
+    		success: function(resp){
+    			 if(typeof(resp.id) !="undefined"){
+    			 	success = '<p class="success">Account created successfully.</p>';
+    			 	$("#signupModal .signupSuccmsges").html(success);
+    			 }
+    			 setTimeout(function(){
+    			 	//$('#signupModal').modal('toggle');
+    			 	window.location = "";
+    			 },1000);
+    		},
+    		error: function(resp){
+    			for(var i=0; i<resp.responseJSON.length; i++){
+					itm = resp.responseJSON[i];
+					error += '<p class="error">'+itm+'</p>';
+    			}
+    			if(error!=""){
+    				$("#signupModal .signupErrmsges").html(error);
+    			}
+    		}
+    	})
+
+       
+      return false;
+    })
+  }
+
+  // ***********Login**************// 
+  var loginp = $(".login_on_samepage");
+  if(loginp[0]){
+    var formc = $("#loginModal form").submit(function(){
+    	$("#loginModal .signupErrmsges").html("");
+
+    	var fdata = $(this).serializeArray();
+    	var sdata = $(this).serialize();
+    	var faction = $(this).attr("action");
+
+    	var username,email,password,error,success;
+    	var duser = { username: "", email: "", password: "" };
+    	error = "";
+    	for(var i=0; i<fdata.length; i++){
+    		var itm = fdata[i];
+    		if (itm.name == "auth_key") {
+    			email = itm.value;
+    			duser.username = email;
+    			duser.email = email;
+    		}
+    		if (itm.name == "password") {
+    			password = itm.value;
+    			duser.password = password;
+    		}	 
+    	}
+
+     
+
+    	if (password == "") {
+    		error += '<p class="error">Password can not be blank!</p>';
+    	}
+
+
+    	if (error != "") {
+    		$("#loginModal .signupErrmsges").html(error);
+    		return false;
+    	}
+    	 
+    	//var furl = "/api/session";
+    	$.ajax({
+    		url: faction,
+    		data: sdata ,
+    		type: 'post',
+    		dataType: "json",
+    		success: function(resp){
+    			 if(typeof(resp.current_user) !="undefined"){
+    			 	success = '<p class="success">Login success!.</p>';
+    			 	$("#loginModal .signupSuccmsges").html(success);
+    			 }
+    			 setTimeout(function(){
+    			 	//$('#signupModal').modal('toggle');
+    			 	window.location = "";
+    			 },1000);
+    		},
+    		error: function(resp){
+    			error += '<p class="error">Invalid email or password!</p>';
+    			if(error!=""){
+    				$("#loginModal .signupErrmsges").html(error);
+    			}
+    		}
+    	})
+
+       
+      return false;
+    })
+  }
+}
  
  
  

@@ -181,21 +181,6 @@ class MoneyExchange < ActiveRecord::Base
 				end
 			end
 
-		elsif self.request_type == "escrow_money"	
-			self.update_success = true
-			msg = "Money escrowed successfully approved by admin"
-			SrNotofication.create(
-	          member_id: self.sender.id,
-	          link_page: "escrow",
-	          msg: msg,
-	          status: false)
-			SrNotofication.create(
-	          member_id: self.receiver.id,
-	          link_page: "escrow",
-	          msg: msg,
-	          status: false)
-
-			UserMailer.escrow_success(self).deliver
 		end
 		
 	end

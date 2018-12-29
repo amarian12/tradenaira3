@@ -8,8 +8,8 @@ class IdentitiesController < ApplicationController
     if params[:id]
     @newid = "#{request.url}"
     @uri    = URI.parse(@newid)
-  @params = CGI.parse(@uri.query)
-  @id     = params['id']
+    @params = CGI.parse(@uri.query)
+    @id     = params['id']
     @getemailid = New.where(:id =>@id).pluck(:email)
     @getid = New.where(:id =>@id).pluck(:id)
     end

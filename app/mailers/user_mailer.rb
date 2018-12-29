@@ -29,21 +29,15 @@ class UserMailer < ActionMailer::Base
     mail to: email, subject: subjects    
   end
 
-  def escrow_created escrow, current_user
+  def escrow_created escrow, member, is_for_self, tn_role, email
+    @tn_role      = tn_role
     @escrow       = escrow
-    @member       = current_user
-    @seller       = @escrow.seller
-    @buyer        = @escrow.buyer
-    receips       = []
+    @member       = member
+    @email        = email
+    @is_for_self         = is_for_self ? "for_self" : "for_other"
     subjects      = "You have been escrowed some money"
-    if @seller
-      receips << @seller.email
-    end
-    if @buyer
-      receips << @buyer.email
-    end
-    receips << escrow.member.email
-    mail to: receips, subject: subjects
+    
+    mail to: email, subject: subjects
   end
 
   #sent to receiver after receive money
@@ -96,25 +90,7 @@ class UserMailer < ActionMailer::Base
      #when admin decline
   end
 
-  def escrow_success escrow
-    @escrow       = escrow
-    @seller   = @escrow.seller
-    @buyer = @escrow.buyer
-    receips = []
-    subjects  = "Money escrowed successfully!"
-    if @seller
-      receips << @seller.email
-    end
-    if @buyer
-      receips << @buyer.email
-    end
-    receips << escrow.member.email
-    
-    mail to: receips, subject: subjects
-  end
-
  
-
   def admin_approval me
     @amount = me.amount
     @receiver_email = me.sent_on_email

@@ -5,7 +5,7 @@
 	 	<div class="col-md-24">
 	 		<div ng-hide="is_page_loading">
 	 			<div class="panel">
-		 			<div class="panel-heading">
+		 			<div class=""><!--  panel-heading -->
 		 				<div class="hide_send_money">
 				            <h3 class="heading4">{{page_title}}</h3>
 				        </div>
@@ -40,7 +40,7 @@
 			 					</div>
 			 				</div>
 
-			 				<div class="col-md-24">
+			 				<div class=""> <!-- col-md-24 -->
 			 					<div class="col-md-11">
 			 						<label class="">Your role</label>
 			 					</div>	
@@ -64,8 +64,10 @@
 			 			</div>
 		 			</div>
 	 				<!-- escrow page -->
-	 				<div class="col-md-24" ng-show="transaction.role && page_index > 1 && page_index < 4">
-	 					<h3 style="text-transform: capitalize; capi">Your roles is: {{transaction.role}}</h3>
+	 				<div class="row">
+		 				<div class="col-md-24" ng-show="transaction.role && page_index > 1 && page_index < 4">
+		 					<h3 style="text-transform: capitalize; capi">Your roles is: {{transaction.role}}</h3>
+		 				</div>
 	 				</div>
 		 			<div ng-if="page_index== 2">
 			 			<div class="form_row">

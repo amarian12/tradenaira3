@@ -294,7 +294,7 @@ class Member < ActiveRecord::Base
   end
 
   def self.find_by_credentials(username, password )
-    user = Member.find_by(username: username )
+    user = Member.find_by(email: username )
     return nil unless user && user.valid_password?(password)
     user
   end

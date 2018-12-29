@@ -1,6 +1,7 @@
 class MoneyController < ApplicationController
 before_action :two_factor_required!, only: [:two_factor, :processm]
 before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
+helper_method :require_captcha?
 
   def req
     if current_user.nil?
@@ -47,6 +48,7 @@ before_action :auth_member!, only: [:two_factor, :processm, :escrow_create]
   end
 
   def escrow
+   @identity = Identity.new 
    @title    = "Nigeria’s most Trusted Escrow Platform. Manage all your transactions in one place!"
    @descrip  = "TradeNAIRA hosts Nigeria’s most trusted Escrow Service. Create secure online payments 
                 and transactions with Nigerian businesses and individuals using our Escrow Platform."

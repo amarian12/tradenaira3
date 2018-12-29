@@ -301,6 +301,17 @@ class ApplicationController < ActionController::Base
     
   end
 
+  def require_captcha?
+    failed_logins > 3
+  end
+
+  def failed_logins
+    Rails.cache.read(failed_login_key) || 0
+  end
+  def failed_login_key
+    "peatio:session:#{request.ip}:failed_logins"
+  end
+
   
 
    private 

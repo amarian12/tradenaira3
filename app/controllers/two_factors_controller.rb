@@ -192,8 +192,29 @@ class TwoFactorsController < ApplicationController
               link_page: "escrow",
               status: false)
         end
+
         begin
-          UserMailer.escrow_created(escrow,current_user).deliver
+          puts "Intiating-----------------------------------"
+          if escrow.tn_role == "broker"
+            UserMailer.escrow_created(escrow, current_user, true, "broker",  current_user.email).deliver
+            UserMailer.escrow_created(escrow, current_user, false, "seller", escrow.seller_email).deliver
+            UserMailer.escrow_created(escrow, current_user, false, "buyer",  escrow.buyer_email).deliver
+          elsif escrow.tn_role == "seller"
+            UserMailer.escrow_created(escrow, current_user, true, "seller", escrow.seller_email).deliver
+            UserMailer.escrow_created(escrow, current_user, false, "buyer",  escrow.buyer_email).deliver
+          elsif escrow.tn_role == "buyer"
+            UserMailer.escrow_created(escrow, current_user, false, "seller", escrow.seller_email).deliver
+            UserMailer.escrow_created(escrow, current_user, true, "buyer",  escrow.buyer_email).deliver
+          end
+
+          
+
+          if current_user.email == escrow.seller_email
+            UserMailer.escrow_created(escrow,current_user,"other",escrow.buyer_email).deliver
+          end
+
+          
+
         rescue
           puts "email errors"
         end  
