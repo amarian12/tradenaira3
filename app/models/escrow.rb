@@ -1,5 +1,6 @@
 class Escrow < ActiveRecord::Base
 	belongs_to :member
+	belongs_to :transaction_type,  class_name: "MetaContent", foreign_key: "tn_type" 
 
 	validates :tn_type, :tn_role, 
 	:tn_currency, :tn_amount, :item_name, :shipping_currency, 

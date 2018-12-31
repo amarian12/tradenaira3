@@ -56,7 +56,8 @@ helper_method :require_captcha?
     if current_user.nil?
       return false
     end
-    roles         = [ "buyer", "seller", "broker"  ]
+
+    roles         = [ "buyer", "seller", "broker"]
     transaction  = MetaCategory.find_by_title("Escrow transaction")
     accounts = []
      current_user.accounts.map{|a| 

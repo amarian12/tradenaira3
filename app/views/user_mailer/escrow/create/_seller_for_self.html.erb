@@ -4,7 +4,9 @@
 <p>Your role is as a Seller and you have specified that the <%= @escrow.fee_payer %> will pay the fees for this transaction.</p>
 <p>Please find details of the transaction below. Let us know immediately if any changes need to be made.</p>	
 
-<p>Type of transaction: <%= @escrow.tn_type %></p>
+<% if @escrow.transaction_type %>
+	<p>Type of transaction: <%= @escrow.transaction_type.title %></p>
+<% end %>
 <p>Transaction amount: <%= @escrow.tn_amount %><%= @escrow.tn_currency.upcase %> </p>
 <p>What are you selling: <%= @escrow.item_name %></p>
 <p>Buyer’s email: <%= @escrow.buyer_email  %></p>

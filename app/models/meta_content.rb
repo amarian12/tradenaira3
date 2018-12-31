@@ -1,24 +1,10 @@
 class MetaContent < ActiveRecord::Base
 	belongs_to :meta_category
+	has_many :escrows
 
 	before_save :create_slug
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 
 	private 
 	def create_slug

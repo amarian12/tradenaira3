@@ -7,7 +7,9 @@
 
 <p>Please find details of the transaction below. Let us know immediately if any changes need to be made.</p>	
 
-<p>Type of transaction: <%= @escrow.tn_type %></p>
+<% if @escrow.transaction_type %>
+	<p>Type of transaction: <%= @escrow.transaction_type.title %></p>
+<% end %>
 <p>Transaction amount: <%= @escrow.tn_amount %><%= @escrow.tn_currency.upcase %> </p>
 <p>What are you buying: <%= @escrow.item_name %></p>
 <p>Seller’s email: <%= @escrow.seller_email  %></p>
