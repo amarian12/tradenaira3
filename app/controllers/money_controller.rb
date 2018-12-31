@@ -32,29 +32,26 @@ helper_method :require_captcha?
           msg: msgnoti,
           link_page: "accept_decline",
           status: false)
-
-          flash[:notice] = "Request declined successfully!"
+        flash[:notice] = "Request declined successfully!"
       else
-          errors = @me.trans_errors 
-          flash[:alert] = errors
+        errors = @me.trans_errors 
+        flash[:alert] = errors
       end
-      redirect_to :back
+        redirect_to :back
       return false
    end
     @url = process_request_path(@me.id,@status)
-
     render "two_factor", layout: "application"
-
   end
 
   def escrow
-   @identity = Identity.new 
-   @title    = "Nigeria’s most Trusted Escrow Platform. Manage all your transactions in one place!"
-   @descrip  = "TradeNAIRA hosts Nigeria’s most trusted Escrow Service. Create secure online payments 
+    @identity = Identity.new 
+    @title    = "Nigeria’s most Trusted Escrow Platform. Manage all your transactions in one place!"
+    @descrip  = "TradeNAIRA hosts Nigeria’s most trusted Escrow Service. Create secure online payments 
                 and transactions with Nigerian businesses and individuals using our Escrow Platform."
-   @keyword  = "escrow, online transactions, safe online transactions, escrow services, escrow service"
+    @keyword  = "escrow, online transactions, safe online transactions, escrow services, escrow service"
     if current_user.nil?
-      return false
+       return false
     end
 
     roles         = [ "buyer", "seller", "broker"]
@@ -62,13 +59,14 @@ helper_method :require_captcha?
     accounts = []
      current_user.accounts.map{|a| 
       accounts << { id: a.id, balance: a.balance, currency: a.currency } unless a.currency.nil?
-     }
+    }
     meta = { 
-      roles: roles,
-      transactions: (transaction.meta_contents unless transaction.nil?),
-      accounts: accounts
-      }
+        roles: roles,
+        transactions: (transaction.meta_contents unless transaction.nil?),
+        accounts: accounts
+    }
     resp = { success: true, meta: meta, user: current_user }
+
     respond_to do |formate|
       formate.json{ render json: resp }
       formate.html{  }
