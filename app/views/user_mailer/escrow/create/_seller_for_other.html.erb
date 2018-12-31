@@ -1,4 +1,4 @@
-<p>Dear <%= email %></p>
+<p>Dear <%= @email %></p>
 <p>A <%= @tn_role == "broker" ? "Broker" : "Buyer" %> has initiated an escrow transaction on TradeNAIRA with you. The time and date is 
 	<%= @escrow.created_at %>.</p>
 <p>The Buyer’s email is:<%= @escrow.buyer_email %> </p>
@@ -10,7 +10,7 @@
 <p>Transaction amount: <%= @escrow.tn_amount %><%= @escrow.tn_currency.upcase %> </p>
 <p>What are you selling: <%= @escrow.item_name %></p>
 <p>Buyer’s email: <%= @escrow.buyer_email  %></p>
-<%= if @escrow.buyer_phone  %>
+<% if @escrow.buyer_phone  %>
 	<p>Buyer’s phone number: <%= @escrow.buyer_phone  %></p>
 <% end %>
 <% if @escrow.shipping_amount  %>

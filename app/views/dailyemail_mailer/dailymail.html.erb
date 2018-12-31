@@ -87,18 +87,20 @@
               	</td>
               	</tr>
               	<tr>
-              		<table width="100%">
-              			<% @recent_posts.each do |post| %>
-              			<% if post.meta_image %>
-	              			<tr>
-	              				<td>
-	              					<% host = "https://tradenaira.com"  %>
-	              					<%= image_tag(host+""+post.meta_image, style: "max-height: 100px; max-width: 90px;") %>
-	              				</td>
-	              			</tr>
+              		<td>
+	              		<table width="100%">
+	              			<% @recent_posts.each do |post| %>
+	              			<% if post.meta_image %>
+		              			<tr>
+		              				<td>
+		              					<% host = "https://tradenaira.com"  %>
+		              					<%= image_tag(host+""+post.meta_image, style: "max-height: 100px; max-width: 90px;") %>
+		              				</td>
+		              			</tr>
+		              			<% end %>
 	              			<% end %>
-              			<% end %>
-              		</table>
+	              		</table>
+              		</td>
               	</tr>
             </table>
                   <p><%= raw t("mailer.please_contact", contact_mail: ENV['SUPPORT_MAIL']) %>  </p>

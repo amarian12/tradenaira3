@@ -1,4 +1,4 @@
-<p>Dear <%= email %></p>
+<p>Dear <%= @email %></p>
 <p>You have initiated an escrow transaction with TradeNAIRA. The time and date is 
 	<%= @escrow.created_at %>.</p>
 <p>Your role is as a Broker and you have specified that the <%= @escrow.fee_payer %> will pay the fees for this transaction.</p>
@@ -9,12 +9,12 @@
 <p>What are you selling: <%= @escrow.item_name %></p>
 
 <p>Buyer’s email: <%= @escrow.buyer_email  %></p>
-<%= if @escrow.buyer_phone  %>
+<% if @escrow.buyer_phone  %>
 	<p>Buyer’s phone number: <%= @escrow.buyer_phone  %></p>
 <% end %>
 
 <p>Seller’s email: <%= @escrow.seller_email  %></p>
-<%= if @escrow.seller_phone  %>
+<% if @escrow.seller_phone  %>
 	<p>Buyer’s phone number: <%= @escrow.seller_phone  %></p>
 <% end %>
 

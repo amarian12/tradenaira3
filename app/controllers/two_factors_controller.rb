@@ -193,7 +193,7 @@ class TwoFactorsController < ApplicationController
               status: false)
         end
 
-        begin
+        #begin
           puts "Intiating-----------------------------------"
           if escrow.tn_role == "broker"
             UserMailer.escrow_created(escrow, current_user, true, "broker",  current_user.email).deliver
@@ -215,9 +215,9 @@ class TwoFactorsController < ApplicationController
 
           
 
-        rescue
+        #rescue
           puts "email errors"
-        end  
+        #end  
       else
         success = false
         if two_factor_failed_locked?
