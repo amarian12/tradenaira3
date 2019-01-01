@@ -26,63 +26,31 @@
               <tr>
                 <td>
                   <p>Dear <%= @closename %>,</p>
-				  <table width="100%" style="border: 1px solid #ddd;border-collapse: collapse;">
+				  <table width="100%" style="border: 
+				  1px solid #ddd;border-collapse: collapse;">
+
+				  <% @trades_all.each do |m| %>
+				  	 
 					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>USD/NGN</p></th>
+						<th rowspan=3 style="border: 1px solid #ddd"><p>
+							<%= raw m[:mname].upcase %></p></th>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getusdone %></p></td>
+						<td style="padding:0 10px;"><p>
+							<%= raw m[:trade] %></p></td>
 					</tr>
+
 					<tr style="border: 1px solid #ddd">
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Bid Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getusdbidone %></p></td>
+						<td style="padding:0 10px;"><p><%= raw m[:bid_one] %></p></td>
 					</tr>
 					<tr>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Ask Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getusdaskone %></p></td>
+						<td style="padding:0 10px;"><p><%= raw m[:ask_one] %></p></td>
 					</tr>
-					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>GBP/NGN</p></th>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getgbpone %></p></td>
-					</tr>
-					<tr style="border: 1px solid #ddd">
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Bid Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getgbpbidone %></p></td>
-					</tr>
-					<tr>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Ask Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getgbpaskone %></p></td>
-					</tr>
-					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>EUR/NGN</p></th>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @geteurone %></p></td>
-					</tr>
-					<tr style="border: 1px solid #ddd">
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Bid Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @geteurbidone %></p></td>
-					</tr>
-					<tr>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Ask Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @geteuraskone %></p></td>
-					</tr>
-					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>CNY/NGN</p></th>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getcnyone %></p></td>
-					</tr>
-					<tr style="border: 1px solid #ddd">
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Bid Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getcnybidone %></p></td>
-					</tr>
-					<tr>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Ask Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getcnyaskone %></p></td>
-					</tr>
-					<tr>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Ask Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw @getghsaskone %></p></td>
-					</tr>
+					 
+					<% end %>
+
+
                   </table>
               	</td>
               	</tr>

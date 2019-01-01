@@ -18,8 +18,19 @@
   ask: {fee: 0.0050, currency: gbp, fixed: 4}
   sort_order: 1
 
-- id: ghsngn
+- id: eurngn
   code: 3
+  #name: EUR/NGN      # default name
+  base_unit: eur
+  quote_unit: ngn
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: ngn, fixed: 2}
+  ask: {fee: 0.0050, currency: eur, fixed: 4}
+  sort_order: 1
+
+
+- id: ghsngn
+  code: 4
   #name: GBP/NGN      # default nameGHS/NGN
   base_unit: ghs
   quote_unit: ngn
@@ -29,7 +40,7 @@
   sort_order: 1
   #visible: false     # default to true 
 - id: usdghs
-  code: 4
+  code: 5
   #name: GBP/NGN      # default nameUSD/GHS
   base_unit: usd
   quote_unit: ghs
@@ -59,7 +70,7 @@
   # sort_order: 1
   #visible: false     # default to true
 - id: btcngn
-  code: 5
+  code: 6
   #name: BTC/NGN      # default name
   base_unit: btc
   quote_unit: ngn
@@ -69,7 +80,7 @@
   sort_order: 1
   #visible: false     # default to true
 - id: btcusd
-  code: 6
+  code: 7
   #name: BTC/USD      # default name
   base_unit: btc
   quote_unit: usd
@@ -79,7 +90,7 @@
   sort_order: 1
   #visible: false     # default to true
 - id: btcgbp
-  code: 7
+  code: 8
   #name: BTC/GBP      # default name
   base_unit: btc
   quote_unit: gbp
@@ -111,7 +122,7 @@
 
   #visible: false     # default to true 
 - id: gbpghs
-  code: 8
+  code: 9
   #name: GBP/NGN      # default nameGBP/GHS
   base_unit: gbp
   quote_unit: ghs
@@ -121,7 +132,7 @@
   sort_order: 1
   #visible: false     # default to true 
 - id: btcghs
-  code: 9
+  code: 10
   #name: GBP/NGN      # default nameBTC/GHS
   base_unit: btc
   quote_unit: ghs
@@ -131,12 +142,3 @@
   sort_order: 1
   #visible: false     # default to true 
 
-- id: eurngn
-  code: 10
-  #name: EUR/NGN      # default name
-  base_unit: eur
-  quote_unit: ngn
-  #price_group_fixed: 1 # aggregate price levels in orderbook
-  bid: {fee: 0.0050, currency: ngn, fixed: 2}
-  ask: {fee: 0.0050, currency: eur, fixed: 4}
-  sort_order: 1

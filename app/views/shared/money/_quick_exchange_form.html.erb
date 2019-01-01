@@ -144,7 +144,58 @@ class: "sendmenyform", data: { actionfor: "exchange" } }) do |f| %>
 <% else %>
 	<div class="form_row overflw">
 	    <div class="full_width ">
-	     	<p>Please <%= link_to "Login", signin_path %> to send/receive money.</p>
+	     	 
+	     	<div class="col-md-24" style="text-align: center;">     
+                <div class="">
+                	Please
+                 <%= link_to "Login", "javascript:void(0)", 
+                 data: { target: "#loginModal", toggle: "modal" } %> 
+                 or 
+                 <%= link_to "Signup", "javascript:void(0)",
+                    data: { target: "#signupModal", toggle: "modal" }
+                 %>  to send/receive money.
+                </div>
+            </div>  
+
+
 	    </div>
 	</div> 
+<% end %>
+
+<% unless current_user %>
+	<div class="signup_on_samepage">
+
+        <div aria-labelledby="SignUp" class="signup-modal modal fade" 
+            id="signupModal" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-md"> 
+                <div class="modal-content">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                    <div class="col-sm-24 signupErrmsges"></div>
+                    <div class="col-sm-24 signupSuccmsges"></div>
+                    <div class="moformcontainer">
+                        <div class="row">
+                        <%= render file:  "identities/new" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login_on_samepage">
+        <div aria-labelledby="login" class="modal fade" 
+            id="loginModal" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-md"> 
+                <div class="modal-content">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span></button>
+                    <div class="col-sm-24 signupErrmsges"></div>
+                    <div class="col-sm-24 signupSuccmsges"></div>
+                    <div class="moformcontainer">
+                        <%= render file:  "sessions/new" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <% end %>

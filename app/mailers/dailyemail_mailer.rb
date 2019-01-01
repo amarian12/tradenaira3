@@ -5,81 +5,41 @@ class DailyemailMailer < ActionMailer::Base
     @date = Date.today
     @recent_posts = Blogo::Post.published.limit(2)
     @member = member
-    @getusdall = Trade.where(:currency =>'1').pluck(:price)
-    @getusdone = @getusdall.last
-    @getgbpall = Trade.where(:currency =>'2').pluck(:price)
-    @getgbpone = @getgbpall.last
-    @geteurall = Trade.where(:currency =>'3').pluck(:price)
-    @geteurone = @geteurall.last
-    @getcnyall = Trade.where(:currency =>'4').pluck(:price)
-    @getcnyone = @getcnyall.last
-    @getghsall = Trade.where(:currency =>'6').pluck(:price)
-    @getghsone = @getghsall.last
 
-    @getusdbidall = Order.where(:currency =>'1', :type =>'OrderBid').pluck(:price)
-    @getusdbidone = @getusdbidall.last
-    @getgbpbidall = Order.where(:currency =>'2', :type =>'OrderBid').pluck(:price)
-    @getgbpbidone = @getgbpbidall.last
-    @geteurbidall = Order.where(:currency =>'3', :type =>'OrderBid').pluck(:price)
-    @geteurbidone = @geteurbidall.last
-    @getcnybidall = Order.where(:currency =>'4', :type =>'OrderBid').pluck(:price)
-    @getcnybidone = @getcnybidall.last
-    @getghsbidall = Order.where(:currency =>'6', :type =>'OrderBid').pluck(:price)
-    @getghsbidone = @getghsbidall.last
+    @trades_all = []
+     
+    msymbols    = ["usdngn","gbpngn","eurngn", "ghsngn","usdghs", "btcngn", 
+      "btcusd", "btcgbp", "gbpghs","btcghs"]
 
-    @getusdaskall = Order.where(:currency =>'1', :type =>'OrderAsk').pluck(:price)
-    @getusdaskone = @getusdaskall.last
-    @getgbpaskall = Order.where(:currency =>'2', :type =>'OrderAsk').pluck(:price)
-    @getgbpaskone = @getgbpaskall.last
-    @geteuraskall = Order.where(:currency =>'3', :type =>'OrderAsk').pluck(:price)
-    @geteuraskone = @geteuraskall.last
-    @getcnyaskall = Order.where(:currency =>'4', :type =>'OrderAsk').pluck(:price)
-    @getcnyaskone = @getcnyaskall.last
-    @getghsaskall = Order.where(:currency =>'6', :type =>'OrderAsk').pluck(:price)
-    @getghsaskone = @getghsaskall.last
+    id = 0  
+    msymbols.each do |sm|
+      id = id + 1
+      trades    = Trade.where(:currency =>"#{id}").pluck(:price)
+      trade     = trades.last
 
-	if @getusdone.blank?
-       @getusdone = 0.0
-	end
-	if @getgbpone.blank?
-       @getgbpone = 0.0
-	end
-	if @geteurone.blank?
-       @geteurone = 0.0
-	end
-	if @getcnyone.blank?
-       @getcnyone = 0.0
-	end
+      bidall    = Order.where(:currency =>"#{id}", :type =>'OrderBid').pluck(:price)
+      bid_one   = bidall.last
 
-	if @getusdbidone.blank?
-       @getusdbidone = 0.0
-	end
-	if @getgbpbidone.blank?
-       @getgbpbidone = 0.0
-	end
-	if @geteurbidone.blank?
-       @geteurbidone = 0.0
-	end
-	if @getcnybidone.blank?
-       @getcnybidone = 0.0
-	end
+      ask_all   = Order.where(:currency =>"#{id}", :type =>'OrderAsk').pluck(:price)
+      ask_one   = ask_all.last
 
-	if @getusdaskone.blank?
-       @getusdaskone = 0.0
-	end
-	if @getgbpaskone.blank?
-       @getgbpaskone = 0.0
-	end
-	if @geteuraskone.blank?
-       @geteuraskone = 0.0
-	end
-	if @getcnyaskone.blank?
-       @getcnyaskone = 0.0
-	end
+      trade   = trade.nil? ? 0.0 : trade
+      bid_one = bid_one.nil? ? 0.0 : bid_one
+      ask_one = ask_one.nil? ? 0.0 : ask_one
 
-  if @getghsaskone.blank?
-       @getghsaskone = 0.0
-  end
+
+      market = { 
+        mname:    sm,
+        trade:    trade,
+        bid_one:  bid_one,
+        ask_one:  ask_one
+
+      }
+
+      @trades_all << market
+    end
+
+ 
 
     #@membername = IdDocument.find member.id
     @closename = @member.name

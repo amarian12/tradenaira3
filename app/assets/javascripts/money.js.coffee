@@ -64,6 +64,7 @@
 	  fee_payer: ''
 	  inspection_length: ''
 	  descriptions: ''
+	  agree_tc: ''
 
 	$scope.intializeVars = ->
 	  $scope.errors = 
@@ -82,6 +83,7 @@
 	    fee_payer: ''
 	    inspection_length: ''
 	    descriptions: ''
+	    agree_tc: ''
 
 	$scope.intializeVars()	
 
@@ -374,6 +376,10 @@
 
 	      if $scope.transaction.amount_payer == ""      
 	        $scope.errors.amount_payer = "Please select, who will pay escrow amount?"
+
+	    if $scope.transaction.agree_tc
+	    else    
+	      $scope.errors.agree_tc = "You must agree, for the term and conditions."
 
 
 

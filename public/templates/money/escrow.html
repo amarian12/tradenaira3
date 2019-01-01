@@ -77,7 +77,24 @@
 						         <ng-include ng-if="transaction.role=='buyer'" 
 						         	src="'/templates/money/_buyer_form.html'"></ng-include>	
 						         <ng-include ng-if="transaction.role=='broker'" 
-						         	src="'/templates/money/_broker_form.html'"></ng-include>		
+						         	src="'/templates/money/_broker_form.html'"></ng-include>
+
+						        <div class="row">
+						        	 
+					        		<div class="col-md-2">
+					        			<input type="checkbox" name="agree_tc" 
+					        			id="escrow_agree_tc" ng-model="transaction.agree_tc"
+					        			style="position: absolute; left: -8px; top: 5px;">
+					        		</div>
+					        		<div class="col-md-10">	
+					        			<label for="escrow_agree_tc" class="checkbox"
+					        			style="margin: 8px 0 0 -22px;">
+					        			Are you agree with the terms and conditions?</label>
+					        		</div>
+					        		<div class="col-md-24">
+					        			<p class="error">{{errors.agree_tc}}</p>
+					        		</div> 
+						        </div> 			
 					        </div> 	
 		    			</div>
 	    			</div>

@@ -89,7 +89,7 @@ $(document).ready(function() {
   	 
   	 
   	 $(".gbpngn").mousedown(function(e) 
-  	 {
+  	 {  
       var url= $(this).attr('data-link');
       var head= $(this).attr('head');
       var cls = '.last-'+$(this).attr('datas')+'-live-ticker';
@@ -151,7 +151,7 @@ $(document).ready(function() {
   	 })
   	 $(".lnk").click(function (){
         var url = $(this).attr('data-link');
-        $("#frameExternal").attr('src', url);
+        //$("#frameExternal").attr('src', url);
      });
        
   });
@@ -261,7 +261,7 @@ if (marketp[0]) {
 
   showFloatingPoints();
   showVidoFroncontent();
-  showCurrencyPrice(8);
+  showCurrencyPrice(9);
 
 });
 
@@ -273,7 +273,6 @@ function submitEnquirey($this){
   $("#submitformbtn").attr("disabled",true)
   .val("Submitting...");
 
-
   $.ajax({
     url: turl,
     type: "POST",
@@ -283,7 +282,7 @@ function submitEnquirey($this){
       if(resp.success){
         var msg = "<p class='successmsg'>Thanks for connecting with us, we will back to you shortly!</p>";
         $(".moformcontainer").html(msg);
-      }else{
+        }else{
         var error_html = "<ul class='error-msgs'>";
 
         for(var error in resp.errors){
@@ -458,6 +457,7 @@ var traden_cendi = '<i class="flaticon-ghana-cedis"></i>';
 var traden_cobj = [
           { m: "usdngn", s: traden_cnara },
           { m: "gbpngn", s: traden_cnara },
+          { m: "eurngn", s: traden_cnara },
           { m: "ghsngn", s: traden_cnara },
           { m: "btcngn", s: traden_cnara },
           { m: "btcusd", s: "$" },
@@ -468,7 +468,7 @@ var traden_cobj = [
           ];
 
 function showCurrencyPrice(cntr){
-  if(cntr < 0 || typeof(cntr) == "undefined" || cntr > 8){
+  if(cntr < 0 || typeof(cntr) == "undefined" || cntr > 9){
     return false;
   }
   var cnara = traden_cnara;
@@ -480,24 +480,26 @@ function showCurrencyPrice(cntr){
   }
 
   var curobj = traden_cobj;
+  var price;
+  //console.log(traden_cobj)
 
           //for(var i=0; i<curobj.length; i++){
              
             var pobj = curobj[cntr];
             //setTimeout(function(){
              // alert(curobj[i])
-              if(typeof(pobj) != "undefined"){
+             //console.log(pobj.m)
+              if(typeof(pobj) != "undefined" ){
                 $.ajax({
                 type: 'GET',
                 dataType: "json",
                 url: "/markets/"+pobj.m,
                 dataType: "json",
                 success:function(data){
+                  //console.log(data)
                   if(data.trades[0]){
                     price = data.trades[0]['price'];
-
                     var nhtml = pobj.s+""+price;
-
                     var nobj = '<span class="csymble">'+nhtml+'</span>';
                     //alert(wrapper+"."+pobj.m)
                     $(wrapper).each(function(){
@@ -505,6 +507,7 @@ function showCurrencyPrice(cntr){
                         $(this).append(nobj);
                       }
                     })
+
                     showCurrencyPrice(cntr-1);
 
                     if (cntr <= 0) {
@@ -512,6 +515,12 @@ function showCurrencyPrice(cntr){
                       $(".loading-wraper").hide();
                     }
                     //$(wrapper+"datas").append(nobj);
+                  }else{
+                      showCurrencyPrice(cntr-1);
+                      if (cntr <= 0) {
+                        $(".loading-loded").show();
+                        $(".loading-wraper").hide();
+                      }
                   }
                 }
                 })

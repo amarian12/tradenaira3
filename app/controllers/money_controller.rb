@@ -95,6 +95,7 @@ helper_method :require_captcha?
     escrow.descriptions       = params[:descriptions]
     escrow.member_id          = current_user.id
     escrow.status             = 0
+    escrow.agree_tc           = params[:agree_tc]
     
 
     if escrow.tn_role == "broker"
@@ -155,7 +156,7 @@ helper_method :require_captcha?
 
   def quick_exchange
     
-    
+    @identity = Identity.new 
     @title = "Quick exchange money"
     @descrip = "Quick exchange money to Nigeria"
   end
