@@ -130,3 +130,13 @@
   ask: {fee: 0.0050, currency: btc, fixed: 4}
   sort_order: 1
   #visible: false     # default to true 
+
+- id: eurngn
+  code: 10
+  #name: EUR/NGN      # default name
+  base_unit: eur
+  quote_unit: ngn
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0.0050, currency: ngn, fixed: 2}
+  ask: {fee: 0.0050, currency: eur, fixed: 4}
+  sort_order: 1
