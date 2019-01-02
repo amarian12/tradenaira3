@@ -289,6 +289,9 @@ img {
     top: 1px;
     position: absolute;
   }
+  .csbar i{
+    font-size: 15px;
+  }
 }
 
 .srnotification.active{
@@ -320,10 +323,13 @@ img {
 
     li{
       list-style: none;
-      margin-left: 20px;
+      margin-left: 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px; 
     }
     li.notalttrue{
       color: #906767;
+      text-align: left;
     }
     .ddif{
       display: block;

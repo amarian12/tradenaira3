@@ -33,7 +33,6 @@ class DailyemailMailer < ActionMailer::Base
         trade:    trade,
         bid_one:  bid_one,
         ask_one:  ask_one
-
       }
 
       @trades_all << market
