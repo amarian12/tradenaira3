@@ -20,6 +20,7 @@ namespace :admin do
   get "money/requested",          to: "money#money_request",  as: "requested_money"
   post "money/resend_instructions/:id", to: "money#resend_instructions",   as: "resend_instructions_money"
   post "money_controller/manage/:id/:doaction", to: "money#manage",         as: "manage_money"
+  post "money/edit", to: "money#edit"
   get "money/escrow", to: "money#escrow", as: "escrow_money"
   get 'finances', to: "money#finances", as: "finances"
 

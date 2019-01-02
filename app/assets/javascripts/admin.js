@@ -79,6 +79,18 @@ $(document).ready(function(){
         }
     }) 
 
+    var editableobj = $(".selfeditobject");
+    if(editableobj[0]){
+      editableobj.click(function(){
+        var field = $(this).data("field");
+        var id    = $(this).data("id");
+        var path  = $(this).data("path");
+
+        //$(this)
+
+      })
+    }
+
     if($(".live_counter")[0]){
         setInterval(function(){
           liveCounter();

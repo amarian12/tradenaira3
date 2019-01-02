@@ -31,8 +31,8 @@
 	<div class="col-md-24">
 		<div class="row">
 			<% @escrows.each do |es| %>
-				<div class="col-md-6" id="card-iteam-<%= es.id %>">
-					<div class="card" style="height: 550px; overflow-y: scroll; 
+				<div class="col-md-8" id="card-iteam-<%= es.id %>">
+					<div class="card <%= es.remaining_days <= 0 ? 'attension': ''  %>" style="height: 550px; overflow-y: scroll; 
 					overflow-x: hidden; ">
 					  <div class="card-body">
 					  	<p style="text-align: center;">#<%= es.id %></p>
@@ -50,29 +50,50 @@
 					  		<% end %>
 						  	 
 					  	</div>
-					  	<p class="get_status">Escrow status: <%= es.get_status %></p>
-					    <h5 class="card-title">Date: <%= es.created_at %></h5>
-					    <p class="card-text">Item name: <%= es.item_name %></p>
-					    <p class="card-text">Item Description: <%= es.descriptions %></p>
-					    <p class="card-text">your role: 
-					    	<b class="up"><%= es.user_role(current_user.email) %></b>
+					  	<p class="card-text"><label>Escrow status:</label> <%= es.get_status %></p>
+					    <h5 class="card-text">
+					    	<label>Creation date:</label> <%= es.created_at %></h5>
+
+					    <h5 class="card-text">
+					    	<label>Inspection period:</label>
+					    	 <%= raw es.editable_option("inspection_length") %> 
+					    </h5>
+					    <h5 class="card-text">
+					    	<label>Closing Date: </label>
+					    	<b class="<%= es.remaining_days <= 0 ? 'danger': ''  %>">
+					    		<%= es.closing_date %></b>
+					    </h5>
+
+					    <p class="card-text">
+					    	<label>Item name:</label> 
+					    	<%= es.item_name %></p>
+					    <p class="card-text">
+					    	<label>Item Description:</label>
+					    	 <%= es.descriptions %></p>
+					    <p class="card-text">
+					    	<label>Seller email:</label>
+					    	<%= es.seller_email %> 
 					    </p>
-					    <p class="card-text">Seller: <%= es.seller_email %></p>
-					    <p class="card-text">Buyer: <%= es.buyer_email %></p>
+					    <p class="card-text">
+					    	<label>Buyer email:</label> 
+					    	<%= es.seller_email %></p>
+					     
 					    <% if broker = es.broker %>
-					    <p class="card-text">Broker: <%= broker.email %></p>
+					    <p class="card-text">
+					    	<label>Broker email:</label> <%= broker.email %></p>
 					    <% end %>
 					    <p class="card-text">
-					    	Escrowed Amount: 
+					    	<label>Escrowed Amount:</label> 
 					    	<b>
 					    	  <%= es.tn_amount %><%= es.tn_currency.upcase if es.tn_currency  %>
 					    	</b>
 					    </p>
 					    <p class="card-text">
-					    	Shipping:
+					    	<label>Shipping amount:</label>
 					    	<b><%= es.shipping_amount %><%= es.shipping_currency.upcase %></b>
 					    </p>
-					    <p>Grand Total: <b>
+					    <p class="card-text">
+					    	<label>Grand Total:</label> <b>
 					    	<% if es.shipping_currency == es.tn_currency %>
 					    		<%= es.tn_amount+es.shipping_amount %><%= es.shipping_currency.upcase %>
 					    	<% else %>
@@ -82,7 +103,8 @@
 					    	<% end %>
 					    </b></p>
 					    <p class="card-text">
-					    	Fee payer: <b class="up"><%= es.fee_payer %></b>
+					    	<label>Fee payer:</label> 
+					    	<b class="up"><%= es.fee_payer %></b>
 					    </p>
 
 					    <div class="es-success" id="success-<%= es.id %>"></div>

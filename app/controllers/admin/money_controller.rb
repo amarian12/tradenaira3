@@ -32,6 +32,10 @@ module Admin
 
 	  end
 
+	  def edit
+	  	
+	  end
+
 	  def escrow
 	  	status = params[:status] || ""
 

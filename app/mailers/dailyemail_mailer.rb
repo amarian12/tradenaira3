@@ -8,8 +8,8 @@ class DailyemailMailer < ActionMailer::Base
 
     @trades_all = []
      
-    msymbols    = ["usdngn","gbpngn","eurngn", "ghsngn","usdghs", "btcngn", 
-      "btcusd", "btcgbp", "gbpghs","btcghs"]
+    msymbols    = ["usdngn","gbpngn","ghsngn","usdghs", "btcngn", 
+      "btcusd", "btcgbp", "gbpghs","btcghs", "eurngn"]
 
     id = 0  
     msymbols.each do |sm|
@@ -37,9 +37,7 @@ class DailyemailMailer < ActionMailer::Base
 
       @trades_all << market
     end
-
- 
-
+    
     #@membername = IdDocument.find member.id
     @closename = @member.name
     if @closename.blank?

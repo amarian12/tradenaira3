@@ -41,6 +41,18 @@ class Escrow < ActiveRecord::Base
 
 	after_save :notify_users
 
+	def inspection_period
+		(inspection_length.gsub("days","").gsub("day","").strip.chomp).to_i
+	end
+
+	def closing_date
+		created_at+inspection_period.days
+	end
+
+	def remaining_days
+		(closing_date.to_datetime - DateTime.now ).to_i
+	end
+
 	def seller
 		Member.find_by_email(seller_email)
 	end
@@ -51,6 +63,20 @@ class Escrow < ActiveRecord::Base
 
 	def broker
 		self.member if self.tn_role == "broker"
+	end
+
+	def editable_option field
+		tag = "<a href='javascript:void(0)' class='selfeditobject'"
+		tag += "data-field='#{field}'"
+		tag += "data-id='#{id}'"
+		tag += "data-path='/admin/money/edit'"
+		tag += "data-model='escrow'"
+		 
+		tag += " >"
+		tag += send(field.to_sym)
+		tag += "</a>"
+		tag
+
 	end
 
 	def user_role email

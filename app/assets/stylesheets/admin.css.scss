@@ -46,6 +46,21 @@
   margin-left: 140px;
 }
 
+.card.attension{
+  background: #ffa7d8;
+}
+.card{
+  .card-text{
+    label{
+      width: 150px;
+      font-size: 14px;
+    }
+    .danger{
+      color: red;
+    }
+  }
+}
+
 body { padding-top: 80px; }
 
 b.caret {
@@ -81,6 +96,7 @@ span.detail-item, span.detail-section { display: block; }
         margin: -9px 1px 0 32px;
         background: #fff;
         width: 30px;
+        border-radius: 40%; 
       }
     }
 

@@ -19,7 +19,7 @@
   sort_order: 1
 
 - id: eurngn
-  code: 3
+  code: 10
   #name: EUR/NGN      # default name
   base_unit: eur
   quote_unit: ngn
@@ -30,7 +30,7 @@
 
 
 - id: ghsngn
-  code: 4
+  code: 3
   #name: GBP/NGN      # default nameGHS/NGN
   base_unit: ghs
   quote_unit: ngn
@@ -40,7 +40,7 @@
   sort_order: 1
   #visible: false     # default to true 
 - id: usdghs
-  code: 5
+  code: 4
   #name: GBP/NGN      # default nameUSD/GHS
   base_unit: usd
   quote_unit: ghs
@@ -70,7 +70,7 @@
   # sort_order: 1
   #visible: false     # default to true
 - id: btcngn
-  code: 6
+  code: 5
   #name: BTC/NGN      # default name
   base_unit: btc
   quote_unit: ngn
@@ -80,7 +80,7 @@
   sort_order: 1
   #visible: false     # default to true
 - id: btcusd
-  code: 7
+  code: 6
   #name: BTC/USD      # default name
   base_unit: btc
   quote_unit: usd
@@ -90,7 +90,7 @@
   sort_order: 1
   #visible: false     # default to true
 - id: btcgbp
-  code: 8
+  code: 7
   #name: BTC/GBP      # default name
   base_unit: btc
   quote_unit: gbp
@@ -122,7 +122,7 @@
 
   #visible: false     # default to true 
 - id: gbpghs
-  code: 9
+  code: 8
   #name: GBP/NGN      # default nameGBP/GHS
   base_unit: gbp
   quote_unit: ghs
@@ -132,7 +132,7 @@
   sort_order: 1
   #visible: false     # default to true 
 - id: btcghs
-  code: 10
+  code: 9
   #name: GBP/NGN      # default nameBTC/GHS
   base_unit: btc
   quote_unit: ghs
