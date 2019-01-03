@@ -32,7 +32,31 @@ module Admin
 
 	  end
 
+
 	  def edit
+	  	success = false
+	  	model 	= params[:model]
+	  	id 		= params[:id]
+	  	field 	= params[:field]
+	  	value	= params[:value]
+	  	msg 	= ""
+
+	  	clobject = model.capitalize.constantize.find_by_id(id)
+	  	if clobject
+	  		clobject.send("#{field}=",value)
+	  		if clobject.save
+	  			success = true
+	  		else
+	  			msg = clobject.errors.full_messages
+	  		end
+	  	else
+	  		msg = "Object not found"
+	  	end
+
+	  	resp = { success: success, msg: msg }
+	  	respond_to do |formate|
+	  		formate.json{ render json: resp }
+	  	end
 	  	
 	  end
 
@@ -44,7 +68,7 @@ module Admin
 	  	else
 	  		@escrows = Escrow.where(status: status)
 	  	end
-	  	@escrows = @escrows.order(updated_at: :desc ).page(params[:page]).per(12)
+	  	@escrows = @escrows.order(created_at: :desc ).page(params[:page]).per(12)
 
 	  	@status = status
 

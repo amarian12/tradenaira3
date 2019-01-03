@@ -61,6 +61,19 @@
   }
 }
 
+.editfield{
+  border: none;
+  padding: 5px 2px;
+}
+input[type=button].editfield{
+  background: none;
+  color: green;
+}
+input[type=text].editfield{
+  background: #fff;
+  max-width: 50%;
+}
+
 body { padding-top: 80px; }
 
 b.caret {

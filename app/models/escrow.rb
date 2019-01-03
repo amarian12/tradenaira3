@@ -66,15 +66,15 @@ class Escrow < ActiveRecord::Base
 	end
 
 	def editable_option field
-		tag = "<a href='javascript:void(0)' class='selfeditobject'"
+		tag = "<input type='button' class='selfeditobject editfield'"
 		tag += "data-field='#{field}'"
 		tag += "data-id='#{id}'"
 		tag += "data-path='/admin/money/edit'"
 		tag += "data-model='escrow'"
+		tag += "value='#{send(field.to_sym)}'"
+		tag += " />"
 		 
-		tag += " >"
-		tag += send(field.to_sym)
-		tag += "</a>"
+		 
 		tag
 
 	end
@@ -196,20 +196,26 @@ class Escrow < ActiveRecord::Base
     	account.unlock_and_sub_funds sum, locked: sum, fee: fee, reason: reason, ref: self
 	end
 
+	def unlock_fund account, amount, reason
+		account.unlock_funds(amount, reason, self)
+	end
+
 	def sub_funds(account, amount, fee, reason, ref)
 	    account.sub_funds(amount, fee, reason, ref)
   	end
 
   	def lock_funds user
   		tncurrency = Currency.where(code: tn_currency).last
-		shippingcurrency = Currency.where(code: shipping_currency).last
-
 		tn_account = user.accounts.where(currency: tncurrency.id).last
-		sh_account = user.accounts.where(currency: shippingcurrency.id).last
-
-
     	tn_account.lock_funds(tn_amount, reason: Escrow::MONEYDB, ref: self)
-    	sh_account.lock_funds(shipping_amount, reason: Escrow::MONEYSHDB, ref: self)
+    	if shipping_currency
+    		shippingcurrency = Currency.where(code: shipping_currency).last
+    		sh_account = user.accounts.where(currency: shippingcurrency.id).last
+    		if sh_account
+    			sh_account.lock_funds(shipping_amount, reason: Escrow::MONEYSHDB, ref: self)
+    		end
+    	end
+    	
 
   	end
 
@@ -237,12 +243,83 @@ class Escrow < ActiveRecord::Base
 				UserMailer.signup_request_escrow(self, buyer_email).deliver
 			end
 
+			if status == 4 || status == 5
+				tncurrency = Currency.where(code: tn_currency).last
+				shippingcurrency = Currency.where(code: shipping_currency).last
+			end
+
 			if status == 4 #approved by admin
 				msg = "##{id}: Escrow approved by admin!"
+				if tn_role == "seller" || tn_role == "buyer" 
+					if buyer
+					  	tn_account = buyer.accounts.where(currency: tncurrency.id).last
+					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, Escrow::MONEYDB
+					  
+						  if shippingcurrency
+						  	sh_account = buyer.accounts.where(currency: shippingcurrency.id).last
+						  	if sh_account
+						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, Escrow::MONEYDB
+						  	end
+						  end  
+					end
+				elsif tn_role == "broker"
+					if amount_payer == "seller" && seller 
+						tn_account = seller.accounts.where(currency: tncurrency.id).last
+					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, Escrow::MONEYDB
+					  	if shippingcurrency
+						  	sh_account = seller.accounts.where(currency: shippingcurrency.id).last
+						  	if sh_account
+						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, Escrow::MONEYDB
+						  	end
+						end
+					elsif amount_payer == "buyer" && buyer 
+						tn_account = buyer.accounts.where(currency: tncurrency.id).last
+					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, Escrow::MONEYDB
+					  	if shippingcurrency
+						  	sh_account = buyer.accounts.where(currency: shippingcurrency.id).last
+						  	if sh_account
+						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, Escrow::MONEYDB
+						  	end
+						end 		 
+					end		
+				end
 			end
 			 
 			if status == 5 #declined by admin
 				msg = "##{id}: Escrow declined by admin!"
+				
+				if tn_role == "seller" || tn_role == "buyer"
+					if buyer
+						tn_account = buyer.accounts.where(currency: tncurrency.id).last
+						unlock_fund(tn_account, tn_amount, Escrow::MONEYRB)
+						if shippingcurrency
+						  	sh_account = buyer.accounts.where(currency: shippingcurrency.id).last
+						  	if sh_account
+						  		unlock_fund(sh_account, shipping_amount, Escrow::MONEYSHRB)
+						  	end
+						end 	
+					end
+				elsif tn_role == "broker"
+					if amount_payer == "seller" && seller 
+						tn_account = seller.accounts.where(currency: tncurrency.id).last
+					  	unlock_fund(tn_account, tn_amount, Escrow::MONEYRB)
+					  	if shippingcurrency
+						  	sh_account = seller.accounts.where(currency: shippingcurrency.id).last
+						  	if sh_account
+						  		unlock_fund(sh_account, shipping_amount, Escrow::MONEYSHRB)
+						  	end
+						end
+					elsif amount_payer == "buyer" && buyer 
+						tn_account = buyer.accounts.where(currency: tncurrency.id).last
+						unlock_fund(tn_account, tn_amount, Escrow::MONEYRB)
+						if shippingcurrency
+						  	sh_account = buyer.accounts.where(currency: shippingcurrency.id).last
+						  	if sh_account
+						  		unlock_fund(sh_account, shipping_amount, Escrow::MONEYSHRB)
+						  	end
+						end 			 
+					end			
+				end
 			end
 
 			if msg && (status == 4 || status == 5)
@@ -263,6 +340,9 @@ class Escrow < ActiveRecord::Base
 			puts "email errors"
 		end	
 	end
+
+
+	 
 
  
 

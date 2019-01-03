@@ -31,19 +31,22 @@
 	<div class="col-md-24">
 		<div class="row">
 			<% @escrows.each do |es| %>
+				<% remaining_days = es.remaining_days <= 0 %>
 				<div class="col-md-8" id="card-iteam-<%= es.id %>">
-					<div class="card <%= es.remaining_days <= 0 ? 'attension': ''  %>" style="height: 550px; overflow-y: scroll; 
+					<div class="card <%= remaining_days && es.status == 2 ? 'attension': ''  %>" style="height: 550px; overflow-y: scroll; 
 					overflow-x: hidden; ">
 					  <div class="card-body">
 					  	<p style="text-align: center;">#<%= es.id %></p>
 					  	<div class="center" style="text-align: center;">
 					  		 
 					  		<% if es.status == "2" %>
-						  		<%= link_to "Approve", 
+					  			<% if es.seller && es.buyer %>
+						  		<%= link_to "Accept", 
 		 							admin_manage_money_path(es.id,"approve", tn: :escrow),
-		 						class: "btn btn-default", data: { method: "POST", 
-		 							confirm: "Are you sure?" } %>	
-		 						<%= link_to "Decline", 
+		 							class: "btn btn-default", data: { method: "POST", 
+		 							confirm: "Are you sure?" } %>
+		 						<% end %>	
+		 						<%= link_to "Deny", 
 		 							admin_manage_money_path(es.id,"decline", tn: :escrow),
 		 						class: "btn btn-danger", data: { method: "POST",
 		 						confirm: "Are you sure?" } %>	
@@ -56,27 +59,53 @@
 
 					    <h5 class="card-text">
 					    	<label>Inspection period:</label>
+					    	<% if es.status == "2" %>
 					    	 <%= raw es.editable_option("inspection_length") %> 
+					    	 <% else %>
+					    	 <%= es.inspection_length %> 
+					    	 <% end %>
 					    </h5>
 					    <h5 class="card-text">
 					    	<label>Closing Date: </label>
-					    	<b class="<%= es.remaining_days <= 0 ? 'danger': ''  %>">
+					    	<b class="<%= remaining_days ? 'danger': ''  %>">
 					    		<%= es.closing_date %></b>
 					    </h5>
 
 					    <p class="card-text">
+					    	<label>Created by: </label>
+					    	 
+					    		<%= es.tn_role %> 
+					    </p>
+					   
+
+					    <p class="card-text">
 					    	<label>Item name:</label> 
-					    	<%= es.item_name %></p>
+					    	<% if es.status == "2" %>
+					    		<%= raw es.editable_option("item_name") %>
+					    	<% else %>
+					    		<%= es.item_name %>
+					    	<% end %>
+					    </p>
 					    <p class="card-text">
 					    	<label>Item Description:</label>
-					    	 <%= es.descriptions %></p>
+					    	<% if es.status == "2" %> 
+					    	 	<%= raw es.editable_option("descriptions") %>
+					    	<% else %>
+					    		<%= es.descriptions %>
+					    	<% end %>
+					    </p>
 					    <p class="card-text">
 					    	<label>Seller email:</label>
-					    	<%= es.seller_email %> 
+					    	<span class="<%= 'danger' unless es.seller %>">
+					    		<%= es.seller_email %>
+					    	</span>
 					    </p>
 					    <p class="card-text">
 					    	<label>Buyer email:</label> 
-					    	<%= es.seller_email %></p>
+					    	<span class="<%= 'danger' unless es.buyer %>">
+					    		<%= es.seller_email %>
+					    	</span>
+					    </p>
 					     
 					    <% if broker = es.broker %>
 					    <p class="card-text">
@@ -102,6 +131,14 @@
 					    	<%= es.shipping_amount %><%= es.shipping_currency.upcase %> 
 					    	<% end %>
 					    </b></p>
+
+					     <% if es.tn_role == "broker" %>
+							    <p class="card-text">
+							    	<label>Amount payer: </label>
+							    	<%= es.amount_payer %> 
+							    </p>
+					    <% end %>
+					    
 					    <p class="card-text">
 					    	<label>Fee payer:</label> 
 					    	<b class="up"><%= es.fee_payer %></b>

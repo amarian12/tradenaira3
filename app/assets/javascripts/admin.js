@@ -13,14 +13,6 @@
 //= require browser_timezone_rails/set_time_zone
 
 
-
-
-
-
-
-
-
-
 function senMsgToSubscr($this){
 
    var formdata = $($this).serialize();
@@ -38,7 +30,6 @@ function senMsgToSubscr($this){
     data: formdata,
     dataType: "json",
     success: function(resp){
-
       sumitbtn.val(oldfval);
       $("#subscriber_contents").val("");
       if (resp.success) {
@@ -46,15 +37,11 @@ function senMsgToSubscr($this){
         setTimeout(function(){
         	$('#senMsgModel').modal('hide');
         },3000);
-        
       }else{
         var errors = "<b class='err-head'>"+resp.msg+"</b>";
         errors += '<p>'+resp.errors+'</p>';
-        
         $(".form_erros").html(errors);
-
         sumitbtn.removeAttr("disabled");
-         
       }
     }
   })
@@ -82,26 +69,24 @@ $(document).ready(function(){
     var editableobj = $(".selfeditobject");
     if(editableobj[0]){
       editableobj.click(function(){
-        var field = $(this).data("field");
-        var id    = $(this).data("id");
-        var path  = $(this).data("path");
-
-        //$(this)
-
+        $(this).attr("type","text")
+      })
+      .blur(function(){
+         $(this).attr("type","button");
+         updateSelfEditObject(this) 
       })
     }
 
     if($(".live_counter")[0]){
+
         setInterval(function(){
           liveCounter();
         },4000);
 
         $(".live_counter a").click(function(){
-          //alert(1)
           $(".live_counter .counter_info").toggle();
           return false;
         })
-
     }
 
     
@@ -255,4 +240,31 @@ function liveCounter(){
 
     })
   }
+}
+
+
+function updateSelfEditObject($this){
+  var field = $($this).data("field");
+  var id    = $($this).data("id");
+  var path  = $($this).data("path");
+  var model  = $($this).data("model");
+  var message = "PS: Field value must be in same formate as it is, Ex: xx Days can be xy Days, but can't be xx Months, are sure update value?"
+  if(!confirm(message)){
+    return false;
+  }
+  var value = $($this).val();
+  $.ajax({
+    url: path,
+    method: "post",
+    data: { id: id, field: field, value: value, model: model  },
+    success: function(resp){
+       if(resp.success){
+        window.location = "";
+       }else{
+        alert("Some thing went wrong, bellow log may find the issue..\n "+resp.msg)
+       }
+    },
+    dataType: "json"
+  })
+
 }
