@@ -21,17 +21,20 @@ class Escrow < ActiveRecord::Base
 	MONEYSHCR = :shipping_money_credited
 	MONEYSHRB = :shipping_money_rollback
 
+	MONEYTNFEE = :tn_fee
+
 	FEE = 2.0 #% amount
 
 	def get_status
 		st = [	
-			"pending", 			#0
-			"active",			#1
-			"approved_buyer",	#2
-			"declined_buyer",	#3
-			"approved_admin",	#4
-			"declined_admin",	#5
-			"closed"			#6
+			"pending", #-----------------0
+			"active",#-------------------1
+			"approved_buyer",#-----------2
+			"declined_buyer",#-----------3
+			"approved_admin",#-----------4
+			"declined_admin",#-----------5
+			"closed",#-------------------6
+			"waiting_2nd_approval"#------7
 		 ]
 		 st[status.to_i]
 	end
@@ -86,13 +89,61 @@ class Escrow < ActiveRecord::Base
 	end
 
 	def is_user_amount_payer? user
-		if tn_role == "seller" || tn_role == "buyer"
-			return true if buyer_email == user.email
-		elsif tn_role == "broker"
-			return true if (amount_payer == user_role(user.email) && amount_payer != "")	
-		end
+		# if tn_role == "seller" || tn_role == "buyer"
+		# 	return true if buyer_email == user.email
+		# 	return true if fee_payer == user_role(user.email)
+		# elsif tn_role == "broker"
+		# 	return true if (amount_payer == user_role(user.email) && amount_payer != "")	
+		# end
+		# return false
+
+		return true if user_role(user.email) == fee_payer
+		return true if user_role(user.email) == amount_payer
 		return false
 	end
+
+	def total_payable_amount member
+		amount = ""
+		user = member
+	
+		# if amount payer and fee payer both users are same
+		if user_role(user.email) == fee_payer && user_role(user.email) == amount_payer
+			# if shipping and transaction both currecies are same 
+			if shipping_currency == tn_currency
+				amount_1 = amount_with_fee(member) + shipping_amount
+				amount = amount_1.to_s+tn_currency.upcase
+			else
+				amount_1 = amount_with_fee(member).to_s + tn_currency.upcase
+				amount_2 = shipping_amount.to_s+shipping_currency.upcase
+				amount = amount_1 + amount_2
+			end
+		# if amount payer and fee payer are diffrent person
+		else
+			# if only fee payer
+			if (user_role(user.email) == fee_payer) && fee_payer != "" && fee_payer != nil
+				amount += tn_fee.to_s+tn_currency.upcase
+			end
+			# if only amount payer
+			if user_role(user.email) == amount_payer
+				# if has set shipping 
+				if shipping_amount > 0
+					# if both currencies are same
+			    	if shipping_currency == tn_currency
+			    		amount = (tn_amount+shipping_amount).to_s+tn_currency.upcase
+			    	else
+			    		amount = tn_amount.to_s+tn_currency.upcase
+			    		amount += " + "+shipping_amount.to_s+shipping_currency.upcase
+			    	end
+			    else
+			    # if no shipping set	
+			      	amount = tn_amount.to_s+tn_currency.upcase
+				end
+			end
+		end
+		return amount
+	end
+
+
 
 	def is_user_fee_payer user
 		return true if fee_payer == user_role(user.email)
@@ -102,14 +153,29 @@ class Escrow < ActiveRecord::Base
 	def has_tn_amount? user
 		tncurrency = Currency.where(code: tn_currency).last
 		shippingcurrency = Currency.where(code: shipping_currency).last
+
+		balance = tn_amount
+		if fee_payer == user_role(user.email)
+			balance += tn_fee
+		end
 		 
 		amount = user.accounts.where(currency: tncurrency.id)
-		.where("balance >= ?", tn_amount).last
+		.where("balance >= ?", balance).last
+
+		
 		
 		shipp = user.accounts.where(currency: shippingcurrency.id)
 		.where("balance >= ?", shipping_amount).last
 		 return true if amount && shipp
 		 return false
+	end
+
+	def amount_with_fee user
+		if fee_payer == user_role(user.email)
+			tn_amount+tn_fee
+		else
+			tn_amount
+		end
 	end
 
 	
@@ -215,8 +281,24 @@ class Escrow < ActiveRecord::Base
     			sh_account.lock_funds(shipping_amount, reason: Escrow::MONEYSHDB, ref: self)
     		end
     	end
-    	
+    	#fee amount
+    	lock_fee_amount(user.email)
+  	end
 
+  	def lock_fee_amount email
+  		if fee_payer == user_role(email)
+  			fee = tn_fee
+  			tncurrency = Currency.where(code: tn_currency).last
+  			member = Member.find_by_email(email)
+  			if member
+  			  tn_account = member.accounts.where(currency: tncurrency.id).last
+  			  tn_account.lock_funds(tn_fee, reason: Escrow::MONEYTNFEE, ref: self)
+  			end
+  		end
+  	end
+
+  	def tn_fee
+  		(tn_amount*Escrow::FEE)/100
   	end
 
 	def is_seller?

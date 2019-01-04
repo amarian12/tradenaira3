@@ -103,6 +103,12 @@
 			 			 name="fee_payer"
 			 			 id="tn_fee_payer">
 			 		</div>
+			 		<div class="col-md-18">
+			 			<p ng-show="transaction.fee_payer=='buyer'"
+			 			class="red_warning">
+			 				PS: 2% addtional fee amount will be deducted from your account.
+			 			</p>
+			 		</div>
 			 	</div>
 		 	</div>
 		 	<p class="error">{{errors.fee_payer}}</p>

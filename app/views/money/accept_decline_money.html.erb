@@ -83,35 +83,46 @@
 					    	Shipping:
 					    	 <b><%= es.shipping_amount %><%= es.shipping_currency.upcase %></b>
 					    </p>
-					    <p>Grand Total: <b>
-					    	<% if es.shipping_currency == es.tn_currency %>
-					    		<%= es.tn_amount+es.shipping_amount %><%= es.shipping_currency.upcase %>
-					    	<% else %>
-					    	<%= es.tn_amount %><%= es.tn_currency.upcase if es.tn_currency  %>
-					    	+
-					    	<%= es.shipping_amount %><%= es.shipping_currency.upcase %></b>
-					    	<% end %>
-					    </b></p>
+					    <p class="card-text">
+					    	Transaction fee:
+					    	 <b><%= es.tn_fee %><%= es.tn_currency.upcase %></b>
+					    </p>
+					    <!-- <p>Grand Total: 
+					    	<b>
+						    	<%# if es.shipping_currency == es.tn_currency %>
+						    		<%#= es.amount_with_fee(current_user)+es.shipping_amount %>
+						    		<%#= es.shipping_currency.upcase %>
+						    	<%# else %>
+						    		<%#= es.amount_with_fee(current_user) %>
+						    		<%#= es.tn_currency.#upcase #if es.tn_currency  %>
+						    		+
+						    		<%#= es.shipping_amount %>
+						    		<%#= es.shipping_currency.upcase %>
+						    	<%# end %>
+					    	</b>
+						</p> -->
 					    <p class="card-text">
 					    	Fee payer: <b class="up"><%= es.fee_payer %></b>
 					    </p>
 
 					    <div class="es-success" id="success-<%= es.id %>"></div>
 					  	<div class="es-errors" id="errors-<%= es.id %>"></div>
-
-					    <% if es.is_user_amount_payer?(current_user) && es.status == "1" %>
-						    <% if es.has_tn_amount? current_user %>
+					  	<% payable = es.total_payable_amount(current_user) %>				  	
+					    <% unless payable  == "" %>
+					    	<p class="card-text">
+					  			Total Payble amount by you:
+					  			<label><%= payable  %> <%#= payable  %> </label>
+					  		</p>
+						    <% if es.has_tn_amount?(current_user) && es.status == "1" %>
 								<p>
 									<%= link_to "Approve", "#", class: "btn btn-default accept",
 									onclick: "return manage_escrow(#{es.id}, 'accept', this)" %>
-
 									<%= link_to "Decline", "#", class: "btn btn-danger decline",
 									onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
 								</p>
 							<% else %>	
 									<%= link_to "Approve", "#", 
 									class: "btn btn-default accept", disabled: true %>
-
 									<%= link_to "Decline", "#", class: "btn btn-danger decline",
 									onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
 
@@ -119,15 +130,9 @@
 										To approve this transaction please add 
 										balance in your account.</p>
 							<% end %>
-
-							
-
 						<% end %>
-
-
-
-					    <!-- 
-					    <a class="card-link">Another link</a> -->
+					    
+					    
 					  </div>
 					</div>
 				</div>

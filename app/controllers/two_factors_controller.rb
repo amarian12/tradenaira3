@@ -178,19 +178,18 @@ class TwoFactorsController < ApplicationController
         if escrow.seller
           msgnoti = "##{escrow.id}: Escrow created with you."
           SrNotofication.create(
-              member_id: escrow.seller.id,
-              msg: msgnoti,
-              link_page: "escrow",
-              status: false)
-           
+            member_id: escrow.seller.id,
+            msg: msgnoti,
+            link_page: "escrow",
+            status: false)
         end
         if escrow.buyer
           msgnoti = "##{escrow.id}:  Escrow created with you."
           SrNotofication.create(
-              member_id: escrow.buyer.id,
-              msg: msgnoti,
-              link_page: "escrow",
-              status: false)
+            member_id: escrow.buyer.id,
+            msg: msgnoti,
+            link_page: "escrow",
+            status: false)
         end
 
         begin
@@ -206,14 +205,9 @@ class TwoFactorsController < ApplicationController
             UserMailer.escrow_created(escrow, current_user, true, "buyer",  escrow.buyer_email).deliver
           end
 
-          
-
           if current_user.email == escrow.seller_email
             UserMailer.escrow_created(escrow,current_user,"other",escrow.buyer_email).deliver
           end
-
-          
-
         rescue
           puts "email errors"
         end  

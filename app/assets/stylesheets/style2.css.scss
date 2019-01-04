@@ -82,6 +82,9 @@ img {
   .card-title {
     margin-bottom: .75rem;
   }
+  .red_warning{
+    color: red;
+  }
   .card-body {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
@@ -326,6 +329,7 @@ img {
       margin-left: 0;
       border-bottom: 1px solid #ddd;
       padding-bottom: 4px; 
+      float: none;
     }
     li.notalttrue{
       color: #906767;
