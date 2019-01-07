@@ -56,8 +56,8 @@
 	<div class="col-md-24">
 		<div class="row">
 			<% @escrows.each do |es| %>
-				<div class="col-md-6" id="card-iteam-<%= es.id %>">
-					<div class="card" style="height: 430px; overflow-y: scroll; 
+				<div class="col-md-8" id="card-iteam-<%= es.id %>">
+					<div class="card" style="height: 550px; overflow-y: scroll; 
 					overflow-x: hidden; ">
 					  <div class="card-body">
 					  	<p style="text-align: center;">#<%= es.id %></p>
@@ -66,7 +66,12 @@
 					    <p class="card-text">Item name: <%= es.item_name %></p>
 					    <p class="card-text">Item Description: <%= es.descriptions %></p>
 					    <p class="card-text">your role: 
-					    	<b class="up"><%= es.user_role(current_user.email) %></b>
+					    	<b class="up">
+					    		<%= es.user_role(current_user.email) %>
+					    	</b>
+					    </p>
+					    <p class="card-text">Created by: 
+					    	<b class="up"><%= es.tn_role %></b>
 					    </p>
 					    <p class="card-text">Seller: <%= es.seller_email %></p>
 					    <p class="card-text">Buyer: <%= es.buyer_email %></p>
@@ -87,50 +92,56 @@
 					    	Transaction fee:
 					    	 <b><%= es.tn_fee %><%= es.tn_currency.upcase %></b>
 					    </p>
-					    <!-- <p>Grand Total: 
-					    	<b>
-						    	<%# if es.shipping_currency == es.tn_currency %>
-						    		<%#= es.amount_with_fee(current_user)+es.shipping_amount %>
-						    		<%#= es.shipping_currency.upcase %>
-						    	<%# else %>
-						    		<%#= es.amount_with_fee(current_user) %>
-						    		<%#= es.tn_currency.#upcase #if es.tn_currency  %>
-						    		+
-						    		<%#= es.shipping_amount %>
-						    		<%#= es.shipping_currency.upcase %>
-						    	<%# end %>
-					    	</b>
-						</p> -->
+
+					    <h5 class="card-text">
+					    	<label>Payment status:</label>
+					    	 <b class="<%= 'success' if es.is_all_paid? %>">
+					    	 	<%= t(es.payment_status) %></b>
+					    </h5>
 					    <p class="card-text">
 					    	Fee payer: <b class="up"><%= es.fee_payer %></b>
 					    </p>
-
+					    <p class="card-text">
+					    	Amount payer: <b class="up"><%= es.amount_payer %></b>
+					    </p>
 					    <div class="es-success" id="success-<%= es.id %>"></div>
 					  	<div class="es-errors" id="errors-<%= es.id %>"></div>
-					  	<% payable = es.total_payable_amount(current_user) %>				  	
-					    <% unless payable  == "" %>
+					  	<% payable = es.total_payable_amount(current_user) %> 			  	
+					     
 					    	<p class="card-text">
 					  			Total Payble amount by you:
-					  			<label><%= payable  %> <%#= payable  %> </label>
+					  			<label><%= payable  %> </label>
 					  		</p>
-						    <% if es.has_tn_amount?(current_user) && es.status == "1" %>
-								<p>
-									<%= link_to "Approve", "#", class: "btn btn-default accept",
-									onclick: "return manage_escrow(#{es.id}, 'accept', this)" %>
-									<%= link_to "Decline", "#", class: "btn btn-danger decline",
-									onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
-								</p>
-							<% else %>	
-									<%= link_to "Approve", "#", 
-									class: "btn btn-default accept", disabled: true %>
-									<%= link_to "Decline", "#", class: "btn btn-danger decline",
-									onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
 
-									<p class="error" style="font-size: 10px">
-										To approve this transaction please add 
-										balance in your account.</p>
+					  		<% unless payable == 0.0 %>
+					  		    <% unless es.is_paid?(current_user) %>
+					  		        <% if [1,2,7,9].include?(es.status) %>
+								    <% if es.has_tn_amount?(current_user)  %>
+										<p>
+											<%= link_to "Approve", "#", class: "btn btn-default accept",
+											onclick: "return manage_escrow(#{es.id}, 'accept', this)" %>
+											<%= link_to "Decline", "#", class: "btn btn-danger decline",
+											onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
+										</p>
+									<% else %>	
+											<%= link_to "Approve", "#", 
+											class: "btn btn-default accept", disabled: true %>
+											<%= link_to "Decline", "#", 
+											class: "btn btn-danger decline",
+											onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
+
+											<p class="error" style="font-size: 10px">
+												To approve this transaction please add 
+												balance in your account.</p>
+									<% end %>
+									<% end %>
+								<% else %>	
+								<p>You all paid</p>
+								<% end %>	
+							<% else %>	
+								<!-- <p class="success">No need user to pay </p> -->
 							<% end %>
-						<% end %>
+					 
 					    
 					    
 					  </div>

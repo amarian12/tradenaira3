@@ -168,10 +168,12 @@ module Admin
 	  	doaction = params[:doaction]
 	  	case doaction
 	  	when "approve"
-	  		if escrow.status == "2"
+	  		if escrow.is_all_paid?
 	  			escrow.status = 4
 	  			escrow.save
 	  			flash[:notice] = "Approved successfully"
+	  		else
+	  			flash[:notice] = "Cant approve this stage."
 	  		end
 	  	when "decline"
 	  		escrow.status = 5

@@ -34,7 +34,9 @@ class Escrow < ActiveRecord::Base
 			"approved_admin",#-----------4
 			"declined_admin",#-----------5
 			"closed",#-------------------6
-			"waiting_2nd_approval"#------7
+			"waiting_2nd_approval",#-----7
+			"declined_by_seller",#--------8
+			"approved_by_seller"#----------9
 		 ]
 		 st[status.to_i]
 	end
@@ -105,9 +107,10 @@ class Escrow < ActiveRecord::Base
 	def total_payable_amount member
 		amount = ""
 		user = member
-	
+		urole = user_role(user.email)
+
 		# if amount payer and fee payer both users are same
-		if user_role(user.email) == fee_payer && user_role(user.email) == amount_payer
+		if fee_payer == amount_payer && fee_payer == urole
 			# if shipping and transaction both currecies are same 
 			if shipping_currency == tn_currency
 				amount_1 = amount_with_fee(member) + shipping_amount
@@ -120,11 +123,11 @@ class Escrow < ActiveRecord::Base
 		# if amount payer and fee payer are diffrent person
 		else
 			# if only fee payer
-			if (user_role(user.email) == fee_payer) && fee_payer != "" && fee_payer != nil
+			if urole == fee_payer
 				amount += tn_fee.to_s+tn_currency.upcase
 			end
 			# if only amount payer
-			if user_role(user.email) == amount_payer
+			if urole == amount_payer
 				# if has set shipping 
 				if shipping_amount > 0
 					# if both currencies are same
@@ -135,10 +138,13 @@ class Escrow < ActiveRecord::Base
 			    		amount += " + "+shipping_amount.to_s+shipping_currency.upcase
 			    	end
 			    else
-			    # if no shipping set	
+			    # if no shipping set	 
 			      	amount = tn_amount.to_s+tn_currency.upcase
 				end
 			end
+		end
+		if amount == ""
+			amount = 0.0
 		end
 		return amount
 	end
@@ -148,6 +154,82 @@ class Escrow < ActiveRecord::Base
 	def is_user_fee_payer user
 		return true if fee_payer == user_role(user.email)
 		return false
+	end
+
+	def is_paid? member
+
+		urole = user_role(member.email) 
+
+		if urole == "seller"
+			return true if seller_accepted
+		end
+
+		if urole == "buyer"
+			return true if buyer_accepted
+		end
+		 
+		return false 
+	end
+
+	def payment_status
+
+		if ['3','4','5','6','8'].include?(status) 
+			return get_status
+		end
+		
+		if tn_role == "seller" || tn_role == "buyer" 
+			if fee_payer == amount_payer
+				if fee_payer == "buyer"
+					return "buyer_paid" if buyer_accepted
+					return "buyer_not_paid" unless buyer_accepted
+				elsif fee_payer == "seller"
+					return "seller_paid" if seller_accepted
+					return "seller_not_paid" unless seller_accepted	
+				end
+			else
+				return "buyer_seller_paid" if seller_accepted && buyer_accepted
+				return "seller_paid_buyer_not_paid" if seller_accepted 
+				return "buyer_paid_seller_not_paid" if buyer_accepted 
+			end
+		elsif tn_role == "broker"
+			if fee_payer == amount_payer
+				if  fee_payer == "buyer"
+					if buyer_accepted
+						return "buyer_paid"
+					else
+						return "buyer_not_paid"	
+					end
+				elsif fee_payer == "seller"
+					if seller_accepted
+						return "seller_paid"
+					else
+						return "seller_not_paid"	
+					end		
+				end
+			else
+				if seller_accepted && buyer_accepted
+					return "buyer_seller_paid"
+				elsif seller_accepted && !buyer_accepted
+					return "seller_paid_buyer_not_paid"
+				elsif (!seller_accepted && buyer_accepted)
+					return "buyer_paid_seller_not_paid"	
+				end
+			end
+		end	
+
+		return "unknown"
+	end
+
+	def is_all_paid?
+		if fee_payer == amount_payer
+			if fee_payer == "buyer"
+				return true if buyer_accepted
+			elsif fee_payer == "seller"
+				return true if seller_accepted	
+			end
+		else
+			return true if seller_accepted && buyer_accepted
+		end
 	end
 
 	def has_tn_amount? user
@@ -273,12 +355,12 @@ class Escrow < ActiveRecord::Base
   	def lock_funds user
   		tncurrency = Currency.where(code: tn_currency).last
 		tn_account = user.accounts.where(currency: tncurrency.id).last
-    	tn_account.lock_funds(tn_amount, reason: Escrow::MONEYDB, ref: self)
+    	tn_account.lock_funds(tn_amount, reason: Escrow::MONEYDB.to_s+":#{id}", ref: self)
     	if shipping_currency
     		shippingcurrency = Currency.where(code: shipping_currency).last
     		sh_account = user.accounts.where(currency: shippingcurrency.id).last
     		if sh_account
-    			sh_account.lock_funds(shipping_amount, reason: Escrow::MONEYSHDB, ref: self)
+    			sh_account.lock_funds(shipping_amount, reason: Escrow::MONEYSHDB.to_s+":#{id}", ref: self)
     		end
     	end
     	#fee amount
@@ -292,7 +374,7 @@ class Escrow < ActiveRecord::Base
   			member = Member.find_by_email(email)
   			if member
   			  tn_account = member.accounts.where(currency: tncurrency.id).last
-  			  tn_account.lock_funds(tn_fee, reason: Escrow::MONEYTNFEE, ref: self)
+  			  tn_account.lock_funds(tn_fee, reason: Escrow::MONEYTNFEE.to_s+":#{id}", ref: self)
   			end
   		end
   	end
@@ -335,32 +417,37 @@ class Escrow < ActiveRecord::Base
 				if tn_role == "seller" || tn_role == "buyer" 
 					if buyer
 					  	tn_account = buyer.accounts.where(currency: tncurrency.id).last
-					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, Escrow::MONEYDB
+					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, Escrow::MONEYDB.to_s+":#{id}"
 					  
 						  if shippingcurrency
 						  	sh_account = buyer.accounts.where(currency: shippingcurrency.id).last
 						  	if sh_account
-						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, Escrow::MONEYDB
+						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, 
+						  		Escrow::MONEYDB.to_s+":#{id}"
 						  	end
 						  end  
 					end
 				elsif tn_role == "broker"
 					if amount_payer == "seller" && seller 
 						tn_account = seller.accounts.where(currency: tncurrency.id).last
-					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, Escrow::MONEYDB
+					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, 
+					  	Escrow::MONEYDB.to_s+":#{id}"
 					  	if shippingcurrency
 						  	sh_account = seller.accounts.where(currency: shippingcurrency.id).last
 						  	if sh_account
-						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, Escrow::MONEYDB
+						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, 
+						  		Escrow::MONEYDB.to_s+":#{id}"
 						  	end
 						end
 					elsif amount_payer == "buyer" && buyer 
 						tn_account = buyer.accounts.where(currency: tncurrency.id).last
-					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, Escrow::MONEYDB
+					  	unlock_and_sub_funds tn_account, tn_amount, 0.0, 
+					  	Escrow::MONEYDB.to_s+":#{id}"
 					  	if shippingcurrency
 						  	sh_account = buyer.accounts.where(currency: shippingcurrency.id).last
 						  	if sh_account
-						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, Escrow::MONEYDB
+						  		unlock_and_sub_funds sh_account, shipping_amount, 0.0, 
+						  		Escrow::MONEYDB.to_s+":#{id}"
 						  	end
 						end 		 
 					end		
@@ -373,31 +460,33 @@ class Escrow < ActiveRecord::Base
 				if tn_role == "seller" || tn_role == "buyer"
 					if buyer
 						tn_account = buyer.accounts.where(currency: tncurrency.id).last
-						unlock_fund(tn_account, tn_amount, Escrow::MONEYRB)
+						unlock_fund(tn_account, tn_amount, 
+							Escrow::MONEYRB.to_s+":#{id}")
 						if shippingcurrency
 						  	sh_account = buyer.accounts.where(currency: shippingcurrency.id).last
 						  	if sh_account
-						  		unlock_fund(sh_account, shipping_amount, Escrow::MONEYSHRB)
+						  		unlock_fund(sh_account, shipping_amount, 
+						  			Escrow::MONEYSHRB.to_s+":#{id}")
 						  	end
 						end 	
 					end
 				elsif tn_role == "broker"
 					if amount_payer == "seller" && seller 
 						tn_account = seller.accounts.where(currency: tncurrency.id).last
-					  	unlock_fund(tn_account, tn_amount, Escrow::MONEYRB)
+					  	unlock_fund(tn_account, tn_amount, Escrow::MONEYRB.to_s+":#{id}")
 					  	if shippingcurrency
 						  	sh_account = seller.accounts.where(currency: shippingcurrency.id).last
 						  	if sh_account
-						  		unlock_fund(sh_account, shipping_amount, Escrow::MONEYSHRB)
+						  		unlock_fund(sh_account, shipping_amount, Escrow::MONEYSHRB.to_s+":#{id}")
 						  	end
 						end
 					elsif amount_payer == "buyer" && buyer 
 						tn_account = buyer.accounts.where(currency: tncurrency.id).last
-						unlock_fund(tn_account, tn_amount, Escrow::MONEYRB)
+						unlock_fund(tn_account, tn_amount, Escrow::MONEYRB.to_s+":#{id}")
 						if shippingcurrency
 						  	sh_account = buyer.accounts.where(currency: shippingcurrency.id).last
 						  	if sh_account
-						  		unlock_fund(sh_account, shipping_amount, Escrow::MONEYSHRB)
+						  		unlock_fund(sh_account, shipping_amount, Escrow::MONEYSHRB.to_s+":#{id}")
 						  	end
 						end 			 
 					end			

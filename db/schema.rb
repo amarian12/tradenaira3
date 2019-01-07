@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181231132953) do
+ActiveRecord::Schema.define(version: 20190107070518) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -265,6 +265,8 @@ ActiveRecord::Schema.define(version: 20181231132953) do
     t.string   "buyer_phone"
     t.string   "seller_phone"
     t.boolean  "agree_tc"
+    t.boolean  "buyer_accepted"
+    t.boolean  "seller_accepted"
   end
 
   create_table "feeds", force: true do |t|

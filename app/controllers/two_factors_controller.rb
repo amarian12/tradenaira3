@@ -155,6 +155,7 @@ class TwoFactorsController < ApplicationController
 
   def process_escrow_two_factor
     escrow = Escrow.find_by_id(params[:eid])
+    member = current_user
     msg = ""
     if two_factor_auth_verified?
       captach = true
@@ -165,6 +166,11 @@ class TwoFactorsController < ApplicationController
           if escrow.has_tn_amount? current_user
             escrow.lock_funds current_user
             # if user has paid, move status directly to paid
+            if escrow.tn_role == "seller"
+              escrow.seller_accepted = true
+            elsif escrow.tn_role == "buyer"
+              escrow.buyer_accepted = true  
+            end
             escrow.status = 2
           end
         else

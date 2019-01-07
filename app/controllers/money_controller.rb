@@ -107,7 +107,7 @@ helper_method :require_captcha?
       escrow.buyer_email        = params[:buyer_email]
       escrow.seller_email       = current_user.email 
     elsif escrow.tn_role == "buyer" 
-      escrow.amount_payer       = "seller"
+      escrow.amount_payer       = "buyer"
       escrow.buyer_email        = current_user.email
       escrow.seller_email       = params[:seller_email]  
     end
@@ -218,7 +218,15 @@ helper_method :require_captcha?
       if escrow.is_user_amount_payer? user
         if escrow.has_tn_amount? user
           if escrow.approve_by_buyer(user)
-            escrow.status = 2
+            
+            urole = escrow.user_role(user.email)
+            if urole == "seller"
+              escrow.status = 9
+              escrow.seller_accepted = true
+            elsif urole == "buyer"
+              escrow.status = 2
+              escrow.buyer_accepted = true  
+            end
             escrow.save(validate: false)
             success = true
             msg = "Approved success"
@@ -233,7 +241,12 @@ helper_method :require_captcha?
     request_for == "decline"  
       if escrow.status == "1"
         escrow.decline_by_buyer(user)
-        escrow.status = 6
+        if escrow.user_role(user) == "seller"
+          escrow.status = 8
+        elsif escrow.user_role(user) == "buyer"  
+          escrow.status = 3
+        end
+        
         escrow.save
         msg = "declined success"
         success = true

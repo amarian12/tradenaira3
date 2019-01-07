@@ -1,4 +1,18 @@
 en:
+  seller_not_paid: "Buyer paid but waiting for seller to pay"
+  buyer_not_paid: "Waiting buyer to pay"
+  seller_paid_buyer_not_paid: "Seller paid but waiting for buyer to pay"
+  approved_buyer: "Approved by buyer"
+  buyer_paid_seller_not_paid: "Buyer paid but waiting for seller to pay"
+  buyer_paid: "Buyer paid, waiting for admin approval"
+  seller_paid: "Seller paid"
+  both_paid: "Buyer and Seller both paid, waiting for admin approval"
+  buyer_seller_paid: "Buyer and Seller both paid, waiting for admin approval"
+  active: "Waiting recepient to pay"
+  declined_buyer: "Declined by buyer"
+  declined_seller: "Declined by seller"
+
+
   last_price: "Last Price"
   bid_ask: "Bid / Ask"
   range: "Range"
