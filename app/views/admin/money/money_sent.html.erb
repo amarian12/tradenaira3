@@ -26,6 +26,7 @@
  			<td>Sent To</td>
  			<td>Amount to send</td>
  			<td>Sender Current Balance</td>
+ 			<td>Locked Balance</td>
  			<td>Status</td>
  			<td>Actions</td>
  		</tr>
@@ -47,6 +48,9 @@
 	 			</td>
 	 			<td>
 	 				<%= me.account.balance %><%= me.account.currency %>
+	 			</td>
+	 			<td>
+	 				<%= me.account.locked %><%= me.account.currency %>
 	 			</td>
 	 			<td>
 	 				<span class="trans_<%= t me.status %>"><%= t me.status %></span>
