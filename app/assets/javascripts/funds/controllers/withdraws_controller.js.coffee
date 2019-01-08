@@ -85,6 +85,8 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
      
   @withdrawAll = ->
     @withdraw.sum = Number($scope.account.balance)
+    $("#withdraw_sum").trigger("keyup")
+
 
   $scope.openFundSourceManagerPanel = ->
     template = '/templates/fund_sources/bank.html'

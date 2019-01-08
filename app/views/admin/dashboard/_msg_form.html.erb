@@ -1,3 +1,4 @@
+ <%= javascript_include_tag "blogo/admin/ckeditor" %>
 <div class="row">
 	<div class="col-md-12">
 		<div class="msglink">
@@ -31,7 +32,7 @@
 				<div class="form_row1">
 					<div class="form_input text_area1">
 					<label for="exampleInputEmail1">Message Contents</label>
-					<%= f.text_area :contents, class: "form-control", rows: 3 %>
+					<%= f.text_area :contents, class: "form-control ckeditor", rows: 3 %>
 				</div></div>
 
 				<div class="form-check">

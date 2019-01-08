@@ -7,16 +7,8 @@
         <tbody>
         <tr>
           <td style="padding: 0;">
-            <table width="100%" style="background:#38a6cb; border-radius: 10px 10px 0 0">
-              <tbody>
-              <tr>
-               <td width="1%" style=" padding: 10px 10px"></td>
-                <td style="font-size:24px; color:#FFF; padding:10px;">
-                  <%= image_tag("https://tradenaira.com/"+image_url("mailer.png").to_s, style: "width: 95px; height: 25px;") %>
-                </td>
-              </tr>
-              </tbody>
-          </table></td>
+           <%= render "shared/emails/logo_template" %>
+          </td>
         </tr>
         <tr>
            <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
@@ -39,14 +31,14 @@
 							<%= raw m[:trade] %></p></td>
 					</tr>
 
-					<tr style="border: 1px solid #ddd">
+					<!-- <tr style="border: 1px solid #ddd">
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Bid Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw m[:bid_one] %></p></td>
+						<td style="padding:0 10px;"><p><%#= raw m[:bid_one] %></p></td>
 					</tr>
 					<tr>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Ask Price</p></td>
-						<td style="padding:0 10px;"><p><%= raw m[:ask_one] %></p></td>
-					</tr>
+						<td style="padding:0 10px;"><p><%#= raw m[:ask_one] %></p></td>
+					</tr> -->
 					 
 					<% end %>
 
@@ -63,7 +55,7 @@
 		              				<td>
 		              					<% host = "https://tradenaira.com"  %>
 		              					<%= image_tag(host+""+post.meta_image, style: "max-height: 100px; max-width: 90px;") %>
-		              				</td>
+                            </td>
 		              			</tr>
 		              			<% end %>
 	              			<% end %>

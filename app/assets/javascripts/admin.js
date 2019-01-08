@@ -24,6 +24,20 @@ function senMsgToSubscr($this){
   sumitbtn.val("Sending please wait...")
   sumitbtn.attr("disabled",true);
 
+  //alert(JSON.stringify(formdata));
+  var cont_data = CKEDITOR.instances.subscriber_contents.getData();
+  var authenticity_token = $($this).find("input[name=authenticity_token]").val();
+  var subject = $("#subscriber_subject").val();
+  var active_only = $("#subscriber_active_only").prop("checked") ? 1 : 0;
+  formdata = {
+    utf8: "✓",authenticity_token: authenticity_token,subscriber: {
+      subject: subject, contents: cont_data, active_only: active_only
+    }
+  }
+  
+  //return false;
+  //alert(CKEDITOR.instances.editor1.getData())
+
   $.ajax({
     url: url,
     type: "post",

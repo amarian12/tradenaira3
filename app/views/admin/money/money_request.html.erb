@@ -47,12 +47,12 @@
 	 		<tr>
 	 			<td><%= me.id %></td>
 	 			<td><%= me.created_at %></td>
-	 			<td><%= me.sender.display_name || me.sender.email %></td>
+	 			<td><%= link_to (me.sender.display_name || me.sender.email),admin_member_path(me.sender) %></td>
 	 			<td>
 	 				<% if me.receiver.nil? %>
 	 				<%= me.sent_on_email %>
 	 				<% else %>
-	 					<%= me.receiver.display_name || me.receiver.email %>
+	 					<%= link_to (me.receiver.display_name || me.receiver.email), admin_member_path(me.receiver) %>
 	 				<% end %>	
 	 			</td>
 	 			<td>
