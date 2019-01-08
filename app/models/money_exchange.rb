@@ -84,7 +84,7 @@ class MoneyExchange < ActiveRecord::Base
 			s_account = sender_account
 			r_account = receiver_account
 			unless s_account.nil?
-				if s_account.balance >= self.amount 
+				if s_account.locked >= self.amount 
 					#debit aacount of sender
 					unlock_and_sub_funds(s_account, self.amount, 0.0, Account::MONEYSENT)
 					if s_account.save
