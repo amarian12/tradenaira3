@@ -130,9 +130,9 @@ module Admin
 
 	  	if @me.trans_errors
 	  		if @me.trans_errors.class.to_s == "Array"
-	  			flash[:notice] = @me.trans_errors.join(", ")
+	  			flash[:alert] = @me.trans_errors.join(", ")
 	  		else
-	  			flash[:notice] = @me.trans_errors
+	  			flash[:alert] = @me.trans_errors
 	  		end
 	  		
 	  	end
