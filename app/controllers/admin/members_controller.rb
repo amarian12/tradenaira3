@@ -16,6 +16,20 @@ module Admin
        @member = Member.find(params[:id])
     end
 
+    def manage
+      doaction = params[:doaction]
+      member = Member.find_by_id(params[:id])
+      if doaction == "toggle-trader"
+
+        member.trader = !member.trader
+        if member.save
+          UserMailer.trader(member).deliver
+          flash[:notice] = "Last action was success!"
+        end
+      end
+      redirect_to :back
+    end
+
     def update
       if @member.update(subscriber_member)
         flash[:notice] = 'success'  

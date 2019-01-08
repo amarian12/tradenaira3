@@ -11,6 +11,9 @@ namespace :admin do
   get '/members', to: 'members#index'
   get '/members', to: 'members#edit'
   get '/members', to: 'members#update'
+  post '/members/manage/:id/:doaction', to: 'members#manage', as: "manage_member"
+
+
   post '/complete', to: 'id_documents#complete' 
   post '/uncomplete', to: 'id_documents#uncomplete' 
   post '/complete', to: 'members#complete' 

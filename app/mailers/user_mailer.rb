@@ -21,6 +21,20 @@ class UserMailer < ActionMailer::Base
     mail to: me.sent_on_email, subject: subjects
   end
 
+  def trader member
+    @member = member
+    if member.trader 
+      @mcontent = MetaContent.find_by_slug("your_tradenaira_account_has_been_upgraded_to_gold_membership")      
+    else
+      @mcontent = MetaContent.find_by_slug("your_tradenaira_has_been_downgraded_to_standard_membership")      
+    end
+
+    subjects = @mcontent.title
+    @msg = @mcontent.description
+    
+    mail to: member.email, subject: subjects
+  end
+
 
   def signup_request_escrow escrow, email
     @escrow = escrow

@@ -53,8 +53,9 @@
 	              			<% if post.meta_image %>
 		              			<tr>
 		              				<td>
+                           <!--  <h5><%#= link_to post.title, blogo_post_url(post) %></h5> -->
 		              					<% host = "https://tradenaira.com"  %>
-		              					<%= image_tag(host+""+post.meta_image, style: "max-height: 100px; max-width: 90px;") %>
+		              					<%= link_to image_tag(host+""+post.meta_image, style: "max-height: 100px; max-width: 90px;"), blogo_post_url(post) %>
                             </td>
 		              			</tr>
 		              			<% end %>

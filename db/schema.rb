@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190107070518) do
+ActiveRecord::Schema.define(version: 20190108125111) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -355,6 +355,7 @@ ActiveRecord::Schema.define(version: 20190107070518) do
     t.string   "username"
     t.string   "session_token"
     t.string   "password_digest"
+    t.boolean  "trader"
   end
 
   create_table "meta_categories", force: true do |t|
