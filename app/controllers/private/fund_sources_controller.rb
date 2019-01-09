@@ -29,7 +29,8 @@ module Private
     end
 
     def fund_source_params
-      params.require(:fund_source).permit(:currency, :uid, :extra)
+      params.require(:fund_source).permit(:currency, :uid, :extra,
+        :account_name, :iban, :account_name, :code, :country)
     end
   end
 end

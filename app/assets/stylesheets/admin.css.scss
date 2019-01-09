@@ -25,6 +25,16 @@
   float: left;
 }
 
+.cpierr{
+    position: absolute;
+    left: 0;
+    background: #000;
+    color: #fff;
+    border: 5px solid #0000FF;
+    border-radius: 6px;
+    padding: 5px;
+}
+
 .top-pagging{
   ul.pagination{
     margin: 7px 14px 0 0;

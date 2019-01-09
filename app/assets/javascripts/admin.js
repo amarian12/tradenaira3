@@ -5,6 +5,7 @@
 //= require bootstrap-datetimepicker
 //= require bootstrap-datepicker
 //= require ZeroClipboard
+//= require clipboard
 //= require moment
 //= require admin/app
 
@@ -104,7 +105,7 @@ $(document).ready(function(){
     }
 
     
-     
+     copyToclipBoard();
 })
 
 function validateSrDates(){
@@ -281,4 +282,16 @@ function updateSelfEditObject($this){
     dataType: "json"
   })
 
+}
+
+
+function copyToclipBoard(){
+  var selecter = $(".fa.fa-copy");
+  if (selecter[0]) {
+    selecter.click(function(){
+      var content = $(this).data("clipboard-text");
+      //content.select().execCommand("copy");
+
+    })
+  }
 }

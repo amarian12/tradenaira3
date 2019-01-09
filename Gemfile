@@ -31,7 +31,8 @@ gem 'time_difference'
 gem 'browser-timezone-rails'
 
 
- 
+#copytext
+gem 'clipboard-rails' 
 
 #kickend
 

@@ -24,7 +24,7 @@
 				  <% @trades_all.each do |m| %>
 				  	 
 					<tr style="border: 1px solid #ddd">
-						<th rowspan=3 style="border: 1px solid #ddd"><p>
+						<th rowspan=1 style="border: 1px solid #ddd"><p>
 							<%= raw m[:mname].upcase %></p></th>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
 						<td style="padding:0 10px;"><p>
@@ -51,9 +51,9 @@
 	              		<table width="100%">
 	              			<% @recent_posts.each do |post| %>
 	              			<% if post.meta_image %>
-		              			<tr>
+		              			<tr class="col-md-2">
 		              				<td>
-                           <!--  <h5><%#= link_to post.title, blogo_post_url(post) %></h5> -->
+                          <h5><%= link_to post.title, blogo_post_url(post) %></h5> 
 		              					<% host = "https://tradenaira.com"  %>
 		              					<%= link_to image_tag(host+""+post.meta_image, style: "max-height: 100px; max-width: 90px;"), blogo_post_url(post) %>
                             </td>

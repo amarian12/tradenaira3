@@ -10,6 +10,7 @@ module Withdraws
       @withdraw = model_kls.new(withdraw_params)
 
       if two_factor_auth_verified?
+          update_fund_source_data
         if @withdraw.save
           @withdraw.submit!
           IddocumentMailer.sendwithdraw(current_user.email,withdraw_params[:currency],withdraw_params[:sum]).deliver
@@ -43,7 +44,22 @@ module Withdraws
     def withdraw_params
       params[:withdraw][:currency] = channel.currency
       params[:withdraw][:member_id] = current_user.id
-      params.require(:withdraw).permit(:fund_source, :member_id, :currency, :sum)
+      params.require(:withdraw).permit(:fund_source, :member_id, :currency, :sum,)
+    end
+
+    def update_fund_source_data
+      if params && params[:withdraw] && params[:withdraw][:fund_source]
+        fund_source_id = params[:withdraw][:fund_source] 
+        fs = FundSource.find_by_id(fund_source_id)
+        if fs && @withdraw
+          @withdraw.fund_iban         = fs.iban
+          @withdraw.fund_uid          = fs.uid
+          @withdraw.fund_code         = fs.code
+          @withdraw.fund_account_name = fs.account_name
+          @withdraw.fund_extra        = fs.extra
+        end
+      end
+      
     end
 
   end

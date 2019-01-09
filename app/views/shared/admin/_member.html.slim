@@ -171,13 +171,15 @@ javascript:
 	$('.mycc').click(function()
 	{
 		$('.member_sendmailcc').toggle(500);
-	})
-        var w =  input.toString().split("<br />");
+	})    
+    var w;
+    if(input){
+        w =  input.toString().split("<br />");
         for (var i = 0; i <= w.length - 1; i++)
         {
                 $(".allmailsul").append('<li class="allmails">' + w[i] + '</li>');
         }
-	var wc =  inputc.toString().split("<br />");
+	       var wc =  inputc.toString().split("<br />");
         for (var i = 0; i <= wc.length - 1; i++)
         {
                 $(".allcontentul").append('<li class="allcontents">' + wc[i] + '</li>');
@@ -185,8 +187,11 @@ javascript:
         var ws =  inputs.toString().split("<br />");
         for (var i = 0; i <= ws.length - 1; i++)
         {
-                $(".allsubjectul").append('<li class="allsubjects close" data-dismiss="modal" aria-label="Close"  data_sub ="' +  ws[i] + '"   data_con = "' +  wc[i]  + '" >' + ws[i] + '</li>');
+          $(".allsubjectul").append('<li class="allsubjects close" data-dismiss="modal" aria-label="Close"  data_sub ="' +  ws[i] + '"   data_con = "' +  wc[i]  + '" >' + ws[i] + '</li>');
         }
+    } 
+
+
 	$('#member_sendmail').focus(function(){
 	$('.allmailsul').fadeIn(100);
 	}).focusout(function(){
