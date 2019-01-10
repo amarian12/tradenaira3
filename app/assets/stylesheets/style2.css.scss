@@ -1412,14 +1412,29 @@ box-shadow: -2px 0px 28px -2px rgba(0, 0, 0, 0.15);
 .gold_member{
   color: #005a71;
     font-size: 20px;
-    background: #FFD700;
+    background: #D4AF37;
     font-family: 'poppinsbold';
-    padding: 6px 471px 10px 404px;
+    padding: 7px 471px 3px 421px;
     display: inline-block;
-    border-radius: 14px;
+    border-radius: 5px;
     text-decoration: none;
-    margin: 10px;
+    margin-bottom: 10px;
 }
+
+.platinum_member{
+    color: #005a71;
+    font-size: 20px;
+    background: #C0C0C0;
+    font-family: 'poppinsbold';
+    padding: 7px 471px 3px 421px;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+
+
 
 .main-text p {
     font-size: 16px;

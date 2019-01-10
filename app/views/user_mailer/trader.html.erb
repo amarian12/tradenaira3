@@ -1,1 +1,33 @@
-<%= raw @msg.gsub("##email##",@member.email.to_s).gsub("##display_name##",@member.display_name.to_s) %>
+<html><head></head>
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" style=" background: #EEEEEE; font:14px/20px 'Helvetica', Arial, sans-serif;">
+  <tbody>
+  <tr>
+    <td style="padding: 30px 0;"><table cellspacing="0" cellpadding="0" width="650" align="center" border="0" style="background: #FFFFFF; border-radius: 10px">
+        <tbody>
+        <tr>
+          <td>
+            <%= render "shared/emails/logo_template" %></td>
+        </tr>
+        <tr>
+          <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
+            <!--body-->
+           <%= raw @msg.gsub("##email##",@member.email.to_s).gsub("##display_name##",@member.display_name.to_s) %>
+            <!--body-->
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style="padding:0 30px 20px; font-size: 13px; color: #999">
+              <%= raw t('mailer.footer', contact_mail: ENV['SUPPORT_MAIL']) %>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body></html>
+

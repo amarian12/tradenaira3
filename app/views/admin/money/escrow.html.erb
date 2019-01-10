@@ -38,25 +38,25 @@
 					  <div class="card-body">
 					  	<p style="text-align: center;">#<%= es.id %></p>
 					  	<div class="center" style="text-align: center;">
-					  		 
-					  		<% if ['buyer_paid', 'seller_paid','buyer_seller_paid'].include?(es.payment_status) %>
-					  			<% if es.seller && es.buyer %>
-						  		<%= link_to "Accept", 
+					  		<% if [1,2,9,10].include?(es.status.to_i) %>
+						  		<% if es.is_all_paid? %>
+					  				<%= link_to "Accept", 
 		 							admin_manage_money_path(es.id,"approve", tn: :escrow),
 		 							class: "btn btn-default", data: { method: "POST", 
 		 							confirm: "Are you sure?" } %>
-		 						<% end %>	
-		 						<%= link_to "Deny", 
-		 							admin_manage_money_path(es.id,"decline", tn: :escrow),
-		 						class: "btn btn-danger", data: { method: "POST",
-		 						confirm: "Are you sure?" } %>	
-					  		<% end %>
+						  		<% end %>
+						  		<%= link_to "Deny", 
+	 							admin_manage_money_path(es.id,"decline", tn: :escrow),
+	 								class: "btn btn-danger", data: { method: "POST",
+	 								confirm: "Are you sure?" } %>	
+					  		<% end %>			  		 
 					  	</div>
 					  	<p class="card-text"><label>Escrow status:</label> 
 					  		<%= t(es.payment_status) %></p>
 					    <h5 class="card-text">
-					    	<label>Creation date:</label> <%= es.created_at %></h5>
-
+					    	<label>Creation date:</label> 
+					    	<%= es.created_at %>
+					    </h5>
 					    <h5 class="card-text">
 					    	<label>Inspection period:</label>
 					    	<% if es.status == "2" %>
@@ -109,7 +109,7 @@
 					    <p class="card-text">
 					    	<label>Buyer email:</label> 
 					    	<span class="<%= 'danger' unless es.buyer %>">
-					    		<%= es.seller_email %>
+					    		<%= es.buyer_email %>
 					    	</span>
 					    </p>
 					     
@@ -128,15 +128,17 @@
 					    	<b><%= es.shipping_amount %><%= es.shipping_currency.upcase %></b>
 					    </p>
 					    <p class="card-text">
-					    	<label>Grand Total:</label> <b>
-					    	<% if es.shipping_currency == es.tn_currency %>
-					    		<%= es.tn_amount+es.shipping_amount %><%= es.shipping_currency.upcase %>
-					    	<% else %>
-					    	<%= es.tn_amount %><%= es.tn_currency.upcase if es.tn_currency  %>
-					    	+
-					    	<%= es.shipping_amount %><%= es.shipping_currency.upcase %> 
-					    	<% end %>
-					    </b></p>
+					    	<label>Grand Total:</label>
+					    	<b>
+						    	<% if es.shipping_currency == es.tn_currency %>
+						    		<%= es.tn_amount+es.shipping_amount %><%= es.shipping_currency.upcase %>
+						    	<% else %>
+						    	<%= es.tn_amount %><%= es.tn_currency.upcase if es.tn_currency  %>
+						    		+
+						    	<%= es.shipping_amount %><%= es.shipping_currency.upcase %> 
+						    	<% end %>
+					    	</b>
+						</p>
 
 					     <% if es.tn_role == "broker" %>
 							    <p class="card-text">
@@ -152,11 +154,6 @@
 
 					    <div class="es-success" id="success-<%= es.id %>"></div>
 					  	<div class="es-errors" id="errors-<%= es.id %>"></div>
-
-					    
-
-
-
 					    <!-- 
 					    <a class="card-link">Another link</a> -->
 					  </div>

@@ -228,27 +228,32 @@ class Withdraw < ActiveRecord::Base
    
     if @getfeeq != '["nofees"]'
 
-        if self.currency == 'ngn'
-          if self.sum >= 3500000
-        self.fee ||= 1.5/100 * sum
-          else
-          self.fee ||= 2.0/100 * sum
-          end
-        elsif self.currency == 'usd'
-          if self.sum >= 10000
-          self.fee ||= 1.5/100 * sum
-          else
-          self.fee ||= 2.0/100 * sum
-          end
-        elsif self.currency == 'eur'
-          if self.sum >= 7500
-          self.fee ||= 1.5/100 * sum
-          else
-          self.fee ||= 2.0/100 * sum
-          end
+        if member.trader
+          self.fee ||= 1.0/100 * sum
         else
-          self.fee ||= 2.0/100 * sum
+          if self.currency == 'ngn'
+            if self.sum >= 3500000
+          self.fee ||= 1.5/100 * sum
+            else
+            self.fee ||= 2.0/100 * sum
+            end
+          elsif self.currency == 'usd'
+            if self.sum >= 10000
+            self.fee ||= 1.5/100 * sum
+            else
+            self.fee ||= 2.0/100 * sum
+            end
+          elsif self.currency == 'eur'
+            if self.sum >= 7500
+            self.fee ||= 1.5/100 * sum
+            else
+            self.fee ||= 2.0/100 * sum
+            end
+          else
+            self.fee ||= 2.0/100 * sum
+          end
         end
+
     else
         self.fee ||= 0.0
     end

@@ -17,23 +17,22 @@ module Private
       @banks = Bank.all
       @ngnbanks = Bank.all
 
-      #reorder accounts 
-      #@accounts.map{}
-      #puts "22222222222222222222222222222222222222222222222"
       accounts = []
        
-      cids =  Currency.all.sort_by { |k| k[:owait] }.map{|c| c.id}
-      cids.map{|c|  
-        accounts << @accounts.find_by_currency(c)
+      cids =  Currency.all.sort_by { |k| k[:owait] }.map{|c| c.id }
+      cids.map{|c| 
+        account =  @accounts.find_by_currency(c)
+        #create the account if its not exists
+        if account.nil?
+         account = current_user.accounts.create(currency: c, balance: 0.0, locked: 0.0) 
+        end
+        accounts << account
       }
-      # puts "@@@@@@@@@@@"
-      # puts @accounts.inspect
-      # puts "2222222222222222"
-      # puts accounts.inspect
+
       @accounts = accounts
 
       gon.jbuilder
-      #private-PEAIGRFVLXTTIO      
+    
     end
 
     def gen_address

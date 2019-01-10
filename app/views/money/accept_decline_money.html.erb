@@ -81,7 +81,7 @@
 					    <p class="card-text">
 					    	Escrowed Amount: 
 					    	<b>
-					    	<%= es.tn_amount %><%= es.tn_currency.upcase if es.tn_currency  %>
+					    		<%= es.tn_amount %><%= es.tn_currency.upcase if es.tn_currency  %>
 					    	</b>
 					    </p>
 					    <p class="card-text">
@@ -115,7 +115,7 @@
 
 					  		<% unless payable == 0.0 %>
 					  		    <% unless es.is_paid?(current_user) %>
-					  		        <% if [1,2,7,9].include?(es.status) %>
+					  		        <% if [1,2,7,9].include?(es.status.to_i) %>
 								    <% if es.has_tn_amount?(current_user)  %>
 										<p>
 											<%= link_to "Approve", "#", class: "btn btn-default accept",
@@ -123,11 +123,12 @@
 											<%= link_to "Decline", "#", class: "btn btn-danger decline",
 											onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
 										</p>
-									<% else %>	
+										<% else %>	
 											<%= link_to "Approve", "#", 
-											class: "btn btn-default accept", disabled: true %>
+												class: "btn btn-default accept", 
+												disabled: true %>
 											<%= link_to "Decline", "#", 
-											class: "btn btn-danger decline",
+												class: "btn btn-danger decline",
 											onclick: "return manage_escrow(#{es.id}, 'decline', this)" %>
 
 											<p class="error" style="font-size: 10px">
@@ -141,9 +142,6 @@
 							<% else %>	
 								<!-- <p class="success">No need user to pay </p> -->
 							<% end %>
-					 
-					    
-					    
 					  </div>
 					</div>
 				</div>

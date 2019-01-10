@@ -134,8 +134,8 @@ module Admin
 	  		else
 	  			flash[:alert] = @me.trans_errors
 	  		end
-	  		
 	  	end
+
 	  	redirect_to :back
 	  end
 
@@ -149,7 +149,7 @@ module Admin
 
 
 	  def finances
-	  	 @member = 
+	  	 @member = ""
 	  	 @account_versions = AccountVersion.where("fee > 0")
 	  	 unless params[:currency].nil?
 	  	  @account_versions = @account_versions.where(currency: params[:currency] )	

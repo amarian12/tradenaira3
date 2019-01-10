@@ -6,7 +6,7 @@ $ ->
 
     $(this).on "mouseover", ()->
       text = $(this).data("clipboard-text")
-      $(this).after("<span class='cpierr'>Click on text to Copy!</span>")
+      $(this).after("<span class='cpierr'>Click to Copy</span>")
 
     $(this).on "mouseout", ()-> 
       $(this).next("span").remove()
