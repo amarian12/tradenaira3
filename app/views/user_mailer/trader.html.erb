@@ -12,8 +12,10 @@
         <tr>
           <td style="border-top:none; padding:0px 30px 30px 30px; color: #666 ">
             <!--body-->
+            <p>Dear <%= @closename %>,</p>
            <%= raw @msg.gsub("##email##",@member.email.to_s).gsub("##display_name##",@member.display_name.to_s) %>
             <!--body-->
+           <p><%= raw t('mailer.signature') %></p>
           </td>
         </tr>
         </tbody>

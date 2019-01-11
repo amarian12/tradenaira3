@@ -17,7 +17,8 @@
               <tbody>
               <tr>
                 <td>
-                  <p>Dear <%= @closename %>,</p>
+              <!--     <p>Dear <%#= @closename %>,</p> -->
+                <h4>We strive to bring you the most up to date exchange rates and business news in Nigeria</h4>
 				  <table width="100%" style="border: 
 				  1px solid #ddd;border-collapse: collapse;">
 
@@ -28,7 +29,7 @@
 							<%= raw m[:mname].upcase %></p></th>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
 						<td style="padding:0 10px;"><p>
-							<%= raw m[:trade] %></p></td>
+							₦<%= raw m[:trade] %></p></td>
 					</tr>
 
 					<!-- <tr style="border: 1px solid #ddd">
@@ -38,7 +39,7 @@
 					<tr>
 						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Ask Price</p></td>
 						<td style="padding:0 10px;"><p><%#= raw m[:ask_one] %></p></td>
-					</tr> -->
+					</tr> "CustID" to 5676782-->
 					 
 					<% end %>
 
@@ -49,13 +50,14 @@
               	<tr>
               		<td>
 	              		<table width="100%">
+	              		<h5> UP TO DATE NIGERIAN BUSINESS AND POLITICAL NEWS THAT MATTERS</h5>
 	              			<% @recent_posts.each do |post| %>
 	              			<% if post.meta_image %>
 		              			<tr class="col-md-2">
 		              				<td>
                           <h5><%= link_to post.title, blogo_post_url(post) %></h5> 
 		              					<% host = "https://tradenaira.com"  %>
-		              					<%= link_to image_tag(host+""+post.meta_image, style: "max-height: 100px; max-width: 90px;"), blogo_post_url(post) %>
+		              					<%= link_to image_tag(host+""+post.meta_image, style: "max-height: 100px; max-width: 90px;", width: '90px', height: '100px'), blogo_post_url(post) %>
                             </td>
 		              			</tr>
 		              			<% end %>
@@ -65,7 +67,7 @@
               	</tr>
             </table>
                   <p><%= raw t("mailer.please_contact", contact_mail: ENV['SUPPORT_MAIL']) %>  </p>
-                  <p><%= raw t('mailer.signature') %></p>
+                  <p><%= raw t('mailer.signatures') %></p>
                 </td>
               </tr>
               </tbody>

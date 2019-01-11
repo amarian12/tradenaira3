@@ -3960,6 +3960,14 @@ header {padding: 9px 0 13px 0;}
 
 .history-pages table.table{ width:900px;}
 
+.gold_member {
+    padding: 10px 10px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
 }
 
 
@@ -3975,6 +3983,13 @@ header {padding: 9px 0 13px 0;}
 /** For Tablet Device responsive Start here **/
 
 @media screen and (min-width:768px) and (max-width:991px) {
+
+  .gold_member {
+    padding: 10px 10px;
+    width: 100%;
+    text-align: center;
+}
+
 
   .pad-left {
     padding-left: 0;
@@ -4393,6 +4408,13 @@ header {
 
 
 @media screen and (min-width:992px) and (max-width:1199px) {
+
+  .gold_member {
+    padding: 10px 10px;
+    width: 100%;
+    text-align: center;
+}
+
 
 .input-div input[type="email"]{ width: 90%; }
 .about_top { padding: 90px 0 60px 0;}

@@ -7,7 +7,6 @@ namespace :dailymail do
   	rescue Exception => e
   		puts "getting error for #{subscriber.email}"
   	end
-    
   end
   end
 

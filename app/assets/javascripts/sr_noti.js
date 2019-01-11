@@ -3,9 +3,9 @@
 
  	//if(typeof(gon.current_user) != "undefined"){
  		//if(typeof(gon.current_user.sn) != "undefined"){
- 				sRNotification();
+ 				//sRNotification();
  			  setInterval(function(){
- 			 	//sRNotification();
+ 			 	sRNotification();
  			 },3000)
  		//}
  	//}

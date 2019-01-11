@@ -75,9 +75,7 @@ $(document).ready(function(){
     }).change(function(){
        var t = $(this).data("target");
         if(typeof(t) != "undefined"){
-           
           $(".searchbydate").data(t,$(this).val()); 
-           
         }
     }) 
 
@@ -93,7 +91,7 @@ $(document).ready(function(){
     }
 
     if($(".live_counter")[0]){
-
+        //liveCounter();
         setInterval(function(){
           liveCounter();
         },4000);

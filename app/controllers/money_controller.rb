@@ -239,21 +239,34 @@ helper_method :require_captcha?
       end
     else
     request_for == "decline"  
-      if escrow.status == "1"
-        escrow.decline_by_buyer(user)
-        if escrow.user_role(user) == "seller"
-          escrow.status = 8
-        elsif escrow.user_role(user) == "buyer"  
-          escrow.status = 3
+      
+      if escrow.user_role(user.email) == "seller"
+        if escrow.seller_accepted
+          errors << "You already have approved, can`t decline now."
+        else
+          escrow.decline_by_user(user)
+          msg = "declined success"
+          success = true
         end
+        escrow.status = 8
+      elsif escrow.user_role(user.email) == "buyer"  
+        if escrow.buyer_accepted
+          errors << "You already have approved, can`t decline now."
+        else
+           escrow.decline_by_user(user)
+           msg = "declined success"
+           success = true
+        end
+        escrow.status = 3
+      end
         
-        escrow.save
-        msg = "declined success"
-        success = true
-      else
+      escrow.save
+      
+
+      if errors.class.to_s == "Array" && errors.count > 0
         success = false
         msg = "Please review following errors!"
-        errors << "can't declin on this stage"
+         
       end
       
     end

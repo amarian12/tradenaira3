@@ -168,10 +168,13 @@ class TwoFactorsController < ApplicationController
             # if user has paid, move status directly to paid
             if escrow.tn_role == "seller"
               escrow.seller_accepted = true
+              escrow.status = 9
+
             elsif escrow.tn_role == "buyer"
               escrow.buyer_accepted = true  
+              escrow.status = 2
             end
-            escrow.status = 2
+            
           end
         else
           escrow.status = 1

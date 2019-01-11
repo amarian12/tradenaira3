@@ -31,8 +31,14 @@ class UserMailer < ActionMailer::Base
 
     subjects = @mcontent.title
     @msg = @mcontent.description
+
+     @closename = @member.name
+      if @closename.blank?
+         @closename = 'user'
+      end
     
     mail to: member.email, subject: subjects
+     
   end
 
 

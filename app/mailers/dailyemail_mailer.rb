@@ -8,8 +8,8 @@ class DailyemailMailer < ActionMailer::Base
 
     @trades_all = []
      
-    msymbols    = ["usdngn","gbpngn","ghsngn","usdghs", "btcngn", 
-      "btcusd", "btcgbp", "gbpghs","btcghs", "eurngn"]
+    msymbols    = ["usd/ngn","gbp/ngn","ghs/ngn","usd/ghs", "btc/ngn", 
+      "btc/usd", "btc/gbp", "gbp/ghs","btc/ghs", "eur/ngn"]
 
     id = 0  
     msymbols.each do |sm|
