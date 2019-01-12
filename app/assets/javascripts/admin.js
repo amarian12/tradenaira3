@@ -91,9 +91,9 @@ $(document).ready(function(){
     }
 
     if($(".live_counter")[0]){
-        liveCounter();
+        //liveCounter();
         setInterval(function(){
-          //liveCounter();
+          liveCounter();
         },4000);
 
         $(".live_counter a").click(function(){
