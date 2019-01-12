@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  extend Enumerize
   attr_accessor :last_name,:business, :business_address, :nonsensefor, :password
   acts_as_taggable
   acts_as_reader
@@ -62,7 +63,14 @@ class Member < ActiveRecord::Base
   after_update :resend_activation
   after_update :sync_update
 
+  MEMBERSHIPS = {
+    gold: 1,
+    platinum: 2,
+    black: 3
+  }
+   
 
+  enumerize :membership, in: MEMBERSHIPS, scope: true
 
 
   class << self

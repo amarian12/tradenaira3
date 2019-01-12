@@ -15,7 +15,11 @@ en:
   last_price: "Last Price"
   bid_ask: "Bid / Ask"
   range: "Range"
-  volume: "Volume"
+  volume: "Last Traded Amount"
+  membership:
+    gold: "You are a Gold member!"
+    platinum: "You are a Platinum member!"
+    black: "You are a Black member!"
   header:
     assetlogin: Please Signin for verification
   private:

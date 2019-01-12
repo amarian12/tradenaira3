@@ -17,15 +17,25 @@ module Admin
     end
 
     def manage
-      doaction = params[:doaction]
+      doaction  = params[:doaction]
+      mtype     = params[:mtype]
       member = Member.find_by_id(params[:id])
-      if doaction == "toggle-trader"
+      last_membership = member.membership
+      
 
-        member.trader = !member.trader
-        if member.save
-          UserMailer.trader(member).deliver
-          flash[:notice] = "Last action was success!"
+      if doaction == "toggle-trader"
+        if member.membership.nil? || member.membership != mtype
+          member.membership = mtype.to_sym
+        else
+          member.membership = nil
         end
+        if member.save
+          UserMailer.trader(member,last_membership).deliver
+          flash[:notice] = "Last action was success!"
+        else
+          flash[:alert] = member.errors.full_messages.join(", ")
+        end
+         
       end
       redirect_to :back
     end
@@ -49,7 +59,6 @@ module Admin
           identity.is_locked = true
           identity.locked_at = DateTime.now
         end
-        
 
         if identity.save(validate: false)
           flash[:notice] = 'success'

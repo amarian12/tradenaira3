@@ -1,6 +1,7 @@
 doctype html
 html lang="en"
-  head
+  head 
+    = render "layouts/head"
     link rel="shortcut icon" href="/favicon.ico"
     link rel="apple-touch-icon" href="/favicon.ico"
     link rel="icon" href="/favicon.ico"
@@ -17,15 +18,8 @@ html lang="en"
     = javascript_include_tag "sr_noti"
 
     /*= render 'shared/meta'*/
-    = csrf_meta_tags
-    meta content="3pgC5eUXws57gm6P18OIZb-ov_wrIy1krauueWJwSq4" name="google-site-verification" /
-
-    meta content=(@descrip) name="description" /
-    title #{@title}
-    = metamagic keywords: [:keywords, "Tradenaira", "Opensource", "Exchange", "Cryptocurrency"]
-      
-
-    meta http-equiv="content-type" content="text/html; charset=UTF-8"
+    
+   
 
     link rel="stylesheet" href="/assets/liveprice.css?body=1"
     link rel="stylesheet" href="/assets/style2.css?body=1"

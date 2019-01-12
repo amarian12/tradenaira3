@@ -318,12 +318,8 @@ class ApplicationController < ActionController::Base
 
   def set_metatags
     @title = "Buy or Sell Naira – Transparent Nigerian Naira Exchange Rates"
-    @descrip = "TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. 
-    Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars, 
-    Ghana Cedis, Euros & Bitcoin at best Naira Exchange Rates. 
-    Send money to Nigeria with the best NGN exchange rates for USD, 
-    EUR, BTC, GHC & GBP."
-    @keyword =  "Tradenaira", "Opensource", "Exchange", "Cryptocurrency"
+    @descrip = " TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars, Ghana Cedis, Euros and Bitcoin at best Naira Exchange Rates today. Send money to Nigeria with the best NGN exchange rates for USD, EUR, BTC, GHC and GBP"
+    @keyword =  "Tradenaira, Opensource, Exchange, Cryptocurrency"
   end
 
   def is_locked?

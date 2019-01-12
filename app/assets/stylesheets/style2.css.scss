@@ -513,6 +513,23 @@ ul { padding:0; margin:auto;}
   {
     width:100%;
   }
+  .membership{
+    width: 100%;
+    padding: 5px 6px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .membership.gold{
+    background: #D4AF37;
+  }
+  .membership.platinum{
+    background: #A9A9A9;
+  }
+  .membership.black{
+    background: #000;
+  }
   .homepage
   {
     position:fixed;
@@ -1409,30 +1426,7 @@ header.fixed-header {background: #029abf !important;}
 box-shadow: -2px 0px 28px -2px rgba(0, 0, 0, 0.15);
 }
 
-.gold_member{
-  color: #005a71;
-    font-size: 20px;
-    background: #D4AF37;
-    font-family: 'poppinsbold';
-    padding: 7px 471px 3px 421px;
-    display: inline-block;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-bottom: 10px;
-}
-
-.platinum_member{
-    color: #005a71;
-    font-size: 20px;
-    background: #C0C0C0;
-    font-family: 'poppinsbold';
-    padding: 7px 471px 3px 421px;
-    display: inline-block;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-bottom: 10px;
-}
-
+ 
 
 
 
@@ -3960,12 +3954,7 @@ header {padding: 9px 0 13px 0;}
 
 .history-pages table.table{ width:900px;}
 
-.gold_member {
-    padding: 10px 10px;
-    width: 100%;
-    text-align: center;
-}
-
+ 
 
 
 }
@@ -3984,11 +3973,7 @@ header {padding: 9px 0 13px 0;}
 
 @media screen and (min-width:768px) and (max-width:991px) {
 
-  .gold_member {
-    padding: 10px 10px;
-    width: 100%;
-    text-align: center;
-}
+ 
 
 
   .pad-left {
@@ -4409,11 +4394,8 @@ header {
 
 @media screen and (min-width:992px) and (max-width:1199px) {
 
-  .gold_member {
-    padding: 10px 10px;
-    width: 100%;
-    text-align: center;
-}
+
+
 
 
 .input-div input[type="email"]{ width: 90%; }

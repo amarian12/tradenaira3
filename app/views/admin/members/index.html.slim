@@ -37,10 +37,21 @@
         - t.column :actions, class: 'col-xs-1' do |x|
           = link_to t('actions.view'), url_for([:admin, x]), target: '_blank'
 
-        - t.column :trader, class: 'col-xs-1' do |x|
-          = link_to(admin_manage_member_path(x.id,"toggle-trader"), 
+        - t.column :gold, class: 'col-xs-1' do |x|
+          = link_to(admin_manage_member_path(x.id,"toggle-trader",mtype: 'gold'), 
           data:{ method: "post", confirm: "Are you sure?" }) do 
-            = check_box_tag "trader", x.trader, x.trader
+            = check_box_tag "gold", x.membership, x.membership == "gold"
+       
 
+        - t.column :platinum, class: 'col-xs-1' do |x|
+          = link_to(admin_manage_member_path(x.id,"toggle-trader",mtype: 'platinum'), 
+          data:{ method: "post", confirm: "Are you sure?" }) do 
+            = check_box_tag "platinum", x.membership,  x.membership == "platinum"
+
+        - t.column :blck, class: 'col-xs-1' do |x|
+          = link_to(admin_manage_member_path(x.id,"toggle-trader",mtype: 'black'), 
+          data:{ method: "post", confirm: "Are you sure?" }) do 
+            = check_box_tag "blck", x.membership, x.membership == "black"
+        
       = paginate @members
 

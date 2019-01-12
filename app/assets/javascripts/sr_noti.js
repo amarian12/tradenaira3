@@ -1,16 +1,12 @@
- 
  $(document).ready(function(){  
-
  	//if(typeof(gon.current_user) != "undefined"){
  		//if(typeof(gon.current_user.sn) != "undefined"){
- 				//sRNotification();
+ 				sRNotification();
  			  setInterval(function(){
- 			 	sRNotification();
+ 			 	//sRNotification();
  			 },3000)
  		//}
  	//}
-
-
  	if ($("li.srnotification")[0]) {
  		var titlemsg = "No new notification"
  		$("li.srnotification")

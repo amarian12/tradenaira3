@@ -1,6 +1,8 @@
 <!-- <div class="fund"><h1 class="page-title"><%= t("header.funds") %></h1><div class="reqmoney"><a href="/money/req" class="reqmoneylink">Request Money / Payment</a></div></div> -->
-<% if current_user.trader %>
-<div class="gold_member">You are a Gold member</div> 
+<% if current_user.membership %>
+  <div class="membership <%= current_user.membership%>">
+    <%= t("membership.#{current_user.membership}") %>
+  </div> 
 <% end %>
 
 <!-- <div class="platinum_member">You are a Platinum member</div> -->

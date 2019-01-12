@@ -7,6 +7,9 @@ module Private
     before_action :two_factor_activated!
 
     def index
+      @title ="Funds"
+      @descrip="TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars, Ghana Cedis, Euros and Bitcoin at best Naira Exchange Rates today. Send money to Nigeria with the best NGN exchange rates for USD, EUR, BTC, GHC and GBP."
+      @keyword ="Tradenaira, Opensource, Exchange, Cryptocurrency"
       @deposit_channels = DepositChannel.all
       @withdraw_channels = WithdrawChannel.all
       @currencies = Currency.all.sort

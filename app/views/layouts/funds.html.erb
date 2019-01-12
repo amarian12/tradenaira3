@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="funds">
   <head>
-    <%- stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : "application" %>
+    <%= render 'layouts/head' %>
 
+    <%- stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : "application" %>
     <link rel="shortcut icon" href="/favicon.ico"></link>
     <link rel="apple-touch-icon" href="/favicon.ico">
     <link rel="icon" href="/favicon.ico">
-
     <%= include_gon %>
     <%= stylesheet_link_tag "style2" %>
     <%= stylesheet_link_tag stylesheet, media: "all" %>
@@ -19,12 +19,10 @@
 
     <%= yield(:scripts) if content_for?(:scripts) %>
     <%= render 'shared/html5' %>
-    <!--<%= render 'shared/meta' %>-->
+    <%#= render 'shared/meta' %>
     <%= csrf_meta_tags %>
-    <%= metamagic description: "TradeNAIRA is the only transparent Nigerian Naira Currency Exchange. Buy and Sell Nigerian Naira for UK Pounds Sterling, US Dollars or Euros at best Exchange Rates. Send money to Nigeria with the best rates for USD, EUR and GBP swapped for NGN."%>
-    <%= metamagic keywords: [:keywords, "Tradenaira", "Opensource", "Exchange", "Cryptocurrency"]%>
-    <%= metamagic title: "Funds" %>
-
+   
+    
     <!-- Start of tradenaira Zendesk Widget script -->
   <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=107274bc-dacb-4bdf-9426-d877e0b16161"> </script>
 <!-- End of tradenaira Zendesk Widget script -->

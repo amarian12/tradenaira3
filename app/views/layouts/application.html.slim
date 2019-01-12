@@ -1,7 +1,7 @@
 doctype html
 html lang="en"
   head
-  
+    = render "layouts/head"
     link rel="shortcut icon" href="/favicon.ico"
     link rel="apple-touch-icon" href="/favicon.ico"
     link rel="icon" href="/favicon.ico"
@@ -33,10 +33,7 @@ html lang="en"
     /* = render 'shared/meta'*/
     = csrf_meta_tags
 
-    meta content=(@descrip) name="description" /
-    title #{@title}
-    meta keywords=(@keyword) name="keywords"
-
+    
   
     
 

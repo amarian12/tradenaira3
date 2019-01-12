@@ -16,17 +16,29 @@ class UserMailer < ActionMailer::Base
     if @me.request_type == "send_money"
       subjects = "You have been sent some money"
     elsif @me.request_type == "request_meney"
-      subjects = "You have been requetsed some money"
+      subjects = "You have been requested some money"
     end
     mail to: me.sent_on_email, subject: subjects
   end
 
-  def trader member
+  def trader member, last_membership
     @member = member
-    if member.trader 
-      @mcontent = MetaContent.find_by_slug("your_tradenaira_account_has_been_upgraded_to_gold_membership")      
+
+    if member.membership == "black" 
+      @mcontent = MetaContent.find_by_slug("membership_upgrade_to_black")      
+    elsif member.membership == "platinum" && last_membership == "black"
+      @mcontent = MetaContent.find_by_slug("membership_downgrade_to_platinum")  
+    elsif member.membership == "platinum" && (last_membership.nil? || last_membership == "gold")
+      @mcontent = MetaContent.find_by_slug("membership_upgrade_to_platinum") 
+    elsif member.membership == "gold" && (last_membership == "platinum" || last_membership == "black")  
+       @mcontent = MetaContent.find_by_slug("membership_downgrade_to_gold") 
+    elsif member.membership == "gold" && (last_membership.nil?)   
+       @mcontent = MetaContent.find_by_slug("membership_upgrade_to_gold") 
+      #@mcontent = MetaContent.find_by_slug("your_tradenaira_account_has_been_upgraded_to_gold_membership")      
     else
-      @mcontent = MetaContent.find_by_slug("your_tradenaira_has_been_downgraded_to_standard_membership")      
+      puts "----------------------------"
+      @mcontent = MetaContent.find_by_slug("membership_downgrade_to_standared")
+      #@mcontent = MetaContent.find_by_slug("your_tradenaira_has_been_downgraded_to_standard_membership")      
     end
 
     subjects = @mcontent.title
@@ -96,7 +108,7 @@ class UserMailer < ActionMailer::Base
     @amount = me.amount
     @me = me
     @currency = me.account.currency
-    subjects = "Money request declined by receipent!"
+    subjects = "Money request declined by recipient!"
     mail to: me.sender.email, subject: subjects
   end
 
@@ -119,7 +131,7 @@ class UserMailer < ActionMailer::Base
     @action = ""
     if me.request_type == "send_money"
       @action = "send"
-      subjects = "Approval requets to send money"
+      subjects = "Approval request to send money"
       @sender_name = @me.sender.display_name || @me.sender.email
        
       if @me.receiver.nil?
@@ -130,13 +142,13 @@ class UserMailer < ActionMailer::Base
 
     elsif me.request_type == "request_meney"
       @action = "request"
-      subjects = "Approval requets to receive money"
+      subjects = "Approval request to receive money"
       @sender_name = @me.sender.display_name || @me.sender.email
       @receiver_name = @me.receiver.nil? ? @me.sent_on_email : @me.receiver.email
 
     elsif me.request_type == "escrow_money"
       @action = "escrow"
-      subjects = "Approval requets to escrow money"
+      subjects = "Approval request to escrow money"
       @sender_name = @me.sender.display_name || @me.sender.email
       @receiver_name = @me.receiver.nil? ? @me.sent_on_email : @me.receiver.email
     end

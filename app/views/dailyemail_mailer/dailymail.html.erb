@@ -19,32 +19,20 @@
                 <td>
               <!--     <p>Dear <%#= @closename %>,</p> -->
                 <h4>We strive to bring you the most up to date exchange rates and business news in Nigeria</h4>
-				  <table width="100%" style="border: 
-				  1px solid #ddd;border-collapse: collapse;">
+      				  <table width="100%" style="border: 
+      				  1px solid #ddd;border-collapse: collapse;">
+                <% @trades_all.each do |m| %>
+      				  	 
+        					<tr style="border: 1px solid #ddd">
+        						<th rowspan=1 style="border: 1px solid #ddd"><p>
+        							<%= raw m[:mname].upcase %></p></th>
+        						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
+        						<td style="padding:0 10px;"><p>
+        							₦<%= raw m[:trade] %></p></td>
+        					</tr>
+      					<% end %>
 
-				  <% @trades_all.each do |m| %>
-				  	 
-					<tr style="border: 1px solid #ddd">
-						<th rowspan=1 style="border: 1px solid #ddd"><p>
-							<%= raw m[:mname].upcase %></p></th>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Last Price</p></td>
-						<td style="padding:0 10px;"><p>
-							₦<%= raw m[:trade] %></p></td>
-					</tr>
-
-					<!-- <tr style="border: 1px solid #ddd">
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Bid Price</p></td>
-						<td style="padding:0 10px;"><p><%#= raw m[:bid_one] %></p></td>
-					</tr>
-					<tr>
-						<td style="border: 1px solid #ddd;padding:0 10px;"><p>Ask Price</p></td>
-						<td style="padding:0 10px;"><p><%#= raw m[:ask_one] %></p></td>
-					</tr> "CustID" to 5676782-->
-					 
-					<% end %>
-
-
-                  </table>
+                </table>
               	</td>
               	</tr>
               	<tr>
@@ -65,7 +53,7 @@
 	              		</table>
               		</td>
               	</tr>
-            </table>
+              </table>
                   <p><%= raw t("mailer.please_contact", contact_mail: ENV['SUPPORT_MAIL']) %>  </p>
                   <p><%= raw t('mailer.signatures') %></p>
                 </td>
