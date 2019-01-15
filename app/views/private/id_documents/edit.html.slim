@@ -7,7 +7,7 @@
 
   hr.split
 
-  = simple_form_for @id_document do |f|
+  = simple_form_for(@id_document, url: "/id_document") do |f|
     = f.input :name, label: t('.name')
     = f.input :birth_date, as: :date, label: t('.birth_date'), \
       start_year: Date.today.year - 70, \
