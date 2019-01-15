@@ -14,9 +14,10 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
   $scope.withdraw_channel = WithdrawChannel.findBy('currency', $scope.currency)
   #added by dinesh100ni
 
-  #$.subscribe 'two_factor_init', (event, data) ->
-    #TwoFactorAuth.attachTo('.two-factor-auth-container')
-  #$.publish 'two_factor_init'
+  $.subscribe 'two_factor_init', (event, data) ->
+    TwoFactorAuth.attachTo('.two-factor-auth-container')
+  $.publish 'two_factor_init'
+  console.log("cap_intialize_before")
 
   #end new added
 
