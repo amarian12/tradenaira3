@@ -1,5 +1,4 @@
 @TwoFactorAuth = flight.component ->
-  console.log("cap_intialize_loaded")
   @attributes
     switchName: 'span.switch-name'
     switchItem: '.dropdown-menu a'
@@ -11,8 +10,6 @@
     appHint: 'span.hint.app'
     smsHint: 'span.hint.sms'
     chapterWrap: '.captcha-wrap'
-
-    console.log("cap_intialize_loaded_1")
 
   @setActiveItem = (event) ->
     switch $(event.target).data('type')
@@ -57,10 +54,7 @@
     $.get('/two_factors/sms?refresh=true')
 
   @checkCaptchaRequired = ->
-    console.log("cap_intialized_1")
     @select('chapterWrap').load '/two_factors/app', (html) -> 
-      console.log("cap_intialized_2")
-      console.log(html)
       $(@).html(html)
 
   @after 'initialize', ->
@@ -68,5 +62,4 @@
     $.subscribe 'withdraw:form:submitted', => @checkCaptchaRequired()
     @on @select('switchItem'), 'click', @setActiveItem
     @on @select('sendCodeButton'), 'click', @sendCode
-    console.log("cap_intialized")
 

@@ -138,7 +138,6 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
 
   $scope.$watch (-> $scope.currency), ->
     setTimeout(->
-      console.log("cap_intialize_trying")
       $.publish "two_factor_init"
     , 1000)
 
