@@ -16,6 +16,7 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
 
   $.subscribe 'two_factor_init', (event, data) ->
     TwoFactorAuth.attachTo('.two-factor-auth-container')
+    console.log("attched_success")
   $.publish 'two_factor_init'
 
   #end new added
