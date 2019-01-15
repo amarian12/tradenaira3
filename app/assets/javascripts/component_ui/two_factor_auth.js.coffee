@@ -1,4 +1,5 @@
 @TwoFactorAuth = flight.component ->
+  console.log("cap_intialize_loaded")
   @attributes
     switchName: 'span.switch-name'
     switchItem: '.dropdown-menu a'
