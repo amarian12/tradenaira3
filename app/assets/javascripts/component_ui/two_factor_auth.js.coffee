@@ -54,11 +54,16 @@
     $.get('/two_factors/sms?refresh=true')
 
   @checkCaptchaRequired = ->
-    @select('chapterWrap').load '/two_factors/app', (html) -> $(@).html(html)
+    console.log("cap_intialized_1")
+    @select('chapterWrap').load '/two_factors/app', (html) -> 
+      console.log("cap_intialized_2")
+      console.log(html)
+      $(@).html(html)
 
   @after 'initialize', ->
     @checkCaptchaRequired()
     $.subscribe 'withdraw:form:submitted', => @checkCaptchaRequired()
     @on @select('switchItem'), 'click', @setActiveItem
     @on @select('sendCodeButton'), 'click', @sendCode
+    console.log("cap_intialized")
 

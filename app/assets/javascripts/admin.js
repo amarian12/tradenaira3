@@ -154,9 +154,6 @@ function srchFinances($this){
   if(validateSrDates()){
      window.location = url;
   }
-
- 
-
   return false;
 }
 

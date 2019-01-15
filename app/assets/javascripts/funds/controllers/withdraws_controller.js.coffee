@@ -16,7 +16,6 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
 
   $.subscribe 'two_factor_init', (event, data) ->
     TwoFactorAuth.attachTo('.two-factor-auth-container')
-    console.log("attched_success")
   $.publish 'two_factor_init'
 
   #end new added
@@ -137,7 +136,6 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
     current_user.sms_activated and !current_user.app_activated
 
   $scope.$watch (-> $scope.currency), ->
-    console.log("Itstooworking")
     setTimeout(->
       $.publish "two_factor_init"
     , 100)
