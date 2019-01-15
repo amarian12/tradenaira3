@@ -12,6 +12,8 @@
     smsHint: 'span.hint.sms'
     chapterWrap: '.captcha-wrap'
 
+    console.log("cap_intialize_loaded_1")
+
   @setActiveItem = (event) ->
     switch $(event.target).data('type')
       when 'app' then @switchToApp()
