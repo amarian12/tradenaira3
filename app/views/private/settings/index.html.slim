@@ -1,3 +1,6 @@
+- unless current_user.activated?
+  p.verify-btn
+    |You must Verify your Account and Phone Number to start trading today.
 table#setting_list.table
   tr
     td.col-xs-2.text-center.vertical-center: i.fa.fa-envelope-o.fa-2x

@@ -45,7 +45,7 @@ SimpleForm.setup do |config|
     #
     b.use :label, wrap_with: { tag: :div, class: 'col-xs-24'}
     b.use :input, wrap_with: { tag: :div, class: 'col-xs-24'}
-    b.use :error, wrap_with: { tag: :span, class: 'error text-danger col-md-24' }
+    b.use :error, wrap_with: { tag: :span, class: 'error' }
     b.use :hint,  wrap_with: { tag: :span, class: 'hint col-md-24' }
   end
 

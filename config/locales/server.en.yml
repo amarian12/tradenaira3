@@ -2040,7 +2040,8 @@ en:
       tip: Activation link was sent to %{email}
       spam: Please check your spam folder for the activation link.
     edit:
-      notice: Account activated successfully! Please sign in below.
+      notice: Your e-mail has now been verified successfully! Please Verify your accountby submiting the required documents and
+              set up your Phone Number and Two-factor Authentication for additional security.
       alert: Activation link is expired or invalid.
   authentications:
     emails:
@@ -2192,6 +2193,9 @@ en:
           it.
         guide-link: "<a href='https://support.google.com/accounts/answer/1066447'
           target='_blank'>Installation Instructions</a>。"
+        search-app: "You can search for 'Google Authenticator' in either your Google Play store on Android mobile device or on the 
+                    App Store if you use and Apple device."
+          
         scan-qr-code: Scan the following QR code with Google Authenticator APP，or
           add cipher text to the validator manually.
         enter-passcode: Fill in the dynamic password  displayed by your phone to activate Two-Factor Authentication.

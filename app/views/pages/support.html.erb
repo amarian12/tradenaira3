@@ -1231,26 +1231,10 @@ ol.main > li > ol > li:before {
 	<div class="modal-dialog modal-md"> 
 		<div class="modal-content">
 			<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-			<div id="respErrmsges" class="col-sm-12"></div>
-			<div id="respSuccmsges" class="col-sm-12"></div>
+			
 			<div class="moformcontainer">
 				<p>Welcome Back</p>
-				<%= simple_form_for @identity, url: '/pages/support', :method => 'post', html: { onsubmit: "return SendMoney(this)", 
-				data: { actionfor: "support" }} do |f| %>
-					<%= f.input :email, label:t('simple_form.labels.session.email'), placeholders: t('simple_form.placeholders.session.email')%>
-					<%= f.input :password, :as=> 'password', :input_html => {:name => 'password'}, label:t('simple_form.labels.session.password'), placeholder: t('simple_form.placeholders.session.password')%>
-					<% #if required_captcha %>
-					<%#= f.input :captcha, required: true, label: t('simple_form.labels.session.captcha') do%>
-					<%#= show_simple_captcha%>
-					<% #end %>
-					<%# end %>
-					<div class="col-xs-24 sign_bottom">
-					<p class="already">Don't have an account?</p>
-					<a class="smal_link1" href='/signup_path'>SIGN UP NOW</a>
-					<a class="smal_link1" href='/new_reset_password_path'>Forgot Password?</a>
-					</div>
-					<%= f.submit t('header.Signin'), :class => 'btn44'%>
-				<% end %>
+				
 			</div>
 		</div>
 	</div>
