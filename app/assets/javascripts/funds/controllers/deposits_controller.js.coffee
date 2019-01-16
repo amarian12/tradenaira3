@@ -13,6 +13,7 @@ app.controller 'DepositsController', ['$scope', '$stateParams', '$http', '$filte
   $scope.fund_sources = $gon.fund_sources
   $scope.account = Account.findBy('currency', $scope.currency)
   $scope.deposit_channel = DepositChannel.findBy('currency', $scope.currency)
+  $(".nodeposits").hide()
   
   $scope.selected_fund_source_id = (newId) ->
     if angular.isDefined(newId)

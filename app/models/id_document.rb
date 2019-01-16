@@ -14,14 +14,25 @@ class IdDocument < ActiveRecord::Base
   belongs_to :member
 
   validates_presence_of :name, :id_document_type, :id_document_number, :id_bill_type, 
-  :address, :country, :zipcode , :id_document_file, :id_bill_file, allow_nil: true
+  :address, :country, :zipcode, allow_nil: true
   validates_uniqueness_of :member
    
 
-  enumerize :id_document_type, in: {id_card: 0, passport: 1, driver_license: 2}
-  enumerize :id_bill_type,     in: {bank_statement: 0, tax_bill: 1, utility_bill: 2}
+  enumerize :id_document_type, in: {id_card: 0, passport: 1, driver_license: 2 }
+  enumerize :id_bill_type, in: {bank_statement: 0, tax_bill: 1, utility_bill: 2 }
 
   alias_attribute :full_name, :name
+
+ 
+  validates_presence_of :id_bill_file, on: :update, message: "Upload a copy of your proof of address"
+  validates_presence_of :id_document_file, on: :update, message: "Upload a copy of your id"
+
+
+  after_validation :formate_errors
+
+  def formate_errors
+    #self.errors.add(id_document_file: Asset::IdDocumentFile.new.errors.add(:file, "cant be null"))
+  end
 
   aasm do
     state :unverified, initial: true, after_commit: :send_email
@@ -67,9 +78,9 @@ class IdDocument < ActiveRecord::Base
   
   private
 
-    def send_email
-      IddocumentMailer.verified(self.id).deliver if self.verified?
-      IddocumentMailer.unverified(self.id).deliver if self.unverified?
-    end
+  def send_email
+    IddocumentMailer.verified(self.id).deliver if self.verified?
+    IddocumentMailer.unverified(self.id).deliver if self.unverified?
+  end
   
 end

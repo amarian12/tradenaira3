@@ -6,9 +6,12 @@ app.controller 'DepositHistoryController', ($scope, $stateParams, $http) ->
   @deposits = @account.deposits().slice(0, 3)
   @newRecord = (deposit) ->
     if deposit.aasm_state == "submitting" then true else false
+  if @deposits.length == 0  
+    $(".nodeposits").show()
 
   @noDeposit = ->
     @deposits.length == 0
+    
 
   @refresh = ->
     @deposits = @account.deposits().slice(0, 3)

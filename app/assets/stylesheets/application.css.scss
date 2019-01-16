@@ -1233,3 +1233,23 @@ body{ overflow-x:hidden;}
 
 
 @import 'layouts/custom';
+
+#wrap{
+    .sub_menu{
+      .popop{
+      display: block;
+      background: #ffc82f;
+      font-size: -11px;
+      padding: 5px;
+      border-radius: 4px;
+      margin-top: 10px;
+      cursor: pointer; 
+      a{
+        color: #fff;
+      }  
+    }
+  }
+}
+
+
+

@@ -14,6 +14,7 @@ module Private
 
         redirect_to settings_path, notice: t('.notice')
       else
+
         render :edit
       end
     end

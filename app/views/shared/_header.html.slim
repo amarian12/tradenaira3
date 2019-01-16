@@ -34,7 +34,16 @@ header.navbar.navbar-default.navbar-static-top.sanc role = "navigation"
 
 
 			    //- raw("li.fundsbtn") 
-			    = top_nav_link(t('header.funds'), funds_path, '', controllers: ['funds']) if current_user
+			    /= top_nav_link(t('header.funds'), funds_path, '', controllers: ['funds']) if current_user
+                - if current_user
+                  - if current_user.activated?
+                   li 
+                      = top_nav_link(t('header.funds'), funds_path, '', controllers: ['funds']) 
+                  -else
+                    li 
+                      .popop
+                        a.thumb data-target="#FundsActivated" data-toggle="modal" Funds
+
                 - if current_user
                  li 
                   a href='#{root_path}invitation/new'
@@ -42,9 +51,20 @@ header.navbar.navbar-default.navbar-static-top.sanc role = "navigation"
 
 
 
+
 			    - if is_admin?
 				 li
                   a href = "/news/admin" class = "addfeed"  Add Blog
+
+#FundsActivated.modal.fade.bs-example-modal-lg aria-labelledby="myModalLabel" role="dialog" tabindex="-1" 
+  .modal-dialog.modal-md
+    .modal-content
+      button.close aria-label="Close" data-dismiss="modal" type="button" 
+        span aria-hidden="true"  &times;
+      .moformcontainer
+        p 
+        | You must fully verify your account before you can access the Funds page.This includes KYC and Phone number verification 
+          If you are experiencing difficulty please contact support or start a Chat using the button at the bottom right corner of the screen.    
 			    
 scss:
     .sub_menu li.active a

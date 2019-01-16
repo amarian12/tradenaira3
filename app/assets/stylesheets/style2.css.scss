@@ -126,7 +126,6 @@ img {
     }
   }
 
-
 .banner-wrap-top{
   position: relative;
   .advert-banner{
@@ -164,6 +163,19 @@ img {
 }
 .subs-admin{
   padding-top: 65px;
+}
+.nodeposits{
+  text-align: center;
+ a{
+  color: #fff;
+  padding: 5px 0;
+  background: #38a6cb;
+  display: block;
+  width: 100%;
+ }
+ a:hover{
+  color: #FFC82F;
+ }
 }
 
 .ddicone:after{

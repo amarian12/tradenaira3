@@ -88,8 +88,13 @@
     
   </div>
   
-    <div class="contentsfirst">
-    <p class="allcontents">Please make a transfer to our account details below.</p>
+    <div class="" ng-controller="DepositHistoryController as dhCtrl">
+    <div class="contentsfirst" ng-hide="dhCtrl.deposits.length">
+      <p class="allcontents">Please make a transfer to our account details below.</p>
+    </div>
+    <div class="contentsfirst" ng-show="dhCtrl.deposits.length">
+      <p class="allcontents pending-history">You have a pending deposit request.Please make a bank transfer to our account in the link below. Once we receive your payment we will credit your wallet within 2 hours </p>
+    </div>
   </div>
   
 <a href="#" class="tradedet" data-toggle="modal" data-target="#myModal">TradeNAIRA Local GHS deposit account details</a>
@@ -352,5 +357,10 @@
     padding: 10px;
     margin-bottom: 15px;
 }
+.pending-history{
+  color: red;
+  font-weight: bold;
+}
+
 
 </style>

@@ -21,9 +21,22 @@
     = f.input :id_document_number, label: t('.id_document_number')
     = f.simple_fields_for :id_document_file, @id_document.id_document_file || @id_document.build_id_document_file do |p|
       = p.input :file, as: :file, label: t('.id_document_file')
+      - if @id_document.errors.present?
+         - if @id_document.errors[:id_document_file]
+           span.error = @id_document.errors[:id_document_file].join(" ")
+           
     = f.input :id_bill_type, prompt: t('actions.select'), label: t('.id_bill_type')
     = f.simple_fields_for :id_bill_file, @id_document.id_bill_file || @id_document.build_id_bill_file do |p|
       = p.input :file, as: :file, label: t('.id_bill_file')
+      - if @id_document.errors.present?
+         - if @id_document.errors[:id_bill_file]
+           span.error = @id_document.errors[:id_bill_file].join(" ")
+
+
+      //if @id_document.errors.present?
+      
+        //.span
+          //= @id_document.errors.id_bill_file
     hr.split
     = f.button :wrapped, cancel: settings_path
 
